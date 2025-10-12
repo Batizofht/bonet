@@ -1,0 +1,1861 @@
+{
+ "welcome_message": "欢迎来到 Bonet Elite Services",
+  "subtitle": "您在卢旺达旅行、商业与投资的可靠合作伙伴",
+  "description": "我们通过提供量身定制的旅行、商业和投资支持，简化您在卢旺达的体验。无论您是游客、企业家还是外国投资者，我们都能确保您从抵达卢旺达到安顿下来，全程无忧。",
+  "get_started": "开始使用",
+  "services": {
+    "title": "我们的服务",
+    "list": [
+      {
+        "title": "旅行与接待",
+        "description": "我们提供全面的旅行和接待服务，包括酒店预订、机场接送、汽车租赁和导游服务。",
+        "details": "轻松游览卢旺达——立即预订您的贵宾体验！",
+        "buttonText": "旅行与接待",
+        "route": "/travel"
+      },
+      {
+        "title": "投资与商业设立",
+        "description": "我们的专家协助办理商业注册、许可证申请和咨询服务。",
+        "details": "今天就在卢旺达开启您的事业——让我们开始吧！",
+        "buttonText": "注册我的公司",
+        "route": "/investment"
+      },
+      {
+        "title": "商业咨询",
+        "description": "我们提供专业的商业咨询服务，包括商业计划制定、项目规划和财务审计。",
+        "details": "我们的目标是帮助企业优化运营并推动增长。",
+        "buttonText": "获取咨询",
+        "route": "/consulting"
+      },
+      {
+        "title": "人力资源与行政支持",
+        "description": "我们提供招聘服务、人力资源政策制定和员工培训计划。",
+        "details": "我们的人力资源解决方案旨在提高劳动力效率并确保符合行业标准。",
+        "buttonText": "人力资源解决方案",
+        "route": "/hrsupport"
+      }
+    ]
+  },
+  "whyBonet": {
+    "title": "为什么选择 Bonet Elite Services？",
+    "cards": [
+      {
+        "title": "本地专业知识",
+        "shortDesc": "深入了解卢旺达的旅游和商业环境。",
+        "longDesc": "凭借在卢旺达旅游和商业领域多年的经验，我们为访客和企业提供专家指导，确保无缝的体验。"
+      },
+      {
+        "title": "一站式解决方案",
+        "shortDesc": "所有服务集于一处，方便快捷。",
+        "longDesc": "从旅行安排到企业解决方案，我们将您的需求整合到一个高效的过程中，为您节省时间和精力。"
+      },
+      {
+        "title": "专业可靠",
+        "shortDesc": "专业的团队确保提供高质量的服务。",
+        "longDesc": "我们的专业团队致力于提供卓越的服务，确保每次互动都可靠且令人满意。"
+      }
+    ]
+  },
+  "title": {
+    "part1": "我们值得信赖的",
+    "part2": "合作伙伴"
+  },
+  "testimonials": {
+    "sectionTitle": "用户评价",
+    "reviews": [
+      "这个预订系统帮助我更有效地管理了我的预约。我不再错过客户会议，提醒功能非常有用。这对我的工作来说是个改变者！",
+      "这个预订系统让管理客户预约变得容易多了。它简化了我的日程安排，对客户来说也方便得多。我无法想象没有它如何经营我的业务！",
+      "这个系统改变了我们公司管理预订的方式。它自动化、可靠，让每个人都保持正轨。它极大地提高了我们的生产力。",
+      "自从实施了这个预订系统，我们的客户参与度飙升。自动提醒和便捷的调度使我们的业务运营更加顺畅，客户也更满意！",
+      "这个预订平台对我的业务来说是一个改变者。客户可以在方便时预订预约，我可以在一个地方管理所有预约。这为我节省了大量时间！",
+      "我曾经为手动安排预约而苦恼，但这个系统让一切变得无缝。客户喜欢便捷的预订，我可以专注于提供优质服务。",
+      "这个系统将我的业务提升到了一个新的水平。客户喜欢简单的预订流程，我节省了大量时间。自动提醒特别有用！",
+      "我简直不敢相信，有了这个系统，我的工作变得如此轻松。客户可以在线预订，所有信息都会自动更新。这是任何企业都必不可少的工具。",
+      "这个预订系统让我的工作轻松多了。客户可以轻松预订和重新安排，我可以专注于提供优质的客户服务，而不用担心错过预约。"
+    ]
+  },
+  "experience": {
+    "title": "我们的独特之处",
+    "card1": {
+      "title": "一站式商业与投资中心",
+      "description": "从公司注册到促进投资机会和法律合规，我们为您在卢旺达的所有商业需求提供一个集中平台。"
+    },
+    "card2": {
+      "title": "量身定制的贵宾与高管服务",
+      "description": "体验顶级的个性化服务——从豪华住宿和交通到礼宾和搬迁协助，专为精英客户和繁忙的专业人士设计。"
+    },
+    "card3": {
+      "title": "快速无忧的流程",
+      "description": "我们简化程序以节省您的时间——确保从商业设立到旅行安排的一切服务都快速高效。"
+    }
+  },
+  "gallery": {
+    "title": "访问卢旺达",
+    "places": {
+      "conv": "会议中心",
+      "k2": "国王宫殿",
+      "memo": "基加利种族灭绝纪念馆",
+      "k3": "阿卡盖拉国家公园",
+      "kiv": "基伍湖",
+      "vov": "火山国家公园",
+      "part1": "经典酒店",
+      "tea": "卢旺达咖啡和茶园",
+      "nyu5": "纽恩威国家公园",
+      "gis3": "吉塞尼海滩",
+      "huye": "胡耶国家博物馆",
+      "muhazi": "穆哈齐湖"
+    },
+    "button": "访问卢旺达"
+  },
+  "aisolutions": {
+    "title": "与 Bonet Elite Service 一起探索卢旺达",
+    "feature1": {
+      "title": "在卢旺达设立公司",
+      "description": "了解在卢旺达设立公司的分步流程，从在卢旺达发展局注册到了解税收法规和投资激励措施。",
+      "highlight": "卢旺达提供简化的商业注册流程，允许企业家在24小时内开始运营。"
+    },
+    "feature2": {
+      "title": "在基加利的奢华服务",
+      "description": "探索必要的旅行贴士，从签证要求到文化礼仪、必游目的地以及访问卢旺达的最佳时间。",
+      "highlight": "卢旺达是非洲最安全的旅行目的地之一，拥有令人惊叹的风景和热情好客的文化。"
+    },
+    "feature3": {
+      "title": "在卢旺达投资",
+      "description": "发掘卢旺达最有前景的投资领域，包括房地产、农业、信息和通信技术以及旅游业，并提供关于潜在回报和政府支持的见解。",
+      "highlight": "卢旺达的经济增长和有利于投资者的政策使其成为非洲外国投资的首选地。"
+    },
+    "learnMore": "了解更多 →"
+  },
+  "blog": {
+    "header": {
+      "title1": "最新",
+      "title2": "博客文章"
+    },
+    "loading": "正在加载博客...",
+    "noPosts": "暂无博客文章。",
+    "readMore": "阅读更多"
+  },
+  "faq": {
+    "header": "一些常见问题",
+    "contactPrompt": "还有问题吗？联系我们获取个性化协助！",
+    "getInTouch": "取得联系"
+  },
+  "footer": {
+    "description": "在 Bonet Elite Services，我们让旅行、商业和投资变得简单，让您可以专注于真正重要的事情。让我们使您在卢旺达的体验顺畅而成功！",
+    "quickLinks": "快速链接",
+    "aboutUs": "关于我们",
+    "services": "服务",
+    "bookNow": "立即预订",
+    "contactUs": "联系我们",
+    "contactDescription": "立即联系我们，享受无缝的预订和日程安排，同时您可以专注于真正重要的事情。",
+    "whatsappCall": "WhatsApp/电话：",
+    "email": "邮箱：",
+    "location": "地点：",
+    "copyright": "保留所有权利。"
+  },
+  "menu": {
+    "home": "首页",
+    "aboutUs": "关于我们",
+    "services": "服务",
+    "travelAndHospitality": "旅行与接待",
+    "hotels": "酒店",
+    "apartments": "公寓",
+    "transport": "交通",
+    "tourism": "旅游",
+    "investmentAndBusinessSetup": "商业设立",
+    "companyRegistration": "公司注册与法律设立",
+    "investmentCertificate": "投资证书申请",
+    "businessPermits": "商业许可与执照",
+    "marketResearch": "市场研究与可行性分析",
+    "operationalSetup": "运营设立与启动支持",
+    "businessConsulting": "商业咨询",
+    "businessPlanning": "商业规划与战略",
+    "financialAdvisory": "财务咨询与审计支持",
+    "processOptimization": "流程优化与风险管理",
+    "projectAuditing": "项目与合规审计",
+    "hrAndAdminSupport": "人力资源与行政支持",
+    "recruitment": "招聘与人才获取",
+    "hrPolicyDevelopment": "人力资源政策制定",
+    "employeeTraining": "员工培训与发展",
+    "payrollCompensation": "薪资与薪酬",
+    "administrativeSupport": "行政支持",
+    "bookNow": "立即预订"
+  },
+  "home": {
+    "welcomeText": "欢迎来到 Bonet Elite Services",
+    "tagline": "您在卢旺达旅行、商业与投资的可靠合作伙伴"
+  },
+  "vision": {
+    "welcomeText": "欢迎来到 Bonet Elite Services",
+    "tagline": "您在卢旺达旅行、商业与投资的可靠合作伙伴",
+    "visionTitle": "愿景声明",
+    "visionText": "成为卢旺达领先的精英服务提供商，为全球个人和公司提供无缝且专业的旅行、投资和商业支持解决方案。",
+    "missionTitle": "使命声明",
+    "missionText": "我们为旅行者、投资者和企业提供量身定制的高质量精英服务。我们在酒店接待、商业咨询和人力资源解决方案方面的专业知识确保为客户提供顺畅无忧的体验，帮助他们在卢旺达取得成功。"
+  },
+  "founder": {
+    "meet": "认识我们的",
+    "founder": "创始人",
+    "founderTitle": "首席执行官兼创始人",
+    "founderDescription": "John Doe 是 Bonet Elite Service 背后的远见者，致力于重新定义奢华与便利。怀着对卓越的热情，他建立了一个将客户与优质生活方式解决方案无缝连接起来的平台。他的领导力和创新思维持续推动公司的成功，确保为所有用户提供无与伦比的体验。"
+  },
+  "service": {
+    "heading1": "我们的",
+    "heading2": "服务",
+    "more": "更多",
+    "travel": {
+      "title": "旅行与接待",
+      "description": "我们提供全面的旅行和接待服务，包括酒店预订、机场接送、汽车租赁和导游服务。",
+      "details": "无论是商务还是休闲，我们都能确保您从抵达卢旺达到离开，全程体验顺畅。"
+    },
+    "investment": {
+      "title": "投资与商业设立",
+      "description": "我们的专家协助办理商业注册、许可证申请和咨询服务。",
+      "details": "我们提供深入的市场分析和战略规划，帮助您有效地建立和发展业务。"
+    },
+    "consulting": {
+      "title": "商业咨询",
+      "description": "我们提供专业的商业咨询服务，包括商业计划制定、项目规划和财务审计。",
+      "details": "我们的目标是帮助企业优化运营并推动增长。"
+    },
+    "hr": {
+      "title": "人力资源与行政支持",
+      "description": "我们提供招聘服务、人力资源政策制定和员工培训计划。",
+      "details": "我们的人力资源解决方案旨在提高劳动力效率并确保符合行业标准。"
+    }
+  },
+  "booking": {
+    "home": "首页",
+    "hotel": "酒店",
+    "apartments": "公寓",
+    "transport": "交通",
+    "tour": "旅游",
+    "search": "搜索任何内容"
+  },
+  "executiveApartments": {
+    "title": "行政服务式公寓",
+    "description": "在我们的优质服务式公寓中体验奢华、舒适和便利。非常适合在卢旺达的商务旅客、投资者和外籍人士。",
+    "features": [
+      "全家具配备与服务 – 拥有所有便利设施的高端公寓。",
+      "黄金地段 – 靠近商业区和主要地标。",
+      "短期与长期住宿 – 灵活的租赁选择。"
+    ],
+    "buttonText": "立即预订您的住宿！",
+    "image": "/assets/images/apa.jpg"
+  },
+  "investment": {
+    "title": "投资与商业设立",
+    "services": [
+      {
+        "title": "商业注册协助",
+        "subtitle": "在卢旺达发展局快速设立公司。",
+        "description": "我们指导您在卢旺达发展局进行公司注册，确保合法合规并顺利设立，通常在六小时内完成。",
+        "image": "/assets/images/rdb.jpg"
+      },
+      {
+        "title": "投资证书",
+        "subtitle": "为投资者获取激励和福利。",
+        "description": "我们协助企业获得投资证书，从而获得税收优惠、豁免和政府支持，增强信誉和投资机会。",
+        "image": "/assets/images/cert.jpg"
+      },
+      {
+        "title": "纳税人识别号注册",
+        "subtitle": "合法运营所必需。",
+        "description": "我们帮助企业从卢旺达税务局获取纳税人识别号，这对于税务合规和合法运营（包括交易和财产所有权）至关重要。",
+        "image": "/assets/images/rra.jpg"
+      },
+      {
+        "title": "贸易许可证",
+        "subtitle": "来自地方当局的商业运营执照。",
+        "description": "贸易许可证是在卢旺达经营企业的强制性要求。我们协助获取和更新，以确保合规并避免处罚。",
+        "image": "/assets/images/rra1.jpg"
+      },
+      {
+        "title": "特定行业许可证",
+        "subtitle": "特定行业所必需。",
+        "description": "我们为建筑、旅游、金融、医疗、进出口和物流等各个行业提供许可便利，确保完全符合法规。",
+        "image": "/assets/images/rdb2.jpg"
+      },
+      {
+        "title": "卢旺达的工作与居留许可",
+        "subtitle": "外国投资者和员工的基本指南。",
+        "description": "我们协助外国投资者和员工通过卢旺达简化的流程获得工作和居留许可，确保顺利合法入境和停留。",
+        "image": "/assets/images/kg6.jpg"
+      }
+    ],
+    "buttonHelp": "需要帮助启动或扩展您的业务吗？让我们谈谈！",
+    "formDescription": "填写此表格，我们会立即与您联系",
+    "formFullName": "全名",
+    "formEmail": "邮箱",
+    "formContact": "联系电话",
+    "formDescriptionPlaceholder": "写下您所需服务的完整描述",
+    "formCancel": "取消",
+    "formSubmit": "提交"
+  },
+  "humanresource": {
+    "title": "人力资源与行政支持",
+    "services": [
+      {
+        "image": "/assets/images/talent.jpg",
+        "title": "招聘与人才获取",
+        "subtitle": "为您的企业找到合适的人选。",
+        "description": "我们帮助您寻找、筛选和选拔最佳人才，通过我们专业的招聘策略推动您的业务向前发展。我们专门的团队确保为您找到与公司文化和需求最匹配的人选。"
+      },
+      {
+        "image": "/assets/images/compliance.png",
+        "title": "人力资源政策与合规",
+        "subtitle": "制定合同、政策和员工手册。",
+        "description": "我们的人力资源合规服务确保您的公司在法律框架内运营，保护您的员工和业务。我们创建符合您业务目标和当地劳动法的定制政策。"
+      },
+      {
+        "image": "/assets/images/tra.jpeg",
+        "title": "员工培训与发展",
+        "subtitle": "提高技能和生产力。",
+        "description": "通过我们旨在提升技能和整体生产力的结构化培训计划，提高员工绩效。我们由专家主导的培训涵盖软技能、技术能力和领导力发展。"
+      },
+      {
+        "image": "/assets/images/pay.png",
+        "title": "薪资与行政解决方案",
+        "subtitle": "确保运营顺畅。",
+        "description": "我们提供薪资管理和行政支持，确保及时处理工资并遵守财务法规。我们无缝的解决方案帮助企业专注于其核心运营。"
+      }
+    ],
+    "contact": {
+      "buttonHelp": "需要可靠的人力资源支持吗？我们随时为您提供帮助",
+      "buttonWhatsApp": "快速联系",
+      "popupTitle": "人力资源与行政支持",
+      "popupDescription": "填写此表格，我们会尽快与您联系。",
+      "form": {
+        "fullNames": "全名",
+        "email": "邮箱",
+        "contactNumber": "联系电话",
+        "description": "写下您所需服务的完整描述",
+        "cancel": "取消",
+        "submit": "提交"
+      }
+    }
+  },
+  "visitrwanda": {
+    "title": "为什么卢旺达是绝佳的商业目的地",
+    "subtitle": "探索为什么卢旺达是非洲投资和发展业务的最佳地点。",
+    "benefits": [
+      {
+        "title": "简单快速的公司设立",
+        "description": "仅需6小时即可注册公司。",
+        "moreDescription": "凭借简化的数字服务和专门的投资促进机构，在卢旺达设立公司快速而直接。"
+      },
+      {
+        "title": "完全所有权与税收优惠",
+        "description": "100%外资所有权，税收激励。",
+        "moreDescription": "投资者享有利润完全汇回、免税期以及战略行业零进口关税等优惠。"
+      },
+      {
+        "title": "战略位置",
+        "description": "通往1.77亿以上东非消费者的门户。",
+        "moreDescription": "卢旺达位于非洲中心，便于进入包括东非共同体和非洲大陆自由贸易区在内的多个区域市场。"
+      },
+      {
+        "title": "安全且有利于商业",
+        "description": "非洲最安全的国家之一。",
+        "moreDescription": "卢旺达犯罪率低，领导层稳定，并对腐败采取零容忍政策，使其成为商业的避风港。"
+      },
+      {
+        "title": "现代基础设施与创新",
+        "description": "强大的信息和通信技术及物流部门。",
+        "moreDescription": "从光纤互联网到智慧城市规划，卢旺达正大力投资于21世纪的基础设施。"
+      },
+      {
+        "title": "绿色与可持续经济",
+        "description": "为环保企业提供激励。",
+        "moreDescription": "政府通过有针对性的政策和拨款支持清洁技术、电动交通和可持续农业。"
+      }
+    ]
+  },
+  "whyinvest": {
+    "title": "准备投资了吗？",
+    "subtitle": "Bonet Elite Services 让流程无缝衔接。让我们今天就开始吧！",
+    "card": {
+      "image": "/assets/images/kiga1.jpeg",
+      "heading": "Bonet 如何帮助投资者设立和发展",
+      "subheading": "Bonet Elite Services 如何简化商业设立和发展",
+      "paragraphs": [
+        "在卢旺达设立和经营企业应该是令人兴奋的，而不是令人不知所措的。在 Bonet Elite Services，我们通过为您无缝高效地处理所有事务，消除了商业注册和许可的麻烦。",
+        "无论您是寻求投资证书的投资者、创办初创公司的企业家，还是需要特定行业许可的成熟企业，我们都能确保流程顺畅、无忧。",
+        "从文书工作到审批，我们处理复杂性，让您无需操心。凭借我们的专业知识，您可以节省时间，避免延误，并专注于真正重要的事情——充满信心地发展您的业务。"
+      ]
+    }
+  },
+  "investmentOpportunities": {
+    "title": "卢旺达的投资机会",
+    "subtitle": "探索为什么卢旺达是非洲投资和发展业务的最佳地点之一。",
+    "items": [
+      {
+        "title": "制造业",
+        "description": "卢旺达的工业政策旨在增加国内生产，提高出口竞争力，并为工业化创造有利环境。目前，制造业主要由建筑材料制造和农产品加工子行业主导，这主要得益于当地原材料的可用性和蓬勃发展的建筑行业。",
+        "keyPoints": [
+          "建筑材料",
+          "医药",
+          "纺织品",
+          "皮革加工",
+          "肥皂和洗涤剂",
+          "肥料"
+        ],
+        "image": "/assets/images/manu.jpg"
+      },
+      {
+        "title": "农业",
+        "description": "卢旺达的农业部门在经济中扮演着至关重要的角色，对就业和国内生产总值贡献显著。政府正致力于通过机械化、灌溉和增值来实现农业现代化。",
+        "keyPoints": [
+          "农业综合企业与农产品加工",
+          "园艺（水果和蔬菜）",
+          "畜牧业和乳制品生产",
+          "咖啡和茶叶加工",
+          "有机农业"
+        ],
+        "image": "/assets/images/agri.jpg"
+      },
+      {
+        "title": "能源",
+        "description": "卢旺达政府旨在增加电力供应并鼓励可再生能源投资。水电、太阳能和甲烷气体提取是重点领域。",
+        "keyPoints": [
+          "水电项目",
+          "太阳能和风能发电场",
+          "生物质和沼气生产",
+          "离网能源解决方案"
+        ],
+        "image": "/assets/images/energey.jpg"
+      },
+      {
+        "title": "旅游业",
+        "description": "卢旺达是非洲顶级的旅游目的地，以其山地大猩猩、国家公园和文化遗产而闻名。政府积极推广可持续旅游和生态旅馆。",
+        "keyPoints": [
+          "生态旅游与保护项目",
+          "豪华酒店和旅馆",
+          "冒险与文化旅游业",
+          "会议与商务旅游"
+        ],
+        "image": "/assets/images/tourisim.jpg"
+      },
+      {
+        "title": "信息和通信技术",
+        "description": "卢旺达已确立了自己作为非洲信息和通信技术中心的地位，政府通过各种举措推广数字经济。信息和通信技术部门呈现出巨大的投资潜力。",
+        "keyPoints": [
+          "科技初创公司和创新中心",
+          "软件和应用程序开发",
+          "电子商务平台",
+          "网络安全解决方案"
+        ],
+        "image": "/assets/images/ict.jpg"
+      },
+      {
+        "title": "房地产与建筑",
+        "description": "随着快速城市化，卢旺达对现代基础设施、住宅和商业地产的需求不断增长。",
+        "keyPoints": [
+          "经济适用房项目",
+          "商业房地产开发",
+          "智慧城市与城市规划",
+          "绿色建筑倡议"
+        ],
+        "image": "/assets/images/real.jpg"
+      },
+      {
+        "title": "基础设施",
+        "description": "卢旺达正在大力投资基础设施发展，以支持经济增长和区域一体化。政府正在推广公私合作伙伴关系以加速基础设施项目。",
+        "keyPoints": [
+          "道路和桥梁建设",
+          "铁路发展",
+          "智能交通解决方案",
+          "供水和卫生项目"
+        ],
+        "image": "/assets/images/est.jpg"
+      },
+      {
+        "title": "矿业",
+        "description": "卢旺达拥有丰富的矿产部门，政府政策支持负责任的采矿和增值。该国是钽、锡和钨的主要生产国。",
+        "keyPoints": [
+          "黄金和锡矿开采",
+          "钶钽铁矿和钽提取",
+          "采石和水泥生产",
+          "宝石勘探"
+        ],
+        "image": "/assets/images/miniig.jpg"
+      }
+    ]
+  },
+  "travelSpots": {
+    "title": "给首次来访者的旅行贴士",
+    "spots": [
+      {
+        "title": "火山国家公园",
+        "image": "/assets/images/vol.jpg",
+        "description": "这里是卢旺达著名的山地大猩猩的家园，提供令人惊叹的风景和独特的野生动物体验。游客可以进行有指导的大猩猩徒步探险，亲眼目睹这些威严的灵长类动物在其自然栖息地的生活。公园内还有金丝猴、茂密的竹林和壮观的火山景观。对于希望探索地球上最后几个山地大猩猩庇护所之一的生态旅游者、摄影师和野生动物爱好者来说，这里是一个天堂。"
+      },
+      {
+        "title": "纽恩威国家公园",
+        "image": "/assets/images/nyu.jpeg",
+        "description": "这是一个广阔的山地雨林，纽恩威是非洲最古老的热带雨林之一，生物多样性极其丰富。公园拥有丰富的生态系统，内有超过1000种植物、13种灵长类动物（包括黑猩猩）和300多种鸟类，使其成为观鸟者的天堂。其亮点之一是著名的树冠走道，这是一座悬挂在森林地面以上60米处的吊桥，可以欣赏到下方郁郁葱葱的绿色植物和多样野生动物的壮丽景色。游客还可以享受通往美丽瀑布和风景观景台的徒步小径。"
+      },
+      {
+        "title": "阿卡盖拉国家公园",
+        "image": "/assets/images/k3.jpg",
+        "description": "这个稀树草原公园是非洲五霸——狮子、豹子、大象、水牛和犀牛的家园，提供地道的非洲游猎体验。与其他卢旺达公园不同，阿卡盖拉的特点是开阔的平原、林地、湖泊和湿地，创造了多样而美丽的景观。在伊黑马湖上乘船游猎可以让游客近距离看到河马、鳄鱼和众多水鸟。该公园经过了广泛的保护努力，成功重新引入了狮子和犀牛，使其成为野生动物爱好者必游的目的地。"
+      },
+      {
+        "title": "基加利种族灭绝纪念馆",
+        "image": "/assets/images/gen.jpeg",
+        "description": "这是一个纪念和教育场所，纪念1994年针对图西族的种族灭绝受害者，深入展示了卢旺达的历史和韧性。该遗址设有展览，详细介绍了导致种族灭绝的事件、发生的恐怖事件以及卢旺达人重建国家的努力。游客可以在万人冢前表达敬意，并了解幸存者的个人证词，从而更深入地理解卢旺达走向和解与和平的历程。"
+      },
+      {
+        "title": "基伍湖",
+        "image": "/assets/images/kiv.jpg",
+        "description": "作为非洲大湖之一，基伍湖提供迷人的景色、轻松的乘船游览和充满活力的湖畔小镇，如吉塞尼、基布耶和夏ンググ。湖水清澈，没有危险野生动物，非常适合游泳、划船和钓鱼。游客可以探索附近的咖啡种植园，乘坐日落游船，或者只是在岸边放松，享受令人惊叹的风景。基伍湖以其温暖热情的氛围，成为那些希望放松身心、享受自然的人的理想休憩地。"
+      },
+      {
+        "title": "国王宫殿博物馆",
+        "image": "/assets/images/k2.webp",
+        "description": "这个位于尼亚扎的历史遗址展示了卢旺达的皇家遗产，拥有一个重建的传统宫殿，采用茅草屋顶建筑。游客可以了解卢旺达君主制的历史、过去国王的习俗和传统，并看到传统上为皇家仪式修饰的Inyambo（神圣的长角牛）。博物馆提供了对前殖民时期卢旺达的迷人见解，提供了一种独特的文化体验，突出了该国丰富的历史和遗产。"
+      }
+    ]
+  },
+  "investingInRwanda": {
+    "title": "外国人如何在卢旺达创业",
+    "whyInvest": {
+      "title": "为什么投资卢旺达？",
+      "text": "卢旺达在全球营商便利度排名中位列第38位，在非洲位列第2位。其在线注册流程仅需六小时，是一个有吸引力的投资目的地。"
+    },
+    "steps": {
+      "prepare": {
+        "title": "准备注册",
+        "items": [
+          "拥有一个有效的电子邮件地址。",
+          "准备好您的身份证或护照。",
+          "确定您的公司名称、业务活动和办公地址。",
+          "收集股东、董事会成员和董事的详细信息。"
+        ]
+      },
+      "documents": {
+        "title": "必要文件",
+        "items": [
+          "经公证的授权委托书。",
+          "经公证的公司章程大纲和细则。",
+          "经公证的注册/成立证书。",
+          "经公证的关于开设分支机构的决议。"
+        ]
+      },
+      "registerOnline": {
+        "title": "在线注册",
+        "items": [
+          "访问卢旺达发展局商业注册系统。",
+          "选择适当的商业类别。",
+          "在线完成商业注册申请。"
+        ]
+      },
+      "taxes": {
+        "title": "注册、申报和纳税",
+        "items": [
+          "进行税务登记，包括增值税（如适用）。",
+          "确保遵守所有税务义务。",
+          "寻求税务咨询以获得正确指导。"
+        ]
+      },
+      "keyInfo": {
+        "title": "关键信息",
+        "items": [
+          "无需商业注册费。",
+          "公司注册仅需6小时。",
+          "整个过程在线完成，无需亲自到场。"
+        ]
+      }
+    },
+    "step2": {
+      "title": "第二步：获取投资证书的要求",
+      "onlineApplication": {
+        "title": "在线申请",
+        "items": [
+          "在 osc.rdb.rw 在线申请。",
+          "从卢旺达发展局获取公司注册证书。",
+          "使用公司代码/纳税人识别号进行在线申请。"
+        ]
+      },
+      "applicationLetter": {
+        "title": "申请信",
+        "text": "写一封申请信，致卢旺达发展局首席执行官，请求颁发投资证书。"
+      }
+    },
+    "businessPlan": {
+      "title": "商业计划要求",
+      "items": [
+        "执行摘要：概述项目的关键方面。",
+        "项目发起人简介：关于项目背后人员的详细信息。",
+        "项目背景：关于项目起源和发展的信息。",
+        "市场研究/分析：对市场状况和潜力的洞察。",
+        "财务信息：贷款和股权融资水平（如有）。",
+        "预计收入和支出：未来5年的报表。",
+        "计划投资：未来5年的财务时间表和资本成本。",
+        "预计资产负债表：未来5年的财务预测。",
+        "贷款摊销计划：如果涉及银行贷款。"
+      ]
+    }
+  },
+"businessRegistration": {
+    "title": "我们如何为您处理商业注册与许可",
+    "steps": [
+      {
+        "title": "第一步：咨询与需求收集",
+        "description": "我们了解您的业务需求并收集必要的详细信息。"
+      },
+      {
+        "title": "第二步：文件准备与提交",
+        "description": "我们处理所有文书工作并提交必要的申请。"
+      },
+      {
+        "title": "第三步：政府联络与跟进",
+        "description": "我们与相关当局协调，确保快速处理。"
+      },
+      {
+        "title": "第四步：批准与认证",
+        "description": "我们交付您注册的企业或许可证以及所有法律文件。"
+      },
+      {
+        "title": "第五步：注册后支持",
+        "description": "需要税务登记、许可证或办公室设立吗？我们为您提供全面支持。"
+      }
+    ]
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "我们重视您的反馈和咨询。请填写表格，我们会尽快回复您。",
+    "form": {
+      "namePlaceholder": "全名",
+      "emailPlaceholder": "邮箱",
+      "phonePlaceholder": "电话号码",
+      "whatsappPlaceholder": "WhatsApp号码",
+      "inquiryLabel": "咨询类型",
+      "inquiryOptions": {
+        "hotel": "酒店",
+        "department": "部门",
+        "transport": "交通",
+        "businessSetup": "商业设立"
+      },
+      "messagePlaceholder": "您的留言",
+      "submitButton": "发送消息"
+    },
+    "contactInfo": {
+      "title": "与我们取得联系",
+      "callWhatsApp": "电话/WhatsApp：",
+      "email": "邮箱：",
+      "location": "地点：卢旺达基加利",
+      "chatButton": "与我们聊天"
+    }
+  },
+  "contactInfo": {
+    "title": {
+      "part1": "与我们取",
+      "part2": "得联系"
+    },
+    "description": "我们重视您的反馈和咨询。请填写表格，我们会尽快回复您。",
+    "chatIconAlt": "聊天图标",
+    "chatIconHoverAlt": "聊天图标悬停",
+    "chatButton": "与我们聊天",
+    "callWhatsApp": "电话/WhatsApp",
+    "email": "邮箱",
+    "location": "地点：卢旺达基加利"
+  },
+  "quickButtons": {
+    "ariaLabels": {
+      "openMenu": "打开菜单",
+      "closeMenu": "关闭菜单",
+      "contactUsButton": "联系我们"
+    },
+    "languages": {
+      "en": "英语",
+      "fr": "法语"
+    },
+    "menu": {
+      "home": "首页",
+      "aboutUs": "关于我们",
+      "services": "服务",
+      "bookNow": "立即预订",
+      "contactUs": "联系我们"
+    },
+    "flags": {
+      "en": "../assets/images/usa.png",
+      "fr": "../assets/images/french.png"
+    }
+  },
+  "locationSection": {
+    "title": "我们的位置"
+  },
+  "locationSecondSection": {
+    "title": "获取位置",
+    "startingPoint": "起点",
+    "destination": "目的地",
+    "search": "搜索",
+    "estimatedTime": "预计时间"
+  },
+  "chatbot": {
+    "customerSupportTitle": "客户支持聊天机器人",
+    "askHelp": "我能为您提供什么帮助？",
+    "bonetChatbotTitle": "Bonet Elite Service 聊天机器人",
+    "bonetSubtitle": "与客户支持聊天",
+    "continue": "继续聊天",
+    "agreeTerms": "我同意条款",
+    "disclaimer": "您即将打开一个专为 Bonet Elite Service 设计的AI客户支持聊天框。此聊天机器人旨在为您提供指导，并仅提供与此服务相关的协助。",
+    "askPlaceholder": "询问任何问题"
+  },
+  "liveChat": {
+    "typeMessage": "输入您的消息",
+    "title": "Bonet Elite Service 在线聊天 sdjhsdjhjhsdjh5",
+    "helpText": "我们能为您提供什么帮助？",
+    "subtitle": "与我们的客服聊天",
+    "continue": "继续在线聊天",
+    "agreeTerms": "我同意条款",
+    "disclaimer": "您即将打开一个专为 Bonet Elite Service 设计的与我们客服的在线聊天。此聊天旨在为您提供指导，并仅提供与此服务相关的协助。",
+    "button": "在线聊天",
+    "footer": "Bonet Elite Service 在线聊天"
+  },
+  "common": {
+    "contactUs": "联系我们"
+  },
+  "brandName": "Bonet Elite Services",
+  "infoCards": {
+    "hotelCard": {
+      "viewMore": "查看更多",
+      "viewLess": "查看更少",
+      "bookNow": "立即预订"
+    },
+    "belief": {
+      "title": "为什么满足于普通？",
+      "content": {
+        "part1": "在",
+        "part2": "，我们相信旅行不仅仅是移动——它是一种应该反映您的标准、生活方式和目标的体验。无论您是因商务、休闲还是人生重要时刻而来，您的住宿都应该支持您的身份和您所重视的——",
+        "comfort": "舒适",
+        "class": "品位",
+        "privacy": "隐私",
+        "efficiency": "效率"
+      }
+    },
+    "services": {
+      "title": "我们的不同之处",
+      "content": {
+        "intro": "我们不仅仅是预订酒店。我们为您打造定制化的住宿——符合您的日程、偏好和优先事项。从您落地到退房的那一刻，我们确保每个细节都对您有利。",
+        "list": {
+          "premiumSelection": "根据您的要求精选优质酒店",
+          "flexibility": "灵活的入住/退房时间和服务",
+          "transport": "按要求提供行政交通和机场接送",
+          "roomSetup": "为商务、家庭或特殊场合布置房间",
+          "assistance": "全程个性化协助"
+        }
+      }
+    },
+    "booking": {
+      "title": "如何预订",
+      "content": "告诉我们您正在寻找什么——酒店类型、地点、偏好——我们会根据您的标准为您提供定制化方案。没有限制，没有压力，只有精心策划的舒适。填写下面的简短表格，剩下的交给我们。"
+    }
+  },
+  "cta": {
+    "heading": "准备好体验优质舒适了吗？",
+    "button": "预订酒店住宿"
+  },
+  "form": {
+    "title": "酒店住宿请求",
+    "fullName": {
+      "label": "全名",
+      "placeholder": "全名",
+      "required": "全名为必填项"
+    },
+    "email": {
+      "label": "邮箱",
+      "placeholder": "邮箱地址",
+      "required": "邮箱为必填项",
+      "invalid": "邮箱格式无效"
+    },
+    "phone": {
+      "label": "电话",
+      "placeholder": "电话号码",
+      "required": "电话号码为必填项"
+    },
+    "guests": {
+      "label": "客人数量",
+      "placeholder": "例如：2",
+      "required": "客人数量为必填项"
+    },
+    "purpose": {
+      "label": "住宿目的",
+      "placeholder": "选择目的",
+      "required": "请选择住宿目的",
+      "options": {
+        "business": "商务旅行",
+        "honeymoon": "蜜月/浪漫之旅",
+        "family": "家庭度假",
+        "diplomatic": "外交或政府访问",
+        "long-vip": "长期贵宾住宿（30天以上）",
+        "vip_event": "贵宾活动/会议出席"
+      }
+    },
+    "preferredLocation": {
+      "label": "首选地点",
+      "placeholder": "选择地点",
+      "required": "请选择首选地点",
+      "options": {
+        "kcc": "基加利市中心 – 行政区域",
+        "convention": "基加利会议中心附近",
+        "embassy": "尼亚鲁塔拉马/基米胡鲁拉（使馆区）",
+        "vision_city": "加库里罗/愿景城",
+        "musanze": "穆桑泽（豪华旅馆 – 火山公园）",
+        "lake_kivu": "基伍湖（豪华度假区）",
+        "akagera": "阿卡盖拉国家公园（游猎旅馆）",
+        "other": "其他"
+      }
+    },
+    "customLocation": {
+      "placeholder": "自定义地点",
+      "required": "请输入自定义地点"
+    },
+    "location": {
+      "label": "地点（省、区）",
+      "placeholder": "例如：基加利，加萨博",
+      "required": "地点为必填项"
+    },
+    "dates": {
+      "label": "住宿日期",
+      "required": "请选择住宿日期"
+    },
+    "hotelLevel": {
+      "label": "酒店级别",
+      "placeholder": "选择酒店级别",
+      "required": "请选择酒店级别",
+      "options": {
+        "premium": "优质行政酒店",
+        "4star": "四星级豪华酒店",
+        "5star": "五星级国际酒店",
+        "luxury1": "总统或超豪华套房",
+        "luxury2": "豪华服务式公寓",
+        "private_villa": "私人别墅/整套豪华住宅"
+      }
+    },
+    "transport": {
+      "label": "交通",
+      "placeholder": "选择交通",
+      "required": "请选择交通",
+      "options": {
+        "sedan_vip": "行政轿车 – 头等舱（贵宾）",
+        "suv_vip": "豪华SUV – 头等舱（贵宾）",
+        "sedan_exec": "商务级轿车 – 二等舱（行政）",
+        "suv_exec": "可靠SUV – 二等舱（商业和非政府组织使用）",
+        "van_vip": "豪华面包车 – 贵宾团体交通",
+        "airport": "仅机场接送",
+        "chouffer": "司机服务（按小时/天计费）",
+        "none": "不需要交通"
+      }
+    },
+    "budget": {
+      "label": "预算（每晚）",
+      "placeholder": "选择预算",
+      "required": "请选择预算范围",
+      "options": {
+        "150_200": "150 – 200美元",
+        "200_400": "200 – 400美元",
+        "400_plus": "400美元以上",
+        "custom": "自定义"
+      }
+    },
+    "customBudget": {
+      "placeholder": "自定义预算 $",
+      "required": "请输入预算金额",
+      "onlyNumbers": "只允许数字"
+    },
+    "specialNeeds": {
+      "label": "特殊需求或备注",
+      "placeholder": "任何其他信息..."
+    },
+    "submit": "提交请求",
+    "success": "✅ 酒店请求已提交！",
+    "fail": "❌ 提交请求失败",
+    "errors": {
+      "selectDates": "❌ 请选择入住和退房日期。"
+    }
+  },
+  "apartmentInfo": {
+    "cards": {
+      "belief": {
+        "title": "为什么满足于普通？",
+        "textStart": "在",
+        "textMiddle": "，我们相信旅行不仅仅是移动——它是一种应该反映您的标准、生活方式和目标的体验。无论您是因商务、休闲还是人生重要时刻而来，您的住宿都应该支持您的身份和您所重视的——",
+        "values": {
+          "comfort": "舒适",
+          "class": "品位",
+          "privacy": "隐私",
+          "efficiency": "效率"
+        }
+      },
+      "services": {
+        "title": "我们的不同之处",
+        "intro": "我们不仅仅是预订酒店。我们为您打造定制化的住宿——符合您的日程、偏好和优先事项。从您落地到退房的那一刻，我们确保每个细节都对您有利。",
+        "list": {
+          "premiumSelection": "根据您的要求精选优质酒店",
+          "flexibility": "灵活的入住/退房时间和服务",
+          "transportPickup": "按要求提供行政交通和机场接送",
+          "roomSetup": "为商务、家庭或特殊场合布置房间",
+          "personalAssist": "全程个性化协助"
+        }
+      },
+      "booking": {
+        "title": "如何预订",
+        "description": "告诉我们您正在寻找什么——酒店类型、地点、偏好——我们会根据您的标准为您提供定制化方案。没有限制，没有压力，只有精心策划的舒适。填写下面的简短表格，剩下的交给我们。"
+      }
+    },
+    "cta": {
+      "heading": "准备好体验优质舒适了吗？",
+      "button": "预订公寓住宿",
+      "bookNow": "立即预订"
+    }
+  },
+  "apartmentForm": {
+    "title": "公寓住宿请求",
+    "fields": {
+      "fullName": "全名",
+      "email": "邮箱",
+      "phone": "电话",
+      "guests": "客人数量",
+      "transport": "交通",
+      "purpose": "住宿目的",
+      "preferredLocation": "首选地点",
+      "locationFull": "地点（省、区）",
+      "dates": "住宿日期",
+      "roomType": "房型",
+      "budget": "预算（每晚）",
+      "specialNeeds": "特殊需求或备注"
+    },
+    "placeholders": {
+      "fullName": "全名",
+      "email": "邮箱地址",
+      "phone": "电话号码",
+      "guests": "例如：2",
+      "transport": "选择交通",
+      "purpose": "选择目的",
+      "location": "选择地点",
+      "customLocation": "自定义地点",
+      "locationFull": "例如：基加利，加萨博",
+      "roomType": "选择房型",
+      "budget": "选择预算",
+      "customBudget": "输入自定义预算 $",
+      "specialNeeds": "写下任何重要信息..."
+    },
+    "options": {
+      "transport": {
+        "execSedan": "行政轿车 – 头等舱（贵宾）",
+        "luxSUV": "豪华SUV – 头等舱（贵宾）",
+        "bizSedan": "商务级轿车 – 二等舱（行政）",
+        "reliableSUV": "可靠SUV – 二等舱（商业和非政府组织使用）",
+        "luxVan": "豪华面包车 – 贵宾团体交通"
+      },
+      "purpose": {
+        "business": "商务旅行",
+        "honeymoon": "蜜月/浪漫之旅",
+        "family": "家庭度假",
+        "diplomatic": "外交或政府访问",
+        "vip_longterm": "长期贵宾住宿（30天以上）",
+        "vip_event": "贵宾活动/会议出席"
+      },
+      "location": {
+        "kcc": "基加利会议中心附近",
+        "embassy": "尼亚鲁塔拉马/基米胡鲁拉（使馆区）",
+        "vision_city": "加库里罗/愿景城",
+        "lake_kivu": "基伍湖（豪华度假区）",
+        "musanze": "穆桑泽（豪华旅馆 – 火山公园）",
+        "akagera": "阿卡盖拉国家公园（游猎旅馆）",
+        "other": "其他"
+      },
+      "roomType": {
+        "executiveRoom": "行政房",
+        "deluxeRoom": "豪华房",
+        "juniorSuite": "初级套房",
+        "presidentialSuite": "总统套房",
+        "penthouseSuite": "顶层套房",
+        "luxury1bedroom": "一居室豪华公寓",
+        "apartment2bedroom": "两居室公寓",
+        "apartment3bedroom": "三居室公寓",
+        "privateVilla": "私人别墅（2+卧室）"
+      },
+      "budget": {
+        "range1": "150 – 200美元",
+        "range2": "200 – 400美元",
+        "range3": "400美元以上",
+        "custom": "自定义"
+      }
+    },
+    "errors": {
+      "dateRequired": "❌ 请选择入住和退房日期。",
+      "customBudgetRequired": "请输入预算金额",
+      "numbersOnly": "只允许数字",
+      "submitFail": "❌ 提交请求失败"
+    },
+    "success": "✅ 公寓请求已提交！",
+    "submit": "提交请求"
+  },
+  "transportCard": {
+    "titles": {
+      "transportRequest": "交通请求",
+      "sponsoredAds": "赞助广告"
+    },
+    "instructions": "请填写以下详细信息以请求您的交通服务。",
+    "labels": {
+      "fullName": "全名",
+      "email": "邮箱",
+      "transportService": "交通服务",
+      "transportType": "交通类型",
+      "carType": "车型",
+      "seats": "座位数",
+      "rentTime": "租赁时间",
+      "numberOfDays": "天数",
+      "pickupLocation": "接客地点",
+      "dropoffLocation": "下车地点",
+      "pickupDate": "接客日期",
+      "pickupTime": "接客时间"
+    },
+    "placeholders": {
+      "fullName": "全名",
+      "email": "邮箱地址",
+      "selectService": "选择服务",
+      "selectType": "选择类型",
+      "selectCarType": "选择车型",
+      "seats": "座位",
+      "selectRentTime": "选择租赁时间",
+      "numberOfDays": "输入天数",
+      "pickupLocation": "接客地点",
+      "dropoffLocation": "下车地点",
+      "loadingMaps": "正在加载地图..."
+    },
+    "errors": {
+      "enterName": "请输入您的姓名",
+      "enterValidEmail": "请输入有效的邮箱",
+      "selectService": "选择服务",
+      "selectType": "选择类型",
+      "selectCarType": "选择车型",
+      "enterSeats": "输入座位数",
+      "enterNumberOfDays": "输入天数",
+      "enterPickupLocation": "输入接客地点",
+      "enterDropoffLocation": "输入下车地点",
+      "selectPickupDate": "选择接客日期",
+      "selectPickupTime": "选择接客时间"
+    },
+    "options": {
+      "transportService": {
+        "airportTransfers": "机场接送",
+        "hotelToAirport": "酒店到机场接送",
+        "localBusiness": "本地商务交通",
+        "cityTours": "城市观光与短途旅行",
+        "conferenceEvent": "会议与活动交通"
+      },
+      "transportType": {
+        "businessVip": "商务与贵宾交通"
+      },
+      "carType": {
+        "execSedan": "行政轿车 – 头等舱（贵宾）",
+        "luxSUV": "豪华SUV – 头等舱（贵宾）",
+        "bizSedan": "商务级轿车 – 二等舱（行政）",
+        "reliableSUV": "可靠SUV – 二等舱（商业和非政府组织使用）",
+        "luxVan": "豪华面包车 – 贵宾团体交通"
+      },
+      "rentTime": {
+        "wholeDay": "全天",
+        "halfDay": "半天",
+        "trip": "单程",
+        "moreDays": "多天"
+      }
+    },
+    "kigaliAirport": "基加利国际机场",
+    "successMessage": "✅ 交通请求已提交！",
+    "errorMessage": "❌ 提交失败。",
+    "fillRequired": "⚠️ 请填写所有必填字段。",
+    "submitButton": "提交交通请求",
+    "noAds": "暂无广告可用。"
+  },
+  "tourTypeSelector": {
+    "guideTitle": "旅游向导",
+    "guideDescription": "为您的下一次旅行寻找当地导游",
+    "transportTitle": "旅游交通",
+    "transportDescription": "轻松预订您的旅游车辆或交通"
+  },
+  "tourGuideForm": {
+    "title": "旅游向导表格",
+    "subtitle": "请填写此表格以帮助我们为您找到最佳的旅游选择。",
+    "labels": {
+      "fullName": "全名",
+      "email": "邮箱",
+      "language": "首选语言",
+      "destinations": "目的地",
+      "travelDates": "旅行日期",
+      "tourType": "旅游类型",
+      "activityLevel": "活动强度",
+      "budget": "预算偏好",
+      "estimatedBudget": "预计预算（$）",
+      "seats": "乘客人数",
+      "duration": "时长",
+      "numberOfDays": "天数",
+      "transport": "交通偏好",
+      "addons": "旅游附加服务与支持",
+      "requests": "特殊要求"
+    },
+    "placeholders": {
+      "fullName": "输入您的姓名",
+      "email": "输入您的邮箱",
+      "language": "选择语言",
+      "destinations": "例如：基加利，穆桑泽",
+      "tourType": "选择旅游类型",
+      "activityLevel": "选择活动强度",
+      "budget": "选择您的预算",
+      "estimatedBudget": "输入金额",
+      "seats": "座位",
+      "duration": "选择时长",
+      "numberOfDays": "输入天数",
+      "transport": "选择交通",
+      "addons": "选择可用的附加服务",
+      "requests": "有任何特殊要求吗？"
+    },
+    "errors": {
+      "required": "此字段为必填项",
+      "emailInvalid": "请输入有效的邮箱地址"
+    },
+    "options": {
+      "languages": {
+        "english": "英语",
+        "french": "法语",
+        "kinyarwanda": "基尼亚卢旺达语",
+        "swahili": "斯瓦希里语"
+      },
+      "tourType": {
+        "cultural": "文化与历史",
+        "nature": "自然与野生动物",
+        "city": "城市观光",
+        "adventure": "冒险/徒步",
+        "relaxation": "放松/养生",
+        "food": "美食与饮品",
+        "religious": "宗教场所",
+        "beach": "海滩与度假村"
+      },
+      "activityLevel": {
+        "low": "低",
+        "medium": "中",
+        "high": "高"
+      },
+      "budget": {
+        "budget": "经济实惠",
+        "mid": "中等舒适",
+        "premium": "优质体验",
+        "vip": "贵宾奢华服务",
+        "custom": "我有特定预算（请注明）",
+        "unsure": "我不确定 – 请指导我"
+      },
+      "duration": {
+        "wholeDay": "全天",
+        "halfDay": "半天",
+        "trip": "单程",
+        "moreDays": "多天"
+      },
+      "transport": {
+        "suv": "冒险旅行SUV",
+        "cruiser": "游猎陆地巡洋舰",
+        "minivan": "旅游面包车（7–14座）",
+        "bus": "旅游巴士（28座以上）"
+      },
+      "addons": {
+        "driver": "经验丰富的司机兼导游",
+        "multilingual": "多语言工作人员（英语、法语、基尼亚卢旺达语）",
+        "waterWifi": "瓶装水和Wi-Fi",
+        "routeSupport": "旅行路线支持与行程建议",
+        "meetGreet": "机场迎接服务"
+      }
+    },
+    "submitButton": "提交旅游请求",
+    "successMessage": "旅游向导请求提交成功！",
+    "errorMessage": "提交失败，请重试。",
+    "adsTitle": "赞助广告",
+    "noAds": "暂无广告可用。"
+  },
+  "transportForm": {
+    "title": "旅游交通",
+    "subtitle": "请填写此表格以搜索最佳推荐的交通方式。",
+    "successMessage": "交通请求提交成功！",
+    "errorMessage": "提交表格时出错。",
+    "labels": {
+      "fullName": "全名",
+      "email": "邮箱",
+      "datetime": "日期与时间",
+      "pickup": "接客地点",
+      "dropoff": "下车地点",
+      "passengers": "乘客人数",
+      "vehicle": "车型",
+      "addons": "旅游附加服务与支持",
+      "notes": "额外备注"
+    },
+    "placeholders": {
+      "fullName": "输入您的姓名",
+      "email": "输入您的邮箱",
+      "pickup": "我们应该在哪里接您？",
+      "dropoff": "我们应该在哪里送您？",
+      "passengers": "乘客人数",
+      "vehicle": "选择车辆",
+      "addons": "选择可用的附加服务",
+      "notes": "有任何偏好或行李详情吗？"
+    },
+    "errors": {
+      "required": "此字段为必填项",
+      "emailInvalid": "请输入有效的邮箱地址",
+      "addonRequired": "请至少选择一个附加服务"
+    },
+    "options": {
+      "vehicle": {
+        "suv": "冒险旅行SUV",
+        "cruiser": "游猎陆地巡洋舰",
+        "minivan": "旅游面包车（7–14座）",
+        "bus": "旅游巴士（28座以上）"
+      },
+      "addons": {
+        "driver": "经验丰富的司机兼导游",
+        "multilingual": "多语言工作人员（英语、法语、基尼亚卢旺达语）",
+        "waterWifi": "瓶装水和Wi-Fi",
+        "routeSupport": "旅行路线支持与行程建议",
+        "meetGreet": "机场迎接服务"
+      }
+    },
+    "submitButton": "提交旅游交通请求",
+    "adsTitle": "赞助广告",
+    "noAds": "暂无广告可用。"
+  },
+   "bookingModal": {
+    "title": "旅行与接待预订",
+    "selectServiceLabel": "选择服务",
+    "serviceOptions": {
+      "hotel": "酒店",
+      "apartment": "公寓",
+      "transport": "交通"
+    },
+    "labels": {
+      "fullName": "全名",
+      "email": "邮箱",
+      "phone": "电话",
+      "guests": "客人数量",
+      "purposeOfStay": "住宿目的",
+      "location": "地点",
+      "stayDates": "住宿日期",
+      "hotelLevel": "酒店级别",
+      "roomType": "房型",
+      "transportService": "交通服务",
+      "transportType": "交通类型",
+      "carType": "车型",
+      "seats": "座位数",
+      "rentTime": "租赁时间",
+      "numberOfDays": "天数",
+      "pickupLocation": "接客地点",
+      "dropoffLocation": "下车地点",
+      "pickupDate": "接客日期",
+      "pickupTime": "接客时间",
+      "transport": "交通",
+      "budgetRange": "预算范围",
+      "specialNeeds": "特殊需求或备注"
+    },
+    "errors": {
+      "fullName": "请输入全名",
+      "email": "请输入邮箱",
+      "emailInvalid": "请输入有效的邮箱",
+      "phone": "请输入电话号码",
+      "guests": "请输入客人数量",
+      "purposeOfStay": "请选择目的",
+      "location": "请输入地点",
+      "stayDates": "请选择住宿日期",
+      "hotelLevel": "请选择酒店级别",
+      "roomType": "请选择房型",
+      "transportService": "请选择服务",
+      "transportType": "请选择类型",
+      "carType": "请选择车型",
+      "seats": "请输入座位数",
+      "numberOfDays": "请输入天数",
+      "pickupLocation": "请输入接客地点",
+      "dropoffLocation": "请输入下车地点",
+      "pickupDate": "请选择接客日期",
+      "pickupTime": "请选择接客时间",
+      "transport": "请选择交通",
+      "budgetRange": "请选择预算"
+    },
+    "placeholders": {
+      "fullName": "输入全名",
+      "email": "输入邮箱",
+      "phone": "输入电话",
+      "guests": "客人数量",
+      "purposeOfStay": "选择目的",
+      "location": "例如：基加利",
+      "hotelLevel": "选择酒店级别",
+      "roomType": "选择房型",
+      "transportService": "选择服务",
+      "transportType": "选择类型",
+      "carType": "选择车型",
+      "seats": "座位",
+      "rentTime": "选择租赁时间",
+      "numberOfDays": "输入天数",
+      "pickupLocation": "接客地点",
+      "dropoffLocation": "下车地点",
+      "transport": "选择交通",
+      "budgetRange": "选择预算",
+      "specialNeeds": "其他信息..."
+    },
+    "purposeOptions": {
+      "business": "商务",
+      "honeymoon": "蜜月",
+      "family": "家庭",
+      "diplomatic": "外交",
+      "vipEvent": "贵宾活动"
+    },
+    "hotelLevels": {
+      "3Star": "三星级",
+      "4Star": "四星级",
+      "5Star": "五星级",
+      "luxury": "奢华"
+    },
+    "roomTypes": {
+      "executive": "行政房",
+      "deluxe": "豪华房",
+      "penthouse": "顶层套房",
+      "villa": "别墅"
+    },
+    "transportServices": {
+      "airportTransfers": "机场接送",
+      "hotelToAirport": "酒店到机场接送",
+      "localBusiness": "本地商务交通",
+      "cityTours": "城市观光与短途旅行",
+      "conferenceEvent": "会议与活动交通"
+    },
+    "carTypes": {
+      "executiveSedans": "行政轿车 – 头等舱（贵宾）",
+      "luxurySUVs": "豪华SUV – 头等舱（贵宾）",
+      "businessSedans": "商务级轿车 – 二等舱（行政）",
+      "reliableSUVs": "可靠SUV – 二等舱（商业和非政府组织使用）",
+      "luxuryVans": "豪华面包车 – 贵宾团体交通"
+    },
+    "rentTimes": {
+      "wholeDay": "全天",
+      "halfDay": "半天",
+      "trip": "单程",
+      "moreDays": "多天"
+    },
+    "budgetRanges": {
+      "range1": "150 – 200美元",
+      "range2": "200 – 400美元",
+      "range3": "400美元以上",
+      "custom": "自定义"
+    },
+    "buttons": {
+      "cancel": "取消",
+      "submit": "提交请求"
+    },
+    "transportTypes": {
+      "executiveSedans": "行政轿车 – 头等舱（贵宾）",
+      "luxurySUVs": "豪华SUV – 头等舱（贵宾）",
+      "businessSedans": "商务级轿车 – 二等舱（行政）",
+      "reliableSUVs": "可靠SUV – 二等舱（商业和非政府组织使用）",
+      "luxuryVans": "豪华面包车 – 贵宾团体交通"
+    }
+  },
+  "hrServices": {
+    "title": "人力资源与行政支持",
+    "ctaContact": "需要人力资源与行政支持？联系我们",
+    "ctaWhatsApp": "快速联系",
+    "recruitment": {
+      "title": "招聘与人才获取",
+      "subtitle": "为您的企业找到合适的人选。",
+      "description": "我们帮助您寻找、筛选和选拔最佳人才，通过我们专业的招聘策略推动您的业务向前发展。我们专门的团队确保为您找到与公司文化和需求最匹配的人选。"
+    },
+    "compliance": {
+      "title": "人力资源政策与合规",
+      "subtitle": "制定合同、政策和员工手册。",
+      "description": "我们的人力资源合规服务确保您的公司在法律框架内运营，保护您的员工和业务。我们创建符合您业务目标和当地劳动法的定制政策。"
+    },
+    "training": {
+      "title": "员工培训与发展",
+      "subtitle": "提高技能和生产力。",
+      "description": "通过我们旨在提升技能和整体生产力的结构化培训计划，提高员工绩效。我们由专家主导的培训涵盖软技能、技术能力和领导力发展。"
+    },
+    "payroll": {
+      "title": "薪资与行政解决方案",
+      "subtitle": "确保运营顺畅。",
+      "description": "我们提供薪资管理和行政支持，确保及时处理工资并遵守财务法规。我们无缝的解决方案帮助企业专注于其核心运营。"
+    }
+  },
+  "hrModal": {
+    "title": "人力资源与行政支持",
+    "instructions": "填写此表格，我们会尽快与您联系。",
+    "toast": {
+      "success": "请求提交成功！",
+      "error": "出了点问题，请重试。"
+    },
+    "form": {
+      "fullnames": {
+        "label": "全名",
+        "placeholder": "全名",
+        "error": "请输入您的全名"
+      },
+      "email": {
+        "label": "邮箱",
+        "placeholder": "邮箱",
+        "required": "请输入您的邮箱",
+        "invalid": "请输入有效的邮箱"
+      },
+      "phone": {
+        "label": "电话号码",
+        "placeholder": "电话号码",
+        "error": "请输入您的电话号码"
+      },
+      "description": {
+        "label": "服务描述",
+        "placeholder": "写下您所需服务的完整描述",
+        "error": "请描述您的请求"
+      },
+      "buttons": {
+        "cancel": "取消",
+        "submit": "提交"
+      }
+    }
+  },
+  "businessConsulting": {
+    "title": "商业咨询",
+    "cta": "需要专业的商业指导？安排咨询！",
+    "quickContact": "快速联系",
+    "whatsappAlt": "WhatsApp图标",
+    "close": "关闭咨询表格",
+    "toast": {
+      "success": "提交成功！",
+      "error": "提交失败，请重试！",
+      "serverError": "服务器错误，请稍后重试。"
+    },
+    "services": {
+      "businessPlan": {
+        "title": "商业计划制定",
+        "subtitle": "适用于初创公司、资金申请和扩张。",
+        "description": "我们根据您的需求创建全面的商业计划..."
+      },
+      "projectPlanning": {
+        "title": "项目规划与管理",
+        "subtitle": "结构规划、预算制定和执行。",
+        "description": "我们的专家帮助有效构建和管理您的项目..."
+      },
+      "financialAdvisory": {
+        "title": "财务咨询与风险管理",
+        "subtitle": "投资策略、成本削减和盈利能力分析。",
+        "description": "我们提供有见地的财务咨询服务..."
+      },
+      "auditing": {
+        "title": "审计与合规支持",
+        "subtitle": "指导寻找信誉良好的审计师并确保监管合规。",
+        "description": "我们协助导航审计流程，确保完全符合法规..."
+      }
+    },
+    "form": {
+      "instructions": "填写此表格，我们会尽快与您联系",
+      "fullnames": {
+        "label": "全名",
+        "placeholder": "全名",
+        "error": "请输入您的全名"
+      },
+      "email": {
+        "label": "邮箱",
+        "placeholder": "邮箱地址",
+        "required": "请输入您的邮箱",
+        "invalid": "请输入有效的邮箱地址"
+      },
+      "phone": {
+        "label": "电话号码",
+        "placeholder": "联系电话",
+        "error": "请输入您的联系电话"
+      },
+      "description": {
+        "label": "服务描述",
+        "placeholder": "描述您需要的服务",
+        "error": "请描述您需要的服务"
+      },
+      "buttons": {
+        "cancel": "取消",
+        "submit": "提交"
+      }
+    }
+  },
+  "investmentBusinessSetup": {
+    "title": "投资与商业设立",
+    "button": {
+      "openModal": "需要帮助启动或扩展您的业务？",
+      "quickContact": "快速联系",
+      "submit": "提交",
+      "cancel": "取消"
+    },
+    "modal": {
+      "title": "投资与商业设立",
+      "description": "填写此表格，我们会尽快与您联系",
+      "form": {
+        "fullnames": {
+          "label": "全名",
+          "placeholder": "全名",
+          "requiredMessage": "请输入您的姓名"
+        },
+        "email": {
+          "label": "邮箱",
+          "placeholder": "邮箱",
+          "requiredMessage": "请输入您的邮箱",
+          "invalidMessage": "无效的邮箱地址"
+        },
+        "phone_number": {
+          "label": "电话号码",
+          "placeholder": "电话号码",
+          "requiredMessage": "请输入您的联系电话"
+        },
+        "service_description": {
+          "label": "服务描述",
+          "placeholder": "写下您所需服务的完整描述",
+          "requiredMessage": "请描述服务"
+        }
+      }
+    },
+    "services": {
+      "service1": {
+        "title": "商业注册协助",
+        "description": "我们指导您在卢旺达发展局进行公司注册，确保合法合规并顺利设立，通常在六小时内完成。"
+      },
+      "service2": {
+        "title": "投资证书",
+        "description": "我们协助企业获得投资证书，从而获得税收优惠、豁免和政府支持，增强信誉和投资机会。"
+      },
+      "service3": {
+        "title": "纳税人识别号注册",
+        "description": "我们帮助企业从卢旺达税务局获取纳税人识别号，这对于税务合规和合法运营（包括交易和财产所有权）至关重要。"
+      },
+      "service4": {
+        "title": "贸易许可证",
+        "description": "贸易许可证是在卢旺达经营企业的强制性要求。我们协助获取和更新，以确保合规并避免处罚。"
+      },
+      "service5": {
+        "title": "特定行业许可证",
+        "description": "我们为建筑、旅游、金融、医疗、进出口和物流等各个行业提供许可便利，确保完全符合法规。"
+      },
+      "service6": {
+        "title": "卢旺达的工作与居留许可",
+        "description": "我们协助外国投资者和员工通过卢旺达简化的流程获得工作和居留许可，确保顺利合法入境和停留。"
+      }
+    },
+    "toastMessages": {
+      "success": "提交成功！",
+      "errorSubmission": "提交失败，请重试！",
+      "errorServer": "服务器错误，请稍后重试。"
+    }
+  },
+  "commonOptions": {
+    "hotelLevels": {
+      "3Star": "三星级",
+      "4Star": "四星级",
+      "5Star": "五星级",
+      "luxury": "奢华"
+    }
+  },
+  "travelHospitality": {
+    "page": {
+      "header": "旅行与接待",
+      "description": "发现我们为您量身定制的优质旅行和接待服务。",
+      "buttons": {
+        "contactUs": "需要无缝的旅行与接待安排？立即联系我们！",
+        "quickContact": "快速联系"
+      },
+      "services": {
+        "hotelReservations": {
+          "title": "酒店预订",
+          "subtitle": "奢华与舒适",
+          "description": "预订豪华酒店，享受个性化服务，获得舒适住宿体验。"
+        },
+        "airportTransfers": {
+          "title": "机场接送",
+          "subtitle": "无忧旅行",
+          "description": "可靠舒适的机场接送服务，带来无忧体验。"
+        },
+        "tourismGuides": {
+          "title": "旅游向导",
+          "subtitle": "与专家一起探索",
+          "description": "与我们经验丰富的导游一起探索城市，享受难忘旅程。",
+          "bookButton": "预订向导"
+        },
+        "vipServices": {
+          "title": "贵宾服务",
+          "subtitle": "专属体验",
+          "description": "优质的贵宾服务，为您量身定制精英旅行体验。"
+        }
+      }
+    },
+    "imageNotFound": "图片不可用",
+    "modalTitle": "预订您的服务",
+    "selectService": {
+      "label": "选择服务",
+      "options": {
+        "hotel": "酒店预订",
+        "apartment": "公寓预订",
+        "transport": "交通服务"
+      }
+    },
+    "fullName": {
+      "label": "全名",
+      "placeholder": "输入您的全名",
+      "required": "请输入您的全名"
+    },
+    "email": {
+      "label": "邮箱",
+      "placeholder": "输入您的邮箱",
+      "required": "请输入您的邮箱",
+      "invalid": "请输入有效的邮箱地址"
+    },
+    "phone": {
+      "label": "电话号码",
+      "placeholder": "输入您的电话号码",
+      "required": "请输入您的电话号码"
+    },
+    "guests": {
+      "label": "客人数量",
+      "placeholder": "输入客人数量",
+      "required": "请输入客人数量"
+    },
+    "purposeOfStay": {
+      "label": "住宿目的",
+      "placeholder": "选择住宿目的",
+      "required": "请选择住宿目的",
+      "options": {
+        "business": "商务",
+        "honeymoon": "蜜月",
+        "family": "家庭",
+        "diplomatic": "外交",
+        "vip_event": "贵宾活动"
+      }
+    },
+    "location": {
+      "label": "地点",
+      "placeholder": "输入您偏好的地点",
+      "required": "请输入您偏好的地点"
+    },
+    "hotel": {
+      "stayDates": {
+        "label": "到达和离开日期",
+        "required": "请选择到达和离开日期"
+      },
+      "hotelLevel": {
+        "label": "酒店级别",
+        "placeholder": "选择酒店级别",
+        "required": "请选择酒店级别",
+        "options": {
+          "3Star": "三星级",
+          "4Star": "四星级",
+          "5Star": "五星级",
+          "luxury": "奢华"
+        }
+      },
+      "hotel_custom": {
+        "label": "自定义酒店请求",
+        "placeholder": "输入您特定的酒店要求",
+        "required": "请输入您特定的酒店要求"
+      }
+    },
+    "apartment": {
+      "stayDates": {
+        "label": "到达和离开日期",
+        "required": "请选择到达和离开日期"
+      },
+      "roomType": {
+        "label": "房型",
+        "placeholder": "选择房型",
+        "required": "请选择房型",
+        "options": {
+          "executive": "行政房",
+          "deluxe": "豪华房",
+          "penthouse": "顶层套房",
+          "villa": "别墅"
+        }
+      },
+      "apartment_custom": {
+        "label": "自定义公寓请求",
+        "placeholder": "输入您特定的公寓要求",
+        "required": "请输入您特定的公寓要求"
+      }
+    },
+    "transport": {
+      "transportService": {
+        "label": "交通服务",
+        "placeholder": "选择交通服务",
+        "required": "请选择交通服务",
+        "options": {
+          "airportTransfers": "机场接送",
+          "hotelToAirport": "酒店到机场接送",
+          "localBusiness": "本地商务交通",
+          "cityTours": "城市观光与短途旅行",
+          "conference": "会议与活动交通"
+        }
+      },
+      "transportType": {
+        "label": "交通类型",
+        "placeholder": "选择交通类型",
+        "required": "请选择交通类型",
+        "options": {
+          "businessVIP": "商务与贵宾交通",
+          "standard": "标准交通"
+        }
+      },
+      "carType": {
+        "label": "车型",
+        "placeholder": "选择车型",
+        "required": "请选择车型",
+        "options": {
+          "executiveSedans": "行政轿车 – 头等舱（贵宾）",
+          "luxurySUVs": "豪华SUV – 头等舱（贵宾）",
+          "businessClassSedans": "商务级轿车 – 二等舱（行政）",
+          "reliableSUVs": "可靠SUV – 二等舱（商业和非政府组织使用）",
+          "luxuryVans": "豪华面包车 – 贵宾团体交通"
+        }
+      },
+      "seats": {
+        "label": "座位数",
+        "placeholder": "输入座位数",
+        "required": "请输入座位数"
+      },
+      "rentTime": {
+        "label": "租赁时长",
+        "placeholder": "选择租赁时长",
+        "options": {
+          "wholeDay": "全天",
+          "halfDay": "半天",
+          "trip": "单程",
+          "moreDays": "多天"
+        }
+      },
+      "numberOfDays": {
+        "label": "天数",
+        "placeholder": "输入天数",
+        "required": "请输入天数"
+      },
+      "pickupLocation": {
+        "label": "接客地点",
+        "placeholder": "输入接客地点",
+        "required": "请输入接客地点"
+      },
+      "dropoffLocation": {
+        "label": "下车地点",
+        "placeholder": "输入下车地点",
+        "required": "请输入下车地点",
+        "airport": "基加利国际机场"
+      },
+      "pickupDate": {
+        "label": "接客日期",
+        "required": "请选择接客日期"
+      },
+      "pickupTime": {
+        "label": "接客时间",
+        "required": "请选择接客时间"
+      },
+      "mapsLoading": "正在加载谷歌地图..."
+    },
+    "commonTransport": {
+      "transport": {
+        "label": "交通偏好",
+        "placeholder": "选择交通偏好",
+        "required": "请选择交通偏好",
+        "options": {
+          "executiveSedans": "行政轿车 – 头等舱（贵宾）",
+          "luxurySUVs": "豪华SUV – 头等舱（贵宾）",
+          "businessClassSedans": "商务级轿车 – 二等舱（行政）",
+          "reliableSUVs": "可靠SUV – 二等舱（商业和非政府组织使用）",
+          "luxuryVans": "豪华面包车 – 贵宾团体交通"
+        }
+      },
+      "budgetRange": {
+        "label": "预算范围",
+        "placeholder": "选择预算范围",
+        "required": "请选择预算范围",
+        "options": {
+          "150_200": "150 – 200美元",
+          "200_400": "200 – 400美元",
+          "400_plus": "400美元以上",
+          "custom": "自定义"
+        }
+      },
+      "specialNeeds": {
+        "label": "特殊需求或要求",
+        "placeholder": "输入您的特殊需求或要求"
+      }
+    },
+    "commonOptions": {
+      "hotelLevels": {
+        "3Star": "三星级",
+        "4Star": "四星级",
+        "5Star": "五星级",
+        "luxury": "奢华"
+      }
+    },
+    "toast": {
+      "success": "预订请求提交成功！",
+      "error": "提交预订请求失败，请重试。"
+    },
+    "buttons": {
+      "cancel": "取消",
+      "submit": "提交"
+    }
+  },
+  "travelHospitalityModule": {
+    "tabs": {
+      "hotelReservationTab": "酒店预订",
+      "apartmentBookingTab": "公寓",
+      "transportServiceTab": "交通",
+      "tourismGuideTab": "旅游向导"
+    },
+    "search": {
+      "inputPlaceholder": "搜索任何内容"
+    }
+  },
+  "Subtitle": {
+    "intro1": "发现我们全面的服务范围，旨在简化您的业务需求——从酒店预订到人力资源和咨询解决方案。",
+    "intro2": "Bonet Elite Services 提供酒店、公寓、交通、人力资源解决方案、咨询和商业设立预订——全部为您量身定制。",
+    "intro3": "通过 Bonet Elite Services 轻松预订酒店、公寓和交通，确保每次体验都顺畅可靠。",
+    "intro4": "立即联系我们预订服务或安排咨询。我们的团队随时准备为您提供量身定制的专业解决方案。"
+  },
+  "contactInform": {
+    "form": {
+      "title": "联系我们",
+      "fullName": "全名",
+      "email": "邮箱",
+      "phone": "电话号码",
+      "whatsapp": "WhatsApp号码",
+      "inquiryType": "咨询类型",
+      "message": "留言",
+      "submitButton": "发送消息",
+      "validation": {
+        "nameRequired": "请输入您的姓名",
+        "emailRequired": "请输入您的邮箱",
+        "emailInvalid": "请输入有效的邮箱",
+        "phoneRequired": "请输入您的电话号码",
+        "inquiryRequired": "请选择咨询类型",
+        "messageRequired": "请输入您的留言"
+      },
+      "inquiryOptions": {
+        "hotel": "酒店预订",
+        "department": "人力资源/部门",
+        "transport": "交通",
+        "businessSetup": "商业设立"
+      }
+    }
+  },
+  "contactInformation": {
+    "title": {
+      "part1": "与我们",
+      "part2": "联系"
+    },
+    "description": "我们在此为您提供帮助。请联系我们进行预订、商业设立或任何咨询。",
+    "chatButton": "在WhatsApp上与我们聊天",
+    "callWhatsApp": "电话 / WhatsApp",
+    "email": "邮箱",
+    "location": "卢旺达基加利"
+  },
+  "toast": {
+    "success": "消息已发送！我们会尽快回复您。",
+    "error": "出了点问题，请重试。",
+    "fail": "提交失败，请稍后重试。"
+  }
+}
