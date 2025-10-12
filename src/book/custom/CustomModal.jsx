@@ -31,6 +31,9 @@ const CustomModal = ({ open, onClose, title }) => {
         {/* Content */}
         <div className="overflow-y-auto max-h-[90vh] p-4">
           <AccommodationHotel />
+          <div className="mb-[100px]">
+
+          </div>
         </div>
       </div>
     </div>
