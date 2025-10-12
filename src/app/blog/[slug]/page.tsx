@@ -68,7 +68,7 @@ export default async function BlogDetail({ params }: Props) {
         <img
           src={`https://switchiify.com/bonetProject/backend/public/${blog.image}`}
           alt={blog.title}
-          className="w-full h-64 object-cover rounded-md mb-4"
+          className="w-full h-full object-cover rounded-md mb-4"
         />
       )}
 
@@ -78,11 +78,14 @@ export default async function BlogDetail({ params }: Props) {
         </blockquote>
       )}
 
-      {blog.description ? (
-        <p className="leading-relaxed whitespace-pre-line text-lg">{blog.description}</p>
-      ) : (
-        <p className="text-gray-500">No description available.</p>
-      )}
+    {blog.description ? (
+  <div
+    className="leading-relaxed whitespace-pre-line text-lg"
+    dangerouslySetInnerHTML={{ __html: blog.description }}
+  />
+) : (
+  <p className="text-gray-500">No description available.</p>
+)}
     </div>
   );
 }
