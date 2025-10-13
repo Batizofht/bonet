@@ -61,7 +61,7 @@ const QuickButtons = () => {
               alt="Flag"
               className="w-5 h-5 max-w-5 max-h-5 object-contain"
             />
-            <span>{language === "en" ? "English" : language === "fr" ? "Francais" : "China"}</span>
+            <span>{language === "en" ? "English" : language === "fr" ? "Francais" : "Chinese"}</span>
           </button>
           {desktopDropdownOpen && (
             <div
@@ -99,7 +99,7 @@ const QuickButtons = () => {
                   alt="French Flag"
                   className="w-5 h-5 max-w-5 max-h-5 object-contain mr-2"
                 />
-                China
+                Chinese
               </button>
             </div>
           )}
@@ -194,7 +194,7 @@ const QuickButtons = () => {
                     alt="French Flag"
                     className="w-5 h-5 object-contain mr-2"
                   />
-                  China
+                  Chinese
                 </button>
               </div>
             )}
