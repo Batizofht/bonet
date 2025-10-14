@@ -1,23 +1,30 @@
 'use client'
-import React, { useState, useEffect ,useRef } from "react";
-import { FaQuestionCircle, FaTelegramPlane } from "react-icons/fa";
-import { AiFillMessage } from "react-icons/ai";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import { useTranslation } from "react-i18next";
+import { usePathname } from "next/navigation";
+import { 
+  MessageCircle, 
+  X, 
+  Send, 
+  Bot, 
+  User, 
+  Sparkles, 
+  Zap, 
+  Crown,
+  Shield,
+  Brain,
+  Users
+} from "lucide-react";
 
 import WelcomeMessage from "./mesa";
 import WelcomeMessageAI from "./mesaai";
-import { XIcon } from "lucide-react";
-import { usePathname } from "next/navigation";
 
-
-
-
-export function saveSecretKey(key:string) {
+export function saveSecretKey(key: string) {
   const expiresAt = new Date();
-  expiresAt.setDate(expiresAt.getDate() + 30); 
+  expiresAt.setDate(expiresAt.getDate() + 30);
 
   const data = {
     key,
@@ -25,7 +32,6 @@ export function saveSecretKey(key:string) {
   };
 
   localStorage.setItem("secretKey", JSON.stringify(data));
-  
 }
 
 export function getSecretKey() {
@@ -37,42 +43,37 @@ export function getSecretKey() {
     const now = new Date();
 
     if (new Date(expiresAt) > now) {
-      return key; // still valid
+      return key;
     } else {
-      localStorage.removeItem("secretKey"); // expired
+      localStorage.removeItem("secretKey");
       return null;
     }
   } catch {
-    localStorage.removeItem("secretKey"); // cleanup
+    localStorage.removeItem("secretKey");
     return null;
   }
 }
 
-
 const ChatBot = () => {
-  const { t } = useTranslation();
-  const [isOpen, setIsOpen] = useState(false);
+  const { t, i18n } = useTranslation();
   const [showChat, setShowChat] = useState(false);
+  const [input, setInput] = useState("");
   const [inputtwo, setInputtwo] = useState("");
   const [status, setUpdate] = useState("Offline");
   const [messages, setMessages] = useState<{ from: string; text: string; }[]>([]);
-    const [autoScroll, setAutoScroll] = useState(true);
-
   const [clientId, setClientId] = useState<any>(null);
   const [isTyping, setIsTyping] = useState(false);
   const [liveChatSwitch, setLiveChatSwitch] = useState(false);
   const [userName, setUserName] = useState("");
-  const [input, setInput] = useState("");
-  const [agreed, setAgreed] = useState(false);
-  const [buttonClicked, setButtonClicked] = useState(false);
-  const [showPulseText, setShowPulseText] = useState(true);
   const [firstMessageSent, setFirstMessageSent] = useState("");
-  const [loading, setLoading] = useState(false);
   const [backendMessages, setBackendMessages] = useState<{ sender_type: string; message: string; }[]>([]);
-    const [isTypingLive, setIsTypingLive] = useState(false);
   const [secret, setSecret] = useState<string | null>(null);
+  const [showPulseText, setShowPulseText] = useState(true);
+  const [autoScroll, setAutoScroll] = useState(true);
+  
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const { i18n } = useTranslation();
+  const pathname = usePathname();
+
   // Generate client ID
   useEffect(() => {
     let id = localStorage.getItem("livechat_client_id");
@@ -84,68 +85,56 @@ const ChatBot = () => {
     setClientId(id);
   }, []);
 
-    const { pathname }:any = usePathname();
-  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
   // Toggle pulsing text
   useEffect(() => {
     const interval = setInterval(() => setShowPulseText((prev) => !prev), 2000);
     return () => clearInterval(interval);
   }, []);
 
-  // Send message to backend
-  // In your React component, fix the API call:
-
-const sendMessage = async () => {
+  // Send AI message
+  const sendMessage = async () => {
     if (input.trim() === "") return;
-    
-    setButtonClicked(buttonClicked)
+
     const userMsg = { from: "me", text: input };
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
     setIsTyping(true);
 
     try {
-        const lang = i18n.language;
-        
-        const apiEndpoint = lang === "fr" 
-            ? `https://switchiify.com/bonetProject/backend/public/ai-replyFrench?clientId=${clientId}`
-            : `https://switchiify.com/bonetProject/backend/public/ai-reply?clientId=${clientId}`;
+      const lang = i18n.language;
+      const apiEndpoint = lang === "fr" 
+        ? `https://switchiify.com/bonetProject/backend/public/ai-replyFrench?clientId=${clientId}`
+        : `https://switchiify.com/bonetProject/backend/public/ai-reply?clientId=${clientId}`;
 
-        console.log("Sending to:", apiEndpoint, "Language:", lang);
-        
-        const response = await axios.post(apiEndpoint, {
-            
-            message: input,
-        }, {
-            timeout: 10000 // 10 second timeout
-        });
-        
-        console.log("AI response:", response.data);
-        
-        const aiReply = response.data.reply || 
-            (lang === "fr" 
-                ? "Merci pour votre message! Comment puis-je vous aider aujourd'hui?" 
-                : "Thank you for your message! How can I help you today?");
+      const response = await axios.post(apiEndpoint, {
+        message: input,
+      }, {
+        timeout: 10000
+      });
 
-        setIsTyping(false);
-        setMessages((prev) => [...prev, { from: "ai", text: aiReply }]);
-        
+      const aiReply = response.data.reply || 
+        (lang === "fr" 
+          ? "Merci pour votre message! Comment puis-je vous aider aujourd'hui?" 
+          : "Thank you for your message! How can I help you today?");
+
+      setIsTyping(false);
+      setMessages((prev) => [...prev, { from: "ai", text: aiReply }]);
     } catch (err) {
-        console.error("API Error:", err);
-        setIsTyping(false);
-        const errorMsg = i18n.language === "fr" 
-            ? "Désolé, je rencontre des difficultés techniques. Veuillez réessayer."
-            : "Sorry, I'm experiencing technical difficulties. Please try again.";
-        
-        setMessages((prev) => [...prev, { from: "ai", text: errorMsg }]);
+      console.error("API Error:", err);
+      setIsTyping(false);
+      const errorMsg = i18n.language === "fr" 
+        ? "Désolé, je rencontre des difficultés techniques. Veuillez réessayer."
+        : "Sorry, I'm experiencing technical difficulties. Please try again.";
+      setMessages((prev) => [...prev, { from: "ai", text: errorMsg }]);
     }
-};
+  };
 
+  // Status polling
   useEffect(() => {
-
     const interval = setInterval(async () => {
       try {
         const res = await axios.get(
@@ -159,64 +148,47 @@ const sendMessage = async () => {
 
     return () => clearInterval(interval);
   }, []);
- useEffect(() => {
+
+  // Secret key management
+  useEffect(() => {
     let existingKey = getSecretKey();
     if (!existingKey) {
-      // Generate new key and save
       const newKey = Math.random().toString(36).substring(2, 15);
       saveSecretKey(newKey);
       existingKey = newKey;
     }
-
     setSecret(existingKey);
   }, []);
 
-
+  // Send live chat message
   const sendMessageBackend = () => {
-// date  in this format 2025-07-24 15:27:35 
-setButtonClicked(buttonClicked)
-const theDate = new Date();
-const formattedDate = theDate.toISOString().slice(0, 19).replace("T", " ");
-
+    const theDate = new Date();
+    const formattedDate = theDate.toISOString().slice(0, 19).replace("T", " ");
 
     const dataForm = new FormData();
     dataForm.append("message", firstMessageSent);
     dataForm.append("session_id", secret || '');
-    dataForm.append("sender_name",userName || "Anonymous");
+    dataForm.append("sender_name", userName || "Anonymous");
     dataForm.append("sender_type", "customer");
     dataForm.append("file_name", "");
     dataForm.append("date", formattedDate);
 
-
-
     try {
-    
       setFirstMessageSent("");
-
       axios.post("https://switchiify.com/bonetProject/backend/public/chats", dataForm, {
         headers: {
           "Content-Type": "multipart/form-data",
-      }})
-        .then((response) => {
-          const data = response.data;
-          
-     
-        })
-        .catch((error) => {
-          console.error(error);
-        })
-        .finally(() => {
-          setIsTypingLive(false);
-        });
+        }
+      }).finally(() => {
+        setIsTyping(false);
+      });
     } catch (error) {
       console.error("Error sending message:", error);
-      setIsTypingLive(false);
+      setIsTyping(false);
     }
+  };
 
-
-  }
-
-// get messages from backend per every one second
+  // Fetch messages
   useEffect(() => {
     const fetchMessages = async () => {
       try {
@@ -232,7 +204,8 @@ const formattedDate = theDate.toISOString().slice(0, 19).replace("T", " ");
     const interval = setInterval(fetchMessages, 1000);
     return () => clearInterval(interval);
   }, [secret]);
-  // Scroll handling: only auto-scroll if user hasn’t scrolled up manually
+
+  // Auto-scroll handling
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const target = e.currentTarget;
     const { scrollTop, scrollHeight, clientHeight } = target;
@@ -243,7 +216,7 @@ const formattedDate = theDate.toISOString().slice(0, 19).replace("T", " ");
     if (autoScroll && messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [messages, backendMessages, isTyping, autoScroll, buttonClicked]);
+  }, [messages, backendMessages, isTyping, autoScroll]);
 
   useEffect(() => {
     const storedName = localStorage.getItem("userName");
@@ -260,279 +233,251 @@ const formattedDate = theDate.toISOString().slice(0, 19).replace("T", " ");
     }
   };
 
-  const handleKeyDown = (e: { key: string; }) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      handleNameSubmit();
+      liveChatSwitch ? sendMessage() : sendMessageBackend();
     }
   };
+
+  const isOnline = status !== "OFF";
 
   return (
     <>
       {/* Floating Chat Button */}
-
-      {!showChat && <motion.button
-        onClick={() => {
-          setShowChat(true)
-        }}
-        className="fixed bottom-5 right-10 flex items-center gap-2 bg-blue-500 hover:bg-blue-400 text-white px-5 py-3 rounded-full shadow-xl z-[99999] flex md:hidden"
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5 }}
+      <motion.button
+        onClick={() => setShowChat(true)}
+        className="fixed bottom-6 right-6 flex items-center gap-3 bg-gradient-to-r from-[#188bff] to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-6 py-4 rounded-2xl shadow-2xl z-[99999] group"
+        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        whileHover={{ scale: 1.05, y: -2 }}
+        transition={{ duration: 0.3 }}
       >
-        <AiFillMessage className="w-6 h-6" />
+        <div className="relative">
+          <MessageCircle className="w-6 h-6" />
+          {isOnline && (
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
+          )}
+        </div>
+        
         <AnimatePresence>
           {showPulseText && (
             <motion.span
               initial={{ width: 0, opacity: 0 }}
               animate={{ width: "auto", opacity: 1 }}
               exit={{ width: 0, opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="whitespace-nowrap overflow-hidden font-bold"
+              className="whitespace-nowrap overflow-hidden font-semibold"
             >
               {t("liveChat.button") || "Chat with us"}
             </motion.span>
           )}
         </AnimatePresence>
-      </motion.button>}
-     <motion.button
-        onClick={() => {
-          setShowChat(true)
-        }}
-        className="fixed bottom-5 right-10 flex items-center gap-2 bg-blue-500 hover:bg-blue-400 text-white px-5 py-3 rounded-full shadow-xl z-[99999] hidden md:flex"
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <AiFillMessage className="w-6 h-6" />
-        <AnimatePresence>
-          {showPulseText && (
-            <motion.span
-              initial={{ width: 0, opacity: 0 }}
-              animate={{ width: "auto", opacity: 1 }}
-              exit={{ width: 0, opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="whitespace-nowrap overflow-hidden font-bold"
-            >
-              {t("liveChat.button") || "Chat with us"}
-            </motion.span>
-          )}
-        </AnimatePresence>
+        
+        <Sparkles className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
       </motion.button>
 
       {/* Chat Window */}
-      {showChat && (
-        <div className="fixed inset-0 md:inset-auto bg-white bottom-0 md:bottom-20   md:right-5 md:w-100 height-full md:h-[calc(100vh-20vh)] bg-white rounded-0 md:rounded-2xl shadow-2xl flex flex-col z-[9999]">
-
-          <div className="p-4 bg-blue-600 text-white rounded-t-0 md:rounded-t-2xl shadow-md flex items-center justify-between">
-            <div className="flex items-center gap-3">
-            <div className="bg-white w-10 h-10 rounded-full">
-
-              <img src="./assets/images/logo.png" alt="" />
-
-            </div>
-            <div className="text-sm">
+      <AnimatePresence>
+        {showChat && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="fixed inset-0 md:inset-auto bg-white md:bottom-6 md:right-6 md:w-96 md:h-[600px] rounded-none md:rounded-2xl shadow-2xl flex flex-col z-[99999] border border-blue-100"
+          >
+            {/* Header */}
+            <div className="p-4 bg-gradient-to-r from-[#188bff] to-cyan-500 text-white rounded-t-none md:rounded-t-2xl shadow-lg">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                    <Bot className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg">Bonet Assistant</h3>
+                    <div className="flex items-center gap-2 text-sm">
+                      <div className={`w-2 h-2 rounded-full ${isOnline ? 'bg-green-400' : 'bg-gray-400'}`}></div>
+                      <span>{isOnline ? (i18n.language === "fr" ? "En ligne" : "Online") : (i18n.language === "fr" ? "Hors ligne" : "Offline")}</span>
+                    </div>
+                  </div>
+                </div>
                 
-              <div>
-                <p className="text-lg font-bold">
-                {t("chatbot.bonetChatbotTitle") || "Bonet Chat"}
-              </p>
-            
+                <button
+                  onClick={() => setShowChat(false)}
+                  className="w-8 h-8 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
 
-              </div >
-<div className="flex items-center justify-between gap-2 mr-[-30px]">
-<p className="text-left">
-  {status === "OFF"
-    ? (i18n.language === "fr" ? "Hors ligne" : "Offline")
-    : (i18n.language === "fr" ? "En ligne" : "Online")}
-</p>  <div>
-    <button
-      className={`px-3 py-1 text-sm rounded-full shadow-md mr-2 ${
-        liveChatSwitch
-          ? "bg-blue-600 text-white"
-          : "bg-white text-blue-600"
-      }`}
-      onClick={() => setLiveChatSwitch(false)}
-    >
-      {i18n.language === "fr"
-        ? "Support en direct"
-        : "Live support"}
-   
-    </button>
-    <button
-      className={`px-3 py-1 text-sm rounded-full shadow-md ${
-        !liveChatSwitch
-          ? "bg-blue-600 text-white"
-          : "bg-white text-blue-600"
-      }`}
-      onClick={() => setLiveChatSwitch(true)}
-    >
-      {i18n.language === "fr"
-        ? "Support IA"
-        : "AI support"}
-     
-    </button>
-  </div>
-</div>
+              {/* Chat Type Switcher */}
+              <div className="flex bg-white/20 rounded-xl p-1 backdrop-blur-sm">
+                <button
+                  onClick={() => setLiveChatSwitch(false)}
+                  className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-sm font-semibold transition-all ${
+                    !liveChatSwitch
+                      ? 'bg-white text-[#188bff] shadow-sm'
+                      : 'text-white/80 hover:text-white'
+                  }`}
+                >
+                  <Users className="w-4 h-4" />
+                  {i18n.language === "fr" ? "Support" : "Live"}
+                </button>
+                <button
+                  onClick={() => setLiveChatSwitch(true)}
+                  className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-sm font-semibold transition-all ${
+                    liveChatSwitch
+                      ? 'bg-white text-[#188bff] shadow-sm'
+                      : 'text-white/80 hover:text-white'
+                  }`}
+                >
+                  <Brain className="w-4 h-4" />
+                  {i18n.language === "fr" ? "IA" : "AI"}
+                </button>
+              </div>
+            </div>
 
+            {/* Chat Body */}
+            <div className="flex-1 p-4 overflow-y-auto bg-gradient-to-b from-gray-50 to-white space-y-3" onScroll={handleScroll}>
+              {liveChatSwitch ? (
+                <>
+                  <WelcomeMessageAI />
+                  {messages.map((m, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className={`flex gap-3 ${m.from === "me" ? "flex-row-reverse" : ""}`}
+                    >
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                        m.from === "me" ? "bg-[#188bff] text-white" : "bg-gray-200 text-gray-600"
+                      }`}>
+                        {m.from === "me" ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                      </div>
+                      <div className={`max-w-[75%] px-4 py-3 rounded-2xl ${
+                        m.from === "me" 
+                          ? "bg-[#188bff] text-white rounded-br-none" 
+                          : "bg-white text-gray-800 border border-gray-200 rounded-bl-none shadow-sm"
+                      }`}>
+                        {m.from === "ai" ? (
+                          <span dangerouslySetInnerHTML={{ __html: m.text }} />
+                        ) : (
+                          m.text
+                        )}
+                      </div>
+                    </motion.div>
+                  ))}
+                  
+                  {isTyping && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="flex gap-3"
+                    >
+                      <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+                        <Bot className="w-4 h-4 text-gray-600" />
+                      </div>
+                      <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-none px-4 py-3 shadow-sm">
+                        <div className="flex gap-1">
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-100"></div>
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-200"></div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </>
+              ) : (
+                <>
+                  <WelcomeMessage />
+                  {backendMessages.map((m, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className={`flex gap-3 ${m.sender_type === "customer" ? "flex-row-reverse" : ""}`}
+                    >
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                        m.sender_type === "customer" ? "bg-[#188bff] text-white" : "bg-cyan-500 text-white"
+                      }`}>
+                        {m.sender_type === "customer" ? <User className="w-4 h-4" /> : <Crown className="w-4 h-4" />}
+                      </div>
+                      <div className={`max-w-[75%] px-4 py-3 rounded-2xl ${
+                        m.sender_type === "customer" 
+                          ? "bg-[#188bff] text-white rounded-br-none" 
+                          : "bg-cyan-500 text-white rounded-bl-none"
+                      }`}>
+                        {m.sender_type === "admin" ? (
+                          <span dangerouslySetInnerHTML={{ __html: m.message }} />
+                        ) : (
+                          m.message
+                        )}
+                      </div>
+                    </motion.div>
+                  ))}
+                </>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+
+            {/* Input Area */}
+            <div className="p-4 bg-white border-t border-gray-100">
+              {!liveChatSwitch && messages.length === 0 && !userName && (
+                <div className="mb-3 p-3 bg-blue-50 rounded-xl border border-blue-100">
+                  <p className="text-sm text-blue-800 mb-2 font-semibold">
+                    {i18n.language === "fr" ? "👋 Commençons par votre nom" : "👋 Let's start with your name"}
+                  </p>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      className="flex-1 px-3 py-2 border border-blue-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      placeholder={i18n.language === "fr" ? "Votre nom" : "Your name"}
+                      value={inputtwo}
+                      onChange={(e) => setInputtwo(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && handleNameSubmit()}
+                    />
+                    <button 
+                      onClick={handleNameSubmit}
+                      className="px-4 py-2 bg-[#188bff] text-white rounded-lg text-sm font-semibold hover:bg-blue-600 transition-colors"
+                    >
+                      {i18n.language === "fr" ? "Go" : "Go"}
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  className="flex-1 px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                  placeholder={
+                    liveChatSwitch 
+                      ? (t("chatbot.askPlaceholder") || "Ask me anything...")
+                      : (i18n.language === "fr" ? "Tapez votre message..." : "Type your message...")
+                  }
+                  value={liveChatSwitch ? input : firstMessageSent}
+                  onChange={(e) => liveChatSwitch ? setInput(e.target.value) : setFirstMessageSent(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  disabled={!liveChatSwitch && !userName}
+                />
+                <button
+                  onClick={liveChatSwitch ? sendMessage : sendMessageBackend}
+                  disabled={!liveChatSwitch && !userName}
+                  className="px-4 py-3 bg-gradient-to-r from-[#188bff] to-cyan-500 text-white rounded-xl hover:from-blue-600 hover:to-cyan-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
+                >
+                  <Send className="w-4 h-4" />
+                </button>
+              </div>
               
-            </div>
-            </div>
-
-            {/* ❓ and ❌ Icons */}
-            <div className="flex items-center gap-0  mb-5">
-             
-              <button
-                onClick={() => setShowChat(false)}
-                className="text-2xl bg-gray-200/20 font-bold hover:bg-gray-200/30  p-1 rounded-full"
-              >
-               <XIcon  className="w-4 h-4 "/>
-              </button>
-            </div>
-          </div>
-
-    
-
-        {liveChatSwitch ? <>
-          {/* Chat Messages */}
-          <div className="flex-1 p-4 overflow-y-auto bg-gray-100 space-y-4 font-lato"  onScroll={handleScroll}>
-            <WelcomeMessageAI />
-            {messages.map((m, i) => (
-              <div
-                key={i}
-                className={`w-fit max-w-[75%] px-4 py-2 text-sm rounded-2xl relative break-words font-lato ${
-                  m.from === "me"
-                    ? "ml-auto bg-blue-500 text-white rounded-br-none"
-                    : "mr-auto bg-white text-gray-800 rounded-bl-none"
-                }`}
-              >
-                {m.from === "ai" ? (
-                  <span dangerouslySetInnerHTML={{ __html: m.text }} />
-                ) : (
-                  m.text
-                )}
-                <div
-                  className={`absolute top-0 w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent ${
-                    m.from === "me"
-                      ? ""
-                      : ""
-                  }`}
-                />
-                <div ref={messagesEndRef} />
+              {/* Footer */}
+              <div className="flex items-center justify-center gap-2 mt-3 pt-3 border-t border-gray-100">
+                <Shield className="w-4 h-4 text-gray-400" />
+                <span className="text-xs text-gray-500">Secure & Private</span>
+                <span className="text-gray-300">•</span>
+                <span className="text-xs text-gray-500">Powered by Bonet</span>
               </div>
-            ))}
-
-            {isTyping && (
-              <div className="w-fit max-w-[75%] px-4 py-2 text-sm rounded-2xl bg-white text-gray-800 border mr-auto">
-                <span className="animate-pulse">
-             {i18n.language === "fr" ? " Bonet Assistant est en train de taper..." : "Bonet Assistant is typing..."}
-
-                </span>
-              </div>
-            )}
-          </div>
-
-          {/* Input Field */}
-          <div className="p-3 bg-white border-t border-gray-300 flex items-center gap-2 rounded-b-1xl">
-            <input
-              type="text"
-              className="flex-1 px-4 py-2 border border-gray-300 text-black rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder={t("chatbot.askPlaceholder") || "Type your message..."}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-            />
-            <button
-              onClick={sendMessage}
-              className="bg-blue-600 hover:bg-blue-500 text-white p-3 rounded-full"
-            >
-              <FaTelegramPlane className="w-4 h-4" />
-            </button>
-          </div>
-            <div className="flex items-center  px-4 pb-2 gap-2 rounded-b-2xl">
-            <p className="text-gray-600 text-sm ">Powered By:</p>
-               <img src="https://co.switchiify.com/logo/images.png" className="h-5 w-5 border-1 border-gray-300 rounded-full"/>
-               
-               <p className="text-gray-600 text-[15px] font-bold">SWCFY C.S</p>
-          </div>
-        </>:<>
-          {/*Backend Chat Messages */}
-
-  
-          <div className="flex-1 p-4 overflow-y-auto bg-gray-100 space-y-4 font-lato"  onScroll={handleScroll}>
-     <WelcomeMessage />
-            {backendMessages.map((m, i) => (
-              <div
-                key={i}
-                className={`relative min-w-[2%] max-w-fit px-3 py-3 rounded-2xl shadow-md break-words text-sm ${
-                  m.sender_type === "customer"
-                    ? "ml-auto bg-blue-500 text-white rounded-br-none"
-                    : "mr-auto bg-white text-gray-800 rounded-bl-none"
-                }`}
-              >
-                {m.sender_type === "admin" ? (
-                  <span dangerouslySetInnerHTML={{ __html: m.message }} />
-                ) : (
-                  m.message
-                )}
-                <div
-                  className={`absolute top-0 w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent ${
-                    m.sender_type === "customer"
-                      ? ""
-                      : ""
-                  }`}
-                />
-                  <div ref={messagesEndRef} />
-              </div>
-            ))}
-
-           
-          </div>
-          {messages.length === 0 && !userName && (
-        <div className="p-3 bg-white border-t border-gray-300 bottom-0 flex items-center gap-2 rounded-b-1xl">
-          <input
-            type="text"
-            className="flex-1 px-4 py-2 border border-gray-300 text-black rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-            placeholder={ i18n.language === "fr" ? "Entrez votre nom" : "Enter your name"}
-            value={inputtwo}
-            onChange={(e) => setInputtwo(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-          
-          <button onClick={handleNameSubmit} className="px-4 py-2 bg-blue-500 text-white rounded-full text-sm">
-   
-            {i18n.language === "fr" ? "Envoyer votre nom" : "Submit your name"}
-          </button>
-        </div>
-      )}
-          {/* Input Field */}
-          <div className="p-3 bg-white border-t border-gray-300 flex items-center gap-2 rounded-b-1xl">
-            <input
-              type="text"
-              className="flex-1 px-4 py-2 border border-gray-300 text-gray-900  rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder={ i18n.language === "fr" ? "Envoyer un message" : "Send a message"}
-              value={firstMessageSent}
-              disabled={messages.length === 0 && !userName ? true : false}
-              onChange={(e)=> setFirstMessageSent(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && sendMessageBackend()}
-            />
-            <button
-             disabled={messages.length === 0 && !userName ? true : false}
-              onClick={sendMessageBackend}
-              className="bg-blue-600 hover:bg-blue-500 text-white p-3 rounded-full"
-            >
-              <FaTelegramPlane className="w-4 h-4" />
-            </button>
-          </div>
-          <div className="flex items-center  px-4 pb-2 gap-2 rounded-b-2xl">
-            <p className="text-gray-600 text-sm ">Powered By:</p>
-               <img src="https://co.switchiify.com/logo/images.png" className="h-5 w-5 border-1 border-gray-300 rounded-full"/>
-               
-               <p className="text-gray-600 text-[15px] font-bold">SWCFY C.S</p>
-          </div>
-       
-        </>}
-        </div>
-      )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

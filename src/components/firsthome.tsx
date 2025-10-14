@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import BookingCards from "./CardHome";
+import { X, Star, MapPin } from "lucide-react";
 
 interface Advertisement {
   id: number;
@@ -25,6 +27,7 @@ const FirstHome = () => {
   const [ads, setAds] = useState<Advertisement[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAd, setShowAd] = useState(false);
+  const [adVisible, setAdVisible] = useState(true);
 
   // Typing effect
   useEffect(() => {
@@ -88,8 +91,7 @@ const FirstHome = () => {
 
   return (
     <div
-    
-      className="relative w-full min-h-screen bg-cover bg-center overflow-hidden"
+      className="relative w-full min-h-screen md:h-full bg-cover bg-center overflow-hidden"
       style={{ backgroundImage: "url('/image/1.jpg')" }}
     >
       {/* Dark overlay */}
@@ -105,41 +107,78 @@ const FirstHome = () => {
         </p>
 
         <motion.button
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
           whileHover={{ scale: 1.05 }}
-          className="font-raleway bg-[#188bff] text-white px-6 py-3 rounded-xl text-base sm:text-lg font-semibold shadow-md hover:shadow-lg transition-all z-20"
+          className="bg-[#188bff] text-white px-8 py-4 rounded-2xl hover:bg-blue-600 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl mb-8"
           onClick={() => router.push("/services")}
         >
           {t("get_started")}
         </motion.button>
+        
+        <BookingCards />
       </div>
 
       {/* Advertisement */}
       <AnimatePresence>
-        {showAd && ad && (
+        {showAd && ad && adVisible && (
           <motion.div
             key={ad.id}
             initial={{ x: 300, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: 300, opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="absolute bottom-5 right-5 p-3 sm:p-5 bg-gray-800 w-36 sm:w-72 shadow-xl rounded-lg overflow-hidden z-30"
+            className="absolute bottom-5 right-5 p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-blue-200 w-80 z-30"
           >
-            <div className="relative w-full h-28 sm:h-40 overflow-hidden rounded-md">
+            {/* Close Button */}
+            <button
+              onClick={() => setAdVisible(false)}
+              className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs hover:bg-red-600 transition-colors z-40"
+            >
+              <X className="w-3 h-3" />
+            </button>
+
+            {/* Header with Stars */}
+            <div className="flex items-center gap-2 mb-3">
+              <div className="flex">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star key={star} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <span className="text-xs text-gray-500">Sponsored</span>
+            </div>
+
+            {/* Image */}
+            <div className="relative w-full h-40 overflow-hidden rounded-xl mb-3">
               <img
                 src={`https://switchiify.com/bonetProject/backend/public/${ad.image}`}
                 alt={ad.adv_title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
               />
+              <div className="absolute top-2 left-2 bg-[#188bff] text-white px-2 py-1 rounded-lg text-xs font-semibold">
+                Featured
+              </div>
             </div>
-            <div className="p-2 sm:p-3">
-              <h3 className="text-sm sm:text-lg font-semibold text-white font-poetsen">
+
+            {/* Content */}
+            <div className="space-y-2">
+              <h3 className="text-lg font-bold text-gray-800 font-sans">
                 {ad.adv_title}
               </h3>
-              <p className="text-xs sm:text-sm text-[#f5f5f5] font-poetsen">
+              <p className="text-sm text-gray-600 leading-relaxed">
                 {ad.subtitle}
               </p>
+              
+              {/* Location */}
+              <div className="flex items-center gap-1 text-xs text-gray-500">
+                <MapPin className="w-3 h-3" />
+                <span>Kigali, Rwanda</span>
+              </div>
+
+              {/* Action Button */}
+              <button className="w-full bg-[#188bff] text-white py-2 rounded-lg hover:bg-blue-600 transition-colors font-semibold text-sm mt-2">
+                Learn More
+              </button>
             </div>
           </motion.div>
         )}
