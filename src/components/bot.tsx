@@ -246,7 +246,7 @@ const ChatBot = () => {
       {/* Floating Chat Button */}
       <motion.button
         onClick={() => setShowChat(true)}
-        className="fixed bottom-6 right-6 flex items-center gap-3 bg-gradient-to-r from-[#188bff] to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-6 py-4 rounded-2xl shadow-2xl z-[99999] group"
+        className="fixed bottom-6 right-6 flex items-center gap-3 bg-gradient-to-r from-[#188bff] to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-6 py-4 rounded-2xl shadow-2xl z-[9999] group"
         initial={{ scale: 0.9, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         whileHover={{ scale: 1.05, y: -2 }}

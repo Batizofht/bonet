@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import i18n from "../../i18n";  
+import i18n from "../../i18n";
 import { 
   Menu, 
   X, 
@@ -121,6 +121,7 @@ const QuickButtons = () => {
             whileTap={{ scale: 0.95 }}
             className="flex items-center space-x-2 px-4 py-2 text-gray-700 font-semibold text-sm rounded-xl border-2 border-blue-100 bg-white hover:border-[#188bff] transition-all duration-200 shadow-sm"
           >
+            {/* <Globe className="w-4 h-4 text-[#188bff]" /> */}
             <img
               src={flagImages[language] || flagImages.en}
               alt="Flag"
@@ -196,107 +197,109 @@ const QuickButtons = () => {
       {/* Mobile Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <>
-            {/* Black overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 h-[100vh]"
-              onClick={() => setIsOpen(false)}
-            />
-            
-            {/* Mobile side menu */}
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              style={{zIndex:9999 }}
-     className="fixed top-0 right-0 w-80 bg-white h-[100dvh] shadow-2xl   flex flex-col"            >
-              {/* Header */}
-              <div className="p-6 bg-gradient-to-r from-[#188bff] to-cyan-500">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
-                      <Sparkles className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-lg text-white">Bonet E</h3>
-                      <p className="text-white/80 text-sm">Elite Services</p>
-                    </div>
-                  </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 z-40"
+            onClick={() => setIsOpen(false)}
+          />
+        )}
+      </AnimatePresence>
 
-                  <motion.button
-                    whileHover={{ scale: 1.1, rotate: 90 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => setIsOpen(false)}
-                    className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-xl flex items-center justify-center backdrop-blur-sm transition-colors"
-                  >
-                    <X className="w-5 h-5 text-white" />
-                  </motion.button>
+      {/* Mobile side menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-50"
+          >
+            {/* Header */}
+            <div className="p-6 bg-gradient-to-r from-[#188bff] to-cyan-500 text-white">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                    <Sparkles className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg">Bonet</h3>
+                    <p className="text-white/80 text-sm">Elite Services</p>
+                  </div>
                 </div>
 
-                   {/* Language Selector */}
-                             <div className="relative">
-                               <motion.button
-                                 ref={mobileButtonRef}
-                                 onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
-                                 whileTap={{ scale: 0.95 }}
-                                 className="flex items-center justify-between w-full px-4 py-3 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30"
-                               >
-                                 <div className="flex items-center gap-3">
-                                   {/* <Globe className="w-4 h-4" /> */}
-                                   <img
-                                     src={flagImages[language] || flagImages.en}
-                                     alt="Flag"
-                                     className="w-6 h-6 rounded object-cover"
-                                   />
-                                   <span className="font-semibold text-white">{languageNames[language]}</span>
-                                 </div>
-                                 <motion.div
-                                   animate={{ rotate: mobileDropdownOpen ? 180 : 0 }}
-                                   transition={{ duration: 0.2 }}
-                                 >
-                                   <ChevronDown className="w-4 h-4 text-white" />
-                                 </motion.div>
-                               </motion.button>
-               
-                               <AnimatePresence>
-                                 {mobileDropdownOpen && (
-                                   <motion.div
-                                     ref={mobileDropdownRef}
-                                     initial={{ opacity: 0, y: -10 }}
-                                     animate={{ opacity: 1, y: 0 }}
-                                     exit={{ opacity: 0, y: -10 }}
-                                     className="absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-sm rounded-xl border border-white/30 shadow-lg overflow-hidden"
-                                   >
-                                     {Object.entries(flagImages).map(([lng, flag]) => (
-                                       <motion.button
-                                         key={lng}
-                                         onClick={() => changeLanguage(lng)}
-                                         whileHover={{ backgroundColor: "rgba(255,255,255,0.5)" }}
-                                         className={`flex w-full items-center px-4 py-3 text-gray-800 ${
-                                           language === lng ? 'bg-white/60' : ''
-                                         }`}
-                                       >
-                                         <img
-                                           src={flag}
-                                           alt={`${lng} flag`}
-                                           className="w-5 h-5 rounded object-cover mr-3"
-                                         />
-                                         <span className="flex-1 text-left font-medium">
-                                           {languageNames[lng as SupportedLanguages]}
-                                         </span>
-                                       </motion.button>
-                                     ))}
-                                   </motion.div>
-                                 )}
-                               </AnimatePresence>
-                             </div>
+                <motion.button
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setIsOpen(false)}
+                  className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-xl flex items-center justify-center backdrop-blur-sm transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </motion.button>
               </div>
 
-           {/* Menu Items */}
+              {/* Language Selector */}
+              <div className="relative">
+                <motion.button
+                  ref={mobileButtonRef}
+                  onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center justify-between w-full px-4 py-3 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30"
+                >
+                  <div className="flex items-center gap-3">
+                    {/* <Globe className="w-4 h-4" /> */}
+                    <img
+                      src={flagImages[language] || flagImages.en}
+                      alt="Flag"
+                      className="w-6 h-6 rounded object-cover"
+                    />
+                    <span className="font-semibold">{languageNames[language]}</span>
+                  </div>
+                  <motion.div
+                    animate={{ rotate: mobileDropdownOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ChevronDown className="w-4 h-4" />
+                  </motion.div>
+                </motion.button>
+
+                <AnimatePresence>
+                  {mobileDropdownOpen && (
+                    <motion.div
+                      ref={mobileDropdownRef}
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-sm rounded-xl border border-white/30 shadow-lg overflow-hidden"
+                    >
+                      {Object.entries(flagImages).map(([lng, flag]) => (
+                        <motion.button
+                          key={lng}
+                          onClick={() => changeLanguage(lng)}
+                          whileHover={{ backgroundColor: "rgba(255,255,255,0.5)" }}
+                          className={`flex w-full items-center px-4 py-3 text-gray-800 ${
+                            language === lng ? 'bg-white/60' : ''
+                          }`}
+                        >
+                          <img
+                            src={flag}
+                            alt={`${lng} flag`}
+                            className="w-5 h-5 rounded object-cover mr-3"
+                          />
+                          <span className="flex-1 text-left font-medium">
+                            {languageNames[lng as SupportedLanguages]}
+                          </span>
+                        </motion.button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Menu Items */}
             <div className="p-6 space-y-2">
               {menuItems.map((item, index) => {
                 const IconComponent = item.icon;
@@ -342,8 +345,7 @@ const QuickButtons = () => {
                 </Link>
               </motion.div>
             </div>
-            </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
