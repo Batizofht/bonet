@@ -10,30 +10,51 @@ import "react-toastify/dist/ReactToastify.css";
 
 const { Option } = Select;
 
+import { Rocket, User, Mail, Phone, MessageCircle, MessageSquare } from "lucide-react";
+
 const ContactForm = ({ form, onFinish, t }) => (
-  <div className="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-8 w-full max-w-xl border border-white/20 relative overflow-hidden">
-    {/* Web3 decorative elements */}
-    <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full -translate-x-16 -translate-y-16"></div>
-    <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tr from-green-400/20 to-cyan-600/20 rounded-full translate-x-12 translate-y-12"></div>
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    className="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-xl border-2 border-blue-100 relative overflow-hidden"
+  >
+    {/* Decorative gradient elements */}
+    <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-400/10 to-cyan-500/10 rounded-full -translate-x-16 -translate-y-16"></div>
+    <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tr from-green-400/10 to-emerald-500/10 rounded-full translate-x-12 translate-y-12"></div>
+    <div className="absolute top-4 right-4 w-8 h-8 bg-yellow-400/10 rounded-full"></div>
     
     <div className="relative z-10">
-      <h3 className="text-3xl font-bold bg-gradient-to-r from-gray-400 to-gray-600 bg-clip-text text-transparent mb-6">
-        {t("contactInform.form.title")}
-      </h3>
-      <Form form={form} layout="vertical" onFinish={onFinish} requiredMark={false} className="space-y-4">
+      {/* Header */}
+      <div className="text-center mb-8">
+        <div className="w-16 h-16 bg-gradient-to-br from-[#188bff] to-cyan-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <MessageSquare className="w-6 h-6 text-white" />
+        </div>
+        <h3 className="text-3xl font-bold text-gray-800 mb-2">
+          {t("contactInform.form.title")}
+        </h3>
+        <p className="text-gray-500">
+          Get in touch with our team
+        </p>
+      </div>
+
+      <Form form={form} layout="vertical" onFinish={onFinish} requiredMark={false} className="space-y-6">
+        {/* Full Name */}
         <Form.Item
-          label={<span className="text-white/80 font-medium">{t("contactInform.form.fullName")}</span>}
+          label={<span className="text-gray-700 font-semibold">{t("contactInform.form.fullName")}</span>}
           name="name"
           rules={[{ required: true, message: t("contactInform.form.validation.nameRequired") }]}
         >
           <Input 
+            prefix={<User className="w-4 h-4 text-gray-400" />}
             placeholder={t("contactInform.form.fullName")} 
-            className="rounded-xl border-white/30 bg-white/5 text-white focus:ring-2 focus:ring-blue-400 focus:border-transparent hover:bg-white/10 transition-all duration-300"
+            className="rounded-xl border-gray-300 bg-white text-gray-800 focus:border-[#188bff] focus:ring-2 focus:ring-blue-100 hover:border-gray-400 transition-all duration-300 h-12"
           />
         </Form.Item>
 
+        {/* Email */}
         <Form.Item
-          label={<span className="text-white/80 font-medium">{t("contactInform.form.email")}</span>}
+          label={<span className="text-gray-700 font-semibold">{t("contactInform.form.email")}</span>}
           name="email"
           rules={[
             { required: true, message: t("contactInform.form.validation.emailRequired") },
@@ -41,74 +62,111 @@ const ContactForm = ({ form, onFinish, t }) => (
           ]}
         >
           <Input 
+            prefix={<Mail className="w-4 h-4 text-gray-400" />}
             placeholder={t("contactInform.form.email")} 
-            className="rounded-xl border-white/30 bg-white/5 text-white focus:ring-2 focus:ring-blue-400 focus:border-transparent hover:bg-white/10 transition-all duration-300"
+            className="rounded-xl border-gray-300 bg-white text-gray-800 focus:border-[#188bff] focus:ring-2 focus:ring-blue-100 hover:border-gray-400 transition-all duration-300 h-12"
           />
         </Form.Item>
 
+        {/* Phone & WhatsApp Row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Form.Item
+            label={<span className="text-gray-700 font-semibold">{t("contactInform.form.phone")}</span>}
+            name="phone_number"
+            rules={[{ required: true, message: t("contactInform.form.validation.phoneRequired") }]}
+          >
+            <Input 
+              prefix={<Phone className="w-4 h-4 text-gray-400" />}
+              placeholder={t("contactInform.form.phone")} 
+              className="rounded-xl border-gray-300 bg-white text-gray-800 focus:border-[#188bff] focus:ring-2 focus:ring-blue-100 hover:border-gray-400 transition-all duration-300 h-12"
+            />
+          </Form.Item>
+
+          <Form.Item 
+            label={<span className="text-gray-700 font-semibold">{t("contactInform.form.whatsapp")}</span>} 
+            name="whatsapp_number"
+          >
+            <Input 
+              prefix={<MessageCircle className="w-4 h-4 text-gray-400" />}
+              placeholder={t("contactInform.form.whatsapp")} 
+              className="rounded-xl border-gray-300 bg-white text-gray-800 focus:border-[#188bff] focus:ring-2 focus:ring-blue-100 hover:border-gray-400 transition-all duration-300 h-12"
+            />
+          </Form.Item>
+        </div>
+
+        {/* Inquiry Type */}
         <Form.Item
-          label={<span className="text-white/80 font-medium">{t("contactInform.form.phone")}</span>}
-          name="phone_number"
-          rules={[{ required: true, message: t("contactInform.form.validation.phoneRequired") }]}
-        >
-          <Input 
-            placeholder={t("contactInform.form.phone")} 
-            className="rounded-xl border-white/30 bg-white/5 text-white focus:ring-2 focus:ring-blue-400 focus:border-transparent hover:bg-white/10 transition-all duration-300"
-          />
-        </Form.Item>
-
-        <Form.Item 
-          label={<span className="text-white/80 font-medium">{t("contactInform.form.whatsapp")}</span>} 
-          name="whatsapp_number"
-        >
-          <Input 
-            placeholder={t("contactInform.form.whatsapp")} 
-            className="rounded-xl border-white/30 bg-white/5 text-white focus:ring-2 focus:ring-green-400 focus:border-transparent hover:bg-white/10 transition-all duration-300"
-          />
-        </Form.Item>
-
-        <Form.Item
-          label={<span className="text-white/80 font-medium">{t("contactInform.form.inquiryType")}</span>}
+          label={<span className="text-gray-700 font-semibold">{t("contactInform.form.inquiryType")}</span>}
           name="inquiry_type"
           rules={[{ required: true, message: t("contactInform.form.validation.inquiryRequired") }]}
         >
           <Select 
-            placeholder={t("contactInform.form.inquiryType")} 
-            className="rounded-xl [&_.ant-select-selector]:bg-white/5 [&_.ant-select-selector]:border-white/30 [&_.ant-select-selector]:text-white [&_.ant-select-selector]:rounded-xl [&_.ant-select-selector]:hover:bg-white/10"
-            dropdownClassName="[&_.ant-select-item]:hover:bg-white/10 [&_.ant-select-item]:text-white"
+            placeholder={
+              <div className="flex items-center gap-2">
+                <MessageSquare className="w-4 h-4 text-gray-400" />
+                {t("contactInform.form.inquiryType")}
+              </div>
+            } 
+            
+            className="rounded-xl h-12 [&_.ant-select-selector]:bg-white [&_.ant-select-selector]:border-gray-300 [&_.ant-select-selector]:text-gray-800 [&_.ant-select-selector]:rounded-xl [&_.ant-select-selector]:hover:border-gray-400 [&_.ant-select-selector]:h-12 [&_.ant-select-selector]:flex [&_.ant-select-selector]:items-center"
+            rootClassName="[&_.ant-select-item]:hover:bg-blue-50 [&_.ant-select-item]:text-gray-800 rounded-xl border-2 border-blue-100 shadow-lg"
           >
-            <Option value="hotel">{t("contactInform.form.inquiryOptions.hotel")}</Option>
-            <Option value="department">{t("contactInform.form.inquiryOptions.department")}</Option>
-            <Option value="transport">{t("contactInform.form.inquiryOptions.transport")}</Option>
-            <Option value="businessSetup">{t("contactInform.form.inquiryOptions.businessSetup")}</Option>
+            <Option value="hotel" className="flex items-center gap-2">
+              🏨 {t("contactInform.form.inquiryOptions.hotel")}
+            </Option>
+            <Option value="department" className="flex items-center gap-2">
+              🏢 {t("contactInform.form.inquiryOptions.department")}
+            </Option>
+            <Option value="transport" className="flex items-center gap-2">
+              🚗 {t("contactInform.form.inquiryOptions.transport")}
+            </Option>
+            <Option value="businessSetup" className="flex items-center gap-2">
+              💼 {t("contactInform.form.inquiryOptions.businessSetup")}
+            </Option>
           </Select>
         </Form.Item>
 
+        {/* Message */}
         <Form.Item
-          label={<span className="text-white/80 font-medium">{t("contactInform.form.message")}</span>}
+          label={<span className="text-gray-700 font-semibold">{t("contactInform.form.message")}</span>}
           name="message"
           rules={[{ required: true, message: t("contactInform.form.validation.messageRequired") }]}
         >
           <Input.TextArea
             placeholder={t("contactInform.form.message")}
             rows={4}
-            className="rounded-xl border-white/30 bg-white/5 text-white focus:ring-2 focus:ring-blue-400 focus:border-transparent hover:bg-white/10 transition-all duration-300"
+            className="rounded-xl border-gray-300 bg-white text-gray-800 focus:border-[#188bff] focus:ring-2 focus:ring-blue-100 hover:border-gray-400 transition-all duration-300 resize-none"
           />
         </Form.Item>
 
-        <Form.Item>
-          <button 
-            htmlType="submit" 
-            block 
-            className="bg-gradient-to-r from-blue-500 to-blue-600 w-full hover:from-blue-600 hover:to-blue-500 text-white font-semibold rounded-xl py-3 h-auto transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl border-0"
+        {/* Submit Button */}
+        <Form.Item className="mb-0">
+          <motion.button
+            type="submit"
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-[#188bff] to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-xl py-4 h-auto transition-all duration-300 shadow-lg hover:shadow-xl border-0 text-lg"
           >
-            <FaRocket className="inline mr-2" />
+            <Rocket className="w-5 h-5" />
             {t("contactInform.form.submitButton")}
-          </button>
+            <motion.div
+              animate={{ x: [0, 4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              →
+            </motion.div>
+          </motion.button>
         </Form.Item>
       </Form>
+
+      {/* Footer Note */}
+      <div className="text-center mt-6">
+        <p className="text-gray-500 text-sm">
+          We'll get back to you within 24 hours ✅
+        </p>
+      </div>
     </div>
-  </div>
+  </motion.div>
 );
 
 const ContactInfo = ({ t }) => (

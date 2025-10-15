@@ -1,6 +1,7 @@
 
 import FirstService from "../../services/firstservice";
 import BusinessConsulting from "../../services/consult";
+import HRAdminSupport from "@/services/hr";
 export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Business Consulting | Bonet Elite Services",
@@ -38,7 +39,7 @@ export default function ConsultingPage() {
   return (
     <div className="bg-white min-h-screen text-center text-white">
       <FirstService />
-      <BusinessConsulting />
+      <HRAdminSupport />
     </div>
   );
 }

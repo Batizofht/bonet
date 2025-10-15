@@ -1,70 +1,78 @@
-"use client"
+'use client'
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Form, Input, Typography } from "antd";
-import { ToastContainer, toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
-import { useTranslation } from "react-i18next";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  Form,
+  Input,
+  Typography,
+  Row,
+  Col,
+  Image,
+} from "antd";
+import { useTranslation } from "react-i18next";
 import { 
   Phone, 
   MessageCircle, 
   X, 
-  TrendingUp, 
-  BarChart3, 
-  DollarSign, 
-  ClipboardCheck,
+  Users, 
+  FileText, 
+  GraduationCap, 
+  CreditCard,
   Sparkles,
+  UserPlus,
+  Shield,
   Target,
-  Users,
   Mail,
-  FileText,
-  Lightbulb
+  FileEdit
 } from "lucide-react";
 
-const services = [
+const { Title, Paragraph } = Typography;
+
+const hrServices = [
   {
-    titleKey: "businessConsulting.services.businessPlan.title",
-    subtitleKey: "businessConsulting.services.businessPlan.subtitle",
-    descriptionKey: "businessConsulting.services.businessPlan.description",
-    image: "../assets/images/dev.webp",
-    align: "left",
-    icon: Target,
+    image: "../assets/images/talent.jpg",
+    titleKey: "hrServices.recruitment.title",
+    subtitleKey: "hrServices.recruitment.subtitle",
+    descriptionKey: "hrServices.recruitment.description",
+    icon: UserPlus,
     color: "from-blue-500 to-cyan-400"
   },
   {
-    titleKey: "businessConsulting.services.projectPlanning.title",
-    subtitleKey: "businessConsulting.services.projectPlanning.subtitle",
-    descriptionKey: "businessConsulting.services.projectPlanning.description",
-    image: "../assets/images/ff.jpg",
-    align: "right",
-    icon: BarChart3,
+    image: "../assets/images/compliance.png",
+    titleKey: "hrServices.compliance.title",
+    subtitleKey: "hrServices.compliance.subtitle",
+    descriptionKey: "hrServices.compliance.description",
+    icon: Shield,
     color: "from-green-500 to-emerald-400"
   },
   {
-    titleKey: "businessConsulting.services.financialAdvisory.title",
-    subtitleKey: "businessConsulting.services.financialAdvisory.subtitle",
-    descriptionKey: "businessConsulting.services.financialAdvisory.description",
-    image: "../assets/images/rr.webp",
-    align: "left",
-    icon: DollarSign,
+    image: "../assets/images/tra.jpeg",
+    titleKey: "hrServices.training.title",
+    subtitleKey: "hrServices.training.subtitle",
+    descriptionKey: "hrServices.training.description",
+    icon: GraduationCap,
     color: "from-purple-500 to-pink-400"
   },
   {
-    titleKey: "businessConsulting.services.auditing.title",
-    subtitleKey: "businessConsulting.services.auditing.subtitle",
-    descriptionKey: "businessConsulting.services.auditing.description",
-    image: "../assets/images/audit.jpg",
-    align: "right",
-    icon: ClipboardCheck,
+    image: "../assets/images/pay.png",
+    titleKey: "hrServices.payroll.title",
+    subtitleKey: "hrServices.payroll.subtitle",
+    descriptionKey: "hrServices.payroll.description",
+    icon: CreditCard,
     color: "from-orange-500 to-amber-400"
   },
 ];
 
-export default function BusinessConsulting() {
+export default function HRAdminSupport() {
   const { t } = useTranslation();
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
+
+  const openModal = () => setIsModalVisible(true);
+  const closeModal = () => setIsModalVisible(false);
 
   const openWhatsApp = () => {
     const phoneNumber = "250726300260";
@@ -76,22 +84,23 @@ export default function BusinessConsulting() {
     }, 1500);
   };
 
-  const handleSubmit = async (values) => {
+  const onFinish = async (values:any) => {
     try {
-      const res = await axios.post(
-        "https://switchiify.com/bonetProject/backend/public/consulting",
+      const response = await axios.post(
+        "https://switchiify.com/bonetProject/backend/public/hrsupport",
         values
       );
 
-      if (res.status === 200 || res.status === 201) {
+      if (response.status === 200 || response.status === 201) {
         toast.success(t("ContactMessage.success", { name: values.name }));
         form.resetFields();
-        setIsPopupOpen(false);
+        closeModal();
       } else {
-        toast.error(t("businessConsulting.toast.error"));
+        toast.error(t("hrModal.toast.error"));
       }
-    } catch (err) {
-      toast.error(t("businessConsulting.toast.serverError"));
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error(t("hrModal.toast.error"));
     }
   };
 
@@ -110,16 +119,16 @@ export default function BusinessConsulting() {
         <div className="flex justify-center items-center gap-3 mb-4">
           <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
           <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <TrendingUp className="w-6 h-6 text-[#188bff] animate-pulse" />
+          <Users className="w-6 h-6 text-[#188bff] animate-pulse" />
           <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
           <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
         </div>
         
         <h1 className="text-4xl font-bold text-gray-800 mb-4">
-          Business <span className="bg-[#188bff] bg-clip-text text-transparent">Consulting</span>
+          HR & <span className="bg-[#188bff] bg-clip-text text-transparent">Admin Support</span>
         </h1>
         <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-          {t("businessConsulting.title")}
+          {t("hrServices.title")}
         </p>
       </div>
 
@@ -127,13 +136,13 @@ export default function BusinessConsulting() {
       <div className="flex justify-center mb-16">
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <motion.button
-            onClick={() => setIsPopupOpen(true)}
+            onClick={openModal}
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             className="flex items-center gap-3 bg-gradient-to-r from-[#188bff] to-cyan-500 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
           >
-            <Lightbulb className="w-5 h-5" />
-            {t("businessConsulting.cta")}
+            <Users className="w-5 h-5" />
+            {t("hrServices.ctaContact")}
           </motion.button>
 
           <motion.button
@@ -143,75 +152,82 @@ export default function BusinessConsulting() {
             className="flex items-center gap-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <MessageCircle className="w-5 h-5" />
-            {t("businessConsulting.quickContact")}
+            {t("hrServices.ctaWhatsApp")}
           </motion.button>
         </div>
       </div>
 
       {/* Service Cards */}
-      <div className="space-y-12">
-        {services.map((service, index) => {
+      <Row gutter={[24, 24]} className="w-full">
+        {hrServices.map((service, index) => {
           const IconComponent = service.icon;
           return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className={`flex flex-col lg:flex-row items-center bg-white rounded-3xl border-2 border-blue-100 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden ${
-                service.align === "right" ? "lg:flex-row-reverse" : ""
-              }`}
-            >
-              {/* Image */}
-              <div className="lg:w-2/5 w-full relative">
-                <div className="relative overflow-hidden h-80 lg:h-96">
-                  <img
-                    src={service.image}
-                    alt={t(service.titleKey)}
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="lg:w-3/5 w-full p-8 lg:p-12">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center shadow-lg`}>
-                    <IconComponent className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#188bff] to-cyan-500 bg-clip-text text-transparent">
-                      {t(service.titleKey)}
-                    </h3>
-                    <p className="text-gray-600 font-semibold mt-1">
-                      {t(service.subtitleKey)}
-                    </p>
-                  </div>
-                </div>
-
-                <p className="text-gray-600 leading-relaxed text-lg mb-6">
-                  {t(service.descriptionKey)}
-                </p>
-
-                {/* Features */}
-                <div className="flex flex-wrap gap-3">
-                  {[...Array(3)].map((_, i) => (
-                    <div key={i} className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-xl">
-                      <Sparkles className="w-3 h-3 text-[#188bff]" />
-                      <span className="text-sm text-gray-700 font-medium">Expert Consultation</span>
+            <Col xs={24} md={12} key={index}>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white rounded-3xl border-2 border-blue-100 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full"
+              >
+                <div className="flex flex-col md:flex-row h-full">
+                  {/* Image */}
+                  <div className="md:w-2/5 w-full relative">
+                    <div className="relative overflow-hidden h-48 md:h-full">
+                      <Image
+                        src={service.image}
+                        alt={t(service.titleKey)}
+                        width="100%"
+                        height="100%"
+                        style={{ objectFit: "cover" }}
+                        preview={false}
+                        className="transform hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
                     </div>
-                  ))}
+                  </div>
+
+                  {/* Content */}
+                  <div className="md:w-3/5 w-full p-6 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center shadow-md`}>
+                          <IconComponent className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <Title level={4} className="mb-1 text-gray-800 font-bold">
+                            {t(service.titleKey)}
+                          </Title>
+                          <Paragraph strong className="text-gray-600 text-sm mb-0">
+                            {t(service.subtitleKey)}
+                          </Paragraph>
+                        </div>
+                      </div>
+
+                      <Paragraph className="text-gray-600 leading-relaxed mb-4">
+                        {t(service.descriptionKey)}
+                      </Paragraph>
+                    </div>
+
+                    {/* Features */}
+                    <div className="flex flex-wrap gap-2">
+                      {[...Array(2)].map((_, i) => (
+                        <div key={i} className="flex items-center gap-1 bg-blue-50 px-2 py-1 rounded-lg">
+                          <Sparkles className="w-3 h-3 text-[#188bff]" />
+                          <span className="text-xs text-gray-700 font-medium">Expert Service</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </Col>
           );
         })}
-      </div>
+      </Row>
 
       {/* Popup Modal */}
       <AnimatePresence>
-        {isPopupOpen && (
+        {isModalVisible && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -230,7 +246,7 @@ export default function BusinessConsulting() {
 
               {/* Close button */}
               <button
-                onClick={() => setIsPopupOpen(false)}
+                onClick={closeModal}
                 className="absolute top-4 right-4 w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors z-10"
               >
                 <X className="w-4 h-4 text-gray-600" />
@@ -240,39 +256,39 @@ export default function BusinessConsulting() {
                 {/* Header */}
                 <div className="text-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-[#188bff] to-cyan-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <TrendingUp className="w-6 h-6 text-white" />
+                    <Users className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                    {t("businessConsulting.title")}
+                    {t("hrModal.title")}
                   </h3>
                   <p className="text-gray-500">
-                    {t("businessConsulting.form.instructions")}
+                    {t("hrModal.instructions")}
                   </p>
                 </div>
 
                 <Form
-                  layout="vertical"
                   form={form}
-                  onFinish={handleSubmit}
+                  layout="vertical"
+                  onFinish={onFinish}
                   className="space-y-4"
                 >
                   <Form.Item
                     label={
                       <span className="text-gray-700 font-semibold">
-                        {t("businessConsulting.form.fullnames.label")}
+                        {t("hrModal.form.fullnames.label")}
                       </span>
                     }
                     name="fullnames"
                     rules={[
                       {
                         required: true,
-                        message: t("businessConsulting.form.fullnames.error"),
+                        message: t("hrModal.form.fullnames.error"),
                       },
                     ]}
                   >
                     <Input
                       prefix={<Users className="w-4 h-4 text-gray-400" />}
-                      placeholder={t("businessConsulting.form.fullnames.placeholder")}
+                      placeholder={t("hrModal.form.fullnames.placeholder")}
                       className="rounded-xl border-gray-300 focus:border-[#188bff] focus:ring-2 focus:ring-blue-100 transition-all"
                     />
                   </Form.Item>
@@ -280,24 +296,21 @@ export default function BusinessConsulting() {
                   <Form.Item
                     label={
                       <span className="text-gray-700 font-semibold">
-                        {t("businessConsulting.form.email.label")}
+                        {t("hrModal.form.email.label")}
                       </span>
                     }
                     name="email"
                     rules={[
                       {
                         required: true,
-                        message: t("businessConsulting.form.email.required"),
+                        message: t("hrModal.form.email.required"),
                       },
-                      {
-                        type: "email",
-                        message: t("businessConsulting.form.email.invalid"),
-                      },
+                      { type: "email", message: t("hrModal.form.email.invalid") },
                     ]}
                   >
                     <Input
                       prefix={<Mail className="w-4 h-4 text-gray-400" />}
-                      placeholder={t("businessConsulting.form.email.placeholder")}
+                      placeholder={t("hrModal.form.email.placeholder")}
                       className="rounded-xl border-gray-300 focus:border-[#188bff] focus:ring-2 focus:ring-blue-100 transition-all"
                     />
                   </Form.Item>
@@ -305,20 +318,20 @@ export default function BusinessConsulting() {
                   <Form.Item
                     label={
                       <span className="text-gray-700 font-semibold">
-                        {t("businessConsulting.form.phone.label")}
+                        {t("hrModal.form.phone.label")}
                       </span>
                     }
                     name="phone_number"
                     rules={[
                       {
                         required: true,
-                        message: t("businessConsulting.form.phone.error"),
+                        message: t("hrModal.form.phone.error"),
                       },
                     ]}
                   >
                     <Input
                       prefix={<Phone className="w-4 h-4 text-gray-400" />}
-                      placeholder={t("businessConsulting.form.phone.placeholder")}
+                      placeholder={t("hrModal.form.phone.placeholder")}
                       className="rounded-xl border-gray-300 focus:border-[#188bff] focus:ring-2 focus:ring-blue-100 transition-all"
                     />
                   </Form.Item>
@@ -326,34 +339,33 @@ export default function BusinessConsulting() {
                   <Form.Item
                     label={
                       <span className="text-gray-700 font-semibold">
-                        {t("businessConsulting.form.description.label")}
+                        {t("hrModal.form.description.label")}
                       </span>
                     }
                     name="service_description"
                     rules={[
                       {
                         required: true,
-                        message: t("businessConsulting.form.description.error"),
+                        message: t("hrModal.form.description.error"),
                       },
                     ]}
                   >
                     <Input.TextArea
+                      placeholder={t("hrModal.form.description.placeholder")}
                       rows={4}
-                      prefix={<FileText className="w-4 h-4 text-gray-400" />}
-                      placeholder={t("businessConsulting.form.description.placeholder")}
                       className="rounded-xl border-gray-300 focus:border-[#188bff] focus:ring-2 focus:ring-blue-100 transition-all"
                     />
                   </Form.Item>
 
                   <div className="flex justify-end gap-3 pt-4">
                     <motion.button
-                      onClick={() => setIsPopupOpen(false)}
+                      onClick={closeModal}
                       type="button"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       className="px-6 py-3 rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300 font-semibold"
                     >
-                      {t("businessConsulting.form.buttons.cancel")}
+                      {t("hrModal.form.buttons.cancel")}
                     </motion.button>
                     <motion.button
                       type="submit"
@@ -361,7 +373,7 @@ export default function BusinessConsulting() {
                       whileTap={{ scale: 0.98 }}
                       className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#188bff] to-cyan-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                     >
-                      {t("businessConsulting.form.buttons.submit")}
+                      {t("hrModal.form.buttons.submit")}
                     </motion.button>
                   </div>
                 </Form>

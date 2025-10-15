@@ -2,7 +2,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { GoogleMap, useJsApiLoader, Autocomplete, DirectionsRenderer } from "@react-google-maps/api";
 import { motion } from "framer-motion";
-import { FaMapMarkerAlt, FaUser } from "react-icons/fa";
+import { FaMapMarkerAlt, FaUser,  } from "react-icons/fa";
+
 import { useTranslation } from "react-i18next";
 
 const containerStyle = {
@@ -114,66 +115,141 @@ const MapComponent = () => {
   if (!isLoaded) return <p>Loading map...</p>;
 
   return (
-    <motion.div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 p-6 bg-white shadow-lg rounded-xl w-full">
-      {/* Left Panel */}
-      <div className="w-full md:w-1/3 space-y-4 relative">
-        {/* Header with "Get Location" and User Icon */}
-        <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold bg-[#188bff] bg-clip-text text-transparent">
-          {t("locationSecondSection.title")}
-          </h2>
-          <button
-            onClick={getCurrentLocation}
-            className="p-2 bg-gray-200 rounded-full shadow-md hover:bg-gray-300"
+    <motion.section
+      className="py-16 px-4 max-w-6xl mx-auto"
+      initial={{ opacity: 0, y: -30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
+    >
+      {/* EXACT SAME HEADER AS BLOG SECTION */}
+      <div className="text-center mb-16">
+        <div className="flex justify-center items-center gap-3 mb-4">
+          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+          <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
+          {/* <MapPin className="w-6 h-6 text-[#188bff] animate-pulse" /> */}
+          <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
+          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+        </div>
+        
+        <h2 className="text-4xl font-bold text-gray-800 mb-4">
+          <span className="text-gray-600">{t("locationSecondSection.title1")}</span>{" "}
+          <span className="bg-[#188bff] bg-clip-text text-transparent">
+            {t("locationSecondSection.title2")}
+          </span>
+        </h2>
+        <p className="text-gray-500 text-lg">Find your way with interactive directions</p>
+      </div>
+
+      {/* Map Content */}
+      <motion.div 
+        className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 p-8 bg-white rounded-2xl shadow-lg border border-blue-100 hover:border-[#188bff] transition-all duration-300 group"
+        whileHover={{ y: -5, scale: 1.01 }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        {/* Left Panel */}
+        <div className="w-full md:w-1/3 space-y-6 relative">
+          {/* Current Location Button */}
+          <div className="flex justify-end">
+            <button
+              onClick={getCurrentLocation}
+              className="inline-flex items-center gap-2 bg-[#188bff] text-white px-4 py-2 rounded-xl hover:bg-blue-600 transition-all duration-300 font-semibold text-sm group/btn shadow-sm hover:shadow-md"
+            >
+              <FaUser className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
+              {t("locationSecondSection.getLocation")}
+            </button>
+          </div>
+
+          {/* Starting Point Input */}
+          <motion.div 
+            className="flex items-center space-x-3 border-2 border-blue-100 p-4 rounded-xl shadow-sm group-hover:border-blue-200 transition-all duration-300"
+            whileHover={{ scale: 1.02 }}
           >
-            <FaUser className="text-[#80cefd]" />
-          </button>
-        </div>
+            <FaMapMarkerAlt className="text-[#188bff] text-lg" />
+            <Autocomplete onLoad={(auto) => (startRef.current = auto)} onPlaceChanged={() => handlePlaceChange("start")}>
+              <input
+                type="text"
+                value={startLocation}
+                onChange={(e) => setStartLocation(e.target.value)}
+                placeholder={t("locationSecondSection.startingPoint")}
+                className="w-full outline-none placeholder-gray-500 text-gray-700 bg-transparent"
+              />
+            </Autocomplete>
+          </motion.div>
 
-        {/* Starting Point Input */}
-        <div className="flex items-center space-x-2 border p-2 rounded-lg shadow-sm">
-          <FaMapMarkerAlt className="text-[#80cefd]" />
-          <Autocomplete onLoad={(auto) => (startRef.current = auto)} onPlaceChanged={() => handlePlaceChange("start")}>
-            <input
-              type="text"
-              value={startLocation}
-              onChange={(e) => setStartLocation(e.target.value)}
-              placeholder={t("locationSecondSection.startingPoint")}
-              className="w-full outline-none placeholder-gray-500 text-gray-700"
-            />
-          </Autocomplete>
-        </div>
+          {/* Destination Input */}
+          <motion.div 
+            className="flex items-center space-x-3 border-2 border-blue-100 p-4 rounded-xl shadow-sm group-hover:border-blue-200 transition-all duration-300"
+            whileHover={{ scale: 1.02 }}
+          >
+            <FaMapMarkerAlt className="text-[#F76680] text-lg" />
+            <Autocomplete onLoad={(auto) => (endRef.current = auto)} onPlaceChanged={() => handlePlaceChange("end")}>
+              <input
+                type="text"
+                value={endLocation}
+                onChange={(e) => setEndLocation(e.target.value)}
+                placeholder={t("locationSecondSection.destination")}
+                className="w-full outline-none placeholder-gray-500 text-gray-700 bg-transparent"
+              />
+            </Autocomplete>
+          </motion.div>
 
-        {/* Destination Input */}
-        <div className="flex items-center space-x-2 border p-2 rounded-lg shadow-sm">
-          <FaMapMarkerAlt className="text-[#F76680]" />
-          <Autocomplete onLoad={(auto) => (endRef.current = auto)} onPlaceChanged={() => handlePlaceChange("end")}>
-            <input
-              type="text"
-              value={endLocation}
-              onChange={(e) => setEndLocation(e.target.value)}
-              placeholder={t("locationSecondSection.destination")}
-              className="w-full outline-none placeholder-gray-500 text-gray-700"
-            />
-          </Autocomplete>
-        </div>
+          {/* Search Button */}
+          <motion.button 
+            onClick={calculateRoute}
+            className="bg-gradient-to-r from-[#188bff] to-blue-600 w-full hover:from-blue-600 hover:to-[#188bff] text-white font-semibold rounded-xl py-4 h-auto transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl border-0 group/btn"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="flex items-center justify-center gap-2">
+              {t("locationSecondSection.search")}
+              {/* <Navigation className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" /> */}
+            </span>
+          </motion.button>
 
-        {/* Search Button */}
-        <button onClick={calculateRoute}             className="bg-gradient-to-r from-blue-500 to-blue-600 w-full hover:from-blue-600 hover:to-blue-500 text-white font-semibold rounded-xl py-3 h-auto transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl border-0"
->
-        {t("locationSecondSection.search")}
-        </button>
+          {/* Duration Display */}
+          {duration && (
+            <motion.div 
+              className="text-center p-3 bg-blue-50 rounded-xl border border-blue-100"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              <p className="text-gray-700 font-semibold">
+                {t("locationSecondSection.estimatedTime")}: <span className="text-[#188bff]">{duration}</span>
+              </p>
+            </motion.div>
+          )}
+        </div>  
 
-        {duration && <p className="text-gray-700 text-center">{t("locationSecondSection.estimatedTime")}: {duration}</p>}
-      </div>  
-
-      {/* Right Panel (Google Map) */}
-      <motion.div className="w-full md:w-2/3 overflow-hidden rounded-lg shadow-lg">
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={12} onLoad={handleLoad}>
-          {directions && <DirectionsRenderer directions={directions} options={{ polylineOptions: { strokeColor: "#57007B" } }} />}
-        </GoogleMap>
+        {/* Right Panel (Google Map) */}
+        <motion.div 
+          className="w-full md:w-2/3 overflow-hidden rounded-xl shadow-lg border border-blue-100 group-hover:border-[#188bff] transition-all duration-300"
+          whileHover={{ scale: 1.01 }}
+        >
+          <GoogleMap 
+            mapContainerStyle={containerStyle} 
+            center={center} 
+            zoom={12} 
+            onLoad={handleLoad}
+            options={{
+              styles: [
+                {
+                  featureType: "all",
+                  elementType: "geometry",
+                  stylers: [{ color: "#f5f5f5" }],
+                },
+              ],
+            }}
+          >
+            {directions && <DirectionsRenderer directions={directions} options={{ polylineOptions: { strokeColor: "#188bff", strokeWeight: 6 } }} />}
+          </GoogleMap>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </motion.section>
   );
 };
 

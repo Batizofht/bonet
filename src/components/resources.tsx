@@ -8,6 +8,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, Calendar, Clock, BookOpen, Sparkles } from "lucide-react";
+import { MapPin, Navigation } from "lucide-react";
 
 interface Blogs{
   image:string;
@@ -44,6 +45,7 @@ export default function Blog() {
     }
   };
 
+
   return (
     <motion.section
       className="py-16 px-4 max-w-6xl mx-auto"
@@ -52,104 +54,82 @@ export default function Blog() {
       transition={{ duration: 0.7 }}
       viewport={{ once: true }}
     >
-      {/* Section Header */}
+      {/* EXACT SAME HEADER AS BLOG SECTION */}
       <div className="text-center mb-16">
         <div className="flex justify-center items-center gap-3 mb-4">
           <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
           <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <BookOpen className="w-6 h-6 text-[#188bff] animate-pulse" />
+          <MapPin className="w-6 h-6 text-[#188bff] animate-pulse" />
           <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
           <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
         </div>
         
         <h2 className="text-4xl font-bold text-gray-800 mb-4">
-          <span className="text-gray-600">{t("blog.header.title1")}</span>{" "}
+          <span className="text-gray-600">{t("locationSection.title1")}</span>{" "}
           <span className="bg-[#188bff] bg-clip-text text-transparent">
-            {t("blog.header.title2")}
+            {t("locationSection.title2")}
           </span>
         </h2>
-        <p className="text-gray-500 text-lg">Discover insightful articles and travel tips</p>
+        <p className="text-gray-500 text-lg">Find us easily at our convenient location</p>
       </div>
 
-      {/* Loader/Error */}
-      {loading && (
-        <div className="text-center py-12">
-          <div className="inline-flex items-center gap-2 text-gray-600">
-            <div className="w-2 h-2 bg-[#188bff] rounded-full animate-bounce"></div>
-            <div className="w-2 h-2 bg-[#188bff] rounded-full animate-bounce delay-100"></div>
-            <div className="w-2 h-2 bg-[#188bff] rounded-full animate-bounce delay-200"></div>
+      {/* Map Container */}
+      <motion.div 
+        className="bg-white rounded-2xl overflow-hidden border border-blue-100 shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
+        whileHover={{ y: -5, scale: 1.01 }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <div className="relative overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3078.896987330303!2d30.12271957358988!3d-1.9494688367076565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca76e7bf4e2d3%3A0xa45692b805f13796!2sKimironko%20Bus%20Station!5e1!3m2!1sen!2srw!4v1742228259950!5m2!1sen!2srw"
+            width="600"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="w-full h-[500px] transform group-hover:scale-105 transition-transform duration-500"
+          />
+          <div className="absolute top-4 right-4">
+            <Navigation className="w-5 h-5 text-[#188bff] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
-          <p className="mt-2 text-gray-600">{t("blog.loading")}</p>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
-      )}
-      
-      {error && (
-        <p className="text-center text-red-500 font-semibold py-8">{error}</p>
-      )}
-      
-      {!loading && blogs.length === 0 && !error && (
-        <p className="text-center text-gray-500 py-8">{t("blog.noPosts")}</p>
-      )}
 
-      {/* Blog Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {blogs.map((post, index) => (
-          <motion.div
-            key={index}
-            className="bg-white rounded-2xl overflow-hidden border border-blue-100 hover:border-[#188bff] transition-all duration-300 group cursor-pointer shadow-lg hover:shadow-xl"
-            whileHover={{ y: -8, scale: 1.02 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true }}
-          >
-            {/* Image */}
-            <div className="relative overflow-hidden">
-              <img
-                src={`https://switchiify.com/bonetProject/backend/public/${post.image}`}
-                alt={post.title}
-                className="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute top-3 right-3">
-                <Sparkles className="w-5 h-5 text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {/* Location Info */}
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-[#188bff] transition-colors">
+            Our Main Office
+          </h3>
+          
+          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+            Kimironko Bus Station Area, Kigali, Rwanda
+          </p>
+
+          {/* Meta Info */}
+          <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
+            <div className="flex items-center gap-1">
+              <MapPin className="w-3 h-3" />
+              <span>Easy to find</span>
             </div>
-
-            {/* Content */}
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2 group-hover:text-[#188bff] transition-colors">
-                {post.title}
-              </h3>
-              
-              <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
-                {post.quote}
-              </p>
-
-              {/* Meta Info */}
-              <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
-                <div className="flex items-center gap-1">
-                  <Calendar className="w-3 h-3" />
-                  <span>Just now</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Clock className="w-3 h-3" />
-                  <span>5 min read</span>
-                </div>
-              </div>
-
-              {/* Read More Button */}
-              <Link
-                href={`/blog/${slugify(post.title)}`}
-                className="inline-flex items-center gap-2 bg-[#188bff] text-white px-5 py-2 rounded-xl hover:bg-blue-600 transition-all duration-300 font-semibold text-sm group/btn shadow-sm hover:shadow-md"
-              >
-                {t("blog.readMore")}
-                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-              </Link>
+            <div className="flex items-center gap-1">
+              <Navigation className="w-3 h-3" />
+              <span>Free parking</span>
             </div>
-          </motion.div>
-        ))}
-      </div>
+          </div>
+
+          {/* Directions Button */}
+          <button className="inline-flex items-center gap-2 bg-[#188bff] text-white px-5 py-2 rounded-xl hover:bg-blue-600 transition-all duration-300 font-semibold text-sm group/btn shadow-sm hover:shadow-md">
+            Get Directions
+            <Navigation className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+          </button>
+        </div>
+      </motion.div>
     </motion.section>
   );
-}
+};
+
+
