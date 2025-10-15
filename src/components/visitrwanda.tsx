@@ -107,7 +107,7 @@ const Gallery = () => {
           whileTap={{ scale: 0.95 }}
           className="flex items-center gap-3 bg-[#188bff] text-white px-8 py-4 rounded-2xl hover:bg-blue-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl cursor-pointer group/btn"
         >
-          <Camera className="w-5 h-5" />
+         
           {t("gallery.button")}
           <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
         </motion.button>

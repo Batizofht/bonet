@@ -1,5 +1,5 @@
 "use"
-import FirstService from "../../services/firstservice";
+import VisitFirst from "../../services/VisitFirst";
 import VisitRwanda from "../../visit/visit";
 import WhyInvest from "../../visit/why";
 export const dynamic = "force-dynamic";
@@ -37,7 +37,7 @@ export const metadata = {
 export default function VisitRwandaPage() {
   return (
     <div className="bg-white min-h-screen text-center text-white">
-      <FirstService />
+      <VisitFirst />
       <VisitRwanda />
       <WhyInvest />
     </div>

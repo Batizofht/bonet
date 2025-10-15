@@ -6,15 +6,18 @@ import {
   DatePicker,
   TimePicker,
   Button,
-  Spin,
-  Card,
+  InputNumber,
 } from "antd";
 import {
-  TeamOutlined,
-  EnvironmentOutlined,
-  CalendarOutlined,
   UserOutlined,
   MailOutlined,
+  PhoneOutlined,
+  EnvironmentOutlined,
+  CalendarOutlined,
+  CarOutlined,
+  TeamOutlined,
+  ClockCircleOutlined,
+  BulbOutlined,
 } from "@ant-design/icons";
 import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
 import axios from "axios";
@@ -24,12 +27,11 @@ import { useTranslation } from "react-i18next";
 
 const { Option } = Select;
 
-const TransportCard = () => {
+const TransportCard = ({ bookTransport }) => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const [rentTime, setRentTime] = useState(null);
-  const [advertisements, setAdvertisements] = useState([]);
-  const [loadingAds, setLoadingAds] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyDBaDarG-S951BPfZoUCScMSe_T_v8M0pE",
@@ -39,22 +41,6 @@ const TransportCard = () => {
   const pickupRef = useRef(null);
   const dropoffRef = useRef(null);
 
-  useEffect(() => {
-    const fetchAds = async () => {
-      try {
-        const res = await axios.get(
-          "https://switchiify.com/bonetProject/backend/public/advertisements"
-        );
-        setAdvertisements(res.data.slice(0, 3));
-      } catch (error) {
-        console.error("Failed to fetch advertisements:", error);
-      } finally {
-        setLoadingAds(false);
-      }
-    };
-    fetchAds();
-  }, []);
-
   const handlePlaceChange = (field, ref) => {
     const place = ref.current.getPlace();
     if (place && place.formatted_address) {
@@ -63,10 +49,10 @@ const TransportCard = () => {
   };
 
   const handleTransportServiceChange = (value) => {
-    if (value === t("transportCard.options.transportService.hotelToAirport")) {
+    if (value === "hotel_to_airport") {
       form.setFieldsValue({
         transport_service: value,
-        dropoff_location: t("transportCard.kigaliAirport"),
+        dropoff_location: "Kigali International Airport (KGL)",
         rent_time: undefined,
       });
     } else {
@@ -77,346 +63,388 @@ const TransportCard = () => {
     }
   };
 
-  const handleContactNow = async () => {
+  const handleSubmit = async () => {
     try {
+      setIsLoading(true);
       const values = await form.validateFields();
 
+      if (!values.pickup || !values.dropoff_time) {
+        toast.error("❌ Please select both pickup date and time.");
+        return;
+      }
+
       const payload = {
-        ...values,
-        pickup: values.pickup.format("YYYY-MM-DD"),
-        dropoff: values.dropoff.format("HH:mm:ss"),
-        status: "not replied",
-        days_number: values.number_of_days || "",
+        full_name: values.full_name,
+        email: values.email,
+        phone: values.phone,
+        transport_service: values.transport_service,
+        transport_type: values.transport_type,
+        car_type: values.car_type,
+        seats: values.seats,
+        rent_time: values.rent_time,
+        number_of_days: values.number_of_days || null,
+        pickup_location: values.pickup_location,
+        dropoff_location: values.dropoff_location,
+        pickup_date: values.pickup.format("YYYY-MM-DD"),
+        pickup_time: values.dropoff_time.format("HH:mm:ss"),
+        addons: values.addons || [],
+        special_requests: values.special_requests || "",
       };
 
-      const response = await axios.post(
+      await axios.post(
         "https://switchiify.com/bonetProject/backend/public/transportBooking",
         payload
       );
 
-      if (response.data.id) {
-        toast.success(t("transportCard.successMessage"));
-        form.resetFields();
-        setRentTime(null);
-      } else {
-        toast.error(t("transportCard.errorMessage"));
-      }
+      toast.success("🎉 Transport request submitted successfully!");
+      form.resetFields();
+      setRentTime(null);
     } catch (error) {
-      toast.error(t("transportCard.fillRequired"));
+      console.error(error);
+      if (error.errorFields) {
+        toast.error("📝 Please fill in all required fields correctly.");
+      } else {
+        toast.error("❌ Failed to submit transport request.");
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-8">
-      {/* Glassy Gradient Form */}
-      <div className="flex-1 relative bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
-        {/* Decorative orbs */}
-        <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full -translate-x-16 -translate-y-16"></div>
-        <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tr from-green-400/20 to-cyan-600/20 rounded-full translate-x-12 translate-y-12"></div>
+    <div className="min-h-screen pb-8">
+      <ToastContainer 
+        position="top-center" 
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
 
-        <div className="relative z-10 p-6">
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent mb-2">
-            {t("transportCard.titles.transportRequest")}
-          </h1>
-          <p className="text-[15px] text-white/80 mb-6">
-            {t("transportCard.instructions")}
-          </p>
-
+     <div className="mx-0 md:max-w-4xl md:mx-auto md:px-4 px-2">
+        {/* Form Container */}
+        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
           <Form
             layout="vertical"
             form={form}
-            onFinish={handleContactNow}
-            className="space-y-4"
+            size="large"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <Form.Item
-                label={<span className="text-white/80">{t("transportCard.labels.fullName")}</span>}
-                name="names"
-                rules={[{ required: true, message: t("transportCard.errors.enterName") }]}
-              >
-                <Input
-                  prefix={<UserOutlined />}
-                  placeholder={t("transportCard.placeholders.fullName")}
-                  className="rounded-xl border-white/30 bg-white/5 text-white placeholder-white/50 hover:bg-white/10 focus:ring-2 focus:ring-blue-400"
-                />
-              </Form.Item>
-
-              <Form.Item
-                label={<span className="text-white/80">{t("transportCard.labels.email")}</span>}
-                name="email"
-                rules={[{ required: true, type: "email", message: t("transportCard.errors.enterValidEmail") }]}
-              >
-                <Input
-                  prefix={<MailOutlined />}
-                  placeholder={t("transportCard.placeholders.email")}
-                  className="rounded-xl border-white/30 bg-white/5 text-white placeholder-white/50 hover:bg-white/10 focus:ring-2 focus:ring-blue-400"
-                />
-              </Form.Item>
-
-              <Form.Item
-                label={<span className="text-white/80">{t("transportCard.labels.transportService")}</span>}
-                name="transport_service"
-              >
-                <Select
-                  onChange={handleTransportServiceChange}
-                  placeholder={t("transportCard.placeholders.selectService")}
-                  className="rounded-xl bg-white/5 text-white placeholder-white/50"
-                >
-                  <Option value={t("transportCard.options.transportService.airportTransfers")}>
-                    {t("transportCard.options.transportService.airportTransfers")}
-                  </Option>
-                  <Option value={t("transportCard.options.transportService.hotelToAirport")}>
-                    {t("transportCard.options.transportService.hotelToAirport")}
-                  </Option>
-                  <Option value={t("transportCard.options.transportService.localBusiness")}>
-                    {t("transportCard.options.transportService.localBusiness")}
-                  </Option>
-                  <Option value={t("transportCard.options.transportService.cityTours")}>
-                    {t("transportCard.options.transportService.cityTours")}
-                  </Option>
-                  <Option value={t("transportCard.options.transportService.conferenceEvent")}>
-                    {t("transportCard.options.transportService.conferenceEvent")}
-                  </Option>
-                </Select>
-              </Form.Item>
-
-              <Form.Item
-                label={<span className="text-white/80">{t("transportCard.labels.transportType")}</span>}
-                name="transport_type"
-                rules={[{ required: true, message: t("transportCard.errors.selectType") }]}
-              >
-                <Select
-                  placeholder={t("transportCard.placeholders.selectType")}
-                  className="rounded-xl bg-white/5 text-white placeholder-white/50"
-                >
-                  <Option value={t("transportCard.options.transportType.businessVip")}>
-                    {t("transportCard.options.transportType.businessVip")}
-                  </Option>
-                </Select>
-              </Form.Item>
-
-              <Form.Item
-                label={<span className="text-white/80">{t("transportCard.labels.carType")}</span>}
-                name="car_type"
-              >
-                <Select
-                  placeholder={t("transportCard.placeholders.selectCarType")}
-                  className="rounded-xl bg-white/5 text-white placeholder-white/50"
-                >
-                  <Option value={t("transportCard.options.carType.execSedan")}>
-                    {t("transportCard.options.carType.execSedan")}
-                  </Option>
-                  <Option value={t("transportCard.options.carType.luxSUV")}>
-                    {t("transportCard.options.carType.luxSUV")}
-                  </Option>
-                  <Option value={t("transportCard.options.carType.bizSedan")}>
-                    {t("transportCard.options.carType.bizSedan")}
-                  </Option>
-                  <Option value={t("transportCard.options.carType.reliableSUV")}>
-                    {t("transportCard.options.carType.reliableSUV")}
-                  </Option>
-                  <Option value={t("transportCard.options.carType.luxVan")}>
-                    {t("transportCard.options.carType.luxVan")}
-                  </Option>
-                </Select>
-              </Form.Item>
-
-              <Form.Item
-                label={<span className="text-white/80">{t("transportCard.labels.seats")}</span>}
-                name="seats"
-              >
-                <Input
-                  type="number"
-                  min={1}
-                  prefix={<TeamOutlined />}
-                  placeholder={t("transportCard.placeholders.seats")}
-                  className="rounded-xl border-white/30 bg-white/5 text-white placeholder-white/50 hover:bg-white/10 focus:ring-2 focus:ring-blue-400"
-                />
-              </Form.Item>
-
-              <Form.Item
-                label={<span className="text-white/80">{t("transportCard.labels.rentTime")}</span>}
-                name="rent_time"
-              >
-                <Select
-                  placeholder={t("transportCard.placeholders.selectRentTime")}
-                  allowClear
-                  onChange={(value) => setRentTime(value)}
-                  className="rounded-xl bg-white/5 text-white placeholder-white/50"
-                >
-                  <Option value={t("transportCard.options.rentTime.wholeDay")}>
-                    {t("transportCard.options.rentTime.wholeDay")}
-                  </Option>
-                  <Option value={t("transportCard.options.rentTime.halfDay")}>
-                    {t("transportCard.options.rentTime.halfDay")}
-                  </Option>
-                  <Option value={t("transportCard.options.rentTime.trip")}>
-                    {t("transportCard.options.rentTime.trip")}
-                  </Option>
-                  <Option value={t("transportCard.options.rentTime.moreDays")}>
-                    {t("transportCard.options.rentTime.moreDays")}
-                  </Option>
-                </Select>
-              </Form.Item>
-
-              {rentTime === t("transportCard.options.rentTime.moreDays") && (
+            {/* Personal Information */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
+                <UserOutlined className="text-blue-600" />
+                Personal Information
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Form.Item
-                  label={<span className="text-white/80">{t("transportCard.labels.numberOfDays")}</span>}
-                  name="number_of_days"
-                  rules={[{ required: true, message: t("transportCard.errors.enterNumberOfDays") }]}
+                  label="Full Name"
+                  name="full_name"
+                  rules={[{ required: true, message: 'Please enter your full name' }]}
                 >
                   <Input
-                    type="number"
-                    min={1}
-                    placeholder={t("transportCard.placeholders.numberOfDays")}
-                    className="rounded-xl border-white/30 bg-white/5 text-white placeholder-white/50 hover:bg-white/10 focus:ring-2 focus:ring-blue-400"
+                    prefix={<UserOutlined className="text-gray-400" />}
+                    placeholder="Enter your full name"
+                    className="rounded-lg h-12"
                   />
                 </Form.Item>
-              )}
 
-              <Form.Item
-                label={<span className="text-white/80">{t("transportCard.labels.pickupLocation")}</span>}
-                name="pickup_location"
-                rules={[{  message: t("transportCard.errors.enterPickupLocation") }]}
-              >
-                {isLoaded ? (
-                  <Autocomplete
-                    onLoad={(ref) => (pickupRef.current = ref)}
-                    onPlaceChanged={() => handlePlaceChange("pickup_location", pickupRef)}
-                  >
-                    <Input
-                      prefix={<EnvironmentOutlined />}
-                      placeholder={t("transportCard.placeholders.pickupLocation")}
-                      className="rounded-xl border-white/30 bg-white/5 text-white placeholder-white/50 hover:bg-white/10 focus:ring-2 focus:ring-blue-400"
-                    />
-                  </Autocomplete>
-                ) : (
-                  <Input disabled placeholder={t("transportCard.placeholders.loadingMaps")} />
-                )}
-              </Form.Item>
-
-              <Form.Item
-                label={<span className="text-white/80">{t("transportCard.labels.dropoffLocation")}</span>}
-                name="dropoff_location"
-                rules={[{  message: t("transportCard.errors.enterDropoffLocation") }]}
-              >
-                {form.getFieldValue("transport_service") === t("transportCard.options.transportService.hotelToAirport") ? (
-                  <Input value={t("transportCard.kigaliAirport")} disabled />
-                ) : isLoaded ? (
-                  <Autocomplete
-                    onLoad={(ref) => (dropoffRef.current = ref)}
-                    onPlaceChanged={() => handlePlaceChange("dropoff_location", dropoffRef)}
-                  >
-                    <Input
-                      prefix={<EnvironmentOutlined />}
-                      placeholder={t("transportCard.placeholders.dropoffLocation")}
-                      className="rounded-xl border-white/30 bg-white/5 text-white placeholder-white/50 hover:bg-white/10 focus:ring-2 focus:ring-blue-400"
-                    />
-                  </Autocomplete>
-                ) : (
-                  <Input disabled placeholder={t("transportCard.placeholders.loadingMaps")} />
-                )}
-              </Form.Item>
-
-              <Form.Item
-                label={<span className="text-white/80">{t("transportCard.labels.pickupDate")}</span>}
-                name="pickup"
-                rules={[{ required: true, message: t("transportCard.errors.selectPickupDate") }]}
-              >
-                <DatePicker
-                  className="w-full rounded-xl bg-white/5 border-white/30 text-white placeholder-white/50"
-                  suffixIcon={<CalendarOutlined className="text-white/70" />}
-                />
-              </Form.Item>
-
-              <Form.Item
-                label={<span className="text-white/80">{t("tourGuideForm.labels.addons")}</span>}
-                name="addons"
-              >
-                <Select
-                  mode="multiple"
-                  allowClear
-                  className="rounded-xl bg-white/5 text-white placeholder-white/50"
+                <Form.Item
+                  label="Email Address"
+                  name="email"
+                  rules={[
+                    { required: true, message: 'Please enter your email' },
+                    { type: 'email', message: 'Please enter a valid email' }
+                  ]}
                 >
-                  <Option value="driver">{t("tourGuideForm.options.addons.driver")}</Option>
-                  <Option value="multilingual">{t("tourGuideForm.options.addons.multilingual")}</Option>
-                  <Option value="water-wifi">{t("tourGuideForm.options.addons.waterWifi")}</Option>
-                  <Option value="route-support">{t("tourGuideForm.options.addons.routeSupport")}</Option>
-                  <Option value="meet-greet">{t("tourGuideForm.options.addons.meetGreet")}</Option>
-                </Select>
-              </Form.Item>
+                  <Input
+                    prefix={<MailOutlined className="text-gray-400" />}
+                    placeholder="your.email@example.com"
+                    className="rounded-lg h-12"
+                  />
+                </Form.Item>
 
-              <Form.Item
-                label={<span className="text-white/80">{t("transportCard.labels.pickupTime")}</span>}
-                name="dropoff"
-                rules={[{ required: true, message: t("transportCard.errors.selectPickupTime") }]}
-              >
-                <TimePicker
-                  format="HH:mm"
-                  className="w-full rounded-xl bg-white/5 border-white/30 text-white placeholder-white/50"
-                  suffixIcon={<CalendarOutlined className="text-white/70" />}
-                />
-              </Form.Item>
+                <Form.Item
+                  label="Phone Number"
+                  name="phone"
+                  rules={[{ required: true, message: 'Please enter your phone number' }]}
+                >
+                  <Input
+                    prefix={<PhoneOutlined className="text-gray-400" />}
+                    placeholder="+250 78X XXX XXX"
+                    className="rounded-lg h-12"
+                  />
+                </Form.Item>
+              </div>
             </div>
 
-            <div className="col-span-2 text-center mt-4">
+            {/* Transport Service */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
+                <CarOutlined className="text-green-600" />
+                Transport Service
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Form.Item
+                  label="Service Type"
+                  name="transport_service"
+                  rules={[{ required: true, message: 'Please select service type' }]}
+                >
+                  <Select
+                    onChange={handleTransportServiceChange}
+                    placeholder="Select transport service"
+                    className="rounded-lg h-12"
+                  >
+                    <Option value="airport_transfers">Airport Transfers</Option>
+                    <Option value="hotel_to_airport">Hotel to Airport</Option>
+                    <Option value="local_business">Local Business Transport</Option>
+                    <Option value="city_tours">City Tours</Option>
+                    <Option value="conference_event">Conference & Event Transport</Option>
+                    <Option value="intercity_travel">Intercity Travel</Option>
+                  </Select>
+                </Form.Item>
+
+                <Form.Item
+                  label="Transport Type"
+                  name="transport_type"
+                  rules={[{ required: true, message: 'Please select transport type' }]}
+                >
+                  <Select
+                    placeholder="Select transport type"
+                    className="rounded-lg h-12"
+                  >
+                    <Option value="business_vip">Business VIP Service</Option>
+                    <Option value="executive">Executive Service</Option>
+                    <Option value="standard">Standard Service</Option>
+                    <Option value="group_transport">Group Transport</Option>
+                  </Select>
+                </Form.Item>
+
+                <Form.Item
+                  label="Vehicle Type"
+                  name="car_type"
+                  rules={[{ required: true, message: 'Please select vehicle type' }]}
+                >
+                  <Select
+                    placeholder="Select vehicle type"
+                    className="rounded-lg h-12"
+                  >
+                    <Option value="executive_sedan">Executive Sedan</Option>
+                    <Option value="luxury_suv">Luxury SUV</Option>
+                    <Option value="business_sedan">Business Sedan</Option>
+                    <Option value="reliable_suv">Reliable SUV</Option>
+                    <Option value="luxury_van">Luxury Van</Option>
+                    <Option value="minibus">Minibus</Option>
+                  </Select>
+                </Form.Item>
+
+                <Form.Item
+                  label="Number of Passengers"
+                  name="seats"
+                  rules={[{ required: true, message: 'Please enter number of passengers' }]}
+                >
+                  <InputNumber
+                    min={1}
+                    max={50}
+                    placeholder="Number of passengers"
+                    className="w-full rounded-lg h-12"
+                    controls={false}
+                  />
+                </Form.Item>
+              </div>
+            </div>
+
+            {/* Rental Details */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
+                <ClockCircleOutlined className="text-yellow-600" />
+                Rental Details
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Form.Item
+                  label="Rental Duration"
+                  name="rent_time"
+                  rules={[{ required: true, message: 'Please select rental duration' }]}
+                >
+                  <Select
+                    placeholder="Select rental duration"
+                    onChange={(value) => setRentTime(value)}
+                    className="rounded-lg h-12"
+                  >
+                    <Option value="whole_day">Whole Day (8 hours)</Option>
+                    <Option value="half_day">Half Day (4 hours)</Option>
+                    <Option value="per_trip">Per Trip</Option>
+                    <Option value="multiple_days">Multiple Days</Option>
+                  </Select>
+                </Form.Item>
+
+                {rentTime === "multiple_days" && (
+                  <Form.Item
+                    label="Number of Days"
+                    name="number_of_days"
+                    rules={[{ required: true, message: 'Please enter number of days' }]}
+                  >
+                    <InputNumber
+                      min={1}
+                      max={30}
+                      placeholder="Number of days"
+                      className="w-full rounded-lg h-12"
+                      controls={false}
+                    />
+                  </Form.Item>
+                )}
+
+                <Form.Item
+                  label="Pickup Date"
+                  name="pickup"
+                  rules={[{ required: true, message: 'Please select pickup date' }]}
+                >
+                  <DatePicker
+                    className="w-full rounded-lg h-12"
+                    format="YYYY-MM-DD"
+                    placeholder="Select pickup date"
+                  />
+                </Form.Item>
+
+                <Form.Item
+                  label="Pickup Time"
+                  name="dropoff_time"
+                  rules={[{ required: true, message: 'Please select pickup time' }]}
+                >
+                  <TimePicker
+                    format="HH:mm"
+                    className="w-full rounded-lg h-12"
+                    placeholder="Select pickup time"
+                  />
+                </Form.Item>
+              </div>
+            </div>
+
+            {/* Locations */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
+                <EnvironmentOutlined className="text-purple-600" />
+                Locations
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Form.Item
+                  label="Pickup Location"
+                  name="pickup_location"
+                  rules={[{ required: true, message: 'Please enter pickup location' }]}
+                >
+                  {isLoaded ? (
+                    <Autocomplete
+                      onLoad={(ref) => (pickupRef.current = ref)}
+                      onPlaceChanged={() => handlePlaceChange("pickup_location", pickupRef)}
+                    >
+                      <Input
+                        prefix={<EnvironmentOutlined className="text-gray-400" />}
+                        placeholder="Enter pickup location"
+                        className="rounded-lg h-12"
+                      />
+                    </Autocomplete>
+                  ) : (
+                    <Input
+                      prefix={<EnvironmentOutlined className="text-gray-400" />}
+                      placeholder="Enter pickup location"
+                      className="rounded-lg h-12"
+                    />
+                  )}
+                </Form.Item>
+
+                <Form.Item
+                  label="Drop-off Location"
+                  name="dropoff_location"
+                  rules={[{ required: true, message: 'Please enter drop-off location' }]}
+                >
+                  {form.getFieldValue("transport_service") === "hotel_to_airport" ? (
+                    <Input
+                      value="Kigali International Airport (KGL)"
+                      disabled
+                      className="rounded-lg h-12"
+                    />
+                  ) : isLoaded ? (
+                    <Autocomplete
+                      onLoad={(ref) => (dropoffRef.current = ref)}
+                      onPlaceChanged={() => handlePlaceChange("dropoff_location", dropoffRef)}
+                    >
+                      <Input
+                        prefix={<EnvironmentOutlined className="text-gray-400" />}
+                        placeholder="Enter drop-off location"
+                        className="rounded-lg h-12"
+                      />
+                    </Autocomplete>
+                  ) : (
+                    <Input
+                      prefix={<EnvironmentOutlined className="text-gray-400" />}
+                      placeholder="Enter drop-off location"
+                      className="rounded-lg h-12"
+                    />
+                  )}
+                </Form.Item>
+              </div>
+            </div>
+
+            {/* Additional Services */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
+                <BulbOutlined className="text-orange-600" />
+                Additional Services
+              </h3>
+              <div className="grid grid-cols-1 gap-6">
+                <Form.Item
+                  label="Additional Services"
+                  name="addons"
+                >
+                  <Select
+                    mode="multiple"
+                    placeholder="Select additional services (optional)"
+                    className="rounded-lg h-12"
+                  >
+                    <Option value="professional_driver">Professional Driver</Option>
+                    <Option value="multilingual_driver">Multilingual Driver</Option>
+                    <Option value="water_wifi">Complimentary Water & WiFi</Option>
+                    <Option value="route_planning">Route Planning & Support</Option>
+                    <Option value="meet_greet">Meet & Greet Service</Option>
+                    <Option value="child_seats">Child Safety Seats</Option>
+                    <Option value="luggage_assistance">Luggage Assistance</Option>
+                  </Select>
+                </Form.Item>
+
+                <Form.Item
+                  label="Special Requests"
+                  name="special_requests"
+                >
+                  <Input.TextArea
+                    rows={4}
+                    placeholder="Any special requirements, specific routes, or additional information we should know about..."
+                    className="rounded-lg"
+                  />
+                </Form.Item>
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <div className="mt-8">
               <Button
                 type="primary"
                 size="large"
-                htmlType="submit"
-                className="px-10 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                loading={isLoading}
+                onClick={handleSubmit}
+                className="w-full h-14 rounded-lg text-lg font-semibold bg-blue-600 hover:bg-blue-700 border-0 shadow-md hover:shadow-lg transition-all duration-300"
               >
-                {t("transportCard.submitButton")}
+                {isLoading ? 'Submitting Your Request...' : 'Submit Transport Request'}
               </Button>
             </div>
           </Form>
         </div>
       </div>
-
-      {/* Ads Section unchanged */}
-      <div className="w-full md:w-[320px]">
-  <Card
-    title={t("transportCard.titles.sponsoredAds")}
-    className="relative shadow-2xl border border-white/20 rounded-2xl 
-               bg-white/5 backdrop-blur-lg text-white overflow-hidden"
-    headStyle={{ color: "white" }}
-  >
-    {/* Decorative gradient orbs like in form */}
-    <div className="absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full blur-3xl" />
-    <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-gradient-to-tr from-green-400/20 to-cyan-600/20 rounded-full blur-2xl" />
-
-    {loadingAds ? (
-      <Spin />
-    ) : advertisements.length > 0 ? (
-      advertisements.map((ad) => (
-        <div
-          key={ad.id}
-          className="mb-4 pb-2 relative z-10 bg-white/10 p-3 rounded-xl backdrop-blur-sm"
-        >
-          {ad.image && (
-            <img
-              src={`https://switchiify.com/bonetProject/backend/public/${ad.image}`}
-              alt={ad.adv_title}
-              className="w-full h-32 object-cover rounded-lg mb-2"
-            />
-          )}
-          <h4 className="font-semibold text-white">{ad.adv_title}</h4>
-          <p className="text-sm text-white/80 line-clamp-3">{ad.subtitle}</p>
-        </div>
-      ))
-    ) : (
-      <p className="text-sm text-white/70 relative z-10">
-        {t("transportCard.noAds")}
-      </p>
-    )}
-  </Card>
-</div>
-
-
-      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 };
 
 export default TransportCard;
-

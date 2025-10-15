@@ -14,7 +14,7 @@ import FAQ from "../components/footer";
 export default function HomePageClient() {
   return (
     <div className="bg-white min-h-screen text-center">
-      <Navbar />
+    
       <FirstHome />
       <Services />
       <WhyChooseBonet />

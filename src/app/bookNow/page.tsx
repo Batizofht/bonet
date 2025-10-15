@@ -41,7 +41,7 @@ export const metadata = {
 export default function BookPage() {
   return (
     <div className="bg-white min-h-screen text-center text-white">
-      <ThirdService />
+  
       <ContainerWithButtons />
       <Gallery />
     </div>

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import BookingCards from "./CardHome";
-import { X, Star, MapPin } from "lucide-react";
+import { X, Star, MapPin, Sparkles } from "lucide-react";
 
 interface Advertisement {
   id: number;
@@ -94,29 +94,101 @@ const FirstHome = () => {
       className="relative w-full min-h-screen md:h-full bg-cover bg-center overflow-hidden"
       style={{ backgroundImage: "url('/image/1.jpg')" }}
     >
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center text-center px-4 z-10">
-        <h1 className="font-Poppins font-bold text-[#188bff] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight max-w-full mb-5 drop-shadow-lg">
-          {displayText}
-        </h1>
-        <p className="font-Inder italic text-gray-200 text-lg sm:text-xl md:text-2xl max-w-full mb-3">
-          {t("subtitle")}
-        </p>
-        <p className="font-Inder text-gray-300 text-base sm:text-lg max-w-md mb-6">
-          {t("description")}
-        </p>
+      {/* Blackish Overlay */}
+      <div className="absolute inset-0 bg-black/70 z-10" />
+      
+      {/* Subtle Background Elements */}
+      <div className="absolute inset-0 z-10">
+        {/* Very subtle floating particles */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-white/10 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.1, 0.3, 0.1],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 3,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
 
-        <motion.button
-          initial={{ opacity: 0, y: 0 }}
+      {/* Content Overlay */}
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 z-20">
+        
+        {/* Sparkle Icon */}
+        <motion.div
+          initial={{ scale: 0, rotate: -180 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ duration: 0.8, type: "spring" }}
+          className="mb-6"
+        >
+          <div className="w-16 h-16 bg-gradient-to-br from-[#188bff] to-cyan-400 rounded-2xl flex items-center justify-center shadow-2xl">
+            <Sparkles className="w-8 h-8 text-white" />
+          </div>
+        </motion.div>
+
+        {/* Main Heading - Original Color */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          whileHover={{ scale: 1.05 }}
-          className="bg-[#188bff] text-white px-8 py-4 rounded-2xl hover:bg-blue-600 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl mb-8"
+          transition={{ duration: 0.8 }}
+          className="font-Poppins font-bold text-[#188bff] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight max-w-full mb-5 drop-shadow-2xl"
+        >
+          {displayText}
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="font-Inder italic text-gray-200 text-lg sm:text-xl md:text-2xl max-w-full mb-3"
+        >
+          {t("subtitle")}
+        </motion.p>
+
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="font-Inder text-gray-300 text-base sm:text-lg max-w-md mb-6"
+        >
+          {t("description")}
+        </motion.p>
+
+        {/* CTA Button */}
+        <motion.button
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          whileHover={{ 
+            scale: 1.05,
+            boxShadow: "0 20px 40px rgba(24, 139, 255, 0.3)"
+          }}
+          whileTap={{ scale: 0.95 }}
+          className="bg-[#188bff] text-white px-10 py-4 rounded-2xl font-semibold text-lg shadow-2xl mb-8 hover:bg-blue-600 transition-all duration-300"
           onClick={() => router.push("/services")}
         >
           {t("get_started")}
         </motion.button>
         
-        <BookingCards />
+        {/* Booking Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <BookingCards />
+        </motion.div>
       </div>
 
       {/* Advertisement */}

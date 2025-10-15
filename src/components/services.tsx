@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Building, Handshake, Briefcase, ChevronDown, ChevronUp } from "lucide-react";
+import { Building, Handshake, Briefcase, ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
 
@@ -101,15 +101,19 @@ function Services() {
                     <p className="text-gray-700 text-sm leading-relaxed mb-6">
                       {service.details}
                     </p>
-                    <button
-                      className="bg-[#188bff] text-white px-6 py-3 rounded-xl hover:bg-blue-600 transition-colors font-semibold text-sm hover:shadow-lg transform hover:scale-105 transition-transform"
+                    <div className="flex justify-center items-center">
+                        <button
+                      className="flex items-center gap-3 bg-[#188bff] text-white px-8 py-4 rounded-2xl hover:bg-blue-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl cursor-pointer group/btn"
                       onClick={(e) => {
                         e.stopPropagation();
                         navigate.push(service.route);
                       }}
                     >
                       {service.buttonText}
-                    </button>
+                         <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    </button> 
+                    </div>
+                 
                   </div>
                 </div>
               </div>

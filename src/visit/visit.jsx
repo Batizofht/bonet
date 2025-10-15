@@ -20,12 +20,29 @@ const VisitRwanda = () => {
     <div className="max-w-6xl mx-auto px-4 py-16">
       {/* Title & Subtitle */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold bg-[#188bff] bg-clip-text text-transparent mb-4">
-          {t('visitrwanda.title')}
+           <div className="flex justify-center items-center gap-3 mb-4">
+            <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+            <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
+           
+            <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
+            <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+          </div>
+          
+        
+          
+             <h2 className="text-4xl font-bold text-gray-800">
+          {t("visitrwanda.title").split(" ").map((word, i) => 
+            i === 0 || i === 1 || i === 2 ? (
+              <span key={i} className="bg-[#188bff] bg-clip-text text-transparent relative">
+                {word}
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#188bff] transform scale-x-0 hover:scale-x-100 transition-transform"></span>
+                {" "}
+              </span>
+            ) : (
+              word + " "
+            )
+          )}
         </h2>
-        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-          {t('visitrwanda.subtitle')}
-        </p>
       </div>
 
       {/* Cards */}

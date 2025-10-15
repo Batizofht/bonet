@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Form,
   Input,
@@ -7,9 +7,18 @@ import {
   Row,
   Col,
   Button,
-  Card,
-  Spin,
+  InputNumber,
 } from "antd";
+import {
+  UserOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  CalendarOutlined,
+  EnvironmentOutlined,
+  TeamOutlined,
+  CarOutlined,
+  BulbOutlined,
+} from "@ant-design/icons";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,227 +29,285 @@ const { Option } = Select;
 const TransportForm = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  const [ads, setAds] = useState([]);
-  const [loadingAds, setLoadingAds] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchAds = async () => {
-      try {
-        const res = await axios.get(
-          "https://switchiify.com/bonetProject/backend/public/advertisements"
-        );
-        setAds(res.data.slice(0, 3));
-      } catch (err) {
-        console.error("Failed to load advertisements:", err);
-      } finally {
-        setLoadingAds(false);
-      }
-    };
-    fetchAds();
-  }, []);
-
-  const onFinish = async (values) => {
+  const handleSubmit = async () => {
     try {
-      const adds_on = Array.isArray(values.addons)
-        ? values.addons.join(", ")
-        : "";
+      setIsLoading(true);
+      const values = await form.validateFields();
 
-      const formattedData = {
-        ...values,
-        datetime: values.datetime ? values.datetime.toISOString() : null,
-        adds_on,
+      if (!values.datetime) {
+        toast.error("❌ Please select date and time for your transport.");
+        return;
+      }
+
+      const adds_on = Array.isArray(values.addons) ? values.addons.join(", ") : "";
+
+      const payload = {
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        datetime: values.datetime.toISOString(),
+        pickup: values.pickup,
+        dropoff: values.dropoff,
+        passengers: values.passengers,
+        vehicle: values.vehicle,
+        addons: adds_on,
+        notes: values.notes || "",
       };
 
-      delete formattedData.addons;
-
-      const response = await axios.post(
+      await axios.post(
         "https://switchiify.com/bonetProject/backend/public/tourTransports",
-        formattedData
+        payload
       );
 
-      if (response.status === 200 || response.status === 201) {
-        toast.success(t("transportForm.successMessage"));
-        form.resetFields();
-      } else {
-        toast.error(t("transportForm.errorMessage"));
-      }
+      toast.success("🎉 Transport request submitted successfully!");
+      form.resetFields();
     } catch (error) {
-      toast.error(t("transportForm.errorMessage"));
       console.error(error);
+      if (error.errorFields) {
+        toast.error("📝 Please fill in all required fields correctly.");
+      } else {
+        toast.error("❌ Failed to submit transport request.");
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="flex justify-center p-6 bg-gray-50 min-h-screen">
-      <Card className="relative shadow-2xl rounded-3xl bg-white/90 backdrop-blur-md border border-white/20 overflow-hidden w-full max-w-[1100px]">
-        {/* Decorative Orbs Inside Card */}
-        <div className="absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full pointer-events-none"></div>
-        <div className="absolute -bottom-10 -right-10 w-28 h-28 bg-gradient-to-tr from-green-400/20 to-cyan-600/20 rounded-full pointer-events-none"></div>
+    <div className="">
+      <ToastContainer 
+        position="top-center" 
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
 
-        <Row gutter={24}>
-          {/* Form Section */}
-          <Col xs={24} md={16}>
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-500 mb-2">
-              {t("transportForm.title")}
+      <div className="">
+        {/* Form Container */}
+        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+          <div className="text-center mb-8">
+            <h1 className="text-2xl font-bold text-gray-800 mb-2">
+              Tour Transport Request
             </h1>
-            <p className="text-gray-600 mb-4">{t("transportForm.subtitle")}</p>
+         
+          </div>
 
-            <Form
-              form={form}
-              layout="vertical"
-              onFinish={onFinish}
-              className="relative z-10"
-            >
-              <Row gutter={24}>
-                <Col span={12}>
+          <Form
+            layout="vertical"
+            form={form}
+            size="large"
+          >
+            {/* Personal Information */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
+                <UserOutlined className="text-blue-600" />
+                Personal Information
+              </h3>
+              <Row gutter={[24, 16]}>
+                <Col xs={24} sm={12}>
                   <Form.Item
-                    label={t("transportForm.labels.fullName")}
+                    label="Full Name"
                     name="name"
-                    rules={[{ required: true, message: t("transportForm.errors.required") }]}
-                  >
-                    <Input placeholder={t("transportForm.placeholders.fullName")} />
-                  </Form.Item>
-                </Col>
-
-                <Col span={12}>
-                  <Form.Item
-                    label={t("transportForm.labels.email")}
-                    name="email"
-                    rules={[
-                      { required: true, message: t("transportForm.errors.required") },
-                      { type: "email", message: t("transportForm.errors.emailInvalid") }
-                    ]}
-                  >
-                    <Input placeholder={t("transportForm.placeholders.email")} />
-                  </Form.Item>
-                </Col>
-
-                <Col span={12}>
-                  <Form.Item
-                    label={t("transportForm.labels.datetime")}
-                    name="datetime"
-                    rules={[{ required: true, message: t("transportForm.errors.required") }]}
-                  >
-                    <DatePicker showTime className="w-full" />
-                  </Form.Item>
-                </Col>
-
-                <Col span={12}>
-                  <Form.Item
-                    label={t("transportForm.labels.pickup")}
-                    name="pickup"
-                    rules={[{ required: true, message: t("transportForm.errors.required") }]}
-                  >
-                    <Input placeholder={t("transportForm.placeholders.pickup")} />
-                  </Form.Item>
-                </Col>
-
-                <Col span={12}>
-                  <Form.Item
-                    label={t("transportForm.labels.dropoff")}
-                    name="dropoff"
-                    rules={[{ required: true, message: t("transportForm.errors.required") }]}
-                  >
-                    <Input placeholder={t("transportForm.placeholders.dropoff")} />
-                  </Form.Item>
-                </Col>
-
-                <Col span={12}>
-                  <Form.Item
-                    label={t("transportForm.labels.passengers")}
-                    name="passengers"
-                    rules={[{ required: true, message: t("transportForm.errors.required") }]}
+                    rules={[{ required: true, message: 'Please enter your full name' }]}
                   >
                     <Input
-                      type="number"
-                      min={1}
-                      placeholder={t("transportForm.placeholders.passengers")}
+                      prefix={<UserOutlined className="text-gray-400" />}
+                      placeholder="Enter your full name"
+                      className="rounded-lg h-12"
                     />
                   </Form.Item>
                 </Col>
-
-                <Col span={12}>
-                  <Form.Item label={t("transportForm.labels.vehicle")} name="vehicle">
-                    <Select placeholder={t("transportForm.placeholders.vehicle")}>
-                      <Option value="suv">{t("transportForm.options.vehicle.suv")}</Option>
-                      <Option value="cruiser">{t("transportForm.options.vehicle.cruiser")}</Option>
-                      <Option value="minivan">{t("transportForm.options.vehicle.minivan")}</Option>
-                      <Option value="bus">{t("transportForm.options.vehicle.bus")}</Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
-
-                <Col span={12}>
-                  <Form.Item label={t("transportForm.labels.addons")} name="addons">
-                    <Select
-                      mode="multiple"
-                      placeholder={t("transportForm.placeholders.addons")}
-                      allowClear
-                    >
-                      <Option value="driver">{t("transportForm.options.addons.driver")}</Option>
-                      <Option value="multilingual">{t("transportForm.options.addons.multilingual")}</Option>
-                      <Option value="water-wifi">{t("transportForm.options.addons.waterWifi")}</Option>
-                      <Option value="route-support">{t("transportForm.options.addons.routeSupport")}</Option>
-                      <Option value="meet-greet">{t("transportForm.options.addons.meetGreet")}</Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
-
-                <Col span={24}>
-                  <Form.Item label={t("transportForm.labels.notes")} name="notes">
-                    <Input.TextArea
-                      rows={3}
-                      placeholder={t("transportForm.placeholders.notes")}
+                <Col xs={24} sm={12}>
+                  <Form.Item
+                    label="Email Address"
+                    name="email"
+                    rules={[
+                      { required: true, message: 'Please enter your email' },
+                      { type: 'email', message: 'Please enter a valid email' }
+                    ]}
+                  >
+                    <Input
+                      prefix={<MailOutlined className="text-gray-400" />}
+                      placeholder="your.email@example.com"
+                      className="rounded-lg h-12"
                     />
                   </Form.Item>
                 </Col>
-
-                <Col span={24}>
-                  <div className="flex justify-center mt-4">
-                    <Button
-                      type="primary"
-                      htmlType="submit"
-                      className="px-8 py-3 rounded-full bg-gradient-to-r from-blue-600 to-green-500 hover:from-green-500 hover:to-blue-600 transition-all"
-                    >
-                      {t("transportForm.submitButton")}
-                    </Button>
-                  </div>
+                <Col xs={24} sm={12}>
+                  <Form.Item
+                    label="Phone Number"
+                    name="phone"
+                    rules={[{ required: true, message: 'Please enter your phone number' }]}
+                  >
+                    <Input
+                      prefix={<PhoneOutlined className="text-gray-400" />}
+                      placeholder="+250 78X XXX XXX"
+                      className="rounded-lg h-12"
+                    />
+                  </Form.Item>
                 </Col>
               </Row>
-            </Form>
-          </Col>
+            </div>
 
-          {/* Advertisement Section inside Card */}
-          <Col xs={24} md={8} className="mt-6 md:mt-0">
-            <Card
-              title={t("transportForm.adsTitle")}
-              className="shadow-md border border-gray-200 overflow-hidden"
-            >
-              {loadingAds ? (
-                <Spin />
-              ) : ads.length > 0 ? (
-                ads.map((ad) => (
-                  <div key={ad.id} className="mb-4 border-b pb-2">
-                    {ad.image && (
-                      <img
-                        src={`https://switchiify.com/bonetProject/backend/public/${ad.image}`}
-                        alt={ad.title}
-                        className="w-full h-32 object-cover rounded mb-2"
-                      />
-                    )}
-                    <h4 className="font-semibold text-blue-500">{ad.adv_title}</h4>
-                    <p className="text-sm text-gray-700 line-clamp-3">{ad.subtitle}</p>
-                  </div>
-                ))
-              ) : (
-                <p className="text-sm text-gray-500">{t("transportForm.noAds")}</p>
-              )}
-            </Card>
-          </Col>
-        </Row>
-      </Card>
+            {/* Transport Details */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
+                <CarOutlined className="text-green-600" />
+                Transport Details
+              </h3>
+              <Row gutter={[24, 16]}>
+                <Col xs={24} sm={12}>
+                  <Form.Item
+                    label="Date & Time"
+                    name="datetime"
+                    rules={[{ required: true, message: 'Please select date and time' }]}
+                  >
+                    <DatePicker
+                      showTime
+                      className="w-full rounded-lg h-12"
+                      placeholder="Select date and time"
+                    />
+                  </Form.Item>
+                </Col>
+                <Col>
+                  <Form.Item
+                    label="Number of Passengers"
+                    name="passengers"
+                    rules={[{ required: true, message: 'Please enter number of passengers' }]}
+                  >
+                    <InputNumber
+                      min={1}
+                      max={50}
+                      placeholder="Number of passengers"
+                      className="w-full rounded-lg h-12"
+                      controls={false}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col xs={24} sm={12}>
+                  <Form.Item
+                    label="Pickup Location"
+                    name="pickup"
+                    rules={[{ required: true, message: 'Please enter pickup location' }]}
+                  >
+                    <Input
+                      prefix={<EnvironmentOutlined className="text-gray-400" />}
+                      placeholder="Enter pickup address or location"
+                      className="rounded-lg h-12"
+                    />
+                  </Form.Item>
+                </Col>
+                <Col xs={24} sm={12}>
+                  <Form.Item
+                    label="Drop-off Location"
+                    name="dropoff"
+                    rules={[{ required: true, message: 'Please enter drop-off location' }]}
+                  >
+                    <Input
+                      prefix={<EnvironmentOutlined className="text-gray-400" />}
+                      placeholder="Enter drop-off address or location"
+                      className="rounded-lg h-12"
+                    />
+                  </Form.Item>
+                </Col>
+              </Row>
+            </div>
 
-      <ToastContainer position="top-right" autoClose={3000} />
+            {/* Vehicle & Services */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
+                <BulbOutlined className="text-purple-600" />
+                Vehicle & Services
+              </h3>
+              <Row gutter={[24, 16]}>
+                <Col xs={24} sm={12}>
+                  <Form.Item
+                    label="Vehicle Type"
+                    name="vehicle"
+                    rules={[{ required: true, message: 'Please select vehicle type' }]}
+                  >
+                    <Select 
+                      placeholder="Select vehicle type"
+                      className="rounded-lg h-12"
+                    >
+                      <Option value="suv">SUV (1-6 passengers)</Option>
+                      <Option value="cruiser">4x4 Cruiser (1-6 passengers)</Option>
+                      <Option value="minivan">Minivan (7-12 passengers)</Option>
+                      <Option value="bus">Tour Bus (13+ passengers)</Option>
+                      <Option value="luxury_suv">Luxury SUV</Option>
+                      <Option value="executive_car">Executive Car</Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col xs={24} sm={12}>
+                  <Form.Item
+                    label="Additional Services"
+                    name="addons"
+                  >
+                    <Select
+                      mode="multiple"
+                      placeholder="Select additional services (optional)"
+                      className="rounded-lg h-12"
+                    >
+                      <Option value="professional_driver">Professional Driver</Option>
+                      <Option value="multilingual_driver">Multilingual Driver</Option>
+                      <Option value="water_wifi">Complimentary Water & WiFi</Option>
+                      <Option value="route_planning">Route Planning & Support</Option>
+                      <Option value="meet_greet">Meet & Greet Service</Option>
+                      <Option value="luggage_assistance">Luggage Assistance</Option>
+                      <Option value="child_seats">Child Safety Seats</Option>
+                      <Option value="cooler_box">Cooler Box with Refreshments</Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+              </Row>
+            </div>
+
+            {/* Additional Information */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
+                <EnvironmentOutlined className="text-orange-600" />
+                Additional Information
+              </h3>
+              <Row gutter={[24, 16]}>
+                <Col xs={24}>
+                  <Form.Item
+                    label="Special Instructions"
+                    name="notes"
+                  >
+                    <Input.TextArea
+                      rows={4}
+                      placeholder="Any special requirements, specific routes, waiting times, accessibility needs, or additional information we should know about..."
+                      className="rounded-lg"
+                    />
+                  </Form.Item>
+                </Col>
+              </Row>
+            </div>
+
+            {/* Submit Button */}
+            <div className="mt-8">
+              <Button
+                type="primary"
+                size="large"
+                loading={isLoading}
+                onClick={handleSubmit}
+                className="w-full h-14 rounded-lg text-lg font-semibold bg-blue-600 hover:bg-blue-700 border-0 shadow-md hover:shadow-lg transition-all duration-300"
+              >
+                {isLoading ? 'Submitting Your Request...' : 'Submit Transport Request'}
+              </Button>
+            </div>
+          </Form>
+        </div>
+      </div>
     </div>
   );
 };

@@ -171,81 +171,90 @@ export default function MenuBars() {
                 </div>
               </div>
 
-              {/* Services List */}
-              <div className="p-2">
-                {servicesData.map((service) => {
-                  const IconComponent = service.icon;
-                  return (
-                    <div
-                      key={service.id}
-                      className="relative"
-                      onMouseEnter={() => setActiveSubmenu(service.id)}
-                    >
-                      <motion.div
-                        whileHover={{ x: 4 }}
-                        className={`flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all duration-200 ${
-                          activeSubmenu === service.id 
-                            ? 'bg-blue-50 border border-blue-200' 
-                            : 'hover:bg-gray-50'
-                        }`}
-                      >
-                        <div className="flex items-center gap-3">
-                          <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center`}>
-                            <IconComponent className="w-4 h-4 text-white" />
-                          </div>
-                          <span className="font-semibold text-gray-800 text-sm">
-                            {service.label}
-                          </span>
-                        </div>
-                        <ChevronRight className="w-4 h-4 text-gray-400" />
-                      </motion.div>
+         {/* Services List */}
+<div className="p-2 relative"> {/* Added relative here */}
+  {servicesData.map((service) => {
+    const IconComponent = service.icon;
+    return (
+      <div
+        key={service.id}
+        className="relative"
+        onMouseEnter={() => setActiveSubmenu(service.id)}
+        onMouseLeave={() => setActiveSubmenu(null)}
+      >
+        <motion.div
+          whileHover={{ x: 4 }}
+          className={`flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all duration-200 ${
+            activeSubmenu === service.id 
+              ? 'bg-blue-50 border border-blue-200' 
+              : 'hover:bg-gray-50'
+          }`}
+        >
+          <div onClick={()=>{
+            window.location.href=`/${service.id}`
+          }} className="flex items-center gap-3">
+            <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center`}>
+              <IconComponent className="w-4 h-4 text-white" />
+            </div>
+            <span className="font-semibold text-gray-800 text-sm">
+              {service.label}
+            </span>
+          </div>
+          <ChevronRight className="w-4 h-4 text-gray-400" />
+        </motion.div>
 
-                      {/* Submenu */}
-                      <AnimatePresence>
-                        {activeSubmenu === service.id && (
-                          <motion.div
-                            initial={{ opacity: 0, x: 10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: 10 }}
-                            transition={{ duration: 0.2 }}
-                            className="absolute top-0 left-full ml-1 bg-white border border-blue-100 shadow-2xl rounded-2xl w-72 z-50 overflow-hidden"
-                          >
-                            <div className="p-4 bg-gradient-to-r from-[#188bff] to-cyan-500 text-white">
-                              <h4 className="font-bold text-sm">{service.label}</h4>
-                            </div>
-                            <div className="p-2">
-                              {service.items.map((item, index) => {
-                                const ItemIcon = item.icon;
-                                return (
-                                  <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: index * 0.05 }}
-                                  >
-                                    <Link
-                                      href={item.href}
-                                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-all duration-200 group"
-                                    >
-                                      <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
-                                        <ItemIcon className="w-4 h-4 text-gray-600 group-hover:text-[#188bff]" />
-                                      </div>
-                                      <span className="text-sm text-gray-700 font-medium">
-                                        {item.label}
-                                      </span>
-                                    </Link>
-                                  </motion.div>
-                                );
-                              })}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
+        {/* Submenu */}
+        <AnimatePresence>
+          {activeSubmenu === service.id && (
+            <motion.div
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 10 }}
+              transition={{ duration: 0.2 }}
+              className="fixed top-0 left-0 ml-1 bg-white border border-blue-100 shadow-2xl rounded-2xl w-55 overflow-hidden"
+              style={{ 
+                zIndex: 9999,
+                // Position it relative to the viewport instead of parent
+                top: 'auto',
+                left: 'auto',
+                // You might need to calculate position dynamically
+              }}
+            >
+              <div className="p-4 bg-gradient-to-r from-[#188bff] to-cyan-500 text-white">
+                <h4 className="font-bold text-sm">{service.label}</h4>
+              </div>
+              <div className="p-2">
+                {service.items.map((item, index) => {
+                  const ItemIcon = item.icon;
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                    >
+                      <Link
+                        href={item.href}
+                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-all duration-200 group"
+                      >
+                        <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                          <ItemIcon className="w-4 h-4 text-gray-600 group-hover:text-[#188bff]" />
+                        </div>
+                        <span className="text-sm text-gray-700 font-medium">
+                          {item.label}
+                        </span>
+                      </Link>
+                    </motion.div>
                   );
                 })}
               </div>
-
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    );
+  })}
+</div>
               {/* Footer */}
               <div className="p-4 border-t border-gray-100 bg-gray-50">
                 <Link href="/services">

@@ -121,7 +121,7 @@ const QuickButtons = () => {
             whileTap={{ scale: 0.95 }}
             className="flex items-center space-x-2 px-4 py-2 text-gray-700 font-semibold text-sm rounded-xl border-2 border-blue-100 bg-white hover:border-[#188bff] transition-all duration-200 shadow-sm"
           >
-            <Globe className="w-4 h-4 text-[#188bff]" />
+            {/* <Globe className="w-4 h-4 text-[#188bff]" /> */}
             <img
               src={flagImages[language] || flagImages.en}
               alt="Flag"
@@ -249,7 +249,7 @@ const QuickButtons = () => {
                   className="flex items-center justify-between w-full px-4 py-3 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30"
                 >
                   <div className="flex items-center gap-3">
-                    <Globe className="w-4 h-4" />
+                    {/* <Globe className="w-4 h-4" /> */}
                     <img
                       src={flagImages[language] || flagImages.en}
                       alt="Flag"

@@ -37,7 +37,8 @@ import {
   Hotel,
   Plane,
   Globe,
-  Crown
+  Crown,
+  X
 } from "lucide-react";
 
 const { Option } = Select;
@@ -305,89 +306,117 @@ export default function HotelHospitality() {
       </div>
 
       {/* MODAL BOOKING FORM */}
-      <Modal
-        title={
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#188bff] to-cyan-400 rounded-xl flex items-center justify-center">
-              <Building className="w-5 h-5 text-white" />
+     {/* MODAL BOOKING FORM */}
+<AnimatePresence>
+  {isPopupOpen && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4"
+    >
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        className="relative bg-white rounded-3xl shadow-2xl w-full max-w-2xl p-8 border border-blue-100 overflow-hidden"
+      >
+        {/* Background decorative elements */}
+        <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-400/10 to-cyan-500/10 rounded-full -translate-x-16 -translate-y-16"></div>
+        <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tr from-green-400/10 to-emerald-500/10 rounded-full translate-x-12 translate-y-12"></div>
+
+        {/* Close button */}
+        <button
+          onClick={() => setIsPopupOpen(false)}
+          className="absolute top-4 right-4 w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors z-10"
+        >
+          <X className="w-4 h-4 text-gray-600" />
+        </button>
+
+        <div className="relative z-10">
+          {/* Header */}
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-12 h-12 bg-gradient-to-br from-[#188bff] to-cyan-400 rounded-2xl flex items-center justify-center">
+              <Building className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-gray-800">{t("travelHospitality.modalTitle")}</h3>
-              <p className="text-gray-500 text-sm">Book your perfect stay or transport</p>
+              <h3 className="text-2xl font-bold text-gray-800">{t("travelHospitality.modalTitle")}</h3>
+              <p className="text-gray-500">Book your perfect stay or transport</p>
             </div>
           </div>
-        }
-        open={isPopupOpen}
-        onCancel={() => setIsPopupOpen(false)}
-        footer={null}
-        width={800}
-        centered
-        className="rounded-2xl"
-      >
-        <div className="mb-6">
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            {t("travelHospitality.selectService.label")}
-          </label>
-          <Select
-            className="w-full rounded-xl"
-            value={selectedService}
-            onChange={(val) => {
-              setSelectedService(val);
-              form.resetFields();
-              setRentTime(null);
-            }}
-            suffixIcon={<Sparkles className="w-4 h-4 text-[#188bff]" />}
+
+          <div className="mb-6">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              {t("travelHospitality.selectService.label")}
+            </label>
+            <Select
+              className="w-full rounded-xl border-gray-300 focus:border-[#188bff] focus:ring-2 focus:ring-blue-100 transition-all"
+              value={selectedService}
+              onChange={(val) => {
+                setSelectedService(val);
+                form.resetFields();
+                setRentTime(null);
+              }}
+              suffixIcon={<Sparkles className="w-4 h-4 text-[#188bff]" />}
+            >
+              <Option value="hotel">
+                <div className="flex items-center gap-2">
+                  <Hotel className="w-4 h-4" />
+                  {t("travelHospitality.selectService.options.hotel")}
+                </div>
+              </Option>
+              <Option value="apartment">
+                <div className="flex items-center gap-2">
+                  <Building className="w-4 h-4" />
+                  {t("travelHospitality.selectService.options.apartment")}
+                </div>
+              </Option>
+              <Option value="transport">
+                <div className="flex items-center gap-2">
+                  <Car className="w-4 h-4" />
+                  {t("travelHospitality.selectService.options.transport")}
+                </div>
+              </Option>
+            </Select>
+          </div>
+
+          <Form 
+            layout="vertical" 
+            form={form}
+            onFinish={handleSubmit}
+            className="space-y-4"
           >
-            <Option value="hotel">
-              <div className="flex items-center gap-2">
-                <Hotel className="w-4 h-4" />
-                {t("travelHospitality.selectService.options.hotel")}
-              </div>
-            </Option>
-            <Option value="apartment">
-              <div className="flex items-center gap-2">
-                <Building className="w-4 h-4" />
-                {t("travelHospitality.selectService.options.apartment")}
-              </div>
-            </Option>
-            <Option value="transport">
-              <div className="flex items-center gap-2">
-                <Car className="w-4 h-4" />
-                {t("travelHospitality.selectService.options.transport")}
-              </div>
-            </Option>
-          </Select>
-        </div>
+            {/* Personal Information Header */}
+            <div className="bg-blue-50 rounded-xl p-4">
+              <h4 className="font-semibold text-gray-800 flex items-center gap-2">
+                <Users className="w-4 h-4 text-[#188bff]" />
+                Personal Information
+              </h4>
+            </div>
 
-        <Form layout="vertical" form={form}>
-          <Row gutter={[16, 16]}>
-            {/* Personal Information */}
-            <Col xs={24}>
-              <div className="bg-blue-50 rounded-xl p-4 mb-4">
-                <h4 className="font-semibold text-gray-800 flex items-center gap-2">
-                  <Users className="w-4 h-4 text-[#188bff]" />
-                  Personal Information
-                </h4>
-              </div>
-            </Col>
-
-            <Col xs={24} md={12}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Form.Item
-                label={t("travelHospitality.fullName.label")}
+                label={
+                  <span className="text-gray-700 font-semibold">
+                    {t("travelHospitality.fullName.label")}
+                  </span>
+                }
                 name="full_name"
                 rules={[{ required: true, message: t("travelHospitality.fullName.required") }]}
               >
                 <Input 
-                  prefix={<UserOutlined className="text-[#188bff]" />} 
+                  prefix={<UserOutlined className="text-gray-400" />} 
                   placeholder={t("travelHospitality.fullName.placeholder")}
-                  className="rounded-lg"
+                  className="rounded-xl border-gray-300 focus:border-[#188bff] focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </Form.Item>
-            </Col>
 
-            <Col xs={24} md={12}>
               <Form.Item
-                label={t("travelHospitality.email.label")}
+                label={
+                  <span className="text-gray-700 font-semibold">
+                    {t("travelHospitality.email.label")}
+                  </span>
+                }
                 name="email"
                 rules={[
                   { required: true, message: t("travelHospitality.email.required") },
@@ -395,37 +424,40 @@ export default function HotelHospitality() {
                 ]}
               >
                 <Input 
-                  prefix={<MailOutlined className="text-[#188bff]" />} 
+                  prefix={<MailOutlined className="text-gray-400" />} 
                   placeholder={t("travelHospitality.email.placeholder")}
-                  className="rounded-lg"
+                  className="rounded-xl border-gray-300 focus:border-[#188bff] focus:ring-2 focus:ring-blue-100 transition-all"
                 />
               </Form.Item>
-            </Col>
+            </div>
 
-            {/* Rest of the form remains the same but with improved styling */}
-            {/* ... (other form fields) ... */}
+            {/* Rest of your form fields would go here with similar styling */}
 
-          </Row>
-
-          <div className="flex justify-end gap-3 mt-6 pt-6 border-t border-gray-200">
-            <Button 
-              onClick={() => setIsPopupOpen(false)}
-              className="rounded-lg px-6"
-            >
-              {t("travelHospitality.buttons.cancel")}
-            </Button>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              type="button"
-              onClick={handleSubmit}
-              className="bg-gradient-to-r from-[#188bff] to-cyan-500 text-white px-8 py-2 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
-            >
-              {t("travelHospitality.buttons.submit")}
-            </motion.button>
-          </div>
-        </Form>
-      </Modal>
+            <div className="flex justify-end gap-3 pt-6 border-t border-gray-200">
+              <motion.button
+                onClick={() => setIsPopupOpen(false)}
+                type="button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-6 py-3 rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300 font-semibold"
+              >
+                {t("travelHospitality.buttons.cancel")}
+              </motion.button>
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#188bff] to-cyan-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                {t("travelHospitality.buttons.submit")}
+              </motion.button>
+            </div>
+          </Form>
+        </div>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </div>
   );
 }

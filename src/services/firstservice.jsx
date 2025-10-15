@@ -1,57 +1,36 @@
 'use client'
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import { useTranslation } from "react-i18next";
 
 const FirstService = () => {
   const { t } = useTranslation();
-  const fullText = t("home.welcomeText");
-  const [text, setText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const typingSpeed = 150;
-    const deletingSpeed = 100;
-    let timer;
-
-    if (!isDeleting && index < fullText.length) {
-      timer = setTimeout(() => {
-        setText((prev) => prev + fullText[index]);
-        setIndex((prev) => prev + 1);
-      }, typingSpeed);
-    } else if (isDeleting && index > 0) {
-      timer = setTimeout(() => {
-        setText((prev) => prev.slice(0, -1));
-        setIndex((prev) => prev - 1);
-      }, deletingSpeed);
-    } else if (!isDeleting && index === fullText.length) {
-      setTimeout(() => setIsDeleting(true), 1500);
-    } else if (isDeleting && index === 0) {
-      setTimeout(() => setIsDeleting(false), 1000);
-    }
-
-    return () => clearTimeout(timer);
-  }, [index, isDeleting, fullText]);
 
   return (
     <div
-
-      className="relative w-full h-[70vh] bg-cover bg-center overflow-hidden"
-      style={{ backgroundImage: "url('/image/2.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+      className="relative w-full h-[50vh] bg-cover bg-center overflow-hidden"
+      style={{ 
+        backgroundImage: "url('/image/2.jpg')", 
+        backgroundSize: 'cover', 
+        backgroundPosition: 'center'
+      }}
     >
-      <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8">
-      <div className="absolute top-6 left-1/2 transform -translate-x-1/2 border-2 border-[#188bff] text-white px-6 py-1 rounded-full text-sm font-semibold shadow-lg">
- {t("services.title")}
-</div>
-      
-        <h1 className="font-lobster text-5xl max-w-[400px] h-[190px] sm:text-7xl font-bold bg-[#188bff] bg-clip-text text-transparent sm:max-w-[700px] leading-tight">
-          {text}
+      {/* Simple Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#188bff]/40 to-purple-500/30 flex flex-col justify-center items-center text-center px-4">
+        
+        {/* Cute Badge */}
+        <div className="bg-white/10 backdrop-blur-sm text-white px-6 py-2 rounded-full text-sm font-semibold mb-6 shadow-lg">
+          {t("services.title")}
+        </div>
+        
+        {/* Main Heading */}
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 max-w-3xl">
+          {t("Customizable and professional services")}
         </h1>
-        <p className="text-[20px] text-gray-200 mt-4 max-w-[700px]">
-  {t("Subtitle.intro2")}
-</p>
 
+        {/* Subtitle */}
+        <p className="text-lg text-white/90 max-w-2xl bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+          {t("Subtitle.intro2")}
+        </p>
       </div>
     </div>
   );
