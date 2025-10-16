@@ -25,19 +25,22 @@ const ContainerWithButtons = () => {
   const [tourData, setTourData] = useState(null);
   const [showDetailsMobile, setShowDetailsMobile] = useState(false);
   const location = usePathname();
-
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (hash === "#tourism") {
-      setActiveComponent("tourism");
-      setTimeout(() => {
-        const elem = document.getElementById("tourism");
-        if (elem) {
-          elem.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 300);
-    }
-  }, [location]);
+useEffect(() => {
+  const hash = window.location.hash;
+  const validHashes = ["#tourism", "#apartments", "#transport", "#hotel"];
+  
+  if (validHashes.includes(hash)) {
+    const componentId = hash.replace("#", "");
+    setActiveComponent(componentId);
+    setTimeout(() => {
+      const elem = document.getElementById(componentId);
+      if (elem) {
+        elem.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 300);
+  }
+  
+}, [location]);
 
   const handleClick = (component) => {
     setActiveComponent(component);
@@ -211,10 +214,13 @@ const ContainerWithButtons = () => {
               transition={{ delay: 0.1 }}
             >
               <div className={`p-3 rounded-xl bg-white shadow-sm border ${activeItem?.borderColor}`}>
-                <activeItem.icon className={`w-6 h-6`} style={{ color: activeItem.color }} />
+               
+                {activeItem?.icon && (
+    <activeItem.icon className="w-6 h-6" style={{ color: activeItem.color }} />
+  )}
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-gray-800">{activeItem.label}</h2>
+                <h2 className="text-2xl font-bold text-gray-800">{activeItem?.label}</h2>
                 <p className="text-gray-600 text-sm">
                   {activeComponent === "hotel" && "Find the perfect stay for your journey"}
                   {activeComponent === "apartments" && "Discover cozy apartments and homes"}

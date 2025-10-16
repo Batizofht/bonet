@@ -100,30 +100,28 @@ const ContactForm = ({ form, onFinish, t }) => (
           name="inquiry_type"
           rules={[{ required: true, message: t("contactInform.form.validation.inquiryRequired") }]}
         >
-          <Select 
-            placeholder={
-              <div className="flex items-center gap-2">
-                <MessageSquare className="w-4 h-4 text-gray-400" />
-                {t("contactInform.form.inquiryType")}
-              </div>
-            } 
-            
-            className="rounded-xl h-12 [&_.ant-select-selector]:bg-white [&_.ant-select-selector]:border-gray-300 [&_.ant-select-selector]:text-gray-800 [&_.ant-select-selector]:rounded-xl [&_.ant-select-selector]:hover:border-gray-400 [&_.ant-select-selector]:h-12 [&_.ant-select-selector]:flex [&_.ant-select-selector]:items-center"
-            rootClassName="[&_.ant-select-item]:hover:bg-blue-50 [&_.ant-select-item]:text-gray-800 rounded-xl border-2 border-blue-100 shadow-lg"
-          >
-            <Option value="hotel" className="flex items-center gap-2">
-              🏨 {t("contactInform.form.inquiryOptions.hotel")}
-            </Option>
-            <Option value="department" className="flex items-center gap-2">
-              🏢 {t("contactInform.form.inquiryOptions.department")}
-            </Option>
-            <Option value="transport" className="flex items-center gap-2">
-              🚗 {t("contactInform.form.inquiryOptions.transport")}
-            </Option>
-            <Option value="businessSetup" className="flex items-center gap-2">
-              💼 {t("contactInform.form.inquiryOptions.businessSetup")}
-            </Option>
-          </Select>
+      <Select 
+  placeholder={
+    <div className="flex items-center gap-2">
+      <MessageSquare className="w-4 my-2 h-4 text-gray-400" />
+      {t("contactInform.form.inquiryType")}
+    </div>
+  } 
+  className="[&_.ant-select-selector]:h-20 [&_.ant-select-selector]:flex [&_.ant-select-selector]:items-center [&_.ant-select-selector]:text-lg rounded-xl"
+>
+  <Option value="hotel" className="flex items-center gap-2">
+    🏨 {t("contactInform.form.inquiryOptions.hotel")}
+  </Option>
+  <Option value="department" className="flex items-center gap-2">
+    🏢 {t("contactInform.form.inquiryOptions.department")}
+  </Option>
+  <Option value="transport" className="flex items-center gap-2">
+    🚗 {t("contactInform.form.inquiryOptions.transport")}
+  </Option>
+  <Option value="businessSetup" className="flex items-center gap-2">
+    💼 {t("contactInform.form.inquiryOptions.businessSetup")}
+  </Option>
+</Select>
         </Form.Item>
 
         {/* Message */}
@@ -162,7 +160,7 @@ const ContactForm = ({ form, onFinish, t }) => (
       {/* Footer Note */}
       <div className="text-center mt-6">
         <p className="text-gray-500 text-sm">
-          We'll get back to you within 24 hours ✅
+          We'll get back to you within 24 hours 
         </p>
       </div>
     </div>

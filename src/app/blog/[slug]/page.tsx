@@ -206,7 +206,7 @@ export default async function BlogDetail({ params }: Props) {
 
       {/* Related Blogs Section */}
       <div className="max-w-6xl mx-auto px-4 py-16">
-        <div className="text-center mb-12">
+        {/* <div className="text-center mb-12">
           <div className="flex justify-center items-center gap-3 mb-4">
             <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
             <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
@@ -219,10 +219,10 @@ export default async function BlogDetail({ params }: Props) {
             More <span className="bg-[#188bff] bg-clip-text text-transparent">Articles</span>
           </h2>
           <p className="text-gray-500 text-lg">Discover other valuable insights from our blog</p>
-        </div>
+        </div> */}
 
         {/* You can add related blogs grid here */}
-        <div className="text-center">
+        {/* <div className="text-center">
           <Link 
             href="/blog"
             className="inline-flex items-center gap-3 border-2 border-[#188bff] text-[#188bff] px-8 py-4 rounded-xl hover:bg-[#188bff] hover:text-white transition-all duration-300 font-semibold group"
@@ -231,7 +231,7 @@ export default async function BlogDetail({ params }: Props) {
             Explore All Blogs
             <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ const BookingCards = () => {
       color: "from-blue-500 to-cyan-400",
     },
     {
-      id: "apartment", 
+      id: "apartments", 
       title: "Apartment Booking",
       description: "Comfortable homes away from home",
       icon: Home,

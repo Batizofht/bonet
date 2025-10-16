@@ -13,7 +13,7 @@ const AiSolutions = () => {
       title: t("aisolutions.feature1.title"),
       description: t("aisolutions.feature1.description"),
       highlight: t("aisolutions.feature1.highlight"),
-      link: "/blog-business",
+      link: "/contact",
       icon: Target,
       color: "from-blue-500 to-cyan-400"
     },
@@ -49,19 +49,24 @@ const AiSolutions = () => {
           <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
         </div>
         
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">
-          {t("aisolutions.title", "Our Services").split(" ").map((word, i) => 
-            i > 1 ? (
-              <span key={i} className="bg-[#188bff] bg-clip-text text-transparent relative inline-block">
-                {word}
-                <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#188bff] to-cyan-400 transform scale-x-0 hover:scale-x-100 transition-transform duration-300"></span>
-                {" "}
-              </span>
-            ) : (
-              <span key={i} className="text-gray-600">{word + " "}</span>
-            )
-          )}
-        </h2>
+<h2 className="text-4xl font-bold text-gray-800 mb-4">
+  {t("aisolutions.title").split(" ").map((word, i, arr) => 
+    i > 1 ? (
+      <span key={i}>
+        <span className="bg-[#188bff] bg-clip-text text-transparent relative inline-block">
+          {word}
+          <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#188bff] to-cyan-400 transform scale-x-0 hover:scale-x-100 transition-transform duration-300"></span>
+        </span>
+        {i < arr.length - 1 ? ' ' : ''}
+      </span>
+    ) : (
+      <span key={i}>
+        {word}
+        {i < arr.length - 1 ? ' ' : ''}
+      </span>
+    )
+  )}
+</h2>
         <p className="text-gray-500 text-lg">Innovative solutions for modern businesses</p>
       </div>
 

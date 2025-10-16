@@ -69,7 +69,7 @@ const GoogleMapEmbed = () => {
           </p>
 
           {/* Meta Info */}
-          <div className="flex items-center gap-4 text-xs text-gray-500">
+          <div className="flex items-center justify-center gap-4 text-xs text-gray-500">
             <div className="flex items-center gap-1">
               <MapPin className="w-3 h-3" />
               <span>Easy to find</span>
