@@ -68,20 +68,11 @@
     <loc>https://www.bonet.rw/blog-travel-tips</loc>
     <priority>0.5</priority>
   </url>
-  <url>
-    <loc>https://www.bonet.rw/blog-business</loc>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.bonet.rw/map</loc>
-    <priority>0.4</priority>
-  </url>
+
+  
   <url>
     <loc>https://www.bonet.rw/visitrwanda</loc>
     <priority>0.4</priority>
   </url>
-  <url>
-    <loc>https://www.bonet.rw/chat</loc>
-    <priority>0.4</priority>
-  </url>
+ 
 </urlset>
