@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Building, Home, Car, Users, X, Star } from "lucide-react";
+import Link from "next/link";
 
 const BookingCards = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
@@ -124,10 +125,12 @@ const BookingCards = () => {
                     <span>Best price guarantee</span>
                   </div>
                 </div>
-
-                <button className="w-full bg-[#188bff] text-white py-2 rounded-xl font-semibold text-sm hover:bg-blue-600 transition-colors">
+<Link href={`/bookNow#${selectedService}`}>
+<button className="w-full bg-[#188bff] text-white py-2 rounded-xl font-semibold text-sm hover:bg-blue-600 transition-colors">
                   Book Now
                 </button>
+</Link>
+                
               </motion.div>
             </motion.div>
           );

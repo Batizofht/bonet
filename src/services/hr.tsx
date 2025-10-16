@@ -41,7 +41,7 @@ const hrServices = [
     color: "from-blue-500 to-cyan-400"
   },
   {
-    image: "../assets/images/compliance.png",
+    image: "https://site-media.citationcanada.com/app/uploads/2024/09/07203528/Blog-15-Essential-HR-Policies-Every-Employee-Handbook-Needs-Feature.png",
     titleKey: "hrServices.compliance.title",
     subtitleKey: "hrServices.compliance.subtitle",
     descriptionKey: "hrServices.compliance.description",

@@ -32,7 +32,7 @@ const GoogleMapEmbed = () => {
           </span>
         </h2>
         <p className="text-gray-500 text-lg">
-          {t("locationSection.description") || "Find us easily at our convenient location!"}
+        { "Find us easily at our convenient location!"}
         </p>
       </div>
 

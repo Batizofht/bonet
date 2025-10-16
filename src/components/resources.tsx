@@ -64,12 +64,13 @@ export default function Blog() {
           <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
         </div>
         
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">
-          <span className="text-gray-600">{t("locationSection.title1")}</span>{" "}
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+          <span className="text-gray-600">{t("locationSection.title").split(" ")[0]}</span>{" "}
           <span className="bg-[#188bff] bg-clip-text text-transparent">
-            {t("locationSection.title2")}
+            {t("locationSection.title").split(" ")[1]}
           </span>
         </h2>
+     
         <p className="text-gray-500 text-lg">Find us easily at our convenient location</p>
       </div>
 
@@ -122,10 +123,13 @@ export default function Blog() {
           </div>
 
           {/* Directions Button */}
-          <button className="inline-flex items-center gap-2 bg-[#188bff] text-white px-5 py-2 rounded-xl hover:bg-blue-600 transition-all duration-300 font-semibold text-sm group/btn shadow-sm hover:shadow-md">
+          <Link href={"/contact"}>
+              <button className="inline-flex items-center gap-2 bg-[#188bff] text-white px-5 py-3 rounded-xl hover:bg-blue-600 transition-all duration-300 font-semibold text-sm group/btn shadow-sm hover:shadow-md">
             Get Directions
             <Navigation className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
           </button>
+          </Link>
+      
         </div>
       </motion.div>
     </motion.section>

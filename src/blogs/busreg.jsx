@@ -17,7 +17,11 @@ import {
   Share2,
   Bookmark
 } from "lucide-react";
+// Import these icons or use your preferred ones
+import { Plane, Briefcase } from 'lucide-react';
+import Link from "next/link";
 
+const serviceIcons = [Plane, Building, Users, Briefcase];
 const BusinessRegistration = () => {
   const { t } = useTranslation();
   const steps = t("businessRegistration.steps", { returnObjects: true });
@@ -70,60 +74,132 @@ const BusinessRegistration = () => {
       }
     ]
   };
+const services = [
+  {
+    title: "Travel & Hospitality",
+    description: "Comprehensive travel solutions and hospitality services to enhance your business operations and customer experiences.",
+    features: [
+      "Business travel management",
+      "Hotel & accommodation services",
+      "Event planning & coordination",
+      "VIP hospitality services"
+    ],
+    link:"travel"
+  },
+
+  {
+    title: "Business Setup",
+    description: "End-to-end business establishment services to launch your venture smoothly in any jurisdiction.",
+    features: [
+      "Company registration",
+      "Legal documentation",
+      "License acquisition",
+      "Bank account setup"
+    ],
+    link:"investment"
+  },
+  {
+    title: "Business Consulting",
+    description: "Strategic consulting services to optimize your business processes and drive sustainable growth.",
+    features: [
+      "Strategic planning",
+      "Process optimization",
+      "Market analysis",
+      "Performance improvement"
+    ],
+    link:"consulting"
+  },
+  {
+    title: "HR & Admin Support",
+    description: "Complete human resources and administrative support to streamline your organizational operations.",
+    features: [
+      "Recruitment & staffing",
+      "Payroll management",
+      "Employee relations",
+      "Admin workflow optimization"
+    ],
+    link:"hrsupport"
+  }
+];
+
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
       {/* Business Registration Section */}
       <div className="mb-20">
-        <div className="text-center mb-16">
-          <div className="flex justify-center items-center gap-3 mb-4">
-            <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
-            <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-            <Building className="w-6 h-6 text-[#188bff] animate-pulse" />
-            <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-            <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
-          </div>
-          
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">
-            Business <span className="bg-[#188bff] bg-clip-text text-transparent">Registration</span>
-          </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Streamlined process for registering your business with expert guidance
-          </p>
-        </div>
+      <div className="mb-20">
+  <div className="text-center mb-16">
+    <div className="flex justify-center items-center gap-3 mb-4">
+      <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+      <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
+      <Building className="w-6 h-6 text-[#188bff] animate-pulse" />
+      <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
+      <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+    </div>
+    
+    <h2 className="text-4xl font-bold text-gray-800 mb-4">
+      Our <span className="bg-[#188bff] bg-clip-text text-transparent">Major Services</span>
+    </h2>
+    <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+      Professional solutions tailored for your business success
+    </p>
+  </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {steps.map((step, index) => {
-            const IconComponent = icons[index] || FileText;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="text-center p-6 rounded-2xl bg-white border-2 border-blue-100 hover:border-[#188bff] transition-all duration-300 hover:shadow-xl group"
-              >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <IconComponent className="w-8 h-8 text-white" />
-                </div>
-                
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <div className="w-6 h-6 bg-blue-100 text-[#188bff] rounded-full flex items-center justify-center text-sm font-bold">
-                    {index + 1}
-                  </div>
-                  <h3 className="text-lg font-semibold bg-[#188bff] bg-clip-text text-transparent">
-                    {step.title}
-                  </h3>
-                </div>
-                
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {step.description}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    {services.map((service, index) => {
+      const IconComponent = serviceIcons[index] || FileText;
+      return (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: index * 0.1 }}
+          whileHover={{ y: -8, scale: 1.02 }}
+          className="text-center p-8 rounded-2xl bg-white border-2 border-blue-50 hover:border-[#188bff] transition-all duration-300 hover:shadow-xl group cursor-pointer relative overflow-hidden"
+        >
+          {/* Background gradient on hover */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          {/* Animated border effect */}
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#188bff] to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+          <div className="absolute inset-[2px] rounded-2xl bg-white -z-10"></div>
+
+          <div className="relative z-10">
+            <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg group-hover:shadow-xl">
+              <IconComponent className="w-10 h-10 text-white" />
+            </div>
+            
+            <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-[#188bff] transition-colors duration-300">
+              {service.title}
+            </h3>
+            
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              {service.description}
+            </p>
+
+            {/* Features list */}
+            <ul className="text-left space-y-2 mb-4">
+              {service.features.map((feature, idx) => (
+                <li key={idx} className="flex items-center gap-2 text-xs text-gray-500">
+                  <div className="w-1.5 h-1.5 bg-[#188bff] rounded-full"></div>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            {/* CTA button */}
+            <Link href={`/${service.link}`}>
+           
+            <button className="px-4 py-2 bg-gradient-to-r from-[#188bff] to-cyan-400 text-white text-sm font-medium rounded-full hover:shadow-lg transition-all duration-300 transform group-hover:scale-105">
+              Learn More
+            </button>
+             </Link>
+          </div>
+        </motion.div>
+      );
+    })}
+  </div>
+</div>
       </div>
 
       {/* Single Blog Article Section */}
@@ -140,7 +216,7 @@ const BusinessRegistration = () => {
               <Tag className="w-4 h-4" />
               <span className="text-sm font-semibold">{blogArticle.category}</span>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            <h1 className="text-lg md:text-4xl font-bold mb-4">
               {blogArticle.title}
             </h1>
             <div className="flex flex-wrap items-center justify-center gap-6 text-white/90">

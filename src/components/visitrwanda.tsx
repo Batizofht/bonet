@@ -45,7 +45,7 @@ const Gallery = () => {
                 {" "}
               </span>
             ) : (
-              <span key={i} className="text-gray-600">{word + " "}</span>
+              <span key={i} className="text-gray-600">{" " + word + " "}</span>
             )
           )}
         </h2>

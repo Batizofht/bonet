@@ -7,7 +7,7 @@ const SecondService = () => {
 
   return (
     <div 
-      className="relative w-full min-h-[50vh] bg-cover bg-center bg-no-repeat"
+      className="relative w-full min-h-[60vh] bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/image/7.jpg')" }}
     >
       {/* Gradient overlay */}
@@ -15,7 +15,7 @@ const SecondService = () => {
         <div className="text-center text-white px-6 max-w-2xl">
           
           {/* Decorative icon */}
-          <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6 backdrop-blur-sm border border-white/30">
+          <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/30">
             <div className="w-12 h-12 bg-gradient-to-br from-white to-white/70 rounded-xl flex items-center justify-center">
               <span className="text-2xl">🌟</span>
             </div>

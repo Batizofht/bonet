@@ -132,11 +132,19 @@ const MapComponent = () => {
           <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
         </div>
         
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">
-          <span className="text-gray-600">{t("locationSecondSection.title1")}</span>{" "}
-          <span className="bg-[#188bff] bg-clip-text text-transparent">
-            {t("locationSecondSection.title2")}
-          </span>
+      
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+          {t("locationSecondSection.title", "Our Gallery").split(" ").map((word, i) => 
+            i === 0 ? (
+              <span key={i} className="bg-[#188bff] bg-clip-text text-transparent relative inline-block">
+                {word} 
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#188bff] to-cyan-400 transform scale-x-0 hover:scale-x-100 transition-transform duration-300"></span>
+                {"  "}
+              </span>
+            ) : (
+              <span key={i} className="text-gray-600">{" " +  word + "  "}</span>
+            )
+          )}
         </h2>
         <p className="text-gray-500 text-lg">Find your way with interactive directions</p>
       </div>
@@ -159,7 +167,7 @@ const MapComponent = () => {
               className="inline-flex items-center gap-2 bg-[#188bff] text-white px-4 py-2 rounded-xl hover:bg-blue-600 transition-all duration-300 font-semibold text-sm group/btn shadow-sm hover:shadow-md"
             >
               <FaUser className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-              {t("locationSecondSection.getLocation")}
+              {t("locationSecondSection.title")}
             </button>
           </div>
 

@@ -91,7 +91,7 @@ const FirstHome = () => {
 
   return (
     <div
-      className="relative w-full min-h-screen md:h-full bg-cover bg-center overflow-hidden"
+      className="relative w-full h-[800px] bg-cover bg-center overflow-hidden"
       style={{ backgroundImage: "url('/image/1.jpg')" }}
     >
       {/* Blackish Overlay */}
@@ -125,7 +125,7 @@ const FirstHome = () => {
       <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 z-20">
         
         {/* Sparkle Icon */}
-        <motion.div
+        {/* <motion.div
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, type: "spring" }}
@@ -134,14 +134,14 @@ const FirstHome = () => {
           <div className="w-16 h-16 bg-gradient-to-br from-[#188bff] to-cyan-400 rounded-2xl flex items-center justify-center shadow-2xl">
             <Sparkles className="w-8 h-8 text-white" />
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Main Heading - Original Color */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-Poppins font-bold text-[#188bff] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight max-w-full mb-5 drop-shadow-2xl"
+          className="font-Poppins font-bold text-[#188bff] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight max-w-full mb-3 md:mt-[-10%] drop-shadow-2xl"
         >
           {displayText}
         </motion.h1>
