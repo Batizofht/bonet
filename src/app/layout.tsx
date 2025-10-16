@@ -25,10 +25,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     
     >
       <head>
-          <meta
+          {/* <meta
           name="google-site-verification"
           content="CboeMnNS253VKCnUI5oq7mi3Zyf89PdYhkQmkDWDPuE"
-        />
+        /> */}
       </head>
       <body>
         <LayoutWrapper>{children}</LayoutWrapper>
