@@ -239,24 +239,7 @@ const services = [
         {/* Blog Content */}
         <div className="p-8 md:p-12">
           <div className="max-w-4xl mx-auto">
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-gray-200">
-              <button className="flex items-center gap-2 text-[#188bff] hover:text-blue-600 transition-colors">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Blogs
-              </button>
-              
-              <div className="flex items-center gap-3">
-                <button className="flex items-center gap-2 text-gray-600 hover:text-[#188bff] transition-colors">
-                  <Bookmark className="w-4 h-4" />
-                  Save
-                </button>
-                <button className="flex items-center gap-2 text-gray-600 hover:text-[#188bff] transition-colors">
-                  <Share2 className="w-4 h-4" />
-                  Share
-                </button>
-              </div>
-            </div>
+        
 
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
