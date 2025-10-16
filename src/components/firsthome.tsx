@@ -91,7 +91,7 @@ const FirstHome = () => {
 
   return (
     <div
-      className="relative w-full h-[800px] bg-cover bg-center overflow-hidden"
+      className="relative w-full h-[860px] md:h-[800px]  bg-cover bg-center overflow-hidden"
       style={{ backgroundImage: "url('/image/1.jpg')" }}
     >
       {/* Blackish Overlay */}
@@ -175,7 +175,7 @@ const FirstHome = () => {
             boxShadow: "0 20px 40px rgba(24, 139, 255, 0.3)"
           }}
           whileTap={{ scale: 0.95 }}
-          className="bg-[#188bff] text-white px-10 py-4 rounded-2xl font-semibold text-lg shadow-2xl mb-8 hover:bg-blue-600 transition-all duration-300"
+          className="bg-[#188bff] text-white px-10 py-4 rounded-2xl font-semibold text-lg shadow-2xl mb-3 hover:bg-blue-600 transition-all duration-300"
           onClick={() => router.push("/services")}
         >
           {t("get_started")}

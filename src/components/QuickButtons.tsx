@@ -222,7 +222,7 @@ const QuickButtons = () => {
                       <Sparkles className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg text-white">Bonet E</h3>
+                      <h3 className="font-bold text-lg text-white">Bonet </h3>
                       <p className="text-white/80 text-sm">Elite Services</p>
                     </div>
                   </div>
