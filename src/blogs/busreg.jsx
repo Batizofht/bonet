@@ -210,7 +210,7 @@ const services = [
         className="bg-white rounded-3xl border-2 border-blue-100 overflow-hidden shadow-xl"
       >
         {/* Blog Header */}
-        <div className="relative h-64 bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center">
+        <div className="relative h-75 md:h-64  bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center">
           <div className="text-center text-white p-8">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
               <Tag className="w-4 h-4" />
