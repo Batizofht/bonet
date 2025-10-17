@@ -126,7 +126,7 @@ const QuickButtons = () => {
               alt="Flag"
               className="w-5 h-5 rounded object-cover"
             />
-            <span className="min-w-[60px] text-left">{languageNames[language]}</span>
+            <span className="min-w-[60px] text-left">{languageNames[language] || languageNames.en}</span>
             <motion.div
               animate={{ rotate: desktopDropdownOpen ? 180 : 0 }}
               transition={{ duration: 0.2 }}

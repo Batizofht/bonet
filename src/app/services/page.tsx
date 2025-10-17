@@ -1,42 +1,46 @@
-
-// app/blog/business/page.tsx
+// app/services/page.tsx
 import React from "react";
 import FirstService from "../../services/firstservice";
 import BusinessRegistration from "../../blogs/busreg";
+
 export const dynamic = "force-dynamic";
+
 export const metadata = {
-  title: "Business & Investment in Rwanda | Bonet Elite Services Blog",
-  description:
-    "Discover how to start and grow a business in Rwanda. Learn about company registration, tax regulations, and investment opportunities with Bonet Elite Services.",
-  keywords: "Business in Rwanda, Investment Rwanda, Business registration Rwanda, Rwanda business blog, Rwanda investment guide, Bonet Elite Blog, company setup Rwanda",
+  title: "Premium Services | Bonet Elite Services",
+  description: "Hotel Reservations: Luxury stays with premium amenities. Apartment Booking: Comfortable homes away from home. Transport Service: Safe and reliable transportation. Tourism Guides: Explore with expert local guides.",
+  keywords: "Bonet Elite Services, premium services Rwanda, hotel reservations, apartment booking, transport service, tourism guides, luxury stays, comfortable homes, reliable transportation, expert guides",
   authors: [{ name: "Bonet Elite Services" }],
   openGraph: {
-    type: "article",
-    url: "https://www.bonet.rw/blog/business",
-    title: "Business & Investment in Rwanda | Bonet Elite Services Blog",
-    description: "Step-by-step insights on business registration, investment opportunities, and growth strategies in Rwanda.",
+    type: "website",
+    url: "https://www.bonet.rw/services",
+    title: "Premium Services | Bonet Elite Services",
+    description: "Hotel Reservations: Luxury stays with premium amenities. Apartment Booking: Comfortable homes away from home. Transport Service: Safe and reliable transportation. Tourism Guides: Explore with expert local guides.",
     images: [
       {
-        url: "https://www.bonet.rw/images/blog-business-preview.jpg",
-        width: 800,
-        height: 600,
-        alt: "Business & Investment in Rwanda",
+        url: "https://www.bonet.rw/images/premium-services-preview.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Bonet Elite Premium Services",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@BonetElite",
-    title: "Business & Investment in Rwanda | Bonet Elite Services Blog",
-    description: "Expert guides on business setup, registration, and investment opportunities in Rwanda.",
-    images: ["https://www.bonet.rw/images/blog-business-preview.jpg"],
+    title: "Premium Services | Bonet Elite Services",
+    description: "Hotel Reservations: Luxury stays. Apartment Booking: Comfortable homes. Transport Service: Safe transportation. Tourism Guides: Expert local guides.",
+    images: ["https://www.bonet.rw/images/premium-services-preview.jpg"],
   },
   metadataBase: new URL("https://www.bonet.rw"),
+  robots: "index, follow",
+  alternates: {
+    canonical: "https://www.bonet.rw/services"
+  }
 };
 
-export default function BlogBusinessPage() {
+export default function PremiumServicesPage() {
   return (
-    <div className="bg-white min-h-screen text-center text-white">
+    <div className="bg-white min-h-screen">
       <FirstService />
       <BusinessRegistration />
     </div>
