@@ -1,0 +1,1865 @@
+{
+  "welcome_message": "Welcome To Bonet Elite Services",
+  "subtitle": "Your Trusted Partner for Travel, Business & Investment in Rwanda",
+  "description": "We simplify your experience in Rwanda by offering tailored travel, business, and investment support. Whether you are a tourist, an entrepreneur, or a foreign investor, we ensure a smooth and hassle-free journey from arrival to establishment.",
+  "get_started": "Get Started",
+  "services": {
+    "title": "Our Services",
+    "list": [
+      {
+        "title": "Travel & Hospitality",
+        "description": "We offer comprehensive travel and hospitality services, including hotel booking, airport transfers, car rentals, and guided tours.",
+        "details": "Visit Rwanda with Ease – Book Your VIP Experience Now!",
+        "buttonText": "Travel & Hospitality",
+        "route": "/travel"
+      },
+      {
+        "title": "Investment & Business Setup",
+        "description": "Our experts assist with business registration, licensing, and advisory services.",
+        "details": "Start Your Business in Rwanda Today – Let’s Get Started!",
+        "buttonText": "Register My Business",
+        "route": "/investment"
+      },
+      {
+        "title": "Business Consulting",
+        "description": "We provide professional business consulting services, including business plan development, project planning, and financial audits.",
+        "details": "Our goal is to help businesses optimize operations and drive growth.",
+        "buttonText": "Get Consulting",
+        "route": "/consulting"
+      },
+      {
+        "title": "HR & Administrative Support",
+        "description": "We offer recruitment services, HR policy development, and employee training programs.",
+        "details": "Our HR solutions are designed to enhance workforce efficiency and compliance with industry standards.",
+        "buttonText": "HR Solutions",
+        "route": "/hrsupport"
+      }
+    ]
+  },
+  "whyBonet": {
+    "title": "Why Choose Bonet Elite Services?",
+    "cards": [
+      {
+        "title": "Local Expertise",
+        "shortDesc": "Deep understanding of Rwanda’s tourism & business environment.",
+        "longDesc": "With years of experience in the Rwandan tourism and business landscape, we provide expert guidance to ensure seamless experiences for visitors and businesses alike."
+      },
+      {
+        "title": "One-Stop Solution",
+        "shortDesc": "All services under one roof for convenience.",
+        "longDesc": "From travel arrangements to corporate solutions, we streamline your needs into a single, efficient process, saving you time and effort."
+      },
+      {
+        "title": "Professional & Reliable",
+        "shortDesc": "A dedicated team ensuring top-quality service.",
+        "longDesc": "Our team of professionals is committed to delivering exceptional service, ensuring reliability and satisfaction in every interaction."
+      }
+    ]
+  },
+  "title": {
+    "part1": "Our Trusted",
+    "part2": " Partners"
+  },
+  "testimonials": {
+    "sectionTitle": "Personal Reviews",
+    "reviews": [
+      "This booking system has helped me manage my appointments more efficiently. I no longer miss client meetings, and the reminders are so helpful. It’s a game-changer for my work!",
+      "The booking system has made managing client appointments so much easier. It's streamlined my scheduling and made it much more convenient for clients. I can’t imagine running my business without it!",
+      "This system has transformed the way we manage bookings in our company. It’s automated, reliable, and keeps everyone on track. It’s made a huge difference for our productivity.",
+      "Since implementing this booking system, our customer engagement has skyrocketed. Automated reminders and easy scheduling have made our business operations smoother and our clients happier!",
+      "This booking platform has been a game-changer for my business. Customers can book their appointments at their convenience, and I can manage them all in one place. It’s saved me so much time!",
+      "I used to struggle with manual appointment scheduling, but this system has made everything seamless. Clients love the ease of booking, and I can focus on delivering great service.",
+      "This system has taken my business to the next level. Clients love the easy booking process, and I’ve been able to save a lot of time. The automatic reminders are particularly useful!",
+      "I can’t believe how much easier my job has become with this system. Clients can book online, and everything is automatically updated. It’s an essential tool for any business.",
+      "The booking system has made my work so much easier. Clients can book and reschedule with ease, and I can focus on delivering great customer service without worrying about missed appointments."
+    ]
+  },
+  "experience": {
+    "title": "What Makes Us Different?",
+    "card1": {
+      "title": "One-Stop Business & Investment Hub",
+      "description": "From registering companies to facilitating investment opportunities and legal compliance, we offer a centralized platform for all your business needs in Rwanda."
+    },
+    "card2": {
+      "title": "Tailored VIP & Executive Services",
+      "description": "Experience top-tier personalized services—from luxury accommodation and transport to concierge and relocation assistance, designed for elite clients and busy professionals."
+    },
+    "card3": {
+      "title": "Fast & Hassle-Free Process",
+      "description": "We streamline procedures to save you time—ensuring quick, efficient service for everything from business setup to travel arrangements."
+    }
+  },
+  "gallery": {
+    "title": "Visit Rwanda",
+    "places": {
+      "conv": "Convention Center",
+      "k2": "King's Palace",
+      "memo": "Kigali Genocide Memorial",
+      "k3": "Akagera National Park",
+      "kiv": "Lake Kivu",
+      "vov": "Volcanoes National Park",
+      "part1": "Classic Hotels",
+      "tea": "Rwanda's Coffee and Tea Plantations",
+      "nyu5": "Nyungwe National Park",
+      "gis3": "Gisenyi Beach",
+      "huye": "Huye National Museum",
+      "muhazi": "Muhazi Lake"
+    },
+    "button": "Visit Rwanda"
+  },
+  "aisolutions": {
+    "title": "Explore Rwanda with Bonet Elite Service",
+    "feature1": {
+      "title": "Business Setup in Rwanda",
+      "description": "Discover the step-by-step process of setting up a business in Rwanda, from registration with RDB to understanding tax regulations and investment incentives.",
+      "highlight": "Rwanda offers a streamlined business registration process, allowing entrepreneurs to start operations within 24 hours."
+    },
+    "feature2": {
+      "title": "Luxury Services in Kigali.",
+      "description": "Explore essential travel tips, from visa requirements to cultural etiquette, must-visit destinations, and the best times to visit Rwanda.",
+      "highlight": "Rwanda is one of the safest travel destinations in Africa, offering breathtaking landscapes and a welcoming culture."
+    },
+    "feature3": {
+      "title": "Investment in Rwanda",
+      "description": "Uncover Rwanda’s most promising investment sectors, including real estate, agriculture, ICT, and tourism, with insights on potential returns and government support.",
+      "highlight": "Rwanda's economic growth and investor-friendly policies make it a top choice for foreign investments in Africa."
+    },
+    "learnMore": "Learn more →"
+  },
+  "blog": {
+    "header": {
+      "title1": "Latest",
+      "title2": "Blog Posts"
+    },
+    "loading": "Loading blogs...",
+    "noPosts": "No blog posts available.",
+    "readMore": "Read More"
+  },
+  "faq": {
+    "header": "Some Frequently Asked Questions",
+    "contactPrompt": "Still Have Questions? Contact Us for Personalized Assistance!",
+    "getInTouch": "Get in Touch"
+  },
+  "footer": {
+    "description": "At Bonet Elite Services, we make travel, business, and investment easy so you can focus on what truly matters. Let’s make your experience in Rwanda seamless and successful!",
+    "quickLinks": "Quick Links",
+    "aboutUs": "About Us",
+    "services": "Services",
+    "bookNow": "Book Now",
+    "contactUs": "Contact Us",
+    "contactDescription": "Get in touch to enjoy seamless booking and scheduling while you focus on what truly matters.",
+    "whatsappCall": "WhatsApp/Call:",
+    "email": "Email:",
+    "location": "Location:",
+    "copyright": "All rights reserved."
+  },
+  "menu": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "services": "Services",
+    "travelAndHospitality": "Travel & Hospitality",
+    "hotels": "Hotels",
+    "apartments": "Apartments",
+    "transport": "Transport",
+    "tourism": "Tourism",
+    "investmentAndBusinessSetup": "Business Setup",
+    "companyRegistration": "Company Registration & Legal Setup",
+    "investmentCertificate": "Investment Certificate Application",
+    "businessPermits": "Business Permits & Licensing",
+    "marketResearch": "Market Research & Feasibility Analysis",
+    "operationalSetup": "Operational Setup & Launch Support",
+    "businessConsulting": "Business Consulting",
+    "businessPlanning": "Business Planning & Strategy",
+    "financialAdvisory": "Financial Advisory & Audit Support",
+    "processOptimization": "Process Optimization & Risk Management",
+    "projectAuditing": "Project & Compliance Auditing",
+    "hrAndAdminSupport": "HR & Admin Support",
+    "recruitment": "Recruitment & Talent Acquisition",
+    "hrPolicyDevelopment": "HR Policy Development",
+    "employeeTraining": "Employee Training & Development",
+    "payrollCompensation": "Payroll & Compensation",
+    "administrativeSupport": "Administrative Support",
+    "bookNow": "Book Now"
+  },
+  "home": {
+    "welcomeText": "Welcome To Bonet Elite Services",
+    "tagline": "Your Trusted Partner for Travel, Business & Investment in Rwanda"
+  },
+  "vision": {
+    "welcomeText": "Welcome To Bonet Elite Services",
+    "tagline": "Your Trusted Partner for Travel, Business & Investment in Rwanda",
+    "visionTitle": "Vision Statement",
+    "visionText": "To be the leading Elite service provider in Rwanda, offering seamless and professional solutions in travel, investment, and business support to individuals and companies worldwide.",
+    "missionTitle": "Mission Statement",
+    "missionText": "We provide high-quality Elite services tailored to the needs of travelers, investors, and businesses. Our expertise in hospitality, business consulting, and HR solutions ensures a smooth and hassle-free experience for our clients, helping them succeed in Rwanda."
+  },
+  "founder": {
+    "meet": "Meet Our",
+    "founder": "Founder",
+    "founderTitle": "CEO & Founder",
+    "founderDescription": "John Doe is the visionary behind Bonet Elite Service, dedicated to redefining luxury and convenience. With a passion for excellence, he has built a platform that seamlessly connects clients with premium lifestyle solutions. His leadership and innovative mindset continue to drive the company's success, ensuring an unparalleled experience for all users."
+  },
+  "service": {
+    "heading1": "Our",
+    "heading2": "Services",
+    "more": "More",
+    "travel": {
+      "title": "Travel & Hospitality",
+      "description": "We offer comprehensive travel and hospitality services, including hotel booking, airport transfers, car rentals, and guided tours.",
+      "details": "Whether for business or leisure, we ensure a seamless experience from arrival to departure."
+    },
+    "investment": {
+      "title": "Investment & Business Setup",
+      "description": "Our experts assist with business registration, licensing, and advisory services.",
+      "details": "We provide in-depth market analysis and strategic planning to help you establish and grow your business effectively."
+    },
+    "consulting": {
+      "title": "Business Consulting",
+      "description": "We provide professional business consulting services, including business plan development, project planning, and financial audits.",
+      "details": "Our goal is to help businesses optimize operations and drive growth."
+    },
+    "hr": {
+      "title": "HR & Administrative Support",
+      "description": "We offer recruitment services, HR policy development, and employee training programs.",
+      "details": "Our HR solutions are designed to enhance workforce efficiency and compliance with industry standards."
+    }
+  },
+  "booking": {
+    "home": "Home",
+    "hotel": "Hotel",
+    "apartments": "Apartment",
+    "transport": "Transport",
+    "tour": "Tour",
+    "search": "Search anything"
+  },
+  "executiveApartments": {
+    "title": "Executive Serviced Apartments",
+    "description": "Experience luxury, comfort, and convenience in our premium serviced apartments. Ideal for business travelers, investors, and expats in Rwanda.",
+    "features": [
+      "Fully Furnished & Serviced – High-end apartments with all amenities.",
+      "Prime Locations – Close to business districts and major landmarks.",
+      "Short & Long-Term Stays – Flexible rental options."
+    ],
+    "buttonText": "Book Your Stay Today!",
+    "image": "/assets/images/apa.jpg"
+  },
+  "investment": {
+    "title": "Investment & Business Setup",
+    "services": [
+      {
+        "title": "Business Registration Assistance",
+        "subtitle": "Fast company setup with RDB.",
+        "description": "We provide guidance on company registration with RDB, ensuring legal compliance and a smooth setup, often completed within six hours.",
+        "image": "/assets/images/rdb.jpg"
+      },
+      {
+        "title": "Investment Certificate",
+        "subtitle": "Access incentives and benefits for investors.",
+        "description": "We assist businesses in obtaining an Investment Certificate, granting access to tax incentives, exemptions, and government support, enhancing credibility and investment opportunities.",
+        "image": "/assets/images/cert.jpg"
+      },
+      {
+        "title": "Taxpayer Identification Number (TIN) Registration",
+        "subtitle": "Required for legal operations.",
+        "description": "We help businesses acquire a TIN from RRA, essential for tax compliance and legal operations, including transactions and property ownership.",
+        "image": "/assets/images/rra.jpg"
+      },
+      {
+        "title": "Trade License (Patente)",
+        "subtitle": "Business operating license from local authorities.",
+        "description": "A Trade License is mandatory for businesses in Rwanda. We assist in obtaining and renewing it to ensure compliance and avoid penalties.",
+        "image": "/assets/images/rra1.jpg"
+      },
+      {
+        "title": "Sector-Specific Licenses",
+        "subtitle": "Required for specialized industries.",
+        "description": "We facilitate licensing for various industries, including construction, tourism, finance, healthcare, import/export, and logistics, ensuring full regulatory compliance.",
+        "image": "/assets/images/rdb2.jpg"
+      },
+      {
+        "title": "Work & Residency Permits in Rwanda",
+        "subtitle": "Essential guidelines for foreign investors and employees.",
+        "description": "We assist foreign investors and employees in obtaining work and residency permits through Rwanda’s streamlined process, ensuring smooth legal entry and stay.",
+        "image": "/assets/images/kg6.jpg"
+      }
+    ],
+    "buttonHelp": "Need help starting or expanding your business? Let’s talk!",
+    "formDescription": "Fill out this form, and we will reach out to you in no time",
+    "formFullName": "Full Names",
+    "formEmail": "Email",
+    "formContact": "Contact Number",
+    "formDescriptionPlaceholder": "Write the full description of the service you want",
+    "formCancel": "Cancel",
+    "formSubmit": "Submit"
+  },
+  "humanresource": {
+    "title": "HR & Administrative Support",
+    "services": [
+      {
+        "image": "/assets/images/talent.jpg",
+        "title": "Recruitment & Talent Acquisition",
+        "subtitle": "Find the right people for your business.",
+        "description": "We help you source, screen, and select the best talent to drive your business forward with our expert recruitment strategies. Our dedicated team ensures you get the best match for your company culture and needs."
+      },
+      {
+        "image": "/assets/images/compliance.png",
+        "title": "HR Policies & Compliance",
+        "subtitle": "Develop contracts, policies, and employee handbooks.",
+        "description": "Our HR compliance services ensure that your company operates within legal frameworks, keeping your employees and business protected. We create custom policies that align with your business goals and local labor laws."
+      },
+      {
+        "image": "/assets/images/tra.jpeg",
+        "title": "Employee Training & Development",
+        "subtitle": "Improve skills and productivity.",
+        "description": "Boost employee performance with our structured training programs designed to enhance skills and overall productivity. Our expert-led training covers soft skills, technical abilities, and leadership development."
+      },
+      {
+        "image": "/assets/images/pay.png",
+        "title": "Payroll & Administrative Solutions",
+        "subtitle": "Ensure smooth operations.",
+        "description": "We offer payroll management and administrative support, ensuring timely salary processing and compliance with financial regulations. Our seamless solutions help businesses focus on their core operations."
+      }
+    ],
+    "contact": {
+      "buttonHelp": "Need reliable HR support? We’re here to help",
+      "buttonWhatsApp": "Quick Contact",
+      "popupTitle": "HR & Admin Support",
+      "popupDescription": "Fill out this form, and we will reach out to you shortly.",
+      "form": {
+        "fullNames": "Full Names",
+        "email": "Email",
+        "contactNumber": "Contact Number",
+        "description": "Write the full description of the service you want",
+        "cancel": "Cancel",
+        "submit": "Submit"
+      }
+    }
+  },
+  "visitrwanda": {
+    "title": "Why Rwanda is a Great Business Destination",
+    "subtitle": "Explore why Rwanda is the best place to invest and grow your business in Africa.",
+    "benefits": [
+      {
+        "title": "Easy & Fast Business Setup",
+        "description": "Register a company in just 6 hours.",
+        "moreDescription": "With streamlined digital services and a dedicated investment promotion agency, setting up a business in Rwanda is fast and straightforward."
+      },
+      {
+        "title": "Full Ownership & Tax Benefits",
+        "description": "100% foreign ownership, tax incentives.",
+        "moreDescription": "Investors enjoy full repatriation of profits, tax holidays, and zero import duties for strategic sectors."
+      },
+      {
+        "title": "Strategic Location",
+        "description": "Gateway to 177M+ East African consumers.",
+        "moreDescription": "Rwanda is centrally located in Africa, providing easy access to multiple regional markets including EAC and AfCFTA."
+      },
+      {
+        "title": "Safe & Business-Friendly",
+        "description": "One of Africa’s safest countries.",
+        "moreDescription": "Rwanda boasts low crime rates, stable leadership, and a zero-tolerance policy on corruption, making it a haven for business."
+      },
+      {
+        "title": "Modern Infrastructure & Innovation",
+        "description": "Strong ICT and logistics sector.",
+        "moreDescription": "From fiber-optic internet to smart city planning, Rwanda is investing heavily in 21st-century infrastructure."
+      },
+      {
+        "title": "Green & Sustainable Economy",
+        "description": "Incentives for eco-friendly businesses.",
+        "moreDescription": "The government supports clean tech, electric mobility, and sustainable agriculture through targeted policies and grants."
+      }
+    ]
+  },
+  "whyinvest": {
+    "title": "Ready to invest?",
+    "subtitle": "Bonet Elite Services makes the process seamless. Let’s get started today!",
+    "card": {
+      "image": "/assets/images/kiga1.jpeg",
+      "heading": "How Bonet can help investors set up and grow",
+      "subheading": "How Bonet Elite Services Simplifies Business Setup and Growth",
+      "paragraphs": [
+        "Setting up and running a business in Rwanda should be exciting, not overwhelming. At Bonet Elite Services, we take the hassle out of business registration and licensing by handling everything for you, seamlessly and efficiently.",
+        "Whether you're an investor seeking an Investment Certificate, an entrepreneur launching a startup, or an established business needing sector-specific permits, we ensure a smooth, stress-free process.",
+        "From paperwork to approvals, we navigate the complexities so you don’t have to. With our expertise, you save time, avoid delays, and focus on what truly matters – growing your business with confidence."
+      ]
+    }
+  },
+  "investmentOpportunities": {
+    "title": "Investment Opportunities in Rwanda",
+    "subtitle": "Explore why Rwanda is one of the best places in Africa to invest and grow your business.",
+    "items": [
+      {
+        "title": "MANUFACTURING",
+        "description": "The Rwanda industrial policy aims at increasing domestic production, improving export competitiveness and creating an enabling environment for industrialisation. The manufacturing sector is currently dominated by construction materials manufacturing and agro-processing subsectors, mainly due to local availability of raw materials and the booming construction sector.",
+        "keyPoints": [
+          "Construction materials",
+          "Pharmaceutical drugs",
+          "Textiles",
+          "Leather processing",
+          "Soaps and detergents",
+          "Fertilisers"
+        ],
+        "image": "/assets/images/manu.jpg"
+      },
+      {
+        "title": "AGRICULTURE",
+        "description": "Rwanda's agriculture sector plays a vital role in the economy, contributing significantly to employment and GDP. The government is focused on modernizing agriculture through mechanization, irrigation, and value addition.",
+        "keyPoints": [
+          "Agribusiness and agro-processing",
+          "Horticulture (fruits and vegetables)",
+          "Livestock farming and dairy production",
+          "Coffee and tea processing",
+          "Organic farming"
+        ],
+        "image": "/assets/images/agri.jpg"
+      },
+      {
+        "title": "ENERGY",
+        "description": "The Rwandan government aims to increase electricity access and encourage renewable energy investments. Hydropower, solar energy, and methane gas extraction are key focus areas.",
+        "keyPoints": [
+          "Hydropower projects",
+          "Solar and wind energy farms",
+          "Biomass and biogas production",
+          "Off-grid energy solutions"
+        ],
+        "image": "/assets/images/energey.jpg"
+      },
+      {
+        "title": "TOURISM",
+        "description": "Rwanda is a top tourism destination in Africa, known for its mountain gorillas, national parks, and cultural heritage. The government actively promotes sustainable tourism and eco-lodges.",
+        "keyPoints": [
+          "Eco-tourism and conservation projects",
+          "Luxury hotels and lodges",
+          "Adventure and cultural tourism",
+          "Conference and business tourism"
+        ],
+        "image": "/assets/images/tourisim.jpg"
+      },
+      {
+        "title": "ICT (INFORMATION AND COMMUNICATION TECHNOLOGY)",
+        "description": "Rwanda has established itself as an ICT hub in Africa, with the government promoting a digital economy through various initiatives. The ICT sector presents vast investment potential.",
+        "keyPoints": [
+          "Tech startups and innovation hubs",
+          "Software and app development",
+          "E-commerce platforms",
+          "Cybersecurity solutions"
+        ],
+        "image": "/assets/images/ict.jpg"
+      },
+      {
+        "title": "REAL ESTATE & CONSTRUCTION",
+        "description": "With rapid urbanization, Rwanda has a growing demand for modern infrastructure, residential housing, and commercial properties.",
+        "keyPoints": [
+          "Affordable housing projects",
+          "Commercial real estate development",
+          "Smart cities and urban planning",
+          "Green building initiatives"
+        ],
+        "image": "/assets/images/real.jpg"
+      },
+      {
+        "title": "INFRASTRUCTURE",
+        "description": "Rwanda is investing heavily in infrastructure development to support economic growth and regional integration. The government is promoting public-private partnerships to accelerate infrastructure projects.",
+        "keyPoints": [
+          "Road and bridge construction",
+          "Railway development",
+          "Smart transport solutions",
+          "Water and sanitation projects"
+        ],
+        "image": "/assets/images/est.jpg"
+      },
+      {
+        "title": "MINING",
+        "description": "Rwanda has a rich mineral sector, with government policies supporting responsible mining and value addition. The country is a key producer of tantalum, tin, and tungsten.",
+        "keyPoints": [
+          "Gold and tin mining",
+          "Coltan and tantalum extraction",
+          "Quarrying and cement production",
+          "Gemstone exploration"
+        ],
+        "image": "/assets/images/miniig.jpg"
+      }
+    ]
+  },
+  "travelSpots": {
+    "title": "Travel Tips for First-Time Visitors",
+    "spots": [
+      {
+        "title": "Volcanoes National Park",
+        "image": "/assets/images/vol.jpg",
+        "description": "Home to Rwanda’s famous mountain gorillas, this park offers breathtaking landscapes and a unique wildlife experience. Visitors can embark on guided gorilla trekking expeditions, where they can witness these majestic primates in their natural habitat. The park is also home to golden monkeys, lush bamboo forests, and stunning volcanic scenery. It is a paradise for eco-tourists, photographers, and wildlife enthusiasts who wish to explore one of the last remaining mountain gorilla sanctuaries on Earth."
+      },
+      {
+        "title": "Nyungwe National Park",
+        "image": "/assets/images/nyu.jpeg",
+        "description": "A vast montane rainforest, Nyungwe is one of Africa’s oldest rainforests, teeming with biodiversity. The park boasts a rich ecosystem filled with over 1,000 plant species, 13 primate species including chimpanzees, and more than 300 bird species, making it a haven for birdwatchers. One of its highlights is the famous Canopy Walkway, a suspension bridge hanging 60 meters above the forest floor, offering breathtaking views of the lush greenery and diverse wildlife below. Visitors can also enjoy hiking trails that lead to beautiful waterfalls and scenic viewpoints."
+      },
+      {
+        "title": "Akagera National Park",
+        "image": "/assets/images/k3.jpg",
+        "description": "This savannah park is home to the Big Five—lions, leopards, elephants, buffalo, and rhinos—offering an authentic African safari experience. Unlike other Rwandan parks, Akagera is characterized by wide open plains, woodlands, lakes, and wetlands, creating a diverse and beautiful landscape. Boat safaris on Lake Ihema allow visitors to see hippos, crocodiles, and numerous waterbirds up close. The park has undergone extensive conservation efforts, successfully reintroducing lions and rhinos, making it a must-visit destination for wildlife lovers."
+      },
+      {
+        "title": "Kigali Genocide Memorial",
+        "image": "/assets/images/gen.jpeg",
+        "description": "A place of remembrance and education, this memorial honors the victims of the 1994 Genocide against the Tutsi, providing deep insights into Rwanda’s history and resilience. The site features exhibits that detail the events leading up to the genocide, the horrors that unfolded, and the efforts of Rwandans to rebuild their nation. Visitors can pay their respects at the mass graves and learn about personal survivor testimonies, fostering a deeper understanding of Rwanda’s journey towards reconciliation and peace."
+      },
+      {
+        "title": "Lake Kivu",
+        "image": "/assets/images/kiv.jpg",
+        "description": "One of Africa’s Great Lakes, Lake Kivu offers stunning views, relaxing boat rides, and vibrant lakeside towns such as Gisenyi, Kibuye, and Cyangugu. The lake's crystal-clear waters are free of dangerous wildlife, making it perfect for swimming, kayaking, and fishing. Visitors can explore coffee plantations nearby, take a sunset cruise, or simply relax on the shores while enjoying the breathtaking landscape. With its warm and welcoming atmosphere, Lake Kivu is an ideal retreat for those looking to unwind and enjoy nature."
+      },
+      {
+        "title": "King’s Palace Museum (Rukari)",
+        "image": "/assets/images/k2.webp",
+        "description": "This historical site in Nyanza showcases Rwanda’s royal heritage, featuring a reconstructed traditional palace with thatched-roof architecture. Visitors can learn about the history of Rwanda’s monarchy, the customs and traditions of past kings, and see the Inyambo (sacred long-horned cattle), which were traditionally groomed for royal ceremonies. The museum provides fascinating insights into pre-colonial Rwanda, offering a unique cultural experience that highlights the nation’s rich history and legacy."
+      }
+    ]
+  },
+  "investingInRwanda": {
+    "title": "How to Start a Business in Rwanda as a Foreigner",
+    "whyInvest": {
+      "title": "Why Invest in Rwanda?",
+      "text": "Rwanda ranks 38th globally and 2nd in Africa for ease of doing business. With an online registration process that takes just six hours, it is an attractive investment destination."
+    },
+    "steps": {
+      "prepare": {
+        "title": "Prepare for Registration",
+        "items": [
+          "Have an active email address.",
+          "Keep your ID or Passport ready.",
+          "Determine your company name, business activities, and office address.",
+          "Collect shareholders’, board members’, and directors’ particulars."
+        ]
+      },
+      "documents": {
+        "title": "Necessary Documents",
+        "items": [
+          "Notarized Power of Attorney.",
+          "Notarized Memorandum Articles of Association.",
+          "Notarized Certificate of Registration/Incorporation.",
+          "Notarized Resolution authorizing the opening of a branch."
+        ]
+      },
+      "registerOnline": {
+        "title": "Register Online",
+        "items": [
+          "Access the RDB business registration system.",
+          "Choose the appropriate business category.",
+          "Complete the business registration application online."
+        ]
+      },
+      "taxes": {
+        "title": "Register, Declare, and Pay Taxes",
+        "items": [
+          "Register for taxes, including VAT if applicable.",
+          "Ensure compliance with all tax obligations.",
+          "Seek tax advisory for proper guidance."
+        ]
+      },
+      "keyInfo": {
+        "title": "Key Information",
+        "items": [
+          "No business registration fees required.",
+          "Company registration takes only 6 hours.",
+          "The entire process is online, eliminating the need for physical presence."
+        ]
+      }
+    },
+    "step2": {
+      "title": "Step 2: Requirements to Get an Investment Certificate",
+      "onlineApplication": {
+        "title": "Online Application",
+        "items": [
+          "Apply online at osc.rdb.rw.",
+          "Obtain a Company Incorporation Certificate from RDB.",
+          "Use the Company Code/TIN for online applications."
+        ]
+      },
+      "applicationLetter": {
+        "title": "Application Letter",
+        "text": "Write an application letter addressed to the CEO of Rwanda Development Board requesting an Investment Certificate."
+      }
+    },
+    "businessPlan": {
+      "title": "Business Plan Requirements",
+      "items": [
+        "Executive Summary: Outline the key aspects of the project.",
+        "Project Promoter(s) Profile: Details about the people behind the project.",
+        "Project Background: Information on the origins and development of the project.",
+        "Market Study/Analysis: Insights into market conditions and potential.",
+        "Financial Information: Level of loan and equity financing, if any.",
+        "Projected Income and Expenditure: Statements for the next 5 years.",
+        "Planned Investment: Financial schedule & capital cost for the next 5 years.",
+        "Projected Balance Sheet: Financial projections for the next 5 years.",
+        "Loan Amortization Schedule: If any bank loans are involved."
+      ]
+    }
+  },
+  "businessRegistration": {
+    "title": "How We Handle Business Registration & Licensing for You",
+    "steps": [
+      {
+        "title": "Step-1: Consultation & Requirements Gathering",
+        "description": "We understand your business needs and collect the necessary details."
+      },
+      {
+        "title": "Step-2: Document Preparation & Submission",
+        "description": "We handle all paperwork and file the necessary applications."
+      },
+      {
+        "title": "Step-3: Government Liaison & Follow-up",
+        "description": "We coordinate with the relevant authorities to ensure fast processing."
+      },
+      {
+        "title": "Step-4: Approval & Certification",
+        "description": "We deliver your registered business or license with all legal documents."
+      },
+      {
+        "title": "Step-5: Post-Registration Support",
+        "description": "Need tax registration, permits, or office setup? We’ve got you covered."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We value your feedback and inquiries. Please fill out the form, and we'll respond to you as soon as possible.",
+    "form": {
+      "namePlaceholder": "Full name",
+      "emailPlaceholder": "Email",
+      "phonePlaceholder": "Phone number",
+      "whatsappPlaceholder": "WhatsApp number",
+      "inquiryLabel": "Inquiry Type",
+      "inquiryOptions": {
+        "hotel": "Hotel",
+        "department": "Department",
+        "transport": "Transport",
+        "businessSetup": "Business Setup"
+      },
+      "messagePlaceholder": "Your message",
+      "submitButton": "Send Message"
+    },
+    "contactInfo": {
+      "title": "Get in To uch with Us",
+      "callWhatsApp": "Call/WhatsApp:",
+      "email": "Email:",
+      "location": "Location: Kigali, Rwanda",
+      "chatButton": "Chat with Us"
+    }
+  },
+  "contactInfo": {
+    "title": {
+      "part1": "Get in To",
+      "part2": "uch with Us"
+    },
+    "description": "We value your feedback and inquiries. Please fill out the form, and we'll respond to you as soon as possible.",
+    "chatIconAlt": "Chat Icon",
+    "chatIconHoverAlt": "Chat Icon Hover",
+    "chatButton": "Chat with Us",
+    "callWhatsApp": "Call/WhatsApp",
+    "email": "Email",
+    "location": "Location: Kigali, Rwanda"
+  },
+  "quickButtons": {
+    "ariaLabels": {
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "contactUsButton": "Contact us"
+    },
+    "languages": {
+      "en": "English",
+      "fr": "Français"
+    },
+    "menu": {
+      "home": "Home",
+      "aboutUs": "About us",
+      "services": "Services",
+      "bookNow": "Book Now",
+      "contactUs": "Contact us"
+    },
+    "flags": {
+      "en": "../assets/images/usa.png",
+      "fr": "../assets/images/french.png"
+    }
+  },
+  "locationSection": {
+    "title": "Our Location"
+  },
+  "locationSecondSection": {
+    "title": "Get Location",
+    "startingPoint": "Starting Point",
+    "destination": "Destination",
+    "search": "Search",
+    "estimatedTime": "Estimated Time"
+  },
+  "chatbot": {
+    "customerSupportTitle": "Customer Support Chatbot",
+    "askHelp": "What can I help you with?",
+    "bonetChatbotTitle": "Bonet Elite Service Chatbot",
+    "bonetSubtitle": "Chat with customer support",
+    "continue": "Continue to Chat",
+    "agreeTerms": "I agree to the terms",
+    "disclaimer": "You are about to open an AI customer support chatbox designed specifically for Bonet Elite Service. This chatbot is here to guide you and provide assistance solely related to this service.",
+    "askPlaceholder": "Ask anything"
+  },
+  "liveChat": {
+    "typeMessage": "Type your message",
+    "title": "Bonet Elite Service Live Chat sdjhsdjhjhsdjh5",
+    "helpText": "What can we help you with?",
+    "subtitle": "Chat with Our Agent",
+    "continue": "Continue to Live Chat",
+    "agreeTerms": "I agree to the terms",
+    "disclaimer": "You are about to open a Live Chat with our Agents designed specifically for Bonet Elite Service. This chat is here to guide you and provide assistance solely related to this service.",
+    "button": "Live Chat",
+    "footer": "Bonet Elite Service Live Chat"
+  },
+  "common": {
+    "contactUs": "Contact us"
+  },
+  "brandName": "Bonet Elite Services",
+  "infoCards": {
+    "hotelCard": {
+      "viewMore": "View More",
+      "viewLess": "View Less",
+      "bookNow": "Book Now"
+    },
+    "belief": {
+      "title": "Why Settle for Ordinary?",
+      "content": {
+        "part1": "At",
+        "part2": ", we believe travel is more than movement — it's an experience that should reflect your standards, lifestyle, and goals. Whether you're coming for business, leisure, or a life moment, your accommodation should support who you are and what you value —",
+        "comfort": "comfort",
+        "class": "class",
+        "privacy": "privacy",
+        "efficiency": "efficiency"
+      }
+    },
+    "services": {
+      "title": "What We Do Differently",
+      "content": {
+        "intro": "We don’t just book hotels. We craft custom stays that fit you — your schedule, your preferences, and your priorities. From the moment you land to the moment you check out, we make sure every detail works in your favor.",
+        "list": {
+          "premiumSelection": "Premium hotel selection tailored to your request",
+          "flexibility": "Flexibility with check-in/out times and services",
+          "transport": "Executive transport and airport pickup on request",
+          "roomSetup": "Room setup for business, family, or special occasions",
+          "assistance": "Personalized assistance every step of the way"
+        }
+      }
+    },
+    "booking": {
+      "title": "How to Book",
+      "content": "Tell us what you’re looking for — hotel type, location, preferences — and we’ll come back to you with a customized proposal that matches your standards. No limits, no pressure, just curated comfort. Fill out the short form below and let us take care of the rest."
+    }
+  },
+  "cta": {
+    "heading": "Ready to experience premium comfort?",
+    "button": "Book Hotel Accommodation"
+  },
+  "form": {
+    "title": "Accommodation Request For Hotel",
+    "fullName": {
+      "label": "Full Name",
+      "placeholder": "Full Name",
+      "required": "Full Name is required"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Email Address",
+      "required": "Email is required",
+      "invalid": "Invalid email format"
+    },
+    "phone": {
+      "label": "Phone",
+      "placeholder": "Phone Number",
+      "required": "Phone number is required"
+    },
+    "guests": {
+      "label": "Guests",
+      "placeholder": "e.g. 2",
+      "required": "Number of guests is required"
+    },
+    "purpose": {
+      "label": "Purpose of Stay",
+      "placeholder": "Select purpose",
+      "required": "Please select the purpose of stay",
+      "options": {
+        "business": "Business Travel",
+        "honeymoon": "Honeymoon / Romantic Getaway",
+        "family": "Family Vacation",
+        "diplomatic": "Diplomatic or Government Visit",
+        "long-vip": "Long-Term VIP Stay (30+ days)",
+        "vip_event": " VIP Event / Conference Attendance"
+      }
+    },
+    "preferredLocation": {
+      "label": "Preferred Location",
+      "placeholder": "Choose location",
+      "required": "Please select preferred location",
+      "options": {
+        "kcc": "Kigali City Center – Executive Zone",
+        "convention": "Near Kigali Convention Centre (KCC)",
+        "embassy": "Nyarutarama / Kimihurura (Embassy Area)",
+        "vision_city": "Gacuriro / Vision City",
+        "musanze": " Musanze (Luxury Lodges – Volcanoes Park)",
+        "lake_kivu": "Lake Kivu (Luxury Resort Area)",
+        "akagera": " Akagera National Park (Safari Lodges)",
+        "other": "Other"
+      }
+    },
+    "customLocation": {
+      "placeholder": "Custom Location",
+      "required": "Please enter custom location"
+    },
+    "location": {
+      "label": "Location (Province, District)",
+      "placeholder": "e.g., Kigali, Gasabo",
+      "required": "Location is required"
+    },
+    "dates": {
+      "label": "Stay Dates",
+      "required": "Please select stay dates"
+    },
+    "hotelLevel": {
+      "label": "Hotel Level",
+      "placeholder": "Select hotel level",
+      "required": "Please select hotel level",
+      "options": {
+        "premium": "Premium Executive Hotel",
+        "4star": "4-Star Luxury Hotel",
+        "5star": "5-Star International Hotel",
+        "luxury1": "Presidential or Ultra-Luxury Suite",
+        "luxury2": " Luxury Serviced Apartment",
+        "private_villa": "Private Villa / Entire Luxury Residence"
+      }
+    },
+    "transport": {
+      "label": "Transport",
+      "placeholder": "Select Transport",
+      "required": "Please select transport",
+      "options": {
+        "sedan_vip": "Executive Sedans – First-Class (VIP)",
+        "suv_vip": "Luxury SUVs – First-Class (VIP)",
+        "sedan_exec": "Business-Class Sedans – Second-Class (Executive)",
+        "suv_exec": "Reliable SUVs – Second-Class (Business & NGO Use)",
+        "van_vip": "Luxury Vans – VIP Group Transport",
+        "airport": "Airport Pickup Only",
+        "chouffer": "Chauffeur Service (Hourly / Daily)",
+        "none": "No Transport Needed"
+      }
+    },
+    "budget": {
+      "label": "Budget (Per Night)",
+      "placeholder": "Select budget",
+      "required": "Please select budget range",
+      "options": {
+        "150_200": "$150 – $200",
+        "200_400": "$200 – $400",
+        "400_plus": "$400+",
+        "custom": "Custom"
+      }
+    },
+    "customBudget": {
+      "placeholder": "Custom Budget $",
+      "required": "Please enter budget amount",
+      "onlyNumbers": "Only numbers allowed"
+    },
+    "specialNeeds": {
+      "label": "Special Needs or Notes",
+      "placeholder": "Any other info..."
+    },
+    "submit": "Submit Request",
+    "success": "✅ Hotel request submitted!",
+    "fail": "❌ Failed to submit request",
+    "errors": {
+      "selectDates": "❌ Please select both check-in and check-out dates."
+    }
+  },
+  "apartmentInfo": {
+    "cards": {
+      "belief": {
+        "title": "Why Settle for Ordinary?",
+        "textStart": "At",
+        "textMiddle": ", we believe travel is more than movement — it's an experience that should reflect your standards, lifestyle, and goals. Whether you're coming for business, leisure, or a life moment, your accommodation should support who you are and what you value —",
+        "values": {
+          "comfort": "comfort",
+          "class": "class",
+          "privacy": "privacy",
+          "efficiency": "efficiency"
+        }
+      },
+      "services": {
+        "title": "What We Do Differently",
+        "intro": "We don’t just book hotels. We craft custom stays that fit you — your schedule, your preferences, and your priorities. From the moment you land to the moment you check out, we make sure every detail works in your favor.",
+        "list": {
+          "premiumSelection": "Premium hotel selection tailored to your request",
+          "flexibility": "Flexibility with check-in/out times and services",
+          "transportPickup": "Executive transport and airport pickup on request",
+          "roomSetup": "Room setup for business, family, or special occasions",
+          "personalAssist": "Personalized assistance every step of the way"
+        }
+      },
+      "booking": {
+        "title": "How to Book",
+        "description": "Tell us what you’re looking for — hotel type, location, preferences — and we’ll come back to you with a customized proposal that matches your standards. No limits, no pressure, just curated comfort. Fill out the short form below and let us take care of the rest."
+      }
+    },
+    "cta": {
+      "heading": "Ready to experience premium comfort?",
+      "button": "Book Apartment Accommodation",
+      "bookNow": "Book Now"
+    }
+  },
+  "apartmentForm": {
+    "title": "Accommodation Request For Apartment",
+    "fields": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "guests": "Guests",
+      "transport": "Transport",
+      "purpose": "Purpose of Stay",
+      "preferredLocation": "Preferred Location",
+      "locationFull": "Location (Province, District)",
+      "dates": "Stay Dates",
+      "roomType": "Room Type",
+      "budget": "Budget (Per Night)",
+      "specialNeeds": "Special Needs or Notes"
+    },
+    "placeholders": {
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "guests": "e.g. 2",
+      "transport": "Select Transport",
+      "purpose": "Select purpose",
+      "location": "Choose location",
+      "customLocation": "Custom Location",
+      "locationFull": "e.g., Kigali, Gasabo",
+      "roomType": "Select room type",
+      "budget": "Select budget",
+      "customBudget": "Enter custom budget $",
+      "specialNeeds": "Write anything important..."
+    },
+    "options": {
+      "transport": {
+        "execSedan": "Executive Sedans – First-Class (VIP)",
+        "luxSUV": "Luxury SUVs – First-Class (VIP)",
+        "bizSedan": "Business-Class Sedans – Second-Class (Executive)",
+        "reliableSUV": "Reliable SUVs – Second-Class (Business & NGO Use)",
+        "luxVan": "Luxury Vans – VIP Group Transport"
+      },
+      "purpose": {
+        "business": "Business Travel",
+        "honeymoon": "Honeymoon / Romantic Getaway",
+        "family": "Family Vacation",
+        "diplomatic": "Diplomatic or Government Visit",
+        "vip_longterm": "Long-Term VIP Stay (30+ days)",
+        "vip_event": "VIP Event / Conference Attendance"
+      },
+      "location": {
+        "kcc": "Near Kigali Convention Centre (KCC)",
+        "embassy": "Nyarutarama / Kimihurura (Embassy Area)",
+        "vision_city": "Gacuriro / Vision City",
+        "lake_kivu": "Lake Kivu (Luxury Resort Area)",
+        "musanze": "Musanze (Luxury Lodges – Volcanoes Park)",
+        "akagera": "Akagera National Park (Safari Lodges)",
+        "other": "Other"
+      },
+      "roomType": {
+        "executiveRoom": "Executive Room",
+        "deluxeRoom": "Deluxe Room",
+        "juniorSuite": "Junior Suite",
+        "presidentialSuite": "Presidential Suite",
+        "penthouseSuite": "Penthouse Suite",
+        "luxury1bedroom": "1-Bedroom Luxury Apartment",
+        "apartment2bedroom": "2-Bedroom Apartment",
+        "apartment3bedroom": "3-Bedroom Apartment",
+        "privateVilla": "Private Villa (2+ Bedrooms)"
+      },
+      "budget": {
+        "range1": "$150 – $200",
+        "range2": "$200 – $400",
+        "range3": "$400+",
+        "custom": "Custom"
+      }
+    },
+    "errors": {
+      "dateRequired": "❌ Please select both check-in and check-out dates.",
+      "customBudgetRequired": "Enter budget amount",
+      "numbersOnly": "Only numbers allowed",
+      "submitFail": "❌ Failed to submit request"
+    },
+    "success": "✅ Apartment request submitted!",
+    "submit": "Submit Request"
+  },
+  "transportCard": {
+    "titles": {
+      "transportRequest": "Transport Request",
+      "sponsoredAds": "Sponsored Ads"
+    },
+    "instructions": "Please fill in the details below to request your transport.",
+    "labels": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "transportService": "Transport Service",
+      "transportType": "Transport Type",
+      "carType": "Car Type",
+      "seats": "Number of Seats",
+      "rentTime": "Rent Time",
+      "numberOfDays": "Number of Days",
+      "pickupLocation": "Pickup Location",
+      "dropoffLocation": "Drop-off Location",
+      "pickupDate": "Pickup Date",
+      "pickupTime": "Pickup Time"
+    },
+    "placeholders": {
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "selectService": "Select Service",
+      "selectType": "Select Type",
+      "selectCarType": "Select Car Type",
+      "seats": "Seats",
+      "selectRentTime": "Select Rent Time",
+      "numberOfDays": "Enter number of days",
+      "pickupLocation": "Pickup Location",
+      "dropoffLocation": "Drop-off Location",
+      "loadingMaps": "Loading maps..."
+    },
+    "errors": {
+      "enterName": "Enter your name",
+      "enterValidEmail": "Enter a valid email",
+      "selectService": "Select a service",
+      "selectType": "Select a type",
+      "selectCarType": "Select a car type",
+      "enterSeats": "Enter number of seats",
+      "enterNumberOfDays": "Enter number of days",
+      "enterPickupLocation": "Enter pickup location",
+      "enterDropoffLocation": "Enter drop-off location",
+      "selectPickupDate": "Select pickup date",
+      "selectPickupTime": "Select pickup time"
+    },
+    "options": {
+      "transportService": {
+        "airportTransfers": "Airport Transfers",
+        "hotelToAirport": "Hotel to Airport Pickups",
+        "localBusiness": "Local Business Transport",
+        "cityTours": "City Tours & Excursions",
+        "conferenceEvent": "Conference & Event Transport"
+      },
+      "transportType": {
+        "businessVip": "Business & VIP Transport"
+      },
+      "carType": {
+        "execSedan": "Executive Sedans – First-Class (VIP)",
+        "luxSUV": "Luxury SUVs – First-Class (VIP)",
+        "bizSedan": "Business-Class Sedans – Second-Class (Executive)",
+        "reliableSUV": "Reliable SUVs – Second-Class (Business & NGO Use)",
+        "luxVan": "Luxury Vans – VIP Group Transport"
+      },
+      "rentTime": {
+        "wholeDay": "Whole Day",
+        "halfDay": "Half Day",
+        "trip": "Trip",
+        "moreDays": "More Days"
+      }
+    },
+    "kigaliAirport": "Kigali International Airport",
+    "successMessage": "✅ Transport request submitted!",
+    "errorMessage": "❌ Submission failed.",
+    "fillRequired": "⚠️ Please fill all required fields.",
+    "submitButton": "Submit Transport",
+    "noAds": "No advertisements available."
+  },
+  "tourTypeSelector": {
+    "guideTitle": "Tourism Guide",
+    "guideDescription": "Find a local tour guide for your next trip",
+    "transportTitle": "Tourism Transport",
+    "transportDescription": "Book your tour vehicle or transport easily"
+  },
+  "tourGuideForm": {
+    "title": "Tourism Guide Form",
+    "subtitle": "Please fill out this form to help us find your best tour options.",
+    "labels": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "language": "Preferred Language",
+      "destinations": "Destination(s)",
+      "travelDates": "Travel Dates",
+      "tourType": "Tour Type",
+      "activityLevel": "Activity Level",
+      "budget": "Budget Preference",
+      "estimatedBudget": "Estimated Budget ($)",
+      "seats": "Number of Passengers",
+      "duration": "Duration",
+      "numberOfDays": "Number of Days",
+      "transport": "Transport Preference",
+      "addons": "Tourist Add-ons & Support",
+      "requests": "Special Requests"
+    },
+    "placeholders": {
+      "fullName": "Enter your name",
+      "email": "Enter your email",
+      "language": "Select language",
+      "destinations": "e.g. Kigali, Musanze",
+      "tourType": "Select tour types",
+      "activityLevel": "Select activity level",
+      "budget": "Select your budget",
+      "estimatedBudget": "Enter amount",
+      "seats": "Seats",
+      "duration": "Select duration",
+      "numberOfDays": "Enter number of days",
+      "transport": "Select transport",
+      "addons": "Select available add-ons",
+      "requests": "Any special requests?"
+    },
+    "errors": {
+      "required": "This field is required",
+      "emailInvalid": "Please enter a valid email address"
+    },
+    "options": {
+      "languages": {
+        "english": "English",
+        "french": "French",
+        "kinyarwanda": "Kinyarwanda",
+        "swahili": "Swahili"
+      },
+      "tourType": {
+        "cultural": "Cultural & Historical",
+        "nature": "Nature & Wildlife",
+        "city": "City Tours",
+        "adventure": "Adventure / Hiking",
+        "relaxation": "Relaxation / Wellness",
+        "food": "Food & Drink",
+        "religious": "Religious Sites",
+        "beach": "Beach & Resort"
+      },
+      "activityLevel": {
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High"
+      },
+      "budget": {
+        "budget": "Budget-Friendly",
+        "mid": "Mid-Range Comfort",
+        "premium": "Premium Experience",
+        "vip": "VIP Luxury Service",
+        "custom": "I have a specific budget (indicate)",
+        "unsure": "I’m not sure – Please guide me"
+      },
+      "duration": {
+        "wholeDay": "Whole Day",
+        "halfDay": "Half Day",
+        "trip": "Trip",
+        "moreDays": "More Days"
+      },
+      "transport": {
+        "suv": "SUVs for Adventure Travel",
+        "cruiser": "Safari Land Cruiser",
+        "minivan": "Tourist Minivans (7–14 Seaters)",
+        "bus": "Tourist Buses (28+ Seaters)"
+      },
+      "addons": {
+        "driver": "Experienced driver-guides",
+        "multilingual": "Multilingual staff (English, French, Kinyarwanda)",
+        "waterWifi": "Bottled water and Wi-Fi",
+        "routeSupport": "Travel route support & itinerary suggestions",
+        "meetGreet": "Airport meet & greet"
+      }
+    },
+    "submitButton": "Submit Tour",
+    "successMessage": "Tour guide request submitted successfully!",
+    "errorMessage": "Submission failed. Please try again.",
+    "adsTitle": "Sponsored Ads",
+    "noAds": "No advertisements available."
+  },
+  "transportForm": {
+    "title": "Tourism Transport",
+    "subtitle": "Please fill out this form to search for the best recommended transport.",
+    "successMessage": "Transport request submitted successfully!",
+    "errorMessage": "An error occurred while submitting the form.",
+    "labels": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "datetime": "Date & Time",
+      "pickup": "Pickup Location",
+      "dropoff": "Drop-off Location",
+      "passengers": "Number of Passengers",
+      "vehicle": "Car Type",
+      "addons": "Tourist Add-ons & Support",
+      "notes": "Extra Notes"
+    },
+    "placeholders": {
+      "fullName": "Enter your name",
+      "email": "Enter your email",
+      "pickup": "Where should we pick you?",
+      "dropoff": "Where should we drop you?",
+      "passengers": "Number of passengers",
+      "vehicle": "Select vehicle",
+      "addons": "Select available add-ons",
+      "notes": "Any preferences or luggage details?"
+    },
+    "errors": {
+      "required": "This field is required",
+      "emailInvalid": "Please enter a valid email address",
+      "addonRequired": "Please select at least one add-on"
+    },
+    "options": {
+      "vehicle": {
+        "suv": "SUVs for Adventure Travel",
+        "cruiser": "Safari Land Cruiser",
+        "minivan": "Tourist Minivans (7–14 Seaters)",
+        "bus": "Tourist Buses (28+ Seaters)"
+      },
+      "addons": {
+        "driver": "Experienced driver-guides",
+        "multilingual": "Multilingual staff (English, French, Kinyarwanda)",
+        "waterWifi": "Bottled water and Wi-Fi",
+        "routeSupport": "Travel route support & itinerary suggestions",
+        "meetGreet": "Airport meet & greet"
+      }
+    },
+    "submitButton": "Submit Tour Transport",
+    "adsTitle": "Sponsored Ads",
+    "noAds": "No advertisements available."
+  },
+  "bookingModal": {
+    "title": "Travel & Hospitality Booking",
+    "selectServiceLabel": "Select Service",
+    "serviceOptions": {
+      "hotel": "Hotel",
+      "apartment": "Apartment",
+      "transport": "Transport"
+    },
+    "labels": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "guests": "Guests",
+      "purposeOfStay": "Purpose of Stay",
+      "location": "Location",
+      "stayDates": "Stay Dates",
+      "hotelLevel": "Hotel Level",
+      "roomType": "Room Type",
+      "transportService": "Transport Service",
+      "transportType": "Transport Type",
+      "carType": "Car Type",
+      "seats": "Number of Seats",
+      "rentTime": "Rent Time",
+      "numberOfDays": "Number of Days",
+      "pickupLocation": "Pickup Location",
+      "dropoffLocation": "Drop-off Location",
+      "pickupDate": "Pickup Date",
+      "pickupTime": "Pickup Time",
+      "transport": "Transport",
+      "budgetRange": "Budget Range",
+      "specialNeeds": "Special Needs or Notes"
+    },
+    "errors": {
+      "fullName": "Enter full name",
+      "email": "Enter email",
+      "emailInvalid": "Enter a valid email",
+      "phone": "Enter phone number",
+      "guests": "Enter number of guests",
+      "purposeOfStay": "Select purpose",
+      "location": "Enter location",
+      "stayDates": "Select stay dates",
+      "hotelLevel": "Select hotel level",
+      "roomType": "Select room type",
+      "transportService": "Select service",
+      "transportType": "Select type",
+      "carType": "Select Car Type",
+      "seats": "Enter seats",
+      "numberOfDays": "Enter number of days",
+      "pickupLocation": "Enter pickup location",
+      "dropoffLocation": "Enter drop-off location",
+      "pickupDate": "Select pickup date",
+      "pickupTime": "Select pickup time",
+      "transport": "Select Transport",
+      "budgetRange": "Choose budget"
+    },
+    "placeholders": {
+      "fullName": "Enter full name",
+      "email": "Enter email",
+      "phone": "Enter phone",
+      "guests": "Number of guests",
+      "purposeOfStay": "Select purpose",
+      "location": "e.g., Kigali",
+      "hotelLevel": "Choose hotel level",
+      "roomType": "Choose room type",
+      "transportService": "Select Service",
+      "transportType": "Select Type",
+      "carType": "Select Car Type",
+      "seats": "Seats",
+      "rentTime": "Select Rent Time",
+      "numberOfDays": "Enter number of days",
+      "pickupLocation": "Pickup Location",
+      "dropoffLocation": "Drop-off Location",
+      "transport": "Select Transport",
+      "budgetRange": "Choose budget",
+      "specialNeeds": "Anything else..."
+    },
+    "purposeOptions": {
+      "business": "Business",
+      "honeymoon": "Honeymoon",
+      "family": "Family",
+      "diplomatic": "Diplomatic",
+      "vipEvent": "VIP Event"
+    },
+    "hotelLevels": {
+      "3Star": "3-Star",
+      "4Star": "4-Star",
+      "5Star": "5-Star",
+      "luxury": "Luxury"
+    },
+    "roomTypes": {
+      "executive": "Executive",
+      "deluxe": "Deluxe",
+      "penthouse": "Penthouse",
+      "villa": "Villa"
+    },
+    "transportServices": {
+      "airportTransfers": "Airport Transfers",
+      "hotelToAirport": "Hotel to Airport Pickups",
+      "localBusiness": "Local Business Transport",
+      "cityTours": "City Tours & Excursions",
+      "conferenceEvent": "Conference & Event Transport"
+    },
+    "carTypes": {
+      "executiveSedans": "Executive Sedans – First-Class (VIP)",
+      "luxurySUVs": "Luxury SUVs – First-Class (VIP)",
+      "businessSedans": "Business-Class Sedans – Second-Class (Executive)",
+      "reliableSUVs": "Reliable SUVs – Second-Class (Business & NGO Use)",
+      "luxuryVans": "Luxury Vans – VIP Group Transport"
+    },
+    "rentTimes": {
+      "wholeDay": "Whole Day",
+      "halfDay": "Half Day",
+      "trip": "Trip",
+      "moreDays": "More Days"
+    },
+    "budgetRanges": {
+      "range1": "$150 – $200",
+      "range2": "$200 – $400",
+      "range3": "$400+",
+      "custom": "Custom"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "submit": "Submit Request"
+    },
+    "transportTypes": {
+      "executiveSedans": "Executive Sedans – First-Class (VIP)",
+      "luxurySUVs": "Luxury SUVs – First-Class (VIP)",
+      "businessSedans": "Business-Class Sedans – Second-Class (Executive)",
+      "reliableSUVs": "Reliable SUVs – Second-Class (Business & NGO Use)",
+      "luxuryVans": "Luxury Vans – VIP Group Transport"
+    }
+  },
+  "hrServices": {
+    "title": "HR & Administrative Support",
+    "ctaContact": "Need HR & Admin Support? Contact Us",
+    "ctaWhatsApp": "Quick Contact",
+    "recruitment": {
+      "title": "Recruitment & Talent Acquisition",
+      "subtitle": "Find the right people for your business.",
+      "description": "We help you source, screen, and select the best talent to drive your business forward with our expert recruitment strategies. Our dedicated team ensures you get the best match for your company culture and needs."
+    },
+    "compliance": {
+      "title": "HR Policies & Compliance",
+      "subtitle": "Develop contracts, policies, and employee handbooks.",
+      "description": "Our HR compliance services ensure that your company operates within legal frameworks, keeping your employees and business protected. We create custom policies that align with your business goals and local labor laws."
+    },
+    "training": {
+      "title": "Employee Training & Development",
+      "subtitle": "Improve skills and productivity.",
+      "description": "Boost employee performance with our structured training programs designed to enhance skills and overall productivity. Our expert-led training covers soft skills, technical abilities, and leadership development."
+    },
+    "payroll": {
+      "title": "Payroll & Administrative Solutions",
+      "subtitle": "Ensure smooth operations.",
+      "description": "We offer payroll management and administrative support, ensuring timely salary processing and compliance with financial regulations. Our seamless solutions help businesses focus on their core operations."
+    }
+  },
+  "hrModal": {
+    "title": "HR & Administrative Support",
+    "instructions": "Fill out this form, and we will reach out to you shortly.",
+    "toast": {
+      "success": "Request submitted successfully!",
+      "error": "Something went wrong. Please try again."
+    },
+    "form": {
+      "fullnames": {
+        "label": "Full Names",
+        "placeholder": "Full Names",
+        "error": "Please enter your full names"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Email",
+        "required": "Please enter your email",
+        "invalid": "Please enter a valid email"
+      },
+      "phone": {
+        "label": "Phone Number",
+        "placeholder": "Phone Number",
+        "error": "Please enter your phone number"
+      },
+      "description": {
+        "label": "Service Description",
+        "placeholder": "Write the full description of the service you want",
+        "error": "Please describe your request"
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "submit": "Submit"
+      }
+    }
+  },
+  "businessConsulting": {
+    "title": "Business Consulting",
+    "cta": "Want expert business guidance? Schedule a consultation!",
+    "quickContact": "Quick Contact",
+    "whatsappAlt": "WhatsApp Icon",
+    "close": "Close consultation form",
+    "toast": {
+      "success": "Submitted successfully!",
+      "error": "Submission failed. Try again!",
+      "serverError": "Server error. Please try again later."
+    },
+    "services": {
+      "businessPlan": {
+        "title": "Business Plan Development",
+        "subtitle": "For startups, funding applications, and expansions.",
+        "description": "We create comprehensive business plans tailored to your needs..."
+      },
+      "projectPlanning": {
+        "title": "Project Planning & Management",
+        "subtitle": "Structuring, budgeting, and execution.",
+        "description": "Our experts help structure and manage your projects effectively..."
+      },
+      "financialAdvisory": {
+        "title": "Financial Advisory & Risk Management",
+        "subtitle": "Investment strategies, cost reduction, and profitability analysis.",
+        "description": "We provide insightful financial advisory services..."
+      },
+      "auditing": {
+        "title": "Auditing & Compliance Support",
+        "subtitle": "Guidance in finding reputable auditors and ensuring regulatory compliance.",
+        "description": "We assist in navigating auditing processes, ensuring full regulatory compliance..."
+      }
+    },
+    "form": {
+      "instructions": "Fill out this form and we’ll reach out shortly",
+      "fullnames": {
+        "label": "Full Names",
+        "placeholder": "Full Names",
+        "error": "Please enter your full name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Email Address",
+        "required": "Please enter your email",
+        "invalid": "Enter a valid email address"
+      },
+      "phone": {
+        "label": "Phone Number",
+        "placeholder": "Contact Number",
+        "error": "Please enter your contact number"
+      },
+      "description": {
+        "label": "Service Description",
+        "placeholder": "Describe the service you need",
+        "error": "Please describe the service you need"
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "submit": "Submit"
+      }
+    }
+  },
+  "investmentBusinessSetup": {
+    "title": "Investment & Business Setup",
+    "button": {
+      "openModal": "Need help starting or expanding your business?",
+      "quickContact": "Quick Contact",
+      "submit": "Submit",
+      "cancel": "Cancel"
+    },
+    "modal": {
+      "title": "Investment & Business Setup",
+      "description": "Fill out this form, and we’ll reach out shortly",
+      "form": {
+        "fullnames": {
+          "label": "Full Names",
+          "placeholder": "Full Names",
+          "requiredMessage": "Please enter your name"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Email",
+          "requiredMessage": "Please enter your email",
+          "invalidMessage": "Invalid email address"
+        },
+        "phone_number": {
+          "label": "Phone Number",
+          "placeholder": "Phone Number",
+          "requiredMessage": "Please enter your contact number"
+        },
+        "service_description": {
+          "label": "Service Description",
+          "placeholder": "Write the full description of the service you want",
+          "requiredMessage": "Please describe the service"
+        }
+      }
+    },
+    "services": {
+      "service1": {
+        "title": "Business Registration Assistance",
+        "description": "We provide guidance on company registration with RDB, ensuring legal compliance and a smooth setup, often completed within six hours."
+      },
+      "service2": {
+        "title": "Investment Certificate",
+        "description": "We assist businesses in obtaining an Investment Certificate, granting access to tax incentives, exemptions, and government support, enhancing credibility and investment opportunities."
+      },
+      "service3": {
+        "title": "Taxpayer Identification Number (TIN) Registration",
+        "description": "We help businesses acquire a TIN from RRA, essential for tax compliance and legal operations, including transactions and property ownership."
+      },
+      "service4": {
+        "title": "Trade License (Patente)",
+        "description": "A Trade License is mandatory for businesses in Rwanda. We assist in obtaining and renewing it to ensure compliance and avoid penalties."
+      },
+      "service5": {
+        "title": "Sector-Specific Licenses",
+        "description": "We facilitate licensing for various industries, including construction, tourism, finance, healthcare, import/export, and logistics, ensuring full regulatory compliance."
+      },
+      "service6": {
+        "title": "Work & Residency Permits in Rwanda",
+        "description": "We assist foreign investors and employees in obtaining work and residency permits through Rwanda’s streamlined process, ensuring smooth legal entry and stay."
+      }
+    },
+    "toastMessages": {
+      "success": "Submitted successfully!",
+      "errorSubmission": "Submission failed. Try again!",
+      "errorServer": "Server error. Please try again later."
+    }
+  },
+  "commonOptions": {
+    "hotelLevels": {
+      "3Star": "Three Stars",
+      "4Star": "Four Stars",
+      "5Star": "Five Stars",
+      "luxury": "Luxury"
+    }
+  },
+  "travelHospitality": {
+    "page": {
+      "header": "Travel and Hospitality",
+      "description": "Discover our premium travel and hospitality services tailored to your needs.",
+      "buttons": {
+        "contactUs": "Need seamless travel&Hospitality arrangements? Contact us now!",
+        "quickContact": "Quick Contact"
+      },
+      "services": {
+        "hotelReservations": {
+          "title": "Hotel Reservations",
+          "subtitle": "Luxury and Comfort",
+          "description": "Book luxury hotels with personalized services for a comfortable stay."
+        },
+        "airportTransfers": {
+          "title": "Airport Transfers",
+          "subtitle": "Stress-Free Travel",
+          "description": "Reliable and comfortable airport transfer services for a hassle-free experience."
+        },
+        "tourismGuides": {
+          "title": "Tourism Guides",
+          "subtitle": "Explore with Experts",
+          "description": "Discover the city with our experienced tour guides for an unforgettable journey.",
+          "bookButton": "Book a Guide"
+        },
+        "vipServices": {
+          "title": "VIP Services",
+          "subtitle": "Exclusive Experiences",
+          "description": "Premium VIP services for an elite travel experience tailored to your preferences."
+        }
+      }
+    },
+    "imageNotFound": "Image not available",
+    "modalTitle": "Book Your Service",
+    "selectService": {
+      "label": "Select Service",
+      "options": {
+        "hotel": "Hotel Booking",
+        "apartment": "Apartment Booking",
+        "transport": "Transport Service"
+      }
+    },
+    "fullName": {
+      "label": "Full Name",
+      "placeholder": "Enter your full name",
+      "required": "Please enter your full name"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Enter your email",
+      "required": "Please enter your email",
+      "invalid": "Please enter a valid email address"
+    },
+    "phone": {
+      "label": "Phone Number",
+      "placeholder": "Enter your phone number",
+      "required": "Please enter your phone number"
+    },
+    "guests": {
+      "label": "Number of Guests",
+      "placeholder": "Enter number of guests",
+      "required": "Please enter the number of guests"
+    },
+    "purposeOfStay": {
+      "label": "Purpose of Stay",
+      "placeholder": "Select purpose of stay",
+      "required": "Please select the purpose of stay",
+      "options": {
+        "business": "Business",
+        "honeymoon": "Honeymoon",
+        "family": "Family",
+        "diplomatic": "Diplomatic",
+        "vip_event": "VIP Event"
+      }
+    },
+    "location": {
+      "label": "Location",
+      "placeholder": "Enter your preferred location",
+      "required": "Please enter your preferred location"
+    },
+    "hotel": {
+      "stayDates": {
+        "label": "Arrival and Departure Dates",
+        "required": "Please select arrival and departure dates"
+      },
+      "hotelLevel": {
+        "label": "Hotel Level",
+        "placeholder": "Select hotel level",
+        "required": "Please select a hotel level",
+        "options": {
+          "3Star": "3 Stars",
+          "4Star": "4 Stars",
+          "5Star": "5 Stars",
+          "luxury": "Luxury"
+        }
+      },
+      "hotel_custom": {
+        "label": "Custom Hotel Request",
+        "placeholder": "Enter your specific hotel requests",
+        "required": "Please enter your specific hotel requests"
+      }
+    },
+    "apartment": {
+      "stayDates": {
+        "label": "Arrival and Departure Dates",
+        "required": "Please select arrival and departure dates"
+      },
+      "roomType": {
+        "label": "Room Type",
+        "placeholder": "Select room type",
+        "required": "Please select a room type",
+        "options": {
+          "executive": "Executive",
+          "deluxe": "Deluxe",
+          "penthouse": "Penthouse",
+          "villa": "Villa"
+        }
+      },
+      "apartment_custom": {
+        "label": "Custom Apartment Request",
+        "placeholder": "Enter your specific apartment requests",
+        "required": "Please enter your specific apartment requests"
+      }
+    },
+    "transport": {
+      "transportService": {
+        "label": "Transport Service",
+        "placeholder": "Select transport service",
+        "required": "Please select a transport service",
+        "options": {
+          "airportTransfers": "Airport Transfers",
+          "hotelToAirport": "Hotel to Airport Pickup",
+          "localBusiness": "Local Business Transport",
+          "cityTours": "City Tours & Excursions",
+          "conference": "Conference & Event Transport"
+        }
+      },
+      "transportType": {
+        "label": "Transport Type",
+        "placeholder": "Select transport type",
+        "required": "Please select a transport type",
+        "options": {
+          "businessVIP": "Business & VIP Transport",
+          "standard": "Standard Transport"
+        }
+      },
+      "carType": {
+        "label": "Car Type",
+        "placeholder": "Select car type",
+        "required": "Please select a car type",
+        "options": {
+          "executiveSedans": "Executive Sedans – First Class (VIP)",
+          "luxurySUVs": "Luxury SUVs – First Class (VIP)",
+          "businessClassSedans": "Business Class Sedans – Second Class (Executive)",
+          "reliableSUVs": "Reliable SUVs – Second Class (Business & NGO Use)",
+          "luxuryVans": "Luxury Vans – VIP Group Transport"
+        }
+      },
+      "seats": {
+        "label": "Number of Seats",
+        "placeholder": "Enter number of seats",
+        "required": "Please enter the number of seats"
+      },
+      "rentTime": {
+        "label": "Rental Duration",
+        "placeholder": "Select rental duration",
+        "options": {
+          "wholeDay": "Full Day",
+          "halfDay": "Half Day",
+          "trip": "Trip",
+          "moreDays": "Multiple Days"
+        }
+      },
+      "numberOfDays": {
+        "label": "Number of Days",
+        "placeholder": "Enter number of days",
+        "required": "Please enter the number of days"
+      },
+      "pickupLocation": {
+        "label": "Pickup Location",
+        "placeholder": "Enter pickup location",
+        "required": "Please enter the pickup location"
+      },
+      "dropoffLocation": {
+        "label": "Drop-off Location",
+        "placeholder": "Enter drop-off location",
+        "required": "Please enter the drop-off location",
+        "airport": "Kigali International Airport"
+      },
+      "pickupDate": {
+        "label": "Pickup Date",
+        "required": "Please select a pickup date"
+      },
+      "pickupTime": {
+        "label": "Pickup Time",
+        "required": "Please select a pickup time"
+      },
+      "mapsLoading": "Loading Google Maps..."
+    },
+    "commonTransport": {
+      "transport": {
+        "label": "Transport Preference",
+        "placeholder": "Select transport preference",
+        "required": "Please select a transport preference",
+        "options": {
+          "executiveSedans": "Executive Sedans – First Class (VIP)",
+          "luxurySUVs": "Luxury SUVs – First Class (VIP)",
+          "businessClassSedans": "Business Class Sedans – Second Class (Executive)",
+          "reliableSUVs": "Reliable SUVs – Second Class (Business & NGO Use)",
+          "luxuryVans": "Luxury Vans – VIP Group Transport"
+        }
+      },
+      "budgetRange": {
+        "label": "Budget Range",
+        "placeholder": "Select budget range",
+        "required": "Please select a budget range",
+        "options": {
+          "150_200": "$150 – $200",
+          "200_400": "$200 – $400",
+          "400_plus": "$400+",
+          "custom": "Custom"
+        }
+      },
+      "specialNeeds": {
+        "label": "Special Needs or Requests",
+        "placeholder": "Enter your special needs or requests"
+      }
+    },
+    "commonOptions": {
+      "hotelLevels": {
+        "3Star": "3 Stars",
+        "4Star": "4 Stars",
+        "5Star": "5 Stars",
+        "luxury": "Luxury"
+      }
+    },
+    "toast": {
+      "success": "Booking request submitted successfully!",
+      "error": "Failed to submit booking request. Please try again."
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "submit": "Submit"
+    }
+  },
+  "travelHospitalityModule": {
+    "tabs": {
+      "hotelReservationTab": "Hotel Reservations",
+      "apartmentBookingTab": "Apartments",
+      "transportServiceTab": "Transport",
+      "tourismGuideTab": "Tourism Guides"
+    },
+    "search": {
+      "inputPlaceholder": "Search anything"
+    }
+  },
+  "Subtitle": {
+    "intro1": "Discover our comprehensive range of services designed to simplify your business needs—from hotel bookings to HR and consultancy solutions.",
+    "intro2": "Bonet Elite Services offers booking for hotels, apartments, transport, HR solutions, consultancy, and business setup — all tailored for you.",
+    "intro3": "Book hotels, apartments, and transport effortlessly with Bonet Elite Services, ensuring a seamless and reliable experience every time.",
+    "intro4": "Contact us now to book your service or schedule a consultation. Our team is ready to assist you with expert solutions tailored to your needs."
+  },
+  "contactInform": {
+    "form": {
+      "title": "Contact Us",
+      "fullName": "Full name",
+      "email": "Email",
+      "phone": "Phone number",
+      "whatsapp": "WhatsApp number",
+      "inquiryType": "Inquiry type",
+      "message": "Message",
+      "submitButton": "Send Message",
+      "validation": {
+        "nameRequired": "Please enter your name",
+        "emailRequired": "Please enter your email",
+        "emailInvalid": "Enter a valid email",
+        "phoneRequired": "Please enter your phone number",
+        "inquiryRequired": "Please select an inquiry type",
+        "messageRequired": "Please enter your message"
+      },
+      "inquiryOptions": {
+        "hotel": "Hotel Booking",
+        "department": "HR / Department",
+        "transport": "Transport",
+        "businessSetup": "Business Setup"
+      }
+    }
+  },
+  "contactInformation": {
+    "title": {
+      "part1": "Get in",
+      "part2": "Touch"
+    },
+    "description": "We are here to help you. Reach out for bookings, business setup, or any inquiries.",
+    "chatButton": "Chat with us on WhatsApp",
+    "callWhatsApp": "Call / WhatsApp",
+    "email": "Email",
+    "location": "Kigali, Rwanda"
+  },
+  "toast": {
+    "success": "Message sent! We’ll get back to you shortly.",
+    "error": "Something went wrong. Please try again.",
+    "fail": "Submission failed. Try again later."
+  },
+ "ContactMessage": {
+  "success": "Thanks, {{name}}! Your request has been received. A concierge will contact you on WhatsApp within 30 minutes (within business hours). If urgent, call +250 726 300 260."
+}
+
+}

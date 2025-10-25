@@ -1,0 +1,1979 @@
+{
+  "welcome_message": "Bienvenue chez Bonet Elite Services",
+  "subtitle": "Votre partenaire de confiance pour les voyages, les affaires et l'investissement au Rwanda",
+  "description": "Nous simplifions votre expérience au Rwanda en offrant des services personnalisés de voyage, d'affaires et d'investissement. Que vous soyez touriste, entrepreneur ou investisseur étranger, nous assurons un parcours fluide et sans tracas, de votre arrivée à votre établissement.",
+  "get_started": "Commencer",
+  "services": {
+    "title": "Nos Services",
+    "list": [
+      {
+        "title": "Voyage & Hôtellerie",
+        "description": "Nous offrons des services complets de voyage et d'hôtellerie, y compris la réservation d'hôtel, les transferts aéroport, la location de voitures et les visites guidées.",
+        "details": "Visitez le Rwanda en toute simplicité – Réservez votre expérience VIP maintenant !",
+        "buttonText": "Voyage & Hôtellerie",
+        "route": "/travel"
+      },
+      {
+        "title": "Investissement & Création d'entreprise",
+        "description": "Nos experts vous accompagnent dans l'enregistrement d'entreprise, les licences et les services de conseil.",
+        "details": "Lancez votre entreprise au Rwanda dès aujourd'hui – Commençons !",
+        "buttonText": "Enregistrer mon entreprise",
+        "route": "/investment"
+      },
+      {
+        "title": "Conseil en affaires",
+        "description": "Nous fournissons des services professionnels de conseil aux entreprises, y compris l'élaboration de plans d'affaires, la planification de projets et les audits financiers.",
+        "details": "Notre objectif est d'aider les entreprises à optimiser leurs opérations et à stimuler leur croissance.",
+        "buttonText": "Obtenir un conseil",
+        "route": "/consulting"
+      },
+      {
+        "title": "Support RH & Administratif",
+        "description": "Nous proposons des services de recrutement, l'élaboration de politiques RH et des programmes de formation des employés.",
+        "details": "Nos solutions RH sont conçues pour améliorer l'efficacité de la main-d'œuvre et assurer la conformité aux normes de l'industrie.",
+        "buttonText": "Solutions RH",
+        "route": "/hr-support"
+      }
+    ]
+  },
+  
+  "whyBonet": {
+    "title": "Pourquoi choisir Bonet Elite Services ?",
+    "cards": [
+      {
+        "title": "Expertise Locale",
+        "shortDesc": "Une connaissance approfondie du tourisme et des affaires au Rwanda.",
+        "longDesc": "Avec des années d'expérience dans le paysage touristique et commercial rwandais, nous offrons des conseils experts pour garantir des expériences fluides aux visiteurs et aux entreprises."
+      },
+      {
+        "title": "Solution Tout-en-Un",
+        "shortDesc": "Tous les services sous un même toit pour plus de commodité.",
+        "longDesc": "Des voyages aux solutions d'entreprise, nous simplifions vos besoins dans un processus unique et efficace, vous faisant gagner du temps et des efforts."
+      },
+      {
+        "title": "Professionnel et Fiable",
+        "shortDesc": "Une équipe dédiée garantissant un service de qualité.",
+        "longDesc": "Notre équipe de professionnels s'engage à offrir un service exceptionnel, assurant fiabilité et satisfaction à chaque interaction."
+      }
+    ]
+  },
+  "title": {
+    "part1": "Nos parte",
+    "part2": "naires de confiance"
+  },
+  "testimonials": {
+    "sectionTitle": "Avis personnels",
+    "reviews": [
+      "Ce système de réservation m'a aidé à mieux gérer mes rendez-vous. Je ne rate plus de réunions clients et les rappels sont très utiles. C’est une révolution pour mon travail !",
+      "Le système de réservation a simplifié la gestion des rendez-vous avec les clients. Il a rationalisé ma planification et rendu les choses plus pratiques pour mes clients. Je ne peux plus m'en passer !",
+      "Ce système a transformé notre manière de gérer les réservations dans notre entreprise. Il est automatisé, fiable et permet à tout le monde de rester organisé. C’est un énorme gain de productivité.",
+      "Depuis que nous utilisons ce système, l'engagement client a explosé. Les rappels automatiques et la planification facile ont rendu nos opérations plus fluides et nos clients plus satisfaits !",
+      "Cette plateforme de réservation a changé la donne pour mon entreprise. Les clients peuvent prendre rendez-vous quand cela leur convient, et je peux tout gérer au même endroit. Un vrai gain de temps !",
+      "Je rencontrais des difficultés avec la planification manuelle, mais ce système a tout simplifié. Les clients adorent la facilité de réservation, et je peux me concentrer sur la qualité du service.",
+      "Ce système a fait passer mon entreprise au niveau supérieur. Les clients apprécient la simplicité du processus, et j’ai pu gagner beaucoup de temps. Les rappels automatiques sont très utiles !",
+      "Je n’en reviens pas de voir à quel point mon travail est devenu plus simple grâce à ce système. Les clients peuvent réserver en ligne et tout est mis à jour automatiquement. Un outil indispensable.",
+      "Le système de réservation a énormément facilité mon travail. Les clients peuvent réserver ou reprogrammer facilement, et je peux me concentrer sur un excellent service client sans me soucier des oublis."
+    ]
+  },
+  "experience": {
+    "title": "Qu'est-ce qui nous rend différents ?",
+    "card1": {
+      "title": "Guichet unique pour les affaires et l'investissement",
+      "description": "De l'enregistrement des entreprises à la facilitation des opportunités d'investissement et à la conformité légale, nous offrons une plateforme centralisée pour tous vos besoins commerciaux au Rwanda."
+    },
+    "card2": {
+      "title": "Services VIP et exécutifs personnalisés",
+      "description": "Profitez de services personnalisés haut de gamme — de l’hébergement de luxe et du transport à l’assistance de conciergerie et de relocalisation, conçus pour les clients élites et les professionnels occupés."
+    },
+    "card3": {
+      "title": "Processus rapide et sans tracas",
+      "description": "Nous simplifions les procédures pour vous faire gagner du temps — en assurant un service rapide et efficace, de la création d'entreprise aux arrangements de voyage."
+    }
+  },
+  "gallery": {
+    "title": "Visitez le Rwanda",
+    "places": {
+      "conv": "Centre de Conférence",
+      "k2": "Palais Royal",
+      "memo": "Mémorial du Génocide de Kigali",
+      "k3": "Parc National de l'Akagera",
+      "kiv": "Lac Kivu",
+      "vov": "Parc National des Volcans",
+      "part1": "Hôtels Classiques",
+      "tea": "Plantations de Café et de Thé du Rwanda",
+      "nyu5": "Parc National de Nyungwe",
+      "gis3": "Plage de Gisenyi",
+      "huye": "Musée National de Huye",
+      "muhazi": "Lac Muhazi"
+    },
+    "button": "Visitez le Rwanda"
+  },
+  "aisolutions": {
+    "title": "Découvrez le Rwanda avec Bonet Elite Service",
+    "feature1": {
+      "title": "Création d'entreprise au Rwanda",
+      "description": "Découvrez le processus étape par étape pour créer une entreprise au Rwanda, de l'enregistrement auprès du RDB à la compréhension des réglementations fiscales et des incitations à l'investissement.",
+      "highlight": "Le Rwanda offre un processus d'enregistrement d'entreprise simplifié, permettant aux entrepreneurs de démarrer leurs activités en 24 heures."
+    },
+    "feature2": {
+      "title": "Services de luxe à Kigali",
+      "description": "Explorez des conseils de voyage essentiels, des exigences de visa à l'étiquette culturelle, en passant par les destinations incontournables et les meilleures périodes pour visiter le Rwanda.",
+      "highlight": "Le Rwanda est l'une des destinations de voyage les plus sûres d'Afrique, offrant des paysages à couper le souffle et une culture accueillante."
+    },
+    "feature3": {
+      "title": "Investissement au Rwanda",
+      "description": "Découvrez les secteurs d'investissement les plus prometteurs du Rwanda, y compris l'immobilier, l'agriculture, les TIC et le tourisme, avec des informations sur les rendements potentiels et le soutien gouvernemental.",
+      "highlight": "La croissance économique du Rwanda et ses politiques favorables aux investisseurs en font un choix privilégié pour les investissements étrangers en Afrique."
+    },
+    "learnMore": "En savoir plus →"
+  },
+  "blog": {
+    "header": {
+      "title1": "Derniers",
+      "title2": "Articles de blog"
+    },
+    "loading": "Chargement des blogs...",
+    "noPosts": "Aucun article de blog disponible.",
+    "readMore": "Lire la suite"
+  },
+  "faq": {
+    "header": "Quelques questions fréquemment posées",
+    "contactPrompt": "Vous avez encore des questions ? Contactez-nous pour une assistance personnalisée !",
+    "getInTouch": "Contactez-nous"
+  },
+  "footer": {
+    "description": "Chez Bonet Elite Services, nous facilitons les voyages, les affaires et les investissements pour que vous puissiez vous concentrer sur l’essentiel. Rendons votre expérience au Rwanda fluide et réussie !",
+    "quickLinks": "Liens Rapides",
+    "aboutUs": "À propos de nous",
+    "services": "Services",
+    "bookNow": "Réservez Maintenant",
+    "contactUs": "Contactez-nous",
+    "contactDescription": "Contactez-nous pour profiter d'une réservation et d'une planification fluides, tout en vous concentrant sur ce qui compte vraiment.",
+    "whatsappCall": "WhatsApp/Appel :",
+    "email": "Email :",
+    "location": "Localisation :",
+    "copyright": "Tous droits réservés."
+  },
+  "menu": {
+    "home": "Accueil",
+    "aboutUs": "À propos de nous",
+    "services": "Services",
+    "travelAndHospitality": "Voyage & Hôtellerie",
+    "hotels": "Hôtels",
+    "apartments": "Appartements",
+    "transport": "Transport",
+    "tourism":"Tourisme",
+    "investmentAndBusinessSetup": "Investissement & Création d'entreprise",
+    "companyRegistration": "Enregistrement de société & Formalités légales",
+    "investmentCertificate": "Demande de certificat d'investissement",
+    "businessPermits": "Permis d'exploitation & Licences",
+    "marketResearch": "Étude de marché & Analyse de faisabilité",
+    "operationalSetup": "Mise en place opérationnelle & Support au lancement",
+    "businessConsulting": "Conseil en affaires",
+    "businessPlanning": "Planification & stratégie d'entreprise",
+    "financialAdvisory": "Conseil financier & Audit",
+    "processOptimization": "Optimisation des processus & Gestion des risques",
+    "projectAuditing": "Audit de projet & conformité",
+    "hrAndAdminSupport": "Support RH & administratif",
+    "recruitment": "Recrutement & Acquisition de talents",
+    "hrPolicyDevelopment": "Développement de politiques RH",
+    "employeeTraining": "Formation & développement des employés",
+    "payrollCompensation": "Paie & rémunération",
+    "administrativeSupport": "Support administratif",
+    "bookNow": "Réserver maintenant"
+  },
+  "home": {
+    "welcomeText": "Bienvenue chez Bonet Elite Services",
+    "tagline": "Votre partenaire de confiance pour le voyage, les affaires et l'investissement au Rwanda"
+  },
+  "vision": {
+    "welcomeText": "Bienvenue chez Bonet Elite Services",
+    "tagline": "Votre partenaire de confiance pour le voyage, les affaires et l'investissement au Rwanda",
+    "visionTitle": "Déclaration de vision",
+    "visionText": "Être le principal fournisseur de services d'élite au Rwanda, offrant des solutions professionnelles et fluides dans les domaines du voyage, de l'investissement et du soutien aux entreprises, pour les particuliers et les entreprises du monde entier.",
+    "missionTitle": "Déclaration de mission",
+    "missionText": "Nous fournissons des services d'élite de haute qualité adaptés aux besoins des voyageurs, des investisseurs et des entreprises. Notre expertise dans l'hôtellerie, le conseil en affaires et les solutions RH garantit une expérience fluide et sans tracas à nos clients, les aidant à réussir au Rwanda."
+  },
+  "founder": {
+    "meet": "Rencontrez notre",
+    "founder": "Fondateur",
+    "founderTitle": "PDG et Fondateur",
+    "founderDescription": "John Doe est le visionnaire derrière Bonet Elite Service, dédié à redéfinir le luxe et la commodité. Avec une passion pour l'excellence, il a construit une plateforme qui connecte parfaitement les clients à des solutions de style de vie haut de gamme. Son leadership et son esprit d'innovation continuent de propulser le succès de l'entreprise, garantissant une expérience inégalée pour tous les utilisateurs."
+  },
+  "service": {
+    "heading1": "Nos",
+    "heading2": "Services",
+    "more": "Plus",
+    "travel": {
+      "title": "Voyage et Hospitalité",
+      "description": "Nous offrons des services complets de voyage et d'hospitalité, y compris la réservation d'hôtel, les transferts aéroport, la location de voitures et les visites guidées.",
+      "details": "Que ce soit pour les affaires ou les loisirs, nous assurons une expérience sans faille du début à la fin."
+    },
+    "investment": {
+      "title": "Investissement et Création d’Entreprise",
+      "description": "Nos experts vous assistent dans l’enregistrement d’entreprise, les licences et les services de conseil.",
+      "details": "Nous fournissons une analyse de marché approfondie et une planification stratégique pour vous aider à créer et développer efficacement votre entreprise."
+    },
+    "consulting": {
+      "title": "Conseil en Entreprise",
+      "description": "Nous fournissons des services de conseil professionnels, y compris l’élaboration de plans d'affaires, la planification de projets et les audits financiers.",
+      "details": "Notre objectif est d'aider les entreprises à optimiser leurs opérations et à favoriser leur croissance."
+    },
+    "hr": {
+      "title": "Support RH et Administratif",
+      "description": "Nous proposons des services de recrutement, le développement de politiques RH et des programmes de formation pour les employés.",
+      "details": "Nos solutions RH sont conçues pour améliorer l'efficacité du personnel et assurer la conformité aux normes du secteur."
+    }
+  },
+  "booking": {
+    "home": "Accueil",
+    "hotel": "Hôtel",
+    "apartments": "Appartement",
+    "transport": "Transport",
+    "tour": "Circuit",
+    "search": "Rechercher quelque chose"
+  },
+  
+  "travelBookingForm": {
+    "title": "Réservez votre service",
+    "selectServiceLabel": "Sélectionnez un service",
+    "serviceOptions": {
+      "hotel": "Réservation d'hôtel",
+      "apartment": "Réservation d'appartement",
+      "transport": "Réservation de transport"
+    },
+    "labels": {
+      "fullName": "Nom complet",
+      "email": "Adresse e-mail",
+      "phone": "Numéro de téléphone",
+      "guests": "Nombre d'invités",
+      "purposeOfStay": "Motif du séjour",
+      "location": "Emplacement",
+      "stayDates": "Dates du séjour",
+      "hotelLevel": "Niveau de l'hôtel",
+      "roomType": "Type de chambre",
+      "transportService": "Service de transport",
+      "transport": "Type de transport",
+      "budgetRange": "Fourchette de budget",
+      "specialNeeds": "Besoins particuliers"
+    },
+    "errors": {
+      "fullName": "Veuillez entrer votre nom complet",
+      "email": "Veuillez entrer votre e-mail",
+      "emailInvalid": "Veuillez entrer une adresse e-mail valide",
+      "phone": "Veuillez entrer votre numéro de téléphone",
+      "guests": "Veuillez entrer le nombre d'invités",
+      "purposeOfStay": "Veuillez sélectionner le motif du séjour",
+      "location": "Veuillez entrer l'emplacement",
+      "stayDates": "Veuillez sélectionner les dates du séjour",
+      "hotelLevel": "Veuillez sélectionner le niveau de l'hôtel",
+      "roomType": "Veuillez sélectionner le type de chambre",
+      "transportService": "Veuillez sélectionner le service de transport",
+      "transport": "Veuillez sélectionner le type de transport",
+      "budgetRange": "Veuillez sélectionner votre fourchette de budget"
+    },
+    "placeholders": {
+      "fullName": "Entrez votre nom complet",
+      "email": "Entrez votre e-mail",
+      "phone": "Entrez votre numéro de téléphone",
+      "guests": "Entrez le nombre d'invités",
+      "purposeOfStay": "Sélectionnez le motif du séjour",
+      "location": "Entrez l'emplacement",
+      "hotelLevel": "Sélectionnez le niveau de l'hôtel",
+      "roomType": "Sélectionnez le type de chambre",
+      "transportService": "Sélectionnez le service de transport",
+      "transport": "Sélectionnez le type de transport",
+      "budgetRange": "Sélectionnez la fourchette de budget",
+      "specialNeeds": "Des demandes particulières?"
+    },
+    "purposeOptions": {
+      "business": "Affaires",
+      "honeymoon": "Lune de miel",
+      "family": "Vacances en famille",
+      "diplomatic": "Séjour diplomatique",
+      "vipEvent": "Événement VIP"
+    },
+    "hotelLevels": {
+      "3Star": "3 Étoiles",
+      "4Star": "4 Étoiles",
+      "5Star": "5 Étoiles",
+      "luxury": "Suite de luxe"
+    },
+    "roomTypes": {
+      "executive": "Chambre exécutive",
+      "deluxe": "Chambre deluxe",
+      "penthouse": "Penthouse",
+      "villa": "Villa"
+    },
+    "transportServices": {
+      "airportTransfers": "Transferts aéroport",
+      "hotelToAirport": "Navettes hôtel-aéroport",
+      "localBusiness": "Transport affaires local",
+      "cityTours": "Tours et excursions en ville",
+      "conferenceEvent": "Transport conférences & événements"
+    },
+    "transportTypes": {
+      "executiveSedans": "Berlines exécutives – Première classe (VIP)",
+      "luxurySUVs": "SUV de luxe – Première classe (VIP)",
+      "businessSedans": "Berlines affaires – Deuxième classe (Exécutif)",
+      "reliableSUVs": "SUV fiables – Deuxième classe (Affaires & ONG)",
+      "luxuryVans": "Vans de luxe – Transport VIP de groupe"
+    },
+    "budgetRanges": {
+      "range1": "150 $ - 200 $",
+      "range2": "200 $ - 400 $",
+      "range3": "400 $+",
+      "custom": "Budget personnalisé"
+    },
+    "buttons": {
+      "cancel": "Annuler",
+      "submit": "Envoyer la demande"
+    }
+  },
+  "investment": {
+    "title": "Investissement et Mise en Place d’Entreprise",
+    "services": [
+      {
+        "title": "Assistance à l'Enregistrement d'Entreprise",
+        "subtitle": "Mise en place rapide d'entreprise avec le RDB.",
+        "description": "Nous fournissons des conseils sur l'enregistrement des sociétés auprès du RDB, assurant la conformité légale et une mise en place rapide, souvent en moins de six heures.",
+        "image": "/assets/images/rdb.jpg"
+      },
+      {
+        "title": "Certificat d'Investissement",
+        "subtitle": "Accès aux incitations et avantages pour les investisseurs.",
+        "description": "Nous aidons les entreprises à obtenir un certificat d'investissement, donnant accès à des incitations fiscales, des exemptions et un soutien gouvernemental, améliorant la crédibilité et les opportunités d'investissement.",
+        "image": "/assets/images/cert.jpg"
+      },
+      {
+        "title": "Enregistrement du Numéro d’Identification Fiscale (NIF)",
+        "subtitle": "Nécessaire pour les opérations légales.",
+        "description": "Nous aidons les entreprises à obtenir un NIF auprès de la RRA, essentiel pour la conformité fiscale et les opérations légales, y compris les transactions et la propriété.",
+        "image": "/assets/images/rra.jpg"
+      },
+      {
+        "title": "Licence Commerciale (Patente)",
+        "subtitle": "Licence d’exploitation commerciale des autorités locales.",
+        "description": "Une licence commerciale est obligatoire pour les entreprises au Rwanda. Nous aidons à l’obtenir et à la renouveler pour garantir la conformité et éviter les sanctions.",
+        "image": "/assets/images/rra1.jpg"
+      },
+      {
+        "title": "Licences Sectorielles Spécifiques",
+        "subtitle": "Nécessaire pour les industries spécialisées.",
+        "description": "Nous facilitons la délivrance des licences pour divers secteurs, notamment la construction, le tourisme, la finance, la santé, l'import/export et la logistique, garantissant une conformité réglementaire complète.",
+        "image": "/assets/images/rdb2.jpg"
+      },
+      {
+        "title": "Permis de Travail et de Résidence au Rwanda",
+        "subtitle": "Directives essentielles pour les investisseurs et employés étrangers.",
+        "description": "Nous aidons les investisseurs et employés étrangers à obtenir des permis de travail et de résidence via le processus simplifié du Rwanda, assurant une entrée et un séjour légaux sans encombre.",
+        "image": "/assets/images/kg6.jpg"
+      }
+    ],
+    
+      "buttonHelp": "Besoin d’aide pour démarrer ou développer votre entreprise ? Parlons-en !",
+      "formDescription": "Remplissez ce formulaire, et nous vous contacterons rapidement",
+      "formFullName": "Nom complet",
+      "formEmail": "Email",
+      "formContact": "Numéro de contact",
+      "formDescriptionPlaceholder": "Écrivez la description complète du service que vous souhaitez",
+      "formCancel": "Annuler",
+      "formSubmit": "Envoyer"
+    
+  },
+  "humanresource": {
+    "title": "Support RH et administratif",
+    "services": [
+      {
+        "image": "/assets/images/talent.jpg",
+        "title": "Recrutement et acquisition de talents",
+        "subtitle": "Trouvez les bonnes personnes pour votre entreprise.",
+        "description": "Nous vous aidons à sourcer, sélectionner et choisir les meilleurs talents pour faire avancer votre entreprise avec nos stratégies expertes en recrutement. Notre équipe dédiée garantit le meilleur match avec la culture et les besoins de votre entreprise."
+      },
+      {
+        "image": "/assets/images/compliance.png",
+        "title": "Politiques RH & conformité",
+        "subtitle": "Développer des contrats, politiques et manuels de l'employé.",
+        "description": "Nos services de conformité RH assurent que votre entreprise fonctionne dans les cadres juridiques, protégeant vos employés et votre activité. Nous créons des politiques personnalisées alignées sur vos objectifs commerciaux et les lois locales du travail."
+      },
+      {
+        "image": "/assets/images/tra.jpeg",
+        "title": "Formation et développement des employés",
+        "subtitle": "Améliorer les compétences et la productivité.",
+        "description": "Boostez la performance des employés avec nos programmes de formation structurés conçus pour améliorer les compétences et la productivité globale. Nos formations sont dirigées par des experts et couvrent les compétences comportementales, techniques et le développement du leadership."
+      },
+      {
+        "image": "/assets/images/pay.png",
+        "title": "Solutions de paie et administratives",
+        "subtitle": "Assurer le bon fonctionnement.",
+        "description": "Nous offrons la gestion de la paie et le support administratif, garantissant un traitement salarial ponctuel et la conformité aux réglementations financières. Nos solutions fluides aident les entreprises à se concentrer sur leurs opérations principales."
+      }
+    ],
+    "contact": {
+      "buttonHelp": "Besoin d'un support RH fiable ? Nous sommes là pour vous aider",
+      "buttonWhatsApp": "Contact rapide",
+      "popupTitle": "Support RH & administratif",
+      "popupDescription": "Remplissez ce formulaire, et nous vous contacterons rapidement.",
+      "form": {
+        "fullNames": "Nom complet",
+        "email": "Email",
+        "contactNumber": "Numéro de contact",
+        "description": "Écrivez la description complète du service que vous souhaitez",
+        "cancel": "Annuler",
+        "submit": "Envoyer"
+      }
+    }
+  },
+  "visitrwanda": {
+    "title": "Pourquoi le Rwanda est une destination d'affaires idéale",
+    "subtitle": "Découvrez pourquoi le Rwanda est le meilleur endroit pour investir et développer votre entreprise en Afrique.",
+    "benefits": [
+      {
+        "title": "Installation d'entreprise facile et rapide",
+        "description": "Enregistrez une société en seulement 6 heures.",
+        "moreDescription": "Avec des services numériques rationalisés et une agence dédiée à la promotion des investissements, créer une entreprise au Rwanda est rapide et simple."
+      },
+      {
+        "title": "Propriété totale et avantages fiscaux",
+        "description": "100% de propriété étrangère, incitations fiscales.",
+        "moreDescription": "Les investisseurs bénéficient d'une pleine rapatriation des bénéfices, de vacances fiscales et de droits d'importation nuls pour les secteurs stratégiques."
+      },
+      {
+        "title": "Emplacement stratégique",
+        "description": "Porte d'accès à plus de 177 millions de consommateurs d'Afrique de l'Est.",
+        "moreDescription": "Le Rwanda est situé au centre de l'Afrique, offrant un accès facile à plusieurs marchés régionaux, y compris la CAE et la ZLECAf."
+      },
+      {
+        "title": "Pays sûr et favorable aux entreprises",
+        "description": "L'un des pays les plus sûrs d'Afrique.",
+        "moreDescription": "Le Rwanda bénéficie de faibles taux de criminalité, d'un leadership stable et d'une politique de tolérance zéro envers la corruption, en faisant un havre pour les affaires."
+      },
+      {
+        "title": "Infrastructure moderne et innovation",
+        "description": "Secteur TIC et logistique performant.",
+        "moreDescription": "Du fibre optique à la planification de villes intelligentes, le Rwanda investit massivement dans les infrastructures du 21e siècle."
+      },
+      {
+        "title": "Économie verte et durable",
+        "description": "Incitations pour les entreprises écologiques.",
+        "moreDescription": "Le gouvernement soutient les technologies propres, la mobilité électrique et l'agriculture durable via des politiques et des subventions ciblées."
+      }
+    ]
+  },
+  "whyinvest": {
+    "title": "Prêt à investir ?",
+    "subtitle": "Bonet Elite Services rend le processus simple. Commençons dès aujourd'hui !",
+    "card": {
+      "image": "/assets/images/kiga1.jpeg",
+      "heading": "Comment Bonet peut aider les investisseurs à s'installer et à se développer",
+      "subheading": "Comment Bonet Elite Services simplifie la création et la croissance des entreprises",
+      "paragraphs": [
+        "Créer et gérer une entreprise au Rwanda devrait être excitant, pas accablant. Chez Bonet Elite Services, nous nous chargeons de toutes les démarches d'enregistrement et de licence pour vous, de manière fluide et efficace.",
+        "Que vous soyez un investisseur cherchant un certificat d'investissement, un entrepreneur lançant une startup, ou une entreprise établie ayant besoin de permis sectoriels spécifiques, nous assurons un processus simple et sans stress.",
+        "Des formalités administratives aux approbations, nous gérons la complexité pour que vous n'ayez pas à le faire. Grâce à notre expertise, vous gagnez du temps, évitez les retards et vous concentrez sur l'essentiel : faire croître votre entreprise en toute confiance."
+      ]
+    }
+  },
+  "investmentOpportunities": {
+    "title": "Opportunités d'investissement au Rwanda",
+    "subtitle": "Découvrez pourquoi le Rwanda est l'un des meilleurs endroits en Afrique pour investir et développer votre entreprise.",
+    "items": [
+      {
+        "title": "FABRICATION",
+        "description": "La politique industrielle du Rwanda vise à accroître la production locale, améliorer la compétitivité des exportations et créer un environnement propice à l'industrialisation. Le secteur est dominé par la fabrication de matériaux de construction et la transformation agroalimentaire.",
+        "keyPoints": [
+          "Matériaux de construction",
+          "Médicaments pharmaceutiques",
+          "Textiles",
+          "Transformation du cuir",
+          "Savons et détergents",
+          "Engrais"
+        ],
+        "image": "/assets/images/manu.jpg"
+      },
+      {
+        "title": "AGRICULTURE",
+        "description": "Le secteur agricole est essentiel à l’économie rwandaise. Le gouvernement encourage sa modernisation à travers la mécanisation, l'irrigation et l'ajout de valeur.",
+        "keyPoints": [
+          "Agrobusiness et transformation",
+          "Horticulture (fruits et légumes)",
+          "Élevage et production laitière",
+          "Transformation du café et du thé",
+          "Agriculture biologique"
+        ],
+        "image": "/assets/images/agri.jpg"
+      },
+      {
+        "title": "ÉNERGIE",
+        "description": "Le Rwanda investit dans l'accès à l'électricité et les énergies renouvelables. Les domaines clés incluent l'hydroélectricité, le solaire et le gaz méthane.",
+        "keyPoints": [
+          "Projets hydroélectriques",
+          "Énergie solaire et éolienne",
+          "Production de biomasse et biogaz",
+          "Solutions hors réseau"
+        ],
+        "image": "/assets/images/energey.jpg"
+      },
+      {
+        "title": "TOURISME",
+        "description": "Réputé pour ses gorilles, ses parcs et sa culture, le Rwanda promeut le tourisme durable et les écolodges.",
+        "keyPoints": [
+          "Projets d'écotourisme",
+          "Hôtels et lodges de luxe",
+          "Tourisme d'aventure et culturel",
+          "Tourisme d'affaires et de conférences"
+        ],
+        "image": "/assets/images/tourisim.jpg"
+      },
+      {
+        "title": "TIC (TECHNOLOGIES DE L’INFORMATION)",
+        "description": "Le Rwanda est un centre numérique en Afrique. Le secteur TIC présente un grand potentiel pour les investisseurs.",
+        "keyPoints": [
+          "Startups et hubs d'innovation",
+          "Développement d'applications",
+          "Plateformes e-commerce",
+          "Solutions de cybersécurité"
+        ],
+        "image": "/assets/images/ict.jpg"
+      },
+      {
+        "title": "IMMOBILIER ET CONSTRUCTION",
+        "description": "Avec l'urbanisation croissante, la demande en logements modernes et infrastructures augmente fortement au Rwanda.",
+        "keyPoints": [
+          "Logements abordables",
+          "Immobilier commercial",
+          "Villes intelligentes",
+          "Bâtiments écologiques"
+        ],
+        "image": "/assets/images/real.jpg"
+      },
+      {
+        "title": "INFRASTRUCTURE",
+        "description": "Le Rwanda développe ses infrastructures via des partenariats public-privé pour stimuler la croissance et l’intégration régionale.",
+        "keyPoints": [
+          "Routes et ponts",
+          "Développement ferroviaire",
+          "Transports intelligents",
+          "Eau et assainissement"
+        ],
+        "image": "/assets/images/est.jpg"
+      },
+      {
+        "title": "MINES",
+        "description": "Le Rwanda soutient une exploitation minière responsable. Il est un producteur clé de tantale, étain et tungstène.",
+        "keyPoints": [
+          "Or et étain",
+          "Extraction de coltan et tantale",
+          "Carrières et ciment",
+          "Pierres précieuses"
+        ],
+        "image": "/assets/images/miniig.jpg"
+      }
+    ]
+  },
+  "travelSpots": {
+    "title": "Conseils de voyage pour les visiteurs pour la première fois",
+    "spots": [
+      {
+        "title": "Parc National des Volcans",
+        "image": "/assets/images/vol.jpg",
+        "description": "Abritant les célèbres gorilles des montagnes du Rwanda, ce parc offre des paysages à couper le souffle et une expérience unique avec la faune. Les visiteurs peuvent partir en expédition de trekking guidée pour observer ces primates majestueux dans leur habitat naturel. Le parc abrite également des singes dorés, des forêts de bambous luxuriantes et des paysages volcaniques impressionnants. C'est un paradis pour les écotouristes, les photographes et les passionnés de faune souhaitant explorer l'un des derniers sanctuaires de gorilles des montagnes sur Terre."
+      },
+      {
+        "title": "Parc National de Nyungwe",
+        "image": "/assets/images/nyu.jpeg",
+        "description": "Une vaste forêt montagneuse, Nyungwe est l'une des plus anciennes forêts tropicales d'Afrique, regorgeant de biodiversité. Le parc abrite plus de 1 000 espèces de plantes, 13 espèces de primates dont les chimpanzés, et plus de 300 espèces d'oiseaux, en faisant un paradis pour les ornithologues. Parmi ses attractions, le célèbre pont suspendu à 60 mètres au-dessus du sol offre une vue spectaculaire sur la verdure luxuriante et la faune diversifiée en dessous. Les visiteurs peuvent également profiter des sentiers de randonnée menant à de belles cascades et points de vue."
+      },
+      {
+        "title": "Parc National d’Akagera",
+        "image": "/assets/images/k3.jpg",
+        "description": "Ce parc de savane abrite les Big Five—lions, léopards, éléphants, buffles et rhinocéros—offrant une expérience authentique de safari africain. Contrairement aux autres parcs rwandais, Akagera se caractérise par de vastes plaines ouvertes, des bois, des lacs et des zones humides, créant un paysage diversifié et magnifique. Les safaris en bateau sur le lac Ihema permettent aux visiteurs d’observer de près les hippopotames, crocodiles et nombreux oiseaux aquatiques. Le parc a fait l’objet d’importants efforts de conservation, réintroduisant avec succès les lions et les rhinocéros, en faisant une destination incontournable pour les amoureux de la faune."
+      },
+      {
+        "title": "Mémorial du Génocide de Kigali",
+        "image": "/assets/images/gen.jpeg",
+        "description": "Un lieu de mémoire et d’éducation, ce mémorial rend hommage aux victimes du génocide contre les Tutsi de 1994, offrant un aperçu profond de l’histoire et de la résilience du Rwanda. Le site présente des expositions détaillant les événements ayant conduit au génocide, les horreurs survenues, et les efforts des Rwandais pour reconstruire leur nation. Les visiteurs peuvent rendre hommage aux fosses communes et découvrir des témoignages personnels de survivants, favorisant une meilleure compréhension du parcours du Rwanda vers la réconciliation et la paix."
+      },
+      {
+        "title": "Lac Kivu",
+        "image": "/assets/images/kiv.jpg",
+        "description": "L’un des Grands Lacs d’Afrique, le lac Kivu offre des vues splendides, des balades en bateau relaxantes et des villes lacustres animées telles que Gisenyi, Kibuye et Cyangugu. Les eaux cristallines du lac sont exemptes d’animaux dangereux, ce qui le rend parfait pour la baignade, le kayak et la pêche. Les visiteurs peuvent explorer les plantations de café à proximité, faire une croisière au coucher du soleil ou simplement se détendre sur les rives tout en profitant du paysage époustouflant. Avec son atmosphère chaleureuse et accueillante, le lac Kivu est un refuge idéal pour ceux qui souhaitent se ressourcer et profiter de la nature."
+      },
+      {
+        "title": "Musée du Palais Royal (Rukari)",
+        "image": "/assets/images/k2.webp",
+        "description": "Ce site historique à Nyanza met en valeur le patrimoine royal du Rwanda, présentant un palais traditionnel reconstruit avec une architecture à toit de chaume. Les visiteurs peuvent apprendre l’histoire de la monarchie rwandaise, les coutumes et traditions des anciens rois, et voir les Inyambo (bœufs sacrés à longues cornes), traditionnellement préparés pour les cérémonies royales. Le musée offre un aperçu fascinant du Rwanda précolonial, proposant une expérience culturelle unique qui met en lumière la riche histoire et l’héritage de la nation."
+      }
+    ]
+  },
+  "investingInRwanda": {
+    "title": "Comment démarrer une entreprise au Rwanda en tant qu'étranger",
+    "whyInvest": {
+      "title": "Pourquoi investir au Rwanda ?",
+      "text": "Le Rwanda se classe 38e au niveau mondial et 2e en Afrique pour la facilité de faire des affaires. Avec un processus d'enregistrement en ligne qui prend seulement six heures, c'est une destination d'investissement attrayante."
+    },
+    "steps": {
+      "prepare": {
+        "title": "Préparez-vous à l'enregistrement",
+        "items": [
+          "Ayez une adresse e-mail active.",
+          "Ayez votre carte d'identité ou passeport prêt.",
+          "Déterminez le nom de votre entreprise, les activités commerciales et l'adresse du bureau.",
+          "Rassemblez les coordonnées des actionnaires, des membres du conseil et des administrateurs."
+        ]
+      },
+      "documents": {
+        "title": "Documents nécessaires",
+        "items": [
+          "Pouvoir notarié.",
+          "Statuts notariés de la société.",
+          "Certificat d'enregistrement/incorporation notarié.",
+          "Résolution notariée autorisant l'ouverture d'une succursale."
+        ]
+      },
+      "registerOnline": {
+        "title": "Enregistrer en ligne",
+        "items": [
+          "Accédez au système d'enregistrement des entreprises de la RDB.",
+          "Choisissez la catégorie d'entreprise appropriée.",
+          "Remplissez la demande d'enregistrement d'entreprise en ligne."
+        ]
+      },
+      "taxes": {
+        "title": "Enregistrez, déclarez et payez les impôts",
+        "items": [
+          "Enregistrez-vous pour les impôts, y compris la TVA si applicable.",
+          "Assurez-vous de respecter toutes les obligations fiscales.",
+          "Cherchez des conseils fiscaux pour une bonne orientation."
+        ]
+      },
+      "keyInfo": {
+        "title": "Informations clés",
+        "items": [
+          "Aucun frais d'enregistrement d'entreprise requis.",
+          "L'enregistrement de l'entreprise ne prend que 6 heures.",
+          "Le processus entier est en ligne, éliminant le besoin de présence physique."
+        ]
+      }
+    },
+    "step2": {
+      "title": "Étape 2 : Conditions pour obtenir un certificat d'investissement",
+      "onlineApplication": {
+        "title": "Demande en ligne",
+        "items": [
+          "Postulez en ligne sur osc.rdb.rw.",
+          "Obtenez un certificat d'incorporation de société de la RDB.",
+          "Utilisez le code d'entreprise/numéro TIN pour les demandes en ligne."
+        ]
+      },
+      "applicationLetter": {
+        "title": "Lettre de demande",
+        "text": "Rédigez une lettre de demande adressée au PDG du Rwanda Development Board sollicitant un certificat d'investissement."
+      }
+    },
+    "businessPlan": {
+      "title": "Exigences du plan d'affaires",
+      "items": [
+        "Résumé exécutif : Présentez les aspects clés du projet.",
+        "Profil du ou des promoteurs du projet : Détails sur les personnes derrière le projet.",
+        "Contexte du projet : Informations sur les origines et le développement du projet.",
+        "Étude/Analyse de marché : Aperçu des conditions et du potentiel du marché.",
+        "Informations financières : Niveau de prêt et financement en actions, le cas échéant.",
+        "Revenus et dépenses prévisionnels : États pour les 5 prochaines années.",
+        "Investissement prévu : Calendrier financier et coûts du capital pour les 5 prochaines années.",
+        "Bilan prévisionnel : Projections financières pour les 5 prochaines années.",
+        "Calendrier d'amortissement des prêts : Si des prêts bancaires sont impliqués."
+      ]
+    }
+  },
+  "businessRegistration": {
+    "title": "Comment nous gérons l'enregistrement et la délivrance de licences pour vous",
+    "steps": [
+      {
+        "title": "Étape 1 : Consultation et collecte des exigences",
+        "description": "Nous comprenons vos besoins commerciaux et collectons les détails nécessaires."
+      },
+      {
+        "title": "Étape 2 : Préparation et soumission des documents",
+        "description": "Nous gérons toute la paperasse et déposons les demandes nécessaires."
+      },
+      {
+        "title": "Étape 3 : Liaison avec le gouvernement et suivi",
+        "description": "Nous coordonnons avec les autorités concernées pour assurer un traitement rapide."
+      },
+      {
+        "title": "Étape 4 : Approbation et certification",
+        "description": "Nous vous délivrons votre entreprise enregistrée ou licence avec tous les documents légaux."
+      },
+      {
+        "title": "Étape 5 : Support post-enregistrement",
+        "description": "Besoin d'enregistrement fiscal, de permis ou d'installation de bureau ? Nous sommes là pour vous."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contactez-Nous",
+    "subtitle": "Nous apprécions vos commentaires et vos demandes. Veuillez remplir le formulaire, et nous vous répondrons dès que possible.",
+    "form": {
+      "namePlaceholder": "Nom complet",
+      "emailPlaceholder": "Email",
+      "phonePlaceholder": "Numéro de téléphone",
+      "whatsappPlaceholder": "Numéro WhatsApp",
+      "inquiryLabel": "Type de demande",
+      "inquiryOptions": {
+        "hotel": "Hôtel",
+        "department": "Département",
+        "transport": "Transport",
+        "businessSetup": "Création d'entreprise"
+      },
+      "messagePlaceholder": "Votre message",
+      "submitButton": "Envoyer le message"
+    },
+    "contactInfo": {
+      "title": "Entrer en contact avec nous",
+      "callWhatsApp": "Appeler/WhatsApp:",
+      "email": "Email:",
+      "location": "Localisation : Kigali, Rwanda",
+      "chatButton": "Discuter avec nous"
+    }
+  },
+  "contactInfo": {
+    "title": {
+      "part1": "Prenez contact",
+      "part2": " avec nous"
+    },
+    "description": "Nous apprécions vos retours et questions. Veuillez remplir le formulaire, nous vous répondrons dès que possible.",
+    "chatIconAlt": "Icône de discussion",
+    "chatIconHoverAlt": "Icône de discussion au survol",
+    "chatButton": "Discutez avec nous",
+    "callWhatsApp": "Appel/WhatsApp",
+    "email": "E-mail",
+    "location": "Localisation : Kigali, Rwanda"
+  },
+  "quickButtons": {
+    "ariaLabels": {
+      "openMenu": "Ouvrir le menu",
+      "closeMenu": "Fermer le menu",
+      "contactUsButton": "Contactez-nous"
+    },
+    "languages": {
+      "en": "Anglais",
+      "fr": "Français"
+    },
+    "menu": {
+      "home": "Accueil",
+      "aboutUs": "À propos",
+      "services": "Services",
+      "bookNow": "Réserver maintenant",
+      "contactUs": "Contactez-nous"
+    },
+    "flags": {
+      "en": "../assets/images/usa.png",
+      "fr": "../assets/images/french.png"
+    }
+  },
+  "locationSection": {
+    "title": "Notre Lieu"
+  },
+  "locationSecondSection": {
+      "title": "Obtenir l'emplacement",
+      "startingPoint": "Point de départ",
+      "destination": "Destination",
+      "search": "Rechercher",
+      "estimatedTime": "Temps estimé"
+  },
+  "chatbot": {
+    "customerSupportTitle": "Chatbot du service client",
+    "askHelp": "Comment puis-je vous aider ?",
+    "bonetChatbotTitle": "Chatbox de Bonet Elite Service",
+    "bonetSubtitle": "Discuter avec le service client",
+    "continue": "Continuer la discussion",
+    "agreeTerms": "J'accepte les conditions",
+    "disclaimer": "Vous êtes sur le point d’ouvrir un chatbox d’assistance client IA conçu spécifiquement pour Bonet Elite Service. Ce chatbot est là pour vous guider et vous fournir une assistance exclusivement liée à ce service.",
+    "askPlaceholder": "Posez votre question"
+  },
+  "liveChat": {
+    "typeMessage": "Tapez votre message",
+    "title": "Chat en direct de Bonet Elite Service",
+    "helpText": "Comment pouvons-nous vous aider ?",
+    "subtitle": "Discuter avec notre agent",
+    "continue": "Continuer vers le chat en direct",
+    "agreeTerms": "J'accepte les conditions",
+    "disclaimer": "Vous êtes sur le point d’ouvrir un chat en direct avec nos agents, conçu spécifiquement pour Bonet Elite Service. Ce chat est là pour vous guider et vous fournir une assistance exclusivement liée à ce service.",
+    "button": "Chat en direct",
+    "footer": "Chat en direct de Bonet Elite Service"
+  },
+  "common": {
+    "contactUs": "Contactez-nous"
+  },
+  "brandName": "Bonet Elite Services",
+  "infoCards": {
+    "hotelCard": {
+    "viewMore": "Voir plus",
+    "viewLess": "Voir moins",
+    "bookNow": "Réserver maintenant"
+  },
+    "belief": {
+      "title": "Pourquoi se contenter de l’ordinaire ?",
+      "content": {
+        "part1": "Chez",
+        "part2": ", nous croyons que le voyage est plus qu’un simple déplacement — c’est une expérience qui doit refléter vos standards, votre style de vie et vos objectifs. Que vous veniez pour affaires, loisirs ou un moment spécial, votre hébergement doit soutenir qui vous êtes et ce que vous appréciez —",
+        "comfort": "confort",
+        "class": "classe",
+        "privacy": "intimité",
+        "efficiency": "efficacité"
+      }
+    },
+    "services": {
+      "title": "Ce que nous faisons différemment",
+      "content": {
+        "intro": "Nous ne nous contentons pas de réserver des hôtels. Nous créons des séjours sur mesure adaptés à vous — votre emploi du temps, vos préférences et vos priorités. Du moment où vous atterrissez jusqu’à votre départ, nous veillons à ce que chaque détail joue en votre faveur.",
+        "list": {
+          "premiumSelection": "Sélection d’hôtels haut de gamme adaptée à votre demande",
+          "flexibility": "Flexibilité sur les horaires d’arrivée/départ et services",
+          "transport": "Transport exécutif et prise en charge à l’aéroport sur demande",
+          "roomSetup": "Préparation de la chambre pour affaires, famille ou occasions spéciales",
+          "assistance": "Assistance personnalisée à chaque étape"
+        }
+      }
+    },
+    "booking": {
+      "title": "Comment réserver",
+      "content": "Dites-nous ce que vous recherchez — type d’hôtel, emplacement, préférences — et nous vous proposerons une offre personnalisée qui correspond à vos standards. Pas de limites, pas de pression, seulement du confort sur mesure. Remplissez le court formulaire ci-dessous et laissez-nous nous occuper du reste."
+    }
+  },
+  "cta": {
+    "heading": "Prêt à vivre un confort premium ?",
+    "button": "Réserver un hébergement hôtelier"
+  },
+  "form": {
+    "title": "Demande d'Hébergement à l'Hôtel",
+    "fullName": {
+      "label": "Nom complet",
+      "placeholder": "Nom complet",
+      "required": "Le nom complet est requis"
+    },
+    "email": {
+      "label": "E-mail",
+      "placeholder": "Adresse e-mail",
+      "required": "L'adresse e-mail est requise",
+      "invalid": "Format d'e-mail invalide"
+    },
+    "phone": {
+      "label": "Téléphone",
+      "placeholder": "Numéro de téléphone",
+      "required": "Le numéro de téléphone est requis"
+    },
+    "guests": {
+      "label": "Invités",
+      "placeholder": "ex. 2",
+      "required": "Le nombre d'invités est requis"
+    },
+    "purpose": {
+      "label": "Motif du séjour",
+      "placeholder": "Sélectionner le motif",
+      "required": "Veuillez sélectionner le motif du séjour",
+      "options": {
+        "business": "Voyage d'affaires",
+        "honeymoon": "Lune de miel / Romantique",
+        "family": "Vacances en famille",
+        "diplomatic": "Visite diplomatique",
+        "vip_event": "Événement VIP"
+      }
+    },
+    "preferredLocation": {
+      "label": "Emplacement préféré",
+      "placeholder": "Choisir un emplacement",
+      "required": "Veuillez sélectionner l'emplacement préféré",
+      "options": {
+        "kcc": "Centre-ville de Kigali",
+        "embassy": "Zone des ambassades",
+        "vision_city": "Vision City",
+        "musanze": "Musanze",
+        "lake_kivu": "Lac Kivu",
+        "other": "Autre"
+      }
+    },
+    "customLocation": {
+      "placeholder": "Emplacement personnalisé",
+      "required": "Veuillez entrer un emplacement personnalisé"
+    },
+    "location": {
+      "label": "Lieu (Province, District)",
+      "placeholder": "ex. Kigali, Gasabo",
+      "required": "Le lieu est requis"
+    },
+    "dates": {
+      "label": "Dates de séjour",
+      "required": "Veuillez sélectionner les dates de séjour"
+    },
+    "hotelLevel": {
+      "label": "Niveau de l'hôtel",
+      "placeholder": "Sélectionner le niveau",
+      "required": "Veuillez sélectionner le niveau de l'hôtel",
+      "options": {
+        "3star": "3 étoiles",
+        "4star": "4 étoiles",
+        "5star": "5 étoiles",
+        "luxury": "Luxe",
+        "private_villa": "Villa privée"
+      }
+    },
+    "transport": {
+      "label": "Transport",
+      "placeholder": "Sélectionner le transport",
+      "required": "Veuillez sélectionner le transport",
+      "options": {
+        "sedan_vip": "Berlines exécutives – Première classe (VIP)",
+        "suv_vip": "SUV de luxe – Première classe (VIP)",
+        "sedan_exec": "Berlines classe affaires – Deuxième classe (Exécutif)",
+        "suv_exec": "SUV fiables – Deuxième classe (Usage professionnel & ONG)",
+        "van_vip": "Vans de luxe – Transport de groupe VIP"
+      }
+    },
+    "budget": {
+      "label": "Budget (par nuit)",
+      "placeholder": "Sélectionner le budget",
+      "required": "Veuillez sélectionner une gamme de budget",
+      "options": {
+        "150_200": "150 $ – 200 $",
+        "200_400": "200 $ – 400 $",
+        "400_plus": "400 $+",
+        "custom": "Personnalisé"
+      }
+    },
+    "customBudget": {
+      "placeholder": "Budget personnalisé $",
+      "required": "Veuillez entrer un montant de budget",
+      "onlyNumbers": "Uniquement des chiffres autorisés"
+    },
+    "specialNeeds": {
+      "label": "Besoins spéciaux ou remarques",
+      "placeholder": "Toute autre information..."
+    },
+    "submit": "Soumettre la demande",
+    "success": "✅ Demande d'hôtel envoyée !",
+    "fail": "❌ Échec de l'envoi de la demande",
+    "errors": {
+      "selectDates": "❌ Veuillez sélectionner la date d'arrivée et de départ."
+    }
+  },
+  "apartmentInfo": {
+    "cards": {
+      "belief": {
+        "title": "Pourquoi se contenter de l’ordinaire ?",
+        "textStart": "Chez",
+        "textMiddle": ", nous pensons que le voyage est plus qu’un simple déplacement — c’est une expérience qui doit refléter vos standards, votre style de vie et vos objectifs. Que vous veniez pour affaires, pour le plaisir ou pour un moment spécial, votre hébergement doit correspondre à qui vous êtes et à ce que vous appréciez —",
+        "values": {
+          "comfort": "confort",
+          "class": "classe",
+          "privacy": "intimité",
+          "efficiency": "efficacité"
+        }
+      },
+      "services": {
+        "title": "Ce que nous faisons différemment",
+        "intro": "Nous ne nous contentons pas de réserver des hôtels. Nous créons des séjours sur mesure adaptés à vous — votre emploi du temps, vos préférences et vos priorités. Du moment où vous atterrissez jusqu’à votre départ, nous veillons à ce que chaque détail joue en votre faveur.",
+        "list": {
+          "premiumSelection": "Sélection d’hôtels haut de gamme adaptée à votre demande",
+          "flexibility": "Flexibilité pour les horaires d’arrivée et de départ ainsi que les services",
+          "transportPickup": "Transport exécutif et prise en charge à l’aéroport sur demande",
+          "roomSetup": "Aménagement de la chambre pour affaires, famille ou occasions spéciales",
+          "personalAssist": "Assistance personnalisée à chaque étape"
+        }
+      },
+      "booking": {
+        "title": "Comment réserver",
+        "description": "Dites-nous ce que vous recherchez — type d’hôtel, emplacement, préférences — et nous vous proposerons une offre personnalisée répondant à vos standards. Aucune limite, aucune pression, juste du confort sur mesure. Remplissez le court formulaire ci-dessous et laissez-nous nous occuper du reste."
+      }
+    },
+    "cta": {
+      "heading": "Prêt à vivre un confort premium ?",
+      "button": "Réserver un hébergement en appartement",
+      "bookNow":"Réserver maintenant"
+    }
+  },
+  "apartmentForm": {
+    "title": "Demande d'hébergement pour appartement",
+    "fields": {
+      "fullName": "Nom complet",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "guests": "Nombre d'invités",
+      "transport": "Transport",
+      "purpose": "Objet du séjour",
+      "preferredLocation": "Lieu préféré",
+      "locationFull": "Emplacement (Province, District)",
+      "dates": "Dates de séjour",
+      "roomType": "Type de chambre",
+      "budget": "Budget (Par nuit)",
+      "specialNeeds": "Besoins ou notes spéciales"
+    },
+    "placeholders": {
+      "fullName": "Nom complet",
+      "email": "Adresse e-mail",
+      "phone": "Numéro de téléphone",
+      "guests": "ex. 2",
+      "transport": "Sélectionner le transport",
+      "purpose": "Sélectionner l'objet",
+      "location": "Choisir un lieu",
+      "customLocation": "Lieu personnalisé",
+      "locationFull": "ex. Kigali, Gasabo",
+      "roomType": "Sélectionner le type de chambre",
+      "budget": "Sélectionner le budget",
+      "customBudget": "Entrez le budget personnalisé $",
+      "specialNeeds": "Écrivez toute information importante..."
+    },
+    "options": {
+      "transport": {
+        "execSedan": "Berlines exécutives – Première classe (VIP)",
+        "luxSUV": "SUV de luxe – Première classe (VIP)",
+        "bizSedan": "Berlines classe affaires – Deuxième classe (Exécutif)",
+        "reliableSUV": "SUV fiables – Deuxième classe (Usage Business & ONG)",
+        "luxVan": "Vans de luxe – Transport VIP en groupe"
+      },
+      "purpose": {
+        "business": "Voyage d'affaires",
+        "honeymoon": "Lune de miel / Romantique",
+        "family": "Vacances en famille",
+        "diplomatic": "Visite diplomatique",
+        "vip": "Événement VIP"
+      },
+      "location": {
+        "kcc": "Centre-ville de Kigali",
+        "embassy": "Quartier des ambassades",
+        "visionCity": "Vision City",
+        "musanze": "Musanze",
+        "lakeKivu": "Lac Kivu",
+        "other": "Autre"
+      },
+      "roomType": {
+        "executiveRoom": "Chambre Exécutive",
+"deluxeRoom": "Chambre Deluxe",
+"juniorSuite": "Suite Junior",
+"presidentialSuite": "Suite Présidentielle",
+"penthouseSuite": "Suite Penthouse",
+"luxury1bedroom": "Appartement de Luxe - 1 Chambre",
+"apartment2bedroom": "Appartement - 2 Chambres",
+"apartment3bedroom": "Appartement - 3 Chambres",
+"privateVilla": "Villa Privée (2+ Chambres)"
+
+      },
+      "budget": {
+        "range1": "150 $ – 200 $",
+        "range2": "200 $ – 400 $",
+        "range3": "400 $+",
+        "custom": "Personnalisé"
+      }
+    },
+    "errors": {
+      "dateRequired": "❌ Veuillez sélectionner les dates d’arrivée et de départ.",
+      "customBudgetRequired": "Entrez un montant de budget",
+      "numbersOnly": "Seulement des chiffres autorisés",
+      "submitFail": "❌ Échec de l'envoi de la demande"
+    },
+    "success": "✅ Demande d'appartement soumise avec succès !",
+    "submit": "Soumettre la demande"
+  },
+  "transportCard": {
+    "titles": {
+      "transportRequest": "Demande de transport",
+      "sponsoredAds": "Annonces sponsorisées"
+    },
+    "instructions": "Veuillez remplir les informations ci-dessous pour demander votre transport.",
+    "labels": {
+      "fullName": "Nom complet",
+      "email": "Email",
+      "transportService": "Service de transport",
+      "transportType": "Type de transport",
+      "carType": "Type de voiture",
+      "seats": "Nombre de sièges",
+      "rentTime": "Durée de location",
+      "numberOfDays": "Nombre de jours",
+      "pickupLocation": "Lieu de prise en charge",
+      "dropoffLocation": "Lieu de dépose",
+      "pickupDate": "Date de prise en charge",
+      "pickupTime": "Heure de prise en charge"
+    },
+    "placeholders": {
+      "fullName": "Nom complet",
+      "email": "Adresse email",
+      "selectService": "Sélectionner un service",
+      "selectType": "Sélectionner un type",
+      "selectCarType": "Sélectionner un type de voiture",
+      "seats": "Sièges",
+      "selectRentTime": "Sélectionner la durée de location",
+      "numberOfDays": "Entrez le nombre de jours",
+      "pickupLocation": "Lieu de prise en charge",
+      "dropoffLocation": "Lieu de dépose",
+      "loadingMaps": "Chargement des cartes..."
+    },
+    "errors": {
+      "enterName": "Entrez votre nom",
+      "enterValidEmail": "Entrez un email valide",
+      "selectService": "Sélectionnez un service",
+      "selectType": "Sélectionnez un type",
+      "selectCarType": "Sélectionnez un type de voiture",
+      "enterSeats": "Entrez le nombre de sièges",
+      "enterNumberOfDays": "Entrez le nombre de jours",
+      "enterPickupLocation": "Entrez le lieu de prise en charge",
+      "enterDropoffLocation": "Entrez le lieu de dépose",
+      "selectPickupDate": "Sélectionnez la date de prise en charge",
+      "selectPickupTime": "Sélectionnez l'heure de prise en charge"
+    },
+    "options": {
+      "transportService": {
+        "airportTransfers": "Transferts aéroport",
+        "hotelToAirport": "Prise en charge hôtel-aéroport",
+        "localBusiness": "Transport local d'affaires",
+        "cityTours": "Visites et excursions en ville",
+        "conferenceEvent": "Transport conférence et événements"
+      },
+      "transportType": {
+        "businessVip": "Transport affaires & VIP"
+      },
+      "carType": {
+        "execSedan": "Berlines exécutives – Première classe (VIP)",
+        "luxSUV": "SUV de luxe – Première classe (VIP)",
+        "bizSedan": "Berlines affaires – Deuxième classe (Exécutif)",
+        "reliableSUV": "SUV fiables – Deuxième classe (Affaires & ONG)",
+        "luxVan": "Vans de luxe – Transport VIP de groupe"
+      },
+      "rentTime": {
+        "wholeDay": "Journée complète",
+        "halfDay": "Demi-journée",
+        "trip": "Trajet",
+        "moreDays": "Plusieurs jours"
+      }
+    },
+    "kigaliAirport": "Aéroport international de Kigali",
+    "successMessage": "✅ Demande de transport envoyée !",
+    "errorMessage": "❌ Échec de l'envoi.",
+    "fillRequired": "⚠️ Veuillez remplir tous les champs requis.",
+    "submitButton": "Envoyer la demande",
+    "noAds": "Aucune annonce disponible."
+  },
+  "tourTypeSelector": {
+    "guideTitle": "Guide Touristique",
+    "guideDescription": "Trouvez un guide local pour votre prochain voyage",
+    "transportTitle": "Transport Touristique",
+    "transportDescription": "Réservez facilement votre véhicule ou transport touristique"
+  },
+  "tourGuideForm": {
+    "title": "Formulaire de Guide Touristique",
+    "subtitle": "Veuillez remplir ce formulaire pour nous aider à trouver les meilleures options de visite.",
+    "labels": {
+      "fullName": "Nom complet",
+      "email": "Email",
+      "language": "Langue préférée",
+      "destinations": "Destination(s)",
+      "travelDates": "Dates du voyage",
+      "tourType": "Type de visite",
+      "activityLevel": "Niveau d'activité",
+      "budget": "Préférence de budget",
+      "estimatedBudget": "Budget estimé ($)",
+      "seats": "Nombre de passagers",
+      "duration": "Durée",
+      "numberOfDays": "Nombre de jours",
+      "transport": "Préférence de transport",
+      "addons": "Extras et services touristiques",
+      "requests": "Demandes spéciales"
+    },
+    "placeholders": {
+      "fullName": "Entrez votre nom",
+      "email": "Entrez votre email",
+      "language": "Sélectionnez la langue",
+      "destinations": "ex. Kigali, Musanze",
+      "tourType": "Sélectionnez les types de visite",
+      "activityLevel": "Sélectionnez le niveau d'activité",
+      "budget": "Sélectionnez votre budget",
+      "estimatedBudget": "Entrez le montant",
+      "seats": "Places",
+      "duration": "Sélectionnez la durée",
+      "numberOfDays": "Entrez le nombre de jours",
+      "transport": "Sélectionnez le transport",
+      "addons": "Sélectionnez les extras disponibles",
+      "requests": "Demandes spéciales ?"
+    },
+    "errors": {
+      "required": "Ce champ est obligatoire",
+      "emailInvalid": "Veuillez entrer une adresse email valide"
+    },
+    "options": {
+      "languages": {
+        "english": "Anglais",
+        "french": "Français",
+        "kinyarwanda": "Kinyarwanda",
+        "swahili": "Swahili"
+      },
+      "tourType": {
+        "cultural": "Culturel et historique",
+        "nature": "Nature et faune",
+        "city": "Visites en ville",
+        "adventure": "Aventure / Randonnée",
+        "relaxation": "Détente / Bien-être",
+        "food": "Gastronomie et boissons",
+        "religious": "Sites religieux",
+        "beach": "Plage et station balnéaire"
+      },
+      "activityLevel": {
+        "low": "Faible",
+        "medium": "Moyen",
+        "high": "Élevé"
+      },
+      "budget": {
+        "budget": "Économique",
+        "mid": "Confort moyen",
+        "premium": "Expérience premium",
+        "vip": "Service VIP de luxe",
+        "custom": "J’ai un budget spécifique (indiquez-le)",
+        "unsure": "Je ne sais pas – Merci de me conseiller"
+      },
+      "duration": {
+        "wholeDay": "Journée entière",
+        "halfDay": "Demi-journée",
+        "trip": "Excursion",
+        "moreDays": "Plusieurs jours"
+      },
+      "transport": {
+        "suv": "SUVs pour voyage d’aventure",
+        "cruiser": "Land Cruiser safari",
+        "minivan": "Minibus touristiques (7–14 places)",
+        "bus": "Bus touristiques (28+ places)"
+      },
+      "addons": {
+        "driver": "Chauffeurs-guides expérimentés",
+        "multilingual": "Personnel multilingue (Anglais, Français, Kinyarwanda)",
+        "waterWifi": "Eau en bouteille et Wi-Fi",
+        "routeSupport": "Support itinéraire et suggestions de parcours",
+        "meetGreet": "Accueil à l’aéroport"
+      }
+    },
+    "submitButton": "Envoyer la demande",
+    "successMessage": "Demande de guide touristique envoyée avec succès !",
+    "errorMessage": "Échec de l’envoi. Veuillez réessayer.",
+    "adsTitle": "Annonces sponsorisées",
+    "noAds": "Aucune annonce disponible."
+  },
+  "transportForm": {
+    "title": "Transport Touristique",
+    "subtitle": "Veuillez remplir ce formulaire pour rechercher le transport le mieux recommandé.",
+    "successMessage": "Demande de transport soumise avec succès !",
+    "errorMessage": "Une erreur s'est produite lors de l'envoi du formulaire.",
+    "labels": {
+      "fullName": "Nom complet",
+      "email": "E-mail",
+      "datetime": "Date et heure",
+      "pickup": "Lieu de prise en charge",
+      "dropoff": "Lieu de dépose",
+      "passengers": "Nombre de passagers",
+      "vehicle": "Type de véhicule",
+      "addons": "Options et assistance touristiques",
+      "notes": "Notes supplémentaires"
+    },
+    "placeholders": {
+      "fullName": "Entrez votre nom",
+      "email": "Entrez votre e-mail",
+      "pickup": "Où devons-nous vous prendre ?",
+      "dropoff": "Où devons-nous vous déposer ?",
+      "passengers": "Nombre de passagers",
+      "vehicle": "Sélectionnez un véhicule",
+      "addons": "Sélectionnez les options disponibles",
+      "notes": "Préférences ou détails des bagages ?"
+    },
+    "errors": {
+      "required": "Ce champ est obligatoire",
+      "emailInvalid": "Veuillez entrer une adresse e-mail valide",
+      "addonRequired": "Veuillez sélectionner au moins une option"
+    },
+    "options": {
+      "vehicle": {
+        "suv": "SUV pour voyages d’aventure",
+        "cruiser": "Safari Land Cruiser",
+        "minivan": "Minibus touristiques (7–14 places)",
+        "bus": "Bus touristiques (28+ places)"
+      },
+      "addons": {
+        "driver": "Chauffeurs-guides expérimentés",
+        "multilingual": "Personnel multilingue (anglais, français, kinyarwanda)",
+        "waterWifi": "Eau en bouteille et Wi-Fi",
+        "routeSupport": "Assistance itinéraire et suggestions de parcours",
+        "meetGreet": "Accueil à l'aéroport"
+      }
+    },
+    "submitButton": "Soumettre le transport touristique",
+    "adsTitle": "Publicités sponsorisées",
+    "noAds": "Aucune publicité disponible."
+  },
+  "bookingModal": {
+    "title": "Réservation Voyage & Hôtellerie",
+    "selectServiceLabel": "Sélectionner un service",
+    "serviceOptions": {
+      "hotel": "Hôtel",
+      "apartment": "Appartement",
+      "transport": "Transport"
+    },
+    "labels": {
+      "fullName": "Nom complet",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "guests": "Invités",
+      "purposeOfStay": "Objet du séjour",
+      "location": "Emplacement",
+      "stayDates": "Dates du séjour",
+      "hotelLevel": "Catégorie d'hôtel",
+      "roomType": "Type de chambre",
+      "transportService": "Service de transport",
+      "transportType": "Type de transport",
+      "carType": "Type de voiture",
+      "seats": "Nombre de sièges",
+      "rentTime": "Durée de location",
+      "numberOfDays": "Nombre de jours",
+      "pickupLocation": "Lieu de prise en charge",
+      "dropoffLocation": "Lieu de dépôt",
+      "pickupDate": "Date de prise en charge",
+      "pickupTime": "Heure de prise en charge",
+      "transport": "Transport",
+      "budgetRange": "Fourchette budgétaire",
+      "specialNeeds": "Besoins spécifiques ou remarques"
+    },
+    "errors": {
+      "fullName": "Entrez le nom complet",
+      "email": "Entrez l'e-mail",
+      "emailInvalid": "Entrez un e-mail valide",
+      "phone": "Entrez le numéro de téléphone",
+      "guests": "Entrez le nombre d'invités",
+      "purposeOfStay": "Sélectionnez l'objet du séjour",
+      "location": "Entrez l'emplacement",
+      "stayDates": "Sélectionnez les dates du séjour",
+      "hotelLevel": "Sélectionnez la catégorie d'hôtel",
+      "roomType": "Sélectionnez le type de chambre",
+      "transportService": "Sélectionnez le service",
+      "transportType": "Sélectionnez le type",
+      "carType": "Sélectionnez le type de voiture",
+      "seats": "Entrez le nombre de sièges",
+      "numberOfDays": "Entrez le nombre de jours",
+      "pickupLocation": "Entrez le lieu de prise en charge",
+      "dropoffLocation": "Entrez le lieu de dépôt",
+      "pickupDate": "Sélectionnez la date de prise en charge",
+      "pickupTime": "Sélectionnez l'heure de prise en charge",
+      "transport": "Sélectionnez le transport",
+      "budgetRange": "Choisissez une fourchette budgétaire"
+    },
+    "placeholders": {
+      "fullName": "Entrez le nom complet",
+      "email": "Entrez l'e-mail",
+      "phone": "Entrez le téléphone",
+      "guests": "Nombre d'invités",
+      "purposeOfStay": "Sélectionnez l'objet du séjour",
+      "location": "ex. : Kigali",
+      "hotelLevel": "Choisissez la catégorie d'hôtel",
+      "roomType": "Choisissez le type de chambre",
+      "transportService": "Sélectionnez le service",
+      "transportType": "Sélectionnez le type",
+      "carType": "Sélectionnez le type de voiture",
+      "seats": "Sièges",
+      "rentTime": "Sélectionnez la durée de location",
+      "numberOfDays": "Entrez le nombre de jours",
+      "pickupLocation": "Lieu de prise en charge",
+      "dropoffLocation": "Lieu de dépôt",
+      "transport": "Sélectionnez le transport",
+      "budgetRange": "Choisissez une fourchette budgétaire",
+      "specialNeeds": "Autre chose..."
+    },
+    "purposeOptions": {
+      "business": "Affaires",
+      "honeymoon": "Lune de miel",
+      "family": "Famille",
+      "diplomatic": "Diplomatique",
+      "vipEvent": "Événement VIP"
+    },
+    "hotelLevels": {
+      "3Star": "3 étoiles",
+      "4Star": "4 étoiles",
+      "5Star": "5 étoiles",
+      "luxury": "Luxe"
+    },
+    "roomTypes": {
+      "executive": "Exécutive",
+      "deluxe": "De luxe",
+      "penthouse": "Penthouse",
+      "villa": "Villa"
+    },
+    "transportServices": {
+      "airportTransfers": "Transferts aéroport",
+      "hotelToAirport": "Transferts hôtel vers aéroport",
+      "localBusiness": "Transport affaires local",
+      "cityTours": "Visites de ville & excursions",
+      "conferenceEvent": "Transport pour conférences & événements"
+    },
+    "carTypes": {
+      "executiveSedans": "Berlines exécutives – Première classe (VIP)",
+      "luxurySUVs": "SUVs de luxe – Première classe (VIP)",
+      "businessSedans": "Berlines affaires – Deuxième classe (Exécutif)",
+      "reliableSUVs": "SUVs fiables – Deuxième classe (Affaires & ONG)",
+      "luxuryVans": "Vans de luxe – Transport de groupe VIP"
+    },
+    "rentTimes": {
+      "wholeDay": "Journée entière",
+      "halfDay": "Demi-journée",
+      "trip": "Trajet",
+      "moreDays": "Plusieurs jours"
+    },
+    "budgetRanges": {
+      "range1": "150 $ – 200 $",
+      "range2": "200 $ – 400 $",
+      "range3": "400 $+",
+      "custom": "Personnalisé"
+    },
+    "buttons": {
+      "cancel": "Annuler",
+      "submit": "Soumettre la demande"
+    },
+    "transportTypes": {
+      "executiveSedans": "Berlines exécutives – Première classe (VIP)",
+      "luxurySUVs": "SUVs de luxe – Première classe (VIP)",
+      "businessSedans": "Berlines classe affaires – Deuxième classe (Exécutif)",
+      "reliableSUVs": "SUVs fiables – Deuxième classe (Usage professionnel et ONG)",
+      "luxuryVans": "Vans de luxe – Transport VIP de groupe"
+    }
+  },
+  "hrServices": {
+    "title": "Support RH et Administratif",
+    "ctaContact": "Besoin d'aide RH & Admin ? Contactez-nous",
+    "ctaWhatsApp": "Contact rapide",
+    "recruitment": {
+      "title": "Recrutement & Acquisition de Talents",
+      "subtitle": "Trouvez les bonnes personnes pour votre entreprise.",
+      "description": "Nous vous aidons à sourcer, sélectionner et recruter les meilleurs talents pour faire avancer votre entreprise grâce à nos stratégies expertes. Notre équipe dédiée garantit la meilleure adéquation avec la culture et les besoins de votre société."
+    },
+    "compliance": {
+      "title": "Politiques RH & Conformité",
+      "subtitle": "Élaborez contrats, politiques et manuels employés.",
+      "description": "Nos services de conformité RH assurent que votre entreprise opère dans le cadre légal, protégeant vos employés et votre activité. Nous créons des politiques personnalisées alignées à vos objectifs et aux lois locales du travail."
+    },
+    "training": {
+      "title": "Formation & Développement des Employés",
+      "subtitle": "Améliorez compétences et productivité.",
+      "description": "Boostez la performance des employés avec nos programmes de formation structurés pour développer compétences et productivité globale. Nos formations expertes couvrent compétences relationnelles, techniques et leadership."
+    },
+    "payroll": {
+      "title": "Paie & Solutions Administratives",
+      "subtitle": "Assurez un fonctionnement fluide.",
+      "description": "Nous proposons la gestion de la paie et un support administratif pour garantir un traitement salarial ponctuel et la conformité réglementaire. Nos solutions simplifiées permettent aux entreprises de se concentrer sur leur cœur de métier."
+    }
+  },
+  "hrModal": {
+    "title": "Support RH et Administratif",
+    "instructions": "Remplissez ce formulaire, nous vous contacterons rapidement.",
+    "toast": {
+      "success": "Demande soumise avec succès !",
+      "error": "Une erreur est survenue. Veuillez réessayer."
+    },
+    "form": {
+      "fullnames": {
+        "label": "Noms complets",
+        "placeholder": "Noms complets",
+        "error": "Veuillez entrer vos noms complets"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Email",
+        "required": "Veuillez entrer votre email",
+        "invalid": "Veuillez entrer un email valide"
+      },
+      "phone": {
+        "label": "Numéro de téléphone",
+        "placeholder": "Numéro de téléphone",
+        "error": "Veuillez entrer votre numéro de téléphone"
+      },
+      "description": {
+        "label": "Description du service",
+        "placeholder": "Décrivez précisément le service souhaité",
+        "error": "Veuillez décrire votre demande"
+      },
+      "buttons": {
+        "cancel": "Annuler",
+        "submit": "Envoyer"
+      }
+
+    }
+  },
+  "businessConsulting": {
+    "title": "Conseil aux entreprises",
+    "cta": "Besoin de conseils d’experts ? Planifiez une consultation !",
+    "quickContact": "Contact rapide",
+    "whatsappAlt": "Icône WhatsApp",
+    "close": "Fermer le formulaire de consultation",
+
+    "toast": {
+      "success": "Soumission réussie !",
+      "error": "Échec de la soumission. Réessayez !",
+      "serverError": "Erreur serveur. Veuillez réessayer plus tard."
+    },
+
+    "services": {
+      "businessPlan": {
+        "title": "Développement de plan d'affaires",
+        "subtitle": "Pour startups, demandes de financement et expansions.",
+        "description": "Nous créons des plans d'affaires complets adaptés à vos besoins..."
+      },
+      "projectPlanning": {
+        "title": "Planification et gestion de projet",
+        "subtitle": "Structuration, budgétisation et exécution.",
+        "description": "Nos experts aident à structurer et gérer vos projets efficacement..."
+      },
+      "financialAdvisory": {
+        "title": "Conseil financier et gestion des risques",
+        "subtitle": "Stratégies d'investissement, réduction des coûts et analyse de rentabilité.",
+        "description": "Nous fournissons des services de conseil financier éclairés..."
+      },
+      "auditing": {
+        "title": "Audit et support conformité",
+        "subtitle": "Assistance pour trouver des auditeurs réputés et assurer la conformité réglementaire.",
+        "description": "Nous aidons à naviguer dans les processus d'audit en garantissant une conformité totale..."
+      }
+    },
+
+    "form": {
+      "instructions": "Remplissez ce formulaire, nous vous contacterons sous peu",
+
+      "fullnames": {
+        "label": "Noms complets",
+        "placeholder": "Noms complets",
+        "error": "Veuillez entrer vos noms complets"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Adresse email",
+        "required": "Veuillez entrer votre email",
+        "invalid": "Entrez une adresse email valide"
+      },
+      "phone": {
+        "label": "Numéro de téléphone",
+        "placeholder": "Numéro de contact",
+        "error": "Veuillez entrer votre numéro de téléphone"
+      },
+      "description": {
+        "label": "Description du service",
+        "placeholder": "Décrivez le service dont vous avez besoin",
+        "error": "Veuillez décrire le service dont vous avez besoin"
+      },
+
+      "buttons": {
+        "cancel": "Annuler",
+        "submit": "Envoyer"
+      }
+    }
+  },
+  "investmentBusinessSetup": {
+    "title": "Investissement et Création d’Entreprise",
+    "button": {
+      "openModal": "Besoin d’aide pour démarrer ou développer votre entreprise ?",
+      "quickContact": "Contact rapide",
+      "submit": "Envoyer",
+      "cancel": "Annuler"
+    },
+    "modal": {
+      "title": "Investissement et Création d’Entreprise",
+      "description": "Remplissez ce formulaire, nous vous contacterons rapidement",
+      "form": {
+        "fullnames": {
+          "label": "Noms complets",
+          "placeholder": "Noms complets",
+          "requiredMessage": "Veuillez saisir votre nom"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Email",
+          "requiredMessage": "Veuillez saisir votre email",
+          "invalidMessage": "Adresse email invalide"
+        },
+        "phone_number": {
+          "label": "Numéro de téléphone",
+          "placeholder": "Numéro de téléphone",
+          "requiredMessage": "Veuillez saisir votre numéro de contact"
+        },
+        "service_description": {
+          "label": "Description du service",
+          "placeholder": "Décrivez en détail le service souhaité",
+          "requiredMessage": "Veuillez décrire le service"
+        }
+      }
+    },
+    "services": {
+      "service1": {
+        "title": "Assistance à l’enregistrement des entreprises",
+        "description": "Nous vous guidons pour l’enregistrement auprès du RDB, assurant conformité légale et installation rapide, souvent en moins de six heures."
+      },
+      "service2": {
+        "title": "Certificat d’investissement",
+        "description": "Nous aidons les entreprises à obtenir un certificat d’investissement, donnant accès aux incitations fiscales, exemptions, et soutien gouvernemental, améliorant crédibilité et opportunités."
+      },
+      "service3": {
+        "title": "Enregistrement du numéro d’identification fiscale (NIF)",
+        "description": "Nous assistons les entreprises à acquérir un NIF auprès de la RRA, essentiel pour la conformité fiscale et opérations légales, y compris transactions et propriété."
+      },
+      "service4": {
+        "title": "Licence commerciale (Patente)",
+        "description": "La licence commerciale est obligatoire pour les entreprises au Rwanda. Nous aidons à son obtention et renouvellement pour garantir la conformité et éviter les sanctions."
+      },
+      "service5": {
+        "title": "Licences sectorielles spécifiques",
+        "description": "Nous facilitons l’obtention de licences pour divers secteurs : construction, tourisme, finance, santé, import/export, logistique, assurant conformité réglementaire complète."
+      },
+      "service6": {
+        "title": "Permis de travail et de résidence au Rwanda",
+        "description": "Nous assistons les investisseurs étrangers et employés dans l’obtention de permis de travail et de résidence via un processus simplifié, assurant une entrée et séjour légaux sans encombre."
+      }
+    },
+    "toastMessages": {
+      "success": "Soumission réussie !",
+      "errorSubmission": "Échec de la soumission. Veuillez réessayer !",
+      "errorServer": "Erreur serveur. Veuillez réessayer plus tard."
+    }
+  },
+  "commonOptions": {
+  "hotelLevels": {
+    "3Star": "Trois Étoiles",
+    "4Star": "Quatre Étoiles",
+    "5Star": "Cinq Étoiles",
+    "luxury": "Luxe"
+  }
+  },
+  "travelHospitality": {
+    "page": {
+      "header": "Voyage et Hospitalité",
+      "description": "Découvrez nos services de voyage et d'hospitalité haut de gamme adaptés à vos besoins.",
+      "buttons": {
+        "contactUs": "Besoin d’un voyage et d’un hébergement sans tracas ? Contactez-nous dès maintenant !",
+        "quickContact": "Contact rapide"
+      },
+      "services": {
+        "hotelReservations": {
+          "title": "Réservations d'hôtel",
+          "subtitle": "Luxe et Confort",
+          "description": "Réservez des hôtels de luxe avec des services personnalisés pour un séjour confortable."
+        },
+        "airportTransfers": {
+          "title": "Transferts aéroport",
+          "subtitle": "Voyage sans stress",
+          "description": "Services de transfert aéroport fiables et confortables pour une expérience sans tracas."
+        },
+        "tourismGuides": {
+          "title": "Guides touristiques",
+          "subtitle": "Explorez avec des experts",
+          "description": "Découvrez la ville avec nos guides touristiques expérimentés pour un voyage inoubliable.",
+          "bookButton": "Réserver un guide"
+        },
+        "vipServices": {
+          "title": "Services VIP",
+          "subtitle": "Expériences exclusives",
+          "description": "Services VIP haut de gamme pour une expérience de voyage d'élite adaptée à vos préférences."
+        }
+      }
+    },
+    "imageNotFound": "Image non disponible",
+    "modalTitle": "Réservez votre service",
+    "selectService": {
+      "label": "Sélectionner le service",
+      "options": {
+        "hotel": "Réservation d'hôtel",
+        "apartment": "Réservation d'appartement",
+        "transport": "Service de transport"
+      }
+    },
+    "fullName": {
+      "label": "Nom complet",
+      "placeholder": "Entrez votre nom complet",
+      "required": "Veuillez entrer votre nom complet"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Entrez votre email",
+      "required": "Veuillez entrer votre email",
+      "invalid": "Veuillez entrer une adresse email valide"
+    },
+    "phone": {
+      "label": "Numéro de téléphone",
+      "placeholder": "Entrez votre numéro de téléphone",
+      "required": "Veuillez entrer votre numéro de téléphone"
+    },
+    "guests": {
+      "label": "Nombre d'invités",
+      "placeholder": "Entrez le nombre d'invités",
+      "required": "Veuillez entrer le nombre d'invités"
+    },
+    "purposeOfStay": {
+      "label": "Raison du séjour",
+      "placeholder": "Sélectionnez la raison du séjour",
+      "required": "Veuillez sélectionner la raison du séjour",
+      "options": {
+        "business": "Affaires",
+        "honeymoon": "Lune de miel",
+        "family": "Famille",
+        "diplomatic": "Diplomatique",
+        "vip_event": "Événement VIP"
+      }
+    },
+    "location": {
+      "label": "Emplacement",
+      "placeholder": "Entrez votre emplacement préféré",
+      "required": "Veuillez entrer votre emplacement préféré"
+    },
+    "hotel": {
+      "stayDates": {
+        "label": "Dates d'arrivée et de départ",
+        "required": "Veuillez sélectionner les dates d'arrivée et de départ"
+      },
+      "hotelLevel": {
+        "label": "Niveau de l'hôtel",
+        "placeholder": "Sélectionnez le niveau de l'hôtel",
+        "required": "Veuillez sélectionner un niveau d'hôtel"
+      }
+    },
+    "apartment": {
+      "stayDates": {
+        "label": "Dates d'arrivée et de départ",
+        "required": "Veuillez sélectionner les dates d'arrivée et de départ"
+      },
+      "roomType": {
+        "label": "Type de chambre",
+        "placeholder": "Sélectionnez le type de chambre",
+        "required": "Veuillez sélectionner un type de chambre",
+        "options": {
+          "executive": "Exécutif",
+          "deluxe": "De luxe",
+          "penthouse": "Penthouse",
+          "villa": "Villa"
+        }
+      }
+    },
+    "transport": {
+      "transportService": {
+        "label": "Service de transport",
+        "placeholder": "Sélectionnez le service de transport",
+        "required": "Veuillez sélectionner un service de transport",
+        "options": {
+          "airportTransfers": "Transferts aéroport",
+          "hotelToAirport": "Prise en charge de l'hôtel à l'aéroport",
+          "localBusiness": "Transport d'affaires local",
+          "cityTours": "Visites de la ville et excursions",
+          "conference": "Transport pour conférences et événements"
+        }
+      },
+      "transportType": {
+        "label": "Type de transport",
+        "placeholder": "Sélectionnez le type de transport",
+        "required": "Veuillez sélectionner un type de transport",
+        "options": {
+          "businessVIP": "Transport d'affaires et VIP",
+          "standard": "Transport standard"
+        }
+      },
+      "carType": {
+        "label": "Type de voiture",
+        "placeholder": "Sélectionnez le type de voiture",
+        "required": "Veuillez sélectionner un type de voiture",
+        "options": {
+          "executiveSedans": "Berlines exécutives – Première classe (VIP)",
+          "luxurySUVs": "SUV de luxe – Première classe (VIP)",
+          "businessClassSedans": "Berlines de classe affaires – Deuxième classe (Exécutif)",
+          "reliableSUVs": "SUV fiables – Deuxième classe (Utilisation commerciale et ONG)",
+          "luxuryVans": "Vans de luxe – Transport de groupe VIP"
+        }
+      },
+      "seats": {
+        "label": "Nombre de sièges",
+        "placeholder": "Entrez le nombre de sièges",
+        "required": "Veuillez entrer le nombre de sièges"
+      },
+      "rentTime": {
+        "label": "Durée de location",
+        "placeholder": "Sélectionnez la durée de location",
+        "options": {
+          "wholeDay": "Journée entière",
+          "halfDay": "Demi-journée",
+          "trip": "Trajet",
+          "moreDays": "Plusieurs jours"
+        }
+      },
+      "numberOfDays": {
+        "label": "Nombre de jours",
+        "placeholder": "Entrez le nombre de jours",
+        "required": "Veuillez entrer le nombre de jours"
+      },
+      "pickupLocation": {
+        "label": "Lieu de prise en charge",
+        "placeholder": "Entrez le lieu de prise en charge",
+        "required": "Veuillez entrer le lieu de prise en charge"
+      },
+      "dropoffLocation": {
+        "label": "Lieu de dépôt",
+        "placeholder": "Entrez le lieu de dépôt",
+        "required": "Veuillez entrer le lieu de dépôt",
+        "airport": "Aéroport international de Kigali"
+      },
+      "pickupDate": {
+        "label": "Date de prise en charge",
+        "required": "Veuillez sélectionner une date de prise en charge"
+      },
+      "pickupTime": {
+        "label": "Heure de prise en charge",
+        "required": "Veuillez sélectionner une heure de prise en charge"
+      },
+      "mapsLoading": "Chargement de Google Maps..."
+    },
+    "commonTransport": {
+      "transport": {
+        "label": "Préférence de transport",
+        "placeholder": "Sélectionnez la préférence de transport",
+        "required": "Veuillez sélectionner une préférence de transport",
+        "options": {
+          "executiveSedans": "Berlines exécutives – Première classe (VIP)",
+          "luxurySUVs": "SUV de luxe – Première classe (VIP)",
+          "businessClassSedans": "Berlines de classe affaires – Deuxième classe (Exécutif)",
+          "reliableSUVs": "SUV fiables – Deuxième classe (Utilisation commerciale et ONG)",
+          "luxuryVans": "Vans de luxe – Transport de groupe VIP"
+        }
+      },
+      "budgetRange": {
+        "label": "Fourchette de budget",
+        "placeholder": "Sélectionnez la fourchette de budget",
+        "required": "Veuillez sélectionner une fourchette de budget",
+        "options": {
+          "custom": "Personnalisé"
+        }
+      },
+      "specialNeeds": {
+        "label": "Besoins spéciaux ou demandes",
+        "placeholder": "Entrez vos besoins spéciaux ou demandes"
+      }
+    },
+    "commonOptions": {
+      "hotelLevels": {
+        "3Star": "3 étoiles",
+        "4Star": "4 étoiles",
+        "5Star": "5 étoiles",
+        "luxury": "Luxe"
+      }
+    },
+    "toast": {
+      "success": "Demande de réservation soumise avec succès !",
+      "error": "Échec de la soumission de la demande de réservation. Veuillez réessayer."
+    },
+    "buttons": {
+      "cancel": "Annuler",
+      "submit": "Soumettre"
+    }
+  },
+  "travelHospitalityModule": {
+    "tabs": {
+      "hotelReservationTab": "Réservations d'hôtel",
+      "apartmentBookingTab": "Appartements",
+      "transportServiceTab": "Transport",
+      "tourismGuideTab": "Guides touristiques"
+    },
+    "search": {
+      "inputPlaceholder": "Rechercher quelque chose"
+    }
+  },
+  "Subtitle": {
+  "intro1": "Découvrez notre gamme complète de services conçus pour simplifier vos besoins professionnels — de la réservation d’hôtels aux solutions RH et de conseil.",
+  "intro2": "Bonet Elite Services propose la réservation d’hôtels, d’appartements, de transports, des solutions RH, du conseil et la création d’entreprise — tout adapté pour vous.",
+  "intro3": "Réservez hôtels, appartements et transports facilement avec Bonet Elite Services, pour une expérience fluide et fiable à chaque fois.",
+  "intro4": "Contactez-nous dès maintenant pour réserver votre service ou planifier une consultation. Notre équipe est prête à vous aider avec des solutions expertes adaptées à vos besoins."
+},
+  "contactInform": {
+    "form": {
+      "title": "Contactez-nous",
+      "fullName": "Nom complet",
+      "email": "E-mail",
+      "phone": "Numéro de téléphone",
+      "whatsapp": "Numéro WhatsApp",
+      "inquiryType": "Type de demande",
+      "message": "Message",
+      "submitButton": "Envoyer le message",
+      "validation": {
+        "nameRequired": "Veuillez entrer votre nom",
+        "emailRequired": "Veuillez entrer votre e-mail",
+        "emailInvalid": "Entrez un e-mail valide",
+        "phoneRequired": "Veuillez entrer votre numéro de téléphone",
+        "inquiryRequired": "Veuillez sélectionner un type de demande",
+        "messageRequired": "Veuillez entrer votre message"
+      },
+      "inquiryOptions": {
+        "hotel": "Réservation d'hôtel",
+        "department": "RH / Département",
+        "transport": "Transport",
+        "businessSetup": "Création d’entreprise"
+      }
+    }
+  },
+  "contactInformation": {
+    "title": {
+      "part1": "Prenez",
+      "part2": "Contact"
+    },
+    "description": "Nous sommes là pour vous aider. Contactez-nous pour vos réservations, la création d’entreprise ou toute autre demande.",
+    "chatButton": "Discutez avec nous sur WhatsApp",
+    "callWhatsApp": "Appel / WhatsApp",
+    "email": "E-mail",
+    "location": "Kigali, Rwanda"
+  },
+  "toast": {
+    "success": "Message envoyé ! Nous vous répondrons rapidement.",
+    "error": "Une erreur est survenue. Veuillez réessayer.",
+    "fail": "Échec de l’envoi. Réessayez plus tard."
+  },
+ "ContactMessage": {
+  "success": "Merci, {{name}} ! Votre demande a bien été reçue. Un concierge vous contactera sur WhatsApp dans les 30 minutes (pendant les heures ouvrables). En cas d'urgence, appelez le +250 726 300 260."
+}
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+ 
+  
+
+
+
+
+
+
