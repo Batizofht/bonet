@@ -123,7 +123,7 @@ const MapComponent = () => {
       viewport={{ once: true }}
     >
       {/* EXACT SAME HEADER AS BLOG SECTION */}
-      <div className="text-center mb-16">
+      <div id="#location" className="text-center mb-16">
         <div className="flex justify-center items-center gap-3 mb-4">
           <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
           <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>

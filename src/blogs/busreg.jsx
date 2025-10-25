@@ -47,30 +47,6 @@ const BusinessRegistration = () => {
       {
         type: "paragraph",
         text: "Rwanda ranks among the easiest places to do business in Africa, thanks to its efficient registration system, favorable tax policies, and strong support for entrepreneurs. Registered businesses gain access to legal protection, banking services, and government incentives."
-      },
-      {
-        type: "heading",
-        text: "Step-by-Step Registration Process"
-      },
-      {
-        type: "paragraph",
-        text: "The entire registration process can be completed online through the Rwanda Development Board (RDB) portal, typically within 24-48 hours for most business types."
-      },
-      {
-        type: "heading",
-        text: "Required Documents"
-      },
-      {
-        type: "paragraph",
-        text: "• National ID or passport copies for all directors\n• Proof of business address\n• Business name reservation certificate\n• Articles of association\n• Tax identification number application"
-      },
-      {
-        type: "heading",
-        text: "Costs and Fees"
-      },
-      {
-        type: "paragraph",
-        text: "Registration fees vary depending on your business type and capital. Most small to medium enterprises can expect to pay between $50-$200 for complete registration including all necessary permits."
       }
     ]
   };
@@ -284,20 +260,24 @@ const services = [
                 We ensure compliance with all regulations and save you time.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link href="/investment">
+            
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-[#188bff] text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-600 transition-colors"
                 >
                   Start Registration Today
-                </motion.button>
+                </motion.button>    </Link>
+                <Link href="/consulting">
+             
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="border-2 border-[#188bff] text-[#188bff] px-6 py-3 rounded-xl font-semibold hover:bg-[#188bff] hover:text-white transition-all"
                 >
                   Free Consultation
-                </motion.button>
+                </motion.button>   </Link>
               </div>
             </motion.div>
           </div>

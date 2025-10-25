@@ -167,10 +167,10 @@ export default function InvestmentBusinessSetup() {
 
                 {/* Features */}
                 <div className="flex flex-wrap gap-3">
-                  {[...Array(3)].map((_, i) => (
+                  {["Expert Service","24/7 DAYS Support", "Trusted "].map((_, i) => (
                     <div key={i} className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-xl">
                       <Sparkles className="w-3 h-3 text-[#188bff]" />
-                      <span className="text-sm text-gray-700 font-medium">Expert Service</span>
+                      <span className="text-sm text-gray-700 font-medium">{_}</span>
                     </div>
                   ))}
                 </div>

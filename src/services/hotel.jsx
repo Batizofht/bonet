@@ -292,10 +292,10 @@ export default function HotelHospitality() {
 
                 {/* Features */}
                 <div className="flex flex-wrap gap-3 mt-6">
-                  {[...Array(3)].map((_, i) => (
+                  {["Premium Service", "Booking Travel","24/7 DAYS Support"].map((data, i) => (
                     <div key={i} className="flex items-center gap-2 bg-blue-50 px-3 py-1 rounded-full">
                       <Star className="w-3 h-3 text-[#188bff] fill-[#188bff]" />
-                      <span className="text-sm text-gray-700">Premium Service</span>
+                      <span className="text-sm text-gray-700">{data}</span>
                     </div>
                   ))}
                 </div>

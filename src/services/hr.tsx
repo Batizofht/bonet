@@ -210,7 +210,7 @@ export default function HRAdminSupport() {
 
                     {/* Features */}
                     <div className="flex flex-wrap gap-2">
-                      {[...Array(2)].map((_, i) => (
+                     {["Expert Service","24/7 DAYS Support", "Trusted "].map((_, i) => (
                         <div key={i} className="flex items-center gap-1 bg-blue-50 px-2 py-1 rounded-lg">
                           <Sparkles className="w-3 h-3 text-[#188bff]" />
                           <span className="text-xs text-gray-700 font-medium">Expert Service</span>

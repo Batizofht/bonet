@@ -211,11 +211,11 @@ export default function MenuBars() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 10 }}
               transition={{ duration: 0.2 }}
-              className="fixed top-0 left-0 ml-1 bg-white border border-blue-100 shadow-2xl rounded-2xl w-55 overflow-hidden"
+              className="fixed top-0 left-0 ml-60 bg-white border border-blue-100 shadow-2xl rounded-2xl w-55 overflow-hidden"
               style={{ 
                 zIndex: 9999,
                 // Position it relative to the viewport instead of parent
-                top: 'auto',
+                top: 50,
                 left: 'auto',
                 // You might need to calculate position dynamically
               }}

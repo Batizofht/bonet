@@ -13,6 +13,7 @@ import {
   Camera,
   Heart
 } from "lucide-react";
+import Link from "next/link";
 
 const TravelTips = () => {
   const { t } = useTranslation();
@@ -140,6 +141,8 @@ const TravelTips = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-3">
+                <Link href="/bookNow">
+              
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -147,7 +150,9 @@ const TravelTips = () => {
                 >
                   <Compass className="w-4 h-4" />
                   Book Tour
-                </motion.button>
+                </motion.button>  </Link>
+
+                     <Link href="/contact#location">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -156,6 +161,7 @@ const TravelTips = () => {
                   <MapPin className="w-4 h-4" />
                   View Location
                 </motion.button>
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -184,6 +190,7 @@ const TravelTips = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+         <Link href="/bookNow">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -191,7 +198,8 @@ const TravelTips = () => {
             >
               Plan My Trip
             </motion.button>
-            
+         </Link>
+              <Link href="/contact">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -199,6 +207,7 @@ const TravelTips = () => {
             >
               Get Free Guide
             </motion.button>
+            </Link>
           </div>
         </div>
       </motion.div>
