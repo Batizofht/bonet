@@ -98,28 +98,31 @@ const FirstHome = () => {
       <div className="absolute inset-0 bg-black/70 z-10" />
       
       {/* Subtle Background Elements */}
-      <div className="absolute inset-0 z-10">
-        {/* Very subtle floating particles */}
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-white/10 rounded-full"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.1, 0.3, 0.1],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 3,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
+    <div className="absolute inset-0 z-10">
+  {/* Very subtle floating particles */}
+  {typeof window !== "undefined" &&
+    [...Array(8)].map((_, i) => (
+      <motion.div
+        key={i}
+        className="absolute w-1 h-1 bg-white/10 rounded-full"
+        initial={{
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+        }}
+        animate={{
+          y: [0, -20, 0],
+          opacity: [0.1, 0.3, 0.1],
+        }}
+        transition={{
+          duration: 4 + Math.random() * 3,
+          repeat: Infinity,
+          delay: Math.random() * 2,
+        }}
+      />
+    ))}
+</div>
+
+
 
       {/* Content Overlay */}
       <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 z-20">
