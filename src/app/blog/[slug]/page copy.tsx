@@ -165,7 +165,6 @@ export default async function BlogDetail({ params }: Props) {
                 className="leading-relaxed text-gray-700 text-lg"
                 dangerouslySetInnerHTML={{ 
                   __html: blog.description 
-                    .replace(/<p>/g, '<p class="">')
                     .replace(/<h1>/g, '<h1 class="text-3xl font-bold text-gray-800 ">')
                     .replace(/<h2>/g, '<h2 class="text-2xl font-bold text-gray-800 ">')
                     .replace(/<h3>/g, '<h3 class="text-xl font-bold text-gray-800 ">')
