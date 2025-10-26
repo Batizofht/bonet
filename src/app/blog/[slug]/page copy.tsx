@@ -165,12 +165,12 @@ export default async function BlogDetail({ params }: Props) {
                 className="leading-relaxed text-gray-700 text-lg"
                 dangerouslySetInnerHTML={{ 
                   __html: blog.description 
-                    .replace(/<p>/g, '<p class="mb-6">')
-                    .replace(/<h1>/g, '<h1 class="text-3xl font-bold text-gray-800 mb-4 mt-8">')
-                    .replace(/<h2>/g, '<h2 class="text-2xl font-bold text-gray-800 mb-4 mt-8">')
-                    .replace(/<h3>/g, '<h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">')
-                    .replace(/<ul>/g, '<ul class="list-disc list-inside mb-6 space-y-2">')
-                    .replace(/<ol>/g, '<ol class="list-decimal list-inside mb-6 space-y-2">')
+                    .replace(/<p>/g, '<p class="">')
+                    .replace(/<h1>/g, '<h1 class="text-3xl font-bold text-gray-800 ">')
+                    .replace(/<h2>/g, '<h2 class="text-2xl font-bold text-gray-800 ">')
+                    .replace(/<h3>/g, '<h3 class="text-xl font-bold text-gray-800 ">')
+                    .replace(/<ul>/g, '<ul class="list-disc list-inside">')
+                    .replace(/<ol>/g, '<ol class="list-decimal list-inside">')
                     .replace(/<li>/g, '<li class="text-gray-700">')
                     .replace(/<strong>/g, '<strong class="font-semibold text-gray-800">')
                     .replace(/<em>/g, '<em class="italic text-gray-700">')
