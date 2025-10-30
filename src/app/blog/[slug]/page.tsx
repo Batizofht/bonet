@@ -154,11 +154,11 @@ export default function BlogDetail() {
           )}
           
           <Link 
-            href="/blog"
+            href="/"
             className="inline-flex items-center gap-2 bg-[#188bff] text-white px-6 py-3 rounded-xl hover:bg-blue-600 transition-all duration-300 font-semibold"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Blogs
+            Back to Home
           </Link>
         </div>
       </div>
@@ -190,16 +190,16 @@ export default function BlogDetail() {
     if (!html) return '';
     
     return html
-      .replace(/<p>/g, '<p class="mb-6">')
-      .replace(/<h1>/g, '<h1 class="text-3xl font-bold text-gray-800 mb-4 mt-8">')
+      .replace(/<p>/g, '<p class="">')
+      .replace(/<h1>/g, '<h1 class="text-3xl font-bold text-gray-800 ">')
       .replace(/<\/h1>/g, '</h1>')
-      .replace(/<h2>/g, '<h2 class="text-2xl font-bold text-gray-800 mb-4 mt-8">')
+      .replace(/<h2>/g, '<h2 class="text-2xl font-bold text-gray-800 ">')
       .replace(/<\/h2>/g, '</h2>')
-      .replace(/<h3>/g, '<h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">')
+      .replace(/<h3>/g, '<h3 class="text-xl font-bold text-gray-800 ">')
       .replace(/<\/h3>/g, '</h3>')
-      .replace(/<ul>/g, '<ul class="list-disc list-inside mb-6 space-y-2">')
+      .replace(/<ul>/g, '<ul class="list-disc list-inside ">')
       .replace(/<\/ul>/g, '</ul>')
-      .replace(/<ol>/g, '<ol class="list-decimal list-inside mb-6 space-y-2">')
+      .replace(/<ol>/g, '<ol class="list-decimal list-inside ">')
       .replace(/<\/ol>/g, '</ol>')
       .replace(/<li>/g, '<li class="text-gray-700">')
       .replace(/<\/li>/g, '</li>')
@@ -209,7 +209,7 @@ export default function BlogDetail() {
       .replace(/<\/em>/g, '</em>')
       .replace(
         /<blockquote>/g,
-        '<blockquote class="border-l-4 border-[#188bff] pl-4 italic text-gray-600 my-6">'
+        '<blockquote class="border-l-4 border-[#188bff] pl-4 italic text-gray-600 ">'
       )
       .replace(/<\/blockquote>/g, '</blockquote>');
   };
@@ -233,12 +233,12 @@ export default function BlogDetail() {
             </span>
           </div>
           
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-[#188bff]" />
             <span className="text-sm font-medium">
               {getReadingTime(blog.description || blog.quote || '')}
             </span>
-          </div>
+          </div> */}
           
           <div className="flex items-center gap-2">
             <User className="w-4 h-4 text-[#188bff]" />
