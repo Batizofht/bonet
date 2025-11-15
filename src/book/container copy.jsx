@@ -115,7 +115,7 @@ useEffect(() => {
       )}
 
       {/* Right section */}
-      {(bookedHotel || bookedApartment || bookedTransport || tourData) && (
+      {/* {(bookedHotel || bookedApartment || bookedTransport || tourData) && (
         <div className="flex-1 p-4 bg-white">
           {activeComponent === "hotel" && bookedHotel && (
             <HotelMore bookedHotel={bookedHotel} goBack={goBackFromMobileDetail} />
@@ -132,7 +132,7 @@ useEffect(() => {
             )}
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

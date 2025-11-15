@@ -59,7 +59,7 @@ const TourGuideForm = ({ onTourSubmit }) => {
         phone: values.phone,
         language: values.language,
         destinations: values.destinations,
-        travel_dates: values.travelDates.map((d) => d.format("YYYY-MM-DD")),
+        travelDates: values.travelDates.map((d) => d.format("YYYY-MM-DD")),
         tour_type: values.tourType,
         activity_level: values.activityLevel,
         budget: values.budget,
@@ -449,7 +449,7 @@ const TourGuideForm = ({ onTourSubmit }) => {
                 size="large"
                 loading={isLoading}
                 onClick={handleSubmit}
-                className="h-14 px-16 rounded-lg text-lg font-semibold bg-green-600 hover:bg-green-700 border-0 shadow-md hover:shadow-lg transition-all duration-300"
+                className="h-14 px-16 rounded-lg w-full text-lg font-semibold bg-green-600 hover:bg-green-700 border-0 shadow-md hover:shadow-lg transition-all duration-300"
               >
                 {isLoading ? 'Submitting Your Request...' : 'Submit Tour Request'}
               </Button>

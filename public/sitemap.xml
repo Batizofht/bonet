@@ -74,5 +74,8 @@
     <loc>https://www.bonet.rw/visitrwanda</loc>
     <priority>0.4</priority>
   </url>
- 
+   <url>
+    <loc>https://www.bonet.rw/blog/experience-rwanda-with-confidence-powered-by-bonet-elite-services-ltd</loc>
+    <priority>0.2</priority>
+  </url>
 </urlset>

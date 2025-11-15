@@ -144,7 +144,7 @@ const FirstHome = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-Poppins font-bold text-[#188bff] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight max-w-full mb-3 md:mt-[-10%] drop-shadow-2xl"
+          className="font-Poppins font-bold text-[#188bff] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight max-w-full mb-3 md:mt-[-5%] drop-shadow-2xl"
         >
           {displayText}
         </motion.h1>

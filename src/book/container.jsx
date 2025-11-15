@@ -251,7 +251,7 @@ useEffect(() => {
       )}
 
       {/* Right section - Details Panel */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {(bookedHotel || bookedApartment || bookedTransport || tourData) && (
           <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -278,7 +278,7 @@ useEffect(() => {
             </AnimatePresence>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
 
       {/* Mobile Back Button */}
       {showDetailsMobile && (

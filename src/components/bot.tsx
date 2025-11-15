@@ -59,7 +59,7 @@ const ChatBot = () => {
   const [showChat, setShowChat] = useState(false);
   const [input, setInput] = useState("");
   const [inputtwo, setInputtwo] = useState("");
-  const [status, setUpdate] = useState("Offline");
+  const [isOnline, setUpdate] = useState("");
   const [messages, setMessages] = useState<{ from: string; text: string; }[]>([]);
   const [clientId, setClientId] = useState<any>(null);
   const [isTyping, setIsTyping] = useState(false);
@@ -140,7 +140,7 @@ const ChatBot = () => {
         const res = await axios.get(
           `https://switchiify.com/bonetProject/backend/public/List`
         );
-        setUpdate(res.data.data[1].activeAdmin);
+        setUpdate(res.data.data[0].activeAdmin);
       } catch (error) {
         console.error("Error polling messages", error);
       }
@@ -239,7 +239,7 @@ const ChatBot = () => {
     }
   };
 
-  const isOnline = status !== "OFF";
+ 
 
   return (
     <>

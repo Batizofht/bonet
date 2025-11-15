@@ -85,7 +85,7 @@ const SuperFooter = () => {
             {["aboutUs", "services", "bookNow"].map((link) => (
               <motion.li key={link} whileHover={{ x: 5 }}>
                 <a
-                  href={`/${link.toLowerCase()}`}
+                  href={link}
                   className="text-gray-600 hover:text-[#188bff] transition-colors duration-300 flex items-center gap-2 group"
                 >
                   <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[#188bff] transform group-hover:translate-x-1 transition-all" />
