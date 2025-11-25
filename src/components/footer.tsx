@@ -73,7 +73,7 @@ export default function FAQ() {
             )
           )}
         </h2>
-        <p className="text-gray-500 text-lg">Find answers to common questions</p>
+        <p className="text-gray-500 text-lg">{t("Find answers to common questions")}</p>
       </div>
 
       {/* Cute FAQ Items */}
@@ -145,10 +145,10 @@ export default function FAQ() {
             
             <div>
               <p className="text-xl font-semibold text-gray-800 mb-2">
-                Still have questions?
+                {t("Still have questions?")}
               </p>
               <p className="text-gray-600">
-                We're here to help you with any questions
+                {t("We're here to help you with any questions")}
               </p>
             </div>
             

@@ -114,7 +114,7 @@ const CaseStudies = () => {
                   onClick={() => navigate(index === 0 ? "/customer" : index === 1 ? "/bookings" : "/business")}
                   className="font-semibold hover:underline bg-[#188bff] bg-clip-text text-transparent cursor-pointer"
                    >
-                   Read more →
+                   {("blog.readMore")} →
                   </a>
                 </div>
               </div>

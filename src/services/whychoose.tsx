@@ -88,7 +88,7 @@ const WhyChooseBonet = () => {
 
                 {/* Read more indicator */}
                 <div className="flex items-center gap-1 text-[#188bff] text-sm mt-2">
-                  <span>{expandedCard === index ? "Read less" : "Read more"}</span>
+                  <span>{expandedCard === index ? t("read_less") : t("read_more")}</span>
                   <motion.span
                     animate={{ rotate: expandedCard === index ? 180 : 0 }}
                     transition={{ duration: 0.3 }}

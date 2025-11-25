@@ -162,12 +162,13 @@ const SuperFooter = () => {
               <Heart className="w-4 h-4 text-red-500 animate-pulse" />
               <span>{t("footer.copyright")}</span>
             </div>
-            <div className="flex items-center gap-4 text-sm">
-              <span className="text-gray-500">Made with</span>
+            <div className="flex items-center justify-center gap-4 text-sm">
+              <span className="text-gray-500">{t("made_with")}</span>
               <div className="flex gap-1">
-                <div className="w-2 h-2 bg-[#188bff] rounded-full animate-bounce"></div>
-                <div className="w-2 h-2 bg-[#188bff] rounded-full animate-bounce delay-100"></div>
-                <div className="w-2 h-2 bg-[#188bff] rounded-full animate-bounce delay-200"></div>
+                <div className="w-4 h-4 bg-[#188bff] rounded-full flex justify-center text-center items-center text-white p-1 animate-bounce">S</div>
+                <div className="w-4 h-4 bg-[#188bff] rounded-full flex justify-center text-center items-center text-white p-1 animate-bounce delay-100">W</div>
+                <div className="w-4 h-4 bg-[#188bff] rounded-full flex justify-center text-center items-center text-white p-1 animate-bounce delay-200">C</div>
+                 <div className="w-6 h-6 bg-[#188bff] rounded-full flex justify-center text-center items-center text-white p-1 animate-bounce delay-200">FY</div>
               </div>
             </div>
           </motion.div>

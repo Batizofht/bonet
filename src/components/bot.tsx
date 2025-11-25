@@ -448,11 +448,7 @@ const ChatBot = () => {
                 <input
                   type="text"
                   className="flex-1 px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-                  placeholder={
-                    liveChatSwitch 
-                      ? (t("chatbot.askPlaceholder") || "Ask me anything...")
-                      : (i18n.language === "fr" ? "Tapez votre message..." : "Type your message...")
-                  }
+                  placeholder={t("Type your message...")}
                   value={liveChatSwitch ? input : firstMessageSent}
                   onChange={(e) => liveChatSwitch ? setInput(e.target.value) : setFirstMessageSent(e.target.value)}
                   onKeyDown={handleKeyDown}
@@ -470,9 +466,9 @@ const ChatBot = () => {
               {/* Footer */}
               <div className="flex items-center justify-center gap-2 mt-3 pt-3 border-t border-gray-100">
                 <Shield className="w-4 h-4 text-gray-400" />
-                <span className="text-xs text-gray-500">Secure & Private</span>
+                <span className="text-xs text-gray-500">{t("Secure & Private")}</span>
                 <span className="text-gray-300">•</span>
-                <span className="text-xs text-gray-500">Powered by Bonet</span>
+                <span className="text-xs text-gray-500">Powered by S.W.C.FY</span>
               </div>
             </div>
           </motion.div>

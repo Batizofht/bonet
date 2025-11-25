@@ -3,40 +3,44 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Building, Home, Car, Users, X, Star } from "lucide-react";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const BookingCards = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
 
-  const services = [
-    {
-      id: "hotel",
-      title: "Hotel Reservations",
-      description: "Luxury stays with premium amenities",
-      icon: Building,
-      color: "from-blue-500 to-cyan-400",
-    },
-    {
-      id: "apartments", 
-      title: "Apartment Booking",
-      description: "Comfortable homes away from home",
-      icon: Home,
-      color: "from-green-500 to-emerald-400",
-    },
-    {
-      id: "transport",
-      title: "Transport Service", 
-      description: "Safe and reliable transportation",
-      icon: Car,
-      color: "from-orange-500 to-amber-400",
-    },
-    {
-      id: "tourism",
-      title: "Tourism Guides",
-      description: "Explore with expert local guides", 
-      icon: Users,
-      color: "from-purple-500 to-pink-400",
-    }
-  ];
+const { t } = useTranslation();
+
+const services = [
+  {
+    id: "hotel",
+    title: t("hotel_title"),
+    description: t("hotel_desc"),
+    icon: Building,
+    color: "from-blue-500 to-cyan-400",
+  },
+  {
+    id: "apartments",
+    title: t("apartments_title"),
+    description: t("apartments_desc"),
+    icon: Home,
+    color: "from-green-500 to-emerald-400",
+  },
+  {
+    id: "transport",
+    title: t("transport_title"),
+    description: t("transport_desc"),
+    icon: Car,
+    color: "from-orange-500 to-amber-400",
+  },
+  {
+    id: "tourism",
+    title: t("tourism_title"),
+    description: t("tourism_desc"),
+    icon: Users,
+    color: "from-purple-500 to-pink-400",
+  }
+];
+;
 
   return (
     <>
@@ -111,23 +115,23 @@ const BookingCards = () => {
                 <p className="text-gray-600 text-sm mb-4">{service.description}</p>
                 
                 <div className="space-y-2 mb-6">
-                  <h4 className="font-semibold text-gray-800 text-sm">Features:</h4>
+                  <h4 className="font-semibold text-gray-800 text-sm">{t("features")}</h4>
                   <div className="flex items-center gap-2 text-xs text-gray-600">
                     <Star className="w-3 h-3 text-yellow-500" />
-                    <span>Premium quality service</span>
+                    <span>{t("premium_quality")}</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-gray-600">
                     <Star className="w-3 h-3 text-yellow-500" />
-                    <span>24/7 customer support</span>
+                    <span>{t("support_24")}</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-gray-600">
                     <Star className="w-3 h-3 text-yellow-500" />
-                    <span>Best price guarantee</span>
+                    <span>{t("best_price")}</span>
                   </div>
                 </div>
 <Link href={`/bookNow#${selectedService}`}>
 <button className="w-full bg-[#188bff] text-white py-2 rounded-xl font-semibold text-sm hover:bg-blue-600 transition-colors">
-                  Book Now
+                {t("book_now")}
                 </button>
 </Link>
                 

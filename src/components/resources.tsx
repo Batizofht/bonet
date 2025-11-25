@@ -77,10 +77,10 @@ export default function Blog() {
         </div>
         
         <h2 className="text-4xl font-bold text-gray-800 mb-4">
-          Latest <span className="bg-[#188bff] bg-clip-text text-transparent">Insights</span>
+          {t("blog.header.title1")} <span className="bg-[#188bff] bg-clip-text text-transparent">{t("blog.header.title2")}</span>
         </h2>
         <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-          Discover valuable articles and updates from our experts
+          {t("Discover valuable articles and updates from our experts")}
         </p>
       </div>
 
@@ -143,7 +143,7 @@ export default function Blog() {
               </p>
 
               {/* Meta Info */}
-              <div className="flex items-center justify-between mb-4">
+              {/* <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-4 text-xs text-gray-500">
                   <div className="flex items-center gap-1">
                     <Clock className="w-3 h-3" />
@@ -154,14 +154,14 @@ export default function Blog() {
                     <span>Blog</span>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* Read More Button */}
               <Link 
                 href={`/blog/${slugify(post.title)}`}
                 className="inline-flex items-center gap-2 text-[#188bff] font-semibold text-sm group/btn hover:gap-3 transition-all duration-300"
               >
-                Read More
+                {t("blog.readMore")}
                 <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
               </Link>
             </div>

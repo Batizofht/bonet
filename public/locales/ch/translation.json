@@ -1,5 +1,5 @@
 {
- "welcome_message": "欢迎来到 Bonet Elite Services",
+  "welcome_message": "欢迎来到 Bonet Elite Services",
   "subtitle": "您在卢旺达旅行、商业与投资的可靠合作伙伴",
   "description": "我们通过提供量身定制的旅行、商业和投资支持，简化您在卢旺达的体验。无论您是游客、企业家还是外国投资者，我们都能确保您从抵达卢旺达到安顿下来，全程无忧。",
   "get_started": "开始使用",
@@ -597,7 +597,7 @@
       ]
     }
   },
-"businessRegistration": {
+  "businessRegistration": {
     "title": "我们如何为您处理商业注册与许可",
     "steps": [
       {
@@ -1224,7 +1224,7 @@
     "adsTitle": "赞助广告",
     "noAds": "暂无广告可用。"
   },
-   "bookingModal": {
+  "bookingModal": {
     "title": "旅行与接待预订",
     "selectServiceLabel": "选择服务",
     "serviceOptions": {
@@ -1858,5 +1858,42 @@
     "error": "出了点问题，请重试。",
     "fail": "提交失败，请稍后重试。"
   },
-  "Customizable and professional services":"可定制的專業服務"
+  "Customizable and professional services": "可定制的專業服務",
+  "hotel_title": "酒店预订",
+  "hotel_desc": "豪华住宿与高端服务",
+  "apartments_title": "公寓预订",
+  "apartments_desc": "舒适温馨的家外之家",
+  "transport_title": "交通服务",
+  "transport_desc": "安全可靠的运输服务",
+  "tourism_title": "旅游导览",
+  "tourism_desc": "与专业本地导游一起探索",
+  "features": "特色",
+  "premium_quality": "高品质服务",
+  "support_24": "24/7 客户支持",
+  "best_price": "最优惠价格保证",
+  "book_now": "立即预订",
+  "read_more": "查看更多",
+  "read_less": "收起",
+  "explore_destinations": "探索卢旺达的美丽目的地",
+  "innovative_solutions": "为现代企业提供创新解决方案",
+  "discover_articles": "阅读我们专家提供的精彩文章与最新资讯",
+  "find_answers": "找到常见问题的答案",
+  "still_questions": "还有疑问吗？",
+  "here_to_help": "我们随时为您解答任何问题",
+  "made_with": "制作于",
+  "Innovative solutions for modern businesses": "为现代企业提供创新解决方案",
+"Explore beautiful destinations in Rwanda": "探索卢旺达的美丽目的地",
+"Discover valuable articles and updates from our experts": "发现我们专家提供的有价值文章和更新",
+"Find answers to common questions": "查找常见问题的答案",
+"Still have questions?": "还有疑问？",
+"We're here to help you with any questions": "我们随时为您解答任何问题",
+"Professional solutions for your business": "为您的企业提供专业解决方案",
+"Our Services": "我们的服务",
+"View All Services": "查看所有服务",
+"Offline": "离线",
+"Online": "在线",
+"Live": "直播",
+"Secure & Private": "安全且私密",
+"Type your message...": "输入您的消息..."
+
 }

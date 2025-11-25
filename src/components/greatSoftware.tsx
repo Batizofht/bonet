@@ -67,7 +67,7 @@ const AiSolutions = () => {
     )
   )}
 </h2>
-        <p className="text-gray-500 text-lg">Innovative solutions for modern businesses</p>
+        <p className="text-gray-500 text-lg">{t("Innovative solutions for modern businesses")}</p>
       </div>
 
       {/* Features */}

@@ -49,7 +49,7 @@ const Gallery = () => {
             )
           )}
         </h2>
-        <p className="text-gray-500 text-lg">Explore beautiful destinations in Rwanda</p>
+        <p className="text-gray-500 text-lg">{t("Explore beautiful destinations in Rwanda")}</p>
       </div>
 
       {/* Gallery Grid */}

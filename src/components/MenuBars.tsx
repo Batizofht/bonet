@@ -165,8 +165,8 @@ export default function MenuBars() {
                     <Sparkles className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg">Our Services</h3>
-                    <p className="text-white/80 text-sm">Professional solutions for your business</p>
+                    <h3 className="font-bold text-lg">{t("Our Services")}</h3>
+                    <p className="text-white/80 text-sm">{t("Professional solutions for your business")}</p>
                   </div>
                 </div>
               </div>
@@ -264,7 +264,7 @@ export default function MenuBars() {
                     className="w-full flex items-center justify-center gap-2 py-2 bg-[#188bff] text-white rounded-xl text-sm font-semibold hover:bg-blue-600 transition-colors"
                   >
                     <Sparkles className="w-4 h-4" />
-                    View All Services
+                    {t("View All Services")}
                   </motion.button>
                 </Link>
               </div>

@@ -36,7 +36,6 @@
       }
     ]
   },
-  
   "whyBonet": {
     "title": "Pourquoi choisir Bonet Elite Services ?",
     "cards": [
@@ -162,7 +161,7 @@
     "hotels": "Hôtels",
     "apartments": "Appartements",
     "transport": "Transport",
-    "tourism":"Tourisme",
+    "tourism": "Tourisme",
     "investmentAndBusinessSetup": "Investissement & Création d'entreprise",
     "companyRegistration": "Enregistrement de société & Formalités légales",
     "investmentCertificate": "Demande de certificat d'investissement",
@@ -233,7 +232,6 @@
     "tour": "Circuit",
     "search": "Rechercher quelque chose"
   },
-  
   "travelBookingForm": {
     "title": "Réservez votre service",
     "selectServiceLabel": "Sélectionnez un service",
@@ -370,16 +368,14 @@
         "image": "/assets/images/kg6.jpg"
       }
     ],
-    
-      "buttonHelp": "Besoin d’aide pour démarrer ou développer votre entreprise ? Parlons-en !",
-      "formDescription": "Remplissez ce formulaire, et nous vous contacterons rapidement",
-      "formFullName": "Nom complet",
-      "formEmail": "Email",
-      "formContact": "Numéro de contact",
-      "formDescriptionPlaceholder": "Écrivez la description complète du service que vous souhaitez",
-      "formCancel": "Annuler",
-      "formSubmit": "Envoyer"
-    
+    "buttonHelp": "Besoin d’aide pour démarrer ou développer votre entreprise ? Parlons-en !",
+    "formDescription": "Remplissez ce formulaire, et nous vous contacterons rapidement",
+    "formFullName": "Nom complet",
+    "formEmail": "Email",
+    "formContact": "Numéro de contact",
+    "formDescriptionPlaceholder": "Écrivez la description complète du service que vous souhaitez",
+    "formCancel": "Annuler",
+    "formSubmit": "Envoyer"
   },
   "humanresource": {
     "title": "Support RH et administratif",
@@ -776,11 +772,11 @@
     "title": "Notre Lieu"
   },
   "locationSecondSection": {
-      "title": "Obtenir l'emplacement",
-      "startingPoint": "Point de départ",
-      "destination": "Destination",
-      "search": "Rechercher",
-      "estimatedTime": "Temps estimé"
+    "title": "Obtenir l'emplacement",
+    "startingPoint": "Point de départ",
+    "destination": "Destination",
+    "search": "Rechercher",
+    "estimatedTime": "Temps estimé"
   },
   "chatbot": {
     "customerSupportTitle": "Chatbot du service client",
@@ -809,10 +805,10 @@
   "brandName": "Bonet Elite Services",
   "infoCards": {
     "hotelCard": {
-    "viewMore": "Voir plus",
-    "viewLess": "Voir moins",
-    "bookNow": "Réserver maintenant"
-  },
+      "viewMore": "Voir plus",
+      "viewLess": "Voir moins",
+      "bookNow": "Réserver maintenant"
+    },
     "belief": {
       "title": "Pourquoi se contenter de l’ordinaire ?",
       "content": {
@@ -990,7 +986,7 @@
     "cta": {
       "heading": "Prêt à vivre un confort premium ?",
       "button": "Réserver un hébergement en appartement",
-      "bookNow":"Réserver maintenant"
+      "bookNow": "Réserver maintenant"
     }
   },
   "apartmentForm": {
@@ -1049,15 +1045,14 @@
       },
       "roomType": {
         "executiveRoom": "Chambre Exécutive",
-"deluxeRoom": "Chambre Deluxe",
-"juniorSuite": "Suite Junior",
-"presidentialSuite": "Suite Présidentielle",
-"penthouseSuite": "Suite Penthouse",
-"luxury1bedroom": "Appartement de Luxe - 1 Chambre",
-"apartment2bedroom": "Appartement - 2 Chambres",
-"apartment3bedroom": "Appartement - 3 Chambres",
-"privateVilla": "Villa Privée (2+ Chambres)"
-
+        "deluxeRoom": "Chambre Deluxe",
+        "juniorSuite": "Suite Junior",
+        "presidentialSuite": "Suite Présidentielle",
+        "penthouseSuite": "Suite Penthouse",
+        "luxury1bedroom": "Appartement de Luxe - 1 Chambre",
+        "apartment2bedroom": "Appartement - 2 Chambres",
+        "apartment3bedroom": "Appartement - 3 Chambres",
+        "privateVilla": "Villa Privée (2+ Chambres)"
       },
       "budget": {
         "range1": "150 $ – 200 $",
@@ -1496,7 +1491,6 @@
         "cancel": "Annuler",
         "submit": "Envoyer"
       }
-
     }
   },
   "businessConsulting": {
@@ -1505,13 +1499,11 @@
     "quickContact": "Contact rapide",
     "whatsappAlt": "Icône WhatsApp",
     "close": "Fermer le formulaire de consultation",
-
     "toast": {
       "success": "Soumission réussie !",
       "error": "Échec de la soumission. Réessayez !",
       "serverError": "Erreur serveur. Veuillez réessayer plus tard."
     },
-
     "services": {
       "businessPlan": {
         "title": "Développement de plan d'affaires",
@@ -1534,10 +1526,8 @@
         "description": "Nous aidons à naviguer dans les processus d'audit en garantissant une conformité totale..."
       }
     },
-
     "form": {
       "instructions": "Remplissez ce formulaire, nous vous contacterons sous peu",
-
       "fullnames": {
         "label": "Noms complets",
         "placeholder": "Noms complets",
@@ -1559,7 +1549,6 @@
         "placeholder": "Décrivez le service dont vous avez besoin",
         "error": "Veuillez décrire le service dont vous avez besoin"
       },
-
       "buttons": {
         "cancel": "Annuler",
         "submit": "Envoyer"
@@ -1634,12 +1623,12 @@
     }
   },
   "commonOptions": {
-  "hotelLevels": {
-    "3Star": "Trois Étoiles",
-    "4Star": "Quatre Étoiles",
-    "5Star": "Cinq Étoiles",
-    "luxury": "Luxe"
-  }
+    "hotelLevels": {
+      "3Star": "Trois Étoiles",
+      "4Star": "Quatre Étoiles",
+      "5Star": "Cinq Étoiles",
+      "luxury": "Luxe"
+    }
   },
   "travelHospitality": {
     "page": {
@@ -1879,11 +1868,11 @@
     }
   },
   "Subtitle": {
-  "intro1": "Découvrez notre gamme complète de services conçus pour simplifier vos besoins professionnels — de la réservation d’hôtels aux solutions RH et de conseil.",
-  "intro2": "Bonet Elite Services propose la réservation d’hôtels, d’appartements, de transports, des solutions RH, du conseil et la création d’entreprise — tout adapté pour vous.",
-  "intro3": "Réservez hôtels, appartements et transports facilement avec Bonet Elite Services, pour une expérience fluide et fiable à chaque fois.",
-  "intro4": "Contactez-nous dès maintenant pour réserver votre service ou planifier une consultation. Notre équipe est prête à vous aider avec des solutions expertes adaptées à vos besoins."
-},
+    "intro1": "Découvrez notre gamme complète de services conçus pour simplifier vos besoins professionnels — de la réservation d’hôtels aux solutions RH et de conseil.",
+    "intro2": "Bonet Elite Services propose la réservation d’hôtels, d’appartements, de transports, des solutions RH, du conseil et la création d’entreprise — tout adapté pour vous.",
+    "intro3": "Réservez hôtels, appartements et transports facilement avec Bonet Elite Services, pour une expérience fluide et fiable à chaque fois.",
+    "intro4": "Contactez-nous dès maintenant pour réserver votre service ou planifier une consultation. Notre équipe est prête à vous aider avec des solutions expertes adaptées à vos besoins."
+  },
   "contactInform": {
     "form": {
       "title": "Contactez-nous",
@@ -1926,55 +1915,46 @@
     "error": "Une erreur est survenue. Veuillez réessayer.",
     "fail": "Échec de l’envoi. Réessayez plus tard."
   },
- "ContactMessage": {
-  "success": "Merci, {{name}} ! Votre demande a bien été reçue. Un concierge vous contactera sur WhatsApp dans les 30 minutes (pendant les heures ouvrables). En cas d'urgence, appelez le +250 726 300 260."
+  "ContactMessage": {
+    "success": "Merci, {{name}} ! Votre demande a bien été reçue. Un concierge vous contactera sur WhatsApp dans les 30 minutes (pendant les heures ouvrables). En cas d'urgence, appelez le +250 726 300 260."
+  },
+  "Customizable and professional services": "Services professionnels et personnalisables",
+  "hotel_title": "Réservations d'Hôtel",
+  "hotel_desc": "Séjours luxueux avec services premium",
+  "apartments_title": "Réservation d'Appartement",
+  "apartments_desc": "Un véritable chez-soi loin de chez soi",
+  "transport_title": "Service de Transport",
+  "transport_desc": "Transport sûr et fiable",
+  "tourism_title": "Guides Touristiques",
+  "tourism_desc": "Explorez avec des guides locaux experts",
+  "features": "Caractéristiques",
+  "premium_quality": "Service de qualité premium",
+  "support_24": "Support client 24h/24 et 7j/7",
+  "best_price": "Garantie du meilleur prix",
+  "book_now": "Réserver",
+"read_more": "Lire plus",
+  "read_less": "Lire moins",
+  "explore_destinations": "Explorez de magnifiques destinations au Rwanda",
+  "innovative_solutions": "Des solutions innovantes pour les entreprises modernes",
+  "discover_articles": "Découvrez des articles et mises à jour précieux de nos experts",
+  "find_answers": "Trouvez des réponses aux questions courantes",
+  "still_questions": "Vous avez encore des questions ?",
+  "here_to_help": "Nous sommes là pour vous aider avec toutes vos questions",
+  "made_with": "Fait avec",
+  "Innovative solutions for modern businesses": "Des solutions innovantes pour les entreprises modernes",
+"Explore beautiful destinations in Rwanda": "Explorez de belles destinations au Rwanda",
+"Discover valuable articles and updates from our experts": "Découvrez des articles précieux et des mises à jour de nos experts",
+"Find answers to common questions": "Trouvez des réponses aux questions courantes",
+"Still have questions?": "Vous avez encore des questions ?",
+"We're here to help you with any questions": "Nous sommes là pour vous aider avec toutes vos questions",
+"Professional solutions for your business": "Des solutions professionnelles pour votre entreprise",
+"Our Services": "Nos Services",
+"View All Services": "Voir tous les services",
+"Offline": "Hors ligne",
+"Online": "En ligne",
+"Live": "En direct",
+"Secure & Private": "Sécurisé & Privé",
+"Type your message...": "Tapez votre message..."
+
+  
 }
-
-,
-  "Customizable and professional services":"Services professionnels et personnalisables"
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
- 
-  
-
-
-
-
-
-

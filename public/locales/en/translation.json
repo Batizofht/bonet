@@ -1858,9 +1858,45 @@
     "error": "Something went wrong. Please try again.",
     "fail": "Submission failed. Try again later."
   },
- "ContactMessage": {
-  "success": "Thanks, {{name}}! Your request has been received. A concierge will contact you on WhatsApp within 30 minutes (within business hours). If urgent, call +250 726 300 260."
-},
-"Customizable and professional services":"Customizable and professional services"
-
+  "ContactMessage": {
+    "success": "Thanks, {{name}}! Your request has been received. A concierge will contact you on WhatsApp within 30 minutes (within business hours). If urgent, call +250 726 300 260."
+  },
+  "Customizable and professional services": "Customizable and professional services",
+  "hotel_title": "Hotel Reservations",
+  "hotel_desc": "Luxury stays with premium amenities",
+  "apartments_title": "Apartment Booking",
+  "apartments_desc": "Comfortable homes away from home",
+  "transport_title": "Transport Service",
+  "transport_desc": "Safe and reliable transportation",
+  "tourism_title": "Tourism Guides",
+  "tourism_desc": "Explore with expert local guides",
+  "features": "Features",
+  "premium_quality": "Premium quality service",
+  "support_24": "24/7 customer support",
+  "best_price": "Best price guarantee",
+  "book_now": "Book Now",
+   "read_more": "Read more",
+  "read_less": "Read less",
+   "explore_destinations": "Explore beautiful destinations in Rwanda",
+  "innovative_solutions": "Innovative solutions for modern businesses",
+  "discover_articles": "Discover valuable articles and updates from our experts",
+  "find_answers": "Find answers to common questions",
+  "still_questions": "Still have questions?",
+  "here_to_help": "We're here to help you with any questions",
+  "made_with": "Made with",
+  "Innovative solutions for modern businesses":"Innovative solutions for modern businesses",
+  "Explore beautiful destinations in Rwanda":"Explore beautiful destinations in Rwanda",
+  "Discover valuable articles and updates from our experts":"Discover valuable articles and updates from our experts",
+  "Find answers to common questions":"Find answers to common questions",
+  "Still have questions?":"Still have questions?",
+  "We're here to help you with any questions":"We're here to help you with any questions",
+  "Professional solutions for your business":"Professional solutions for your business",
+  "Our Services":"Our Services",
+  "View All Services":"View All Services",
+  "Offline":"Offline",
+  "Online":"Online",
+  "Live":"Live",
+  "Secure & Private":"Secure & Private",
+  "Type your message...":"Type your message..."
+  
 }
