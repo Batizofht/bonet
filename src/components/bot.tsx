@@ -474,6 +474,7 @@ const ChatBot = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      
     </>
   );
 };
