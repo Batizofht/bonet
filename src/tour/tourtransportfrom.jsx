@@ -57,7 +57,7 @@ const TransportForm = () => {
       };
 
       await axios.post(
-        "https://api.bonet.rw/bonetBakend/backend/public/tourTransports",
+        "https://api.bonet.rw/bonetBackend/backend/public/tourTransports",
         payload
       );
 

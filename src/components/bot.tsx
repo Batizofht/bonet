@@ -107,8 +107,8 @@ const ChatBot = () => {
     try {
       const lang = i18n.language;
       const apiEndpoint = lang === "fr" 
-        ? `https://api.bonet.rw/bonetBakend/backend/public/ai-replyFrench?clientId=${clientId}`
-        : `https://api.bonet.rw/bonetBakend/backend/public/ai-reply?clientId=${clientId}`;
+        ? `https://api.bonet.rw/bonetBackend/backend/public/ai-replyFrench?clientId=${clientId}`
+        : `https://api.bonet.rw/bonetBackend/backend/public/ai-reply?clientId=${clientId}`;
 
       const response = await axios.post(apiEndpoint, {
         message: input,
@@ -138,7 +138,7 @@ const ChatBot = () => {
     const interval = setInterval(async () => {
       try {
         const res = await axios.get(
-          `https://api.bonet.rw/bonetBakend/backend/public/List`
+          `https://api.bonet.rw/bonetBackend/backend/public/List`
         );
         setUpdate(res.data.data[0].activeAdmin);
       } catch (error) {
@@ -175,7 +175,7 @@ const ChatBot = () => {
 
     try {
       setFirstMessageSent("");
-      axios.post("https://api.bonet.rw/bonetBakend/backend/public/chats", dataForm, {
+      axios.post("https://api.bonet.rw/bonetBackend/backend/public/chats", dataForm, {
         headers: {
           "Content-Type": "multipart/form-data",
         }
@@ -193,7 +193,7 @@ const ChatBot = () => {
     const fetchMessages = async () => {
       try {
         const response = await axios.get(
-          `https://api.bonet.rw/bonetBakend/backend/public/chats?session_id=${secret}`
+          `https://api.bonet.rw/bonetBackend/backend/public/chats?session_id=${secret}`
         );
         setBackendMessages(response.data.data);
       } catch (error) {

@@ -54,7 +54,7 @@ const FirstHome = () => {
   useEffect(() => {
     axios
       .get(
-        "https://api.bonet.rw/bonetBakend/backend/public/advertisements"
+        "https://api.bonet.rw/bonetBackend/backend/public/advertisements"
       )
       .then((res) => {
         const validAds = res.data.filter((ad:any) => Number(ad.time) > 0);
@@ -226,7 +226,7 @@ const FirstHome = () => {
             {/* Image */}
             <div className="relative w-full h-40 overflow-hidden rounded-xl mb-3">
               <img
-                src={`https://api.bonet.rw/bonetBakend/backend/public/${ad.image}`}
+                src={`https://api.bonet.rw/bonetBackend/backend/public/${ad.image}`}
                 alt={ad.adv_title}
                 className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
               />

@@ -41,7 +41,7 @@ const LiveChatButton = () => {
 
     try {
       const response = await axios.post(
-        "https://api.bonet.rw/bonetBakend/backend/public/ai-reply",
+        "https://api.bonet.rw/bonetBackend/backend/public/ai-reply",
         {
           clientId,
           message: input,
