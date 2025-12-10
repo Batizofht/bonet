@@ -12,7 +12,7 @@
 //   useEffect(() => {
 //     const fetchAds = async () => {
 //       try {
-//         const res = await axios.get("https://switchiify.com/bonetProject/backend/public/advertisements");
+//         const res = await axios.get("https://api.bonet.rw/bonetBakend/backend/public/advertisements");
 //         setAds(res.data.slice(0, 3));
 //       } catch (err) {
 //         console.error("Failed to fetch ads:", err);
@@ -25,7 +25,7 @@
 
 //   const handleSubmit = async (values) => {
 //     try {
-//       const res = await axios.post("https://switchiify.com/bonetProject/backend/public/customBooking", values);
+//       const res = await axios.post("https://api.bonet.rw/bonetBakend/backend/public/customBooking", values);
 //       //console.log(res);
 //       toast.success("✅ Booking submitted successfully!");
 //       form.resetFields();
@@ -90,7 +90,7 @@
 //               <div key={ad.id} className="mb-4 border-b pb-2">
 //                 {ad.image && (
 //                   <img
-//                     src={`https://switchiify.com/bonetProject/backend/public/${ad.image}`}
+//                     src={`https://api.bonet.rw/bonetBakend/backend/public/${ad.image}`}
 //                     alt={ad.title}
 //                     className="w-full h-32 object-cover rounded mb-2"
 //                   />

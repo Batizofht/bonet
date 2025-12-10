@@ -79,7 +79,7 @@ export default function BusinessConsulting() {
   const handleSubmit = async (values) => {
     try {
       const res = await axios.post(
-        "https://switchiify.com/bonetProject/backend/public/consulting",
+        "https://api.bonet.rw/bonetBakend/backend/public/consulting",
         values
       );
 

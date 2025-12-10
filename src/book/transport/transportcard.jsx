@@ -92,7 +92,7 @@ const TransportCard = ({ bookTransport }) => {
       };
 
       await axios.post(
-        "https://switchiify.com/bonetProject/backend/public/transportBooking",
+        "https://api.bonet.rw/bonetBakend/backend/public/transportBooking",
         payload
       );
 

@@ -60,7 +60,7 @@ const AccommodationForm = () => {
       };
 
       await axios.post(
-        "https://switchiify.com/bonetProject/backend/public/apartment-requests",
+        "https://api.bonet.rw/bonetBakend/backend/public/apartment-requests",
         payload
       );
 

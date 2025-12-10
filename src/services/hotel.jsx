@@ -167,10 +167,10 @@ export default function HotelHospitality() {
 
       const url =
         selectedService === "hotel"
-          ? "https://switchiify.com/bonetProject/backend/public/hotel-requests"
+          ? "https://api.bonet.rw/bonetBakend/backend/public/hotel-requests"
           : selectedService === "apartment"
-          ? "https://switchiify.com/bonetProject/backend/public/apartment-requests"
-          : "https://switchiify.com/bonetProject/backend/public/transportBooking";
+          ? "https://api.bonet.rw/bonetBakend/backend/public/apartment-requests"
+          : "https://api.bonet.rw/bonetBakend/backend/public/transportBooking";
 
       await axios.post(url, payload);
       toast.success(t("travelHospitality.toast.success"));

@@ -34,7 +34,7 @@ export default function FAQ() {
   const fetchFAQs = async () => {
     try {
       const response = await axios.get(
-        "https://switchiify.com/bonetProject/backend/public/faqs"
+        "https://api.bonet.rw/bonetBakend/backend/public/faqs"
       );
       setFaqs(response.data);
     } catch (error) {

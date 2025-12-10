@@ -82,7 +82,7 @@ const HotelCard = ({ bookHotel }) => {
       };
 
       await axios.post(
-        "https://switchiify.com/bonetProject/backend/public/hotel-requests",
+        "https://api.bonet.rw/bonetBakend/backend/public/hotel-requests",
         payload
       );
 

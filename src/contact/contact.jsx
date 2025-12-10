@@ -282,7 +282,7 @@ const ContactUs = () => {
   const handleSubmit = async (values) => {
     try {
       const response = await axios.post(
-        "https://switchiify.com/bonetProject/backend/public/comments",
+        "https://api.bonet.rw/bonetBakend/backend/public/comments",
         values
       );
       if (response.data.id) {

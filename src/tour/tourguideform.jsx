@@ -73,7 +73,7 @@ const TourGuideForm = ({ onTourSubmit }) => {
       };
 
       await axios.post(
-        "https://switchiify.com/bonetProject/backend/public/tourGuides",
+        "https://api.bonet.rw/bonetBakend/backend/public/tourGuides",
         payload,
         { headers: { "Content-Type": "application/json" } }
       );
