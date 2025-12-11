@@ -97,7 +97,7 @@ const ChatBot = () => {
 
   // Send AI message
   const sendMessage = async () => {
-    alert("Hii")
+    
     if (input.trim() === "") return;
 
     const userMsg = { from: "me", text: input };
@@ -108,10 +108,11 @@ const ChatBot = () => {
     try {
       const lang = i18n.language;
       const apiEndpoint = 
-         `https://api.bonet.rw/bonetBackend/backend/public/ai-reply?clientId=${clientId}`;
+         `https://api.bonet.rw/bonetBackend/backend/public/ai-reply`;
 
       const response = await axios.post(apiEndpoint, {
         message: input,
+        clientId: clientId
       }, {
         timeout: 10000
       });
@@ -191,19 +192,19 @@ const ChatBot = () => {
 
   // Fetch messages
   useEffect(() => {
-    const fetchMessages = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.bonet.rw/bonetBackend/backend/public/chats?session_id=${secret}`
-        );
-        setBackendMessages(response.data.data);
-      } catch (error) {
-        console.error("Error fetching messages:", error);
-      }
-    };
+    // const fetchMessages = async () => {
+    //   try {
+    //     const response = await axios.get(
+    //       `https://api.bonet.rw/bonetBackend/backend/public/chats?session_id=${secret}`
+    //     );
+    //     setBackendMessages(response.data.data);
+    //   } catch (error) {
+    //     console.error("Error fetching messages:", error);
+    //   }
+    // };
 
-    const interval = setInterval(fetchMessages, 1000);
-    return () => clearInterval(interval);
+    // const interval = setInterval(fetchMessages, 1000);
+    // return () => clearInterval(interval);
   }, [secret]);
 
   // Auto-scroll handling
