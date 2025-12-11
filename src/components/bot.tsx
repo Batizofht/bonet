@@ -97,6 +97,7 @@ const ChatBot = () => {
 
   // Send AI message
   const sendMessage = async () => {
+    alert("Hii")
     if (input.trim() === "") return;
 
     const userMsg = { from: "me", text: input };
@@ -106,16 +107,15 @@ const ChatBot = () => {
 
     try {
       const lang = i18n.language;
-      const apiEndpoint = lang === "fr" 
-        ? `https://api.bonet.rw/bonetBackend/backend/public/ai-replyFrench?clientId=${clientId}`
-        : `https://api.bonet.rw/bonetBackend/backend/public/ai-reply?clientId=${clientId}`;
+      const apiEndpoint = 
+         `https://api.bonet.rw/bonetBackend/backend/public/ai-reply?clientId=${clientId}`;
 
       const response = await axios.post(apiEndpoint, {
         message: input,
       }, {
         timeout: 10000
       });
-
+    console.log("REPLY", response.data)
       const aiReply = response.data.reply || 
         (lang === "fr" 
           ? "Merci pour votre message! Comment puis-je vous aider aujourd'hui?" 
@@ -123,6 +123,7 @@ const ChatBot = () => {
 
       setIsTyping(false);
       setMessages((prev) => [...prev, { from: "ai", text: aiReply }]);
+  
     } catch (err) {
       console.error("API Error:", err);
       setIsTyping(false);
@@ -135,18 +136,18 @@ const ChatBot = () => {
 
   // Status polling
   useEffect(() => {
-    const interval = setInterval(async () => {
-      try {
-        const res = await axios.get(
-          `https://api.bonet.rw/bonetBackend/backend/public/List`
-        );
-        setUpdate(res.data.data[0].activeAdmin);
-      } catch (error) {
-        console.error("Error polling messages", error);
-      }
-    }, 3000);
+    // const interval = setInterval(async () => {
+    //   try {
+    //     const res = await axios.get(
+    //       `https://api.bonet.rw/bonetBackend/backend/public/List`
+    //     );
+    //     setUpdate(res.data.data[0].activeAdmin);
+    //   } catch (error) {
+    //     console.error("Error polling messages", error);
+    //   }
+    // }, 3000);
 
-    return () => clearInterval(interval);
+    // return () => clearInterval(interval);
   }, []);
 
   // Secret key management
