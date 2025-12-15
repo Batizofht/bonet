@@ -35,7 +35,7 @@ export default function BlogDetail() {
         console.log('🔍 Starting fetch for slug:', slug);
         
         const response = await axios.get(
-          "https://api.bonet.rw/bonetBackend/backend/public/blogs",
+          "https://api.bonet.rw:8443/bonetBackend/backend/public/blogs",
           {
             timeout: 10000,
           }
@@ -251,7 +251,7 @@ export default function BlogDetail() {
         {blog.image && (
           <div className="relative rounded-2xl overflow-hidden mb-8 shadow-xl border border-blue-100">
             <img
-              src={`https://api.bonet.rw/bonetBackend/backend/public/${blog.image}`}
+              src={`https://api.bonet.rw:8443/bonetBackend/backend/public/${blog.image}`}
               alt={blog.title}
               className="w-full h-[400px] object-cover"
               onError={(e) => {

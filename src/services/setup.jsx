@@ -46,7 +46,7 @@ export default function InvestmentBusinessSetup() {
   const handleSubmit = async (values) => {
     try {
       const res = await fetch(
-        "https://api.bonet.rw/bonetBackend/backend/public/investments",
+        "https://api.bonet.rw:8443/bonetBackend/backend/public/investments",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

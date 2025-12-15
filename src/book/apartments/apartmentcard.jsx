@@ -82,7 +82,7 @@ const ApartmentCard = ({ bookApartment }) => {
       };
 
       await axios.post(
-        "https://api.bonet.rw/bonetBackend/backend/public/apartment-requests", 
+        "https://api.bonet.rw:8443/bonetBackend/backend/public/apartment-requests", 
         payload
       );
 

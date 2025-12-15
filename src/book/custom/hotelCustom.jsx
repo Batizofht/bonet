@@ -67,7 +67,7 @@ const AccommodationHotel = () => {
       };
 
       await axios.post(
-        "https://api.bonet.rw/bonetBackend/backend/public/hotel-requests",
+        "https://api.bonet.rw:8443/bonetBackend/backend/public/hotel-requests",
         payload
       );
 

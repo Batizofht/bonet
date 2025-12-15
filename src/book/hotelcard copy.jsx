@@ -144,7 +144,7 @@ const HotelCard = () => {
         selected_hotel_location: selectedHotel?.location,
       };
 
-      await axios.post("https://api.bonet.rw/bonetBackend/backend/public/hotel-requests", payload);
+      await axios.post("https://api.bonet.rw:8443/bonetBackend/backend/public/hotel-requests", payload);
 
       toast.success("✅ Hotel request submitted!");
       closeModal();

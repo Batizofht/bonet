@@ -108,7 +108,7 @@ const ChatBot = () => {
     try {
       const lang = i18n.language;
       const apiEndpoint = 
-         `https://api.bonet.rw/bonetBackend/backend/public/ai-reply`;
+         `https://api.bonet.rw:8443/bonetBackend/backend/public/ai-reply`;
 
       const response = await axios.post(apiEndpoint, {
         message: input,
@@ -140,7 +140,7 @@ const ChatBot = () => {
     // const interval = setInterval(async () => {
     //   try {
     //     const res = await axios.get(
-    //       `https://api.bonet.rw/bonetBackend/backend/public/List`
+    //       `https://api.bonet.rw:8443/bonetBackend/backend/public/List`
     //     );
     //     setUpdate(res.data.data[0].activeAdmin);
     //   } catch (error) {
@@ -177,7 +177,7 @@ const ChatBot = () => {
 
     try {
       setFirstMessageSent("");
-      axios.post("https://api.bonet.rw/bonetBackend/backend/public/chats", dataForm, {
+      axios.post("https://api.bonet.rw:8443/bonetBackend/backend/public/chats", dataForm, {
         headers: {
           "Content-Type": "multipart/form-data",
         }
@@ -195,7 +195,7 @@ const ChatBot = () => {
     // const fetchMessages = async () => {
     //   try {
     //     const response = await axios.get(
-    //       `https://api.bonet.rw/bonetBackend/backend/public/chats?session_id=${secret}`
+    //       `https://api.bonet.rw:8443/bonetBackend/backend/public/chats?session_id=${secret}`
     //     );
     //     setBackendMessages(response.data.data);
     //   } catch (error) {
