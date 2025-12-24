@@ -40,7 +40,7 @@ export default function Blog() {
       console.error("Error fetching blogs:", err);
     } finally {
       setLoading(false);
-    }
+    } 
   };
 
   const formatDate = (dateString: string) => {

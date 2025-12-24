@@ -131,7 +131,7 @@ export default function BlogDetail() {
       : currentUrl.split('/blog/')[0] || 'https://www.bonet.rw';
     const fullUrl = `${baseUrl}/blog/${slug}`;
     
-    // Get image URL
+    // Get image URL - use the blog post's image
     const imageUrl = blog.image 
       ? `https://api.bonet.rw:8443/bonetBackend/public/${blog.image}`
       : 'https://www.bonet.rw/assets/images/logo.png';
@@ -166,15 +166,29 @@ export default function BlogDetail() {
     updateMetaTag('og:title', blog.title);
     updateMetaTag('og:description', plainDescription);
     updateMetaTag('og:image', imageUrl);
+    updateMetaTag('og:image:secure_url', imageUrl); // HTTPS version
+    updateMetaTag('og:image:type', 'image/jpeg'); // Common image type
+    updateMetaTag('og:image:width', '1200'); // Recommended width for OG images
+    updateMetaTag('og:image:height', '630'); // Recommended height for OG images
+    updateMetaTag('og:image:alt', blog.title); // Alt text for accessibility
     updateMetaTag('og:url', fullUrl);
     updateMetaTag('og:type', 'article');
     updateMetaTag('og:site_name', 'Bonet Elite Services');
+    
+    // Article-specific tags
+    if (blog.author) {
+      updateMetaTag('article:author', blog.author);
+    }
+    if (blog.created_at) {
+      updateMetaTag('article:published_time', new Date(blog.created_at).toISOString());
+    }
 
     // Twitter Card tags
     updateNameTag('twitter:card', 'summary_large_image');
     updateNameTag('twitter:title', blog.title);
     updateNameTag('twitter:description', plainDescription);
     updateNameTag('twitter:image', imageUrl);
+    updateNameTag('twitter:image:alt', blog.title);
 
     // Standard meta tags
     updateNameTag('description', plainDescription);
