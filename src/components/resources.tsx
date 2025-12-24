@@ -29,7 +29,7 @@ export default function Blog() {
   const fetchBlogs = async () => {
     try {
       const response = await axios.get(
-        "https://api.bonet.rw:8443/bonetBackend/backend/public/blogs"
+        "https://api.bonet.rw:8443/bonetBackend/backend/public/blogshome"
       );
       const blogArray = Array.isArray(response.data.data)
         ? response.data.data
