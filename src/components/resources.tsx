@@ -117,7 +117,7 @@ export default function Blog() {
             {/* Blog Image */}
             <div className="relative overflow-hidden">
               <img
-                src={`https://api.bonet.rw:8443/bonetBackend/backend/public/${post.image}`}
+                src={`https://api.bonet.rw:8443/bonetBackend/public/${post.image}`}
                 alt={post.title}
                 className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
               />

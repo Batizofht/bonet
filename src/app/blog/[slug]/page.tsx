@@ -4,8 +4,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "next/navigation";
-import { Calendar, Clock, User, ArrowLeft, BookOpen } from "lucide-react";
+import { Calendar, Clock, User, ArrowLeft, BookOpen, Share2, Facebook, Instagram, Linkedin, MessageCircle, X } from "lucide-react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Blog {
   id: number;
@@ -25,6 +26,8 @@ export default function BlogDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [debugInfo, setDebugInfo] = useState<any>(null);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -117,6 +120,73 @@ export default function BlogDetail() {
       fetchBlog();
     }
   }, [slug]);
+
+  // Update meta tags for social sharing (Open Graph)
+  useEffect(() => {
+    if (!blog) return;
+
+    const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+    const baseUrl = currentUrl.includes('localhost') 
+      ? 'https://www.bonet.rw' 
+      : currentUrl.split('/blog/')[0] || 'https://www.bonet.rw';
+    const fullUrl = `${baseUrl}/blog/${slug}`;
+    
+    // Get image URL
+    const imageUrl = blog.image 
+      ? `https://api.bonet.rw:8443/bonetBackend/public/${blog.image}`
+      : 'https://www.bonet.rw/assets/images/logo.png';
+    
+    // Get description (strip HTML tags for meta description)
+    const plainDescription = blog.description 
+      ? blog.description.replace(/<[^>]*>/g, '').substring(0, 200)
+      : blog.quote || 'Read this article on Bonet Elite Services';
+
+    // Update or create meta tags
+    const updateMetaTag = (property: string, content: string) => {
+      let element = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement;
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute('property', property);
+        document.head.appendChild(element);
+      }
+      element.setAttribute('content', content);
+    };
+
+    const updateNameTag = (name: string, content: string) => {
+      let element = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement;
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute('name', name);
+        document.head.appendChild(element);
+      }
+      element.setAttribute('content', content);
+    };
+
+    // Open Graph tags for Facebook and LinkedIn
+    updateMetaTag('og:title', blog.title);
+    updateMetaTag('og:description', plainDescription);
+    updateMetaTag('og:image', imageUrl);
+    updateMetaTag('og:url', fullUrl);
+    updateMetaTag('og:type', 'article');
+    updateMetaTag('og:site_name', 'Bonet Elite Services');
+
+    // Twitter Card tags
+    updateNameTag('twitter:card', 'summary_large_image');
+    updateNameTag('twitter:title', blog.title);
+    updateNameTag('twitter:description', plainDescription);
+    updateNameTag('twitter:image', imageUrl);
+
+    // Standard meta tags
+    updateNameTag('description', plainDescription);
+    
+    // Update page title
+    document.title = `${blog.title} | Bonet Elite Services`;
+
+    // Cleanup function
+    return () => {
+      // Optionally remove meta tags on unmount, but usually we want to keep them
+    };
+  }, [blog, slug]);
 
   if (loading) {
     return (
@@ -216,6 +286,59 @@ export default function BlogDetail() {
 
   const htmlDescription = processHTMLContent(blog.description || '');
 
+  const getCurrentUrl = () => {
+    if (typeof window !== 'undefined') {
+      const currentUrl = window.location.href;
+      // If on localhost, use production URL for sharing (previews won't work on localhost anyway)
+      if (currentUrl.includes('localhost')) {
+        return `https://www.bonet.rw/blog/${slug}`;
+      }
+      return currentUrl;
+    }
+    return `https://www.bonet.rw/blog/${slug}`;
+  };
+
+  const shareToFacebook = () => {
+    const url = encodeURIComponent(getCurrentUrl());
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
+  };
+
+  const shareToInstagram = async () => {
+    // Instagram doesn't support direct URL sharing via web
+    // Copy URL to clipboard for user to paste in Instagram
+    try {
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(getCurrentUrl());
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3000);
+      } else {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = getCurrentUrl();
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3000);
+      }
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
+  const shareToLinkedIn = () => {
+    const url = encodeURIComponent(getCurrentUrl());
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'width=600,height=400');
+  };
+
+  const shareToWhatsApp = () => {
+    const url = encodeURIComponent(getCurrentUrl());
+    const text = encodeURIComponent(`Check out this article: ${blog.title}`);
+    // Use api.whatsapp.com for better cross-platform support
+    window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <div className="max-w-4xl mx-auto px-4 pb-8 pt-8">
@@ -246,12 +369,21 @@ export default function BlogDetail() {
               {blog.author || 'Bonet Team'}
             </span>
           </div>
+          
+          <button
+            onClick={() => setShowShareModal(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-[#188bff] text-white rounded-xl hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
+            aria-label="Share article"
+          >
+            <Share2 className="w-4 h-4" />
+            <span className="text-sm font-medium">Share</span>
+          </button>
         </div>
 
         {blog.image && (
           <div className="relative rounded-2xl overflow-hidden mb-8 shadow-xl border border-blue-100">
             <img
-              src={`https://api.bonet.rw:8443/bonetBackend/backend/public/${blog.image}`}
+              src={`https://api.bonet.rw:8443/bonetBackend/public/${blog.image}`}
               alt={blog.title}
               className="w-full h-[400px] object-cover"
               onError={(e) => {
@@ -286,9 +418,107 @@ export default function BlogDetail() {
           </div>
         </article>
 
-        <div className="flex justify-center mt-12 pt-8 border-t border-blue-100">
-
-        </div>
+        {/* Share Modal */}
+        <AnimatePresence>
+          {showShareModal && (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setShowShareModal(false)}
+                className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+              />
+              
+              {/* Modal */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative">
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setShowShareModal(false)}
+                    className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+                    aria-label="Close modal"
+                  >
+                    <X className="w-5 h-5 text-gray-600" />
+                  </button>
+                  
+                  {/* Modal Header */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <Share2 className="w-6 h-6 text-[#188bff]" />
+                    <h2 className="text-2xl font-bold text-gray-800">Share this article</h2>
+                  </div>
+                  
+                  {/* Share Buttons */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      onClick={shareToFacebook}
+                      className="flex flex-col items-center gap-2 p-4 bg-[#1877F2] text-white rounded-xl hover:bg-[#166FE5] transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
+                      aria-label="Share on Facebook"
+                    >
+                      <Facebook className="w-6 h-6" />
+                      <span className="font-medium text-sm">Facebook</span>
+                    </button>
+                    
+                    <button
+                      onClick={shareToInstagram}
+                      className={`flex flex-col items-center gap-2 p-4 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white rounded-xl hover:opacity-90 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 ${copied ? 'ring-2 ring-green-400' : ''}`}
+                      aria-label="Share on Instagram"
+                    >
+                      <Instagram className="w-6 h-6" />
+                      <span className="font-medium text-sm">
+                        {copied ? 'Copied!' : 'Instagram'}
+                      </span>
+                    </button>
+                    
+                    <button
+                      onClick={shareToLinkedIn}
+                      className="flex flex-col items-center gap-2 p-4 bg-[#0077B5] text-white rounded-xl hover:bg-[#006399] transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
+                      aria-label="Share on LinkedIn"
+                    >
+                      <Linkedin className="w-6 h-6" />
+                      <span className="font-medium text-sm">LinkedIn</span>
+                    </button>
+                    
+                    <button
+                      onClick={shareToWhatsApp}
+                      className="flex flex-col items-center gap-2 p-4 bg-[#25D366] text-white rounded-xl hover:bg-[#20BA5A] transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
+                      aria-label="Share on WhatsApp"
+                    >
+                      <MessageCircle className="w-6 h-6" />
+                      <span className="font-medium text-sm">WhatsApp</span>
+                    </button>
+                  </div>
+                  
+                  {/* Copy URL Section */}
+                  <div className="mt-6 pt-6 border-t border-gray-200">
+                    <p className="text-sm text-gray-600 mb-2">Or copy link</p>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        readOnly
+                        value={getCurrentUrl()}
+                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm bg-gray-50"
+                      />
+                      <button
+                        onClick={shareToInstagram}
+                        className={`px-4 py-2 bg-[#188bff] text-white rounded-lg hover:bg-blue-600 transition-colors text-sm font-medium ${copied ? 'bg-green-500 hover:bg-green-600' : ''}`}
+                      >
+                        {copied ? 'Copied!' : 'Copy'}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
