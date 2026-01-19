@@ -10,7 +10,7 @@ import Gallery from "../../components/visitrwanda";
 
 export default function AboutPageClient() {
   return (
-    <div className="bg-white min-h-screen text-center text-white">
+    <div className="min-h-screen">
       <SecondService />
       <MissionVision />
       <WhyChooseBonet />

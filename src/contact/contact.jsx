@@ -3,10 +3,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaRocket, FaShieldAlt, FaGlobe } from "react-icons/fa";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { Form, Input, Select, Button } from "antd";
-import "react-toastify/dist/ReactToastify.css";
+import { modernToast } from "@/components/ModernToast";
 
 const { Option } = Select;
 
@@ -286,14 +285,14 @@ const ContactUs = () => {
         values
       );
       if (response.data.id) {
-        toast.success(t("ContactMessage.success", { name: values.name }));
+        modernToast.success(t("ContactMessage.success", { name: values.name }));
         form.resetFields();
       } else {
-        toast.error(t("toast.error"));
+        modernToast.error(t("toast.error"));
       }
     } catch (error) {
       console.error(error);
-      toast.error(t("toast.fail"));
+      modernToast.error(t("toast.fail"));
     }
   };
 
@@ -316,15 +315,7 @@ const ContactUs = () => {
       <ContactInfo t={t} />
     </motion.div>
 
-    {/* Toasts container should be outside */}
-    <ToastContainer
-      position="top-right"
-      toastClassName="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl"
-      progressClassName="bg-gradient-to-r from-blue-400 to-purple-600"
-      style={{ marginTop: "80px" }}   // 👈 margin from top
-      autoClose={8000}
-    />
-  </div>
+    </div>
 );
 
 };

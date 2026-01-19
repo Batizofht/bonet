@@ -13,7 +13,7 @@ import FAQ from "../components/footer";
 
 export default function HomePageClient() {
   return (
-    <div className="bg-white min-h-screen text-center">
+    <div className="min-h-screen">
     
       <FirstHome />
       <Services />

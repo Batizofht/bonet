@@ -37,7 +37,7 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="bg-white min-h-screen text-center text-white">
+    <div className="min-h-screen">
       <FirstContact />
       <ContactUs />
       <GoogleMapEmbed />

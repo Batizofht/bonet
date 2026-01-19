@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { FaMapMarkerAlt, FaUser,  } from "react-icons/fa";
 
 import { useTranslation } from "react-i18next";
+import { modernToast } from "@/components/ModernToast";
 
 const containerStyle = {
   width: "100%",
@@ -58,7 +59,7 @@ const MapComponent = () => {
 
   const getCurrentLocation = async () => {
     if (!navigator.geolocation) {
-      alert("Geolocation is not supported by your browser.");
+      modernToast.error("Geolocation is not supported by your browser.");
       return;
     }
 
@@ -80,9 +81,9 @@ const MapComponent = () => {
       },
       (error) => {
         if (error.code === error.PERMISSION_DENIED) {
-          alert("Location access was denied. Please enable it in your browser settings.");
+          modernToast.error("Location access was denied. Please enable it in your browser settings.");
         } else {
-          alert("Error fetching location. Please try again.");
+          modernToast.error("Error fetching location. Please try again.");
         }
       }
     );
@@ -90,7 +91,7 @@ const MapComponent = () => {
 
   const calculateRoute = () => {
     if (!startCoords || !endCoords) {
-      alert("Please enter both start and destination locations.");
+      modernToast.error("Please enter both start and destination locations.");
       return;
     }
 
@@ -106,7 +107,7 @@ const MapComponent = () => {
           setDirections(result);
           setDuration(result.routes[0].legs[0].duration.text);
         } else {
-          alert("Could not get directions. Please try again.");
+          modernToast.error("Could not get directions. Please try again.");
         }
       }
     );

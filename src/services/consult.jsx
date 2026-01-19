@@ -2,10 +2,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Form, Input, Typography } from "antd";
-import { ToastContainer, toast } from "react-toastify";
+import { modernToast } from "@/components/ModernToast";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
-import "react-toastify/dist/ReactToastify.css";
 import { 
   Phone, 
   MessageCircle, 
@@ -84,27 +83,19 @@ export default function BusinessConsulting() {
       );
 
       if (res.status === 200 || res.status === 201) {
-        toast.success(t("ContactMessage.success", { name: values.name }));
+        modernToast.success(t("ContactMessage.success", { name: values.name }));
         form.resetFields();
         setIsPopupOpen(false);
       } else {
-        toast.error(t("businessConsulting.toast.error"));
+        modernToast.error(t("businessConsulting.toast.error"));
       }
     } catch (err) {
-      toast.error(t("businessConsulting.toast.serverError"));
+      modernToast.error(t("businessConsulting.toast.serverError"));
     }
   };
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
-      <ToastContainer
-        position="top-right"
-        toastClassName="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl"
-        progressClassName="bg-gradient-to-r from-blue-400 to-purple-600"
-        style={{ marginTop: "80px" }}
-        autoClose={8000}
-      />
-
       {/* Header */}
       <div className="text-center mb-16">
         <div className="flex justify-center items-center gap-3 mb-4">

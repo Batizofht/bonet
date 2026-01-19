@@ -17,21 +17,29 @@ interface Advertisement {
 const FirstHome = () => {
   const { t } = useTranslation();
   const router = useRouter();
+  const isDevelopment = process.env.NODE_ENV === 'development';
 
   const fullText = t("welcome_message");
   const [displayText, setDisplayText] = useState("");
   const [deleting, setDeleting] = useState(false);
-  const typingSpeed = 100;
-  const deletingSpeed = 50;
+  const typingSpeed = isDevelopment ? 50 : 100; // Faster in development
+  const deletingSpeed = isDevelopment ? 25 : 50; // Faster in development
 
   const [ads, setAds] = useState<Advertisement[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAd, setShowAd] = useState(false);
   const [adVisible, setAdVisible] = useState(true);
 
-  // Typing effect
+  // Combined effects for typing and advertisements
   useEffect(() => {
-    const timeout = setTimeout(() => {
+    // Skip typing effect in development for faster performance
+    if (isDevelopment) {
+      setDisplayText(fullText);
+      return;
+    }
+
+    // Typing effect logic
+    const typingTimeout = setTimeout(() => {
       if (!deleting) {
         if (displayText.length < fullText.length) {
           setDisplayText(fullText.slice(0, displayText.length + 1));
@@ -47,21 +55,33 @@ const FirstHome = () => {
       }
     }, deleting ? deletingSpeed : typingSpeed);
 
-    return () => clearTimeout(timeout);
-  }, [displayText, deleting, fullText]);
+    // Skip API calls in development
+    if (isDevelopment) {
+      return () => clearTimeout(typingTimeout);
+    }
 
-  // Fetch advertisements
-  useEffect(() => {
-    axios
-      .get(
-        "https://api.bonet.rw:8443/bonetBackend/backend/public/advertisements"
-      )
-      .then((res) => {
+    // Fetch advertisements
+    const fetchAds = async () => {
+      try {
+        const res = await axios.get(
+          "https://api.bonet.rw:8443/bonetBackend/backend/public/advertisements"
+        );
         const validAds = res.data.filter((ad:any) => Number(ad.time) > 0);
         setAds(validAds);
-      })
-      .catch((err) => console.error("Ad fetch error:", err));
-  }, []);
+        if (validAds.length > 0) {
+          setShowAd(true);
+        }
+      } catch (error) {
+        console.error("Failed to fetch advertisements:", error);
+      }
+    };
+
+    fetchAds();
+
+    return () => {
+      clearTimeout(typingTimeout);
+    };
+  }, [displayText, deleting, fullText, deletingSpeed, typingSpeed, isDevelopment]);
 
   // Show first ad after 3s
   useEffect(() => {

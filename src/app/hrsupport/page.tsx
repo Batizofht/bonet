@@ -37,7 +37,7 @@ export const metadata = {
 
 export default function ConsultingPage() {
   return (
-    <div className="bg-white min-h-screen text-center text-white">
+    <div className="min-h-screen">
       <FirstService />
       <HRAdminSupport />
     </div>

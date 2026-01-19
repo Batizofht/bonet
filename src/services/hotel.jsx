@@ -20,10 +20,9 @@ import {
   CalendarOutlined,
 } from "@ant-design/icons";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
-import { useTranslation } from "react-i18next";
-import "react-toastify/dist/ReactToastify.css";
+import { modernToast } from "@/components/ModernToast";
 import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
+import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
 import { 
   Phone, 
@@ -173,20 +172,18 @@ export default function HotelHospitality() {
           : "https://api.bonet.rw:8443/bonetBackend/backend/public/transportBooking";
 
       await axios.post(url, payload);
-      toast.success(t("travelHospitality.toast.success"));
+      modernToast.success(t("travelHospitality.toast.success"));
       form.resetFields();
       setRentTime(null);
       setIsPopupOpen(false);
     } catch (err) {
       console.error(err);
-      toast.error(t("travelHospitality.toast.error"));
+      modernToast.error(t("travelHospitality.toast.error"));
     }
   };
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
-      <ToastContainer position="top-center" />
-
       {/* HEADER */}
       <div className="text-center mb-16">
         <div className="flex justify-center items-center gap-3 mb-4">

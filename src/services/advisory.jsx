@@ -16,12 +16,14 @@ const AdvisoryServices = () => {
     { name: "Strategy & Growth", icon: <BarChart />, description: "Plan long-term success and market expansion." },
   ];
 
+  import { modernToast } from "@/components/ModernToast";
+
   const handleSubmit = () => {
     if (!name || !email || !selectedService) {
-      alert("Please fill in all fields.");
+      modernToast.error("Please fill in all fields.");
       return;
     }
-    alert(`Request Submitted for ${selectedService}! We'll contact you soon.`);
+    modernToast.success(`Request Submitted for ${selectedService}! We'll contact you soon.`);
     setShowModal(false);
   };
 

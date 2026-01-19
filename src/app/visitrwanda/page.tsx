@@ -36,7 +36,7 @@ export const metadata = {
 
 export default function VisitRwandaPage() {
   return (
-    <div className="bg-white min-h-screen text-center text-white">
+    <div className="min-h-screen">
       <VisitFirst />
       <VisitRwanda />
       <WhyInvest />

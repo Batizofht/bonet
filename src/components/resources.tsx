@@ -8,6 +8,13 @@ import axios from "axios";
 import Link from "next/link";
 import { Calendar, Clock, BookOpen, Sparkles, ArrowRight } from "lucide-react";
 
+// TypeScript declaration for AOS_INITIALIZED
+declare global {
+  interface Window {
+    AOS_INITIALIZED?: boolean;
+  }
+}
+
 interface Blog {
   image: string;
   title: string;
@@ -22,7 +29,11 @@ export default function Blog() {
   const { t } = useTranslation();
 
   useEffect(() => {
-    AOS.init({ duration: 1000, easing: "ease-out", once: true });
+    // Only initialize AOS once globally
+    if (typeof window !== 'undefined' && !window.AOS_INITIALIZED) {
+      AOS.init({ duration: 1000, easing: "ease-out", once: true });
+      window.AOS_INITIALIZED = true;
+    }
     fetchBlogs();
   }, []);
 

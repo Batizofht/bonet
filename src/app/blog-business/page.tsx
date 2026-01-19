@@ -35,7 +35,7 @@ export const metadata = {
 
 export default function BlogBusinessPage() {
   return (
-    <div className="bg-white min-h-screen text-center text-white">
+    <div className="min-h-screen">
       <FirstService />
       <BusinessRegistration />
     </div>

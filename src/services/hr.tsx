@@ -1,9 +1,8 @@
 'use client'
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { toast, ToastContainer } from "react-toastify";
+import { modernToast } from "@/components/ModernToast";
 import axios from "axios";
-import "react-toastify/dist/ReactToastify.css";
 import {
   Form,
   Input,
@@ -92,28 +91,20 @@ export default function HRAdminSupport() {
       );
 
       if (response.status === 200 || response.status === 201) {
-        toast.success(t("ContactMessage.success", { name: values.name }));
+        modernToast.success(t("ContactMessage.success", { name: values.name }));
         form.resetFields();
         closeModal();
       } else {
-        toast.error(t("hrModal.toast.error"));
+        modernToast.error(t("hrModal.toast.error"));
       }
     } catch (error) {
       console.error("Submission error:", error);
-      toast.error(t("hrModal.toast.error"));
+      modernToast.error(t("hrModal.toast.error"));
     }
   };
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
-      <ToastContainer
-        position="top-right"
-        toastClassName="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl"
-        progressClassName="bg-gradient-to-r from-blue-400 to-purple-600"
-        style={{ marginTop: "80px" }}
-        autoClose={8000}
-      />
-
       {/* Header */}
       <div className="text-center mb-16">
         <div className="flex justify-center items-center gap-3 mb-4">

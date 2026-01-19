@@ -10,7 +10,7 @@ import {
   DatePicker,
   InputNumber,
 } from "antd";
-import { toast, ToastContainer } from "react-toastify";
+import { modernToast } from "@/components/ModernToast";
 import {
   UserOutlined,
   MailOutlined,
@@ -23,7 +23,6 @@ import {
   TeamOutlined,
   BulbOutlined,
 } from "@ant-design/icons";
-import "react-toastify/dist/ReactToastify.css";
 import dayjs from "dayjs";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
@@ -58,7 +57,7 @@ const HotelCard = ({ bookHotel }) => {
       const values = await form.validateFields();
 
       if (!values.date_range || values.date_range.length !== 2) {
-        toast.error("❌ Please select both check-in and check-out dates.");
+        modernToast.error("❌ Please select both check-in and check-out dates.");
         return;
       }
 
@@ -86,16 +85,16 @@ const HotelCard = ({ bookHotel }) => {
         payload
       );
 
-      toast.success("🎉 Hotel request submitted successfully!");
+      modernToast.success("🎉 Hotel request submitted successfully!");
       form.resetFields();
       setBudgetType(null);
       setLocationType(null);
     } catch (error) {
       console.error(error);
       if (error.errorFields) {
-        toast.error("📝 Please fill in all required fields correctly.");
+        modernToast.error("📝 Please fill in all required fields correctly.");
       } else {
-        toast.error("❌ Failed to submit hotel request.");
+        modernToast.error("❌ Failed to submit hotel request.");
       }
     } finally {
       setIsLoading(false);
@@ -104,19 +103,6 @@ const HotelCard = ({ bookHotel }) => {
 
   return (
     <div className="min-h-screen  pb-8 ">
-      <ToastContainer 
-        position="top-center" 
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-
       <div className="mx-0 md:max-w-4xl md:mx-auto md:px-4 px-2">
         {/* Form Container */}
         <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">

@@ -1,24 +1,22 @@
 "use client"
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ToastContainer, toast } from "react-toastify";
 import { Form, Input, Button, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import "react-toastify/dist/ReactToastify.css";
-import { 
-  Phone, 
-  MessageCircle, 
-  X, 
-  Building, 
-  FileText, 
-  Award, 
-  ClipboardCheck, 
-  Search, 
+import { modernToast } from "@/components/ModernToast";
+import {
+  Phone,
+  MessageCircle,
+  Building,
+  FileText,
+  ClipboardCheck,
+  Award,
+  Search,
   Rocket,
   Sparkles,
   Target,
-  Users,
-  Globe
+  X,
+  Users
 } from "lucide-react";
 
 const investmentServices = [
@@ -55,27 +53,19 @@ export default function InvestmentBusinessSetup() {
       );
 
       if (res.ok) {
-        toast.success(t("ContactMessage.success", { name: values.name }));
+        modernToast.success(t("ContactMessage.success", { name: values.name }));
         form.resetFields();
         setIsPopupOpen(false);
       } else {
-        toast.error(t("investmentBusinessSetup.toastMessages.errorSubmission"));
+        modernToast.error(t("investmentBusinessSetup.toastMessages.errorSubmission"));
       }
     } catch (err) {
-      toast.error(t("investmentBusinessSetup.toastMessages.errorServer"));
+      modernToast.error(t("investmentBusinessSetup.toastMessages.errorServer"));
     }
   };
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
-      <ToastContainer
-        position="top-right"
-        toastClassName="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl"
-        progressClassName="bg-gradient-to-r from-blue-400 to-purple-600"
-        style={{ marginTop: "80px" }}
-        autoClose={8000}
-      />
-
       {/* Header */}
       <div className="text-center mb-16">
         <div className="flex justify-center items-center gap-3 mb-4">
@@ -85,7 +75,7 @@ export default function InvestmentBusinessSetup() {
           <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
           <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
         </div>
-        
+
         <h1 className="text-4xl font-bold text-gray-800 mb-4">
           Investment & <span className="bg-[#188bff] bg-clip-text text-transparent">Business Setup</span>
         </h1>
@@ -129,9 +119,8 @@ export default function InvestmentBusinessSetup() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`flex flex-col lg:flex-row items-center bg-white rounded-3xl border-2 border-blue-100 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden ${
-                index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-              }`}
+              className={`flex flex-col lg:flex-row items-center bg-white rounded-3xl border-2 border-blue-100 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                }`}
             >
               {/* Image */}
               <div className="lg:w-2/5 w-full relative">
@@ -167,7 +156,7 @@ export default function InvestmentBusinessSetup() {
 
                 {/* Features */}
                 <div className="flex flex-wrap gap-3">
-                  {["Expert Service","24/7 DAYS Support", "Trusted "].map((_, i) => (
+                  {["Expert Service", "24/7 DAYS Support", "Trusted "].map((_, i) => (
                     <div key={i} className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-xl">
                       <Sparkles className="w-3 h-3 text-[#188bff]" />
                       <span className="text-sm text-gray-700 font-medium">{_}</span>

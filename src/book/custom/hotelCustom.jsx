@@ -18,8 +18,7 @@ import {
   CalendarOutlined,
 } from "@ant-design/icons";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { modernToast } from "@/components/ModernToast";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 
@@ -44,7 +43,7 @@ const AccommodationHotel = () => {
       const values = await form.validateFields();
 
       if (!values.date_range || values.date_range.length !== 2) {
-        return toast.error(t("form.errors.selectDates"));
+        return modernToast.error(t("form.errors.selectDates"));
       }
 
       const [checkinDate, checkoutDate] = values.date_range;
@@ -71,20 +70,19 @@ const AccommodationHotel = () => {
         payload
       );
 
-      toast.success(t("form.success"));
+      modernToast.success(t("form.success"));
       form.resetFields();
       setBudgetType(null);
       setLocationType(null);
     } catch (err) {
       console.error(err);
-      toast.error(t("form.fail"));
+      modernToast.error(t("form.fail"));
     }
   };
 
   return (
     <div style={{}} className="">
-      <ToastContainer position="top-center" autoClose={3000} />
-
+      
  
        
         <Form layout="vertical" form={form}>

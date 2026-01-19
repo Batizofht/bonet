@@ -21,8 +21,7 @@ import {
 } from "@ant-design/icons";
 import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { modernToast } from "@/components/ModernToast";
 import { useTranslation } from "react-i18next";
 
 const { Option } = Select;
@@ -69,7 +68,7 @@ const TransportCard = ({ bookTransport }) => {
       const values = await form.validateFields();
 
       if (!values.pickup || !values.dropoff_time) {
-        toast.error("❌ Please select both pickup date and time.");
+        modernToast.error("❌ Please select both pickup date and time.");
         return;
       }
 
@@ -96,15 +95,15 @@ const TransportCard = ({ bookTransport }) => {
         payload
       );
 
-      toast.success("🎉 Transport request submitted successfully!");
+      modernToast.success("🎉 Transport request submitted successfully!");
       form.resetFields();
       setRentTime(null);
     } catch (error) {
       console.error(error);
       if (error.errorFields) {
-        toast.error("📝 Please fill in all required fields correctly.");
+        modernToast.error("📝 Please fill in all required fields correctly.");
       } else {
-        toast.error("❌ Failed to submit transport request.");
+        modernToast.error("❌ Failed to submit transport request.");
       }
     } finally {
       setIsLoading(false);
@@ -113,19 +112,6 @@ const TransportCard = ({ bookTransport }) => {
 
   return (
     <div className="min-h-screen pb-8">
-      <ToastContainer 
-        position="top-center" 
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-
      <div className="mx-0 md:max-w-4xl md:mx-auto md:px-4 px-2">
         {/* Form Container */}
         <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">

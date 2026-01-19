@@ -28,7 +28,7 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <div className="bg-white min-h-screen text-center">
+    <div className="min-h-screen">
     <HomePageClient />
     </div>
   );

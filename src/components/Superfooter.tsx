@@ -82,7 +82,7 @@ const SuperFooter = () => {
             {t("footer.quickLinks")}
           </h3>
           <ul className="space-y-4">
-            {["aboutUs", "services", "bookNow"].map((link) => (
+            {["about", "services", "bookNow"].map((link) => (
               <motion.li key={link} whileHover={{ x: 5 }}>
                 <a
                   href={link}
@@ -154,23 +154,50 @@ const SuperFooter = () => {
       <div className="border-t border-blue-100">
         <div className="max-w-6xl mx-auto px-6 py-6">
           <motion.div 
-            className="flex flex-col md:flex-row items-center justify-between gap-4 text-gray-600"
-            whileHover={{ scale: 1.01 }}
+            className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-gray-200/50"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center gap-2">
-              <span>&copy; {new Date().getFullYear()} Bonet Elite Services</span>
-              <Heart className="w-4 h-4 text-red-500 animate-pulse" />
-              <span>{t("footer.copyright")}</span>
-            </div>
-            <div className="flex items-center justify-center gap-4 text-sm">
-              <span className="text-gray-500">{t("made_with")}</span>
-              <div className="flex gap-1">
-                <div className="w-4 h-4 bg-[#188bff] rounded-full flex justify-center text-center items-center text-white p-1 animate-bounce">S</div>
-                <div className="w-4 h-4 bg-[#188bff] rounded-full flex justify-center text-center items-center text-white p-1 animate-bounce delay-100">W</div>
-                <div className="w-4 h-4 bg-[#188bff] rounded-full flex justify-center text-center items-center text-white p-1 animate-bounce delay-200">C</div>
-                 <div className="w-6 h-6 bg-[#188bff] rounded-full flex justify-center text-center items-center text-white p-1 animate-bounce delay-200">FY</div>
+            {/* Copyright */}
+            <div className="flex items-center gap-3 text-gray-500">
+           
+              <div className="flex flex-col">
+                <span className="font-semibold text-gray-700">Bonet Elite Services</span>
+                <span className="text-xs text-gray-400">&copy; {new Date().getFullYear()} {t("footer.copyright")}</span>
               </div>
             </div>
+
+            {/* Made with love indicator */}
+            <div className="flex items-center gap-3">
+           
+        
+              <div className="flex items-center gap-1.5">
+                {['S', 'W', 'C', 'FY'].map((letter, i) => (
+                  <motion.div
+                    key={letter}
+                    className="w-6 h-6 bg-gradient-to-br from-[#188bff] to-cyan-500 rounded-full flex items-center justify-center text-white text-[10px] font-bold shadow-md"
+                    whileHover={{ scale: 1.2, rotate: 360 }}
+                    transition={{ type: "spring", stiffness: 300, delay: i * 0.05 }}
+                  >
+                    {letter}
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Back to top */}
+            <motion.button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-[#188bff] text-gray-600 hover:text-white rounded-full transition-all duration-300 text-sm font-medium group"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span>Back to top</span>
+              <svg className="w-4 h-4 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
+            </motion.button>
           </motion.div>
         </div>
       </div>

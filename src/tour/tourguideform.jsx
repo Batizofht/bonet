@@ -22,8 +22,7 @@ import {
   BulbOutlined,
 } from "@ant-design/icons";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { modernToast } from "@/components/ModernToast";
 import { useTranslation } from "react-i18next";
 
 const { Option } = Select;
@@ -49,7 +48,7 @@ const TourGuideForm = ({ onTourSubmit }) => {
       const values = await form.validateFields();
 
       if (!values.travelDates || values.travelDates.length !== 2) {
-        toast.error("❌ Please select both start and end dates for your travel.");
+        modernToast.error("❌ Please select both start and end dates for your travel.");
         return;
       }
 
@@ -78,7 +77,7 @@ const TourGuideForm = ({ onTourSubmit }) => {
         { headers: { "Content-Type": "application/json" } }
       );
 
-      toast.success("🎉 Tour guide request submitted successfully!");
+      modernToast.success("🎉 Tour guide request submitted successfully!");
       form.resetFields();
       setIsCustomBudget(false);
       setDurationType(null);
@@ -90,9 +89,9 @@ const TourGuideForm = ({ onTourSubmit }) => {
     } catch (error) {
       console.error(error);
       if (error.errorFields) {
-        toast.error("📝 Please fill in all required fields correctly.");
+        modernToast.error("📝 Please fill in all required fields correctly.");
       } else {
-        toast.error("❌ Failed to submit tour guide request.");
+        modernToast.error("❌ Failed to submit tour guide request.");
       }
     } finally {
       setIsLoading(false);
@@ -101,28 +100,13 @@ const TourGuideForm = ({ onTourSubmit }) => {
 
   return (
     <div className="">
-      <ToastContainer 
-        position="top-center" 
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-
-      <div className="">
-        {/* Form Container */}
-        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
-          <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-gray-800 mb-2">
-              Tour Guide Request
-            </h1>
-      
-          </div>
+      {/* Form Container */}
+      <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+        <div className="text-center mb-8">
+          <h1 className="text-2xl font-bold text-gray-800 mb-2">
+            Tour Guide Request
+          </h1>
+        </div>
 
           <Form
             layout="vertical"
@@ -432,7 +416,7 @@ const TourGuideForm = ({ onTourSubmit }) => {
                       >
                         <Input.TextArea
                           rows={4}
-                          placeholder="Any special requirements, specific interests, dietary restrictions, or additional information we should know about..."
+                          placeholder="Any special requirements, specific interests, dietary restrictions, or additional information we should know about&#8230;"
                           className="rounded-lg"
                         />
                       </Form.Item>
@@ -457,7 +441,7 @@ const TourGuideForm = ({ onTourSubmit }) => {
           </Form>
         </div>
       </div>
-    </div>
+  
   );
 };
 

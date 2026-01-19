@@ -1,6 +1,23 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Development performance optimizations
+  ...(process.env.NODE_ENV === 'development' && {
+    // Disable source maps in development for faster builds
+    productionBrowserSourceMaps: false,
+    
+    // Reduce webpack processing overhead
+    webpack: (config, { dev }) => {
+      if (dev) {
+        config.watchOptions = {
+          poll: false,
+          aggregateTimeout: 300,
+        };
+      }
+      return config;
+    },
+  }),
+  
   // Increase build timeout to 180 seconds
   staticPageGenerationTimeout: 500,
   
@@ -15,11 +32,11 @@ const nextConfig: NextConfig = {
   // Optimize images if you're using next/image
   images: {
     formats: ['image/webp', 'image/avif'],
-    domains: [], // Add your image domains here if needed
+    domains: ['api.bonet.rw'], // Add your image domains here if needed
   },
   
-  // Enable React strict mode (but can disable if causing issues)
-  reactStrictMode: true,
+  // Disable React strict mode in development for faster re-renders
+  reactStrictMode: process.env.NODE_ENV === 'production',
   
   // Add compression for better performance
   compress: true,
@@ -28,6 +45,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
+    optimizePackageImports: ['lucide-react', '@ant-design/icons'],
   }
 };
 

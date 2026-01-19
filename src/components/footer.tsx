@@ -9,6 +9,13 @@ import axios from "axios";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
+// TypeScript declaration for AOS_INITIALIZED
+declare global {
+  interface Window {
+    AOS_INITIALIZED?: boolean;
+  }
+}
+
 interface FAQ {
   answer: string;
   question: string;
@@ -27,7 +34,11 @@ export default function FAQ() {
   const { t } = useTranslation();
 
   useEffect(() => {
-    AOS.init({ duration: 1000, easing: "ease-out", once: true });
+    // Only initialize AOS once globally
+    if (typeof window !== 'undefined' && !window.AOS_INITIALIZED) {
+      AOS.init({ duration: 1000, easing: "ease-out", once: true });
+      window.AOS_INITIALIZED = true;
+    }
     fetchFAQs();
   }, []);
 

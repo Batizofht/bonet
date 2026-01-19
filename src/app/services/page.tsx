@@ -40,7 +40,7 @@ export const metadata = {
 
 export default function PremiumServicesPage() {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="min-h-screen">
       <FirstService />
       <BusinessRegistration />
     </div>

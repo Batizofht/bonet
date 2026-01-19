@@ -36,7 +36,7 @@ export const metadata = {
 
 export default function InvestmentPage() {
   return (
-    <div className="bg-white min-h-screen text-center text-white">
+    <div className="min-h-screen">
       <FirstService />
       <InvestmentBusinessSetup />
     </div>

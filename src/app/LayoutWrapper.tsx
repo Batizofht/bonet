@@ -3,36 +3,36 @@
 import Navbar from "@/components/navbar";
 import SuperFooter from "@/components/Superfooter";
 import ChatBot from "@/components/bot";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { ModernToastContainer } from "@/components/ModernToast";
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-NProgress.configure({ showSpinner: false });
+
+// Configure NProgress for faster, smoother transitions
+NProgress.configure({ 
+  showSpinner: false,
+  minimum: 0.1,
+  speed: 200,
+  trickleSpeed: 100
+});
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
-   const pathname = usePathname();
+  const pathname = usePathname();
 
   useEffect(() => {
-    NProgress.start(); // start loading bar
+    // Immediately complete any pending progress bar
+    NProgress.done();
+    
+    // Scroll to top on route change
     window.scrollTo(0, 0);
-
-    const timer = setTimeout(() => {
-      NProgress.done(); // end loading bar
-    }, 500); // adjust duration if needed
-
-    return () => {
-      clearTimeout(timer); // cleanup
-      NProgress.done(); // ensure bar ends if unmounted
-    };
   }, [pathname]);
 
   return (
     <>
       <Navbar />
       <ChatBot />
-      <ToastContainer position="top-right" autoClose={3000} />
+      <ModernToastContainer />
       {children}
       <SuperFooter />
     </>

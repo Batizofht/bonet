@@ -18,8 +18,7 @@ import {
   CalendarOutlined,
 } from "@ant-design/icons";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { modernToast } from "@/components/ModernToast";
 import { useTranslation } from "react-i18next";
 
 const { Option } = Select;
@@ -64,20 +63,19 @@ const AccommodationForm = () => {
         payload
       );
 
-      toast.success("✅ Apartment request submitted!");
+      modernToast.success("✅ Apartment request submitted!");
       form.resetFields();
       setBudgetType(null);
       setLocationType(null);
     } catch (err) {
       console.error(err);
-      toast.error("❌ Failed to submit apartment request");
+      modernToast.error("❌ Failed to submit apartment request");
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-      <ToastContainer position="top-center" autoClose={3000} />
-
+      
       <Card className="relative w-full max-w-4xl p-10 rounded-3xl shadow-2xl bg-gradient-to-br from-white/70 to-white/50 backdrop-blur-lg border border-white/20 overflow-hidden">
         {/* Decorative Orbs */}
         <div className="absolute -top-16 -left-16 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full"></div>
