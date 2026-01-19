@@ -143,7 +143,7 @@
   "footer": {
     "description": "Chez Bonet Elite Services, nous facilitons les voyages, les affaires et les investissements pour que vous puissiez vous concentrer sur l’essentiel. Rendons votre expérience au Rwanda fluide et réussie !",
     "quickLinks": "Liens Rapides",
-    "aboutUs": "À propos de nous",
+    "about": "À propos de nous",
     "services": "Services",
     "bookNow": "Réservez Maintenant",
     "contactUs": "Contactez-nous",
@@ -1954,7 +1954,77 @@
 "Online": "En ligne",
 "Live": "En direct",
 "Secure & Private": "Sécurisé & Privé",
-"Type your message...": "Tapez votre message..."
-
-  
+"Type your message...": "Tapez votre message...",
+  "common": {
+    "expertService": "Service Expert",
+    "support247": "Support 24/7",
+    "trusted": "De Confiance",
+    "premiumService": "Service Premium",
+    "bookingTravel": "Réservation Voyage",
+    "continueToChat": "Continuer vers le Chat",
+    "agreeTerms": "J'accepte les conditions",
+    "chatWithSupport": "Discuter avec le support client",
+    "sponsored": "Sponsorisé",
+    "featured": "En Vedette",
+    "viewAllArticles": "Voir Tous les Articles",
+    "whatClientsSay": "Ce que Disent Nos Clients",
+    "realStories": "Témoignages de personnes formidables avec qui nous avons travaillé",
+    "ourTechStack": "Notre Stack Technologique",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "databases": "Bases de données",
+    "howWePower": "Comment Nous Propulsons Votre Entreprise",
+    "personalInformation": "Informations Personnelles",
+    "tourDetails": "Détails du Circuit",
+    "fullName": "Nom Complet",
+    "emailAddress": "Adresse Email",
+    "phoneNumber": "Numéro de Téléphone",
+    "preferredLanguage": "Langue Préférée",
+    "destinationsToVisit": "Destinations à Visiter",
+    "travelDates": "Dates de Voyage",
+    "cancel": "Annuler",
+    "submit": "Envoyer"
+  },
+  "premiumFeatures": {
+    "title": "Notre Premium",
+    "subtitle": "Fonctionnalités & Avantages",
+    "customerSupport": {
+      "title": "Support Client 24/7",
+      "description": "Notre équipe de support dédiée aide aux demandes clients, répond aux FAQ, gère les réservations et guide les utilisateurs dans l'enregistrement d'entreprise."
+    },
+    "bookingSystem": {
+      "title": "Système de Réservation Intelligent",
+      "description": "Notre système de réservation optimisé gère les réservations d'hôtels, de transport et de circuits, offrant une planification fluide et des mises à jour en temps réel."
+    },
+    "recommendations": {
+      "title": "Recommandations Personnalisées",
+      "description": "Nous analysons vos préférences pour vous offrir des recommandations personnalisées, améliorant votre expérience et votre satisfaction."
+    },
+    "voiceSupport": {
+      "title": "Support Vocal",
+      "description": "Activez l'interaction client mains libres avec notre système de support vocal pour répondre aux questions et aider les utilisateurs."
+    }
+  },
+  "clientReviews": {
+    "title": "Ce que Disent Nos Clients",
+    "subtitle": "Témoignages de personnes formidables avec qui nous avons travaillé"
+  },
+  "howDev": {
+    "step1": {
+      "title": "Support Client 24/7",
+      "description": "Notre équipe de support dédiée aide les clients 24h/24, répondant aux questions, guidant les enregistrements d'entreprise et gérant les réservations facilement."
+    },
+    "step2": {
+      "title": "Système de Réservation Intelligent",
+      "description": "Réservation simplifiée pour hôtels, transports et circuits, garantissant une planification fluide et une expérience personnalisée."
+    },
+    "step3": {
+      "title": "Recommandations Personnalisées",
+      "description": "En comprenant vos préférences, nous fournissons des suggestions adaptées pour améliorer votre expérience et satisfaction."
+    },
+    "step4": {
+      "title": "Communication Instantanée",
+      "description": "Les clients peuvent nous joindre instantanément pour obtenir de l'aide, rendant l'expérience plus interactive et pratique."
+    }
+  }
 }

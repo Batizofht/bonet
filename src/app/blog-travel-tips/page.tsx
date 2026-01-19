@@ -1,8 +1,6 @@
 
 import FirstService from "../../services/firstservice";
 import TravelTips from "../../blogs/trip";
-
-export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Travel Tips for Rwanda | Bonet Elite Services Blog",
   description:

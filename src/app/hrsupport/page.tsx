@@ -2,7 +2,6 @@
 import FirstService from "../../services/firstservice";
 import BusinessConsulting from "../../services/consult";
 import HRAdminSupport from "@/services/hr";
-export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Business Consulting | Bonet Elite Services",
   description:

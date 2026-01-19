@@ -1,30 +1,53 @@
 "use client";
 
+import dynamic from 'next/dynamic';
 import Navbar from "@/components/navbar";
-import SuperFooter from "@/components/Superfooter";
-import ChatBot from "@/components/bot";
 import { ModernToastContainer } from "@/components/ModernToast";
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
-// Configure NProgress for faster, smoother transitions
+// Lazy load non-critical components
+const ChatBot = dynamic(() => import("@/components/bot"), { ssr: false });
+const SuperFooterLazy = dynamic(() => import("@/components/Superfooter"), { ssr: false });
+
+// Configure NProgress
 NProgress.configure({ 
   showSpinner: false,
   minimum: 0.1,
-  speed: 200,
-  trickleSpeed: 100
+  speed: 400,
+  trickleSpeed: 200
 });
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const prevPathname = useRef(pathname);
 
+  // Start progress bar on link clicks
   useEffect(() => {
-    // Immediately complete any pending progress bar
-    NProgress.done();
-    
-    // Scroll to top on route change
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a');
+      
+      if (anchor && anchor.href && anchor.href.startsWith(window.location.origin)) {
+        const targetPath = new URL(anchor.href).pathname;
+        if (targetPath !== pathname) {
+          NProgress.start();
+        }
+      }
+    };
+
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
+  }, [pathname]);
+
+  // Complete progress bar when pathname changes
+  useEffect(() => {
+    if (prevPathname.current !== pathname) {
+      NProgress.done();
+      prevPathname.current = pathname;
+    }
     window.scrollTo(0, 0);
   }, [pathname]);
 
@@ -34,7 +57,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
       <ChatBot />
       <ModernToastContainer />
       {children}
-      <SuperFooter />
+      <SuperFooterLazy />
     </>
   );
 }

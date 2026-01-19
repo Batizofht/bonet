@@ -1,52 +1,38 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const HowDevelopmentWorks = () => {
+  const { t } = useTranslation();
   const steps = [
     {
       id: "#1",
-      title: "AI-Powered Chatbot",
-      description:
-        "Our intelligent chatbot assists customers 24/7, answering FAQs, guiding business registrations, and handling bookings effortlessly.",
+      title: t("howDev.step1.title"),
+      description: t("howDev.step1.description"),
     },
     {
       id: "#2",
-      title: "Smart Booking System",
-      description:
-        "AI-driven booking for hotels, transport, and tours, ensuring seamless scheduling and a personalized experience for users.",
+      title: t("howDev.step2.title"),
+      description: t("howDev.step2.description"),
     },
     {
       id: "#3",
-      title: "Personalized Recommendations",
-      description:
-        "By analyzing user behavior, our AI provides tailored suggestions to enhance engagement and satisfaction.",
+      title: t("howDev.step3.title"),
+      description: t("howDev.step3.description"),
     },
-    // {
-    //   id: "#4",
-    //   title: "AI Document Assistance",
-    //   description:
-    //     "From business setup paperwork to contract generation, AI streamlines document handling for accuracy and efficiency.",
-    // },
-    // {
-    //   id: "#5",
-    //   title: "Business Insights & Reports",
-    //   description:
-    //     "AI-driven analytics provide deep insights, helping businesses make data-backed decisions with confidence.",
-    // },
     {
       id: "#6",
-      title: "Voice Assistant Integration",
-      description:
-        "Customers can interact with our voice assistant for instant support, making the experience more interactive and convenient.",
+      title: t("howDev.step4.title"),
+      description: t("howDev.step4.description"),
     },
   ];
 
   return (
     <div className="bg-white py-16 px-6 text-center">
       <div className="w-20 h-1 bg-[#188bff] mx-auto mt-2 mb-5"></div>
-      <h2 className="text-3xl text-gray-700 font-bold">How AI</h2>
+      <h2 className="text-3xl text-gray-700 font-bold">{t("common.howWePower").split(" ").slice(0, 2).join(" ")}</h2>
       <h1 className="text-3xl font-bold bg-[#188bff] bg-clip-text text-transparent">
-        Powers Your Business
+        {t("common.howWePower").split(" ").slice(2).join(" ")}
       </h1>
 
       <div className="relative mt-12 max-w-4xl mx-auto">

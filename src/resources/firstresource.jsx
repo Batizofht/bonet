@@ -11,10 +11,10 @@ const FirstResource = () => {
       className="relative w-full h-screen bg-black flex flex-col items-center justify-center text-center p-6 overflow-hidden"
     >
       <h1 className="text-4xl md:text-6xl font-bold bg-[#188bff] bg-clip-text text-transparent">
-        AI-Powered Resources
+        Smart Resources
       </h1>
       <p className="text-lg md:text-xl text-white mt-4 max-w-3xl">
-        Unlock AI-driven solutions that enhance customer experience, 
+        Unlock smart solutions that enhance customer experience, 
         streamline operations, and support data-driven decision-making.
       </p>
       

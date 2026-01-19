@@ -97,9 +97,9 @@ function Testimonials() {
         </div>
         
         <h2 className="text-4xl font-bold text-gray-800 mb-4">
-          What Our <span className="bg-[#188bff] bg-clip-text text-transparent">Clients Say</span>
+          {t("clientReviews.title").split(" ").slice(0, 2).join(" ")} <span className="bg-[#188bff] bg-clip-text text-transparent">{t("clientReviews.title").split(" ").slice(2).join(" ")}</span>
         </h2>
-        <p className="text-gray-500 text-lg">Real stories from amazing people we've worked with</p>
+        <p className="text-gray-500 text-lg">{t("clientReviews.subtitle")}</p>
       </div>
 
       {/* Main Testimonial Card */}

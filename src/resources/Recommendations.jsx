@@ -7,7 +7,7 @@ const Recommendation = () => {
       <div className="w-full md:w-1/2 flex justify-center">
         <img 
           src="../assets/images/bot.jpeg" 
-          alt="AI-Powered Recommendations" 
+          alt="Personalized Recommendations" 
           className="w-full h-auto max-h-[500px] object-cover rounded-2xl shadow-lg"
         />
       </div>
@@ -15,16 +15,16 @@ const Recommendation = () => {
       {/* Right Side - Text */}
       <div className="w-full md:w-1/2 flex flex-col justify-center">
         <h2 style={{fontSize:'25px'}}className="font-bold bg-[#188bff] bg-clip-text text-transparent">
-          Personalized AI Recommendations: Enhancing User Experience
+          Personalized Recommendations: Enhancing User Experience
         </h2>
         <p style={{fontSize:'17px'}}className=" md:text-xl text-gray-700 mt-4 leading-relaxed">
-          Learn how AI-driven recommendations provide a tailored user experience across platforms. 
-          By leveraging data insights, AI personalizes content, product suggestions, and services for each user. 
-          Advanced algorithms analyze user behavior to deliver highly relevant recommendations in real-time. 
-          Businesses use AI to enhance customer engagement, improving satisfaction and conversion rates. 
-          Machine learning adapts dynamically, refining suggestions based on evolving preferences. 
-          From e-commerce to entertainment, AI-driven recommendations revolutionize digital experiences. 
-          The future of personalization lies in AI-powered solutions that anticipate user needs and enhance interactions.
+          Learn how smart recommendations provide a tailored user experience across platforms. 
+          By leveraging data insights, we personalize content, product suggestions, and services for each user. 
+          Advanced systems analyze user behavior to deliver highly relevant recommendations in real-time. 
+          Businesses use personalization to enhance customer engagement, improving satisfaction and conversion rates. 
+          Our systems adapt dynamically, refining suggestions based on evolving preferences. 
+          From e-commerce to entertainment, personalized recommendations revolutionize digital experiences. 
+          The future of personalization lies in smart solutions that anticipate user needs and enhance interactions.
         </p>
       </div>
     </div>

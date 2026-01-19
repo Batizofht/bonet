@@ -1,7 +1,7 @@
 const knowledgeBase = {
     "hello": "Hello! How can I assist you today?",
     "hi": "Hi there! How may I help you?",
-    "who are you": "I am the Bonet Elite Chatbot, here to assist you.",
+    "who are you": "I am a Bonet Elite Agent, here to assist you.",
     "what services do you offer": "We provide Elite services such as travel booking, event planning, and more.",
     "how can i contact support": "You can reach support at info@bonet.rw or call +250726300260.",
     "how do i book a flight": "You can book a flight through our travel booking service. Let me know your destination and date of travel!",

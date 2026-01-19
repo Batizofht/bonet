@@ -3,8 +3,6 @@ import React from "react";
 import FirstService from "../../services/firstservice";
 import BusinessRegistration from "../../blogs/busreg";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "Premium Services | Bonet Elite Services",
   description: "Hotel Reservations: Luxury stays with premium amenities. Apartment Booking: Comfortable homes away from home. Transport Service: Safe and reliable transportation. Tourism Guides: Explore with expert local guides.",

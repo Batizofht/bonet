@@ -51,9 +51,9 @@ const Bot = () => {
           <div className="relative bg-white p-6 rounded-lg shadow-xl border-2 border-transparent w-90 h-96 flex flex-col">
             <button onClick={() => setIsOpen(false)} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-xl">&times;</button>
             <h2 className="text-lg font-bold bg-[#188bff] bg-clip-text text-transparent">Bonet Elite Service</h2>
-            <p className="text-gray-700 mt-2">You are about to open an AI customer support chatbot designed specifically for Bonet Elite Service.
-              This chatbot is here to guide you and provide assistance solely related to this service.
-              It does not respond to inquiries unrelated to Bonet Elite Service.</p>
+            <p className="text-gray-700 mt-2">You are about to connect with our customer support team designed specifically for Bonet Elite Service.
+              Our agents are here to guide you and provide assistance solely related to this service.
+              We focus on inquiries related to Bonet Elite Service.</p>
             <div className="flex items-center mt-4">
               <input type="checkbox" id="agree" className="w-5 h-5" checked={agreed} onChange={() => setAgreed(!agreed)} />
               <label htmlFor="agree" className="text-gray-700 ml-2">I agree to the terms</label>
@@ -74,7 +74,7 @@ const Bot = () => {
               </div>
               <div>
                 <p className="text-sm">Chat with customer support</p>
-                <p className="font-bold">Bonet Elite Service Chatbot</p>
+                <p className="font-bold">Bonet Elite Support</p>
               </div>
             </div>
               <button onClick={() => setShowChat(false)} className="text-white text-2xl font-bold">&times;</button>
@@ -116,7 +116,7 @@ const Bot = () => {
                 <FaTelegramPlane />
               </button>
             </div>
-            <h1 className="text-gray-500 text-center text-xs mb-1 mt-1">Customer Support Chatbot</h1>
+            <h1 className="text-gray-500 text-center text-xs mb-1 mt-1">Customer Support</h1>
           </div>
         </div>
       )}

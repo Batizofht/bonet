@@ -5,7 +5,7 @@ const Booking = () => {
         <div className="w-1/2 pr-6">
           <img
             src="../assets/images/chat3.jpeg"
-            alt="AI Booking System"
+            alt="Smart Booking System"
             className="w-full h-auto rounded-xl shadow-md"
           />
         </div>
@@ -13,12 +13,12 @@ const Booking = () => {
         {/* Right Side: Content */}
         <div className="w-1/2">
           <h2 className="text-3xl font-bold bg-[#188bff] bg-clip-text text-transparent">
-            AI-Driven Booking System for Hotels & Transport
+            Smart Booking System for Hotels & Transport
           </h2>
           <p className="text-lg text-gray-700 mt-2">
-            Experience seamless travel planning with our AI-powered booking system! Designed for
-            hotels, transport, and tours, it automates reservations, provides dynamic pricing, and
-            delivers personalized recommendations. By leveraging real-time data and machine learning,
+            Experience seamless travel planning with our smart booking system! Designed for
+            hotels, transport, and tours, it handles reservations, provides dynamic pricing, and
+            delivers personalized recommendations. By leveraging real-time data and analytics,
             it optimizes availability, ensuring efficient and hassle-free bookings for users.
           </p>
           <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">

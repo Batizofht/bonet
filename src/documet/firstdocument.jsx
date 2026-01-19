@@ -18,7 +18,7 @@ const FirstDocument = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Gain valuable insights and data-driven reports to enhance your business decisions. Our AI-driven document assistance ensures efficiency and accuracy in managing essential information.
+          Gain valuable insights and data-driven reports to enhance your business decisions. Our document assistance ensures efficiency and accuracy in managing essential information.
         </motion.p>
       </div>
       {/* Animated Circles */}

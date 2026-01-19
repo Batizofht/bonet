@@ -5,7 +5,7 @@ const Busines = () => {
         <div className="w-1/2 pr-6">
           <img
             src="../assets/images/chat2.webp"
-            alt="AI Business Insights"
+            alt="Business Insights"
             className="w-full h-auto rounded-xl shadow-md"
           />
         </div>
@@ -13,13 +13,13 @@ const Busines = () => {
         {/* Right Side: Content */}
         <div className="w-1/2">
           <h2 className="text-3xl font-bold bg-[#188bff] bg-clip-text text-transparent">
-            AI-Powered Business Insights & Document Assistance
+            Business Insights & Document Assistance
           </h2>
           <p className="text-lg text-gray-700 mt-2">
-            Elevate your business with our AI-driven solution! It automates
-            document assistance for business setup while providing deep insights
+            Elevate your business with our professional solutions! We provide
+            document assistance for business setup while offering deep insights
             into customer behavior and financial trends. By leveraging advanced
-            analytics, it generates predictive reports, helping businesses make
+            analytics, we generate comprehensive reports, helping businesses make
             data-driven decisions and stay ahead in a competitive market.
           </p>
           

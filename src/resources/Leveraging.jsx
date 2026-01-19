@@ -7,7 +7,7 @@ const LevelAging = () => {
       <div className="w-full md:w-1/2 flex justify-center">
         <img 
           src="../assets/images/ai.jpeg" 
-          alt="Leveraging AI Chatbots" 
+          alt="Customer Support Excellence" 
           className="w-full h-auto max-h-[500px] object-cover rounded-2xl shadow-lg"
         />
       </div>
@@ -15,16 +15,16 @@ const LevelAging = () => {
       {/* Right Side - Text */}
       <div className="w-full md:w-1/2 flex flex-col justify-center">
       <h2 style={{fontSize:'25px'}}className="font-bold bg-[#188bff] bg-clip-text text-transparent">
-      Leveraging AI Chatbots for Seamless Customer Support
+      Dedicated Support for Seamless Customer Experience
         </h2>
         <p style={{fontsize:'17px'}}className="text-gray-700 mt-4 leading-relaxed">
-          Explore how AI-powered chatbots transform customer interactions, improving efficiency and satisfaction. 
-          By automating responses and streamlining support, businesses can enhance user experience while reducing 
-          workload. These intelligent systems adapt to customer needs, providing instant assistance and solutions. 
-          AI chatbots ensure 24/7 availability, enabling companies to handle inquiries effectively at any time. 
-          Leveraging machine learning, they continuously improve responses, making interactions more human-like. 
-          Businesses across industries are integrating AI-driven support for optimized customer service strategies. 
-          The future of customer engagement lies in AI-powered solutions that drive satisfaction and efficiency.
+          Discover how our dedicated support team transforms customer interactions, improving efficiency and satisfaction. 
+          By streamlining support processes, businesses can enhance user experience while reducing 
+          workload. Our team adapts to customer needs, providing instant assistance and solutions. 
+          We ensure 24/7 availability, enabling companies to handle inquiries effectively at any time. 
+          Through continuous training, our agents improve responses, making interactions more personalized. 
+          Businesses across industries trust our support for optimized customer service strategies. 
+          The future of customer engagement lies in dedicated solutions that drive satisfaction and efficiency.
         </p>
       </div>
     </div>

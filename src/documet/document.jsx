@@ -65,7 +65,7 @@ function DocumentSetupCard() {
 
   return (
     <div className="px-4 md:px-10 lg:px-20 py-5">
-      <h1 className="text-gray-700 text-3xl font-bold text-center md:text-left">AI-Driven Docu
+      <h1 className="text-gray-700 text-3xl font-bold text-center md:text-left">Smart Docu
         <span className="bg-[#188bff] bg-clip-text text-transparent">ment Assistance</span>
       </h1>
       <div className="flex flex-col md:flex-row gap-6 mt-6">

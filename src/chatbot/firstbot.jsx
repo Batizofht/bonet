@@ -14,11 +14,11 @@ const FirstBot = () => {
       >
         {/* Title */}
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-[#188bff] bg-clip-text text-transparent inline-block">
-          AI-Powered Chatbot for Customer Support
+          24/7 Customer Support
         </h1>
         {/* Subtitle */}
         <p className="text-lg sm:text-xl lg:text-2xl text-white mt-4 max-w-2xl">
-          Experience an advanced AI chatbot that enhances customer support by handling queries, assisting with bookings, and guiding users through business registration. Improve response time and customer satisfaction effortlessly.
+          Experience our dedicated support team that enhances customer service by handling queries, assisting with bookings, and guiding users through business registration. Improve response time and customer satisfaction effortlessly.
         </p>
       </motion.div>
     </div>

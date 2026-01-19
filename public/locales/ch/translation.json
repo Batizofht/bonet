@@ -143,7 +143,7 @@
   "footer": {
     "description": "在 Bonet Elite Services，我们让旅行、商业和投资变得简单，让您可以专注于真正重要的事情。让我们使您在卢旺达的体验顺畅而成功！",
     "quickLinks": "快速链接",
-    "aboutUs": "关于我们",
+    "about": "关于我们",
     "services": "服务",
     "bookNow": "立即预订",
     "contactUs": "联系我们",
@@ -1894,6 +1894,77 @@
 "Online": "在线",
 "Live": "直播",
 "Secure & Private": "安全且私密",
-"Type your message...": "输入您的消息..."
-
+"Type your message...": "输入您的消息...",
+"common": {
+  "expertService": "专业服务",
+  "support247": "24/7 全天候支持",
+  "trusted": "值得信赖",
+  "premiumService": "高端服务",
+  "bookingTravel": "旅行预订",
+  "continueToChat": "继续聊天",
+  "agreeTerms": "我同意条款",
+  "chatWithSupport": "与客服聊天",
+  "sponsored": "赞助",
+  "featured": "精选",
+  "viewAllArticles": "查看所有文章",
+  "whatClientsSay": "客户评价",
+  "realStories": "来自与我们合作过的优秀人士的真实故事",
+  "ourTechStack": "我们的技术栈",
+  "backend": "后端",
+  "frontend": "前端",
+  "databases": "数据库",
+  "howWePower": "我们如何为您的企业赋能",
+  "personalInformation": "个人信息",
+  "tourDetails": "旅游详情",
+  "fullName": "全名",
+  "emailAddress": "电子邮箱",
+  "phoneNumber": "电话号码",
+  "preferredLanguage": "首选语言",
+  "destinationsToVisit": "目的地",
+  "travelDates": "旅行日期",
+  "cancel": "取消",
+  "submit": "提交"
+},
+"premiumFeatures": {
+  "title": "我们的高端",
+  "subtitle": "功能与优势",
+  "customerSupport": {
+    "title": "24/7 客户支持",
+    "description": "我们专业的支持团队协助处理客户咨询、解答常见问题、处理预订并指导用户完成企业注册。"
+  },
+  "bookingSystem": {
+    "title": "智能预订系统",
+    "description": "我们精简的预订系统处理酒店、交通和旅游预订，提供无缝调度和实时更新。"
+  },
+  "recommendations": {
+    "title": "个性化推荐",
+    "description": "我们分析您的偏好，为您提供个性化推荐，提升您的体验和满意度。"
+  },
+  "voiceSupport": {
+    "title": "语音支持",
+    "description": "启用语音支持系统，实现免提客户互动，解答问题并协助用户。"
+  }
+},
+"clientReviews": {
+  "title": "客户评价",
+  "subtitle": "来自与我们合作过的优秀人士的真实故事"
+},
+"howDev": {
+  "step1": {
+    "title": "24/7 客户支持",
+    "description": "我们专业的支持团队全天候为客户提供帮助，解答问题，指导企业注册，轻松处理预订。"
+  },
+  "step2": {
+    "title": "智能预订系统",
+    "description": "简化酒店、交通和旅游预订流程，确保无缝调度和个性化体验。"
+  },
+  "step3": {
+    "title": "个性化推荐",
+    "description": "通过了解您的偏好，我们提供量身定制的建议，提升您的体验和满意度。"
+  },
+  "step4": {
+    "title": "即时通讯",
+    "description": "客户可以立即联系我们获取支持，使体验更加互动和便捷。"
+  }
+}
 }

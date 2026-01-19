@@ -57,7 +57,7 @@ const ElitePopup = () => {
                 </div>
                 <div>
                   <p className="text-sm">Chat with customer support</p>
-                  <p className="font-bold">Bonet Elite Service Chatbot uuekjlajkd</p>
+                  <p className="font-bold">Bonet Elite Service</p>
                 </div>
               </div>
               <button onClick={() => setShowChat(false)} className="text-white text-2xl font-bold">&times;</button>
@@ -91,7 +91,7 @@ const ElitePopup = () => {
                 <FaMicrophone size={20} />
               </button>
             </div>
-            <h1 className="text-gray-500 text-center text-xs mb-1 mt-1">Voice-Enabled Customer Support Chatbot</h1>
+            <h1 className="text-gray-500 text-center text-xs mb-1 mt-1">Voice-Enabled Customer Support</h1>
           </div>
         </div>
       )}

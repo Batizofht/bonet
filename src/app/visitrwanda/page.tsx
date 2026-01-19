@@ -2,7 +2,6 @@
 import VisitFirst from "../../services/VisitFirst";
 import VisitRwanda from "../../visit/visit";
 import WhyInvest from "../../visit/why";
-export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Visit Rwanda | Bonet Elite Services",
   description:

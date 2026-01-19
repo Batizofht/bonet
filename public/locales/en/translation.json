@@ -143,7 +143,7 @@
   "footer": {
     "description": "At Bonet Elite Services, we make travel, business, and investment easy so you can focus on what truly matters. Let’s make your experience in Rwanda seamless and successful!",
     "quickLinks": "Quick Links",
-    "aboutUs": "About Us",
+    "about": "About Us",
     "services": "Services",
     "bookNow": "Book Now",
     "contactUs": "Contact Us",
@@ -1885,18 +1885,22 @@
   "here_to_help": "We're here to help you with any questions",
   "made_with": "Made with",
   "Innovative solutions for modern businesses":"Innovative solutions for modern businesses",
-  "Explore beautiful destinations in Rwanda":"Explore beautiful destinations in Rwanda",
-  "Discover valuable articles and updates from our experts":"Discover valuable articles and updates from our experts",
-  "Find answers to common questions":"Find answers to common questions",
-  "Still have questions?":"Still have questions?",
-  "We're here to help you with any questions":"We're here to help you with any questions",
-  "Professional solutions for your business":"Professional solutions for your business",
-  "Our Services":"Our Services",
-  "View All Services":"View All Services",
-  "Offline":"Offline",
-  "Online":"Online",
-  "Live":"Live",
-  "Secure & Private":"Secure & Private",
-  "Type your message...":"Type your message..."
-  
+  "howDev": {
+    "step1": {
+      "title": "24/7 Customer Support",
+      "description": "Our dedicated support team assists customers around the clock, answering questions, guiding business registrations, and handling bookings effortlessly."
+    },
+    "step2": {
+      "title": "Smart Booking System",
+      "description": "Streamlined booking for hotels, transport, and tours, ensuring seamless scheduling and a personalized experience for users."
+    },
+    "step3": {
+      "title": "Personalized Recommendations",
+      "description": "By understanding your preferences, we provide tailored suggestions to enhance your experience and satisfaction."
+    },
+    "step4": {
+      "title": "Instant Communication",
+      "description": "Customers can reach us instantly for support, making the experience more interactive and convenient."
+    }
+  }
 }

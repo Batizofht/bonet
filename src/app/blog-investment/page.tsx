@@ -1,7 +1,6 @@
 
 import FirstService from "../../services/firstservice";
 import InvestmentOpportunities from "../../blogs/investment";
-export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Investment in Rwanda | Bonet Elite Services Blog",
   description:

@@ -61,8 +61,8 @@ const ChatAi = () => {
               Bonet Elite Service
             </h2>
             <p className="text-gray-700 mt-2 text-center">
-            You are about to interact with an AI chatbot designed for 
-            Bonet Elite Service. This chatbot is here to assist you
+            You are about to connect with our support agent designed for 
+            Bonet Elite Service. Our agent is here to assist you
              with anything you need, including inquiries related to Bonet
               Elite Service as well as general topics
             </p>
@@ -156,7 +156,7 @@ const ChatAi = () => {
       
       {/* Footer Text */}
       <div className="text-center py-2">
-        <h1 className="text-gray-500 text-xs sm:text-sm font-sans">Bonet Elite Service Agent Chatbot</h1>
+        <h1 className="text-gray-500 text-xs sm:text-sm font-sans">Bonet Elite Service Support</h1>
       </div>
     </div>
   </div>

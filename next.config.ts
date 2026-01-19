@@ -21,18 +21,22 @@ const nextConfig: NextConfig = {
   // Increase build timeout to 180 seconds
   staticPageGenerationTimeout: 500,
   
-  // Disable type checking and ESLint during build to speed up process
+  // Disable type checking during build to speed up process
   typescript: {
     ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
   
   // Optimize images if you're using next/image
   images: {
     formats: ['image/webp', 'image/avif'],
-    domains: ['api.bonet.rw'], // Add your image domains here if needed
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'api.bonet.rw',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   
   // Disable React strict mode in development for faster re-renders
@@ -45,7 +49,14 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
-    optimizePackageImports: ['lucide-react', '@ant-design/icons'],
+    optimizePackageImports: [
+      'lucide-react', 
+      '@ant-design/icons',
+      'framer-motion',
+      'react-i18next',
+      'axios',
+      'antd'
+    ],
   }
 };
 

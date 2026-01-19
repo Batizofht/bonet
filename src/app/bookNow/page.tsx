@@ -4,7 +4,6 @@ import React from "react";
 import ThirdService from "../../services/thirdservice";
 import ContainerWithButtons from "../../book/container";
 import Gallery from "../../components/visitrwanda";
-export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Book Hotels & Services in Rwanda | Bonet Elite Services",
   description:

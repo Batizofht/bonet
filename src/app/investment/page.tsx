@@ -1,7 +1,6 @@
 
 import FirstService from "../../services/firstservice";
 import InvestmentBusinessSetup from "../../services/setup";
-export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Investment & Business Setup | Bonet Elite Services",
   description:

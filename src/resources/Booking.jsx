@@ -7,7 +7,7 @@ const System = () => {
       <div className="w-full md:w-1/2 flex justify-center">
         <img 
           src="../assets/images/data.jpeg" 
-          alt="AI-Powered Booking System" 
+          alt="Smart Booking System" 
           className="w-full h-auto max-h-[500px] object-cover rounded-2xl shadow-lg"
         />
       </div>
@@ -15,16 +15,16 @@ const System = () => {
       {/* Right Side - Text */}
       <div className="w-full md:w-1/2 flex flex-col justify-center">
         <h2 style={{fontSize:'25px'}} className="font-bold bg-[#188bff] bg-clip-text text-transparent">
-          Building an AI-Powered Booking System for Hotels and Tours
+          Building a Smart Booking System for Hotels and Tours
         </h2>
         <p style={{fontSize:'17px'}}className="md:text-xl text-gray-700 mt-4 leading-relaxed">
-          Discover how AI optimizes hotel and tour bookings with predictive analytics and automation. 
-          By analyzing customer preferences and booking patterns, AI enhances the efficiency of reservation systems. 
+          Discover how our system optimizes hotel and tour bookings with smart analytics and automation. 
+          By analyzing customer preferences and booking patterns, we enhance the efficiency of reservation systems. 
           Automated systems reduce human errors, ensuring seamless user experiences. 
-          AI-driven recommendations personalize travel options, making trip planning more convenient. 
+          Smart recommendations personalize travel options, making trip planning more convenient. 
           Real-time availability updates improve resource management for hotels and tour operators. 
           Intelligent automation minimizes booking conflicts and maximizes occupancy rates. 
-          The future of travel lies in AI-powered systems that streamline booking processes for businesses and travelers alike.
+          The future of travel lies in smart systems that streamline booking processes for businesses and travelers alike.
         </p>
       </div>
     </div>

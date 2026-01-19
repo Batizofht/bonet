@@ -1,7 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const TrustedCompanies = () => {
+  const { t } = useTranslation();
   return (
     <motion.section
       className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 mb-15"
@@ -15,23 +17,19 @@ const TrustedCompanies = () => {
         <div className="w-20 h-1 bg-[#188bff] mx-auto md:mx-0 mt-2 mb-5"></div>
 
         <h2 className="text-gray-700 text-3xl font-bold mb-6">
-          Businesses trust us <br />
+          {t("title.part1")} <br />
           <span className="font-bold bg-[#188bff] bg-clip-text text-transparent">
-            to streamline operations with AI
+            {t("title.part2")}
           </span>
         </h2>
         <p className="text-gray-600 mb-4">
-          Our advanced AI-powered solutions revolutionize{" "}
-          <span className="bg-[#188bff] bg-clip-text text-transparent">
-            booking, scheduling, and customer interactions
-          </span>
-          . Bonet Elite Services enhances productivity by automating operations and providing smart assistance for businesses of all sizes.
+          {t("description")}
         </p>
         <a
           href="#"
           className="bg-[#188bff] bg-clip-text text-transparent font-medium flex items-center justify-center md:justify-start hover:underline"
         >
-          Learn more about our AI solutions <span className="ml-2">→</span>
+          {t("aisolutions.learnMore")}
         </a>
       </div>
 

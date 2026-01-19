@@ -1,6 +1,5 @@
 import React from "react";
 import HomePageClient from "./pageClient";
-export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Bonet Elite Services | Travel, Business & Investment Support in Rwanda",
   description:

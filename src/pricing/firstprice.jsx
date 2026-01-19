@@ -13,7 +13,7 @@ const FirstPrice = () => {
           whileInView={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8 }}
         >
-          AI-Powered Scheduling & Booking
+          Smart Scheduling & Booking
         </motion.h1>
         {/* Subtitle */}
         <motion.p 

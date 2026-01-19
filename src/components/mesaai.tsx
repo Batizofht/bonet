@@ -15,8 +15,8 @@ export default function WelcomeMessageAI() {
 
   const message =
   i18n.language === "fr"
-        ? "🤖 Bienvenue chez Bonet Elite Services ! Nous sommes ravis de vous offrir un support personnalisé et un service de qualité supérieure."
-        : "🤖 Welcome to Bonet Elite Services! We’re excited to offer you personalized support and top-notch service."
+        ? "👋 Bonjour ! Je suis votre agent Bonet. Comment puis-je vous aider aujourd'hui ?"
+        : "👋 Hello! I'm your Bonet Agent. How can I help you today?"
     
   return (
     <div className="flex flex-col space-y-2">

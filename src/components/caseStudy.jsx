@@ -8,21 +8,21 @@ import ChatAi from "../ai/chat";
 const caseStudies = [
   {
     image: "../assets/images/chat5.png",
-    title: "AI-Powered Chatbot for Customer Support",
+    title: "24/7 Customer Support Excellence",
     description:
-      "We developed an advanced AI chatbot that handles customer queries, assists with bookings, and guides users through business registration. The chatbot significantly improved response time, reducing customer wait times by 60%.",
+      "We developed a dedicated support system that handles customer queries, assists with bookings, and guides users through business registration. Our team significantly improved response time, reducing customer wait times by 60%.",
     bgColor: "bg-blue-100",
-    buttonText: "Open Chatbot",
+    buttonText: "Chat Now",
     openChat: true,
   },
   {
     image: "../assets/images/chat3.jpeg",
-    title: "AI-Driven Booking System for Hotels & Transport",
+    title: "Smart Booking System for Hotels & Transport",
     description:
-      "Our AI-powered booking system automates hotel, transport, and tour reservations. By leveraging machine learning, it provides dynamic pricing, personalized recommendations, and optimizes availability based on real-time data.",
+      "Our streamlined booking system handles hotel, transport, and tour reservations efficiently. It provides dynamic pricing, personalized recommendations, and optimizes availability based on real-time data.",
     bgColor: "bg-green-100",
     buttonText: `${t("menu.bookNow")}`,
-    navigateTO: "/bookNow", // Updated path to match React Router convention
+    navigateTO: "/bookNow",
   },
   // {
   //   image: "../assets/images/chat2.webp",

@@ -3,7 +3,6 @@ import FirstContact from "../../contact/firstcontact";
 import ContactUs from "../../contact/contact";
 import GoogleMapEmbed from "../../contact/map";
 import MapComponent from "../../navigation/map";
-export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Contact Us | Bonet Elite Services",
   description:
