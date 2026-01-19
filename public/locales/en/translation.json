@@ -142,7 +142,7 @@
   },
   "footer": {
     "description": "At Bonet Elite Services, we make travel, business, and investment easy so you can focus on what truly matters. Let’s make your experience in Rwanda seamless and successful!",
-    "quickLinks": "Quick Links",
+    "quickLinks": "Explore",
     "about": "About Us",
     "services": "Services",
     "bookNow": "Book Now",
@@ -151,7 +151,11 @@
     "whatsappCall": "WhatsApp/Call:",
     "email": "Email:",
     "location": "Location:",
-    "copyright": "All rights reserved."
+    "copyright": "All rights reserved.",
+    "travel": "Travel & Hospitality",
+    "investment": "Investment & Business Setup",
+    "consulting": "Business Consulting",
+    "hrsupport": "HR & Administrative Support"
   },
   "menu": {
     "home": "Home",

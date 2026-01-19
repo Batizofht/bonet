@@ -151,7 +151,12 @@
     "whatsappCall": "WhatsApp/Appel :",
     "email": "Email :",
     "location": "Localisation :",
-    "copyright": "Tous droits réservés."
+    "copyright": "Tous droits réservés.",
+    "travel": "Voyage & Hôtellerie",
+    "investment": "Investissement & Création d'entreprise",
+    "consulting": "Conseil d'entreprise",
+    "hrsupport": "RH & Support administratif"
+    
   },
   "menu": {
     "home": "Accueil",

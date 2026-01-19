@@ -151,7 +151,11 @@
     "whatsappCall": "WhatsApp/电话：",
     "email": "邮箱：",
     "location": "地点：",
-    "copyright": "保留所有权利。"
+    "copyright": "保留所有权利。",
+     "travel": "旅行与接待",
+    "investment": "商业设立",
+    "consulting": "企业咨询",
+    "hrsupport": "人力资源与行政支持"
   },
   "menu": {
     "home": "首页",
