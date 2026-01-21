@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "next/navigation";
-import { Calendar, Clock, User, ArrowLeft, BookOpen, Share2, Facebook, Instagram, Linkedin, MessageCircle, X } from "lucide-react";
+import { Calendar, User, ArrowLeft, Share2, Facebook, Linkedin, MessageCircle, X } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -25,7 +25,6 @@ export default function BlogDetail() {
   const [blog, setBlog] = useState<Blog | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [debugInfo, setDebugInfo] = useState<any>(null);
   const [showShareModal, setShowShareModal] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -35,81 +34,59 @@ export default function BlogDetail() {
         setLoading(true);
         setError(null);
         
-        console.log('🔍 Starting fetch for slug:', slug);
-        
         const response = await axios.get(
           "https://api.bonet.rw:8443/bonetBackend/backend/public/blogs",
-          {
-            timeout: 10000,
-          }
+          { timeout: 10000 }
         );
 
-        console.log('📦 Full API response:', response);
-        
-        // Store debug info
-        setDebugInfo({
-          slug: slug,
-          responseStatus: response.status,
-          responseData: response.data,
-          dataStructure: Object.keys(response.data),
-          hasDataArray: Array.isArray(response.data?.data),
-          dataLength: response.data?.data?.length || 0,
-          allTitles: response.data?.data?.map((b: Blog) => b.title) || []
-        });
-
-        // Check if response has the expected structure
         if (!response.data) {
           throw new Error('No data in response');
         }
 
-        // Handle different possible response structures
         const blogsArray = response.data.data || response.data.blogs || response.data;
         
         if (!Array.isArray(blogsArray)) {
           throw new Error('Blogs data is not an array');
         }
 
-        console.log('📝 All blog titles:', blogsArray.map((b: Blog) => b.title));
-        console.log('🔄 Looking for slug:', slug);
-
         const foundBlog = blogsArray.find((item: Blog) => {
           if (!item.title) return false;
           
-          const blogSlug = item.title.toLowerCase().replace(/\s+/g, "-");
-          console.log('🔍 Comparing:', blogSlug, '===', slug, '->', blogSlug === slug);
+          const blogSlug = item.title
+            .toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-')
+            .trim();
+          
           return blogSlug === slug;
         });
 
-        console.log('✅ Found blog:', foundBlog);
-
         if (!foundBlog) {
-          // Try alternative slug formats
           const alternativeBlog = blogsArray.find((item: Blog) => {
             if (!item.title) return false;
             
-            // Try different slug formats
-            const formats = [
-              item.title.toLowerCase().replace(/\s+/g, "-"),
-              item.title.toLowerCase().replace(/\s+/g, "_"),
-              item.title.toLowerCase(),
-              item.title
-            ];
+            const normalizedSlug = item.title
+              .toLowerCase()
+              .replace(/[^\w\s-]/g, '')
+              .replace(/\s+/g, '-')
+              .replace(/-+/g, '-')
+              .trim();
             
+            const formats = [normalizedSlug, item.title];
             return formats.includes(slug);
           });
           
           if (alternativeBlog) {
-            console.log('🎉 Found blog with alternative format:', alternativeBlog);
             setBlog(alternativeBlog);
             return;
           }
           
-          throw new Error(`No blog found with slug: ${slug}. Available slugs: ${blogsArray.map((b: Blog) => b.title?.toLowerCase().replace(/\s+/g, "-")).join(', ')}`);
+          throw new Error(`No blog found with slug: ${slug}`);
         }
 
         setBlog(foundBlog);
       } catch (err: any) {
-        console.error('❌ Error fetching blog:', err);
         setError(err.message || 'Failed to load blog');
       } finally {
         setLoading(false);
@@ -121,98 +98,12 @@ export default function BlogDetail() {
     }
   }, [slug]);
 
-  // Update meta tags for social sharing (Open Graph)
-  useEffect(() => {
-    if (!blog) return;
-
-    const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
-    const baseUrl = currentUrl.includes('localhost') 
-      ? 'https://www.bonet.rw' 
-      : currentUrl.split('/blog/')[0] || 'https://www.bonet.rw';
-    const fullUrl = `${baseUrl}/blog/${slug}`;
-    
-    // Get image URL - use the blog post's image
-    const imageUrl = blog.image 
-      ? `https://api.bonet.rw:8443/bonetBackend/public/${blog.image}`
-      : 'https://www.bonet.rw/assets/images/logo.png';
-    
-    // Get description (strip HTML tags for meta description)
-    const plainDescription = blog.description 
-      ? blog.description.replace(/<[^>]*>/g, '').substring(0, 200)
-      : blog.quote || 'Read this article on Bonet Elite Services';
-
-    // Update or create meta tags
-    const updateMetaTag = (property: string, content: string) => {
-      let element = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement;
-      if (!element) {
-        element = document.createElement('meta');
-        element.setAttribute('property', property);
-        document.head.appendChild(element);
-      }
-      element.setAttribute('content', content);
-    };
-
-    const updateNameTag = (name: string, content: string) => {
-      let element = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement;
-      if (!element) {
-        element = document.createElement('meta');
-        element.setAttribute('name', name);
-        document.head.appendChild(element);
-      }
-      element.setAttribute('content', content);
-    };
-
-    // Open Graph tags for Facebook and LinkedIn
-    updateMetaTag('og:title', blog.title);
-    updateMetaTag('og:description', plainDescription);
-    updateMetaTag('og:image', imageUrl);
-    updateMetaTag('og:image:secure_url', imageUrl); // HTTPS version
-    updateMetaTag('og:image:type', 'image/jpeg'); // Common image type
-    updateMetaTag('og:image:width', '1200'); // Recommended width for OG images
-    updateMetaTag('og:image:height', '630'); // Recommended height for OG images
-    updateMetaTag('og:image:alt', blog.title); // Alt text for accessibility
-    updateMetaTag('og:url', fullUrl);
-    updateMetaTag('og:type', 'article');
-    updateMetaTag('og:site_name', 'Bonet Elite Services');
-    
-    // Article-specific tags
-    if (blog.author) {
-      updateMetaTag('article:author', blog.author);
-    }
-    if (blog.created_at) {
-      updateMetaTag('article:published_time', new Date(blog.created_at).toISOString());
-    }
-
-    // Twitter Card tags
-    updateNameTag('twitter:card', 'summary_large_image');
-    updateNameTag('twitter:title', blog.title);
-    updateNameTag('twitter:description', plainDescription);
-    updateNameTag('twitter:image', imageUrl);
-    updateNameTag('twitter:image:alt', blog.title);
-
-    // Standard meta tags
-    updateNameTag('description', plainDescription);
-    
-    // Update page title
-    document.title = `${blog.title} | Bonet Elite Services`;
-
-    // Cleanup function
-    return () => {
-      // Optionally remove meta tags on unmount, but usually we want to keep them
-    };
-  }, [blog, slug]);
-
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#188bff] mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading blog post...</p>
-          {debugInfo && (
-            <div className="mt-4 p-4 bg-yellow-50 rounded-lg">
-              <p className="text-sm text-yellow-800">Debug: {JSON.stringify(debugInfo)}</p>
-            </div>
-          )}
         </div>
       </div>
     );
@@ -220,27 +111,12 @@ export default function BlogDetail() {
 
   if (error || !blog) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center max-w-2xl mx-auto px-4">
           <div className="text-red-500 text-6xl mb-4">⚠️</div>
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">Blog Not Found</h1>
-          <p className="text-gray-600 mb-4">
-            {error || "The blog post you're looking for doesn't exist."}
-          </p>
-          
-          {debugInfo && (
-            <div className="mb-6 p-4 bg-gray-100 rounded-lg text-left">
-              <h3 className="font-bold mb-2">Debug Information:</h3>
-              <pre className="text-sm whitespace-pre-wrap">
-                {JSON.stringify(debugInfo, null, 2)}
-              </pre>
-            </div>
-          )}
-          
-          <Link 
-            href="/"
-            className="inline-flex items-center gap-2 bg-[#188bff] text-white px-6 py-3 rounded-xl hover:bg-blue-600 transition-all duration-300 font-semibold"
-          >
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Blog Not Found</h1>
+          <p className="text-gray-600 mb-4">{error || "The blog post you're looking for doesn't exist."}</p>
+          <Link href="/" className="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors">
             <ArrowLeft className="w-4 h-4" />
             Back to Home
           </Link>
@@ -248,14 +124,6 @@ export default function BlogDetail() {
       </div>
     );
   }
-
-  const getReadingTime = (text: string) => {
-    if (!text) return '2 min read';
-    const wordsPerMinute = 200;
-    const words = text.split(/\s/g).length;
-    const minutes = Math.ceil(words / wordsPerMinute);
-    return `${minutes} min read`;
-  };
 
   const formatDate = (dateString: string) => {
     if (!dateString) return 'Recent';
@@ -274,28 +142,26 @@ export default function BlogDetail() {
     if (!html) return '';
     
     return html
-      .replace(/<p>/g, '<p class="">')
-      .replace(/<h1>/g, '<h1 class="text-3xl font-bold text-gray-800 ">')
+      .replace(/<p>/g, '<p class="mb-4 text-gray-700 leading-relaxed">')
+      .replace(/<h1>/g, '<h1 class="text-3xl font-bold text-gray-900 mb-6 mt-8">')
       .replace(/<\/h1>/g, '</h1>')
-      .replace(/<h2>/g, '<h2 class="text-2xl font-bold text-gray-800 ">')
+      .replace(/<h2>/g, '<h2 class="text-2xl font-bold text-gray-900 mb-4 mt-6">')
       .replace(/<\/h2>/g, '</h2>')
-      .replace(/<h3>/g, '<h3 class="text-xl font-bold text-gray-800 ">')
+      .replace(/<h3>/g, '<h3 class="text-xl font-bold text-gray-900 mb-3 mt-5">')
       .replace(/<\/h3>/g, '</h3>')
-      .replace(/<ul>/g, '<ul class="list-disc list-inside ">')
+      .replace(/<ul>/g, '<ul class="list-disc list-inside mb-4 ml-6">')
       .replace(/<\/ul>/g, '</ul>')
-      .replace(/<ol>/g, '<ol class="list-decimal list-inside ">')
+      .replace(/<ol>/g, '<ol class="list-decimal list-inside mb-4 ml-6">')
       .replace(/<\/ol>/g, '</ol>')
-      .replace(/<li>/g, '<li class="text-gray-700">')
+      .replace(/<li>/g, '<li class="text-gray-700 mb-2">')
       .replace(/<\/li>/g, '</li>')
-      .replace(/<strong>/g, '<strong class="font-semibold text-gray-800">')
+      .replace(/<strong>/g, '<strong class="font-semibold text-gray-900">')
       .replace(/<\/strong>/g, '</strong>')
-      .replace(/<em>/g, '<em class="italic text-gray-700">')
+      .replace(/<em>/g, '<em class="italic text-gray-600">')
       .replace(/<\/em>/g, '</em>')
-      .replace(
-        /<blockquote>/g,
-        '<blockquote class="border-l-4 border-[#188bff] pl-4 italic text-gray-600 ">'
-      )
-      .replace(/<\/blockquote>/g, '</blockquote>');
+      .replace(/<blockquote>/g, '<blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-600 mb-4 bg-gray-50 py-2">')
+      .replace(/<\/blockquote>/g, '</blockquote>')
+      .replace(/<a href=/g, '<a class="text-gray-700 hover:text-gray-900 underline font-medium" href=');
   };
 
   const htmlDescription = processHTMLContent(blog.description || '');
@@ -303,7 +169,6 @@ export default function BlogDetail() {
   const getCurrentUrl = () => {
     if (typeof window !== 'undefined') {
       const currentUrl = window.location.href;
-      // If on localhost, use production URL for sharing (previews won't work on localhost anyway)
       if (currentUrl.includes('localhost')) {
         return `https://www.bonet.rw/blog/${slug}`;
       }
@@ -317,30 +182,6 @@ export default function BlogDetail() {
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
   };
 
-  const shareToInstagram = async () => {
-    // Instagram doesn't support direct URL sharing via web
-    // Copy URL to clipboard for user to paste in Instagram
-    try {
-      if (navigator.clipboard) {
-        await navigator.clipboard.writeText(getCurrentUrl());
-        setCopied(true);
-        setTimeout(() => setCopied(false), 3000);
-      } else {
-        // Fallback for older browsers
-        const textArea = document.createElement('textarea');
-        textArea.value = getCurrentUrl();
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 3000);
-      }
-    } catch (err) {
-      console.error('Failed to copy:', err);
-    }
-  };
-
   const shareToLinkedIn = () => {
     const url = encodeURIComponent(getCurrentUrl());
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'width=600,height=400');
@@ -349,45 +190,46 @@ export default function BlogDetail() {
   const shareToWhatsApp = () => {
     const url = encodeURIComponent(getCurrentUrl());
     const text = encodeURIComponent(`Check out this article: ${blog.title}`);
-    // Use api.whatsapp.com for better cross-platform support
     window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, '_blank');
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <div className="max-w-4xl mx-auto px-4 pb-8 pt-8">
-    
+  const copyLink = async () => {
+    try {
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(getCurrentUrl());
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3000);
+      }
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
 
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-6 text-center leading-tight">
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-4xl mx-auto px-4 pb-8 pt-8">
+        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 text-center leading-tight">
           {blog.title}
         </h1>
 
-        <div className="flex flex-wrap items-center justify-center gap-6 mb-8 text-gray-600">
+        <div className="flex flex-wrap items-center justify-center gap-6 mb-8">
           <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-[#188bff]" />
-            <span className="text-sm font-medium">
+            <Calendar className="w-4 h-4 text-gray-500" />
+            <span className="text-sm font-medium text-gray-600">
               {formatDate(blog.created_at || '')}
             </span>
           </div>
           
-          {/* <div className="flex items-center gap-2">
-            <Clock className="w-4 h-4 text-[#188bff]" />
-            <span className="text-sm font-medium">
-              {getReadingTime(blog.description || blog.quote || '')}
-            </span>
-          </div> */}
-          
           <div className="flex items-center gap-2">
-            <User className="w-4 h-4 text-[#188bff]" />
-            <span className="text-sm font-medium">
+            <User className="w-4 h-4 text-gray-500" />
+            <span className="text-sm font-medium text-gray-600">
               {blog.author || 'Bonet Team'}
             </span>
           </div>
           
           <button
             onClick={() => setShowShareModal(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-[#188bff] text-white rounded-xl hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
-            aria-label="Share article"
+            className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
           >
             <Share2 className="w-4 h-4" />
             <span className="text-sm font-medium">Share</span>
@@ -395,7 +237,7 @@ export default function BlogDetail() {
         </div>
 
         {blog.image && (
-          <div className="relative rounded-2xl overflow-hidden mb-8 shadow-xl border border-blue-100">
+          <div className="relative rounded-lg overflow-hidden mb-8 bg-white shadow-sm border border-gray-200">
             <img
               src={`https://api.bonet.rw:8443/bonetBackend/public/${blog.image}`}
               alt={blog.title}
@@ -405,23 +247,22 @@ export default function BlogDetail() {
                 target.style.display = 'none';
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
           </div>
         )}
 
         {blog.quote && (
-          <blockquote className="relative bg-gradient-to-r from-blue-500 to-cyan-400 rounded-2xl p-8 mb-8 text-center">
-            <p className="text-2xl font-semibold text-white leading-relaxed italic">
+          <blockquote className="bg-gray-50 border-l-4 border-gray-300 rounded-lg p-6 mb-8">
+            <p className="text-xl font-medium text-gray-700 leading-relaxed italic">
               "{blog.quote}"
             </p>
           </blockquote>
         )}
 
-        <article className="prose prose-lg max-w-none">
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-blue-50">
+        <article className="max-w-none">
+          <div className="bg-white rounded-lg p-8 shadow-sm border border-gray-200 overflow-hidden">
             {blog.description ? (
               <div
-                className="leading-relaxed text-gray-700 text-lg"
+                className="prose prose-lg max-w-none text-gray-700 leading-relaxed break-words overflow-wrap-break-word"
                 dangerouslySetInnerHTML={{ __html: htmlDescription }}
               />
             ) : (
@@ -436,7 +277,6 @@ export default function BlogDetail() {
         <AnimatePresence>
           {showShareModal && (
             <>
-              {/* Backdrop */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -445,88 +285,60 @@ export default function BlogDetail() {
                 className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
               />
               
-              {/* Modal */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                initial={{ opacity: 0, scale: 0.95, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                exit={{ opacity: 0, scale: 0.95, y: 10 }}
                 className="fixed inset-0 z-50 flex items-center justify-center p-4"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative">
-                  {/* Close Button */}
+                <div className="bg-white rounded-lg shadow-lg border border-gray-200 max-w-sm w-full p-5 relative">
                   <button
                     onClick={() => setShowShareModal(false)}
-                    className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
-                    aria-label="Close modal"
+                    className="absolute top-3 right-3 p-1.5 hover:bg-gray-100 rounded-md transition-colors"
                   >
-                    <X className="w-5 h-5 text-gray-600" />
+                    <X className="w-4 h-4 text-gray-600" />
                   </button>
                   
-                  {/* Modal Header */}
-                  <div className="flex items-center gap-3 mb-6">
-                    <Share2 className="w-6 h-6 text-[#188bff]" />
-                    <h2 className="text-2xl font-bold text-gray-800">Share this article</h2>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Share2 className="w-5 h-5 text-gray-700" />
+                    <h2 className="text-lg font-semibold text-gray-900">Share this article</h2>
                   </div>
                   
-                  {/* Share Buttons */}
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-2">
                     <button
                       onClick={shareToFacebook}
-                      className="flex flex-col items-center gap-2 p-4 bg-[#1877F2] text-white rounded-xl hover:bg-[#166FE5] transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
-                      aria-label="Share on Facebook"
+                      className="w-full flex items-center gap-3 p-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-700 font-medium"
                     >
-                      <Facebook className="w-6 h-6" />
-                      <span className="font-medium text-sm">Facebook</span>
-                    </button>
-                    
-                    <button
-                      onClick={shareToInstagram}
-                      className={`flex flex-col items-center gap-2 p-4 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white rounded-xl hover:opacity-90 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 ${copied ? 'ring-2 ring-green-400' : ''}`}
-                      aria-label="Share on Instagram"
-                    >
-                      <Instagram className="w-6 h-6" />
-                      <span className="font-medium text-sm">
-                        {copied ? 'Copied!' : 'Instagram'}
-                      </span>
+                      <Facebook className="w-4 h-4" />
+                      <span>Facebook</span>
                     </button>
                     
                     <button
                       onClick={shareToLinkedIn}
-                      className="flex flex-col items-center gap-2 p-4 bg-[#0077B5] text-white rounded-xl hover:bg-[#006399] transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
-                      aria-label="Share on LinkedIn"
+                      className="w-full flex items-center gap-3 p-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-700 font-medium"
                     >
-                      <Linkedin className="w-6 h-6" />
-                      <span className="font-medium text-sm">LinkedIn</span>
+                      <Linkedin className="w-4 h-4" />
+                      <span>LinkedIn</span>
                     </button>
                     
                     <button
                       onClick={shareToWhatsApp}
-                      className="flex flex-col items-center gap-2 p-4 bg-[#25D366] text-white rounded-xl hover:bg-[#20BA5A] transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
-                      aria-label="Share on WhatsApp"
+                      className="w-full flex items-center gap-3 p-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-700 font-medium"
                     >
-                      <MessageCircle className="w-6 h-6" />
-                      <span className="font-medium text-sm">WhatsApp</span>
+                      <MessageCircle className="w-4 h-4" />
+                      <span>WhatsApp</span>
                     </button>
-                  </div>
-                  
-                  {/* Copy URL Section */}
-                  <div className="mt-6 pt-6 border-t border-gray-200">
-                    <p className="text-sm text-gray-600 mb-2">Or copy link</p>
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="text"
-                        readOnly
-                        value={getCurrentUrl()}
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm bg-gray-50"
-                      />
-                      <button
-                        onClick={shareToInstagram}
-                        className={`px-4 py-2 bg-[#188bff] text-white rounded-lg hover:bg-blue-600 transition-colors text-sm font-medium ${copied ? 'bg-green-500 hover:bg-green-600' : ''}`}
-                      >
-                        {copied ? 'Copied!' : 'Copy'}
-                      </button>
-                    </div>
+                    
+                    <button
+                      onClick={copyLink}
+                      className={`w-full flex items-center gap-3 p-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-700 font-medium ${copied ? 'bg-green-50 text-green-700' : ''}`}
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                      <span>{copied ? 'Copied!' : 'Copy Link'}</span>
+                    </button>
                   </div>
                 </div>
               </motion.div>
