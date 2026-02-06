@@ -124,7 +124,7 @@
       "description": "Découvrez les secteurs d'investissement les plus prometteurs du Rwanda, y compris l'immobilier, l'agriculture, les TIC et le tourisme, avec des informations sur les rendements potentiels et le soutien gouvernemental.",
       "highlight": "La croissance économique du Rwanda et ses politiques favorables aux investisseurs en font un choix privilégié pour les investissements étrangers en Afrique."
     },
-    "learnMore": "En savoir plus →"
+    "learnMore": "En savoir plus"
   },
   "blog": {
     "header": {
@@ -133,7 +133,8 @@
     },
     "loading": "Chargement des blogs...",
     "noPosts": "Aucun article de blog disponible.",
-    "readMore": "Lire la suite"
+    "readMore": "Lire la suite",
+    "blogs ":"Le blog"
   },
   "faq": {
     "header": "Quelques questions fréquemment posées",

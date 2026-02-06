@@ -124,7 +124,7 @@
       "description": "Uncover Rwanda’s most promising investment sectors, including real estate, agriculture, ICT, and tourism, with insights on potential returns and government support.",
       "highlight": "Rwanda's economic growth and investor-friendly policies make it a top choice for foreign investments in Africa."
     },
-    "learnMore": "Learn more →"
+    "learnMore": "Learn more"
   },
   "blog": {
     "header": {
@@ -133,7 +133,8 @@
     },
     "loading": "Loading blogs...",
     "noPosts": "No blog posts available.",
-    "readMore": "Read More"
+    "readMore": "Read More",
+    "blogs":"Blogs"
   },
   "faq": {
     "header": "Some Frequently Asked Questions",

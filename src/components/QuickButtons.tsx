@@ -15,8 +15,10 @@ import {
   Briefcase, 
   Calendar,
   MessageCircle,
-  Sparkles
+  Sparkles,
+  NewspaperIcon
 } from "lucide-react";
+import { FaBlog } from "react-icons/fa";
 
 const QuickButtons = () => {
   const { t } = useTranslation();
@@ -112,6 +114,17 @@ const QuickButtons = () => {
     <>
       {/* Desktop view */}
       <div className="hidden md:flex space-x-3 items-center">
+        {/* blog */}
+          {/* Book Now */}
+      <Link href="/blogs" className={getActiveClass("/blogs")}>
+        <motion.div
+          whileHover={{ y: -2 }}
+          className="flex items-center gap-2 py-2"
+        >
+              <NewspaperIcon className="w-4 h-4" />
+          {t('blog.blogs')}
+        </motion.div>
+      </Link>
         {/* Language Selector */}
         <div className="relative">
           <motion.button
@@ -184,13 +197,13 @@ const QuickButtons = () => {
 
       {/* Mobile menu button */}
       <motion.button
-        className="md:hidden p-2 bg-gradient-to-r from-[#188bff] to-cyan-500 text-white rounded-xl shadow-lg"
+        className="md:hidden p-2  text-white rounded-xl "
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
         aria-label={t("quickButtons.ariaLabels.openMenu")}
       >
-        <Menu className="w-6 h-6" />
+        <Menu className="w-6 h-6 text-gray-700" />
       </motion.button>
 
       {/* Mobile Overlay */}

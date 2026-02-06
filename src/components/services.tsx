@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { Building, Handshake, Briefcase, ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
@@ -12,23 +12,40 @@ interface Service {
   buttonText: string;
 }
 
+// OPTIMIZED: Icons array outside component to prevent recreation
 const icons = [Building, Handshake, Briefcase];
 
 function Services() {
   const { t } = useTranslation();
   const navigate = useRouter();
   const [selectedService, setSelectedService] = useState<number | null>(0);
+  
+  // OPTIMIZED: Memoize services data
   const servicesRaw = t("services.list", { returnObjects: true });
-  const services: Service[] = Array.isArray(servicesRaw) ? servicesRaw : [];
+  const services: Service[] = useMemo(() => 
+    Array.isArray(servicesRaw) ? servicesRaw : [], 
+    [servicesRaw]
+  );
+
+  // OPTIMIZED: Memoize click handler
+  const handleCardClick = useCallback((index: number) => {
+    setSelectedService(prev => prev === index ? null : index);
+  }, []);
+
+  // OPTIMIZED: Memoize navigation handler
+  const handleNavigate = useCallback((e: React.MouseEvent, route: string) => {
+    e.stopPropagation();
+    navigate.push(route);
+  }, [navigate]);
 
   return (
     <div className="w-full flex flex-col items-center p-8 min-h-[500px] bg-gradient-to-b from-white to-blue-50/30">
       {/* Header with unique styling */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-3 mb-4">
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
-          <div className="w-20 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse" />
+          <div className="w-20 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent" />
+          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse" />
         </div>
         
         <h2 className="text-4xl font-bold text-gray-800">
@@ -36,7 +53,7 @@ function Services() {
             i === 1 ? (
               <span key={i} className="bg-[#188bff] bg-clip-text text-transparent relative">
                 {word}
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#188bff] transform scale-x-0 hover:scale-x-100 transition-transform"></span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#188bff] transform scale-x-0 hover:scale-x-100 transition-transform" />
                 {" "}
               </span>
             ) : (
@@ -60,7 +77,7 @@ function Services() {
                   ? "shadow-2xl ring-2 ring-[#188bff] ring-opacity-20" 
                   : "shadow-lg hover:shadow-xl"
               }`}
-              onClick={() => setSelectedService(isSelected ? null : index)}
+              onClick={() => handleCardClick(index)}
             >
               <div className="p-6">
                 <div className="flex items-center justify-between">
@@ -104,16 +121,13 @@ function Services() {
                     <div className="flex justify-center items-center">
                         <button
                       className="flex items-center gap-3 bg-[#188bff] text-white px-8 py-4 rounded-2xl hover:bg-blue-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl cursor-pointer group/btn"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        navigate.push(service.route);
-                      }}
+                      onClick={(e) => handleNavigate(e, service.route)}
                     >
                       {service.buttonText}
                          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </button> 
                     </div>
-                 
+                  
                   </div>
                 </div>
               </div>

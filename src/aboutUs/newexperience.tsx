@@ -1,11 +1,13 @@
 "use client";
 import { Building2, User, Rocket } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useMemo } from "react";
 
 export default function NewExperience() {
   const { t } = useTranslation();
 
-  const features = [
+  // OPTIMIZED: Memoize features array to prevent recreation on every render
+  const features = useMemo(() => [
     {
       title: t("experience.card1.title"),
       description: t("experience.card1.description"),
@@ -21,7 +23,7 @@ export default function NewExperience() {
       description: t("experience.card3.description"),
       icon: Rocket,
     }
-  ];
+  ], [t]);
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">

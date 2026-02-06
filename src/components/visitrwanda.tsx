@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { MapPin, ArrowRight, Camera, Sparkles } from "lucide-react";
@@ -9,7 +9,8 @@ const Gallery = () => {
   const navigate = useRouter();
   const { t } = useTranslation();
 
-  const images = [
+  // OPTIMIZED: Memoize images array to prevent recreation on every render
+  const images = useMemo(() => [
     { src: "../assets/images/conv.jpg", key: "conv" },
     { src: "../assets/images/k2.webp", key: "k2" },
     { src: "../assets/images/memo.jpg", key: "memo" },
@@ -22,18 +23,36 @@ const Gallery = () => {
     { src: "../assets/images/gis3.jpg", key: "gis3" },
     { src: "../assets/images/huye.JPG", key: "huye" },
     { src: "../assets/images/muhazi.jpg", key: "muhazi" }
-  ];
+  ], []);
+
+  // OPTIMIZED: Memoize animation variants
+  const containerVariants = useMemo(() => ({
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  }), []);
+
+  const itemVariants = useMemo(() => ({
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const }
+    }
+  }), []);
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
       {/* Header */}
       <div className="text-center mb-16">
         <div className="flex justify-center items-center gap-3 mb-4">
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
-          <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
+          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse" />
+          <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent" />
           <Camera className="w-6 h-6 text-[#188bff] animate-pulse" />
-          <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+          <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent" />
+          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse" />
         </div>
         
         <h2 className="text-4xl font-bold text-gray-800 mb-4">
@@ -41,7 +60,7 @@ const Gallery = () => {
             i === 0 ? (
               <span key={i} className="bg-[#188bff] bg-clip-text text-transparent relative inline-block">
                 {word}
-                <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#188bff] to-cyan-400 transform scale-x-0 hover:scale-x-100 transition-transform duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#188bff] to-cyan-400 transform scale-x-0 hover:scale-x-100 transition-transform duration-300" />
                 {" "}
               </span>
             ) : (
@@ -52,21 +71,26 @@ const Gallery = () => {
         <p className="text-gray-500 text-lg">{t("Explore beautiful destinations in Rwanda")}</p>
       </div>
 
-      {/* Gallery Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+      {/* OPTIMIZED: Use motion container with variants instead of individual initial props */}
+      <motion.div 
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      >
         {images.map((image, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
+            variants={itemVariants}
             className="relative group cursor-pointer"
           >
             <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+              {/* OPTIMIZED: Add loading="lazy" for better performance */}
               <img
                 src={image.src}
                 alt={t(`gallery.places.${image.key}`)}
+                loading="lazy"
                 className="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500"
               />
               
@@ -97,7 +121,7 @@ const Gallery = () => {
             </div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Button */}
       <div className="flex justify-center">

@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+"use client"
+import { useState, useEffect, useRef } from "react";
 import { ChevronDown, ChevronUp, PhoneCall, MessageCircle, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import AOS from "aos";
@@ -26,6 +27,8 @@ export default function FAQ() {
   const router = useRouter();
   const navigate = usePathname();
   const [faqs, setFaqs] = useState<FAQ[]>([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const toggleFAQ = (index: any) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -33,25 +36,59 @@ export default function FAQ() {
 
   const { t } = useTranslation();
 
+  // OPTIMIZED: Only fetch when component is visible
   useEffect(() => {
     // Only initialize AOS once globally
     if (typeof window !== 'undefined' && !window.AOS_INITIALIZED) {
       AOS.init({ duration: 1000, easing: "ease-out", once: true });
       window.AOS_INITIALIZED = true;
     }
-    fetchFAQs();
+
+    // Intersection Observer to delay API call until visible
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1, rootMargin: '100px' }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
-  const fetchFAQs = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.bonet.rw:8443/bonetBackend/backend/public/faqs"
-      );
-      setFaqs(response.data);
-    } catch (error) {
-      console.error("Error fetching FAQs:", error);
-    }
-  };
+  // Fetch only when visible
+  useEffect(() => {
+    if (!isVisible) return;
+    
+    let isMounted = true;
+    
+    const fetchFAQs = async () => {
+      try {
+        // Delay API call by 500ms to prioritize render
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        if (!isMounted) return;
+        
+        const response = await axios.get(
+          "https://api.bonet.rw:8443/bonetBackend/backend/public/faqs"
+        );
+        setFaqs(response.data);
+      } catch (error) {
+        // Silent fail
+      }
+    };
+
+    fetchFAQs();
+    
+    return () => {
+      isMounted = false;
+    };
+  }, [isVisible]);
 
   return (
     <motion.div

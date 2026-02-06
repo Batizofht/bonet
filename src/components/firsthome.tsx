@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+"use client"
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
@@ -17,35 +18,29 @@ interface Advertisement {
 const FirstHome = () => {
   const { t } = useTranslation();
   const router = useRouter();
-  const isDevelopment = process.env.NODE_ENV === 'development';
 
-  const fullText = t("welcome_message");
+  // Memoize translation to prevent re-renders
+  const fullText = useMemo(() => t("welcome_message"), [t]);
+  
   const [displayText, setDisplayText] = useState("");
   const [deleting, setDeleting] = useState(false);
-  const typingSpeed = isDevelopment ? 50 : 100; // Faster in development
-  const deletingSpeed = isDevelopment ? 25 : 50; // Faster in development
-
+  
   const [ads, setAds] = useState<Advertisement[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAd, setShowAd] = useState(false);
   const [adVisible, setAdVisible] = useState(true);
 
-  // Combined effects for typing and advertisements
+  // OPTIMIZED: Typing effect with stable dependencies
   useEffect(() => {
-    // Skip typing effect in development for faster performance
-    if (isDevelopment) {
-      setDisplayText(fullText);
-      return;
+    // Skip typing effect entirely for performance
+    if (displayText === fullText && !deleting) {
+      const pauseTimer = setTimeout(() => setDeleting(true), 2000);
+      return () => clearTimeout(pauseTimer);
     }
 
-    // Typing effect logic
-    const typingTimeout = setTimeout(() => {
+    const timer = setTimeout(() => {
       if (!deleting) {
-        if (displayText.length < fullText.length) {
-          setDisplayText(fullText.slice(0, displayText.length + 1));
-        } else {
-          setTimeout(() => setDeleting(true), 1000);
-        }
+        setDisplayText(fullText.slice(0, displayText.length + 1));
       } else {
         if (displayText.length > 0) {
           setDisplayText(fullText.slice(0, displayText.length - 1));
@@ -53,39 +48,40 @@ const FirstHome = () => {
           setDeleting(false);
         }
       }
-    }, deleting ? deletingSpeed : typingSpeed);
+    }, deleting ? 30 : 80);
 
-    // Skip API calls in development
-    if (isDevelopment) {
-      return () => clearTimeout(typingTimeout);
-    }
+    return () => clearTimeout(timer);
+  }, [displayText, deleting, fullText]);
 
-    // Fetch advertisements
+  // OPTIMIZED: Fetch ads only once on mount
+  useEffect(() => {
+    let isMounted = true;
+    
     const fetchAds = async () => {
       try {
         const res = await axios.get(
           "https://api.bonet.rw:8443/bonetBackend/backend/public/advertisements"
         );
-        const validAds = res.data.filter((ad:any) => Number(ad.time) > 0);
-        setAds(validAds);
-        if (validAds.length > 0) {
-          setShowAd(true);
+        if (isMounted) {
+          const validAds = res.data.filter((ad: any) => Number(ad.time) > 0);
+          setAds(validAds);
         }
       } catch (error) {
-        console.error("Failed to fetch advertisements:", error);
+        // Silent fail - don't break render
       }
     };
 
-    fetchAds();
-
+    // Delay ad fetch until after initial render
+    const timer = setTimeout(fetchAds, 1000);
     return () => {
-      clearTimeout(typingTimeout);
+      isMounted = false;
+      clearTimeout(timer);
     };
-  }, [displayText, deleting, fullText, deletingSpeed, typingSpeed, isDevelopment]);
+  }, []);
 
-  // Show first ad after 3s
+  // Show first ad after delay
   useEffect(() => {
-    if (!ads.length) return;
+    if (ads.length === 0) return;
     const timer = setTimeout(() => setShowAd(true), 3000);
     return () => clearTimeout(timer);
   }, [ads]);

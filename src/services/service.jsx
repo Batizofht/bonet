@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaHotel, FaBriefcase, FaHandshake, FaUsers } from "react-icons/fa";

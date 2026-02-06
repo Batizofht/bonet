@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+'use client'
+import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import AOS from "aos";
@@ -26,33 +27,72 @@ export default function Blog() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>("");
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const { t } = useTranslation();
 
+  // OPTIMIZED: Only fetch when component is visible (below fold)
   useEffect(() => {
     // Only initialize AOS once globally
     if (typeof window !== 'undefined' && !window.AOS_INITIALIZED) {
       AOS.init({ duration: 1000, easing: "ease-out", once: true });
       window.AOS_INITIALIZED = true;
     }
-    fetchBlogs();
+
+    // Intersection Observer to delay API call until visible
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1, rootMargin: '100px' }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
-  const fetchBlogs = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.bonet.rw:8443/bonetBackend/backend/public/blogshome"
-      );
-      const blogArray = Array.isArray(response.data.data)
-        ? response.data.data
-        : response.data.data || [];
-      setBlogs(blogArray);
-    } catch (err) {
-      setError("Failed to load blogs. Please try again later.");
-      console.error("Error fetching blogs:", err);
-    } finally {
-      setLoading(false);
-    } 
-  };
+  // Fetch only when visible
+  useEffect(() => {
+    if (!isVisible) return;
+    
+    let isMounted = true;
+    
+    const fetchBlogs = async () => {
+      try {
+        // Delay API call by 500ms to prioritize render
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        if (!isMounted) return;
+        
+        const response = await axios.get(
+          "https://api.bonet.rw:8443/bonetBackend/backend/public/blogshome"
+        );
+        const blogArray = Array.isArray(response.data.data)
+          ? response.data.data
+          : response.data.data || [];
+        setBlogs(blogArray);
+      } catch (err) {
+        if (isMounted) {
+          setError("Failed to load blogs.");
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchBlogs();
+    
+    return () => {
+      isMounted = false;
+    };
+  }, [isVisible]);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -71,12 +111,13 @@ export default function Blog() {
 
   return (
     <motion.section
+      ref={sectionRef}
       className="py-16 px-4 max-w-6xl mx-auto"
       initial={{ opacity: 0, y: -30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
       viewport={{ once: true }}
-    >
+    > 
       {/* BLOG HEADER - SAME DESIGN AS BEFORE */}
       <div className="text-center mb-16">
         <div className="flex justify-center items-center gap-3 mb-4">
@@ -154,26 +195,14 @@ export default function Blog() {
               </p>
 
               {/* Meta Info */}
-              {/* <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-4 text-xs text-gray-500">
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
-                    <span>{getReadingTime(post.quote)}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <BookOpen className="w-3 h-3" />
-                    <span>Blog</span>
-                  </div>
-                </div>
-              </div> */}
-
+  
               {/* Read More Button */}
               <Link 
                 href={`/blog/${slugify(post.title)}`}
                 className="inline-flex items-center gap-2 text-[#188bff] font-semibold text-sm group/btn hover:gap-3 transition-all duration-300"
               >
                 {t("blog.readMore")}
-                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform mt-1" />
               </Link>
             </div>
           </motion.article>
@@ -189,14 +218,7 @@ export default function Blog() {
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          {/* <Link
-            href="/blog"
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#188bff] to-cyan-400 text-white px-8 py-4 rounded-xl hover:shadow-lg transition-all duration-300 font-semibold group/cta"
-          >
-            <BookOpen className="w-5 h-5" />
-            View All Articles
-            <ArrowRight className="w-5 h-5 group-hover/cta:translate-x-1 transition-transform" />
-          </Link> */}
+   
         </motion.div>
       )}
     </motion.section>

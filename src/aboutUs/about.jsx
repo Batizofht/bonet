@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react';
 import { FaMapMarkerAlt, FaBuilding, FaUsers } from 'react-icons/fa'; // Icons for services
 import { motion } from 'framer-motion';

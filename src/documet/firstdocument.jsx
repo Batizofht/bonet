@@ -1,6 +1,16 @@
+
+'use client'
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const FirstDocument = () => {
+  // For window.innerHeight - handle SSR
+  const [windowHeight, setWindowHeight] = useState(1000);
+
+  useEffect(() => {
+    setWindowHeight(window.innerHeight);
+  }, []);
+
   return (
     <div className="relative bg-black min-h-screen flex items-center justify-center p-6 overflow-hidden">
       <div className="text-center">
@@ -27,7 +37,7 @@ const FirstDocument = () => {
           <motion.div
             key={index}
             initial={{ scale: 0, y: 100, rotate: 0, opacity: 0 }}
-            animate={{ scale: 1.3, y: -window.innerHeight, rotate: 360, opacity: 1 }}
+            animate={{ scale: 1.3, y: -windowHeight, rotate: 360, opacity: 1 }}
             transition={{ duration: 6, repeat: Infinity, ease: "linear", delay: index * 0.3 }}
             className="absolute w-8 h-8 border-2 border-transparent rounded-full"
             style={{

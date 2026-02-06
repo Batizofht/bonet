@@ -1,7 +1,15 @@
-import React from "react";
+"use client"
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const FirstInvestment = () => {
+  // For window.innerHeight - handle SSR
+  const [windowHeight, setWindowHeight] = useState(1000);
+
+  useEffect(() => {
+    setWindowHeight(window.innerHeight);
+  }, []);
+
   return (
     <div className="relative w-full h-screen bg-cover bg-center overflow-hidden" style={{ backgroundImage: "url('/investment-bg.jpg')" }}>
       {/* Overlay */}
@@ -28,7 +36,7 @@ const FirstInvestment = () => {
           <motion.div
             key={index}
             initial={{ scale: 0, y: 100, rotate: 0, opacity: 0 }}
-            animate={{ scale: 1.3, y: -window.innerHeight, rotate: 360, opacity: 1 }}
+            animate={{ scale: 1.3, y: -windowHeight, rotate: 360, opacity: 1 }}
             transition={{ duration: 6, repeat: Infinity, ease: "linear", delay: index * 0.3 }}
             className="absolute w-8 h-8 border-2 border-transparent rounded-full"
             style={{

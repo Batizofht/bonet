@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
@@ -7,7 +8,8 @@ import { ArrowRight, Sparkles, Target, Globe, Zap } from "lucide-react";
 const AiSolutions = () => {
   const { t } = useTranslation();
 
-  const aiFeatures = [
+  // OPTIMIZED: Memoize aiFeatures array to prevent recreation on every render
+  const aiFeatures = useMemo(() => [
     {
       image: "../assets/images/rdb3.jfif",
       title: t("aisolutions.feature1.title"),
@@ -35,7 +37,25 @@ const AiSolutions = () => {
       icon: Zap,
       color: "from-orange-500 to-amber-400"
     },
-  ];
+  ], [t]);
+
+  // OPTIMIZED: Memoize animation variants
+  const containerVariants = useMemo(() => ({
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  }), []);
+
+  const itemVariants = useMemo(() => ({
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const }
+    }
+  }), []);
 
   return (
     <section className="max-w-6xl mx-auto py-16 px-4">
@@ -49,38 +69,41 @@ const AiSolutions = () => {
           <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
         </div>
         
-<h2 className="text-4xl font-bold text-gray-800 mb-4">
-  {t("aisolutions.title").split(" ").map((word, i, arr) => 
-    i > 1 ? (
-      <span key={i}>
-        <span className="bg-[#188bff] bg-clip-text text-transparent relative inline-block">
-          {word}
-          <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#188bff] to-cyan-400 transform scale-x-0 hover:scale-x-100 transition-transform duration-300"></span>
-        </span>
-        {i < arr.length - 1 ? ' ' : ''}
-      </span>
-    ) : (
-      <span key={i}>
-        {word}
-        {i < arr.length - 1 ? ' ' : ''}
-      </span>
-    )
-  )}
-</h2>
+        <h2 className="text-4xl font-bold text-gray-800 mb-4">
+          {t("aisolutions.title").split(" ").map((word, i, arr) => 
+            i > 1 ? (
+              <span key={i}>
+                <span className="bg-[#188bff] bg-clip-text text-transparent relative inline-block">
+                  {word}
+                  <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#188bff] to-cyan-400 transform scale-x-0 hover:scale-x-100 transition-transform duration-300"></span>
+                </span>
+                {i < arr.length - 1 ? ' ' : ''}
+              </span>
+            ) : (
+              <span key={i}>
+                {word}
+                {i < arr.length - 1 ? ' ' : ''}
+              </span>
+            )
+          )}
+        </h2>
         <p className="text-gray-500 text-lg">{t("Innovative solutions for modern businesses")}</p>
       </div>
 
-      {/* Features */}
-      <div className="space-y-12">
+      {/* OPTIMIZED: Use motion container with variants */}
+      <motion.div 
+        className="space-y-12"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      >
         {aiFeatures.map((feature, index) => {
           const IconComponent = feature.icon;
           return (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              viewport={{ once: true }}
+              variants={itemVariants}
               className={`flex flex-col lg:flex-row items-center gap-8 group ${
                 index % 2 === 1 ? "lg:flex-row-reverse" : ""
               }`}
@@ -88,9 +111,11 @@ const AiSolutions = () => {
               {/* Image */}
               <div className="lg:w-1/2 w-full">
                 <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  {/* OPTIMIZED: Add loading="lazy" for better performance */}
                   <img
                     src={feature.image}
                     alt={feature.title}
+                    loading="lazy"
                     className="w-full h-64 lg:h-80 object-cover transform group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -129,14 +154,14 @@ const AiSolutions = () => {
                     className="inline-flex items-center gap-2 bg-white border-2 border-[#188bff] text-[#188bff] px-6 py-3 rounded-xl hover:bg-[#188bff] hover:text-white transition-all duration-300 font-semibold group/btn shadow-sm hover:shadow-md"
                   >
                     {t("aisolutions.learnMore")}
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform mt-1" />
                   </Link>
                 </motion.div>
               </div>
             </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </section>
   );
 };
