@@ -16,7 +16,8 @@ import {
   Calendar,
   MessageCircle,
   Sparkles,
-  NewspaperIcon
+  NewspaperIcon,
+  Newspaper
 } from "lucide-react";
 import { FaBlog } from "react-icons/fa";
 
@@ -108,6 +109,7 @@ const QuickButtons = () => {
     { path: "/about", icon: Users, label: t("quickButtons.menu.aboutUs") },
     { path: "/services", icon: Briefcase, label: t("quickButtons.menu.services") },
     { path: "/bookNow", icon: Calendar, label: t("quickButtons.menu.bookNow") },
+     { path: "/blogs", icon: Newspaper, label: t("blog.blogs") },
   ];
 
   return (

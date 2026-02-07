@@ -134,7 +134,7 @@
     "loading": "正在加载博客...",
     "noPosts": "暂无博客文章。",
     "readMore": "阅读更多",
-    "blog":"博客"
+    "blogs":"博客"
   },
   "faq": {
     "header": "一些常见问题",
@@ -156,7 +156,8 @@
      "travel": "旅行与接待",
     "investment": "商业设立",
     "consulting": "企业咨询",
-    "hrsupport": "人力资源与行政支持"
+    "hrsupport": "人力资源与行政支持",
+    "blogs": "博客"
   },
   "menu": {
     "home": "首页",

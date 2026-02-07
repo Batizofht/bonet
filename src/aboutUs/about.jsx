@@ -1,7 +1,6 @@
 "use client"
 import React, { useState } from 'react';
 import { FaMapMarkerAlt, FaBuilding, FaUsers } from 'react-icons/fa'; // Icons for services
-import { motion } from 'framer-motion';
 
 const AboutUs = () => {
     const [expandedCard, setExpandedCard] = useState(null);
@@ -36,12 +35,7 @@ const AboutUs = () => {
             {/* Full-Screen Hero Section */}
             <div className="relative w-full h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/images/hero-bg.jpg')" }}>
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center px-6">
-                    <motion.div 
-                        initial={{ opacity: 0, y: -50 }} 
-                        whileInView={{ opacity: 1, y: 0 }} 
-                        transition={{ duration: 0.8 }}
-                        className="max-w-3xl"
-                    >
+                    <div className="max-w-3xl">
                         <div className="bg-[#188bff] inline-block text-transparent bg-clip-text">
                             <h1 className="text-4xl lg:text-4xl xl:text-4xl font-bold capitalize leading-tight">
                                 AI-Powered Business Automation & Optimization
@@ -50,7 +44,7 @@ const AboutUs = () => {
                         <p className="text-lg text-gray-200 mt-4">
                             We specialize in AI-driven solutions that enhance automation, improve customer experience, and streamline operations.
                         </p>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
 
@@ -64,11 +58,8 @@ const AboutUs = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
                     {cardData.map((card, index) => (
-                        <motion.div 
+                        <div 
                             key={index}
-                            initial={{ opacity: 0, y: 50 }} 
-                            whileInView={{ opacity: 1, y: 0 }} 
-                            transition={{ duration: 0.8, delay: index * 0.2 }}
                             className={`p-6 bg-white border border-gray-500 shadow-lg rounded-lg flex flex-col items-center text-center gap-4 cursor-pointer transition-all duration-500 ${expandedCard === index ? 'h-auto' : 'h-[250px]'}`}
                             onClick={() => toggleExpand(index)}
                         >
@@ -79,7 +70,7 @@ const AboutUs = () => {
                             <p className="text-zinc-600 text-sm">
                                 {expandedCard === index ? card.longDesc : card.shortDesc}
                             </p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

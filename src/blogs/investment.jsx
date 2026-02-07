@@ -1,22 +1,19 @@
 "use client"
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import { 
   TrendingUp, 
   DollarSign, 
   Building, 
   MapPin, 
   Calendar,
-  ArrowRight,
-  Sparkles,
   Target,
-  BarChart3,
-  Lightbulb,
-  Rocket
+  BarChart3
 } from 'lucide-react';
 
 const InvestmentOpportunities = () => {
   const { t } = useTranslation();
+  const router = useRouter();
 
   const blogs = t('investmentOpportunities.items', { returnObjects: true });
 
@@ -25,11 +22,11 @@ const InvestmentOpportunities = () => {
       {/* Header */}
       <div className="text-center mb-16">
         <div className="flex justify-center items-center gap-3 mb-4">
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+          <div className="w-3 h-3 bg-[#188bff] rounded-full "></div>
           <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <TrendingUp className="w-6 h-6 text-[#188bff] animate-pulse" />
+          <TrendingUp className="w-6 h-6 text-[#188bff] " />
           <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+          <div className="w-3 h-3 bg-[#188bff] rounded-full "></div>
         </div>
         
         <h2 className="text-4xl font-bold text-gray-800 mb-4">
@@ -46,11 +43,8 @@ const InvestmentOpportunities = () => {
       {/* Investment Blogs */}
       <div className="space-y-16">
         {blogs.map((blog, index) => (
-          <motion.div
+          <div
             key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
             className={`flex flex-col lg:flex-row items-center bg-white rounded-3xl border-2 border-blue-100 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden ${
               index % 2 === 1 ? "lg:flex-row-reverse" : ""
             }`}
@@ -75,9 +69,6 @@ const InvestmentOpportunities = () => {
             {/* Content */}
             <div className="lg:w-3/5 w-full p-8 lg:p-12">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#188bff] to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg">
-                  <Rocket className="w-6 h-6 text-white" />
-                </div>
                 <div>
                   <h3 className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#188bff] to-cyan-500 bg-clip-text text-transparent">
                     {blog.title}
@@ -107,16 +98,13 @@ const InvestmentOpportunities = () => {
                 </h4>
                 <ul className="space-y-2">
                   {blog.keyPoints.map((point, i) => (
-                    <motion.li
+                    <li
                       key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4, delay: i * 0.1 }}
                       className="flex items-center gap-3 text-gray-600"
                     >
                       <div className="w-2 h-2 bg-[#188bff] rounded-full flex-shrink-0"></div>
                       <span>{point}</span>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -139,34 +127,21 @@ const InvestmentOpportunities = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-3">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-2 bg-[#188bff] text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-600 transition-colors shadow-md hover:shadow-lg"
-                >
-                  <Lightbulb className="w-4 h-4" />
-                  Learn More
-                  <ArrowRight className="w-4 h-4" />
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <button
+                  onClick={() => router.push('/contact')}
                   className="flex items-center gap-2 border-2 border-[#188bff] text-[#188bff] px-6 py-3 rounded-xl font-semibold hover:bg-[#188bff] hover:text-white transition-all"
                 >
                   <DollarSign className="w-4 h-4" />
                   Investment Guide
-                </motion.button>
+                </button>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
 
       {/* Call to Action */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+      <div
         className="mt-16 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-3xl p-8 border-2 border-blue-100 text-center"
       >
         <div className="max-w-2xl mx-auto">
@@ -184,24 +159,15 @@ const InvestmentOpportunities = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-[#188bff] text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-600 transition-colors shadow-lg hover:shadow-xl"
-            >
-              Start Investing
-            </motion.button>
-            
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <button
+              onClick={() => router.push('/consulting')}
               className="border-2 border-[#188bff] text-[#188bff] px-8 py-3 rounded-xl font-semibold hover:bg-[#188bff] hover:text-white transition-all"
             >
               Free Consultation
-            </motion.button>
+            </button>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

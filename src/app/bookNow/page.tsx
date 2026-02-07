@@ -1,7 +1,6 @@
 
 // app/book/page.tsx
 import React from "react";
-import ThirdService from "../../services/thirdservice";
 import ContainerWithButtons from "../../book/container";
 import Gallery from "../../components/visitrwanda";
 export const metadata = {

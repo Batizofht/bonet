@@ -264,9 +264,12 @@ export default function BlogsPageWithLoadMore() {
         {/* Sticky Header */}
         <div 
           ref={headerRef}
+          style={{
+            marginTop: isSticky ? '-1000px' : '0',
+          }}
           className={`mb-10 transition-all duration-300 ${
             isSticky 
-              ? 'fixed rounded-lg md:mt-1 top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-lg py-4 px-4 md:px-6' 
+              ? 'fixed rounded-lg  top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-lg py-4 px-4 md:px-6' 
               : ''
           }`}
           style={isSticky ? { 

@@ -1,77 +1,41 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaSearch, FaHotel, FaHome, FaCar, FaUmbrellaBeach } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { usePathname } from "next/navigation";
 
-// Your existing imports...
-import HotelCard from "./hotelcard";
-import HotelMore from "./hotelmore";
-import ApartmentCard from "./apartments/apartmentcard";
-import ApartmentMore from "./apartments/apartmentmore";
-import TransportCard from "./transport/transportcard";
-import TransportMore from "./transport/transportmore";
-import TourTypeSelector from "../tour/tourcard";
-import TourMore from "../tour/TourMore";
+// Lazy load components
+const HotelCard = lazy(() => import("./hotelcard"));
+const ApartmentCard = lazy(() => import("./apartments/apartmentcard"));
+const TransportCard = lazy(() => import("./transport/transportcard"));
+const TourTypeSelector = lazy(() => import("../tour/tourcard"));
 import { Search } from "lucide-react";
 
 const ContainerWithButtons = () => {
   const { t } = useTranslation();
   const [activeComponent, setActiveComponent] = useState("hotel");
-  const [bookedHotel, setBookedHotel] = useState(null);
-  const [bookedApartment, setBookedApartment] = useState(null);
-  const [bookedTransport, setBookedTransport] = useState(null);
-  const [tourData, setTourData] = useState(null);
-  const [showDetailsMobile, setShowDetailsMobile] = useState(false);
   const location = usePathname();
-useEffect(() => {
-  const hash = window.location.hash;
-  const validHashes = ["#tourism", "#apartments", "#transport", "#hotel"];
-  
-  if (validHashes.includes(hash)) {
-    const componentId = hash.replace("#", "");
-    setActiveComponent(componentId);
-    setTimeout(() => {
-      const elem = document.getElementById(componentId);
-      if (elem) {
-        elem.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 300);
-  }
-  
-}, [location]);
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    const validHashes = ["#tourism", "#apartments", "#transport", "#hotel"];
+    
+    if (validHashes.includes(hash)) {
+      const componentId = hash.replace("#", "");
+      setActiveComponent(componentId);
+      setTimeout(() => {
+        const elem = document.getElementById(componentId);
+        if (elem) {
+          elem.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300);
+    }
+    
+  }, [location]);
 
   const handleClick = (component) => {
     setActiveComponent(component);
-    setBookedHotel(null);
-    setBookedApartment(null);
-    setBookedTransport(null);
-    setTourData(null);
-    setShowDetailsMobile(false);
-  };
-
-  const bookHotel = (hotel) => {
-    setBookedHotel(hotel);
-    if (window.innerWidth < 768) setShowDetailsMobile(true);
-  };
-
-  const bookApartment = (apartment) => {
-    setBookedApartment(apartment);
-    if (window.innerWidth < 768) setShowDetailsMobile(true);
-  };
-
-  const bookTransport = (transport) => {
-    setBookedTransport(transport);
-    if (window.innerWidth < 768) setShowDetailsMobile(true);
-  };
-
-  const handleTourSubmit = (data) => {
-    setTourData(data);
-  };
-
-  const goBackFromMobileDetail = () => {
-    setShowDetailsMobile(false);
   };
 
   // Enhanced menu config with icons and colors
@@ -119,7 +83,6 @@ useEffect(() => {
   return (
     <div className="flex flex-col sm:flex-row min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30">
       {/* Left section */}
-      {!showDetailsMobile && (
         <motion.div 
           className="flex-1 p-4 sm:p-8 overflow-y-auto"
           initial={{ opacity: 0, x: -20 }}
@@ -231,67 +194,17 @@ useEffect(() => {
             </motion.div>
 
             {/* Cards Container */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeComponent}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="space-y-6 "
-              >
-                {activeComponent === "hotel" && <HotelCard bookHotel={bookHotel} />}
-                {activeComponent === "apartments" && <ApartmentCard bookApartment={bookApartment} />}
-                {activeComponent === "transport" && <TransportCard bookTransport={bookTransport} />}
-                {activeComponent === "tourism" && <TourTypeSelector onTourSubmit={handleTourSubmit} />}
-              </motion.div>
-            </AnimatePresence>
+            <div className="space-y-6 ">
+              <Suspense fallback={<div className="text-center py-8">Loading...</div>}>
+                {activeComponent === "hotel" && <HotelCard bookHotel={() => {}} />}
+                {activeComponent === "apartments" && <ApartmentCard bookApartment={() => {}} />}
+                {activeComponent === "transport" && <TransportCard bookTransport={() => {}} />}
+                {activeComponent === "tourism" && <TourTypeSelector onTourSubmit={() => {}} />}
+              </Suspense>
+            </div>
           </motion.div>
         </motion.div>
-      )}
-
-      {/* Right section - Details Panel */}
-      {/* <AnimatePresence>
-        {(bookedHotel || bookedApartment || bookedTransport || tourData) && (
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 50 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="flex-1 p-4 sm:p-8 bg-white/90 backdrop-blur-sm border-l border-gray-200"
-          >
-            <AnimatePresence mode="wait">
-              {activeComponent === "hotel" && bookedHotel && (
-                <HotelMore bookedHotel={bookedHotel} goBack={goBackFromMobileDetail} />
-              )}
-              {activeComponent === "apartments" && bookedApartment && (
-                <ApartmentMore bookedApartment={bookedApartment} goBack={goBackFromMobileDetail} />
-              )}
-              {activeComponent === "transport" && bookedTransport && (
-                <TransportMore bookedTransport={bookedTransport} goBack={goBackFromMobileDetail} />
-              )}
-              <div id="tourism">
-                {activeComponent === "tourism" && tourData && (
-                  <TourMore tourData={tourData} goBack={() => setTourData(null)} />
-                )}
-              </div>
-            </AnimatePresence>
-          </motion.div>
-        )}
-      </AnimatePresence> */}
-
-      {/* Mobile Back Button */}
-      {showDetailsMobile && (
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          onClick={goBackFromMobileDetail}
-          className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-white px-6 py-3 rounded-full shadow-lg border border-gray-200 font-semibold text-gray-700 z-50 md:hidden"
-        >
-          ← Back to List
-        </motion.button>
-      )}
-    </div>
+      </div>
   );
 };
 

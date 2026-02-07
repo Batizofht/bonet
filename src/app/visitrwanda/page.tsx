@@ -17,7 +17,7 @@ export const metadata = {
       "Plan your trip with Bonet Elite Services. Experience Rwanda’s breathtaking landscapes, business opportunities, and cultural treasures.",
     images: [
       {
-        url: "https://www.bonet.rw/images/visit-rwanda-preview.jpg",
+        url: "https://res.cloudinary.com/take-memories/images/f_auto,dpr_auto,q_auto,w_2000,c_fill,h_1200/gm/hbb8oblj5tozmimydbaz/rwanda-sehenswurdigkeiten",
         width: 800,
         height: 600,
         alt: "Visit Rwanda",
@@ -29,7 +29,7 @@ export const metadata = {
     title: "Visit Rwanda | Bonet Elite Services",
     description:
       "Explore Rwanda with Bonet Elite Services. Tourism, culture, and investment in the heart of Africa.",
-    images: ["https://www.bonet.rw/images/visit-rwanda-preview.jpg"],
+    images: ["https://res.cloudinary.com/take-memories/images/f_auto,dpr_auto,q_auto,w_2000,c_fill,h_1200/gm/hbb8oblj5tozmimydbaz/rwanda-sehenswurdigkeiten"],
   },
 };
 

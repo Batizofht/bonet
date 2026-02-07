@@ -1,7 +1,6 @@
 "use client"
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
 import { Target, Eye, Users, Sparkles, Rocket, Globe } from 'lucide-react';
 
 const AIEnhancedBusinessComponent = () => {
@@ -12,11 +11,11 @@ const AIEnhancedBusinessComponent = () => {
       {/* Header */}
       <div className="text-center mb-16">
         <div className="flex justify-center items-center gap-3 mb-4">
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+          <div className="w-3 h-3 bg-[#188bff] rounded-full "></div>
           <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <Users className="w-6 h-6 text-[#188bff] animate-pulse" />
+          <Users className="w-6 h-6 text-[#188bff] " />
           <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+          <div className="w-3 h-3 bg-[#188bff] rounded-full "></div>
         </div>
         
         <h2 className="text-4xl font-bold text-gray-800 mb-4">
@@ -28,11 +27,7 @@ const AIEnhancedBusinessComponent = () => {
       {/* Vision & Mission Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
         {/* Vision Card */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          whileHover={{ y: -5, scale: 1.02 }}
+        <div
           className="group relative bg-white rounded-2xl p-8 border-2 border-blue-100 hover:border-[#188bff] transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
         >
           <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -49,14 +44,10 @@ const AIEnhancedBusinessComponent = () => {
           <p className="text-gray-600 leading-relaxed text-lg">
             {t('vision.visionText')}
           </p>
-        </motion.div>
+        </div>
 
         {/* Mission Card */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          whileHover={{ y: -5, scale: 1.02 }}
+        <div
           className="group relative bg-white rounded-2xl p-8 border-2 border-green-100 hover:border-green-400 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
         >
           <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -73,14 +64,11 @@ const AIEnhancedBusinessComponent = () => {
           <p className="text-gray-600 leading-relaxed text-lg">
             {t('vision.missionText')}
           </p>
-        </motion.div>
+        </div>
       </div>
 
       {/* Optional About Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+      <div
         className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-3xl p-8 border-2 border-blue-100"
       >
         <div className="text-center max-w-4xl mx-auto">
@@ -121,7 +109,7 @@ const AIEnhancedBusinessComponent = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

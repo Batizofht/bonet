@@ -106,6 +106,8 @@ const [views, setViews] = useState(0);
   }, [slug]);
 // Add these state variables
 
+// Add these state variables
+
 // Generate unique device ID
 const getDeviceId = () => {
   let deviceId = localStorage.getItem('deviceId');
@@ -130,226 +132,138 @@ const getDeviceId = () => {
   return deviceId;
 };
 
-// Fetch claps and views from localStorage
+// Fetch claps and views from SERVER
+
+// Fix the fetch function to check localStorage for userClapped state
 useEffect(() => {
   const fetchClapsAndViews = async () => {
     if (!blog?.id) return;
 
-    const deviceId = getDeviceId();
-    
-    // Get claps from localStorage
-    const clapsKey = `blog_${blog.id}_claps`;
-    const storedClaps = localStorage.getItem(clapsKey);
-    const clapsCount = storedClaps ? parseInt(storedClaps) : 0;
-    setClaps(clapsCount);
-    
-    // Check if current device has clapped
-    const clapStatusKey = `blog_${blog.id}_clapped_${deviceId}`;
-    const hasClapped = localStorage.getItem(clapStatusKey) === 'true';
-    setUserClapped(hasClapped);
-    
-    // Get views from localStorage (IP-based simulation)
-    const viewsKey = `blog_${blog.id}_views`;
-    const storedViews = localStorage.getItem(viewsKey);
-    const viewsCount = storedViews ? parseInt(storedViews) : Math.floor(Math.random() * 100) + 50; // Default random views
-    setViews(viewsCount);
-    
-    // Track view (once per device per day)
-    trackView();
+    try {
+      const deviceId = getDeviceId();
+      
+      // Fetch claps data from SERVER
+      const clapsResponse = await axios.get(
+        `https://api.bonet.rw:8443/bonetBackend/backend/public/clappings?blog=${blog.id}`
+      );
+
+      if (clapsResponse.data) {
+        setClaps(clapsResponse.data.total_claps || 0);
+      }
+      console.log(clapsResponse.data);
+
+      // Check LOCAL storage if this device has clapped
+      const hasClapped = localStorage.getItem(`blog_${blog.id}_clapped`) === 'true';
+      setUserClapped(hasClapped);
+
+      // Fetch views data from SERVER
+      const viewsResponse = await axios.get(
+        `https://api.bonet.rw:8443/bonetBackend/backend/public/views?blog=${blog.id}`
+      );
+
+      if (viewsResponse.data) {
+        setViews(viewsResponse.data.views || 0);
+      }
+    } catch (err) {
+      console.error('Error fetching claps/views:', err);
+    }
   };
 
   if (blog?.id) {
     fetchClapsAndViews();
+    trackView();
   }
 }, [blog?.id]);
-
 // Handle clap function - Toggle like/unlike
-const handleClap = () => {
+const handleClap = async () => {
   if (!blog?.id || clapping) return;
 
   setClapping(true);
   
   try {
     const deviceId = getDeviceId();
-    const clapsKey = `blog_${blog.id}_claps`;
-    const clapStatusKey = `blog_${blog.id}_clapped_${deviceId}`;
     
-    // Get current claps
-    const currentClaps = claps;
-    const hasClapped = userClapped;
+    // Check local storage FIRST - does this device think it has clapped?
+    const hasClappedLocally = localStorage.getItem(`blog_${blog.id}_clapped`) === 'true';
     
-    if (hasClapped) {
-      // UNCLAP - Decrease clap count
-      const newClaps = Math.max(0, currentClaps - 1);
-      setClaps(newClaps);
-      setUserClapped(false);
-      
-      // Update localStorage
-      localStorage.setItem(clapsKey, newClaps.toString());
-      localStorage.setItem(clapStatusKey, 'false');
-      
-      // Remove from clapped devices list
-      const clappedDevicesKey = `blog_${blog.id}_clapped_devices`;
-      const clappedDevices = JSON.parse(localStorage.getItem(clappedDevicesKey) || '[]');
-      const updatedDevices = clappedDevices.filter((id: string) => id !== deviceId);
-      localStorage.setItem(clappedDevicesKey, JSON.stringify(updatedDevices));
-    } else {
-      // CLAP - Increase clap count
-      const newClaps = currentClaps + 1;
-      setClaps(newClaps);
-      setUserClapped(true);
-      
-      // Update localStorage
-      localStorage.setItem(clapsKey, newClaps.toString());
-      localStorage.setItem(clapStatusKey, 'true');
-      
-      // Add to clapped devices list
-      const clappedDevicesKey = `blog_${blog.id}_clapped_devices`;
-      const clappedDevices = JSON.parse(localStorage.getItem(clappedDevicesKey) || '[]');
-      if (!clappedDevices.includes(deviceId)) {
-        clappedDevices.push(deviceId);
-        localStorage.setItem(clappedDevicesKey, JSON.stringify(clappedDevices));
+    // Tell server to TOGGLE the clap state
+    const response = await axios.post(
+      `https://api.bonet.rw:8443/bonetBackend/backend/public/clappings`,
+      { 
+        blog: blog.id,
+        device: deviceId,
+        action: hasClappedLocally ? 'unclap' : 'clap' // Tell server what to do
+      },
+      { 
+        headers: { 
+          'Content-Type': 'application/json'
+        }
       }
+    );
+
+    if (response.data) {
+      // Update state from SERVER response
+      setClaps(response.data.total_claps || 0);
+      
+      // TOGGLE local clap state
+      const newClapState = !hasClappedLocally;
+      setUserClapped(newClapState);
+      
+      // Update localStorage
+      localStorage.setItem(`blog_${blog.id}_clapped`, newClapState ? 'true' : 'false');
     }
-    
-    // Sync to server in background (optional)
-    syncClapsToServer();
-    
   } catch (err) {
     console.error('Error clapping:', err);
+    // Fallback toggle
+    const newClapState = !userClapped;
+    setUserClapped(newClapState);
+    setClaps(prev => newClapState ? prev + 1 : Math.max(0, prev - 1));
+    localStorage.setItem(`blog_${blog.id}_clapped`, newClapState ? 'true' : 'false');
   } finally {
     setClapping(false);
   }
 };
-
-// Track view function (once per device per day)
-const trackView = () => {
+// Track view function (call this to server)
+const trackView = async () => {
   if (!blog?.id) return;
   
   try {
     const deviceId = getDeviceId();
     const today = new Date().toDateString();
-    const viewKey = `blog_${blog.id}_viewed_${deviceId}_${today}`;
-    const viewsKey = `blog_${blog.id}_views`;
+    const viewKey = `viewed_${blog.id}_${deviceId}`;
     
-    // Check if already viewed today
-    const hasViewedToday = localStorage.getItem(viewKey) === 'true';
+    // Check if already viewed today in localStorage
+    const lastViewDate = localStorage.getItem(viewKey);
     
-    if (!hasViewedToday) {
-      // Increment view count
-      const currentViews = views;
-      const newViews = currentViews + 1;
-      setViews(newViews);
+    if (lastViewDate !== today) {
+      // Send view to SERVER
+      await axios.post(
+        `https://api.bonet.rw:8443/bonetBackend/backend/public/views`,
+        { blog: blog.id, device: deviceId },
+        { 
+          headers: { 
+            'Content-Type': 'application/json'
+          }
+        }
+      );
       
-      // Update localStorage
-      localStorage.setItem(viewsKey, newViews.toString());
-      localStorage.setItem(viewKey, 'true');
+      // Mark as viewed today in localStorage
+      localStorage.setItem(viewKey, today);
       
-      // Add to viewed devices
-      const viewedDevicesKey = `blog_${blog.id}_viewed_devices`;
-      const viewedDevices = JSON.parse(localStorage.getItem(viewedDevicesKey) || '[]');
-      if (!viewedDevices.includes(deviceId)) {
-        viewedDevices.push(deviceId);
-        localStorage.setItem(viewedDevicesKey, JSON.stringify(viewedDevices));
+      // Refresh view count from server
+      const viewsResponse = await axios.get(
+        `https://api.bonet.rw:8443/bonetBackend/backend/public/views?blog=${blog.id}`
+      );
+      
+      if (viewsResponse.data) {
+        setViews(viewsResponse.data.views || 0);
       }
-      
-      // Sync to server in background (optional)
-      syncViewsToServer();
     }
   } catch (err) {
     console.error('Error tracking view:', err);
   }
 };
 
-// Optional: Sync to server (if you want backend backup)
-const syncClapsToServer = async () => {
-  if (!blog?.id) return;
-  
-  try {
-    const deviceId = getDeviceId();
-    const clappedDevicesKey = `blog_${blog.id}_clapped_devices`;
-    const clappedDevices = JSON.parse(localStorage.getItem(clappedDevicesKey) || '[]');
-    
-    await axios.post(
-      `https://api.bonet.rw:8443/bonetBackend/backend/public/clappings`,
-      {
-        blog: blog.id,
-        device: deviceId,
-        claps: claps,
-        clappedDevices: clappedDevices.length
-      },
-      { headers: { 'Content-Type': 'application/json' } }
-    );
-    console.log('Claps synced to server');
-  } catch (err) {
-    // Silent fail - offline mode
-  }
-};
-
-const syncViewsToServer = async () => {
-  if (!blog?.id) return;
-  
-  try {
-    const viewedDevicesKey = `blog_${blog.id}_viewed_devices`;
-    const viewedDevices = JSON.parse(localStorage.getItem(viewedDevicesKey) || '[]');
-    
-    await axios.post(
-      `https://api.bonet.rw:8443/bonetBackend/backend/public/views`,
-      {
-        blog: blog.id,
-        views: views,
-        uniqueDevices: viewedDevices.length
-      },
-      { headers: { 'Content-Type': 'application/json' } }
-    );
-  } catch (err) {
-    // Silent fail - offline mode
-  }
-};
-
-// Initialize with existing data from server (optional)
-useEffect(() => {
-  const initializeFromServer = async () => {
-    if (!blog?.id) return;
-    
-    try {
-      // Try to get initial data from server
-      const [clapsResponse, viewsResponse] = await Promise.allSettled([
-        axios.get(`https://api.bonet.rw:8443/bonetBackend/backend/public/clappings?blog=${blog.id}`),
-        axios.get(`https://api.bonet.rw:8443/bonetBackend/backend/public/views?blog=${blog.id}`)
-      ]);
-      
-      // Merge server data with local
-      if (clapsResponse.status === 'fulfilled' && clapsResponse.value.data) {
-        const serverClaps = clapsResponse.value.data.total_claps || 0;
-        const localClapsKey = `blog_${blog.id}_claps`;
-        const localClaps = parseInt(localStorage.getItem(localClapsKey) || '0');
-        
-        // Use whichever is higher
-        const finalClaps = Math.max(serverClaps, localClaps);
-        setClaps(finalClaps);
-        localStorage.setItem(localClapsKey, finalClaps.toString());
-      }
-      
-      if (viewsResponse.status === 'fulfilled' && viewsResponse.value.data) {
-        const serverViews = viewsResponse.value.data.views || 0;
-        const localViewsKey = `blog_${blog.id}_views`;
-        const localViews = parseInt(localStorage.getItem(localViewsKey) || '0');
-        
-        // Use whichever is higher
-        const finalViews = Math.max(serverViews, localViews);
-        setViews(finalViews);
-        localStorage.setItem(localViewsKey, finalViews.toString());
-      }
-    } catch (err) {
-      console.error('Error initializing from server:', err);
-    }
-  };
-  
-  if (blog?.id) {
-    initializeFromServer();
-  }
-}, [blog?.id]);
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">

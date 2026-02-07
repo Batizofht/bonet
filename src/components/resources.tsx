@@ -7,7 +7,7 @@ import "aos/dist/aos.css";
 import { slugify } from "../../slugify";
 import axios from "axios";
 import Link from "next/link";
-import { Calendar, Clock, BookOpen, Sparkles, ArrowRight } from "lucide-react";
+import { Calendar, Clock, BookOpen, Sparkles, ArrowRight, Eye } from "lucide-react";
 
 // TypeScript declaration for AOS_INITIALIZED
 declare global {
@@ -21,6 +21,7 @@ interface Blog {
   title: string;
   quote: string;
   created_at?: string;
+  view_count?: number;
 }
 
 export default function Blog() {
@@ -180,6 +181,13 @@ export default function Blog() {
                 <div className="flex items-center gap-1 text-xs text-gray-600">
                   <Calendar className="w-3 h-3" />
                   <span>{post.created_at ? formatDate(post.created_at) : 'Recent'}</span>
+                </div>
+              </div>
+                  {/* View Badge */}
+              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
+                <div className="flex items-center gap-1 text-xs text-gray-600">
+                  <Eye className="w-3 h-3" />
+                  <span>{post.created_at ? post.view_count: 'Recent'}</span>
                 </div>
               </div>
             </div>

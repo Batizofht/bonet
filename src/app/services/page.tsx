@@ -1,7 +1,9 @@
 // app/services/page.tsx
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import FirstService from "../../services/firstservice";
-import BusinessRegistration from "../../blogs/busreg";
+
+// Lazy load BusinessRegistration since it's heavy
+const LazyBusinessRegistration = lazy(() => import("../../blogs/busreg"));
 
 export const metadata = {
   title: "Premium Services | Bonet Elite Services",
@@ -40,7 +42,9 @@ export default function PremiumServicesPage() {
   return (
     <div className="min-h-screen">
       <FirstService />
-      <BusinessRegistration />
+      <Suspense fallback={<div className="text-center py-8">Loading services...</div>}>
+        <LazyBusinessRegistration />
+      </Suspense>
     </div>
   );
 }

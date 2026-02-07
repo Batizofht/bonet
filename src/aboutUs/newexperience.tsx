@@ -31,9 +31,9 @@ export default function NewExperience() {
 
   <div className="text-center mb-12">
         <div className="inline-flex items-center gap-3 mb-4">
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+          <div className="w-3 h-3 bg-[#188bff] rounded-full "></div>
           <div className="w-20 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+          <div className="w-3 h-3 bg-[#188bff] rounded-full "></div>
         </div>
         
         <h2 className="text-4xl font-bold text-gray-800">

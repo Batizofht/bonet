@@ -82,7 +82,7 @@ const SuperFooter = () => {
             {t("footer.quickLinks")}
           </h3>
           <ul className="space-y-4">
-            {["about", "services", "bookNow","travel", "investment", "consulting", "hrsupport" ].map((link) => (
+            {["about", "services", "bookNow","travel", "investment", "consulting", "hrsupport", "blogs" ].map((link) => (
               <motion.li key={link} whileHover={{ x: 5 }}>
                 <a
                   href={link}
