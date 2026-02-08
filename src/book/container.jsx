@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect, lazy, Suspense } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { FaSearch, FaHotel, FaHome, FaCar, FaUmbrellaBeach } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { usePathname } from "next/navigation";
@@ -83,21 +82,16 @@ const ContainerWithButtons = () => {
   return (
     <div className="flex flex-col sm:flex-row min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30">
       {/* Left section */}
-        <motion.div 
-          className="flex-1 p-4 sm:p-8 overflow-y-auto"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div className="flex-1 p-4 sm:p-8 overflow-y-auto">
 
               {/* Header */}
                 <div className="text-center mb-16">
                   <div className="flex justify-center items-center gap-3 mb-4">
-                    <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+                    <div className="w-3 h-3 bg-[#188bff] rounded-full"></div>
                     <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-                    <Search className="w-6 h-6 text-[#188bff] animate-pulse" />
+                    <Search className="w-6 h-6 text-[#188bff]"></Search>
                     <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-                    <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+                    <div className="w-3 h-3 bg-[#188bff] rounded-full"></div>
                   </div>
                   
                   <h2 className="text-4xl font-bold text-gray-800 mb-4">
@@ -119,11 +113,8 @@ const ContainerWithButtons = () => {
           
 
           {/* Cute Tabs */}
-          <motion.div 
+          <div 
             className="mb-8 bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg border border-gray-100"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
           >
             <div className="flex flex-wrap gap-2 justify-center">
               {menuItems.map((item) => {
@@ -131,10 +122,8 @@ const ContainerWithButtons = () => {
                 const isActive = activeComponent === item.key;
                 
                 return (
-                  <motion.button
+                  <button
                     key={item.key}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
                     onClick={() => handleClick(item.key)}
                     className={`
                       relative flex items-center gap-3 px-6 py-4 rounded-xl font-semibold text-sm transition-all duration-300
@@ -149,33 +138,22 @@ const ContainerWithButtons = () => {
                     
                     {/* Active indicator dot */}
                     {isActive && (
-                      <motion.div
-                        layoutId="activeTab"
+                      <div
                         className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full"
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
                       />
                     )}
-                  </motion.button>
+                  </button>
                 );
               })}
             </div>
-          </motion.div>
+          </div>
 
           {/* Active Tab Content with Cute Header */}
-          <motion.div
-            key={activeComponent}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+          <div
             className={`rounded-2xl px-0 py-6 border-2 ${activeItem?.borderColor} bg-gradient-to-br ${activeItem?.bgGradient} shadow-sm`}
           >
             {/* Tab-specific cute header */}
-            <motion.div 
-              className="flex items-center justify-center gap-3 mb-6"
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.1 }}
-            >
+            <div className="flex items-center justify-center gap-3 mb-6">
               <div className={`p-3 rounded-xl bg-white shadow-sm border ${activeItem?.borderColor}`}>
                
                 {activeItem?.icon && (
@@ -191,7 +169,7 @@ const ContainerWithButtons = () => {
                   {activeComponent === "tourism" && "Unforgettable tours and experiences"}
                 </p>
               </div>
-            </motion.div>
+            </div>
 
             {/* Cards Container */}
             <div className="space-y-6 ">
@@ -202,8 +180,8 @@ const ContainerWithButtons = () => {
                 {activeComponent === "tourism" && <TourTypeSelector onTourSubmit={() => {}} />}
               </Suspense>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
   );
 };

@@ -20,38 +20,20 @@ const FirstHome = () => {
   const router = useRouter();
 
   // Memoize translation to prevent re-renders
-  const fullText = useMemo(() => t("welcome_message"), [t]);
-  
-  const [displayText, setDisplayText] = useState("");
-  const [deleting, setDeleting] = useState(false);
+  const displayText = useMemo(() => t("welcome_message"), [t]);
   
   const [ads, setAds] = useState<Advertisement[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAd, setShowAd] = useState(false);
   const [adVisible, setAdVisible] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
-  // OPTIMIZED: Typing effect with stable dependencies
+  // Preload background image
   useEffect(() => {
-    // Skip typing effect entirely for performance
-    if (displayText === fullText && !deleting) {
-      const pauseTimer = setTimeout(() => setDeleting(true), 2000);
-      return () => clearTimeout(pauseTimer);
-    }
-
-    const timer = setTimeout(() => {
-      if (!deleting) {
-        setDisplayText(fullText.slice(0, displayText.length + 1));
-      } else {
-        if (displayText.length > 0) {
-          setDisplayText(fullText.slice(0, displayText.length - 1));
-        } else {
-          setDeleting(false);
-        }
-      }
-    }, deleting ? 30 : 80);
-
-    return () => clearTimeout(timer);
-  }, [displayText, deleting, fullText]);
+    const img = new Image();
+    img.src = '/image/1.jpg';
+    img.onload = () => setImageLoaded(true);
+  }, []);
 
   // OPTIMIZED: Fetch ads only once on mount
   useEffect(() => {
@@ -71,8 +53,8 @@ const FirstHome = () => {
       }
     };
 
-    // Delay ad fetch until after initial render
-    const timer = setTimeout(fetchAds, 1000);
+    // Delay ad fetch until after initial render and user interaction
+    const timer = setTimeout(fetchAds, 3000);
     return () => {
       isMounted = false;
       clearTimeout(timer);
@@ -107,37 +89,11 @@ const FirstHome = () => {
 
   return (
     <div
-      className="relative w-full h-[860px] md:h-[800px]  bg-cover bg-center overflow-hidden"
-      style={{ backgroundImage: "url('/image/1.jpg')" }}
+      className="relative w-full h-[860px] md:h-[800px] bg-gray-900 bg-cover bg-center overflow-hidden"
+      style={{ backgroundImage: imageLoaded ? "url('/image/1.jpg')" : "none" }}
     >
       {/* Blackish Overlay */}
       <div className="absolute inset-0 bg-black/70 z-10" />
-      
-      {/* Subtle Background Elements */}
-    <div className="absolute inset-0 z-10">
-  {/* Very subtle floating particles */}
-  {typeof window !== "undefined" &&
-    [...Array(8)].map((_, i) => (
-      <motion.div
-        key={i}
-        className="absolute w-1 h-1 bg-white/10 rounded-full"
-        initial={{
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
-        }}
-        animate={{
-          y: [0, -20, 0],
-          opacity: [0.1, 0.3, 0.1],
-        }}
-        transition={{
-          duration: 4 + Math.random() * 3,
-          repeat: Infinity,
-          delay: Math.random() * 2,
-        }}
-      />
-    ))}
-</div>
-
 
 
       {/* Content Overlay */}
@@ -149,65 +105,34 @@ const FirstHome = () => {
           animate={{ scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, type: "spring" }}
           className="mb-6"
-        >
-          <div className="w-16 h-16 bg-gradient-to-br from-[#188bff] to-cyan-400 rounded-2xl flex items-center justify-center shadow-2xl">
-            <Sparkles className="w-8 h-8 text-white" />
-          </div>
-        </motion.div> */}
 
         {/* Main Heading - Original Color */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="font-Poppins font-bold text-[#188bff] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight max-w-full mb-3 md:mt-[-5%] drop-shadow-2xl"
-        >
+        <h1 className="font-Poppins font-bold text-[#188bff] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight max-w-full mb-3 md:mt-[-5%] drop-shadow-2xl">
           {displayText}
-        </motion.h1>
+        </h1>
 
         {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-Inder italic text-gray-200 text-lg sm:text-xl md:text-2xl max-w-full mb-3"
-        >
+        <p className="font-Inder italic text-gray-200 text-lg sm:text-xl md:text-2xl max-w-full mb-3">
           {t("subtitle")}
-        </motion.p>
+        </p>
 
         {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-Inder text-gray-300 text-base sm:text-lg max-w-md mb-6"
-        >
+        <p className="font-Inder text-gray-300 text-base sm:text-lg max-w-md mb-6">
           {t("description")}
-        </motion.p>
+        </p>
 
         {/* CTA Button */}
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          whileHover={{ 
-            scale: 1.05,
-            boxShadow: "0 20px 40px rgba(24, 139, 255, 0.3)"
-          }}
-          whileTap={{ scale: 0.95 }}
+        <button
           className="bg-[#188bff] text-white px-10 py-4 rounded-2xl font-semibold text-lg shadow-2xl mb-3 hover:bg-blue-600 transition-all duration-300"
           onClick={() => router.push("/services")}
         >
           {t("get_started")}
-        </motion.button>
+        </button>
         
         {/* Booking Cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
+        <div>
           <BookingCards />
-        </motion.div>
+        </div>
       </div>
 
       {/* Advertisement */}

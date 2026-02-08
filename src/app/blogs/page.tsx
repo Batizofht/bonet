@@ -366,7 +366,7 @@ export default function BlogsPageWithLoadMore() {
         {/* Loading State */}
         {isInitialLoading ? (
           <div className="flex flex-col items-center justify-center py-20">
-            <Loader2 className="w-12 h-12 text-[#188bff] animate-spin mb-4" />
+            <Loader2 className="w-12 h-12 text-[#188bff] mb-4" />
             <p className="text-gray-600 font-medium">
               {t('blog.loading', 'Loading blogs...')}
             </p>

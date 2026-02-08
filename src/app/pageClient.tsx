@@ -1,16 +1,15 @@
 "use client"
-import React, { Suspense } from "react";
-import dynamic from "next/dynamic";
+import React, { Suspense, lazy } from "react";
 import FirstHome from "../components/firsthome";
 
 // Lazy load below-the-fold components - CRITICAL for performance
-const Services = dynamic(() => import("../components/services"), { ssr: false });
-const WhyChooseBonet = dynamic(() => import("../services/whychoose"), { ssr: false });
-const NewExperience = dynamic(() => import("../aboutUs/newexperience"), { ssr: false });
-const Gallery = dynamic(() => import("../components/visitrwanda"), { ssr: false });
-const GreatSoftware = dynamic(() => import("../components/greatSoftware"), { ssr: false });
-const FeaturedResources = dynamic(() => import("../components/resources"), { ssr: false });
-const FAQ = dynamic(() => import("../components/footer"), { ssr: false });
+const Services = lazy(() => import("../components/services"));
+const WhyChooseBonet = lazy(() => import("../services/whychoose"));
+const NewExperience = lazy(() => import("../aboutUs/newexperience"));
+const Gallery = lazy(() => import("../components/visitrwanda"));
+const GreatSoftware = lazy(() => import("../components/greatSoftware"));
+const FeaturedResources = lazy(() => import("../components/resources"));
+const FAQ = lazy(() => import("../components/footer"));
 
 export default function HomePageClient() {
   return (

@@ -11,8 +11,8 @@ const Navbar = () => {
         
         {/* Optional: Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-10 -left-10 w-20 h-20 bg-[#188bff]/10 rounded-full blur-xl animate-pulse" />
-          <div className="absolute -top-5 -right-5 w-16 h-16 bg-cyan-400/10 rounded-full blur-xl animate-pulse delay-1000" />
+          <div className="absolute -top-10 -left-10 w-20 h-20 bg-[#188bff]/10 rounded-full blur-xl"></div>
+          <div className="absolute -top-5 -right-5 w-16 h-16 bg-cyan-400/10 rounded-full blur-xl"></div>
         </div>
 
         {/* Content */}

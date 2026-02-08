@@ -1,21 +1,10 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
 import { ChevronDown, ChevronUp, PhoneCall, MessageCircle, HelpCircle } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import AOS from "aos";
-import "aos/dist/aos.css";
-
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-
-// TypeScript declaration for AOS_INITIALIZED
-declare global {
-  interface Window {
-    AOS_INITIALIZED?: boolean;
-  }
-}
 
 interface FAQ {
   answer: string;
@@ -38,12 +27,6 @@ export default function FAQ() {
 
   // OPTIMIZED: Only fetch when component is visible
   useEffect(() => {
-    // Only initialize AOS once globally
-    if (typeof window !== 'undefined' && !window.AOS_INITIALIZED) {
-      AOS.init({ duration: 1000, easing: "ease-out", once: true });
-      window.AOS_INITIALIZED = true;
-    }
-
     // Intersection Observer to delay API call until visible
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -91,21 +74,15 @@ export default function FAQ() {
   }, [isVisible]);
 
   return (
-    <motion.div
-      className="max-w-6xl mx-auto px-4 py-16"
-      initial={{ opacity: 0, y: -20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-    >
+    <div className="max-w-6xl mx-auto px-4 py-16">
       {/* Cute Header */}
       <div className="text-center mb-16">
         <div className="flex justify-center items-center gap-3 mb-6">
-          <div className="w-4 h-4 bg-[#188bff] rounded-full animate-bounce"></div>
+          <div className="w-4 h-4 bg-[#188bff] rounded-full"></div>
           <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <HelpCircle className="w-6 h-6 text-[#188bff] animate-pulse" />
+          <HelpCircle className="w-6 h-6 text-[#188bff]"></HelpCircle>
           <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <div className="w-4 h-4 bg-[#188bff] rounded-full animate-bounce delay-150"></div>
+          <div className="w-4 h-4 bg-[#188bff] rounded-full"></div>
         </div>
         
       <h2 className="text-4xl font-bold text-gray-800">
@@ -127,11 +104,7 @@ export default function FAQ() {
       {/* Cute FAQ Items */}
       <div className="space-y-4 max-w-6xl mx-auto">
         {faqs.map((faq, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
+          <div
             className={`border-2 rounded-2xl p-6 bg-white cursor-pointer transition-all duration-300 ${
               openIndex === index 
                 ? 'border-[#188bff] shadow-lg bg-blue-50' 
@@ -150,41 +123,28 @@ export default function FAQ() {
                   {faq.question}
                 </p>
               </div>
-              <motion.div
-                animate={{ rotate: openIndex === index ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
-                className={`w-8 h-8 rounded-full flex items-center justify-center ${
+              <div
+                className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
                   openIndex === index ? 'bg-[#188bff] text-white' : 'bg-gray-100 text-gray-600'
                 }`}
               >
                 <ChevronDown className="w-5 h-5" />
-              </motion.div>
+              </div>
             </div>
             
-            <AnimatePresence>
-              {openIndex === index && (
-                <motion.p
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="text-gray-600 mt-4 pl-14 text-base leading-relaxed border-t border-blue-100 pt-4"
-                >
-                  {faq.answer}
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </motion.div>
+            {openIndex === index && (
+              <p
+                className="text-gray-600 mt-4 pl-14 text-base leading-relaxed border-t border-blue-100 pt-4 transition-all duration-300"
+              >
+                {faq.answer}
+              </p>
+            )}
+          </div>
         ))}
       </div>
 
       {/* Cute Contact Section */}
-      <motion.div 
-        className="text-center mt-16"
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className="text-center mt-16">
         <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-3xl p-8 border-2 border-blue-100 max-w-1xl mx-auto">
           <div className="flex flex-col items-center gap-6">
             <div className="w-16 h-16 bg-[#188bff] rounded-full flex items-center justify-center shadow-lg">
@@ -200,18 +160,16 @@ export default function FAQ() {
               </p>
             </div>
             
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <button
               onClick={() => router.push("/contact")}
-              className="flex items-center justify-center gap-3 px-8 py-4 bg-[#188bff] text-white text-lg font-semibold rounded-2xl hover:bg-blue-600 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+              className="flex items-center justify-center gap-3 px-8 py-4 bg-[#188bff] text-white text-lg font-semibold rounded-2xl hover:bg-blue-600 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105"
             >
               <PhoneCall className="w-5 h-5" />
               {t("faq.getInTouch")}
-            </motion.button>
+            </button>
           </div>
         </div>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }

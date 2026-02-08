@@ -1,20 +1,10 @@
 'use client'
 import React, { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { slugify } from "../../slugify";
 import axios from "axios";
 import Link from "next/link";
 import { Calendar, Clock, BookOpen, Sparkles, ArrowRight, Eye } from "lucide-react";
-
-// TypeScript declaration for AOS_INITIALIZED
-declare global {
-  interface Window {
-    AOS_INITIALIZED?: boolean;
-  }
-}
 
 interface Blog {
   image: string;
@@ -34,12 +24,6 @@ export default function Blog() {
 
   // OPTIMIZED: Only fetch when component is visible (below fold)
   useEffect(() => {
-    // Only initialize AOS once globally
-    if (typeof window !== 'undefined' && !window.AOS_INITIALIZED) {
-      AOS.init({ duration: 1000, easing: "ease-out", once: true });
-      window.AOS_INITIALIZED = true;
-    }
-
     // Intersection Observer to delay API call until visible
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -111,22 +95,18 @@ export default function Blog() {
   };
 
   return (
-    <motion.section
+    <section
       ref={sectionRef}
       className="py-16 px-4 max-w-6xl mx-auto"
-      initial={{ opacity: 0, y: -30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-      viewport={{ once: true }}
     > 
       {/* BLOG HEADER - SAME DESIGN AS BEFORE */}
       <div className="text-center mb-16">
         <div className="flex justify-center items-center gap-3 mb-4">
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+          <div className="w-3 h-3 bg-[#188bff] rounded-full"></div>
           <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <BookOpen className="w-6 h-6 text-[#188bff] animate-pulse" />
+          <BookOpen className="w-6 h-6 text-[#188bff]"></BookOpen>
           <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+          <div className="w-3 h-3 bg-[#188bff] rounded-full"></div>
         </div>
         
         <h2 className="text-4xl font-bold text-gray-800 mb-4">
@@ -141,7 +121,7 @@ export default function Blog() {
       {loading && (
         <div className="text-center py-12">
           <div className="flex justify-center mb-4">
-            <Sparkles className="w-8 h-8 text-[#188bff] animate-pulse" />
+            <Sparkles className="w-8 h-8 text-[#188bff]" />
           </div>
           <p className="text-gray-600 text-lg">{t("blog.loading")}</p>
         </div>
@@ -158,14 +138,9 @@ export default function Blog() {
       {/* Blog Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogs.map((post, index) => (
-          <motion.article
+          <article
             key={index}
-            className="bg-white rounded-2xl overflow-hidden border border-blue-50 hover:border-[#188bff] transition-all duration-300 group cursor-pointer shadow-lg hover:shadow-xl"
-            whileHover={{ y: -8, scale: 1.02 }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true }}
+            className="bg-white rounded-2xl overflow-hidden border border-blue-50 hover:border-[#188bff] transition-all duration-300 group cursor-pointer shadow-lg hover:shadow-xl hover:-translate-y-2 hover:scale-105"
           >
             {/* Blog Image */}
             <div className="relative overflow-hidden">
@@ -213,22 +188,16 @@ export default function Blog() {
                 <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform mt-1" />
               </Link>
             </div>
-          </motion.article>
+          </article>
         ))}
       </div>
 
       {/* View All Blogs CTA */}
       {blogs.length > 0 && (
-        <motion.div 
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
+        <div className="text-center mt-12">
    
-        </motion.div>
+        </div>
       )}
-    </motion.section>
+    </section>
   );
 }

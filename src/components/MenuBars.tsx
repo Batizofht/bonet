@@ -1,13 +1,12 @@
 'use client'
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { 
-  Home, 
-  Users, 
-  Briefcase, 
+import {
+  Home,
+  Users,
+  Briefcase,
   Calendar,
   Building,
   Car,
@@ -113,13 +112,12 @@ export default function MenuBars() {
             href={item.path} 
             className={getActiveClass(item.path)}
           >
-            <motion.div
-              whileHover={{ y: -2 }}
-              className="flex items-center gap-2 py-2"
+            <div
+              className="flex items-center gap-2 py-2 hover:-translate-y-0.5 transition-transform duration-200"
             >
               <IconComponent className="w-4 h-4" />
               {item.label}
-            </motion.div>
+            </div>
           </Link>
         );
       })}
@@ -134,154 +132,136 @@ export default function MenuBars() {
         }}
       >
         <Link href="/services" className={getActiveClass("/services")}>
-          <motion.div
-            whileHover={{ y: -2 }}
-            className="flex items-center gap-2 py-2"
+          <div
+            className="flex items-center gap-2 py-2 hover:-translate-y-0.5 transition-transform duration-200"
           >
             <Briefcase className="w-4 h-4" />
             {t('menu.services')}
-            <motion.div
-              animate={{ rotate: servicesDropdownOpen ? 180 : 0 }}
-              transition={{ duration: 0.2 }}
+            <div
+              className={`transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180' : ''}`}
             >
               <ChevronRight className="w-3 h-3" />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </Link>
 
-        <AnimatePresence>
-          {servicesDropdownOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: 10, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 10, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              className="absolute left-0 top-full w-80 bg-white border border-blue-100 shadow-2xl rounded-2xl z-50 overflow-hidden"
-            >
-              {/* Header */}
-              <div className="p-4 bg-gradient-to-r from-[#188bff] to-cyan-500 text-white">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
-                    <Sparkles className="w-5 h-5" />
-                  </div>
+        {servicesDropdownOpen && (
+          <div
+            className="absolute left-0 top-full w-80 bg-white border border-blue-100 shadow-2xl rounded-2xl z-50 overflow-hidden opacity-100 scale-100 transition-all duration-200"
+          >
+            {/* Header */}
+            <div className="p-4 bg-gradient-to-r from-[#188bff] to-cyan-500 text-white">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                  <Sparkles className="w-5 h-5" />
                   <div>
                     <h3 className="font-bold text-lg">{t("Our Services")}</h3>
                     <p className="text-white/80 text-sm">{t("Professional solutions for your business")}</p>
                   </div>
                 </div>
               </div>
-
-         {/* Services List */}
-<div className="p-2 relative"> {/* Added relative here */}
-  {servicesData.map((service) => {
-    const IconComponent = service.icon;
-    return (
-      <div
-        key={service.id}
-        className="relative"
-        onMouseEnter={() => setActiveSubmenu(service.id)}
-        onMouseLeave={() => setActiveSubmenu(null)}
-      >
-        <motion.div
-          whileHover={{ x: 4 }}
-          className={`flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all duration-200 ${
-            activeSubmenu === service.id 
-              ? 'bg-blue-50 border border-blue-200' 
-              : 'hover:bg-gray-50'
-          }`}
-        >
-          <div onClick={()=>{
-            window.location.href=`/${service.id}`
-          }} className="flex items-center gap-3">
-            <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center`}>
-              <IconComponent className="w-4 h-4 text-white" />
             </div>
-            <span className="font-semibold text-gray-800 text-sm">
-              {service.label}
-            </span>
-          </div>
-          <ChevronRight className="w-4 h-4 text-gray-400" />
-        </motion.div>
 
-        {/* Submenu */}
-        <AnimatePresence>
-          {activeSubmenu === service.id && (
-            <motion.div
-              initial={{ opacity: 0, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 10 }}
-              transition={{ duration: 0.2 }}
-              className="fixed top-0 left-0 ml-60 bg-white border border-blue-100 shadow-2xl rounded-2xl w-55 overflow-hidden"
-              style={{ 
-                zIndex: 9999,
-                // Position it relative to the viewport instead of parent
-                top: 50,
-                left: 'auto',
-                // You might need to calculate position dynamically
-              }}
-            >
-              <div className="p-4 bg-gradient-to-r from-[#188bff] to-cyan-500 text-white">
-                <h4 className="font-bold text-sm">{service.label}</h4>
-              </div>
-              <div className="p-2">
-                {service.items.map((item, index) => {
-                  const ItemIcon = item.icon;
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <Link
-                        href={item.href}
-                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-all duration-200 group"
-                      >
-                        <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
-                          <ItemIcon className="w-4 h-4 text-gray-600 group-hover:text-[#188bff]" />
-                        </div>
-                        <span className="text-sm text-gray-700 font-medium">
-                          {item.label}
-                        </span>
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    );
-  })}
-</div>
-              {/* Footer */}
-              <div className="p-4 border-t border-gray-100 bg-gray-50">
-                <Link href="/services">
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full flex items-center justify-center gap-2 py-2 bg-[#188bff] text-white rounded-xl text-sm font-semibold hover:bg-blue-600 transition-colors"
+            {/* Services List */}
+            <div className="p-2">
+              {servicesData.map((service) => {
+                const IconComponent = service.icon;
+                return (
+                  <div
+                    key={service.id}
+                    className="relative"
+                    onMouseEnter={() => setActiveSubmenu(service.id)}
+                    onMouseLeave={() => setActiveSubmenu(null)}
                   >
-                    <Sparkles className="w-4 h-4" />
-                    {t("View All Services")}
-                  </motion.button>
-                </Link>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                    <div
+                      className={`flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all duration-200 ${
+                        activeSubmenu === service.id 
+                          ? 'bg-blue-50 border border-blue-200' 
+                          : 'hover:bg-gray-50'
+                      }`}
+                    >
+                      <div 
+                        onClick={()=>{
+                          window.location.href=`/${service.id}`
+                        }} 
+                        className="flex items-center gap-3"
+                      >
+                        <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center`}>
+                          <IconComponent className="w-4 h-4 text-white" />
+                        </div>
+                        <span className="font-semibold text-gray-800 text-sm">
+                          {service.label}
+                        </span>
+                      </div>
+                      <ChevronRight className="w-4 h-4 text-gray-400" />
+                    </div>
+
+                    {/* Submenu */}
+                    {activeSubmenu === service.id && (
+                      <div
+                        className="fixed top-0 left-0 ml-60 bg-white border border-blue-100 shadow-2xl rounded-2xl w-55 overflow-hidden opacity-100 transition-all duration-200"
+                        style={{ 
+                          zIndex: 9999,
+                          top: 50,
+                          left: 'auto',
+                        }}
+                      >
+                        <div className="p-4 bg-gradient-to-r from-[#188bff] to-cyan-500 text-white">
+                          <h4 className="font-bold text-sm">{service.label}</h4>
+                        </div>
+                        <div className="p-2">
+                          {service.items.map((item, index) => {
+                            const ItemIcon = item.icon;
+                            return (
+                              <div
+                                key={index}
+                                className="transition-all duration-200"
+                              >
+                                <Link
+                                  href={item.href}
+                                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-all duration-200 group"
+                                >
+                                  <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                                    <ItemIcon className="w-4 h-4 text-gray-600 group-hover:text-[#188bff]" />
+                                  </div>
+                                  <span className="text-sm text-gray-700 font-medium">
+                                    {item.label}
+                                  </span>
+                                </Link>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Footer */}
+            <div className="p-4 border-t border-gray-100 bg-gray-50">
+              <Link href="/services">
+                <button
+                  className="w-full flex items-center justify-center gap-2 py-2 bg-[#188bff] text-white rounded-xl text-sm font-semibold hover:bg-blue-600 transition-colors hover:scale-105 transition-transform duration-200"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  {t("View All Services")}
+                </button>
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Book Now */}
       <Link href="/bookNow" className={getActiveClass("/bookNow")}>
-        <motion.div
-          whileHover={{ y: -2 }}
-          className="flex items-center gap-2 py-2"
+        <div
+          className="flex items-center gap-2 py-2 hover:-translate-y-0.5 transition-transform duration-200"
         >
           <Calendar className="w-4 h-4" />
           {t('menu.bookNow')}
-        </motion.div>
+        </div>
       </Link>
     </div>
   );
