@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -33,7 +33,19 @@ import {
 export default function MenuBars() {
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const [submenuPosition, setSubmenuPosition] = useState({ left: 0, top: 0 });
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const location = usePathname();
+
+  useEffect(() => {
+    if (servicesDropdownOpen && dropdownRef.current) {
+      const rect = dropdownRef.current.getBoundingClientRect();
+      setSubmenuPosition({
+        left: rect.right + 18,
+        top: rect.top
+      });
+    }
+  }, [servicesDropdownOpen]);
 
   function getActiveClass(path: string) {
     return location === path
@@ -147,18 +159,14 @@ export default function MenuBars() {
 
         {servicesDropdownOpen && (
           <div
-            className="absolute left-0 top-full w-80 bg-white border border-blue-100 shadow-2xl rounded-2xl z-50 overflow-hidden opacity-100 scale-100 transition-all duration-200"
+            ref={dropdownRef}
+            className="absolute left-0 top-full w-80 bg-white border border-blue-100 shadow-2xl rounded-3xl z-50 overflow-visible opacity-100 scale-100 transition-all duration-200"
           >
             {/* Header */}
-            <div className="p-4 bg-gradient-to-r from-[#188bff] to-cyan-500 text-white">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
-                  <Sparkles className="w-5 h-5" />
-                  <div>
-                    <h3 className="font-bold text-lg">{t("Our Services")}</h3>
-                    <p className="text-white/80 text-sm">{t("Professional solutions for your business")}</p>
-                  </div>
-                </div>
+            <div className="p-4 bg-gradient-to-r from-[#188bff] to-cyan-500 text-white rounded-t-3xl">
+              <div>
+                <h3 className="font-bold text-lg">{t("Our Services")}</h3>
+                <p className="text-white/80 text-sm">{t("Professional solutions for your business")}</p>
               </div>
             </div>
 
@@ -170,10 +178,9 @@ export default function MenuBars() {
                   <div
                     key={service.id}
                     className="relative"
-                    onMouseEnter={() => setActiveSubmenu(service.id)}
-                    onMouseLeave={() => setActiveSubmenu(null)}
                   >
                     <div
+                      onMouseEnter={() => setActiveSubmenu(service.id)}
                       className={`flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all duration-200 ${
                         activeSubmenu === service.id 
                           ? 'bg-blue-50 border border-blue-200' 
@@ -199,11 +206,11 @@ export default function MenuBars() {
                     {/* Submenu */}
                     {activeSubmenu === service.id && (
                       <div
-                        className="fixed top-0 left-0 ml-60 bg-white border border-blue-100 shadow-2xl rounded-2xl w-55 overflow-hidden opacity-100 transition-all duration-200"
+                        onMouseEnter={() => setActiveSubmenu(service.id)}
+                        onMouseLeave={() => setActiveSubmenu(null)}
+                        className="absolute left-full top-0 ml-2 bg-white border border-blue-100 shadow-2xl rounded-2xl w-64 max-h-[50vh] overflow-y-auto opacity-100 transition-all duration-200"
                         style={{ 
                           zIndex: 9999,
-                          top: 50,
-                          left: 'auto',
                         }}
                       >
                         <div className="p-4 bg-gradient-to-r from-[#188bff] to-cyan-500 text-white">
@@ -240,7 +247,7 @@ export default function MenuBars() {
             </div>
 
             {/* Footer */}
-            <div className="p-4 border-t border-gray-100 bg-gray-50">
+            <div className="p-4 border-t border-gray-100 bg-gray-50 rounded-b-3xl">
               <Link href="/services">
                 <button
                   className="w-full flex items-center justify-center gap-2 py-2 bg-[#188bff] text-white rounded-xl text-sm font-semibold hover:bg-blue-600 transition-colors hover:scale-105 transition-transform duration-200"

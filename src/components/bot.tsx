@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
@@ -73,13 +73,13 @@ const ChatBot = () => {
   const chatRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  // Size presets
-  const sizePresets = {
+  // OPTIMIZED: Memoize size presets to prevent recreation
+  const sizePresets = useMemo(() => ({
     small: { width: 320, height: 480 },
     medium: { width: 384, height: 600 },
     large: { width: 480, height: 700 },
     maximized: { width: window.innerWidth * 0.9, height: window.innerHeight * 0.8 }
-  };
+  }), []);
 
   // Handle resize start
   const handleResizeStart = (direction: string) => (e: React.MouseEvent) => {
@@ -217,13 +217,25 @@ const ChatBot = () => {
     }
   }, [messages, isTyping, autoScroll]);
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  // OPTIMIZED: Memoize key handler
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
       sendMessage();
     }
-  };
+  }, [sendMessage]);
 
- 
+  // OPTIMIZED: Memoize animation variants
+  const buttonVariants = useMemo(() => ({
+    initial: { scale: 0.9, opacity: 0, y: 20 },
+    animate: { scale: 1, opacity: 1, y: 0 },
+    whileHover: { scale: 1.05, y: -2 }
+  }), []);
+
+  const chatVariants = useMemo(() => ({
+    initial: { opacity: 0, scale: 0.9, y: 20 },
+    animate: { opacity: 1, scale: 1, y: 0 },
+    exit: { opacity: 0, scale: 0.9, y: 20 }
+  }), []);
 
   return (
     <>
@@ -271,8 +283,8 @@ const ChatBot = () => {
                 : 'inset-0 md:inset-auto md:bottom-6 md:right-6 rounded-none md:rounded-2xl'
             }`}
             style={{
-              width: isMaximized ? 'auto' : `${chatSize.width}px`,
-              height: isMaximized ? 'auto' : `${chatSize.height}px`
+              width: isMaximized ? 'auto' : window.innerWidth < 768 ? '100vw' : `${chatSize.width}px`,
+              height: isMaximized ? 'auto' : window.innerWidth < 768 ? '100vh' : `${chatSize.height}px`
             }}
           >
             {/* Header */}

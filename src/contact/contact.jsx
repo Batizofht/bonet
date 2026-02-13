@@ -219,9 +219,9 @@ onClick={() => {
         className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold rounded-2xl px-8 py-4 transition-all duration-300 shadow-lg hover:shadow-xl border-0"
       >
         <div className="relative">
-          <img src="../assets/images/whatsapp.png" alt="Chat" className="w-6 h-6 filter brightness-0 invert" />
+          <img src="../assets/images/whatsapp.png" alt="Chat" className="w-6 h-6 filter brightness-0 invert" loading="lazy" />
           <div className="absolute inset-0 animate-ping opacity-20">
-            <img src="../assets/images/whatsapp.png" alt="Chat" className="w-6 h-6 filter brightness-0 invert" />
+            <img src="../assets/images/whatsapp.png" alt="Chat" className="w-6 h-6 filter brightness-0 invert" loading="lazy" />
           </div>
         </div>
         {t("contactInformation.chatButton")}

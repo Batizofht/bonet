@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, memo } from "react";
 import { Building, Handshake, Briefcase, ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
@@ -15,7 +15,7 @@ interface Service {
 // OPTIMIZED: Icons array outside component to prevent recreation
 const icons = [Building, Handshake, Briefcase];
 
-function Services() {
+const Services = memo(function Services() {
   const { t } = useTranslation();
   const navigate = useRouter();
   const [selectedService, setSelectedService] = useState<number | null>(0);
@@ -137,6 +137,6 @@ function Services() {
       </div>
     </div>
   );
-}
+});
 
 export default Services;

@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 interface TypewriterTextProps {
   text: string;
@@ -29,15 +30,14 @@ const TypewriterText = ({ text }: TypewriterTextProps) => {
 
 const LogoName = () => {
   return (
-    <div className="flex items-center space-x-2">
-      <img src="/assets/images/logo.png" alt="Logo" className="w-13 h-11" />
+    <Link href="/" className="flex items-center space-x-2">
+      <img src="/assets/images/logo.png" alt="Logo" className="w-13 h-11" loading="lazy" />
        <div>
          <h1 className="text-xl font-bold text-[#188bff] whitespace-nowrap">
         Bonet</h1>
         <p className="text-[12px] text-[#188bff] " style={{marginTop:-6}}>Elite Services</p>
        </div>
-     
-    </div>
+    </Link>
   );
 };
 

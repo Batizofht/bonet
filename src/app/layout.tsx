@@ -26,11 +26,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
        <meta name="google-site-verification" content="XmA718kfY8J4ixoy_mtJ-RWVR38ho1jxm4EycrG0pM0" />
-       
+       <link rel="preconnect" href="https://api.bonet.rw:8443" />
+       <link rel="preconnect" href="https://analytics.ahrefs.com" />
       </head>
       <body>
         <LayoutWrapper>{children}</LayoutWrapper>
-        <script src="https://analytics.ahrefs.com/analytics.js" data-key="ZwyWK9S5Y9ynmnRi3oqhwQ" async></script>
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="ZwyWK9S5Y9ynmnRi3oqhwQ" defer></script>
       </body>
     </html>
   );
