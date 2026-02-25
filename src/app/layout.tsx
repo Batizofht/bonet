@@ -28,6 +28,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
        <meta name="google-site-verification" content="XmA718kfY8J4ixoy_mtJ-RWVR38ho1jxm4EycrG0pM0" />
        <link rel="preconnect" href="https://api.bonet.rw:8443" />
        <link rel="preconnect" href="https://analytics.ahrefs.com" />
+       {/* Google tag (gtag.js) */}
+       <script async src="https://www.googletagmanager.com/gtag/js?id=G-3BEG46CGMG"></script>
+       <script dangerouslySetInnerHTML={{
+         __html: `
+           window.dataLayer = window.dataLayer || [];
+           function gtag(){dataLayer.push(arguments);}
+           gtag('js', new Date());
+           gtag('config', 'G-3BEG46CGMG');
+         `
+       }} />
       </head>
       <body>
         <LayoutWrapper>{children}</LayoutWrapper>
