@@ -124,7 +124,7 @@ export default function SocialShare({
       {/* Share Button */}
       <button
         onClick={() => setShowShareModal(!showShareModal)}
-        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:scale-105"
+        className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
       >
         <Share2 className="w-4 h-4" />
         <span className="text-sm font-medium">Share Article</span>
@@ -132,7 +132,7 @@ export default function SocialShare({
 
       {/* Share Modal */}
       {showShareModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/70 bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl p-6 max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-bold text-gray-900">Share this article</h3>
@@ -173,7 +173,7 @@ export default function SocialShare({
             </div>
 
             {/* Copy Link */}
-            <div className="border-t pt-4">
+            <div className="border-t border-gray-200 pt-4">
               <button
                 onClick={handleCopyLink}
                 className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
@@ -197,7 +197,7 @@ export default function SocialShare({
             </div>
 
             {/* Advanced Options */}
-            <div className="mt-4 pt-4 border-t">
+            <div className="mt-4 pt-4 border-t border-gray-200">
               <div className="text-xs text-gray-500 text-center">
                 <p>Share with your network and help others discover this content</p>
                 <p className="mt-1">Hashtags: {hashtags.map(tag => `#${tag}`).join(' ')}</p>

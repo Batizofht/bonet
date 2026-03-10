@@ -266,7 +266,6 @@ const ChatBot = () => {
           )}
         </AnimatePresence>
         
-        <Sparkles className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
       </motion.button>
 
       {/* Chat Window */}
