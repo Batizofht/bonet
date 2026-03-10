@@ -1,14 +1,13 @@
 // app/blog/[slug]/page.tsx
-'use client';
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "next/navigation";
-import { Calendar, User, ArrowLeft, Share2, Facebook, Linkedin, MessageCircle, X } from "lucide-react";
+import { Calendar, User, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Head from 'next/head';
 import { HandMetal } from "lucide-react";
+import SocialShare from "../../../components/SocialShare";
 
 interface Blog {
   id: number;
@@ -20,6 +19,119 @@ interface Blog {
   author?: string;
 }
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  try {
+    const response = await axios.get(
+      "https://api.bonet.rw:8443/bonetBackend/backend/public/blogs",
+      { timeout: 10000 }
+    );
+
+    const blogsArray = response.data.data || response.data.blogs || response.data;
+    
+    if (!Array.isArray(blogsArray)) {
+      return {
+        title: "Blog - Bonet Elite Services",
+        description: "Discover expert insights on travel, business, and investment in Rwanda.",
+      };
+    }
+
+    const foundBlog = blogsArray.find((item: Blog) => {
+      if (!item.title) return false;
+      
+      const blogSlug = item.title
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .trim();
+      
+      return blogSlug === params.slug;
+    });
+
+    if (!foundBlog) {
+      return {
+        title: "Blog Not Found - Bonet Elite Services",
+        description: "The requested blog post could not be found.",
+      };
+    }
+
+    const title = `${foundBlog.title} | Bonet Elite Services Blog`;
+    const description = foundBlog.quote || foundBlog.description?.substring(0, 160) || "Read this expert article on travel, business, or investment in Rwanda.";
+    const imageUrl = foundBlog.image ? `https://api.bonet.rw:8443/bonetBackend/public/${foundBlog.image}` : "https://www.bonet.rw/images/blog-default.jpg";
+    const url = `https://www.bonet.rw/blog/${params.slug}`;
+    const keywords = `${foundBlog.title}, Rwanda travel, business Rwanda, investment Rwanda, Bonet Services, Kigali, ${foundBlog.title.toLowerCase()}`;
+
+    return {
+      title,
+      description,
+      keywords,
+      authors: [{ name: foundBlog.author || "Bonet Elite Services" }],
+      alternates: { canonical: url },
+      
+      // Advanced Open Graph optimization
+      openGraph: {
+        type: "article",
+        url,
+        title,
+        description,
+        images: [
+          { 
+            url: imageUrl, 
+            width: 1200, 
+            height: 630, 
+            alt: foundBlog.title,
+            type: "image/jpeg"
+          }
+        ],
+        publishedTime: foundBlog.created_at,
+        modifiedTime: foundBlog.created_at,
+        authors: [foundBlog.author || "Bonet Elite Services"],
+        siteName: "Bonet Elite Services",
+        section: "Travel & Business",
+        tags: keywords.split(', ').map(tag => tag.trim()),
+        locale: "en_US",
+      },
+      
+      // Advanced Twitter Card optimization
+      twitter: {
+        card: "summary_large_image",
+        site: "@BonetElite",
+        creator: "@BonetElite",
+        title,
+        description,
+        images: {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: foundBlog.title,
+        },
+        // Additional Twitter-specific meta
+        "app:name:iphone": "Bonet Elite",
+        "app:name:ipad": "Bonet Elite",
+        "app:name:googleplay": "Bonet Elite",
+      },
+      
+      // Additional meta tags for social sharing
+      other: {
+        "article:author": foundBlog.author || "Bonet Elite Services",
+        "article:published_time": foundBlog.created_at,
+        "article:modified_time": foundBlog.created_at,
+        "article:section": "Travel & Business",
+        "article:tag": keywords.split(', ').map(tag => tag.trim()),
+        "og:site_name": "Bonet Elite Services",
+        "og:locale": "en_US",
+        "fb:app_id": "your-facebook-app-id", // Add if you have Facebook app
+        "twitter:domain": "bonet.rw",
+      },
+    };
+  } catch (error) {
+    return {
+      title: "Blog - Bonet Elite Services",
+      description: "Discover expert insights on travel, business, and investment in Rwanda.",
+    };
+  }
+}
+
 export default function BlogDetail() {
   const params = useParams();
   const slug = params.slug as string;
@@ -27,13 +139,12 @@ export default function BlogDetail() {
   const [blog, setBlog] = useState<Blog | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [showShareModal, setShowShareModal] = useState(false);
-  const [copied, setCopied] = useState(false);
 // Add these state variables after your existing states
 const [claps, setClaps] = useState(0);
 const [userClapped, setUserClapped] = useState(false);
 const [clapping, setClapping] = useState(false);
 const [views, setViews] = useState(0);
+const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -335,9 +446,6 @@ const trackView = async () => {
   const getCurrentUrl = () => {
     if (typeof window !== 'undefined') {
       const currentUrl = window.location.href;
-      if (currentUrl.includes('localhost')) {
-        return `https://www.bonet.rw/blog/${slug}`;
-      }
       return currentUrl;
     }
     return `https://www.bonet.rw/blog/${slug}`;
@@ -359,20 +467,68 @@ const trackView = async () => {
     window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, '_blank');
   };
 
-  const copyLink = async () => {
-    try {
-      if (navigator.clipboard) {
-        await navigator.clipboard.writeText(getCurrentUrl());
-        setCopied(true);
-        setTimeout(() => setCopied(false), 3000);
-      }
-    } catch (err) {
-      console.error('Failed to copy:', err);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://www.bonet.rw"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blogs",
+                  "item": "https://www.bonet.rw/blogs"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": blog?.title,
+                  "item": `https://www.bonet.rw/blog/${slug}`
+                }
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "headline": blog?.title,
+              "description": blog?.quote || blog?.description?.substring(0, 160),
+              "image": blog?.image ? `https://api.bonet.rw:8443/bonetBackend/public/${blog.image}` : "https://www.bonet.rw/images/blog-default.jpg",
+              "datePublished": blog?.created_at,
+              "author": {
+                "@type": "Organization",
+                "name": blog?.author || "Bonet Elite Services",
+                "url": "https://www.bonet.rw"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Bonet Elite Services",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://www.bonet.rw/images/logo.png"
+                }
+              },
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": `https://www.bonet.rw/blog/${slug}`
+              },
+              "keywords": `${blog?.title}, Rwanda travel, business Rwanda, investment Rwanda, Bonet Services, Kigali`,
+              "inLanguage": "en-US"
+            }
+          ])
+        }}
+      />
        {/* Add this Head component in your return */}
       <Head>
         <title>{blog?.title} | Bonet Blog</title>
@@ -407,13 +563,14 @@ const trackView = async () => {
             </span>
           </div>
           
-          <button
-            onClick={() => setShowShareModal(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
-          >
-            <Share2 className="w-4 h-4" />
-            <span className="text-sm font-medium">Share</span>
-          </button>
+          {/* Advanced Social Share Component */}
+          <SocialShare
+            url={getCurrentUrl()}
+            title={blog.title}
+            description={blog.quote || blog.description || ''}
+            imageUrl={blog.image ? `https://api.bonet.rw:8443/bonetBackend/public/${blog.image}` : undefined}
+            hashtags={["Rwanda", "Travel", "Business", "Investment", "BonetElite"]}
+          />
         </div>
 
         {blog.image && (
@@ -498,79 +655,6 @@ const trackView = async () => {
           </div>
           
         </article>
-
-        {/* Share Modal */}
-        <AnimatePresence>
-          {showShareModal && (
-            <>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setShowShareModal(false)}
-                className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
-              />
-              
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                className="fixed inset-0 z-50 flex items-center justify-center p-4"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="bg-white rounded-lg shadow-lg border border-gray-200 max-w-sm w-full p-5 relative">
-                  <button
-                    onClick={() => setShowShareModal(false)}
-                    className="absolute top-3 right-3 p-1.5 hover:bg-gray-100 rounded-md transition-colors"
-                  >
-                    <X className="w-4 h-4 text-gray-600" />
-                  </button>
-                  
-                  <div className="flex items-center gap-2 mb-4">
-                    <Share2 className="w-5 h-5 text-gray-700" />
-                    <h2 className="text-lg font-semibold text-gray-900">Share this article</h2>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <button
-                      onClick={shareToFacebook}
-                      className="w-full flex items-center gap-3 p-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-700 font-medium"
-                    >
-                      <Facebook className="w-4 h-4" />
-                      <span>Facebook</span>
-                    </button>
-                    
-                    <button
-                      onClick={shareToLinkedIn}
-                      className="w-full flex items-center gap-3 p-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-700 font-medium"
-                    >
-                      <Linkedin className="w-4 h-4" />
-                      <span>LinkedIn</span>
-                    </button>
-                    
-                    <button
-                      onClick={shareToWhatsApp}
-                      className="w-full flex items-center gap-3 p-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-700 font-medium"
-                    >
-                      <MessageCircle className="w-4 h-4" />
-                      <span>WhatsApp</span>
-                    </button>
-                    
-                    <button
-                      onClick={copyLink}
-                      className={`w-full flex items-center gap-3 p-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-700 font-medium ${copied ? 'bg-green-50 text-green-700' : ''}`}
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                      </svg>
-                      <span>{copied ? 'Copied!' : 'Copy Link'}</span>
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
       </div>
     </div>
   );

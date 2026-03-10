@@ -28,6 +28,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
        <meta name="google-site-verification" content="XmA718kfY8J4ixoy_mtJ-RWVR38ho1jxm4EycrG0pM0" />
        <link rel="preconnect" href="https://api.bonet.rw:8443" />
        <link rel="preconnect" href="https://analytics.ahrefs.com" />
+       
+       {/* International SEO - hreflang tags */}
+       <link rel="alternate" hrefLang="en" href="https://www.bonet.rw" />
+       <link rel="alternate" hrefLang="fr" href="https://www.bonet.rw" />
+       <link rel="alternate" hrefLang="zh-CN" href="https://www.bonet.rw" />
+       <link rel="alternate" hrefLang="x-default" href="https://www.bonet.rw" />
+       
        {/* Google tag (gtag.js) */}
        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3BEG46CGMG"></script>
        <script dangerouslySetInnerHTML={{

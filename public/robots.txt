@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemaps - Use consistent www domain
+Sitemap: https://www.bonet.rw/sitemap.xml
+Sitemap: https://www.bonet.rw/sitemap-static.xml
+Sitemap: https://www.bonet.rw/sitemaptwo.xml
+
+# Block common non-content paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /*?* 
+Allow: /*?page=
+
+# Allow important content
+Allow: /blogs
+Allow: /blog/
+Allow: /about
+Allow: /contact
+Allow: /services
+Allow: /travel
+Allow: /investment
+Allow: /business
+
+Crawl-delay: 1
