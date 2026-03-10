@@ -159,12 +159,12 @@ export default function Blog() {
                 </div>
               </div>
                   {/* View Badge */}
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
+              {/* <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
                 <div className="flex items-center gap-1 text-xs text-gray-600">
                   <Eye className="w-3 h-3" />
                   <span>{post.created_at ? post.view_count: 'Recent'}</span>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Blog Content */}

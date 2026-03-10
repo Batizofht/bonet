@@ -400,14 +400,14 @@ export default function BlogsPageWithLoadMore() {
                         </div>
                         
                         {/* Views Badge */}
-                        <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1.5 shadow-sm">
+                        {/* <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1.5 shadow-sm">
                           <div className="flex items-center gap-2">
                             <Clock className="w-3.5 h-3.5 text-gray-600" />
                             <span className="text-xs font-medium text-gray-700">
                               {post.view_count ?? 0} {t('blog.meta.views', 'views')}
                             </span>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
 
                       {/* Content */}

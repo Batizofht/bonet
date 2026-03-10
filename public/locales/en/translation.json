@@ -141,6 +141,10 @@
     "contactPrompt": "Still Have Questions? Contact Us for Personalized Assistance!",
     "getInTouch": "Get in Touch"
   },
+  "clientReviews": {
+    "title": "Client Reviews",
+    "subtitle": "What our clients say about our services"
+  },
   "footer": {
     "description": "At Bonet Elite Services, we make travel, business, and investment easy so you can focus on what truly matters. Let’s make your experience in Rwanda seamless and successful!",
     "quickLinks": "Explore",
