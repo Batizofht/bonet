@@ -75,11 +75,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             'User-Agent': 'BonetEliteSitemapBot/1.0; +https://www.bonet.rw',
           },
           cache: 'no-store',
-          signal: AbortSignal.timeout(8000),
+          signal: AbortSignal.timeout(15000), // Increased from 8000ms to 15000ms
         })
 
         if (response.ok) {
           const data = await response.json()
+          console.log(`🔍 Raw response from ${endpoint}:`, JSON.stringify(data, null, 2))
           const fetchedBlogs = data.data || data.blogs || data
           
           if (Array.isArray(fetchedBlogs) && fetchedBlogs.length > 0) {
@@ -87,7 +88,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             apiWorked = true
             console.log(`✅ Sitemap: Found ${blogs.length} blogs from ${endpoint}`)
             break
+          } else {
+            console.warn(`⚠️ Endpoint ${endpoint} returned non-array or empty data:`, typeof fetchedBlogs, fetchedBlogs)
           }
+        } else {
+          console.warn(`⚠️ Endpoint ${endpoint} returned status:`, response.status, response.statusText)
         }
       } catch (endpointError: any) {
         console.warn(`Endpoint ${endpoint} failed:`, endpointError?.message || 'Unknown error')

@@ -1,3 +1,4 @@
+"use client"
 // app/blog/[slug]/page.tsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
