@@ -58,8 +58,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     // Try multiple API endpoints for reliability
     const endpoints = [
-      'https://api.bonet.rw:8443/bonetBackend/backend/public/full',
-      'https://api.bonet.rw:8443/bonetBackend/backend/public/blogs'
+      'https://api.bonet.rw:8443/bonetBackend/backend/public/blogsitemap'
     ]
 
     let blogs: any[] = []
