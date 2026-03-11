@@ -10,13 +10,13 @@ export const metadata = {
   authors: [{ name: "Bonet Elite Services" }],
   openGraph: {
     type: "website",
-    url: "https://www.bonet.rw/consulting",
+    url: "https://bonet.rw/consulting",
     title: "Business Consulting | Bonet Elite Services",
     description:
       "Get expert business consulting from Bonet Elite Services in Rwanda. We help with business plans, project strategies, and financial audits.",
     images: [
       {
-        url: "https://www.bonet.rw/images/consulting-preview.jpg",
+        url: "https://bonet.rw/images/consulting-preview.jpg",
         width: 800,
         height: 600,
         alt: "Business Consulting Preview",
@@ -29,7 +29,7 @@ export const metadata = {
     title: "Business Consulting | Bonet Elite Services",
     description:
       "Professional consulting services for business planning, project management, and financial auditing in Rwanda.",
-    images: ["https://www.bonet.rw/images/consulting-preview.jpg"],
+    images: ["https://bonet.rw/images/consulting-preview.jpg"],
   },
 };
 

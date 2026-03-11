@@ -10,13 +10,13 @@ export const metadata = {
   authors: [{ name: "Bonet Elite Services" }],
   openGraph: {
     type: "website",
-    url: "https://www.bonet.rw/investment",
+    url: "https://bonet.rw/investment",
     title: "Investment & Business Setup | Bonet Elite Services",
     description:
       "Bonet Elite Services helps investors establish businesses in Rwanda. From hospitality to legal support, we make your investment journey seamless.",
     images: [
       {
-        url: "https://www.bonet.rw/images/investment-preview.jpg",
+        url: "https://bonet.rw/images/investment-preview.jpg",
         width: 800,
         height: 600,
         alt: "Investment & Business Setup Preview",
@@ -29,7 +29,7 @@ export const metadata = {
     title: "Investment & Business Setup | Bonet Elite Services",
     description:
       "Start your business in Rwanda with Bonet Elite Services. Trusted support for investors and executives.",
-    images: ["https://www.bonet.rw/images/investment-preview.jpg"],
+    images: ["https://bonet.rw/images/investment-preview.jpg"],
   },
 };
 

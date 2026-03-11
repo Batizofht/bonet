@@ -11,7 +11,7 @@ export const metadata = {
   authors: [{ name: "Bonet Elite Services" }],
   openGraph: {
     type: "website",
-    url: "https://www.bonet.rw/visit-rwanda",
+    url: "https://bonet.rw/visit-rwanda",
     title: "Visit Rwanda | Bonet Elite Services",
     description:
       "Plan your trip with Bonet Elite Services. Experience Rwanda’s breathtaking landscapes, business opportunities, and cultural treasures.",

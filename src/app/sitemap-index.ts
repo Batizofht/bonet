@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemapIndex(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.bonet.rw'
+  const baseUrl = 'https://bonet.rw'
   
   return [
     {

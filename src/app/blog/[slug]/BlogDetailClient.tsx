@@ -331,7 +331,7 @@ export default function BlogDetailClient() {
       const currentUrl = window.location.href;
       return currentUrl;
     }
-    return `https://www.bonet.rw/blog/${slug}`;
+    return `https://bonet.rw/blog/${slug}`;
   };
 
   return (
@@ -343,7 +343,7 @@ export default function BlogDetailClient() {
         <meta property="og:title" content={blog?.title} />
         <meta property="og:description" content={blog?.quote} />
         <meta property="og:image" content={blog?.image ? `https://api.bonet.rw:8443/bonetBackend/public/${blog.image}` : 'default-image.jpg'} />
-        <meta property="og:url" content={`https://www.bonet.rw/blog/${slug}`} />
+        <meta property="og:url" content={`https://bonet.rw/blog/${slug}`} />
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={blog?.title} />

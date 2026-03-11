@@ -3,6 +3,7 @@ import "./globals.css";
 import LayoutWrapper from "./LayoutWrapper";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bonet.rw"),
   title: "Bonet Elite Services | Travel, Business & Investment Support in Rwanda",
   description:
     "Your trusted partner for travel, business, and investment in Rwanda. We simplify your journey with tailored hospitality, business setup, consulting, HR, and VIP executive services.",
@@ -30,10 +31,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
        <link rel="preconnect" href="https://analytics.ahrefs.com" />
        
        {/* International SEO - hreflang tags */}
-       <link rel="alternate" hrefLang="en" href="https://www.bonet.rw" />
-       <link rel="alternate" hrefLang="fr" href="https://www.bonet.rw" />
-       <link rel="alternate" hrefLang="zh-CN" href="https://www.bonet.rw" />
-       <link rel="alternate" hrefLang="x-default" href="https://www.bonet.rw" />
+       <link rel="alternate" hrefLang="en" href="https://bonet.rw" />
+       <link rel="alternate" hrefLang="fr" href="https://bonet.rw" />
+       <link rel="alternate" hrefLang="zh-CN" href="https://bonet.rw" />
+       <link rel="alternate" hrefLang="x-default" href="https://bonet.rw" />
        
        {/* Google tag (gtag.js) */}
        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3BEG46CGMG"></script>

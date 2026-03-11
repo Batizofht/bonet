@@ -10,13 +10,13 @@ export const metadata = {
   authors: [{ name: "Bonet Elite Services" }],
   openGraph: {
     type: "article",
-    url: "https://www.bonet.rw/blog/investment",
+    url: "https://bonet.rw/blog/investment",
     title: "Investment in Rwanda | Bonet Elite Services Blog",
     description:
       "Uncover Rwanda’s most promising sectors—real estate, agriculture, ICT, and tourism—with insights on potential returns and investor support.",
     images: [
       {
-        url: "https://www.bonet.rw/images/blog-investment-preview.jpg",
+        url: "https://bonet.rw/images/blog-investment-preview.jpg",
         width: 800,
         height: 600,
         alt: "Investment in Rwanda",
@@ -28,7 +28,7 @@ export const metadata = {
     title: "Investment in Rwanda | Bonet Elite Services Blog",
     description:
       "Detailed insights on investment sectors in Rwanda and how Bonet Elite Services supports investors every step of the way.",
-    images: ["https://www.bonet.rw/images/blog-investment-preview.jpg"],
+    images: ["https://bonet.rw/images/blog-investment-preview.jpg"],
   },
 };
 

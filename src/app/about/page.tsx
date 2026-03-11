@@ -12,10 +12,10 @@ export const metadata = {
     title: "About Us | Bonet Elite Services Rwanda",
     description:
       "Bonet Elite Services is dedicated to simplifying travel, business setup, and investment in Rwanda. Learn more about our vision, expertise, and tailored services.",
-    url: "https://www.bonet.rw/about",
+    url: "https://bonet.rw/about",
     images: [
       {
-        url: "https://www.bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/logo.png",
       },
     ],
     type: "website",
@@ -25,7 +25,7 @@ export const metadata = {
     title: "About Us | Bonet Elite Services Rwanda",
     description:
       "Discover Bonet Elite Services’ mission and values. We provide trusted concierge, business, and VIP services for investors and travelers in Rwanda.",
-    images: ["https://www.bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/logo.png"],
   },
 };
 

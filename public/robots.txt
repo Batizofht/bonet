@@ -1,10 +1,10 @@
 User-agent: *
 Allow: /
 
-# Sitemaps - Use consistent www domain
-Sitemap: https://www.bonet.rw/sitemap.xml
-Sitemap: https://www.bonet.rw/sitemap-static.xml
-Sitemap: https://www.bonet.rw/sitemaptwo.xml
+# Sitemaps - Use consistent canonical domain
+Sitemap: https://bonet.rw/sitemap.xml
+Sitemap: https://bonet.rw/sitemap-static.xml
+Sitemap: https://bonet.rw/sitemaptwo.xml
 
 # Block common non-content paths
 Disallow: /api/

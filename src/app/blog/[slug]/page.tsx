@@ -50,8 +50,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
     const title = `${foundBlog.title} | Bonet Elite Services Blog`;
     const description = foundBlog.quote || foundBlog.description?.substring(0, 160) || "Read this expert article on travel, business, or investment in Rwanda.";
-    const imageUrl = foundBlog.image ? `https://api.bonet.rw:8443/bonetBackend/public/${foundBlog.image}` : "https://www.bonet.rw/images/blog-default.jpg";
-    const url = `https://www.bonet.rw/blog/${params.slug}`;
+    const imageUrl = foundBlog.image ? `https://api.bonet.rw:8443/bonetBackend/public/${foundBlog.image}` : "https://bonet.rw/images/blog-default.jpg";
+    const url = `https://bonet.rw/blog/${params.slug}`;
     const keywords = `${foundBlog.title}, Rwanda travel, business Rwanda, investment Rwanda, Bonet Services, Kigali, ${foundBlog.title.toLowerCase()}`;
 
     return {
@@ -141,19 +141,19 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://www.bonet.rw"
+                  "item": "https://bonet.rw"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Blogs",
-                  "item": "https://www.bonet.rw/blogs"
+                  "item": "https://bonet.rw/blogs"
                 },
                 {
                   "@type": "ListItem",
                   "position": 3,
                   "name": params.slug,
-                  "item": `https://www.bonet.rw/blog/${params.slug}`
+                  "item": `https://bonet.rw/blog/${params.slug}`
                 }
               ]
             },
@@ -162,24 +162,24 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
               "@type": "BlogPosting",
               "headline": params.slug,
               "description": "Expert article on travel, business, or investment in Rwanda",
-              "image": "https://www.bonet.rw/images/blog-default.jpg",
-              "url": `https://www.bonet.rw/blog/${params.slug}`,
+              "image": "https://bonet.rw/images/blog-default.jpg",
+              "url": `https://bonet.rw/blog/${params.slug}`,
               "author": {
                 "@type": "Organization",
                 "name": "Bonet Elite Services",
-                "url": "https://www.bonet.rw"
+                "url": "https://bonet.rw"
               },
               "publisher": {
                 "@type": "Organization",
                 "name": "Bonet Elite Services",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://www.bonet.rw/images/logo.png"
+                  "url": "https://bonet.rw/images/logo.png"
                 }
               },
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "id": `https://www.bonet.rw/blog/${params.slug}`
+                "id": `https://bonet.rw/blog/${params.slug}`
               },
               "keywords": "Rwanda travel, business Rwanda, investment Rwanda, Bonet Services, Kigali",
               "inLanguage": "en-US"

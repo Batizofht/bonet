@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.bonet.rw'
+  const baseUrl = 'https://bonet.rw'
   
   // Core static pages with proper SEO metadata
   const staticPages = [
@@ -71,7 +71,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'User-Agent': 'BonetEliteSitemapBot/1.0; +https://www.bonet.rw',
+            'User-Agent': 'BonetEliteSitemapBot/1.0; +https://bonet.rw',
           },
           cache: 'no-store',
           signal: AbortSignal.timeout(15000), // Increased from 8000ms to 15000ms

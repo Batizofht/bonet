@@ -10,13 +10,13 @@ export const metadata = {
   authors: [{ name: "Bonet Elite Services" }],
   openGraph: {
     type: "article",
-    url: "https://www.bonet.rw/blog/travel-tips",
+    url: "https://bonet.rw/blog/travel-tips",
     title: "Travel Tips for Rwanda | Bonet Elite Services Blog",
     description:
       "Learn everything you need for a smooth trip to Rwanda — from cultural etiquette and safety to must-visit destinations and travel essentials.",
     images: [
       {
-        url: "https://www.bonet.rw/images/blog-travel-preview.jpg",
+        url: "https://bonet.rw/images/blog-travel-preview.jpg",
         width: 800,
         height: 600,
         alt: "Travel Tips for Rwanda",
@@ -28,7 +28,7 @@ export const metadata = {
     title: "Travel Tips for Rwanda | Bonet Elite Services Blog",
     description:
       "Discover travel essentials and pro tips for Rwanda with Bonet Elite Services: visas, safety, culture, and tourism highlights.",
-    images: ["https://www.bonet.rw/images/blog-travel-preview.jpg"],
+    images: ["https://bonet.rw/images/blog-travel-preview.jpg"],
   },
 };
 

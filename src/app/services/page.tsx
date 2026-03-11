@@ -12,12 +12,12 @@ export const metadata = {
   authors: [{ name: "Bonet Elite Services" }],
   openGraph: {
     type: "website",
-    url: "https://www.bonet.rw/services",
+    url: "https://bonet.rw/services",
     title: "Premium Services | Bonet Elite Services",
     description: "Hotel Reservations: Luxury stays with premium amenities. Apartment Booking: Comfortable homes away from home. Transport Service: Safe and reliable transportation. Tourism Guides: Explore with expert local guides.",
     images: [
       {
-        url: "https://www.bonet.rw/images/premium-services-preview.jpg",
+        url: "https://bonet.rw/images/premium-services-preview.jpg",
         width: 1200,
         height: 630,
         alt: "Bonet Elite Premium Services",
@@ -29,12 +29,12 @@ export const metadata = {
     site: "@BonetElite",
     title: "Premium Services | Bonet Elite Services",
     description: "Hotel Reservations: Luxury stays. Apartment Booking: Comfortable homes. Transport Service: Safe transportation. Tourism Guides: Expert local guides.",
-    images: ["https://www.bonet.rw/images/premium-services-preview.jpg"],
+    images: ["https://bonet.rw/images/premium-services-preview.jpg"],
   },
-  metadataBase: new URL("https://www.bonet.rw"),
+  metadataBase: new URL("https://bonet.rw"),
   robots: "index, follow",
   alternates: {
-    canonical: "https://www.bonet.rw/services"
+    canonical: "https://bonet.rw/services"
   }
 };
 

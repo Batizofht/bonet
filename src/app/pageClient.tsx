@@ -23,8 +23,8 @@ export default function HomePageClient() {
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Bonet Elite Services",
-              "url": "https://www.bonet.rw",
-              "logo": "https://www.bonet.rw/images/logo.png",
+              "url": "https://bonet.rw",
+              "logo": "https://bonet.rw/images/logo.png",
               "description": "Your trusted partner for travel, business, and investment in Rwanda. We simplify your journey with tailored hospitality, business setup, consulting, HR, and VIP executive services.",
               "address": {
                 "@type": "PostalAddress",
@@ -57,17 +57,17 @@ export default function HomePageClient() {
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Bonet Elite Services",
-              "url": "https://www.bonet.rw",
+              "url": "https://bonet.rw",
               "description": "Premier travel, business, and investment services in Rwanda",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://www.bonet.rw/search?q={search_term_string}",
+                "target": "https://bonet.rw/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               },
               "publisher": {
                 "@type": "Organization",
                 "name": "Bonet Elite Services",
-                "url": "https://www.bonet.rw"
+                "url": "https://bonet.rw"
               }
             },
             {
