@@ -2,6 +2,8 @@ import { Metadata } from 'next'
 import axios from "axios";
 import BlogDetailClient from './BlogDetailClient'
 
+export const dynamic = 'force-dynamic';
+
 interface Blog {
   id: number;
   title: string;
@@ -12,8 +14,27 @@ interface Blog {
   author?: string;
 }
 
+const slugifyTitle = (title: string) => {
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .trim();
+};
+
+const normalizeSlug = (slug: string) => {
+  try {
+    return decodeURIComponent(slug).replace(/^-+|-+$/g, '').trim();
+  } catch {
+    return slug.replace(/^-+|-+$/g, '').trim();
+  }
+};
+
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   try {
+    const targetSlug = normalizeSlug(params.slug);
     const response = await axios.get(
       "https://api.bonet.rw:8443/bonetBackend/backend/public/blogs",
       { timeout: 10000 }
@@ -31,27 +52,24 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const foundBlog = blogsArray.find((item: Blog) => {
       if (!item.title) return false;
       
-      const blogSlug = item.title
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .trim();
+      const blogSlug = slugifyTitle(item.title);
       
-      return blogSlug === params.slug;
+      return blogSlug === targetSlug;
     });
 
     if (!foundBlog) {
+      const readableTitle = targetSlug.replace(/-/g, ' ').trim();
       return {
-        title: "Blog Not Found - Bonet Elite Services",
-        description: "The requested blog post could not be found.",
+        title: `${readableTitle} | Bonet Elite Services Blog`,
+        description: "Discover expert insights on travel, business, and investment in Rwanda.",
+        alternates: { canonical: `https://bonet.rw/blog/${targetSlug}` },
       };
     }
 
     const title = `${foundBlog.title} | Bonet Elite Services Blog`;
     const description = foundBlog.quote || foundBlog.description?.substring(0, 160) || "Read this expert article on travel, business, or investment in Rwanda.";
-    const imageUrl = foundBlog.image ? `https://api.bonet.rw:8443/bonetBackend/public/${foundBlog.image}` : "https://bonet.rw/images/blog-default.jpg";
-    const url = `https://bonet.rw/blog/${params.slug}`;
+    const imageUrl = foundBlog.image ? `https://api.bonet.rw:8443/bonetBackend/public/${foundBlog.image}` : "https://bonet.rw/assets/images/logo.png";
+    const url = `https://bonet.rw/blog/${targetSlug}`;
     const keywords = `${foundBlog.title}, Rwanda travel, business Rwanda, investment Rwanda, Bonet Services, Kigali, ${foundBlog.title.toLowerCase()}`;
 
     return {
@@ -92,16 +110,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         creator: "@BonetElite",
         title,
         description,
-        images: {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: foundBlog.title,
-        },
-        // Additional Twitter-specific meta
-        "app:name:iphone": "Bonet Elite",
-        "app:name:ipad": "Bonet Elite",
-        "app:name:googleplay": "Bonet Elite",
+        images: [imageUrl],
       },
       
       // Additional meta tags for social sharing
@@ -115,6 +124,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         "og:locale": "en_US",
         "fb:app_id": "your-facebook-app-id", // Add if you have Facebook app
         "twitter:domain": "bonet.rw",
+        "twitter:app:name:iphone": "Bonet Elite Services",
+        "twitter:app:name:ipad": "Bonet Elite Services",
+        "twitter:app:name:googleplay": "Bonet Elite Services",
       },
     };
   } catch (error) {

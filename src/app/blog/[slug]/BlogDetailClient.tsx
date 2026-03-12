@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 import { Calendar, User, ArrowLeft, HandMetal } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import Head from 'next/head';
 import SocialShare from "../../../components/SocialShare";
 
 interface Blog {
@@ -101,6 +100,11 @@ export default function BlogDetailClient() {
       fetchBlog();
     }
   }, [slug]);
+
+  useEffect(() => {
+    if (!blog?.title) return;
+    document.title = `${blog.title} | Bonet Blog`;
+  }, [blog?.title]);
 
   // Generate unique device ID
   const getDeviceId = () => {
@@ -336,20 +340,6 @@ export default function BlogDetailClient() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Add this Head component in your return */}
-      <Head>
-        <title>{blog?.title} | Bonet Blog</title>
-        <meta name="description" content={blog?.quote || 'Read on Bonet'} />
-        <meta property="og:title" content={blog?.title} />
-        <meta property="og:description" content={blog?.quote} />
-        <meta property="og:image" content={blog?.image ? `https://api.bonet.rw:8443/bonetBackend/public/${blog.image}` : 'default-image.jpg'} />
-        <meta property="og:url" content={`https://bonet.rw/blog/${slug}`} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={blog?.title} />
-        <meta name="twitter:description" content={blog?.quote} />
-        <meta name="twitter:image" content={blog?.image ? `https://api.bonet.rw:8443/bonetBackend/public/${blog.image}` : 'default-image.jpg'} />
-      </Head>
       <div className="max-w-4xl mx-auto px-4 pb-8 pt-8">
         <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 text-center leading-tight">
           {blog.title}
