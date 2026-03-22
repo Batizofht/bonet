@@ -17,7 +17,7 @@ const SecondService = () => {
           {/* Decorative icon */}
           <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 backdrop-blur-sm border border-white/30">
             <div className="w-12 h-12 bg-gradient-to-br from-white to-white/70 rounded-xl flex items-center justify-center">
-              <span className="text-2xl">🌟</span>
+              <img src="/image/logo.png" alt="Bonet Logo" className="w-8 h-8 object-contain" />
             </div>
           </div>
 
@@ -40,7 +40,7 @@ const SecondService = () => {
 
           {/* CTA badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-white/20">
-            <span className="text-sm font-semibold">✨ Your Journey Starts Here</span>
+            <span className="text-sm font-semibold">Your Journey Starts Here</span>
           </div>
         </div>
       </div>

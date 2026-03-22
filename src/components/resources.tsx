@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { slugify } from "../../slugify";
 import axios from "axios";
 import Link from "next/link";
-import { Calendar, Clock, BookOpen, Sparkles, ArrowRight, Eye } from "lucide-react";
+import { Calendar, Clock, BookOpen, ArrowRight, Eye } from "lucide-react";
 
 interface Blog {
   image: string;
@@ -119,11 +119,40 @@ export default function Blog() {
 
       {/* Loader/Error States */}
       {loading && (
-        <div className="text-center py-12">
-          <div className="flex justify-center mb-4">
-            <Sparkles className="w-8 h-8 text-[#188bff]" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Skeleton Card 1 */}
+          <div className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
+            <div className="w-full h-48 bg-gray-200 animate-pulse"></div>
+            <div className="p-6">
+              <div className="w-3/4 h-6 bg-gray-200 rounded animate-pulse mb-3"></div>
+              <div className="w-full h-4 bg-gray-200 rounded animate-pulse mb-2"></div>
+              <div className="w-full h-4 bg-gray-200 rounded animate-pulse mb-2"></div>
+              <div className="w-2/3 h-4 bg-gray-200 rounded animate-pulse mb-4"></div>
+              <div className="w-24 h-4 bg-gray-300 rounded animate-pulse"></div>
+            </div>
           </div>
-          <p className="text-gray-600 text-lg">{t("blog.loading")}</p>
+          {/* Skeleton Card 2 */}
+          <div className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
+            <div className="w-full h-48 bg-gray-200 animate-pulse"></div>
+            <div className="p-6">
+              <div className="w-3/4 h-6 bg-gray-200 rounded animate-pulse mb-3"></div>
+              <div className="w-full h-4 bg-gray-200 rounded animate-pulse mb-2"></div>
+              <div className="w-full h-4 bg-gray-200 rounded animate-pulse mb-2"></div>
+              <div className="w-2/3 h-4 bg-gray-200 rounded animate-pulse mb-4"></div>
+              <div className="w-24 h-4 bg-gray-300 rounded animate-pulse"></div>
+            </div>
+          </div>
+          {/* Skeleton Card 3 */}
+          <div className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
+            <div className="w-full h-48 bg-gray-200 animate-pulse"></div>
+            <div className="p-6">
+              <div className="w-3/4 h-6 bg-gray-200 rounded animate-pulse mb-3"></div>
+              <div className="w-full h-4 bg-gray-200 rounded animate-pulse mb-2"></div>
+              <div className="w-full h-4 bg-gray-200 rounded animate-pulse mb-2"></div>
+              <div className="w-2/3 h-4 bg-gray-200 rounded animate-pulse mb-4"></div>
+              <div className="w-24 h-4 bg-gray-300 rounded animate-pulse"></div>
+            </div>
+          </div>
         </div>
       )}
       

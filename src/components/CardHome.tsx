@@ -15,28 +15,28 @@ const BookingCards = () => {
       title: t("hotel_title"),
       description: t("hotel_desc"),
       icon: Building,
-      color: "from-blue-500 to-cyan-400",
+      color: "bg-blue-500",
     },
     {
       id: "apartments",
       title: t("apartments_title"),
       description: t("apartments_desc"),
       icon: Home,
-      color: "from-green-500 to-emerald-400",
+      color: "bg-green-500",
     },
     {
       id: "transport",
       title: t("transport_title"),
       description: t("transport_desc"),
       icon: Car,
-      color: "from-orange-500 to-amber-400",
+      color: "bg-orange-500",
     },
     {
       id: "tourism",
       title: t("tourism_title"),
       description: t("tourism_desc"),
       icon: Users,
-      color: "from-purple-500 to-pink-400",
+      color: "bg-purple-500",
     }
   ];
 
@@ -54,7 +54,7 @@ const BookingCards = () => {
               className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 cursor-pointer group hover:bg-white/20 transition-all duration-300"
               onClick={() => setSelectedService(service.id)}
             >
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-3 mx-auto`}>
+              <div className={`w-12 h-12 rounded-xl ${service.color} flex items-center justify-center mb-3 mx-auto`}>
                 <IconComponent className="w-6 h-6 text-white" />
               </div>
               
@@ -86,7 +86,7 @@ const BookingCards = () => {
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center`}>
+                  <div className={`w-10 h-10 rounded-xl ${service.color} flex items-center justify-center`}>
                     <IconComponent className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-800">{service.title}</h3>

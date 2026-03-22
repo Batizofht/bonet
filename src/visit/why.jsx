@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Sparkles, Target, TrendingUp, Users, Shield, Globe } from 'lucide-react';
+import { Target, TrendingUp, Users, Shield, Globe } from 'lucide-react';
 
 const WhyInvest = () => {
   const { t } = useTranslation();
@@ -10,7 +10,7 @@ const WhyInvest = () => {
   // Read all texts from translation JSON
   const title = t('whyinvest.title');
   const subtitle = t('whyinvest.subtitle');
-  const card = t('whyinvest.card', { returnObjects: true });
+  const card = t('whyinvest.card', { returnObjects: true });        
 
   const features = [
     { icon: <TrendingUp className="w-5 h-5" />, text: "Growing Economy" },
@@ -32,11 +32,7 @@ const WhyInvest = () => {
           viewport={{ once: true }}
         >
           <div className="flex justify-center items-center gap-3 mb-4">
-            <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
-            <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-            <Sparkles className="w-6 h-6 text-[#188bff] animate-pulse" />
-            <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-            <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
@@ -98,7 +94,6 @@ const WhyInvest = () => {
             {/* Content Section */}
             <div className="lg:w-1/2 p-8 md:p-12">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-2 h-2 bg-[#188bff] rounded-full animate-pulse"></div>
                 <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#188bff] to-cyan-500 bg-clip-text text-transparent">
                   {card.heading}
                 </h2>
@@ -122,36 +117,7 @@ const WhyInvest = () => {
                   </motion.p>
                 ))}
               </div>
-
-              {/* Decorative Elements */}
-              <div className="flex gap-2 mt-8">
-                {[...Array(3)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="w-3 h-3 bg-gradient-to-br from-[#188bff] to-cyan-400 rounded-full opacity-60"
-                  />
-                ))}
-              </div>
             </div>
-          </div>
-        </motion.div>
-
-        {/* Bottom Decoration */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          viewport={{ once: true }}
-          className="flex justify-center mt-12"
-        >
-          <div className="flex gap-4">
-            {[...Array(5)].map((_, i) => (
-              <div
-                key={i}
-                className="w-2 h-2 bg-[#188bff] rounded-full animate-bounce"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              />
-            ))}
           </div>
         </motion.div>
       </div>

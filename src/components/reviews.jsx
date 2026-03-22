@@ -132,7 +132,7 @@ function Testimonials() {
           </p>
           
           <div className="flex justify-end mt-6">
-            <Sparkles className="w-5 h-5 text-yellow-400" />
+            {/* <Sparkles className="w-5 h-5 text-yellow-400" /> */}
           </div>
         </motion.div>
 

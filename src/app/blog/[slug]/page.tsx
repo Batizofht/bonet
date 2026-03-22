@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import axios from "axios";
 import BlogDetailClient from './BlogDetailClient'
 
 export const dynamic = 'force-dynamic';
@@ -32,45 +31,88 @@ const normalizeSlug = (slug: string) => {
   }
 };
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> | { slug: string } }): Promise<Metadata> {
   try {
-    const targetSlug = normalizeSlug(params.slug);
-    const response = await axios.get(
+    // Handle params as Promise or direct value
+    const resolvedParams = await Promise.resolve(params);
+    const targetSlug = normalizeSlug(resolvedParams?.slug || '');
+    console.log('[SEO] Target slug:', targetSlug);
+    
+    // Use fetch like sitemap.ts does
+    const response = await fetch(
       "https://api.bonet.rw:8443/bonetBackend/backend/public/blogs",
-      { timeout: 10000 }
+      {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        cache: 'no-store',
+        signal: AbortSignal.timeout(10000),
+      }
     );
 
-    const blogsArray = response.data.data || response.data.blogs || response.data;
+    if (!response.ok) {
+      throw new Error(`API returned ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('[SEO] Raw API response:', JSON.stringify(data)?.substring(0, 500));
+    
+    const blogsArray = data?.data || data?.blogs || data;
+    console.log('[SEO] Extracted blogsArray type:', typeof blogsArray, 'isArray:', Array.isArray(blogsArray), 'length:', blogsArray?.length);
     
     if (!Array.isArray(blogsArray)) {
+      console.log('[SEO] Not an array, response.data:', response.data);
       return {
         title: "Blog - Bonet Elite Services",
         description: "Discover expert insights on travel, business, and investment in Rwanda.",
       };
     }
 
-    const foundBlog = blogsArray.find((item: Blog) => {
-      if (!item.title) return false;
+    const foundBlog = blogsArray.find((item: any) => {
+      if (!item.title) {
+        console.log('[SEO] Blog without title:', item);
+        return false;
+      }
       
       const blogSlug = slugifyTitle(item.title);
-      
-      return blogSlug === targetSlug;
+      const match = blogSlug === targetSlug;
+      if (match) {
+        console.log('[SEO] Found matching blog:', item.title);
+      }
+      return match;
     });
 
     if (!foundBlog) {
-      const readableTitle = targetSlug.replace(/-/g, ' ').trim();
+      const safeSlug = targetSlug || resolvedParams?.slug || 'blog-post';
+      // Capitalize each word
+      const readableTitle = safeSlug
+        .replace(/-/g, ' ')
+        .replace(/\b\w/g, char => char.toUpperCase())
+        .trim();
       return {
         title: `${readableTitle} | Bonet Elite Services Blog`,
         description: "Discover expert insights on travel, business, and investment in Rwanda.",
-        alternates: { canonical: `https://bonet.rw/blog/${targetSlug}` },
+        alternates: { canonical: `https://bonet.rw/blog/${safeSlug}` },
       };
     }
 
-    const title = `${foundBlog.title} | Bonet Elite Services Blog`;
-    const description = foundBlog.quote || foundBlog.description?.substring(0, 160) || "Read this expert article on travel, business, or investment in Rwanda.";
-    const imageUrl = foundBlog.image ? `https://api.bonet.rw:8443/bonetBackend/public/${foundBlog.image}` : "https://bonet.rw/assets/images/logo.png";
+    console.log('[SEO] Found blog:', foundBlog);
+
+    // ALWAYS use slug title - never use API title to avoid "undefined"
+    const safeSlug = targetSlug || resolvedParams?.slug || 'blog-post';
+    // Capitalize each word: "audit-ready" -> "Audit Ready"
+    const slugTitle = safeSlug
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, char => char.toUpperCase())
+      .trim();
+    const blogTitle = slugTitle || 'Blog Post';
+    const title = `${blogTitle} | Bonet Elite Services Blog`;
+    const description = foundBlog?.quote || foundBlog?.description?.substring(0, 160) || "Read this expert article on travel, business, or investment in Rwanda.";
+    const imageUrl = foundBlog?.image ? `https://api.bonet.rw:8443/bonetBackend/public/${foundBlog.image}` : "https://bonet.rw/assets/images/logo.png";
     const url = `https://bonet.rw/blog/${targetSlug}`;
-    const keywords = `${foundBlog.title}, Rwanda travel, business Rwanda, investment Rwanda, Bonet Services, Kigali, ${foundBlog.title.toLowerCase()}`;
+    const keywords = `${blogTitle}, Rwanda travel, business Rwanda, investment Rwanda, Bonet Services, Kigali, ${blogTitle.toLowerCase()}`;
 
     return {
       title,
@@ -137,10 +179,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function BlogDetailPage({ params }: { params: { slug: string } }) {
+export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> | { slug: string } }) {
+  const resolvedParams = await Promise.resolve(params);
+  const slug = resolvedParams?.slug || 'blog-post';
+  
   return (
     <>
-      {/* Structured Data for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -164,18 +208,18 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
                 {
                   "@type": "ListItem",
                   "position": 3,
-                  "name": params.slug,
-                  "item": `https://bonet.rw/blog/${params.slug}`
+                  "name": slug,
+                  "item": `https://bonet.rw/blog/${slug}`
                 }
               ]
             },
             {
               "@context": "https://schema.org",
               "@type": "BlogPosting",
-              "headline": params.slug,
+              "headline": slug,
               "description": "Expert article on travel, business, or investment in Rwanda",
               "image": "https://bonet.rw/images/blog-default.jpg",
-              "url": `https://bonet.rw/blog/${params.slug}`,
+              "url": `https://bonet.rw/blog/${slug}`,
               "author": {
                 "@type": "Organization",
                 "name": "Bonet Elite Services",
@@ -191,7 +235,7 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
               },
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "id": `https://bonet.rw/blog/${params.slug}`
+                "id": `https://bonet.rw/blog/${slug}`
               },
               "keywords": "Rwanda travel, business Rwanda, investment Rwanda, Bonet Services, Kigali",
               "inLanguage": "en-US"
@@ -199,7 +243,7 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
           ])
         }}
       />
-      <BlogDetailClient />
+      <BlogDetailClient key={slug} />
     </>
   );
 }

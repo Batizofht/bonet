@@ -172,33 +172,20 @@ const SuperFooter = () => {
             {/* Made with love indicator */}
             <div className="flex items-center gap-3">
            
-        
-              <div className="flex items-center gap-1.5">
-                {['S', 'W', 'C', 'FY'].map((letter, i) => (
-                  <motion.div
-                    key={letter}
-                    className="w-6 h-6 bg-gradient-to-br from-[#188bff] to-cyan-500 rounded-full flex items-center justify-center text-white text-[10px] font-bold shadow-md"
-                    whileHover={{ scale: 1.2, rotate: 360 }}
-                    transition={{ type: "spring", stiffness: 300, delay: i * 0.05 }}
-                  >
-                    {letter}
-                  </motion.div>
-                ))}
-              </div>
+            <img src="./image/SWCFY.png" alt="SWCFY" className="h-10 w-full rounded-md" />
+              
             </div>
 
             {/* Back to top */}
-            <motion.button
+            <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-[#188bff] text-gray-600 hover:text-white rounded-full transition-all duration-300 text-sm font-medium group"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-md transition-colors duration-300 text-sm font-medium"
             >
               <span>Back to top</span>
-              <svg className="w-4 h-4 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
               </svg>
-            </motion.button>
+            </button>
           </motion.div>
         </div>
       </div>

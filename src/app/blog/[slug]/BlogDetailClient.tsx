@@ -1,4 +1,5 @@
 "use client"
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "next/navigation";
@@ -21,10 +22,17 @@ export default function BlogDetailClient() {
   const params = useParams();
   const slug = params.slug as string;
   
+  // IMMEDIATE: Set browser title from URL before anything else
+  useEffect(() => {
+    if (slug) {
+      const titleFromSlug = slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ');
+      document.title = `${titleFromSlug} | Bonet Elite Services Blog`;
+    }
+  }, [slug]);
+  
   const [blog, setBlog] = useState<Blog | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  // Add these state variables after your existing states
   const [claps, setClaps] = useState(0);
   const [userClapped, setUserClapped] = useState(false);
   const [clapping, setClapping] = useState(false);
@@ -36,6 +44,7 @@ export default function BlogDetailClient() {
       try {
         setLoading(true);
         setError(null);
+        setBlog(null); // Clear old blog immediately
         
         const response = await axios.get(
           "https://api.bonet.rw:8443/bonetBackend/backend/public/blogs",
@@ -100,11 +109,6 @@ export default function BlogDetailClient() {
       fetchBlog();
     }
   }, [slug]);
-
-  useEffect(() => {
-    if (!blog?.title) return;
-    document.title = `${blog.title} | Bonet Blog`;
-  }, [blog?.title]);
 
   // Generate unique device ID
   const getDeviceId = () => {
@@ -262,7 +266,7 @@ export default function BlogDetailClient() {
     }
   };
 
-  if (loading) {
+  if (loading || !blog) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -338,6 +342,9 @@ export default function BlogDetailClient() {
     return `https://bonet.rw/blog/${slug}`;
   };
 
+  // SIMPLE: Title always from URL slug. Never from blog state.
+  const safeTitle = slug ? slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ') : 'Blog Post';
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 pb-8 pt-8">
@@ -363,7 +370,7 @@ export default function BlogDetailClient() {
           {/* Advanced Social Share Component */}
           <SocialShare
             url={getCurrentUrl()}
-            title={blog.title}
+            title={safeTitle}
             description={blog.quote || blog.description || ''}
             imageUrl={blog.image ? `https://api.bonet.rw:8443/bonetBackend/public/${blog.image}` : undefined}
             hashtags={["Rwanda", "Travel", "Business", "Investment", "BonetElite"]}
@@ -374,7 +381,7 @@ export default function BlogDetailClient() {
           <div className="relative rounded-lg overflow-hidden mb-8 bg-white shadow-sm border border-gray-200">
             <img
               src={`https://api.bonet.rw:8443/bonetBackend/public/${blog.image}`}
-              alt={blog.title}
+              alt={safeTitle}
               className="w-full h-[400px] object-cover"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;

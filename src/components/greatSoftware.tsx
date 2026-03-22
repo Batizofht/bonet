@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Target, Globe, Zap } from "lucide-react";
+import { ArrowRight, Sparkles, Target, Globe, Zap, Compass } from "lucide-react";
 
 const AiSolutions = () => {
   const { t } = useTranslation();
@@ -64,7 +64,7 @@ const AiSolutions = () => {
         <div className="flex justify-center items-center gap-3 mb-4">
           <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
           <div className="w-20 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <Sparkles className="w-5 h-5 text-[#188bff] animate-pulse" />
+          <Compass className="w-5 h-5 text-[#188bff] animate-pulse" />
           <div className="w-20 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
           <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse"></div>
         </div>
