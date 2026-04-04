@@ -406,8 +406,10 @@ export default function BlogsClient() {
                         <Link
                           href={`/blog/${post.slug}`}
                           className="inline-flex items-center gap-2 text-[#188bff] font-semibold text-sm group-hover:gap-3 transition-all duration-300"
+                          title={`Read: ${post.title}`}
                         >
-                          {t('blog.readMore', 'Read more')}
+                          <span className="sr-only">Read full article: </span>
+                          {post.title.length > 40 ? `${post.title.substring(0, 40)}...` : post.title}
                           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                       </div>

@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     console.log('[SEO] Extracted blogsArray type:', typeof blogsArray, 'isArray:', Array.isArray(blogsArray), 'length:', blogsArray?.length);
     
     if (!Array.isArray(blogsArray)) {
-      console.log('[SEO] Not an array, response.data:', response.data);
+      console.log('[SEO] Not an array, data:', data);
       return {
         title: "Blog - Bonet Elite Services",
         description: "Discover expert insights on travel, business, and investment in Rwanda.",
@@ -179,9 +179,50 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
+async function getBlogData(slug: string): Promise<Blog | null> {
+  try {
+    const targetSlug = normalizeSlug(slug);
+    const response = await fetch(
+      "https://api.bonet.rw:8443/bonetBackend/backend/public/blogs",
+      {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        cache: 'no-store',
+        signal: AbortSignal.timeout(10000),
+      }
+    );
+
+    if (!response.ok) return null;
+
+    const data = await response.json();
+    const blogsArray = data?.data || data?.blogs || data;
+    
+    if (!Array.isArray(blogsArray)) return null;
+
+    return blogsArray.find((item: any) => {
+      if (!item.title) return false;
+      return slugifyTitle(item.title) === targetSlug;
+    }) || null;
+  } catch {
+    return null;
+  }
+}
+
 export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> | { slug: string } }) {
   const resolvedParams = await Promise.resolve(params);
   const slug = resolvedParams?.slug || 'blog-post';
+  
+  const blog = await getBlogData(slug);
+  
+  const headline = blog?.title || slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  const description = blog?.quote || blog?.description?.substring(0, 160) || "Expert article on travel, business, or investment in Rwanda";
+  const imageUrl = blog?.image 
+    ? `https://api.bonet.rw:8443/bonetBackend/public/${blog.image}` 
+    : "https://bonet.rw/assets/images/logo.png";
+  const datePublished = blog?.created_at || new Date().toISOString();
   
   return (
     <>
@@ -208,7 +249,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                 {
                   "@type": "ListItem",
                   "position": 3,
-                  "name": slug,
+                  "name": headline,
                   "item": `https://bonet.rw/blog/${slug}`
                 }
               ]
@@ -216,26 +257,28 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
             {
               "@context": "https://schema.org",
               "@type": "BlogPosting",
-              "headline": slug,
-              "description": "Expert article on travel, business, or investment in Rwanda",
-              "image": "https://bonet.rw/images/blog-default.jpg",
+              "headline": headline,
+              "description": description,
+              "image": imageUrl,
               "url": `https://bonet.rw/blog/${slug}`,
+              "datePublished": datePublished,
+              "dateModified": datePublished,
               "author": {
-                "@type": "Organization",
-                "name": "Bonet Elite Services",
-                "url": "https://bonet.rw"
+                "@type": "Person",
+                "name": "Bonet Elite Services"
               },
               "publisher": {
                 "@type": "Organization",
                 "name": "Bonet Elite Services",
+                "url": "https://bonet.rw",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://bonet.rw/images/logo.png"
+                  "url": "https://bonet.rw/assets/images/logo.png"
                 }
               },
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "id": `https://bonet.rw/blog/${slug}`
+                "@id": `https://bonet.rw/blog/${slug}`
               },
               "keywords": "Rwanda travel, business Rwanda, investment Rwanda, Bonet Services, Kigali",
               "inLanguage": "en-US"
