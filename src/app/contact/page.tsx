@@ -4,33 +4,35 @@ import ContactUs from "../../contact/contact";
 import GoogleMapEmbed from "../../contact/map";
 import MapComponent from "../../navigation/map";
 export const metadata = {
-  title: "Contact Us | Bonet Elite Services",
+  title: "Contact Us | Bonet Elite Services Rwanda",
   description:
-    "Get in touch with Bonet Elite Services for inquiries, bookings, business support, or concierge services in Rwanda. Quick and reliable assistance.",
+    "Contact Bonet Elite Services for bookings, business support and concierge services in Rwanda. Call +250 726 300 260 or visit us in Kigali.",
   keywords:
     "Bonet Elite Services contact, Rwanda concierge services, business support Rwanda, bookings Rwanda, travel assistance Rwanda",
   authors: [{ name: "Bonet Elite Services" }],
+  alternates: { canonical: "https://bonet.rw/contact" },
   openGraph: {
     type: "website",
     url: "https://bonet.rw/contact",
-    title: "Contact Us | Bonet Elite Services",
+    title: "Contact Us | Bonet Elite Services Rwanda",
     description:
-      "Reach Bonet Elite Services for inquiries, bookings, business setup, and concierge services in Rwanda. Fast and professional support.",
+      "Contact Bonet Elite Services for bookings, business support and concierge services in Rwanda. Call +250 726 300 260 or visit us in Kigali.",
     images: [
       {
-        url: "https://bonet.rw/images/contact-preview.jpg",
+        url: "https://bonet.rw/assets/images/logo.png",
         width: 800,
         height: 600,
-        alt: "Contact Bonet Elite Services",
+        alt: "Contact Bonet Elite Services Rwanda",
       },
     ],
+    siteName: "Bonet Elite Services",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Us | Bonet Elite Services",
+    title: "Contact Us | Bonet Elite Services Rwanda",
     description:
-      "Connect with Bonet Elite Services for support with bookings, business, and VIP services in Rwanda.",
-    images: ["https://bonet.rw/images/contact-preview.jpg"],
+      "Contact Bonet Elite Services for bookings, business support and concierge services in Rwanda. Call +250 726 300 260.",
+    images: ["https://bonet.rw/assets/images/logo.png"],
   },
 };
 

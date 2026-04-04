@@ -3,15 +3,16 @@ import React from "react";
 import AboutPageClient from "./pageClient";
 
 export const metadata = {
-  title: "About Us | Bonet Elite Services Rwanda",
+  title: "About Bonet Elite Services | Rwanda Business Experts",
   description:
-    "Learn about Bonet Elite Services, your trusted partner for travel, business, and investment in Rwanda. Discover our mission, vision, expertise, and commitment to excellence.",
+    "Rwanda's trusted partner for travel, business setup and investment since 2019. Expert consulting, HR and VIP services in Kigali.",
   keywords:
     "About Bonet Elite Services, Rwanda concierge, business consulting Rwanda, VIP services Rwanda, luxury travel Rwanda, investment support Rwanda, mission vision Bonet Elite",
+  alternates: { canonical: "https://bonet.rw/about" },
   openGraph: {
-    title: "About Us | Bonet Elite Services Rwanda",
+    title: "About Bonet Elite Services | Rwanda Business Experts",
     description:
-      "Bonet Elite Services is dedicated to simplifying travel, business setup, and investment in Rwanda. Learn more about our vision, expertise, and tailored services.",
+      "Rwanda's trusted partner for travel, business setup and investment since 2019. Expert consulting, HR and VIP services in Kigali.",
     url: "https://bonet.rw/about",
     images: [
       {
@@ -19,12 +20,13 @@ export const metadata = {
       },
     ],
     type: "website",
+    siteName: "Bonet Elite Services",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Us | Bonet Elite Services Rwanda",
+    title: "About Bonet Elite Services | Rwanda Business Experts",
     description:
-      "Discover Bonet Elite Services’ mission and values. We provide trusted concierge, business, and VIP services for investors and travelers in Rwanda.",
+      "Rwanda's trusted partner for travel, business setup and investment since 2019. Expert consulting, HR and VIP services in Kigali.",
     images: ["https://bonet.rw/assets/images/logo.png"],
   },
 };

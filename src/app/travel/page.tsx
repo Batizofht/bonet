@@ -2,34 +2,36 @@
 import FirstService from "../../services/firstservice";
 import HotelHospitality from "../../services/hotel";
 export const metadata = {
-  title: "Investment & Business Setup | Bonet Elite Services Rwanda",
+  title: "Travel & Hospitality Services Rwanda | Bonet Elite",
   description:
-    "Set up your business in Rwanda with Bonet Elite Services. We assist investors with company registration, hospitality solutions, and executive support.",
+    "Luxury travel and hospitality services in Rwanda. Hotel booking, airport transfers, tours and VIP handling in Kigali by Bonet Elite.",
   keywords:
-    "Rwanda investment, business setup Rwanda, Rwanda hospitality services, Bonet Elite Services, start business in Rwanda",
+    "Rwanda travel, hospitality services Rwanda, hotel booking Kigali, airport transfers Rwanda, VIP travel Rwanda, Bonet Elite Services",
   authors: [{ name: "Bonet Elite Services" }],
+  alternates: { canonical: "https://bonet.rw/travel" },
   openGraph: {
     type: "website",
-    url: "https://bonet.rw/investment",
-    title: "Investment & Business Setup | Bonet Elite Services",
+    url: "https://bonet.rw/travel",
+    title: "Travel & Hospitality Services Rwanda | Bonet Elite",
     description:
-      "Bonet Elite Services helps investors establish businesses in Rwanda. From hospitality to legal support, we make your investment journey seamless.",
+      "Luxury travel and hospitality services in Rwanda. Hotel booking, airport transfers, tours and VIP handling in Kigali by Bonet Elite.",
     images: [
       {
-        url: "https://bonet.rw/images/investment-preview.jpg",
+        url: "https://bonet.rw/assets/images/logo.png",
         width: 800,
         height: 600,
-        alt: "Investment & Business Setup Preview",
+        alt: "Travel and Hospitality Services in Rwanda",
       },
     ],
+    siteName: "Bonet Elite Services",
   },
   twitter: {
     card: "summary_large_image",
     site: "@BonetElite",
-    title: "Investment & Business Setup | Bonet Elite Services",
+    title: "Travel & Hospitality Services Rwanda | Bonet Elite",
     description:
-      "Start your business in Rwanda with Bonet Elite Services. Trusted support for investors and executives.",
-    images: ["https://bonet.rw/images/investment-preview.jpg"],
+      "Luxury travel and hospitality services in Rwanda. Hotel booking, airport transfers, tours and VIP handling in Kigali.",
+    images: ["https://bonet.rw/assets/images/logo.png"],
   },
 };
 

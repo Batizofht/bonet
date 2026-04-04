@@ -2,23 +2,23 @@ import { Metadata } from 'next'
 import BlogsClient from './BlogsClient'
 
 export const metadata: Metadata = {
-  title: "Blogs - Bonet Elite Services | Expert Articles on Travel, Business & Investment in Rwanda",
-  description: "Discover expert insights, tips, and comprehensive guides on travel, business setup, investment opportunities, and premium services in Rwanda. Stay informed with Bonet's latest articles.",
+  title: "Rwanda Business & Travel Blog | Bonet Elite Services",
+  description: "Expert insights on Rwanda business setup, travel tips, investment guides and Kigali tourism. Latest articles from Bonet Elite Services.",
   keywords: "Rwanda travel blog, business investment Rwanda, Kigali tourism, Rwanda business guide, investment opportunities Rwanda, hospitality services Rwanda, Bonet blog",
   authors: [{ name: "Bonet Elite Services" }],
   alternates: { canonical: "https://bonet.rw/blogs" },
   openGraph: {
     type: "website",
     url: "https://bonet.rw/blogs",
-    title: "Blogs - Bonet Elite Services | Expert Articles on Travel, Business & Investment in Rwanda",
-    description: "Discover expert insights, tips, and comprehensive guides on travel, business setup, investment opportunities, and premium services in Rwanda.",
+    title: "Rwanda Business & Travel Blog | Bonet Elite Services",
+    description: "Expert insights on Rwanda business setup, travel tips, investment guides and Kigali tourism. Latest articles from Bonet Elite Services.",
     images: [
       {
-        url: "https://bonet.rw/images/blogs-preview.jpg",
+        url: "https://bonet.rw/assets/images/logo.png",
         width: 1200,
         height: 630,
         alt: "Bonet Elite Services Blog - Expert Articles on Rwanda Travel, Business & Investment",
-        type: "image/jpeg"
+        type: "image/png"
       }
     ],
     siteName: "Bonet Elite Services",
@@ -28,10 +28,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@BonetElite",
     creator: "@BonetElite",
-    title: "Blogs - Bonet Elite Services | Expert Articles on Travel, Business & Investment in Rwanda",
-    description: "Discover expert insights, tips, and comprehensive guides on travel, business setup, investment opportunities, and premium services in Rwanda.",
+    title: "Rwanda Business & Travel Blog | Bonet Elite Services",
+    description: "Expert insights on Rwanda business setup, travel tips, investment guides and Kigali tourism. Latest articles from Bonet Elite Services.",
     images: {
-      url: "https://bonet.rw/images/blogs-preview.jpg",
+      url: "https://bonet.rw/assets/images/logo.png",
       width: 1200,
       height: 630,
       alt: "Bonet Elite Services Blog - Expert Articles on Rwanda Travel, Business & Investment",

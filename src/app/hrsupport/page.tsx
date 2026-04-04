@@ -3,34 +3,36 @@ import FirstService from "../../services/firstservice";
 import BusinessConsulting from "../../services/consult";
 import HRAdminSupport from "@/services/hr";
 export const metadata = {
-  title: "Business Consulting | Bonet Elite Services",
+  title: "HR & Admin Support Services Rwanda | Bonet Elite",
   description:
-    "Professional business consulting services in Rwanda by Bonet Elite Services, including business plan development, project planning, and financial audits.",
+    "HR and administrative support in Rwanda. Recruitment, payroll, employee training and HR policy by Bonet Elite Services in Kigali.",
   keywords:
-    "Bonet Elite Services consulting, business consulting Rwanda, business plan Rwanda, project planning Rwanda, financial audits Rwanda",
+    "HR services Rwanda, administrative support Rwanda, recruitment Kigali, payroll Rwanda, employee training Rwanda, Bonet Elite Services",
   authors: [{ name: "Bonet Elite Services" }],
+  alternates: { canonical: "https://bonet.rw/hrsupport" },
   openGraph: {
     type: "website",
-    url: "https://bonet.rw/consulting",
-    title: "Business Consulting | Bonet Elite Services",
+    url: "https://bonet.rw/hrsupport",
+    title: "HR & Admin Support Services Rwanda | Bonet Elite",
     description:
-      "Get expert business consulting from Bonet Elite Services in Rwanda. We help with business plans, project strategies, and financial audits.",
+      "HR and administrative support in Rwanda. Recruitment, payroll, employee training and HR policy by Bonet Elite Services in Kigali.",
     images: [
       {
-        url: "https://bonet.rw/images/consulting-preview.jpg",
+        url: "https://bonet.rw/assets/images/logo.png",
         width: 800,
         height: 600,
-        alt: "Business Consulting Preview",
+        alt: "HR and Administrative Support Services in Rwanda",
       },
     ],
+    siteName: "Bonet Elite Services",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@BonetElite", // optional
-    title: "Business Consulting | Bonet Elite Services",
+    site: "@BonetElite",
+    title: "HR & Admin Support Services Rwanda | Bonet Elite",
     description:
-      "Professional consulting services for business planning, project management, and financial auditing in Rwanda.",
-    images: ["https://bonet.rw/images/consulting-preview.jpg"],
+      "HR and administrative support in Rwanda. Recruitment, payroll, employee training and HR policy by Bonet Elite Services.",
+    images: ["https://bonet.rw/assets/images/logo.png"],
   },
 };
 

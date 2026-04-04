@@ -1,9 +1,9 @@
 import React from "react";
 import HomePageClient from "./pageClient";
 export const metadata = {
-  title: "Bonet Elite Services | Travel, Business & Investment Support in Rwanda",
+  title: "Business Setup & Travel Services Rwanda | Bonet Elite",
   description:
-    "Your trusted partner for travel, business, and investment in Rwanda. We simplify your journey with tailored hospitality, business setup, consulting, HR, and VIP executive services.",
+    "Business setup, travel, HR and investment support in Rwanda. Hotel booking, company registration, consulting and VIP services in Kigali.",
   keywords:
     "Bonet Elite Services Rwanda, travel Rwanda, business setup Rwanda, investment in Rwanda, VIP concierge Rwanda, luxury travel Kigali, HR services Rwanda, executive services Rwanda, tourism Rwanda",
   authors: [{ name: "Bonet Elite Services" }],
@@ -11,17 +11,18 @@ export const metadata = {
   openGraph: {
     type: "website",
     url: "https://bonet.rw/",
-    title: "Bonet Elite Services | Travel, Business & Investment in Rwanda",
+    title: "Business Setup & Travel Services Rwanda | Bonet Elite",
     description:
-      "From hotel booking and transport to business registration, consulting, and VIP services — Bonet Elite Services is your one-stop solution in Rwanda.",
-    images: ["https://bonet.rw/images/bonet-preview.jpg"],
+      "Business setup, travel, HR and investment support in Rwanda. Hotel booking, company registration, consulting and VIP services in Kigali.",
+    images: ["https://bonet.rw/assets/images/logo.png"],
+    siteName: "Bonet Elite Services",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bonet Elite Services | Travel, Business & Investment in Rwanda",
+    title: "Business Setup & Travel Services Rwanda | Bonet Elite",
     description:
-      "Your trusted partner for seamless travel, business setup, consulting, and investment support in Rwanda.",
-    images: ["https://bonet.rw/images/bonet-preview.jpg"],
+      "Business setup, travel, HR and investment support in Rwanda. Hotel booking, company registration, consulting and VIP services in Kigali.",
+    images: ["https://bonet.rw/assets/images/logo.png"],
   },
 };
 

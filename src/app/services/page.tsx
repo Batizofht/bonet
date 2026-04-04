@@ -6,30 +6,31 @@ import FirstService from "../../services/firstservice";
 const LazyBusinessRegistration = lazy(() => import("../../blogs/busreg"));
 
 export const metadata = {
-  title: "Premium Services | Bonet Elite Services",
-  description: "Hotel Reservations: Luxury stays with premium amenities. Apartment Booking: Comfortable homes away from home. Transport Service: Safe and reliable transportation. Tourism Guides: Explore with expert local guides.",
+  title: "Travel, HR & Business Services Rwanda | Bonet Elite",
+  description: "Travel, HR, business setup and investment services in Rwanda. Hotel booking, company registration, consulting and transport in Kigali.",
   keywords: "Bonet Elite Services, premium services Rwanda, hotel reservations, apartment booking, transport service, tourism guides, luxury stays, comfortable homes, reliable transportation, expert guides",
   authors: [{ name: "Bonet Elite Services" }],
   openGraph: {
     type: "website",
     url: "https://bonet.rw/services",
-    title: "Premium Services | Bonet Elite Services",
-    description: "Hotel Reservations: Luxury stays with premium amenities. Apartment Booking: Comfortable homes away from home. Transport Service: Safe and reliable transportation. Tourism Guides: Explore with expert local guides.",
+    title: "Travel, HR & Business Services Rwanda | Bonet Elite",
+    description: "Travel, HR, business setup and investment services in Rwanda. Hotel booking, company registration, consulting and transport in Kigali.",
     images: [
       {
-        url: "https://bonet.rw/images/premium-services-preview.jpg",
+        url: "https://bonet.rw/assets/images/logo.png",
         width: 1200,
         height: 630,
-        alt: "Bonet Elite Premium Services",
+        alt: "Bonet Elite Services - Travel, HR and Business Services in Rwanda",
       },
     ],
+    siteName: "Bonet Elite Services",
   },
   twitter: {
     card: "summary_large_image",
     site: "@BonetElite",
-    title: "Premium Services | Bonet Elite Services",
-    description: "Hotel Reservations: Luxury stays. Apartment Booking: Comfortable homes. Transport Service: Safe transportation. Tourism Guides: Expert local guides.",
-    images: ["https://bonet.rw/images/premium-services-preview.jpg"],
+    title: "Travel, HR & Business Services Rwanda | Bonet Elite",
+    description: "Travel, HR, business setup and investment services in Rwanda. Hotel booking, company registration, consulting and transport in Kigali.",
+    images: ["https://bonet.rw/assets/images/logo.png"],
   },
   metadataBase: new URL("https://bonet.rw"),
   robots: "index, follow",

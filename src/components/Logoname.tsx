@@ -31,7 +31,7 @@ const TypewriterText = ({ text }: TypewriterTextProps) => {
 const LogoName = () => {
   return (
     <Link href="/" className="flex items-center space-x-2">
-      <img src="/assets/images/logo.png" alt="Logo" className="w-13 h-11" loading="lazy" />
+      <img src="/assets/images/logo.png" alt="Bonet Elite Services Logo" className="w-13 h-11" loading="lazy" />
        <div>
          <h1 className="text-xl font-bold text-[#188bff] whitespace-nowrap">
         Bonet</h1>

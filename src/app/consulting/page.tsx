@@ -2,34 +2,36 @@
 import FirstService from "../../services/firstservice";
 import BusinessConsulting from "../../services/consult";
 export const metadata = {
-  title: "Business Consulting | Bonet Elite Services",
+  title: "Business Consulting Services Rwanda | Bonet Elite",
   description:
-    "Professional business consulting services in Rwanda by Bonet Elite Services, including business plan development, project planning, and financial audits.",
+    "Expert business consulting in Rwanda. Business plans, project planning, financial audits and strategy by Bonet Elite Services in Kigali.",
   keywords:
     "Bonet Elite Services consulting, business consulting Rwanda, business plan Rwanda, project planning Rwanda, financial audits Rwanda",
   authors: [{ name: "Bonet Elite Services" }],
+  alternates: { canonical: "https://bonet.rw/consulting" },
   openGraph: {
     type: "website",
     url: "https://bonet.rw/consulting",
-    title: "Business Consulting | Bonet Elite Services",
+    title: "Business Consulting Services Rwanda | Bonet Elite",
     description:
-      "Get expert business consulting from Bonet Elite Services in Rwanda. We help with business plans, project strategies, and financial audits.",
+      "Expert business consulting in Rwanda. Business plans, project planning, financial audits and strategy by Bonet Elite Services in Kigali.",
     images: [
       {
-        url: "https://bonet.rw/images/consulting-preview.jpg",
+        url: "https://bonet.rw/assets/images/logo.png",
         width: 800,
         height: 600,
-        alt: "Business Consulting Preview",
+        alt: "Business Consulting Services in Rwanda",
       },
     ],
+    siteName: "Bonet Elite Services",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@BonetElite", // optional
-    title: "Business Consulting | Bonet Elite Services",
+    site: "@BonetElite",
+    title: "Business Consulting Services Rwanda | Bonet Elite",
     description:
-      "Professional consulting services for business planning, project management, and financial auditing in Rwanda.",
-    images: ["https://bonet.rw/images/consulting-preview.jpg"],
+      "Expert business consulting in Rwanda. Business plans, project planning, financial audits and strategy by Bonet Elite Services.",
+    images: ["https://bonet.rw/assets/images/logo.png"],
   },
 };
 

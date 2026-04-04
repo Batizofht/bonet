@@ -21,19 +21,38 @@ export default function HomePageClient() {
           __html: JSON.stringify([
             {
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "LocalBusiness",
               "name": "Bonet Elite Services",
               "url": "https://bonet.rw",
-              "logo": "https://bonet.rw/images/logo.png",
-              "description": "Your trusted partner for travel, business, and investment in Rwanda. We simplify your journey with tailored hospitality, business setup, consulting, HR, and VIP executive services.",
+              "logo": "https://bonet.rw/assets/images/logo.png",
+              "image": "https://bonet.rw/assets/images/logo.png",
+              "description": "Business setup, travel, HR and investment support in Rwanda",
+              "telephone": "+250726300260",
               "address": {
                 "@type": "PostalAddress",
-                "addressCountry": "RW",
-                "addressLocality": "Kigali"
+                "streetAddress": "Dubai Port Road, Masaka",
+                "addressLocality": "Kigali",
+                "addressCountry": "RW"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "-1.9403",
+                "longitude": "29.8739"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Rwanda"
+              },
+              "priceRange": "$$",
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "08:00",
+                "closes": "18:00"
               },
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+250-788-123-456",
+                "telephone": "+250726300260",
                 "contactType": "customer service",
                 "availableLanguage": ["English", "French", "Chinese"]
               },
@@ -41,16 +60,6 @@ export default function HomePageClient() {
                 "https://www.facebook.com/boneteliteservices",
                 "https://www.linkedin.com/company/bonet-elite-services",
                 "https://twitter.com/bonetelite"
-              ],
-              "services": [
-                "Travel Planning",
-                "Business Registration",
-                "Investment Consulting",
-                "VIP Concierge Services",
-                "HR Support",
-                "Hotel Reservations",
-                "Transport Services",
-                "Tourism Guides"
               ]
             },
             {

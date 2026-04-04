@@ -233,7 +233,7 @@ const QuickButtons = () => {
               <div className="p-6 bg-gradient-to-r from-[#188bff] to-cyan-500">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
-                    <img src="/assets/images/logo.png" alt="Bonet Logo" className="w-10 h-10 rounded-xl bg-white  rounded-md" loading="lazy" />
+                    <img src="/assets/images/logo.png" alt="Bonet Elite Services Logo" className="w-10 h-10 rounded-xl bg-white  rounded-md" loading="lazy" />
                     <div>
                       <h3 className="font-bold text-lg text-white">Bonet </h3>
                       <p className="text-white/80 text-sm">Elite Services</p>

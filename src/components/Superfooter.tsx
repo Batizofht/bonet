@@ -45,7 +45,7 @@ const SuperFooter = () => {
         <div className="flex flex-col items-center md:items-start">
           <div className="flex items-center gap-3 mb-6">
             <div className=" rounded-2xl flex items-center justify-center shadow-lg">
-             <img src="../assets/images/logo.png" alt="Logo" className="h-20 w-20" loading="lazy" />
+             <img src="../assets/images/logo.png" alt="Bonet Elite Services Logo" className="h-20 w-20" loading="lazy" />
             </div>
             <div>
               <h3 className="font-bold text-xl text-gray-800">Bonet Elite</h3>
@@ -172,7 +172,7 @@ const SuperFooter = () => {
             {/* Made with love indicator */}
             <div className="flex items-center gap-3">
            
-            <img src="./image/SWCFY.png" alt="SWCFY" className="h-10 w-full rounded-md" />
+            <img src="./image/SWCFY.png" alt="Switchify - Website Development Partner" className="h-10 w-full rounded-md" />
               
             </div>
 

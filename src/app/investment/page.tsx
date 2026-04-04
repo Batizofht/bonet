@@ -2,34 +2,36 @@
 import FirstService from "../../services/firstservice";
 import InvestmentBusinessSetup from "../../services/setup";
 export const metadata = {
-  title: "Investment & Business Setup | Bonet Elite Services",
+  title: "Investment & Business Setup Rwanda | Bonet Elite",
   description:
-    "Bonet Elite Services helps investors and entrepreneurs in Rwanda with business registration, licensing, investment guidance, and legal compliance.",
+    "Company registration, licensing and investment support in Rwanda. Bonet Elite helps entrepreneurs start businesses in Kigali fast.",
   keywords:
     "Bonet Elite Services investment Rwanda, business setup Rwanda, company registration Rwanda, licensing Rwanda, investor support Rwanda",
   authors: [{ name: "Bonet Elite Services" }],
+  alternates: { canonical: "https://bonet.rw/investment" },
   openGraph: {
     type: "website",
-    url: "https://bonet.rw/investment-setup",
-    title: "Investment & Business Setup | Bonet Elite Services",
+    url: "https://bonet.rw/investment",
+    title: "Investment & Business Setup Rwanda | Bonet Elite",
     description:
-      "Get professional assistance with business registration, licensing, and investment opportunities in Rwanda from Bonet Elite Services.",
+      "Company registration, licensing and investment support in Rwanda. Bonet Elite helps entrepreneurs start businesses in Kigali fast.",
     images: [
       {
-        url: "https://bonet.rw/images/investment-preview.jpg",
+        url: "https://bonet.rw/assets/images/logo.png",
         width: 800,
         height: 600,
-        alt: "Investment & Business Setup Preview",
+        alt: "Investment and Business Setup Services in Rwanda",
       },
     ],
+    siteName: "Bonet Elite Services",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@BonetElite", // optional
-    title: "Investment & Business Setup | Bonet Elite Services",
+    site: "@BonetElite",
+    title: "Investment & Business Setup Rwanda | Bonet Elite",
     description:
-      "Support for investors and entrepreneurs in Rwanda with business setup, licensing, and investment guidance.",
-    images: ["https://bonet.rw/images/investment-preview.jpg"],
+      "Company registration, licensing and investment support in Rwanda. Bonet Elite helps entrepreneurs start businesses in Kigali fast.",
+    images: ["https://bonet.rw/assets/images/logo.png"],
   },
 };
 
