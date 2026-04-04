@@ -381,7 +381,7 @@ export default function BlogDetailClient() {
           <div className="relative rounded-lg overflow-hidden mb-8 bg-white shadow-sm border border-gray-200">
             <img
               src={`https://api.bonet.rw:8443/bonetBackend/public/${blog.image}`}
-              alt={safeTitle}
+              alt={`${blog.title} - Bonet Elite Services, Kigali Rwanda`}
               className="w-full h-[400px] object-cover"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -407,6 +407,26 @@ export default function BlogDetailClient() {
                 className="prose prose-lg max-w-none text-gray-700 leading-relaxed break-words overflow-wrap-break-word"
                 dangerouslySetInnerHTML={{ __html: htmlDescription }}
               />
+
+{/* Internal Links for SEO */}
+<div className="mt-8 pt-6 border-t border-gray-200">
+  <h2 className="text-lg font-bold text-gray-800 mb-3">Explore Bonet Elite Services</h2>
+  <div className="flex flex-wrap gap-3">
+    <Link href="/about" className="inline-flex items-center gap-1 px-4 py-2 bg-blue-50 text-[#188bff] text-sm font-medium rounded-full hover:bg-blue-100 transition-colors">
+      About Our Team
+    </Link>
+    <Link href="/services" className="inline-flex items-center gap-1 px-4 py-2 bg-blue-50 text-[#188bff] text-sm font-medium rounded-full hover:bg-blue-100 transition-colors">
+      Our Services
+    </Link>
+    <Link href="/blogs" className="inline-flex items-center gap-1 px-4 py-2 bg-blue-50 text-[#188bff] text-sm font-medium rounded-full hover:bg-blue-100 transition-colors">
+      More Articles
+    </Link>
+    <Link href="/contact" className="inline-flex items-center gap-1 px-4 py-2 bg-blue-50 text-[#188bff] text-sm font-medium rounded-full hover:bg-blue-100 transition-colors">
+      Contact Us
+    </Link>
+  </div>
+</div>
+
 <div className="mt-8 pt-8 border-t border-gray-200">
   <div className="flex flex-col items-center justify-center">
     <div className="flex items-center gap-4 mb-2">

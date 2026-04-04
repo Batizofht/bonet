@@ -100,16 +100,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     console.log('[SEO] Found blog:', foundBlog);
 
-    // ALWAYS use slug title - never use API title to avoid "undefined"
-    const safeSlug = targetSlug || resolvedParams?.slug || 'blog-post';
-    // Capitalize each word: "audit-ready" -> "Audit Ready"
-    const slugTitle = safeSlug
-      .replace(/-/g, ' ')
-      .replace(/\b\w/g, char => char.toUpperCase())
-      .trim();
-    const blogTitle = slugTitle || 'Blog Post';
-    const title = `${blogTitle} | Bonet Elite Services Blog`;
-    const description = foundBlog?.quote || foundBlog?.description?.substring(0, 160) || "Read this expert article on travel, business, or investment in Rwanda.";
+    const blogTitle = foundBlog.title || targetSlug.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase()).trim() || 'Blog Post';
+    const title = `${blogTitle} | Bonet Elite Services`;
+    const rawDesc = foundBlog?.quote || foundBlog?.description?.replace(/<[^>]*>/g, '')?.substring(0, 120) || "";
+    const description = rawDesc
+      ? `${rawDesc.substring(0, 130).trim().replace(/\.?$/, '')}. Learn more from Bonet Elite Services.`
+      : "Expert insights on travel, business, and investment in Rwanda. Get guidance from Bonet Elite Services.";
     const imageUrl = foundBlog?.image ? `https://api.bonet.rw:8443/bonetBackend/public/${foundBlog.image}` : "https://bonet.rw/assets/images/logo.png";
     const url = `https://bonet.rw/blog/${targetSlug}`;
     const keywords = `${blogTitle}, Rwanda travel, business Rwanda, investment Rwanda, Bonet Services, Kigali, ${blogTitle.toLowerCase()}`;
@@ -155,20 +151,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         images: [imageUrl],
       },
       
-      // Additional meta tags for social sharing
       other: {
         "article:author": foundBlog.author || "Bonet Elite Services",
         "article:published_time": foundBlog.created_at,
         "article:modified_time": foundBlog.created_at,
         "article:section": "Travel & Business",
         "article:tag": keywords.split(', ').map(tag => tag.trim()),
-        "og:site_name": "Bonet Elite Services",
-        "og:locale": "en_US",
-        "fb:app_id": "your-facebook-app-id", // Add if you have Facebook app
-        "twitter:domain": "bonet.rw",
-        "twitter:app:name:iphone": "Bonet Elite Services",
-        "twitter:app:name:ipad": "Bonet Elite Services",
-        "twitter:app:name:googleplay": "Bonet Elite Services",
       },
     };
   } catch (error) {
@@ -217,12 +205,14 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
   
   const blog = await getBlogData(slug);
   
-  const headline = blog?.title || slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-  const description = blog?.quote || blog?.description?.substring(0, 160) || "Expert article on travel, business, or investment in Rwanda";
+  const headline = blog?.title || slug.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+  const rawDesc = blog?.quote || blog?.description?.replace(/<[^>]*>/g, '')?.substring(0, 155) || "Expert article on travel, business, or investment in Rwanda";
+  const description = rawDesc.substring(0, 150).trim().replace(/\.?$/, '.');
   const imageUrl = blog?.image 
     ? `https://api.bonet.rw:8443/bonetBackend/public/${blog.image}` 
     : "https://bonet.rw/assets/images/logo.png";
   const datePublished = blog?.created_at || new Date().toISOString();
+  const authorName = blog?.author || "Bonet Elite Services";
   
   return (
     <>
@@ -265,7 +255,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
               "dateModified": datePublished,
               "author": {
                 "@type": "Person",
-                "name": "Bonet Elite Services"
+                "name": authorName
               },
               "publisher": {
                 "@type": "Organization",
@@ -280,7 +270,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                 "@type": "WebPage",
                 "@id": `https://bonet.rw/blog/${slug}`
               },
-              "keywords": "Rwanda travel, business Rwanda, investment Rwanda, Bonet Services, Kigali",
+              "keywords": `${headline}, Rwanda, business, investment, travel, Kigali, Bonet Elite Services`,
               "inLanguage": "en-US"
             }
           ])
