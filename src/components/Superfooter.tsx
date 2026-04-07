@@ -12,7 +12,7 @@ const socialIcons = [
   {
     Icon: Instagram,
     label: "Instagram",
-    url: "https://www.instagram.com/bonet_elite_services/",
+    url: "https://www.instagram.com/bonet_elite_services_ltd/",
   },
   {
     Icon: Twitter,

@@ -685,8 +685,8 @@
       "contactUs": "联系我们"
     },
     "flags": {
-      "en": "../assets/images/usa.png",
-      "fr": "../assets/images/french.png"
+      "en": "/assets/images/usa.png",
+      "fr": "/assets/images/french.png"
     }
   },
   "locationSection": {

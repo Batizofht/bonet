@@ -24,6 +24,7 @@ export const metadata = {
       "Business setup, travel, HR and investment support in Rwanda. Hotel booking, company registration, consulting and VIP services in Kigali.",
     images: ["https://bonet.rw/assets/images/logo.png"],
   },
+  
 };
 
 export default function HomePage() {

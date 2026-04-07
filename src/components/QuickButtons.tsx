@@ -84,9 +84,9 @@ const QuickButtons = () => {
   }, [desktopDropdownOpen, mobileDropdownOpen]);
 
   const flagImages: Record<SupportedLanguages, string> = {
-    en: "../assets/images/usa.png",
-    fr: "../assets/images/french.png",
-    ch: "../assets/images/chin.webp",
+    en: "/assets/images/usa.png",
+    fr: "/assets/images/french.png",
+    ch: "/assets/images/chin.webp",
   };
 
   const languageNames = {

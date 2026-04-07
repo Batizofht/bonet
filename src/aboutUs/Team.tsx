@@ -7,7 +7,7 @@ const teamMembers = [
     name: "Prince Bonfils Bimenyimana, MBA, PMP (Candidate)",
     role: "Founder & Executive Chairman",
     initials: "PB",
-    image: "/assets/images/team/prince.jpg",
+    image: "/image/Team/bon.jpg",
     bio: "A seasoned business strategist with over six years of executive leadership in finance, operations, and technology across Rwanda's private sector. Founded Bonet Elite Services to offer investors, entrepreneurs, and travelers a seamless premium experience from market entry to establishment.",
     tags: ["Strategy", "Finance", "ERP Systems"],
     colorClass: "bg-[#188bff]",
@@ -16,7 +16,7 @@ const teamMembers = [
     name: "Jean Luc Shema, CPA(R)",
     role: "Chief Financial Officer",
     initials: "JL",
-    image: "/assets/images/team/jeanluc.jpg",
+    image: "/image/Team/SHEMAPIC.JPG",
     bio: "Certified Public Accountant registered with ICPAR. Deep expertise in IFRS reporting, tax compliance, BNR regulatory frameworks, and financial management for regulated institutions.",
     tags: ["IFRS", "Tax Compliance", "BNR Regulations"],
     colorClass: "bg-green-500",
@@ -25,7 +25,7 @@ const teamMembers = [
     name: "Emmanuel Cubahiro",
     role: "Chief Legal Officer & Authorized Notary",
     initials: "EC",
-    image: "/assets/images/team/emmanuel.jpg",
+    image: "/image/Team/another.jpg",
     bio: "Practicing lawyer registered with the Rwanda Bar Association and East Africa Law Society. Over a decade of experience in corporate law, contract drafting, and dispute resolution. Currently pursuing a Master's in International Law at Georg-August Universität Göttingen.",
     tags: ["Corporate Law", "Contracts", "Compliance"],
     colorClass: "bg-orange-500",
@@ -34,7 +34,7 @@ const teamMembers = [
     name: "Diane Nyirabahire",
     role: "Senior Financial Advisor & Project Management Specialist",
     initials: "DN",
-    image: "/assets/images/team/diane.jpg",
+    image: "/image/Team/DSC_7901.JPG.jpeg",
     bio: "Over 7 years in financial reporting, tax compliance, and business process improvement. MBA in Project Management and Bachelor's in Accounting from the University of Rwanda. Currently completing CPA with ICPAR.",
     tags: ["Financial Reporting", "Project Management", "IFRS"],
     colorClass: "bg-purple-500",
@@ -43,7 +43,7 @@ const teamMembers = [
     name: "Ronald Mutabazi",
     role: "Director of Human Capital & Organizational Development",
     initials: "RM",
-    image: "/assets/images/team/ronald.jpg",
+    image: "/image/Team/mutabazi.jpeg",
     bio: "Over 12 years in human capital management covering talent acquisition, organizational development, and labor law compliance. Managing Director of Emet Hand Supply and Services Ltd.",
     tags: ["HR Strategy", "Talent", "Labour Law"],
     colorClass: "bg-cyan-500",
@@ -113,21 +113,26 @@ export default function Team() {
               index === 4 ? "lg:col-start-2" : ""
             }`}
           >
-            {/* Avatar */}
+            {/* Image */}
             <div className="flex flex-col items-center text-center">
               <div
-                className={`w-20 h-20 ${member.colorClass} rounded-full flex items-center justify-center mb-4 shadow-lg overflow-hidden`}
+                className={`w-full aspect-[4/3] ${member.colorClass} rounded-xl flex items-center justify-center mb-4 shadow-lg overflow-hidden`}
               >
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-[50%_25%]"
+                  style={
+                    member.name === "Emmanuel Cubahiro"
+                      ? { objectPosition: "50% 10%" }
+                      : undefined
+                  }
                   onError={(e) => {
                     e.currentTarget.style.display = "none";
                     e.currentTarget.nextElementSibling?.classList.remove("hidden");
                   }}
                 />
-                <span className="text-white text-2xl font-bold hidden">
+                <span className="text-white text-4xl font-bold hidden">
                   {member.initials}
                 </span>
               </div>

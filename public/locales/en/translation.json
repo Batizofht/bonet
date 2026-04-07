@@ -683,25 +683,15 @@
     },
     "menu": {
       "home": "Home",
-      "aboutUs": "About us",
+      "aboutUs": "About Us",
       "services": "Services",
       "bookNow": "Book Now",
       "contactUs": "Contact us"
     },
     "flags": {
-      "en": "../assets/images/usa.png",
-      "fr": "../assets/images/french.png"
+      "en": "/assets/images/usa.png",
+      "fr": "/assets/images/french.png"
     }
-  },
-  "locationSection": {
-    "title": "Our Location"
-  },
-  "locationSecondSection": {
-    "title": "Get Location",
-    "startingPoint": "Starting Point",
-    "destination": "Destination",
-    "search": "Search",
-    "estimatedTime": "Estimated Time"
   },
   "chatbot": {
     "customerSupportTitle": "Customer Support Chatbot",
