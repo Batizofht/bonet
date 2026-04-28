@@ -35,12 +35,12 @@ const AdvisoryServices = () => {
 
   return (
     <div className="bg-white shadow-lg mt-10 rounded-2xl p-6  mx-auto">
-      <h2 className="text-3xl font-bold bg-[#188bff] bg-clip-text text-transparent mb-4">Business Advisory Services</h2>
+      <h2 className="text-3xl font-bold text-gray-900 mb-4">Business <span className="text-[#C9A84C]">Advisory</span> Services</h2>
       <p className="text-gray-600 mb-6">Get expert guidance to grow, optimize, and secure your business.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {services.map((service, index) => (
           <div key={index} className="flex items-start gap-4 p-4 bg-gray-100 rounded-lg shadow-sm">
-            <div className="text-[#57007B] text-2xl">{service.icon}</div>
+            <div className="text-[#C9A84C] text-2xl">{service.icon}</div>
             <div>
               <h3 className="font-semibold text-lg text-gray-800">{service.name}</h3>
               <p className="text-gray-600 text-sm">{service.description}</p>
@@ -51,64 +51,109 @@ const AdvisoryServices = () => {
       <div className="mt-6 text-center">
         <button 
           onClick={() => setShowModal(true)}
-          className="bg-[#188bff] text-white cursor-pointer px-6 py-2 rounded-full shadow-lg">
+          className="bg-[#C9A84C] hover:bg-[#B8973B] text-white cursor-pointer px-8 py-3 rounded-xl font-semibold transition-colors">
           Get Advisory
         </button>
       </div>
 
       {/* Popup Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/70  flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg mt-20 shadow-lg w-96 relative">
-            <button className="absolute top-3 right-3 text-gray-500" onClick={() => setShowModal(false)}>
-              <X />
-            </button>
-            <h3 className="text-xl font-bold mt-1 bg-[#188bff] bg-clip-text text-transparent font-semibold mb-2">Book an Advisory Session</h3>
-            <p className="text-gray-700 text-sm mb-4">Enter your details, and we will contact you.</p>
-            
-            <select 
-              className="border border-gray-400 p-2 w-full text-gray-600 rounded mb-3"
-              value={selectedService}
-              onChange={(e) => setSelectedService(e.target.value)}
+        <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 md:p-8 border border-gray-200 my-auto max-h-[90vh] overflow-y-auto">
+            {/* Close button */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
             >
-              <option value="">Select Advisory Service</option>
-              {services.map((service, index) => (
-                <option key={index} value={service.name}>{service.name}</option>
-              ))}
-            </select>
-
-            <input 
-              type="text" 
-              placeholder="Your Name" 
-              className="border border-gray-400 p-2 placeholder-gray-700 w-full rounded mb-3"
-              
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <input 
-              type="email" 
-              placeholder="Your Email" 
-              className="border border-gray-400 p-2 placeholder-gray-700 p-2 w-full rounded mb-3"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <textarea 
-              placeholder="Message (Optional)" 
-              className="border border-gray-400 p-2 placeholder-gray-700 p-2 w-full rounded mb-3">
-            </textarea>
-
-            <button 
-              className="w-full bg-[#188bff] text-white py-2 rounded shadow-md mb-3"
-              onClick={handleSubmit}>
-              Submit Request
+              <X className="w-4 h-4 text-gray-600" />
             </button>
 
-            <button 
-              className="w-full bg-green-500 text-white py-2 rounded shadow-md flex items-center justify-center gap-2"
-              onClick={handleWhatsApp}>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="w-5 h-5" />
-              Contact on WhatsApp
-            </button>
+            <div>
+              {/* Header */}
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-[#C9A84C] rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Briefcase className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  Book an Advisory Session
+                </h3>
+                <p className="text-gray-500">
+                  Enter your details, and we will contact you.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                    Service Type
+                  </label>
+                  <select
+                    className="w-full px-4 py-3.5 border border-gray-200 rounded-xl text-gray-700 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 outline-none transition-all min-h-[52px]"
+                    value={selectedService}
+                    onChange={(e) => setSelectedService(e.target.value)}
+                  >
+                    <option value="">Select Advisory Service</option>
+                    {services.map((service, index) => (
+                      <option key={index} value={service.name}>{service.name}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    className="w-full px-4 py-3.5 border border-gray-200 rounded-xl placeholder-gray-400 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 outline-none transition-all min-h-[52px]"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    className="w-full px-4 py-3.5 border border-gray-200 rounded-xl placeholder-gray-400 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 outline-none transition-all min-h-[52px]"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                    Message
+                  </label>
+                  <textarea
+                    placeholder="Message (Optional)"
+                    rows={4}
+                    className="w-full px-4 py-3.5 border border-gray-200 rounded-xl placeholder-gray-400 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 outline-none transition-all resize-none"
+                  ></textarea>
+                </div>
+
+                <div className="flex justify-end gap-3 pt-4">
+                  <button
+                    onClick={() => setShowModal(false)}
+                    type="button"
+                    className="px-6 py-3 rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors font-semibold"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    onClick={handleSubmit}
+                    className="px-6 py-3 rounded-xl bg-[#C9A84C] text-white font-semibold hover:bg-[#B8973B] transition-colors"
+                  >
+                    Submit Request
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

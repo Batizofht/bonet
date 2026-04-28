@@ -3,5 +3,111 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Ant Design Form Inputs - Gold Focus Styling */
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-input-textarea {
+  border-color: #e5e7eb !important;
+  border-radius: 0.75rem !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Taller input height */
+.ant-input,
+.ant-input-affix-wrapper {
+  min-height: 52px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+.ant-input-affix-wrapper .ant-input {
+  min-height: unset !important;
+  padding: 0 !important;
+}
+
+.ant-input:hover,
+.ant-input-affix-wrapper:hover,
+.ant-input-textarea:hover {
+  border-color: rgba(201, 168, 76, 0.5) !important;
+}
+
+.ant-input:focus,
+.ant-input-affix-wrapper:focus,
+.ant-input-textarea:focus,
+.ant-input-focused,
+.ant-input-affix-wrapper-focused {
+  border-color: #C9A84C !important;
+  box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.2) !important;
+  outline: none !important;
+}
+
+/* Ant Design Input Prefix/Suffix icons */
+.ant-input-prefix,
+.ant-input-suffix {
+  color: #9ca3af !important;
+}
+
+/* Ant Design Form Item Labels */
+.ant-form-item-label > label {
+  color: #374151 !important;
+  font-weight: 600 !important;
+}
+
+/* Ant Design Select - Gold Focus Styling */
+.ant-select-selector {
+  border-color: #e5e7eb !important;
+  border-radius: 0.75rem !important;
+  min-height: 52px !important;
+  padding: 12px 16px !important;
+  transition: all 0.2s ease !important;
+}
+
+.ant-select:hover .ant-select-selector {
+  border-color: rgba(201, 168, 76, 0.5) !important;
+}
+
+.ant-select-focused .ant-select-selector,
+.ant-select-open .ant-select-selector {
+  border-color: #C9A84C !important;
+  box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.2) !important;
+  outline: none !important;
+}
+
+/* Ant Design DatePicker - Gold Focus Styling */
+.ant-picker {
+  border-color: #e5e7eb !important;
+  border-radius: 0.75rem !important;
+  min-height: 52px !important;
+  padding: 12px 16px !important;
+  transition: all 0.2s ease !important;
+}
+
+.ant-picker:hover {
+  border-color: rgba(201, 168, 76, 0.5) !important;
+}
+
+.ant-picker-focused {
+  border-color: #C9A84C !important;
+  box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.2) !important;
+  outline: none !important;
+}
+
+/* Ant Design Select Dropdown */
+.ant-select-dropdown {
+  border-radius: 0.75rem !important;
+}
+
+.ant-select-item-option-selected {
+  background-color: rgba(201, 168, 76, 0.1) !important;
+  color: #C9A84C !important;
+  font-weight: 600 !important;
+}
+
+.ant-select-item-option-active {
+  background-color: rgba(201, 168, 76, 0.05) !important;
+}
+
 
 

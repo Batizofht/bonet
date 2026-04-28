@@ -1,6 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
-import { useMemo } from "react";
 
 const teamMembers = [
   {
@@ -51,120 +49,89 @@ const teamMembers = [
 ];
 
 export default function Team() {
-  const containerVariants = useMemo(
-    () => ({
-      hidden: { opacity: 0 },
-      visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.15 },
-      },
-    }),
-    []
-  );
-
-  const itemVariants = useMemo(
-    () => ({
-      hidden: { opacity: 0, y: 50 },
-      visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const },
-      },
-    }),
-    []
-  );
-
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16">
-      {/* Section Header */}
-      <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-3 mb-4">
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse" />
-          <div className="w-20 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent" />
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse" />
-        </div>
-
-        <h2 className="text-4xl font-bold text-gray-800">
-          Meet Our{" "}
-          <span className="bg-[#188bff] bg-clip-text text-transparent">
-            Team
-          </span>
+    <section className="bg-white">
+      <div className="max-w-6xl mx-auto px-4 py-20">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+        <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+          Leadership
+        </span>
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
+          Meet Our <span className="text-[#C9A84C]">Team</span>
         </h2>
-        <p className="text-gray-500 text-lg mt-2">
+        <p className="text-gray-500 text-lg max-w-2xl mx-auto">
           The experts behind every seamless experience
         </p>
-      </div>
+        </div>
 
-      {/* Team Grid */}
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-      >
-        {teamMembers.map((member, index) => (
-          <motion.div
-            key={index}
-            variants={itemVariants}
-            className={`bg-white p-6 rounded-2xl border border-blue-100 hover:border-[#188bff] hover:shadow-lg transition-all duration-300 group ${
-              index >= 3 ? "md:last:col-start-auto lg:last:col-start-auto" : ""
-            } ${index === 3 ? "lg:col-start-1" : ""} ${
-              index === 4 ? "lg:col-start-2" : ""
-            }`}
-          >
-            {/* Image */}
-            <div className="flex flex-col items-center text-center">
-              <div
-                className={`w-full aspect-[4/3] ${member.colorClass} rounded-xl flex items-center justify-center mb-4 shadow-lg overflow-hidden`}
-              >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover object-[50%_25%]"
-                  style={
-                    member.name === "Emmanuel Cubahiro"
-                      ? { objectPosition: "50% 10%" }
-                      : undefined
-                  }
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                    e.currentTarget.nextElementSibling?.classList.remove("hidden");
-                  }}
-                />
-                <span className="text-white text-4xl font-bold hidden">
-                  {member.initials}
-                </span>
-              </div>
-
-              {/* Name & Role */}
-              <h3 className="text-lg font-bold text-gray-800 leading-tight">
-                {member.name}
-              </h3>
-              <p className="text-[#188bff] text-sm font-medium mt-1">
-                {member.role}
-              </p>
-
-              {/* Bio */}
-              <p className="text-gray-600 text-sm leading-relaxed mt-4">
-                {member.bio}
-              </p>
-
-              {/* Tags */}
-              <div className="flex flex-wrap justify-center gap-2 mt-4">
-                {member.tags.map((tag, tagIndex) => (
-                  <span
-                    key={tagIndex}
-                    className="px-3 py-1 bg-blue-50 text-[#188bff] text-xs font-medium rounded-full"
-                  >
-                    {tag}
+        {/* Team Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {teamMembers.map((member, index) => (
+            <div
+              key={index}
+              className={`bg-white p-6 rounded-2xl border border-gray-100 hover:border-[#C9A84C] hover:shadow-lg transition-all duration-300 group ${
+                index >= 3 ? "md:last:col-start-auto lg:last:col-start-auto" : ""
+              } ${index === 3 ? "lg:col-start-1" : ""} ${
+                index === 4 ? "lg:col-start-2" : ""
+              }`}
+            >
+              {/* Image */}
+              <div className="flex flex-col items-center text-center">
+                <div
+                  className={`w-full aspect-[4/3] ${member.colorClass} rounded-xl flex items-center justify-center mb-4 shadow-lg overflow-hidden`}
+                >
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-[50%_25%]"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                    style={
+                      member.name === "Emmanuel Cubahiro"
+                        ? { objectPosition: "50% 10%" }
+                        : undefined
+                    }
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                      e.currentTarget.nextElementSibling?.classList.remove("hidden");
+                    }}
+                  />
+                  <span className="text-white text-4xl font-bold hidden">
+                    {member.initials}
                   </span>
-                ))}
+                </div>
+
+                {/* Name & Role */}
+                <h3 className="text-lg font-bold text-gray-800 leading-tight">
+                  {member.name}
+                </h3>
+                <p className="text-[#C9A84C] text-sm font-medium mt-1">
+                  {member.role}
+                </p>
+
+                {/* Bio */}
+                <p className="text-gray-600 text-sm leading-relaxed mt-4">
+                  {member.bio}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap justify-center gap-2 mt-4">
+                  {member.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="px-3 py-1 bg-[#C9A84C]/10 text-[#C9A84C] text-xs font-medium rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

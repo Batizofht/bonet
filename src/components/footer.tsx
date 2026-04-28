@@ -70,96 +70,98 @@ export default function FAQ() {
   }, [isVisible]);
 
   return (
-    <div ref={sectionRef} className="max-w-6xl mx-auto px-4 py-16">
-      {/* Header */}
-      <div className="text-center mb-16">
-        <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-          Support
-        </span>
-        <h2 className="text-4xl font-bold text-gray-900">
-          Frequently Asked <span className="text-[#C9A84C]">Questions</span>
-        </h2>
+    <div ref={sectionRef}>
+      <div className="max-w-6xl mx-auto px-4 py-16">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+            Support
+          </span>
+          <h2 className="text-4xl font-bold text-gray-900">
+            Frequently Asked <span className="text-[#C9A84C]">Questions</span>
+          </h2>
 
-        <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-          Essential information for foreign investors considering Rwanda
-        </p>
-        <p className="text-gray-500 text-lg">{t("Find answers to common questions")}</p>
-      </div>
+          <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+            Essential information for foreign investors considering Rwanda
+          </p>
+          <p className="text-gray-500 text-lg">{t("Find answers to common questions")}</p>
+        </div>
 
-      {/* FAQ Items from API */}
-      <div className="space-y-3 max-w-6xl mx-auto">
-        {faqs.map((faq, index) => (
-          <div
-            key={index}
-            className={`group rounded-2xl bg-white cursor-pointer transition-all duration-300 overflow-hidden ${
-              openIndex === index
-                ? 'border border-[#C9A84C]/35 shadow-lg shadow-[#C9A84C]/10'
-                : 'border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-lg hover:shadow-gray-200/50'
-            }`}
-            onClick={() => toggleFAQ(index)}
-          >
-            <div className="p-5 md:p-6">
-              <div className="flex justify-between items-center gap-4">
-                <div className="flex items-center gap-4">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-                    openIndex === index 
-                      ? 'bg-[#C9A84C] text-white shadow-md' 
-                      : 'bg-gray-50 text-gray-500 group-hover:bg-[#C9A84C]/10 group-hover:text-[#C9A84C]'
-                  }`}>
-                    <span className="font-bold text-sm">{String(index + 1).padStart(2, "0")}</span>
+        {/* FAQ Items from API */}
+        <div className="space-y-3 max-w-6xl mx-auto">
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className={`group rounded-2xl bg-white cursor-pointer transition-all duration-300 overflow-hidden ${
+                openIndex === index
+                  ? 'border border-[#C9A84C]/35 shadow-lg shadow-[#C9A84C]/10'
+                  : 'border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-lg hover:shadow-gray-200/50'
+              }`}
+              onClick={() => toggleFAQ(index)}
+            >
+              <div className="p-5 md:p-6">
+                <div className="flex justify-between items-center gap-4">
+                  <div className="flex items-center gap-4">
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                      openIndex === index 
+                        ? 'bg-[#C9A84C] text-white shadow-md' 
+                        : 'bg-gray-50 text-gray-500 group-hover:bg-[#C9A84C]/10 group-hover:text-[#C9A84C]'
+                    }`}>
+                      <span className="font-bold text-sm">{String(index + 1).padStart(2, "0")}</span>
+                    </div>
+                    <p className={`font-semibold transition-colors ${
+                      openIndex === index ? 'text-[#C9A84C]' : 'text-gray-900'
+                    }`}>
+                      {faq.question}
+                    </p>
                   </div>
-                  <p className={`font-semibold transition-colors ${
-                    openIndex === index ? 'text-[#C9A84C]' : 'text-gray-900'
-                  }`}>
-                    {faq.question}
-                  </p>
+                  <div
+                    className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                      openIndex === index 
+                        ? 'bg-[#C9A84C] text-white rotate-180' 
+                        : 'bg-gray-100 text-gray-500 group-hover:bg-[#C9A84C]/10 group-hover:text-[#C9A84C]'
+                    }`}
+                  >
+                    <ChevronDown className="w-5 h-5" />
+                  </div>
                 </div>
-                <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-                    openIndex === index 
-                      ? 'bg-[#C9A84C] text-white rotate-180' 
-                      : 'bg-gray-100 text-gray-500 group-hover:bg-[#C9A84C]/10 group-hover:text-[#C9A84C]'
-                  }`}
-                >
-                  <ChevronDown className="w-5 h-5" />
-                </div>
-              </div>
 
-              {openIndex === index && (
-                <div className="mt-4 pl-14 border-t border-gray-100 pt-4">
-                  <p className="text-gray-600 leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
-              )}
+                {openIndex === index && (
+                  <div className="mt-4 pl-14 border-t border-gray-100 pt-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
-      {/* Contact Section */}
-      <div className="text-center mt-16">
-        <div className="relative bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 md:p-10 border border-gray-100 max-w-6xl mx-auto shadow-xl shadow-gray-200/50 overflow-hidden">
-          {/* Decorative element */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#C9A84C]/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-          
-          <div className="relative flex flex-col items-center gap-6">
-            <div className="w-16 h-16 bg-[#C9A84C] rounded-2xl flex items-center justify-center shadow-lg shadow-[#C9A84C]/20 rotate-3">
+      <div
+        className="relative w-full bg-cover bg-center"
+        style={{ backgroundImage: "url('/image/7.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/65 to-black/80" />
+        <div className="relative max-w-6xl mx-auto px-4 py-10 md:py-4">
+          <div className="flex flex-col items-center text-center gap-6">
+            <div className="w-16 h-16 bg-[#C9A84C] rounded-2xl flex items-center justify-center">
               <PhoneCall className="w-8 h-8 text-white" />
             </div>
 
             <div>
-              <p className="text-xl font-bold text-gray-900 mb-2">
+              <p className="text-3xl md:text-4xl font-bold text-white mb-3">
                 Still have questions?
               </p>
-              <p className="text-gray-500">
+              <p className="text-white/85 max-w-2xl mx-auto">
                 Book a free consultation — we will outline your exact process, timeline, and costs.
               </p>
             </div>
 
             <button
               onClick={() => router.push("/contact")}
-              className="group flex items-center justify-center gap-2 px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] shadow-lg shadow-[#C9A84C]/20 hover:shadow-xl hover:shadow-[#C9A84C]/30 transition-all duration-300 cursor-pointer"
+              className="group flex items-center justify-center gap-2 px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors duration-300 cursor-pointer"
             >
               Contact Our Team
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
