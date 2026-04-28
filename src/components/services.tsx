@@ -39,32 +39,25 @@ const Services = memo(function Services() {
   }, [navigate]);
 
   return (
-    <div className="w-full flex flex-col items-center p-8 min-h-[500px] bg-gradient-to-b from-white to-blue-50/30">
-      {/* Header with unique styling */}
+    <div className="w-full flex flex-col items-center p-8 min-h-[500px] bg-white">
+      {/* Header */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-3 mb-4">
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse" />
-          <div className="w-20 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent" />
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse" />
+          <div className="w-12 h-0.5 bg-[#C9A84C]" />
+          <div className="w-3 h-3 bg-[#C9A84C] rounded-full" />
+          <div className="w-12 h-0.5 bg-[#C9A84C]" />
         </div>
         
-        <h2 className="text-4xl font-bold text-gray-800">
-          {t("services.title", "Our Services").split(" ").map((word, i) => 
-            i === 1 ? (
-              <span key={i} className="bg-[#188bff] bg-clip-text text-transparent relative">
-                {word}
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#188bff] transform scale-x-0 hover:scale-x-100 transition-transform" />
-                {" "}
-              </span>
-            ) : (
-              word + " "
-            )
-          )}
+        <h2 className="text-4xl font-bold text-gray-900">
+          Our <span className="text-[#C9A84C]">Services</span>
         </h2>
+        <p className="text-gray-600 mt-4 max-w-2xl">
+          End-to-end support for foreign investors and businesses in Rwanda
+        </p>
       </div>
 
       {/* Cards with unique layout */}
-      <div className="flex flex-col gap-4 w-full max-w-6xl">
+      <div className="flex flex-col gap-4 w-full max-w-6xl mx-auto">
         {services.map((service, index) => {
           const IconComponent = icons[index] || Building;
           const isSelected = selectedService === index;
@@ -72,10 +65,10 @@ const Services = memo(function Services() {
           return (
             <div
               key={index}
-              className={`bg-white rounded-2xl p-1 transition-all duration-500 cursor-pointer group ${
-                isSelected 
-                  ? "shadow-2xl ring-2 ring-[#188bff] ring-opacity-20" 
-                  : "shadow-lg hover:shadow-xl"
+              className={`bg-white rounded-2xl p-1 transition-all duration-500 cursor-pointer group border ${
+                isSelected
+                  ? "shadow-xl border-[#C9A84C]"
+                  : "shadow-md hover:shadow-lg border-gray-200"
               }`}
               onClick={() => handleCardClick(index)}
             >
@@ -83,9 +76,9 @@ const Services = memo(function Services() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className={`p-3 rounded-xl transition-all duration-300 ${
-                      isSelected 
-                        ? "bg-[#188bff] text-white transform rotate-12" 
-                        : "bg-blue-100 text-[#188bff] group-hover:bg-blue-200"
+                      isSelected
+                        ? "bg-[#C9A84C] text-white"
+                        : "bg-gray-100 text-gray-700 group-hover:bg-[#C9A84C]/10"
                     }`}>
                       <IconComponent className="w-6 h-6" />
                     </div>
@@ -103,9 +96,9 @@ const Services = memo(function Services() {
                     isSelected ? "rotate-180" : ""
                   }`}>
                     {isSelected ? (
-                      <ChevronUp className="w-5 h-5 text-[#188bff]" />
+                      <ChevronUp className="w-5 h-5 text-[#C9A84C]" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-gray-400 group-hover:text-[#188bff]" />
+                      <ChevronDown className="w-5 h-5 text-gray-400 group-hover:text-[#C9A84C]" />
                     )}
                   </div>
                 </div>
@@ -120,14 +113,13 @@ const Services = memo(function Services() {
                     </p>
                     <div className="flex justify-center items-center">
                         <button
-                      className="flex items-center gap-3 bg-[#188bff] text-white px-8 py-4 rounded-2xl hover:bg-blue-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl cursor-pointer group/btn"
+                      className="flex items-center gap-3 bg-[#C9A84C] text-white px-8 py-4 rounded-xl hover:bg-[#B8973B] transition-all duration-300 font-semibold shadow-lg hover:shadow-xl cursor-pointer group/btn"
                       onClick={(e) => handleNavigate(e, service.route)}
                     >
                       {service.buttonText}
                          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </button> 
+                    </button>
                     </div>
-                  
                   </div>
                 </div>
               </div>

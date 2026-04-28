@@ -2,12 +2,9 @@
 import React, { Suspense, lazy } from "react";
 import FirstHome from "../components/firsthome";
 
-// Lazy load below-the-fold components - CRITICAL for performance
-const Services = lazy(() => import("../components/services"));
+// Lazy load below-the-fold components
 const WhyChooseBonet = lazy(() => import("../services/whychoose"));
-const NewExperience = lazy(() => import("../aboutUs/newexperience"));
-const Gallery = lazy(() => import("../components/visitrwanda"));
-const GreatSoftware = lazy(() => import("../components/greatSoftware"));
+const TrustIndicators = lazy(() => import("../components/TrustIndicators"));
 const FeaturedResources = lazy(() => import("../components/resources"));
 const FAQ = lazy(() => import("../components/footer"));
 
@@ -120,7 +117,7 @@ export default function HomePageClient() {
                   "name": "How do I contact Bonet Elite Services?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "You can contact us through our website at www.bonet.rw, call us at +250-788-123-456, or visit our office in Kigali. We offer support in English, French, and Chinese."
+                    "text": "You can contact us through our website at www.bonet.rw, call us at +250 726 300 260, or visit our office in Kigali. We offer support in English, French, and Chinese."
                   }
                 }
               ]
@@ -131,33 +128,21 @@ export default function HomePageClient() {
       
       {/* Above the fold - load immediately */}
       <FirstHome />
-      
-      {/* Below the fold - lazy load with better fallback */}
-      <Suspense fallback={<div className="h-96 bg-gradient-to-b from-white to-blue-50/30 animate-pulse" />}>
-        <Services />
-      </Suspense>
-      
-      <Suspense fallback={<div className="h-40 bg-gray-100 animate-pulse" />}>
+
+      {/* Homepage sections */}
+      <Suspense fallback={<div className="h-40 bg-white" />}>
         <WhyChooseBonet />
       </Suspense>
-      
-      <Suspense fallback={<div className="h-40 bg-white animate-pulse" />}>
-        <NewExperience />
+
+      <Suspense fallback={<div className="h-40 bg-gray-50" />}>
+        <TrustIndicators />
       </Suspense>
-      
-      <Suspense fallback={<div className="h-40 bg-gray-50 animate-pulse" />}>
-        <Gallery />
-      </Suspense>
-      
-      <Suspense fallback={<div className="h-40 bg-white animate-pulse" />}>
-        <GreatSoftware />
-      </Suspense>
-      
-      <Suspense fallback={<div className="h-40 bg-gray-100 animate-pulse" />}>
+
+      <Suspense fallback={<div className="h-40 bg-white" />}>
         <FeaturedResources />
       </Suspense>
-      
-      <Suspense fallback={<div className="h-40 bg-white animate-pulse" />}>
+
+      <Suspense fallback={<div className="h-40 bg-white" />}>
         <FAQ />
       </Suspense>
     </div>

@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import BookingCards from "./CardHome";
-import { X, Star, MapPin, Sparkles } from "lucide-react";
+import { X, MapPin, Clock, Users, Globe, Award, ArrowRight, Sparkle } from "lucide-react";
 
 interface Advertisement {
   id: number;
@@ -27,6 +27,14 @@ const FirstHome = () => {
   const [showAd, setShowAd] = useState(false);
   const [adVisible, setAdVisible] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Trust bar data - memoized
+  const trustStats = useMemo(() => [
+    { icon: Award, value: "5+", label: "Years Experience" },
+    { icon: Users, value: "100+", label: "Foreign Clients" },
+    { icon: Globe, value: "15+", label: "Countries" },
+    { icon: Clock, value: "24/7", label: "WhatsApp Support" },
+  ], []);
 
   // Preload background image
   useEffect(() => {
@@ -89,48 +97,72 @@ const FirstHome = () => {
 
   return (
     <div
-      className="relative w-full h-[860px] md:h-[800px] bg-gray-900 bg-cover bg-center overflow-hidden"
+      className="relative w-full min-h-[600px] md:min-h-screen bg-gray-900 bg-cover bg-center overflow-hidden py-8 md:py-12"
       style={{ backgroundImage: imageLoaded ? "url('/image/1.jpg')" : "none" }}
     >
       {/* Blackish Overlay */}
       <div className="absolute inset-0 bg-black/70 z-10" />
 
-
       {/* Content Overlay */}
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 z-20">
+      <div className="relative flex flex-col justify-center items-center text-center px-4 z-20 py-8 md:py-0 min-h-full">
         
-        {/* Sparkle Icon */}
-        {/* <motion.div
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, type: "spring" }}
-          className="mb-6"
+        {/* Kicker Label */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full mb-6">
+          <Award className="w-4 h-4 text-[#C9A84C]" />
+          <span className="text-white/90 text-sm font-medium tracking-wide uppercase">Rwanda Investment Experts</span>
+        </div>
 
-        {/* Main Heading - Original Color */}
-        <h1 className="font-Poppins font-bold text-[#188bff] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight max-w-full mb-3 md:mt-[-5%] drop-shadow-2xl">
-          {displayText}
+        {/* Main Heading with better typography */}
+        <h1 className="font-bold text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight max-w-5xl mb-6">
+          Invest in Rwanda
+          <span className="block text-[#C9A84C] mt-2">With Confidence</span>
         </h1>
 
-        {/* Subtitle */}
-        <p className="font-Inder italic text-gray-200 text-lg sm:text-xl md:text-2xl max-w-full mb-3">
-          {t("subtitle")}
+        {/* Value proposition with better visual treatment */}
+        <p className="text-gray-300 text-lg md:text-xl max-w-2xl mb-4 leading-relaxed">
+          Zero minimum capital. 6-hour company registration. 0% corporate tax for qualifying investments.
         </p>
 
-        {/* Description */}
-        <p className="font-Inder text-gray-300 text-base sm:text-lg max-w-md mb-6">
-          {t("description")}
+        <p className="text-gray-400 text-base md:text-lg max-w-xl mb-10">
+          Full-service support from legal setup to daily operations.
         </p>
 
-        {/* CTA Button */}
-        <button
-          className="bg-[#188bff] text-white px-10 py-4 rounded-2xl font-semibold text-lg shadow-2xl mb-3 hover:bg-blue-600 transition-all duration-300"
-          onClick={() => router.push("/services")}
-        >
-          {t("get_started")}
-        </button>
-        
+        {/* Refined CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <button
+            className="group relative bg-[#C9A84C] text-white px-8 md:px-10 py-4 rounded-lg font-semibold text-base md:text-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-[#C9A84C]/20"
+            onClick={() => router.push("/contact")}
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              Book Free Consultation
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </button>
+          <button
+            className="group px-8 md:px-10 py-4 rounded-lg font-semibold text-base md:text-lg text-white border border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300"
+            onClick={() => router.push("/services")}
+          >
+            Explore Services
+          </button>
+        </div>
+
+        {/* Trust Bar - Card Style */}
+        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mt-4 max-w-4xl mx-auto px-2">
+          {trustStats.map((stat, index) => (
+            <div key={index} className="flex items-center gap-2 md:gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-3 py-2 md:px-5 md:py-3">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-[#C9A84C]/20 flex items-center justify-center">
+                <stat.icon className="w-4 h-4 md:w-5 md:h-5 text-[#C9A84C]" />
+              </div>
+              <div className="text-left">
+                <div className="font-bold text-white text-base md:text-lg leading-none">{stat.value}</div>
+                <div className="text-gray-400 text-[10px] md:text-xs whitespace-nowrap">{stat.label}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* Booking Cards */}
-        <div>
+        <div className="mt-6 md:mt-8 w-full max-w-6xl mx-auto">
           <BookingCards />
         </div>
       </div>
@@ -144,7 +176,7 @@ const FirstHome = () => {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: 300, opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="absolute bottom-5 right-5 p-4 bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-blue-200 w-80 z-30"
+            className="absolute bottom-4 left-4 right-4 md:bottom-5 md:right-5 md:left-auto p-3 md:p-4 bg-white/95 rounded-xl md:rounded-2xl shadow-2xl border border-gray-200 md:w-80 z-30"
           >
             {/* Close Button */}
             <button
@@ -154,13 +186,8 @@ const FirstHome = () => {
               <X className="w-3 h-3" />
             </button>
 
-            {/* Header with Stars */}
+            {/* Header */}
             <div className="flex items-center gap-2 mb-3">
-              <div className="flex">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
               <span className="text-xs text-gray-500">Sponsored</span>
             </div>
 
@@ -171,7 +198,7 @@ const FirstHome = () => {
                 alt={ad.adv_title}
                 className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute top-2 left-2 bg-[#188bff] text-white px-2 py-1 rounded-lg text-xs font-semibold">
+              <div className="absolute top-2 left-2 bg-[#C9A84C] text-white px-2 py-1 rounded-lg text-xs font-semibold">
                 Featured
               </div>
             </div>
@@ -192,7 +219,7 @@ const FirstHome = () => {
               </div>
 
               {/* Action Button */}
-              <button className="w-full bg-[#188bff] text-white py-2 rounded-lg hover:bg-blue-600 transition-colors font-semibold text-sm mt-2">
+              <button className="w-full bg-[#C9A84C] text-white py-2 rounded-lg hover:bg-[#B8973B] transition-colors font-semibold text-sm mt-2">
                 Learn More
               </button>
             </div>

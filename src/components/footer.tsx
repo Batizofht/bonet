@@ -1,9 +1,8 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
-import { ChevronDown, ChevronUp, PhoneCall, MessageCircle, HelpCircle } from "lucide-react";
+import { ChevronDown, PhoneCall, ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
-import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 interface FAQ {
@@ -14,7 +13,6 @@ interface FAQ {
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
   const router = useRouter();
-  const navigate = usePathname();
   const [faqs, setFaqs] = useState<FAQ[]>([]);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -27,7 +25,6 @@ export default function FAQ() {
 
   // OPTIMIZED: Only fetch when component is visible
   useEffect(() => {
-    // Intersection Observer to delay API call until visible
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !isVisible) {
@@ -47,16 +44,15 @@ export default function FAQ() {
   // Fetch only when visible
   useEffect(() => {
     if (!isVisible) return;
-    
+
     let isMounted = true;
-    
+
     const fetchFAQs = async () => {
       try {
-        // Delay API call by 500ms to prioritize render
         await new Promise(resolve => setTimeout(resolve, 500));
-        
+
         if (!isMounted) return;
-        
+
         const response = await axios.get(
           "https://api.bonet.rw:8443/bonetBackend/backend/public/faqs"
         );
@@ -67,105 +63,106 @@ export default function FAQ() {
     };
 
     fetchFAQs();
-    
+
     return () => {
       isMounted = false;
     };
   }, [isVisible]);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16">
-      {/* Cute Header */}
+    <div ref={sectionRef} className="max-w-6xl mx-auto px-4 py-16">
+      {/* Header */}
       <div className="text-center mb-16">
-        <div className="flex justify-center items-center gap-3 mb-6">
-          <div className="w-4 h-4 bg-[#188bff] rounded-full"></div>
-          <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <HelpCircle className="w-6 h-6 text-[#188bff]"></HelpCircle>
-          <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-          <div className="w-4 h-4 bg-[#188bff] rounded-full"></div>
-        </div>
-        
-      <h2 className="text-4xl font-bold text-gray-800">
-          {t("faq.header").split(" ").map((word, i) => 
-            i === 0 || i === 1  ? (
-              <span key={i} className="bg-[#188bff] bg-clip-text text-transparent relative">
-                {word}
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#188bff] transform scale-x-0 hover:scale-x-100 transition-transform"></span>
-                {" "}
-              </span>
-            ) : (
-              word + " "
-            )
-          )}
+        <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+          Support
+        </span>
+        <h2 className="text-4xl font-bold text-gray-900">
+          Frequently Asked <span className="text-[#C9A84C]">Questions</span>
         </h2>
+
+        <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+          Essential information for foreign investors considering Rwanda
+        </p>
         <p className="text-gray-500 text-lg">{t("Find answers to common questions")}</p>
       </div>
 
-      {/* Cute FAQ Items */}
-      <div className="space-y-4 max-w-6xl mx-auto">
+      {/* FAQ Items from API */}
+      <div className="space-y-3 max-w-6xl mx-auto">
         {faqs.map((faq, index) => (
           <div
-            className={`border-2 rounded-2xl p-6 bg-white cursor-pointer transition-all duration-300 ${
-              openIndex === index 
-                ? 'border-[#188bff] shadow-lg bg-blue-50' 
-                : 'border-blue-100 hover:border-[#188bff] hover:shadow-md'
+            key={index}
+            className={`group rounded-2xl bg-white cursor-pointer transition-all duration-300 overflow-hidden ${
+              openIndex === index
+                ? 'border border-[#C9A84C]/35 shadow-lg shadow-[#C9A84C]/10'
+                : 'border border-gray-100 hover:border-[#C9A84C]/30 hover:shadow-lg hover:shadow-gray-200/50'
             }`}
             onClick={() => toggleFAQ(index)}
           >
-            <div className="flex justify-between items-center">
-              <div className="flex items-center gap-4">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${
-                  openIndex === index ? 'bg-[#188bff] text-white' : 'bg-blue-100 text-[#188bff]'
-                }`}>
-                  <MessageCircle className="w-5 h-5" />
+            <div className="p-5 md:p-6">
+              <div className="flex justify-between items-center gap-4">
+                <div className="flex items-center gap-4">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                    openIndex === index 
+                      ? 'bg-[#C9A84C] text-white shadow-md' 
+                      : 'bg-gray-50 text-gray-500 group-hover:bg-[#C9A84C]/10 group-hover:text-[#C9A84C]'
+                  }`}>
+                    <span className="font-bold text-sm">{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <p className={`font-semibold transition-colors ${
+                    openIndex === index ? 'text-[#C9A84C]' : 'text-gray-900'
+                  }`}>
+                    {faq.question}
+                  </p>
                 </div>
-                <p className="text-lg font-semibold text-gray-800 pr-4">
-                  {faq.question}
-                </p>
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                    openIndex === index 
+                      ? 'bg-[#C9A84C] text-white rotate-180' 
+                      : 'bg-gray-100 text-gray-500 group-hover:bg-[#C9A84C]/10 group-hover:text-[#C9A84C]'
+                  }`}
+                >
+                  <ChevronDown className="w-5 h-5" />
+                </div>
               </div>
-              <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
-                  openIndex === index ? 'bg-[#188bff] text-white' : 'bg-gray-100 text-gray-600'
-                }`}
-              >
-                <ChevronDown className="w-5 h-5" />
-              </div>
+
+              {openIndex === index && (
+                <div className="mt-4 pl-14 border-t border-gray-100 pt-4">
+                  <p className="text-gray-600 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              )}
             </div>
-            
-            {openIndex === index && (
-              <p
-                className="text-gray-600 mt-4 pl-14 text-base leading-relaxed border-t border-blue-100 pt-4 transition-all duration-300"
-              >
-                {faq.answer}
-              </p>
-            )}
           </div>
         ))}
       </div>
 
-      {/* Cute Contact Section */}
+      {/* Contact Section */}
       <div className="text-center mt-16">
-        <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-3xl p-8 border-2 border-blue-100 max-w-1xl mx-auto">
-          <div className="flex flex-col items-center gap-6">
-            <div className="w-16 h-16 bg-[#188bff] rounded-full flex items-center justify-center shadow-lg">
+        <div className="relative bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 md:p-10 border border-gray-100 max-w-6xl mx-auto shadow-xl shadow-gray-200/50 overflow-hidden">
+          {/* Decorative element */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#C9A84C]/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+          
+          <div className="relative flex flex-col items-center gap-6">
+            <div className="w-16 h-16 bg-[#C9A84C] rounded-2xl flex items-center justify-center shadow-lg shadow-[#C9A84C]/20 rotate-3">
               <PhoneCall className="w-8 h-8 text-white" />
             </div>
-            
+
             <div>
-              <p className="text-xl font-semibold text-gray-800 mb-2">
-                {t("Still have questions?")}
+              <p className="text-xl font-bold text-gray-900 mb-2">
+                Still have questions?
               </p>
-              <p className="text-gray-600">
-                {t("We're here to help you with any questions")}
+              <p className="text-gray-500">
+                Book a free consultation — we will outline your exact process, timeline, and costs.
               </p>
             </div>
-            
+
             <button
               onClick={() => router.push("/contact")}
-              className="flex items-center justify-center gap-3 px-8 py-4 bg-[#188bff] text-white text-lg font-semibold rounded-2xl hover:bg-blue-600 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105"
+              className="group flex items-center justify-center gap-2 px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] shadow-lg shadow-[#C9A84C]/20 hover:shadow-xl hover:shadow-[#C9A84C]/30 transition-all duration-300 cursor-pointer"
             >
-              <PhoneCall className="w-5 h-5" />
-              {t("faq.getInTouch")}
+              Contact Our Team
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>

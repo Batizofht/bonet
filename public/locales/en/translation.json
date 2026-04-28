@@ -7,32 +7,32 @@
     "title": "Our Services",
     "list": [
       {
-        "title": "Travel & Hospitality",
-        "description": "We offer comprehensive travel and hospitality services, including hotel booking, airport transfers, car rentals, and guided tours.",
-        "details": "Visit Rwanda with Ease – Book Your VIP Experience Now!",
-        "buttonText": "Travel & Hospitality",
-        "route": "/travel"
-      },
-      {
         "title": "Investment & Business Setup",
-        "description": "Our experts assist with business registration, licensing, and advisory services.",
-        "details": "Start Your Business in Rwanda Today – Let’s Get Started!",
-        "buttonText": "Register My Business",
+        "description": "Company registration in 6 hours, investment certificates, tax incentives, and full licensing. We handle RDB registration, RRA tax setup, and compliance.",
+        "details": "Rwanda is one of Africa's easiest places to do business. 100% foreign ownership permitted. 0% corporate tax for qualifying investments. Let us handle your complete business setup.",
+        "buttonText": "Book Free Consultation",
         "route": "/investment"
       },
       {
-        "title": "Business Consulting",
-        "description": "We provide professional business consulting services, including business plan development, project planning, and financial audits.",
-        "details": "Our goal is to help businesses optimize operations and drive growth.",
-        "buttonText": "Get Consulting",
-        "route": "/consulting"
+        "title": "HR & Recruitment Support",
+        "description": "Recruitment, employment contracts, payroll management, RSSB registration, and work permits for foreign staff. Build your team with confidence.",
+        "details": "Hiring in a new country is complex. We handle recruitment, contracts, payroll, and labor law compliance so your team is productive from day one.",
+        "buttonText": "Book Free Consultation",
+        "route": "/hrsupport"
       },
       {
-        "title": "HR & Administrative Support",
-        "description": "We offer recruitment services, HR policy development, and employee training programs.",
-        "details": "Our HR solutions are designed to enhance workforce efficiency and compliance with industry standards.",
-        "buttonText": "HR Solutions",
-        "route": "/hrsupport"
+        "title": "Relocation & Executive Concierge",
+        "description": "Executive housing, airport transfers, visa processing, school enrollment, banking setup, and daily operational support for relocating professionals.",
+        "details": "Moving to Rwanda? We manage every detail — from housing in Kiyovu/Nyarutarama to school enrollment and your daily commute. One team, everything handled.",
+        "buttonText": "Book Free Consultation",
+        "route": "/contact"
+      },
+      {
+        "title": "Executive Travel & VIP Concierge",
+        "description": "Luxury hotels, gorilla trekking, business event support, and chauffeured transport. Curated experiences for business travelers.",
+        "details": "Visiting Rwanda for business or pleasure? We design seamless, high-end experiences — from Kigali Marriott to Volcanoes National Park gorilla treks.",
+        "buttonText": "Book Free Consultation",
+        "route": "/travel"
       }
     ]
   },
@@ -241,6 +241,18 @@
     "transport": "Transport",
     "tour": "Tour",
     "search": "Search anything"
+  },
+  "heroServices": {
+    "investment_title": "Investment & Business",
+    "investment_desc": "Company registration in 6 hours. 100% foreign ownership. Tax incentives.",
+    "hr_title": "HR & Recruitment",
+    "hr_desc": "Recruitment, contracts, payroll, RSSB registration, work permits.",
+    "relocation_title": "Relocation Services",
+    "relocation_desc": "Housing, visas, school enrollment, banking, daily support.",
+    "travel_title": "Executive Travel",
+    "travel_desc": "Luxury hotels, gorilla trekking, VIP transport, curated itineraries.",
+    "learn_more": "Learn more",
+    "book_consultation": "Book Consultation"
   },
   "executiveApartments": {
     "title": "Executive Serviced Apartments",

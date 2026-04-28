@@ -18,8 +18,7 @@ export default function AboutPageClient() {
         <SecondService />
         <MissionVision />
            <Team />
-        <WhyChooseBonet />
-        <NewExperience />
+   
      
         <Testimonials />
 
