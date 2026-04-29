@@ -52,12 +52,12 @@ const BookingOverlay = () => {
         {/* Close Icon */}
         <button
           onClick={handleClose}
-          className="absolute top-2 right-2 text-blue-400 hover:text-blue-600"
+          className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
         >
           <FaTimes size={20} />
         </button>
 
-        <h2 className="text-2xl font-semibold text-center bg-clip-text text-transparent bg-[#188bff] mb-4">
+        <h2 className="text-2xl font-semibold text-center text-[#C9A84C] mb-4">
           {isSuccess ? 'Booking Successful' : titles[currentIndex]}
         </h2>
         <p className="text-gray-700 text-sm text-center mb-4">
@@ -68,13 +68,13 @@ const BookingOverlay = () => {
 
         {!isSuccess && (
           <div className="flex justify-center items-center mb-4">
-            <div className="animate-spin rounded-full border-t-4 border-b-4 border-blue-500 w-8 h-8"></div>
+            <div className="animate-spin rounded-full border-t-4 border-b-4 border-[#C9A84C] w-8 h-8"></div>
           </div>
         )}
 
         {isSuccess && (
           <div className="flex justify-center mb-4">
-            <div className="bg-blue-500 text-white p-2 rounded-full">
+            <div className="bg-[#C9A84C] text-white p-2 rounded-full">
               <FaCheckCircle size={24} />
             </div>
           </div>
@@ -84,7 +84,7 @@ const BookingOverlay = () => {
           <div className="text-center">
             <button
               onClick={handleContinue}
-              className="bg-[#188bff] text-white font-bold px-6 py-2 rounded mt-4"
+              className="bg-[#C9A84C] text-white font-bold px-6 py-2 rounded mt-4"
             >
               Continue
             </button>

@@ -29,7 +29,7 @@ const TourTypeSelector = ({ onTourSubmit }) => {
             onClick={() => setActiveForm("guide")}
             className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex-1 justify-center ${
               activeForm === "guide"
-                ? "bg-blue-50 text-blue-600 border border-blue-200"
+                ? "bg-[#C9A84C]/10 text-[#C9A84C] border border-[#C9A84C]/30"
                 : "text-gray-600 hover:text-gray-800 hover:bg-gray-50"
             }`}
           >
@@ -41,7 +41,7 @@ const TourTypeSelector = ({ onTourSubmit }) => {
             onClick={() => setActiveForm("transport")}
             className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex-1 justify-center ${
               activeForm === "transport"
-                ? "bg-green-50 text-green-600 border border-green-200"
+                ? "bg-[#C9A84C]/10 text-[#C9A84C] border border-[#C9A84C]/30"
                 : "text-gray-600 hover:text-gray-800 hover:bg-gray-50"
             }`}
           >

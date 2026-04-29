@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, lazy, Suspense } from "react";
-import { FaSearch, FaHotel, FaHome, FaCar, FaUmbrellaBeach } from "react-icons/fa";
+import { FaHotel, FaHome, FaCar, FaUmbrellaBeach } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { usePathname } from "next/navigation";
 
@@ -9,7 +9,6 @@ const HotelCard = lazy(() => import("./hotelcard"));
 const ApartmentCard = lazy(() => import("./apartments/apartmentcard"));
 const TransportCard = lazy(() => import("./transport/transportcard"));
 const TourTypeSelector = lazy(() => import("../tour/tourcard"));
-import { Search } from "lucide-react";
 
 const ContainerWithButtons = () => {
   const { t } = useTranslation();
@@ -37,152 +36,70 @@ const ContainerWithButtons = () => {
     setActiveComponent(component);
   };
 
-  // Enhanced menu config with icons and colors
   const menuItems = [
-    { 
-      key: "hotel", 
-      label: t("travelHospitality.page.services.hotelReservations.title"),
-      icon: FaHotel,
-      color: "#FF6B6B",
-      gradient: "from-pink-500 to-rose-500",
-      bgGradient: "from-pink-50 to-rose-50",
-      borderColor: "border-pink-200"
-    },
-    { 
-      key: "apartments", 
-      label: t("travelHospitality.selectService.options.apartment"),
-      icon: FaHome,
-      color: "#4ECDC4",
-      gradient: "from-teal-400 to-cyan-500",
-      bgGradient: "from-teal-50 to-cyan-50",
-      borderColor: "border-teal-200"
-    },
-    { 
-      key: "transport", 
-      label: t("travelHospitality.selectService.options.transport"),
-      icon: FaCar,
-      color: "#45B7D1",
-      gradient: "from-blue-400 to-sky-500",
-      bgGradient: "from-blue-50 to-sky-50",
-      borderColor: "border-blue-200"
-    },
-    { 
-      key: "tourism", 
-      label: t("travelHospitality.page.services.tourismGuides.title"),
-      icon: FaUmbrellaBeach,
-      color: "#96CEB4",
-      gradient: "from-emerald-400 to-green-500",
-      bgGradient: "from-emerald-50 to-green-50",
-      borderColor: "border-emerald-200"
-    },
+    { key: "hotel", label: t("travelHospitality.page.services.hotelReservations.title"), icon: FaHotel },
+    { key: "apartments", label: t("travelHospitality.selectService.options.apartment"), icon: FaHome },
+    { key: "transport", label: t("travelHospitality.selectService.options.transport"), icon: FaCar },
+    { key: "tourism", label: t("travelHospitality.page.services.tourismGuides.title"), icon: FaUmbrellaBeach },
   ];
 
-  const activeItem = menuItems.find(item => item.key === activeComponent);
 
   return (
-    <div className="flex flex-col sm:flex-row min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30">
-      {/* Left section */}
-        <div className="flex-1 p-4 sm:p-8 overflow-y-auto">
-
-              {/* Header */}
-                <div className="text-center mb-16">
-                  <div className="flex justify-center items-center gap-3 mb-4">
-                    <div className="w-3 h-3 bg-[#188bff] rounded-full"></div>
-                    <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-                    <Search className="w-6 h-6 text-[#188bff]"></Search>
-                    <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent"></div>
-                    <div className="w-3 h-3 bg-[#188bff] rounded-full"></div>
-                  </div>
-                  
-                  <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                    {t("Book Now", "Book  Now").split(" ").map((word, i) => 
-                      i === 0 ? (
-                        <span key={i} className="bg-[#188bff] bg-clip-text text-transparent relative inline-block">
-                          {word}
-                          <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#188bff] to-cyan-400 transform scale-x-0 hover:scale-x-100 transition-transform duration-300"></span>
-                          {" "}
-                        </span>
-                      ) : (
-                        <span key={i} className="text-gray-600">{word + " "}</span>
-                      )
-                    )}
-                  </h2>
-                  <p className="text-gray-500 text-lg"> Discover amazing places to stay, transportation options, and unforgettable experiences</p>
-                </div>
+    <div className="min-h-screen bg-white">
+      <div className="max-w-6xl mx-auto px-4 py-20">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+            Reservations
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
+            Book <span className="text-[#C9A84C]">Now</span>
+          </h2>
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+            Hotels, apartments, transport, and tours — reserve your Rwanda experience
+          </p>
+        </div>
           
           
 
-          {/* Cute Tabs */}
-          <div 
-            className="mb-8 bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg border border-gray-100"
-          >
-            <div className="flex flex-wrap gap-2 justify-center">
-              {menuItems.map((item) => {
-                const IconComponent = item.icon;
-                const isActive = activeComponent === item.key;
-                
-                return (
-                  <button
-                    key={item.key}
-                    onClick={() => handleClick(item.key)}
-                    className={`
-                      relative flex items-center gap-3 px-6 py-4 rounded-xl font-semibold text-sm transition-all duration-300
-                      ${isActive 
-                        ? `text-white bg-gradient-to-r ${item.gradient} shadow-lg shadow-${item.color.replace('#', '')}/25` 
-                        : `text-gray-600 bg-white hover:bg-gray-50 border-2 ${item.borderColor} hover:border-${item.color.replace('#', '')}/30`
-                      }
-                    `}
-                  >
-                    <IconComponent className={`w-4 h-4 ${isActive ? 'text-white' : ''}`} />
-                    {item.label}
-                    
-                    {/* Active indicator dot */}
-                    {isActive && (
-                      <div
-                        className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full"
-                      />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
+        {/* Tabs */}
+        <div className="mb-8 bg-white rounded-2xl p-2 border border-gray-200/30">
+          <div className="flex flex-wrap gap-2 justify-center">
+            {menuItems.map((item) => {
+              const IconComponent = item.icon;
+              const isActive = activeComponent === item.key;
+              
+              return (
+                <button
+                  key={item.key}
+                  onClick={() => handleClick(item.key)}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-colors duration-200
+                    ${isActive 
+                      ? 'text-white bg-[#C9A84C]' 
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    }`}
+                >
+                  <IconComponent className="w-4 h-4" />
+                  {item.label}
+                </button>
+              );
+            })}
           </div>
+        </div>
 
-          {/* Active Tab Content with Cute Header */}
-          <div
-            className={`rounded-2xl px-0 py-6 border-2 ${activeItem?.borderColor} bg-gradient-to-br ${activeItem?.bgGradient} shadow-sm`}
-          >
-            {/* Tab-specific cute header */}
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className={`p-3 rounded-xl bg-white shadow-sm border ${activeItem?.borderColor}`}>
-               
-                {activeItem?.icon && (
-    <activeItem.icon className="w-6 h-6" style={{ color: activeItem.color }} />
-  )}
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-gray-800">{activeItem?.label}</h2>
-                <p className="text-gray-600 text-sm">
-                  {activeComponent === "hotel" && "Find the perfect stay for your journey"}
-                  {activeComponent === "apartments" && "Discover cozy apartments and homes"}
-                  {activeComponent === "transport" && "Comfortable transportation options"}
-                  {activeComponent === "tourism" && "Unforgettable tours and experiences"}
-                </p>
-              </div>
-            </div>
-
-            {/* Cards Container */}
-            <div className="space-y-6 ">
-              <Suspense fallback={<div className="text-center py-8">Loading...</div>}>
-                {activeComponent === "hotel" && <HotelCard bookHotel={() => {}} />}
-                {activeComponent === "apartments" && <ApartmentCard bookApartment={() => {}} />}
-                {activeComponent === "transport" && <TransportCard bookTransport={() => {}} />}
-                {activeComponent === "tourism" && <TourTypeSelector onTourSubmit={() => {}} />}
-              </Suspense>
-            </div>
+        {/* Tab Content */}
+        <div className="rounded-2xl py-6">
+          <div className="space-y-6">
+            <Suspense fallback={<div className="text-center py-8">Loading...</div>}>
+              {activeComponent === "hotel" && <HotelCard bookHotel={() => {}} />}
+              {activeComponent === "apartments" && <ApartmentCard bookApartment={() => {}} />}
+              {activeComponent === "transport" && <TransportCard bookTransport={() => {}} />}
+              {activeComponent === "tourism" && <TourTypeSelector onTourSubmit={() => {}} />}
+            </Suspense>
           </div>
         </div>
       </div>
+    </div>
   );
 };
 

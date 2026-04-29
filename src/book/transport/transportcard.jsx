@@ -123,7 +123,7 @@ const TransportCard = ({ bookTransport }) => {
             {/* Personal Information */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
-                <UserOutlined className="text-blue-600" />
+                <UserOutlined className="text-[#C9A84C]" />
                 Personal Information
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -416,15 +416,13 @@ const TransportCard = ({ bookTransport }) => {
 
             {/* Submit Button */}
             <div className="mt-8">
-              <Button
-                type="primary"
-                size="large"
-                loading={isLoading}
+              <button
+                disabled={isLoading}
                 onClick={handleSubmit}
-                className="w-full h-14 rounded-lg text-lg font-semibold bg-blue-600 hover:bg-blue-700 border-0 shadow-md hover:shadow-lg transition-all duration-300"
+                className="w-full h-14 rounded-lg text-lg font-semibold bg-[#C9A84C] hover:bg-[#B8973B] text-white border-0 transition-colors duration-200"
               >
                 {isLoading ? 'Submitting Your Request...' : 'Submit Transport Request'}
-              </Button>
+              </button>
             </div>
           </Form>
         </div>

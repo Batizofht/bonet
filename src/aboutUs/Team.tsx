@@ -8,7 +8,7 @@ const teamMembers = [
     image: "/image/Team/bon.jpg",
     bio: "A seasoned business strategist with over six years of executive leadership in finance, operations, and technology across Rwanda's private sector. Founded Bonet Elite Services to offer investors, entrepreneurs, and travelers a seamless premium experience from market entry to establishment.",
     tags: ["Strategy", "Finance", "ERP Systems"],
-    colorClass: "bg-[#188bff]",
+    colorClass: "bg-[#C9A84C]",
   },
   {
     name: "Jean Luc Shema, CPA(R)",

@@ -38,29 +38,29 @@ const TransportMore = ({ bookedTransport, goBack }) => {
         </button>
       )}
 
-      <h2 className="text-transparent bg-clip-text bg-[#188bff] font-bold text-2xl mb-4">
+      <h2 className="text-[#C9A84C] font-bold text-2xl mb-4">
         Booked Transport Details
       </h2>
 
       {/* Transport Info */}
       <div className="flex flex-col sm:flex-row items-center mb-4 w-full">
         {/* Transport Icon */}
-        <div className="text-blue-500 text-[80px] mb-4 sm:mb-0 sm:mr-6">
+        <div className="text-[#C9A84C] text-[80px] mb-4 sm:mb-0 sm:mr-6">
           <CarOutlined />
         </div>
 
         {/* Transport Details */}
         <div className="w-full">
           <ul className="text-sm text-gray-700 text-left space-y-1">
-            <p><strong className="text-blue-400">Transport Service:</strong> {bookedTransport.transportService}</p>
-            <p><strong className="text-blue-400">Transport Type:</strong> {bookedTransport.transportType}</p>
-            <p><strong className="text-blue-400">Vehicle:</strong> {bookedTransport.carType}</p>
-            <p><strong className="text-blue-400">Seats:</strong> {bookedTransport.seats} seats</p>
-            <p><strong className="text-blue-400">Pickup Location:</strong> {bookedTransport.pickupLocation}</p>
-            <p><strong className="text-blue-400">Drop-off Location:</strong> {bookedTransport.dropoffLocation}</p>
-            <p><strong className="text-blue-400">Pickup Date:</strong> {bookedTransport.pickupDate?.format("YYYY-MM-DD")}</p>
-            <p><strong className="text-blue-400">Pickup Time:</strong> {bookedTransport.pickupTime?.format("HH:mm")}</p>
-            <p><strong className="text-blue-400">Rent Time:</strong> {bookedTransport.rentTime}</p>
+            <p><strong className="text-[#C9A84C]">Transport Service:</strong> {bookedTransport.transportService}</p>
+            <p><strong className="text-[#C9A84C]">Transport Type:</strong> {bookedTransport.transportType}</p>
+            <p><strong className="text-[#C9A84C]">Vehicle:</strong> {bookedTransport.carType}</p>
+            <p><strong className="text-[#C9A84C]">Seats:</strong> {bookedTransport.seats} seats</p>
+            <p><strong className="text-[#C9A84C]">Pickup Location:</strong> {bookedTransport.pickupLocation}</p>
+            <p><strong className="text-[#C9A84C]">Drop-off Location:</strong> {bookedTransport.dropoffLocation}</p>
+            <p><strong className="text-[#C9A84C]">Pickup Date:</strong> {bookedTransport.pickupDate?.format("YYYY-MM-DD")}</p>
+            <p><strong className="text-[#C9A84C]">Pickup Time:</strong> {bookedTransport.pickupTime?.format("HH:mm")}</p>
+            <p><strong className="text-[#C9A84C]">Rent Time:</strong> {bookedTransport.rentTime}</p>
           </ul>
         </div>
       </div>
@@ -69,7 +69,7 @@ const TransportMore = ({ bookedTransport, goBack }) => {
       <div className="mt-4 w-full flex justify-center">
         <button
           onClick={handleContinueClick}
-          className="bg-[#188bff] text-white font-bold px-6 py-2 rounded text-center"
+          className="bg-[#C9A84C] text-white font-bold px-6 py-2 rounded text-center"
         >
           Continue
         </button>

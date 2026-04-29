@@ -38,7 +38,7 @@ const ApartmentMore = ({ bookedApartment, goBack }) => {
         </button>
       )}
 
-      <h2 className="text-transparent mt-3 bg-clip-text bg-[#188bff] font-bold text-2xl mb-4 text-center">
+      <h2 className="text-[#C9A84C] mt-3 font-bold text-2xl mb-4 text-center">
         Booked Apartment Details
       </h2>
 
@@ -63,7 +63,7 @@ const ApartmentMore = ({ bookedApartment, goBack }) => {
       <div className="mt-4 w-full flex justify-center">
         <button
           onClick={handleContinueClick}
-          className="bg-[#188bff] text-white font-bold px-6 py-2 rounded-lg text-center"
+          className="bg-[#C9A84C] text-white font-bold px-6 py-2 rounded-lg text-center"
         >
           Continue
         </button>

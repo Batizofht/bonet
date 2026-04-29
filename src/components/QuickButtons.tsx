@@ -48,6 +48,11 @@ const QuickButtons = () => {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    setIsOpen(false);
+    setDesktopDropdownOpen(false);
+  }, [location]);
+
   const flagImages: Record<SupportedLanguages, string> = {
     en: "/assets/images/usa.png",
     fr: "/assets/images/french.png",
@@ -57,7 +62,7 @@ const QuickButtons = () => {
   const languageNames = {
     en: "English",
     fr: "Français",
-    ch: "中文"
+    ch: "Chinese"
   };
 
   const getActiveClass = (path: string) =>
@@ -66,7 +71,6 @@ const QuickButtons = () => {
   const menuItems = [
     { path: "/", label: t("quickButtons.menu.home") },
     { path: "/about", label: t("quickButtons.menu.aboutUs") },
-    { path: "/gallery", label: "Gallery" },
     { path: "/explore-rwanda", label: "Explore Rwanda" },
     { path: "/bookNow", label: t("quickButtons.menu.bookNow") },
     { path: "/blogs", label: t("blog.blogs") },
@@ -183,7 +187,7 @@ const QuickButtons = () => {
 
       {/* Mobile menu button */}
       <button
-        className="md:hidden p-2 rounded-xl"
+        className="md:hidden p-2"
         onClick={() => {
           setMobileView("main");
           setIsOpen(true);
@@ -205,137 +209,122 @@ const QuickButtons = () => {
           {/* Mobile side menu */}
           <div
             style={{zIndex:9999}}
-            className="fixed top-0 right-0 h-[100dvh] w-[88vw] max-w-[390px] bg-white shadow-[0_24px_70px_rgba(2,6,23,0.35)]"
+            className="fixed top-0 right-0 h-[100dvh] w-[80vw] max-w-[320px] bg-white shadow-2xl"
           >
             <div className="flex h-full flex-col">
               {/* Header */}
-              <div className="border-b border-gray-100 bg-white px-5 pb-4 pt-6">
-                <div className="mb-5 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <img src="/assets/images/logo.png" alt="Bonet Elite Services Logo" className="h-10 w-10 rounded-xl border border-[#C9A84C]/35 bg-white p-1" loading="lazy" />
-                    <div>
-                      <h3 className="text-base font-bold leading-tight text-gray-900">Bonet Elite</h3>
-                      <p className="text-xs text-gray-500">Premium Business Services</p>
+              <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+                <span className="text-sm font-semibold text-gray-900">Menu</span>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="flex h-8 w-8 items-center justify-center text-gray-500 hover:text-gray-700"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              {/* Menu Items */}
+              <div className="flex-1 overflow-y-auto">
+                {mobileView === "main" ? (
+                  <nav className="py-2">
+                    {menuItems.slice(0, 2).map((item) => (
+                      <Link
+                        key={item.path}
+                        href={item.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`block px-5 py-3.5 text-[15px] font-medium border-b border-gray-50 ${
+                          location === item.path
+                            ? 'text-[#C9A84C]'
+                            : 'text-gray-700'
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+
+                    <button
+                      onClick={() => setMobileView("services")}
+                      className="flex w-full items-center justify-between px-5 py-3.5 text-left text-[15px] font-medium text-gray-700 border-b border-gray-50"
+                    >
+                      <span>{t("quickButtons.menu.services")}</span>
+                      <ChevronRight className="h-4 w-4 text-gray-400" />
+                    </button>
+
+                    {menuItems.slice(2).map((item) => (
+                      <Link
+                        key={item.path}
+                        href={item.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`block px-5 py-3.5 text-[15px] font-medium border-b border-gray-50 ${
+                          location === item.path
+                            ? 'text-[#C9A84C]'
+                            : 'text-gray-700'
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </nav>
+                ) : (
+                  <div className="py-2">
+                    <button
+                      onClick={() => setMobileView("main")}
+                      className="flex items-center gap-2 px-5 py-3 text-sm font-medium text-gray-500 border-b border-gray-50"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                      Back
+                    </button>
+                    <div className="py-2">
+                      {servicesGroups.map((group) => (
+                        <div key={group.title}>
+                          <p className="px-5 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                            {group.title}
+                          </p>
+                          {group.items.map((item) => (
+                            <Link
+                              key={`${group.title}-${item.label}`}
+                              href={item.href}
+                              onClick={() => setIsOpen(false)}
+                              className="block px-5 py-3 text-sm text-gray-600 border-b border-gray-50"
+                            >
+                              {item.label}
+                            </Link>
+                          ))}
+                        </div>
+                      ))}
                     </div>
                   </div>
+                )}
+              </div>
 
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-gray-600 transition-colors hover:bg-[#C9A84C]/10 hover:text-[#C9A84C]"
-                  >
-                    <X className="h-5 w-5" />
-                  </button>
-                </div>
-
-                <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#C9A84C]">Language</p>
-                <div className="grid grid-cols-3 gap-2">
+              {/* Footer */}
+              <div className="border-t border-gray-100 px-5 py-4">
+                <Link 
+                  href="/contact" 
+                  onClick={() => setIsOpen(false)}
+                  className="flex h-11 w-full items-center justify-center gap-2 bg-[#C9A84C] text-sm font-medium text-white rounded-lg"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  {t("quickButtons.menu.contactUs")}
+                </Link>
+                
+                {/* Language */}
+                <div className="flex items-center justify-center gap-2 mt-4">
                   {(Object.keys(flagImages) as SupportedLanguages[]).map((lng) => (
                     <button
                       key={lng}
                       onClick={() => changeLanguage(lng)}
-                      className={`flex items-center justify-center gap-1.5 rounded-lg border px-2 py-2 text-xs font-semibold transition-colors ${
-                        language === lng
-                          ? 'border-transparent bg-[#C9A84C]/12 text-[#7A5A00]'
-                          : 'border-transparent bg-gray-100 text-gray-600 hover:bg-[#C9A84C]/10 hover:text-[#C9A84C]'
+                      className={`flex items-center gap-2 px-4 py-1.5 rounded-md text-xs font-medium whitespace-nowrap transition-colors ${
+                        language === lng 
+                          ? 'bg-[#C9A84C]/10 text-[#C9A84C]' 
+                          : 'text-gray-500 hover:bg-gray-100'
                       }`}
                     >
-                      <img src={flagImages[lng]} alt={`${lng} flag`} className="h-4 w-4 rounded object-cover" />
-                      <span>{lng.toUpperCase()}</span>
+                      <img src={flagImages[lng]} alt={`${lng}`} className="h-4 w-4 rounded-sm object-cover" />
+                      <span style={{marginRight:5}}>{languageNames[lng]}</span>
                     </button>
                   ))}
                 </div>
-              </div>
-
-              {/* Menu Items */}
-              <div className="flex-1 overflow-y-auto px-5 py-5">
-                {mobileView === "main" ? (
-                  <>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-400">Navigation</p>
-                    <div className="mt-3 space-y-2">
-                      {menuItems.slice(0, 2).map((item) => (
-                        <Link
-                          key={item.path}
-                          href={item.path}
-                          onClick={() => setIsOpen(false)}
-                          className={`block w-full rounded-xl px-4 py-3 text-left text-[15px] font-medium transition-all duration-200 ${
-                            location === item.path
-                              ? 'bg-[#C9A84C]/10 text-[#7A5A00]'
-                              : 'text-gray-700 hover:bg-gray-50 hover:text-[#C9A84C]'
-                          }`}
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
-
-                      <button
-                        onClick={() => setMobileView("services")}
-                        className="flex w-full items-center justify-between rounded-xl bg-gray-50 px-4 py-3 text-left text-[15px] font-semibold text-gray-800 transition-all duration-200 hover:bg-[#C9A84C]/10 hover:text-[#C9A84C]"
-                      >
-                        <span>{t("quickButtons.menu.services")}</span>
-                        <ChevronRight className="h-4 w-4" />
-                      </button>
-
-                      {menuItems.slice(2).map((item) => (
-                        <Link
-                          key={item.path}
-                          href={item.path}
-                          onClick={() => setIsOpen(false)}
-                          className={`block w-full rounded-xl px-4 py-3 text-left text-[15px] font-medium transition-all duration-200 ${
-                            location === item.path
-                              ? 'bg-[#C9A84C]/10 text-[#7A5A00]'
-                              : 'text-gray-700 hover:bg-gray-50 hover:text-[#C9A84C]'
-                          }`}
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      onClick={() => setMobileView("main")}
-                      className="mb-3 inline-flex items-center gap-1 rounded-lg bg-gray-100 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-gray-600 transition-colors hover:bg-[#C9A84C]/10 hover:text-[#C9A84C]"
-                    >
-                      <ChevronLeft className="h-3.5 w-3.5" />
-                      Go Back
-                    </button>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#C9A84C]">Services</p>
-                    <div className="mt-3 space-y-4 pb-2">
-                      {servicesGroups.map((group) => (
-                        <div key={group.title} className="rounded-xl bg-gray-50 p-3">
-                          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-gray-500">
-                            {group.title}
-                          </p>
-                          <div className="space-y-1">
-                            {group.items.map((item) => (
-                              <Link
-                                key={`${group.title}-${item.label}`}
-                                href={item.href}
-                                onClick={() => setIsOpen(false)}
-                                className="flex items-center justify-between rounded-lg px-2 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-[#C9A84C]/8 hover:text-[#C9A84C]"
-                              >
-                                <span>{item.label}</span>
-                                <ChevronRight className="h-3.5 w-3.5" />
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {/* Contact Button */}
-              <div className="border-t border-gray-100 bg-white px-5 py-4">
-                <Link href="/contact" onClick={() => setIsOpen(false)}>
-                  <button className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#C9A84C] px-4 text-sm font-semibold text-white transition-colors hover:bg-[#B8973B]">
-                    <MessageCircle className="h-4 w-4" />
-                    {t("quickButtons.menu.contactUs")}
-                  </button>
-                </Link>
-                <p className="mt-2 text-center text-xs text-gray-500">Fast response via WhatsApp & email</p>
               </div>
             </div>
           </div>

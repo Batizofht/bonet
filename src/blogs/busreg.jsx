@@ -138,49 +138,44 @@ const BusinessRegistration = () => {
       </div>
 
       {/* Single Blog Article Section */}
-      <div className="bg-white rounded-3xl border border-gray-200/30 overflow-hidden">
+      <div className="max-w-4xl mx-auto bg-white rounded-xl border border-gray-200 overflow-hidden">
         {/* Blog Header */}
-        <div className="relative h-75 md:h-64 bg-black/70 flex items-center justify-center">
-          <div className="text-center text-white p-8">
-            <h1 className="text-lg md:text-4xl font-bold mb-4">
-              {blogArticle.title}
-            </h1>
+        <div className="p-8 md:p-12 border-b border-gray-100 text-center">
+          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+            {blogArticle.category}
+          </span>
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">
+            {blogArticle.title}
+          </h1>
 
-            <div className="flex flex-wrap items-center justify-center gap-6 text-white/90">
-              <div className="flex items-center gap-2">
-                <User className="w-4 h-4" />
-                <span>{blogArticle.author}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                <span>{blogArticle.date}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                <span>{blogArticle.readTime}</span>
-              </div>
+          <div className="flex flex-wrap items-center justify-center gap-4 text-gray-500">
+            <div className="flex items-center gap-1.5">
+              <User className="w-3.5 h-3.5" />
+              <span className="text-sm">{blogArticle.author}</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Calendar className="w-3.5 h-3.5" />
+              <span className="text-sm">{blogArticle.date}</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5" />
+              <span className="text-sm">{blogArticle.readTime}</span>
             </div>
           </div>
         </div>
 
         {/* Blog Content */}
         <div className="p-8 md:p-12">
-          <div className="max-w-4xl mx-auto">
-
-            {/* Article Content */}
-            <div className="prose prose-lg max-w-none">
+          <div className="max-w-3xl mx-auto">
+            <div className="prose max-w-none">
               {blogArticle.content.map((section, index) => (
-                <div
-                  key={index}
-                  className="mb-6"
-                >
+                <div key={index} className="mb-6">
                   {section.type === "heading" ? (
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4 mt-8">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 mt-8">
                       {section.text}
                     </h3>
                   ) : (
-                    <p className="text-gray-600 leading-relaxed text-lg">
-
+                    <p className="text-gray-600 leading-relaxed">
                       {section.text.split('\n').map((line, lineIndex) => (
                         <span key={lineIndex}>
                           {line}
@@ -194,23 +189,21 @@ const BusinessRegistration = () => {
             </div>
 
             {/* Call to Action */}
-            <div className="mt-12 p-6 bg-gray-50 rounded-2xl border border-gray-200/30 text-center">
-              <h3 className="text-2xl font-bold text-gray-800 mb-3">
+            <div className="mt-12 p-6 border border-gray-200 rounded-xl text-center">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
                 Need Help With Business Registration?
               </h3>
-
-              <p className="text-gray-600 mb-4">
-                Let our experts handle the entire registration process for you. 
-                We ensure compliance with all regulations and save you time.
+              <p className="text-gray-500 mb-4 text-sm">
+                Let our experts handle the entire registration process for you. We ensure compliance with all regulations and save you time.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link href="/investment">
-                  <button className="bg-[#C9A84C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#B8973B] transition-colors">
+                  <button className="bg-[#C9A84C] text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-[#B8973B] transition-colors duration-200 text-sm">
                     Start Registration Today
                   </button>
                 </Link>
                 <Link href="/consulting">
-                  <button className="border border-gray-300 text-gray-900 px-6 py-3 rounded-xl font-semibold hover:bg-gray-900 hover:text-white transition-colors">
+                  <button className="border border-gray-300 text-gray-700 px-6 py-2.5 rounded-lg font-semibold hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors duration-200 text-sm">
                     Free Consultation
                   </button>
                 </Link>

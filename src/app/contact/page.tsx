@@ -41,8 +41,7 @@ export default function ContactPage() {
     <div className="min-h-screen">
       <FirstContact />
       <ContactUs />
-      <GoogleMapEmbed />
-      <MapComponent />
+  
     </div>
   );
 }

@@ -14,21 +14,17 @@ const FirstContact = () => {
         backgroundPosition: 'center'
       }}
     >
-      {/* Simple Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#188bff]/40 to-red-500/30 flex flex-col justify-center items-center text-center px-4">
+      <div className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center px-4">
         
-        {/* Cute Badge */}
-        <div className="bg-white/10 backdrop-blur-sm text-white px-6 py-2 rounded-full text-sm font-semibold mb-6 shadow-lg">
+        <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
           {t("footer.contactUs")}
-        </div>
-        
-        {/* Main Heading */}
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 max-w-3xl">
+        </span>
+
+        <h1 className="text-4xl md:text-6xl font-bold text-white mt-4 mb-6 max-w-4xl leading-[1.1] tracking-tight">
           {t("Contact Bonet Elite Team ")}
         </h1>
 
-        {/* Subtitle */}
-        <p className="text-lg text-white/90 max-w-2xl bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+        <p className="text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
           {t("Subtitle.intro2")}
         </p>
       </div>

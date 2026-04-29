@@ -7,6 +7,7 @@ type TFunction = (key: string) => any;
 
 interface ServicesMegaMenuProps {
   t: TFunction;
+  onClose?: () => void;
 }
 
 interface ServiceItem {
@@ -20,7 +21,7 @@ interface ServiceGroup {
   items: ServiceItem[];
 }
 
-export default function ServicesMegaMenu({ t }: ServicesMegaMenuProps) {
+export default function ServicesMegaMenu({ t, onClose }: ServicesMegaMenuProps) {
   const serviceGroups: ServiceGroup[] = [
 
     {
@@ -71,12 +72,14 @@ export default function ServicesMegaMenu({ t }: ServicesMegaMenuProps) {
         <div className="flex flex-wrap items-center gap-2 md:justify-end">
           <Link
             href="/contact"
+            onClick={onClose}
             className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:border-[#C9A84C]/40 hover:text-[#C9A84C] transition-colors"
           >
             Talk to an Expert
           </Link>
           <Link
             href="/services"
+            onClick={onClose}
             className="inline-flex items-center gap-1 rounded-xl bg-[#C9A84C] px-4 py-2 text-sm font-semibold text-white hover:bg-[#B8973B] transition-colors"
           >
             Explore All Services
@@ -96,6 +99,7 @@ export default function ServicesMegaMenu({ t }: ServicesMegaMenuProps) {
                 <Link
                   key={`${group.title}-${item.label}`}
                   href={item.href}
+                  onClick={onClose}
                   className="group block rounded-lg px-2 py-2 transition-colors hover:bg-gray-50"
                 >
                   <div className="flex items-center justify-between">

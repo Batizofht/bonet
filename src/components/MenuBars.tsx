@@ -1,5 +1,5 @@
 'use client'
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,6 +10,11 @@ export default function MenuBars() {
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const location = usePathname();
+
+  // Close dropdown on route change
+  useEffect(() => {
+    setServicesDropdownOpen(false);
+  }, [location]);
 
   const openServicesMenu = () => {
     if (closeTimerRef.current) {
@@ -43,7 +48,6 @@ export default function MenuBars() {
   ];
 
   const secondaryMenuItems = [
-    { path: "/gallery", label: "Gallery" },
     { path: "/explore-rwanda", label: "Explore Rwanda" },
   ];
 
@@ -83,7 +87,7 @@ export default function MenuBars() {
 
         {servicesDropdownOpen && (
           <div onMouseEnter={openServicesMenu} onMouseLeave={closeServicesMenuWithDelay}>
-            <ServicesMegaMenu t={t} />
+            <ServicesMegaMenu t={t} onClose={() => setServicesDropdownOpen(false)} />
           </div>
         )}
       </div>

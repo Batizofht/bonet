@@ -76,14 +76,11 @@ const AccommodationForm = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       
-      <Card className="relative w-full max-w-4xl p-10 rounded-3xl shadow-2xl bg-gradient-to-br from-white/70 to-white/50 backdrop-blur-lg border border-white/20 overflow-hidden">
-        {/* Decorative Orbs */}
-        <div className="absolute -top-16 -left-16 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-purple-600/20 rounded-full"></div>
-        <div className="absolute -bottom-12 -right-12 w-24 h-24 bg-gradient-to-tr from-green-400/20 to-cyan-600/20 rounded-full"></div>
+      <Card className="relative w-full max-w-4xl p-10 rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
 
         <Typography.Title
           level={2}
-          className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-500 mb-8"
+          className="text-3xl font-bold text-center text-[#C9A84C] mb-8"
         >
           {t("apartmentForm.title")}
         </Typography.Title>
@@ -99,7 +96,7 @@ const AccommodationForm = () => {
                 <Input
                   prefix={<UserOutlined />}
                   placeholder={t("apartmentForm.placeholders.fullName")}
-                  className="rounded-xl focus:ring-2 focus:ring-blue-400 transition"
+                  className="rounded-xl focus:ring-2 focus:ring-[#C9A84C] transition"
                 />
               </Form.Item>
             </Col>
@@ -113,7 +110,7 @@ const AccommodationForm = () => {
                 <Input
                   prefix={<MailOutlined />}
                   placeholder={t("apartmentForm.placeholders.email")}
-                  className="rounded-xl focus:ring-2 focus:ring-blue-400 transition"
+                  className="rounded-xl focus:ring-2 focus:ring-[#C9A84C] transition"
                 />
               </Form.Item>
             </Col>
@@ -127,7 +124,7 @@ const AccommodationForm = () => {
                 <Input
                   prefix={<PhoneOutlined />}
                   placeholder={t("apartmentForm.placeholders.phone")}
-                  className="rounded-xl focus:ring-2 focus:ring-blue-400 transition"
+                  className="rounded-xl focus:ring-2 focus:ring-[#C9A84C] transition"
                 />
               </Form.Item>
             </Col>
@@ -142,7 +139,7 @@ const AccommodationForm = () => {
                   type="number"
                   min={1}
                   placeholder={t("apartmentForm.placeholders.guests")}
-                  className="rounded-xl focus:ring-2 focus:ring-blue-400 transition"
+                  className="rounded-xl focus:ring-2 focus:ring-[#C9A84C] transition"
                 />
               </Form.Item>
             </Col>
@@ -268,7 +265,7 @@ const AccommodationForm = () => {
                   <Input
                     type="number"
                     placeholder={t("apartmentForm.placeholders.customBudget")}
-                    className="rounded-xl focus:ring-2 focus:ring-blue-400 transition"
+                    className="rounded-xl focus:ring-2 focus:ring-[#C9A84C] transition"
                   />
                 </Form.Item>
               )}
@@ -282,7 +279,7 @@ const AccommodationForm = () => {
                 <Input.TextArea
                   rows={3}
                   placeholder={t("apartmentForm.placeholders.specialNeeds")}
-                  className="rounded-xl focus:ring-2 focus:ring-blue-400 transition"
+                  className="rounded-xl focus:ring-2 focus:ring-[#C9A84C] transition"
                 />
               </Form.Item>
             </Col>
@@ -291,14 +288,13 @@ const AccommodationForm = () => {
           {/* Submit */}
           <Row>
             <Col span={24} className="text-center mt-6">
-              <Button
-                type="primary"
-                size="large"
+              <button
+                disabled={isLoading}
                 onClick={handleSubmit}
-                className="px-12 py-3 rounded-full bg-gradient-to-r from-blue-600 to-green-500 hover:from-green-500 hover:to-blue-600 transition-all"
+                className="px-12 py-3 rounded-full bg-[#C9A84C] hover:bg-[#B8973B] text-white transition-colors border-0"
               >
                 {t("apartmentForm.submit")}
-              </Button>
+              </button>
             </Col>
           </Row>
         </Form>

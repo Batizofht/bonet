@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-const AIEnhancedBusinessComponent = () => {
+const MissionVisionComponent = () => {
   const { t } = useTranslation();
 
   return (
@@ -77,4 +77,4 @@ const AIEnhancedBusinessComponent = () => {
   );
 };
 
-export default AIEnhancedBusinessComponent;
+export default MissionVisionComponent;

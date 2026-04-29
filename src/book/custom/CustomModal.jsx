@@ -17,7 +17,7 @@ const CustomModal = ({ open, onClose, title }) => {
 <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-hidden animate-modalIn">
        {/* Header */}
         <div className="flex justify-between items-center p-4 border-b">
-          <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-500">
+          <h2 className="text-2xl font-bold text-[#C9A84C]">
             {title}
           </h2>
           <button

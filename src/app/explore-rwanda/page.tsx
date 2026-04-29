@@ -1,126 +1,199 @@
-// app/explore-rwanda/page.tsx - Explore Rwanda with Bonet Elite
+"use client"
 import React from "react";
-import GreatSoftware from "../../components/greatSoftware";
-
-export const metadata = {
-  title: "Explore Rwanda | Business, Investment & Travel Guide | Bonet Elite",
-  description:
-    "Comprehensive guides to Rwanda: business setup, investment opportunities, travel tips, and local insights. Your complete resource for exploring Rwanda with Bonet Elite.",
-  keywords:
-    "Rwanda business guide, Rwanda investment opportunities, Rwanda travel tips, Kigali guide, Rwanda market access, East Africa business",
-  authors: [{ name: "Bonet Elite Services" }],
-  alternates: { canonical: "https://bonet.rw/explore-rwanda" },
-  openGraph: {
-    type: "website",
-    url: "https://bonet.rw/explore-rwanda",
-    title: "Explore Rwanda | Business, Investment & Travel Guide | Bonet Elite",
-    description:
-      "Comprehensive guides to Rwanda: business setup, investment opportunities, travel tips, and local insights.",
-    images: [
-      {
-        url: "https://bonet.rw/assets/images/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "Explore Rwanda with Bonet Elite",
-      },
-    ],
-    siteName: "Bonet Elite Services",
-  },
-};
+import Link from "next/link";
 
 export default function ExploreRwandaPage() {
+  const galleryImages = [
+    { src: "../assets/images/conv.jpg", title: "Convention Center" },
+    { src: "../assets/images/k2.webp", title: "Kigali City" },
+    { src: "../assets/images/memo.jpg", title: "Memorial" },
+    { src: "../assets/images/k3.jpg", title: "Kigali Views" },
+    { src: "../assets/images/kiv.jpg", title: "Lake Kivu" },
+    { src: "../assets/images/vov.jpg", title: "Volcanoes" },
+    { src: "../assets/images/part1.jpg", title: "Culture" },
+    { src: "../assets/images/tea.webp", title: "Tea Plantations" },
+    { src: "../assets/images/nyu5.jpg", title: "Nyungwe Forest" },
+    { src: "../assets/images/gis3.jpg", title: "Gisenyi" },
+    { src: "../assets/images/huye.JPG", title: "Huye" },
+    { src: "../assets/images/muhazi.jpg", title: "Lake Muhazi" },
+  ];
+
+  const sectors = [
+    { name: "ICT & Digital", desc: "Growing tech ecosystem with 4G coverage and digital hubs across Kigali" },
+    { name: "Tourism", desc: "Mountain gorillas, eco-tourism, luxury hospitality and convention centers" },
+    { name: "Manufacturing", desc: "Special economic zones with tax incentives and export processing" },
+    { name: "Agriculture", desc: "Premium coffee, tea, and horticulture exports to global markets" },
+    { name: "Energy", desc: "Renewable energy targets and solar investment opportunities" },
+    { name: "Finance", desc: "Emerging fintech ecosystem and expanding banking sector" },
+  ];
+
+  const living = [
+    { title: "Safety", desc: "#2 safest country in Africa with low crime rates and stable governance" },
+    { title: "Cost of Living", desc: "Affordable compared to regional peers with competitive expat packages" },
+    { title: "Healthcare", desc: "Modern hospitals and medical facilities with international standards" },
+    { title: "Education", desc: "International schools and universities with globally recognized programs" },
+    { title: "Connectivity", desc: "Excellent internet and digital infrastructure with nationwide fiber" },
+    { title: "Climate", desc: "Year-round pleasant temperatures in the Land of a Thousand Hills" },
+  ];
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Page Header */}
-      <div className="bg-gray-900 py-16 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Explore Rwanda with <span className="text-[#C9A84C]">Bonet Elite</span>
+      {/* Hero */}
+      <div
+        className="relative w-full h-[50vh] bg-cover bg-center overflow-hidden"
+        style={{ backgroundImage: "url('/image/2.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
+          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+            Discover
+          </span>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mt-4 mb-6 max-w-4xl leading-[1.1] tracking-tight">
+            Explore <span className="text-[#C9A84C]">Rwanda</span>
           </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Innovative solutions for modern businesses — discover everything Rwanda has to offer 
-            for investors, entrepreneurs, and travelers.
+          <p className="text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
+            Business, investment, and travel — your complete guide to the Land of a Thousand Hills
           </p>
         </div>
       </div>
 
-      {/* Content Sections */}
-      <GreatSoftware />
+      {/* Rwanda at a Glance */}
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-20">
+          <div className="text-center mb-16">
+            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+              The Opportunity
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
+              Rwanda at a <span className="text-[#C9A84C]">Glance</span>
+            </h2>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+              Key facts that make Rwanda one of Africa&apos;s most attractive destinations
+            </p>
+          </div>
 
-      {/* Additional Resources */}
-      <div className="py-16 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Resources for <span className="text-[#C9A84C]">Your Journey</span>
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Business Setup Card */}
-            <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-[#C9A84C] transition-colors">
-              <div className="w-12 h-12 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-[#C9A84C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { value: "13M", label: "Population" },
+              { value: "#2", label: "Safest in Africa" },
+              { value: "Top 3", label: "Ease of Business" },
+              { value: "6hrs", label: "Company Setup" },
+            ].map((item, index) => (
+              <div key={index} className="text-center">
+                <div className="text-6xl font-bold text-[#C9A84C] mb-3">{item.value}</div>
+                <p className="text-gray-900 font-semibold">{item.label}</p>
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Business Setup</h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Step-by-step guide to registering your company in Rwanda — from RDB to tax compliance.
-              </p>
-              <a href="/investment" className="text-[#C9A84C] font-semibold text-sm hover:underline">
-                Learn more →
-              </a>
-            </div>
-
-            {/* Investment Card */}
-            <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-[#C9A84C] transition-colors">
-              <div className="w-12 h-12 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-[#C9A84C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Investment Opportunities</h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Uncover Rwanda's most promising sectors: ICT, manufacturing, tourism, energy, and agriculture.
-              </p>
-              <a href="/investment" className="text-[#C9A84C] font-semibold text-sm hover:underline">
-                Learn more →
-              </a>
-            </div>
-
-            {/* Travel Card */}
-            <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-[#C9A84C] transition-colors">
-              <div className="w-12 h-12 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-[#C9A84C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Travel Guide</h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Visa requirements, cultural etiquette, must-visit destinations, and the best times to visit.
-              </p>
-              <a href="/travel" className="text-[#C9A84C] font-semibold text-sm hover:underline">
-                Learn more →
-              </a>
-            </div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* CTA Section */}
-      <div className="py-12 px-4 bg-gray-900">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">
+      {/* Key Sectors */}
+      <section className="bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 py-20">
+          <div className="text-center mb-16">
+            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+              Investment
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
+              Key <span className="text-[#C9A84C]">Sectors</span>
+            </h2>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+              Rwanda&apos;s most promising industries for growth and investment
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {sectors.map((sector, index) => (
+              <div key={index} className="bg-white p-8 rounded-2xl border border-gray-200/30 hover:border-[#C9A84C]/40 transition-colors duration-300">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{sector.name}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{sector.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Living in Rwanda */}
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-20">
+          <div className="text-center mb-16">
+            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+              Lifestyle
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
+              Living in <span className="text-[#C9A84C]">Rwanda</span>
+            </h2>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+              Quality of life factors for expats and residents
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {living.map((item, index) => (
+              <div key={index} className="bg-white rounded-2xl p-8 border border-gray-200/30 hover:border-[#C9A84C]/40 hover:shadow-lg transition-all duration-300">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section className="bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 py-20">
+          <div className="text-center mb-16">
+            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+              Gallery
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
+              Visit <span className="text-[#C9A84C]">Rwanda</span>
+            </h2>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+              Destinations and experiences across the Land of a Thousand Hills
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {galleryImages.map((img, i) => (
+              <div key={i} className="group overflow-hidden rounded-2xl border border-gray-200/30 bg-white hover:border-[#C9A84C]/40 transition-colors duration-300">
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={img.src}
+                    alt={img.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div className="p-4">
+                  <p className="text-sm font-semibold text-gray-900 leading-tight">{img.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <div
+        className="relative w-full h-[40vh] bg-cover bg-center"
+        style={{ backgroundImage: "url('/image/1.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-black/70" />
+        <div className="relative flex flex-col justify-center items-center text-center px-4 h-full">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Ready to Explore Rwanda?
           </h2>
-          <p className="text-gray-300 mb-6">
-            Whether you're investing, relocating, or visiting — we're here to make your Rwanda experience seamless.
+          <p className="text-gray-300 mb-6 max-w-xl">
+            Whether you&apos;re investing, relocating, or visiting — we make your Rwanda experience seamless.
           </p>
-          <a
+          <Link
             href="/contact"
             className="inline-flex items-center justify-center px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
           >
             Book Your Free Consultation
-          </a>
+          </Link>
         </div>
       </div>
     </div>

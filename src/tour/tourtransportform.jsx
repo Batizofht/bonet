@@ -31,7 +31,7 @@ const TransportForm = ({ onFinish }) => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-blue-400">Tour Transport</h1>
+      <h1 className="text-2xl font-bold text-[#C9A84C]">Tour Transport</h1>
       <p className="text-[16px] text-gray-700 mb-10">
         Please fill out this form to search for the best recommended transport.
       </p>
@@ -84,9 +84,9 @@ const TransportForm = ({ onFinish }) => {
 
         <Col span={24}>
           <div className="flex justify-center -mt-3 mb-5">
-            <Button type="primary" htmlType="submit">
+            <button type="submit" className="bg-[#C9A84C] hover:bg-[#B8973B] text-white font-semibold px-6 py-2 rounded-lg transition-colors duration-200 border-0">
               Submit Tour Transport
-            </Button>
+            </button>
           </div>
         </Col>
       </Form>

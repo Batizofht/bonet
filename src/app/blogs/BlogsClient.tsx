@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
-import { Calendar, Clock, BookOpen, Sparkles, ArrowRight, Loader2, Search, X, Plus } from 'lucide-react';
+import { ArrowRight, Loader2, Search, X, Briefcase, TrendingUp, MapPin } from 'lucide-react';
 import { slugify } from '../../slugify';
 
 // Translation imports
@@ -86,26 +86,6 @@ export default function BlogsClient() {
   const [hasMore, setHasMore] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [language, setLanguage] = useState<SupportedLanguage>('en');
-  const [isSticky, setIsSticky] = useState(false);
-  const headerRef = useRef<HTMLDivElement>(null);
-
-  // Handle sticky header
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!headerRef.current) return;
-      
-      const headerHeight = headerRef.current.offsetHeight;
-      const scrollPosition = window.scrollY;
-      
-      setIsSticky(scrollPosition > headerHeight);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   // Filter blogs based on search query
   useEffect(() => {
@@ -247,251 +227,229 @@ export default function BlogsClient() {
     [blogs, language]
   );
 
+  const featuredCategories = [
+    // { href: '/blog-business', label: 'Business', icon: Briefcase, desc: 'Company setup & growth' },
+    { href: '/blog-investment', label: 'Investment', icon: TrendingUp, desc: 'Opportunities & returns' },
+    { href: '/blog-travel-tips', label: 'Travel Tips', icon: MapPin, desc: 'Visa, culture & safety' },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50/30">
-      <section className="py-12 px-4 max-w-6xl mx-auto">
-        {/* Sticky Header */}
-        <div 
-          ref={headerRef}
-          style={{
-            marginTop: isSticky ? '-1000px' : '0',
-            ...(isSticky && { 
-              maxWidth: '72rem',
-              margin: '0 auto',
-              width: '100%'
-            })
-          }}
-          className={`mb-10 transition-all duration-300 ${
-            isSticky 
-              ? 'fixed rounded-lg  top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-lg py-4 px-4 md:px-6' 
-              : ''
-          }`}
-        >
-          <div className={`${isSticky ? 'max-w-6xl mx-auto' : ''}`}>
-            {/* Title Section */}
-            <div className="mb-6">
-              <div className="flex items-center gap-2">
-                <BookOpen className="w-5 mt-1 h-5 text-[#188bff]" />
-                <h1 className="text-2xl font-bold text-gray-800">
-                  {t('blog.header.title1', 'Latest')}{" "}
-                  <span className="text-[#188bff]">
-                    {t('blog.header.title2', 'Blogs')}
-                  </span>
-                </h1>
-              </div>
-              <p className="text-gray-500 text-sm mt-1">
-                {t('blog.header.description', 'Expert articles and updates')}
-              </p>
-            </div>
-            
-            {/* Filter Section */}
-            <div className="w-full">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder={t('blog.filter.placeholder', 'Filter blogs by title or content...')}
-                  className="w-full pl-9 pr-9 py-3 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#188bff] focus:border-transparent"
-                />
-                {searchQuery && (
-                  <button
-                    onClick={clearSearch}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                    aria-label="Clear filter"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                )}
-              </div>
-              
-              {/* Filter info */}
-              {searchQuery && (
-                <div className="mt-3 flex items-center justify-between">
-                  <p className="text-sm text-gray-500">
-                    {t('blog.filter.showing', 'Showing')} {blogItems.length} {t('blog.filter.of', 'of')} {allBlogs.length} {t('blog.filter.blogs', 'blogs')}
-                  </p>
-                  {blogItems.length === 0 && (
-                    <button
-                      onClick={clearSearch}
-                      className="text-sm text-[#188bff] hover:text-blue-600 font-medium"
-                    >
-                      {t('blog.filter.clear', 'Clear filter')}
-                    </button>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
+    <div className="min-h-screen bg-white">
+      <section className="py-12 px-4 max-w-5xl mx-auto">
+        {/* Header */}
+        <div className="mb-10">
+          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+            {t('blog.header.title1', 'Latest')}
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2 mb-3">
+            {t('blog.header.title2', 'Blogs')}
+          </h1>
+          <p className="text-gray-500 text-lg max-w-xl">
+            {t('blog.header.description', 'Expert articles and updates')}
+          </p>
         </div>
 
-        {/* Spacer for sticky header */}
-        {isSticky && <div className="h-32 md:h-28"></div>}
+        {/* Search */}
+        <div className="mb-6">
+          <div className="relative max-w-md">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={t('blog.filter.placeholder', 'Search articles...')}
+              className="w-full pl-10 pr-9 py-3 text-sm border-b-2 border-gray-200 bg-transparent focus:outline-none focus:border-[#C9A84C] transition-colors"
+            />
+            {searchQuery && (
+              <button
+                onClick={clearSearch}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                aria-label="Clear filter"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+          </div>
+          {searchQuery && (
+            <p className="text-sm text-gray-500 mt-2">
+              {blogItems.length} {t('blog.filter.of', 'of')} {allBlogs.length} articles
+            </p>
+          )}
+        </div>
+
+        {/* Featured Categories */}
+        <div className="mb-12 flex flex-wrap items-center gap-3">
+          <span className="text-xs font-semibold uppercase tracking-widest text-gray-400 mr-1">Featured</span>
+          {featuredCategories.map((cat) => (
+            <Link
+              key={cat.href}
+              href={cat.href}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-gray-700 hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors duration-200"
+            >
+              <cat.icon className="w-3.5 h-3.5" />
+              {cat.label}
+            </Link>
+          ))}
+        </div>
 
         {/* Error State */}
         {error && (
-          <div className="mb-8 p-6 bg-red-50 border border-red-100 rounded-2xl">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3 text-red-600">
-                <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                  <span className="text-lg font-bold">!</span>
-                </div>
-                <div>
-                  <p className="font-semibold">{t('common.error', 'Error')}</p>
-                  <p className="text-sm">{error}</p>
-                </div>
-              </div>
-              <button
-                onClick={() => loadBlogs(1)}
-                className="px-4 py-2 bg-red-100 text-red-700 rounded-lg font-medium hover:bg-red-200 transition-colors"
-              >
-                {t('common.retry', 'Retry')}
-              </button>
-            </div>
+          <div className="mb-8 p-5 bg-red-50 border border-red-100 rounded-lg flex items-center justify-between">
+            <p className="text-sm text-red-700">{error}</p>
+            <button
+              onClick={() => loadBlogs(1)}
+              className="px-4 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-medium hover:bg-red-200 transition-colors"
+            >
+              {t('common.retry', 'Retry')}
+            </button>
           </div>
         )}
 
         {/* Loading State */}
         {isInitialLoading ? (
-          <div className="flex flex-col items-center justify-center py-20">
-            <Loader2 className="w-10 h-10 text-[#188bff] animate-spin" />
+          <div className="flex items-center justify-center py-20">
+            <Loader2 className="w-8 h-8 text-[#C9A84C] animate-spin" />
           </div>
         ) : (
           <>
-            {/* Blog Grid */}
             {blogItems.length > 0 ? (
               <>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                  {blogItems.map((post, index) => (
-                    <article
-                      key={`${post.id}-${index}`}
-                      className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#188bff] transition-all duration-300 shadow-sm hover:shadow-xl"
-                    >
-                      {/* Image Container */}
-                      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
-                        <img
-                          src={post.imageUrl}
-                          alt={post.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        
-                        {/* Date Badge */}
-                        <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1.5 shadow-sm">
-                          <div className="flex items-center gap-2">
-                            <Calendar className="w-3.5 h-3.5 text-gray-600" />
-                            <span className="text-xs font-medium text-gray-700">
-                              {post.formattedDate}
-                            </span>
-                          </div>
+                {/* Featured First Post - Editorial Hero */}
+                {blogItems[0] && (
+                  <Link href={`/blog/${blogItems[0].slug}`} className="group block mb-12">
+                    <article className="md:flex md:gap-8">
+                      <div className="md:w-3/5 mb-4 md:mb-0">
+                        <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
+                          <img
+                            src={blogItems[0].imageUrl}
+                            alt={blogItems[0].title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            loading="eager"
+                          />
                         </div>
                       </div>
-
-                      {/* Content */}
-                      <div className="p-6">
-                       <Link
-                          href={`/blog/${post.slug}`}
-                          className="inline-flex items-center gap-2 text-[#188bff] font-semibold text-sm group-hover:gap-3 transition-all duration-300"
-                        >
-                      
-                        <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-[#188bff] transition-colors duration-300 line-clamp-2">
-                          {post.title}
-                        </h3></Link>
-                        <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
-                          {post.quote}
+                      <div className="md:w-2/5 flex flex-col justify-center">
+                        <div className="flex items-center gap-3 mb-3">
+                          <span className="text-xs font-semibold uppercase tracking-widest text-[#C9A84C]">Featured</span>
+                          <span className="text-gray-300">·</span>
+                          <span className="text-xs text-gray-500">{blogItems[0].formattedDate}</span>
+                        </div>
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 group-hover:text-[#C9A84C] transition-colors duration-200 line-clamp-3">
+                          {blogItems[0].title}
+                        </h2>
+                        <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">
+                          {blogItems[0].quote}
                         </p>
-
-                        <Link
-                          href={`/blog/${post.slug}`}
-                          className="inline-flex items-center gap-2 text-[#188bff] font-semibold text-sm group-hover:gap-3 transition-all duration-300"
-                          title={`Read: ${post.title}`}
-                        >
-                          <span className="sr-only">Read full article: </span>
-                          {post.title.length > 40 ? `${post.title.substring(0, 40)}...` : post.title}
+                        <span className="inline-flex items-center gap-2 text-[#C9A84C] font-semibold text-sm">
+                          Read article
                           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                        </Link>
+                        </span>
                       </div>
                     </article>
-                  ))}
-                </div>
+                  </Link>
+                )}
 
-                 {/* Load More Button */}
+                {/* Divider */}
+                <div className="border-t border-gray-100 mb-10" />
+
+                {/* Remaining Posts - Editorial List */}
+                {blogItems.length > 1 && (
+                  <div className="space-y-0">
+                    {blogItems.slice(1).map((post, index) => (
+                      <Link
+                        key={`${post.id}-${index}`}
+                        href={`/blog/${post.slug}`}
+                        className="group block"
+                      >
+                        <article className="py-8 border-b border-gray-100 first:pt-0 last:border-b-0">
+                          <div className="flex flex-col sm:flex-row sm:gap-6">
+                            {/* Image */}
+                            <div className="sm:w-48 md:w-56 flex-shrink-0 mb-4 sm:mb-0">
+                              <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                                <img
+                                  src={post.imageUrl}
+                                  alt={post.title}
+                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                  loading="lazy"
+                                />
+                              </div>
+                            </div>
+                            {/* Text */}
+                            <div className="flex-1 flex flex-col justify-center">
+                              <div className="flex items-center gap-3 mb-2">
+                                <span className="text-xs text-gray-500">{post.formattedDate}</span>
+                              </div>
+                              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-[#C9A84C] transition-colors duration-200 line-clamp-2">
+                                {post.title}
+                              </h3>
+                              <p className="text-gray-600 text-sm leading-relaxed line-clamp-2 mb-3">
+                                {post.quote}
+                              </p>
+                              <span className="inline-flex items-center gap-1.5 text-[#C9A84C] text-sm font-medium">
+                                Read
+                                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                              </span>
+                            </div>
+                          </div>
+                        </article>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+
+                {/* Load More */}
                 {hasMore && (
-                  <div className="text-center py-8">
+                  <div className="text-center pt-10 pb-4">
                     <button
                       onClick={handleLoadMore}
                       disabled={isLoadingMore}
-                      className="inline-flex items-center gap-3 px-4 border border-[#188bff] py-4 text-white rounded-xl font-semibold hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                      className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A84C] hover:bg-[#B8973B] text-white rounded-lg font-semibold text-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                     >
                       {isLoadingMore ? (
-                        <>
-                          <Loader2 className="w-5 h-5 animate-spin text-[#188bff]" />
-                        
-                        </>
+                        <Loader2 className="w-4 h-4 animate-spin" />
                       ) : (
                         <>
-                          <Plus className="w-5 h-5 text-[#188bff]" />
-                         
+                          Load more articles
+                          <ArrowRight className="w-4 h-4" />
                         </>
                       )}
                     </button>
-                    
-                    {/* Displaying count */}
-                    <p className="mt-4 text-gray-500 text-sm">
-                      {t('blog.displaying', 'Displaying')} {blogItems.length} {t('blog.blogs', 'blogs')}
+                    <p className="mt-3 text-gray-400 text-xs">
+                      {blogItems.length} articles loaded
                     </p>
                   </div>
                 )}
 
-                {/* No More Posts */}
+                {/* All Loaded */}
                 {!hasMore && !searchQuery.trim() && allBlogs.length > 0 && (
-                  <div className="text-center py-8">
-                    <div className="inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl border border-green-100">
-                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                        <Sparkles className="w-5 h-5 text-green-600" />
-                      </div>
-                      <div className="text-left">
-                        <p className="font-semibold text-gray-700">
-                          {t('blog.allLoaded', "You've seen all our blog posts")}
-                        </p>
-                        <p className="text-sm text-gray-500">
-                          {t('blog.totalPosts', 'Total posts loaded:')} {allBlogs.length}
-                        </p>
-                      </div>
-                    </div>
+                  <div className="text-center pt-8 pb-4">
+                    <p className="text-sm text-gray-400">
+                      {allBlogs.length} articles — you've read them all
+                    </p>
                   </div>
                 )}
               </>
             ) : (
               /* No Results */
               <div className="text-center py-16">
-                <div className="inline-flex flex-col items-center gap-4 p-8 bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl border border-gray-100">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full flex items-center justify-center">
-                    <Search className="w-8 h-8 text-gray-400" />
-                  </div>
-                  <div>
-                    <p className="text-lg font-semibold text-gray-700 mb-2">
-                      {searchQuery 
-                        ? t('blog.noFilterResults', 'No blogs found matching your filter')
-                        : t('blog.noPosts', 'No blog posts available right now.')}
-                    </p>
-                    <p className="text-gray-500 text-sm mb-4">
-                      {searchQuery 
-                        ? t('blog.noFilterResultsHint', 'Try different keywords or clear the filter')
-                        : t('blog.noPostsHint', 'Check back later for new articles')}
-                    </p>
-                    {searchQuery && (
-                      <button
-                        onClick={clearSearch}
-                        className="px-6 py-2 bg-[#188bff] text-white rounded-lg font-medium hover:bg-blue-600 transition-colors duration-200"
-                      >
-                        {t('blog.filter.clear', 'Clear filter')}
-                      </button>
-                    )}
-                  </div>
-                </div>
+                <p className="text-lg font-semibold text-gray-700 mb-2">
+                  {searchQuery 
+                    ? t('blog.noFilterResults', 'No articles match your search')
+                    : t('blog.noPosts', 'No articles available yet.')}
+                </p>
+                <p className="text-gray-500 text-sm mb-4">
+                  {searchQuery 
+                    ? t('blog.noFilterResultsHint', 'Try different keywords')
+                    : t('blog.noPostsHint', 'Check back later for new content')}
+                </p>
+                {searchQuery && (
+                  <button
+                    onClick={clearSearch}
+                    className="px-6 py-2 bg-[#C9A84C] text-white rounded-lg font-medium hover:bg-[#B8973B] transition-colors duration-200 text-sm"
+                  >
+                    {t('blog.filter.clear', 'Clear search')}
+                  </button>
+                )}
               </div>
             )}
           </>

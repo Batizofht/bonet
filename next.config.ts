@@ -58,6 +58,10 @@ const nextConfig: NextConfig = {
       'antd'
     ],
   }
+
+  // dist
+
+  
 };
 
 export default nextConfig;

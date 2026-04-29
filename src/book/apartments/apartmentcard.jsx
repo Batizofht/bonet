@@ -114,7 +114,7 @@ const ApartmentCard = ({ bookApartment }) => {
             {/* Personal Information */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
-                <UserOutlined className="text-blue-600" />
+                <UserOutlined className="text-[#C9A84C]" />
                 Personal Information
               </h3>
               <Row gutter={[24, 16]}>
@@ -376,15 +376,13 @@ const ApartmentCard = ({ bookApartment }) => {
 
             {/* Submit Button */}
             <div className="mt-8">
-              <Button
-                type="primary"
-                size="large"
-                loading={isLoading}
+              <button
+                disabled={isLoading}
                 onClick={handleSubmit}
-                className="w-full h-14 rounded-lg text-lg font-semibold bg-green-600 hover:bg-green-700 border-0 shadow-md hover:shadow-lg transition-all duration-300"
+                className="w-full h-14 rounded-lg text-lg font-semibold bg-[#C9A84C] hover:bg-[#B8973B] text-white border-0 transition-colors duration-200"
               >
                 {isLoading ? 'Submitting Your Request...' : 'Submit Apartment Request'}
-              </Button>
+              </button>
             </div>
           </Form>
         </div>

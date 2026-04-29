@@ -112,14 +112,12 @@ const UserTransportDetails = () => {
           </Form.Item>
         )}
 
-        <Button
-          type="primary"
-          block
-          className="mt-2"
+        <button
           onClick={handleNext}
+          className="mt-2 w-full bg-[#C9A84C] hover:bg-[#B8973B] text-white font-semibold py-2 rounded-lg transition-colors duration-200 border-0"
         >
           Next: Final Details
-        </Button>
+        </button>
       </Form>
     </div>
   );

@@ -43,7 +43,7 @@ const GuideDetails = ({
       <div className="space-y-6">
         {/* Info Card */}
         <div className="p-4 border border-gray-300 rounded-lg shadow-lg bg-white">
-          <h2 className="text-lg font-semibold bg-clip-text text-transparent bg-[#188bff] mb-2">
+          <h2 className="text-lg font-semibold text-[#C9A84C] mb-2">
             No payment details required
           </h2>
           <p className="text-gray-700 text-sm">
@@ -55,7 +55,7 @@ const GuideDetails = ({
         {/* Consent Card */}
         <div className="p-4 border border-gray-300 rounded-lg shadow-lg bg-white">
           <label className="flex items-start space-x-3 mb-3">
-            <input type="checkbox" className="w-5 h-5 text-blue-600" onChange={() => setChecked1(!checked1)} />
+            <input type="checkbox" className="w-5 h-5 text-[#C9A84C]" onChange={() => setChecked1(!checked1)} />
             <span className="text-gray-700 text-sm">
               I consent to receiving marketing emails from Bonnet Elite Service, including promotions, personalized
               recommendations, rewards, travel experiences, and updates about Bonnet Elite Service’s products and
@@ -64,7 +64,7 @@ const GuideDetails = ({
           </label>
 
           <label className="flex items-start space-x-3 mb-4">
-            <input type="checkbox" className="w-5 h-5 text-blue-600" onChange={() => setChecked2(!checked2)} />
+            <input type="checkbox" className="w-5 h-5 text-[#C9A84C]" onChange={() => setChecked2(!checked2)} />
             <span className="text-gray-700 text-sm">
               I consent to receiving marketing emails from Bonnet Elite Service, including promotions, personalized
               recommendations, rewards, travel experiences, and updates about Bonnet Elite Service Transport Limited’s
@@ -81,7 +81,7 @@ const GuideDetails = ({
           <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-3 sm:space-y-0">
             <button
               style={{ fontSize: '13px', height: '3pc' }}
-              className="w-full sm:w-[20pc] hover:bg-[#188bff] hover:text-white text-gray-700 px-4 py-2 font-bold border border-gray-300 rounded bg-gray-200"
+              className="w-full sm:w-[20pc] hover:bg-[#C9A84C] hover:text-white text-gray-700 px-4 py-2 font-bold border border-gray-300 rounded bg-gray-200"
             >
               Check booking
             </button>
@@ -89,7 +89,7 @@ const GuideDetails = ({
             <button
               onClick={handleContinueClick}
               style={{ fontSize: '13px', height: '3pc' }}
-              className="w-full sm:w-[20pc] hover:bg-[#188bff] hover:text-white text-gray-700 px-4 py-2 font-bold border border-gray-300 rounded bg-gray-200"
+              className="w-full sm:w-[20pc] hover:bg-[#C9A84C] hover:text-white text-gray-700 px-4 py-2 font-bold border border-gray-300 rounded bg-gray-200"
             >
               Complete booking
             </button>

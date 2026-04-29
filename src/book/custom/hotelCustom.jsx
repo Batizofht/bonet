@@ -97,7 +97,7 @@ const AccommodationHotel = () => {
                 <Input
                   prefix={<UserOutlined />}
                   placeholder={t("form.fullName.placeholder")}
-                  className="rounded-xl focus:ring-2 focus:ring-blue-400 transition"
+                  className="rounded-xl focus:ring-2 focus:ring-[#C9A84C] transition"
                 />
               </Form.Item>
             </Col>
@@ -113,7 +113,7 @@ const AccommodationHotel = () => {
                 <Input
                   prefix={<MailOutlined />}
                   placeholder={t("form.email.placeholder")}
-                  className="rounded-xl focus:ring-2 focus:ring-blue-400 transition"
+                  className="rounded-xl focus:ring-2 focus:ring-[#C9A84C] transition"
                 />
               </Form.Item>
             </Col>
@@ -126,7 +126,7 @@ const AccommodationHotel = () => {
                 <Input
                   prefix={<PhoneOutlined />}
                   placeholder={t("form.phone.placeholder")}
-                  className="rounded-xl focus:ring-2 focus:ring-blue-400 transition"
+                  className="rounded-xl focus:ring-2 focus:ring-[#C9A84C] transition"
                 />
               </Form.Item>
             </Col>
@@ -140,7 +140,7 @@ const AccommodationHotel = () => {
                   type="number"
                   min={1}
                   placeholder={t("form.guests.placeholder")}
-                  className="rounded-xl focus:ring-2 focus:ring-blue-400 transition"
+                  className="rounded-xl focus:ring-2 focus:ring-[#C9A84C] transition"
                 />
               </Form.Item>
             </Col>
@@ -280,14 +280,13 @@ const AccommodationHotel = () => {
           {/* Submit Button */}
           <Row>
             <Col span={24} className="text-center mt-6">
-              <Button
-                type="primary"
-                size="large"
+              <button
+                disabled={isLoading}
                 onClick={handleSubmit}
-               className="bg-gradient-to-r from-blue-500 to-blue-600 w-full hover:from-blue-600 hover:to-blue-500 text-white font-semibold rounded-xl py-3 h-auto transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl border-0"
+                className="bg-[#C9A84C] hover:bg-[#B8973B] w-full text-white font-semibold rounded-xl py-3 h-auto transition-colors duration-200 border-0"
               >
                 {t("form.submit")}
-              </Button>
+              </button>
             </Col>
           </Row>
         </Form>

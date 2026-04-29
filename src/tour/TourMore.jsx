@@ -87,7 +87,7 @@ const TourMore = ({ tourData, goBack }) => {
   return (
     <div className="bg-white shadow-md rounded-lg p-6">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold text-blue-500">Tour Details</h2>
+        <h2 className="text-2xl font-bold text-[#C9A84C]">Tour Details</h2>
         {/* <button
           onClick={goBack}
           className="text-sm text-blue-600 hover:underline"
@@ -98,13 +98,13 @@ const TourMore = ({ tourData, goBack }) => {
 
       <div className="flex gap-8 items-start">
         <div className="flex-shrink-0">
-          <Icon style={{ fontSize: "5rem", color: "#3B82F6" }} />
+          <Icon style={{ fontSize: "5rem", color: "#C9A84C" }} />
         </div>
 
         <div className="flex-1 text-left space-y-2 text-gray-700">
           {items.map((item, idx) => (
             <p key={idx}>
-              <strong className="text-blue-400">{item.label}:</strong> {item.value || "N/A"}
+              <strong className="text-[#C9A84C]">{item.label}:</strong> {item.value || "N/A"}
             </p>
           ))}
         </div>
@@ -114,7 +114,7 @@ const TourMore = ({ tourData, goBack }) => {
       <div className="mt-6 flex justify-center">
         <button
           onClick={() => setShowDetails(true)}
-          className="bg-blue-400 text-white px-6 py-2 rounded-md hover:bg-blue-500 transition"
+          className="bg-[#C9A84C] text-white px-6 py-2 rounded-md hover:bg-[#B8973B] transition"
         >
           Continue
         </button>
