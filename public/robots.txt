@@ -1,26 +1,18 @@
 User-agent: *
 Allow: /
 
-# Sitemaps - Use consistent canonical domain
+# Sitemaps
 Sitemap: https://bonet.rw/sitemap.xml
-Sitemap: https://bonet.rw/sitemap-static.xml
-Sitemap: https://bonet.rw/sitemaptwo.xml
 
 # Block common non-content paths
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
-Disallow: /*?* 
+Disallow: /_vercel/
+
+# Allow search query params for pagination
 Allow: /*?page=
+Allow: /*?search=
 
-# Allow important content
-Allow: /blogs
-Allow: /blog/
-Allow: /about
-Allow: /contact
-Allow: /services
-Allow: /travel
-Allow: /investment
-Allow: /business
-
+# Crawl rate
 Crawl-delay: 1

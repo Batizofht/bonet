@@ -40,7 +40,12 @@ export const metadata = {
 export default function PremiumServicesPage() {
   return (
     <div className="min-h-screen">
-      <FirstService />
+      <FirstService 
+        image="/image/8.jpg"
+        subtitle="Our Services"
+        title="Comprehensive Business Solutions"
+        description="Travel, HR, consulting & investment services tailored for your success in Rwanda."
+      />
       <BusinessRegistration />
     </div>
   );

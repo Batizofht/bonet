@@ -7,6 +7,7 @@ export const metadata = {
   keywords:
     "Business in Rwanda, Investment Rwanda, Business registration Rwanda, Rwanda business blog, Rwanda investment guide, Bonet Elite Blog, company setup Rwanda",
   authors: [{ name: "Bonet Elite Services" }],
+  alternates: { canonical: "https://bonet.rw/blog-business" },
   openGraph: {
     type: "article",
     url: "https://bonet.rw/blog/business",
@@ -34,7 +35,12 @@ export const metadata = {
 export default function BlogBusinessPage() {
   return (
     <div className="min-h-screen">
-      <FirstService />
+      <FirstService 
+        image="/image/city.jpg"
+        subtitle="Business Guide"
+        title="Start & Grow Your Business in Rwanda"
+        description="Step-by-step insights on company registration, compliance, and expansion strategies."
+      />
       <BusinessRegistration />
     </div>
   );

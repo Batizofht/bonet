@@ -109,8 +109,8 @@ export default function BlogsClient() {
     setError(null);
     
     try {
-      // Build URL
-      const url = new URL('https://api.bonet.rw:8443/bonetBackend/backend/public/full');
+      // Build URL - using /blogs endpoint which is confirmed working
+      const url = new URL('https://api.bonet.rw:8443/bonetBackend/backend/public/blogs');
       url.searchParams.set('page', pageNum.toString());
       url.searchParams.set('limit', BLOGS_PER_PAGE.toString());
       
@@ -126,19 +126,20 @@ export default function BlogsClient() {
         throw new Error(`HTTP ${response.status}: Failed to fetch blogs`);
       }
 
-      const data: BlogResponse = await response.json();
-      console.log(data);
-      if (!data.success) {
-        throw new Error(data.error || 'Failed to fetch blogs');
-      }
+      const data = await response.json();
+      console.log('Blog API response:', data);
       
-      if (!data.data || !Array.isArray(data.data)) {
+      // Handle different response formats: data.data, data.blogs, or data directly
+      const blogsArray = data?.data || data?.blogs || (Array.isArray(data) ? data : null);
+      
+      if (!blogsArray || !Array.isArray(blogsArray)) {
+        console.error('Invalid response structure:', data);
         throw new Error('Invalid response structure from server');
       }
 
       return {
-        blogs: data.data || [],
-        hasMore: data.pagination?.has_more ?? (data.data.length === BLOGS_PER_PAGE)
+        blogs: blogsArray,
+        hasMore: blogsArray.length === BLOGS_PER_PAGE
       };
       
     } catch (error: any) {

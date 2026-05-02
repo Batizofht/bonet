@@ -13,13 +13,38 @@ const WhyRwandaSection = () => {
     },
     {
       stat: "0%",
-      label: "Corporate Tax",
-      desc: "For qualifying international HQs. Plus 15% preferential rates for strategic sectors."
+      label: "Tax Incentives",
+      desc: "Corporate tax holidays for qualifying investments. 15% preferential rates for strategic sectors."
+    },
+    {
+      stat: "Cert",
+      label: "Investment Certificate",
+      desc: "Fast-track RDB certification unlocks tax exemptions and investor protections."
+    },
+    {
+      stat: "100%",
+      label: "Licensing",
+      desc: "All permits handled: trade licenses, sector-specific, work permits, residency."
     },
     {
       stat: "400M+",
       label: "Market Access",
-      desc: "EAC and COMESA membership opens doors to over 400 million consumers."
+      desc: "EAC, COMESA, EU, US/AGOA, AfCFTA — reach 1.6+ billion consumers."
+    },
+    {
+      stat: "1",
+      label: "One Team",
+      desc: "Single point of contact for registration, compliance, housing, transport, operations."
+    },
+    {
+      stat: "15+",
+      label: "Built for Foreigners",
+      desc: "Clients from 15+ countries. We understand the unique needs of international investors."
+    },
+    {
+      stat: "Free",
+      label: "Consultation",
+      desc: "No-obligation 30-minute call. Clear roadmap for your Rwanda market entry."
     }
   ];
 
@@ -30,15 +55,15 @@ const WhyRwandaSection = () => {
         <div className="text-center mb-16">
           <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-wider">The Opportunity</span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-            Why Rwanda?
+            Why Rwanda <span className="text-[#C9A84C]">— And Why With Us?</span>
           </h2>
           <p className="text-gray-500 text-lg max-w-xl mx-auto">
             Africa's easiest place to do business. Most investors never discover these advantages.
           </p>
         </div>
 
-        {/* Big Stats - 3 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        {/* 8-Card Grid - Audit Requirement */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {highlights.map((item, index) => (
             <div key={index} className="text-center group">
               <div className="text-6xl md:text-7xl font-bold text-[#C9A84C] mb-3 group-hover:scale-105 transition-transform">

@@ -1,8 +1,8 @@
 {
-  "welcome_message": "Welcome To Bonet Elite Services",
+  "welcome_message": "Why Rwanda — And Why With Us",
   "subtitle": "Your Trusted Partner for Travel, Business & Investment in Rwanda",
   "description": "We simplify your experience in Rwanda by offering tailored travel, business, and investment support. Whether you are a tourist, an entrepreneur, or a foreign investor, we ensure a smooth and hassle-free journey from arrival to establishment.",
-  "get_started": "Get Started",
+  "get_started": "Book Free Consultation",
   "services": {
     "title": "Our Services",
     "list": [
@@ -61,17 +61,17 @@
     "part2": " Partners"
   },
   "testimonials": {
-    "sectionTitle": "Personal Reviews",
+    "sectionTitle": "Client Reviews",
     "reviews": [
-      "This booking system has helped me manage my appointments more efficiently. I no longer miss client meetings, and the reminders are so helpful. It’s a game-changer for my work!",
-      "The booking system has made managing client appointments so much easier. It's streamlined my scheduling and made it much more convenient for clients. I can’t imagine running my business without it!",
-      "This system has transformed the way we manage bookings in our company. It’s automated, reliable, and keeps everyone on track. It’s made a huge difference for our productivity.",
-      "Since implementing this booking system, our customer engagement has skyrocketed. Automated reminders and easy scheduling have made our business operations smoother and our clients happier!",
-      "This booking platform has been a game-changer for my business. Customers can book their appointments at their convenience, and I can manage them all in one place. It’s saved me so much time!",
-      "I used to struggle with manual appointment scheduling, but this system has made everything seamless. Clients love the ease of booking, and I can focus on delivering great service.",
-      "This system has taken my business to the next level. Clients love the easy booking process, and I’ve been able to save a lot of time. The automatic reminders are particularly useful!",
-      "I can’t believe how much easier my job has become with this system. Clients can book online, and everything is automatically updated. It’s an essential tool for any business.",
-      "The booking system has made my work so much easier. Clients can book and reschedule with ease, and I can focus on delivering great customer service without worrying about missed appointments."
+      "Bonet Elite handled our entire market entry into Rwanda — from company registration to office setup and local hiring. What would have taken us months took 2 weeks. Their knowledge of RDB processes and tax incentives saved us significant time and money.",
+      "As an impact investor, I needed a local partner who understood both the regulatory landscape and the investment ecosystem. Bonet delivered beyond expectations. Their team secured our investment certificate and connected us with key stakeholders within days.",
+      "We evaluated multiple entry points into East Africa. Bonet Elite's comprehensive approach — handling not just legal setup but also executive housing, transport, and ongoing compliance — made Rwanda the obvious choice. Professional, fast, and genuinely knowledgeable.",
+      "Starting a trading company in Rwanda seemed daunting from Mumbai. Bonet Elite managed everything remotely: company registration, tax compliance, work permits, and even found us a local manager. Their WhatsApp responsiveness at all hours was remarkable.",
+      "Our US company needed a regional hub for African operations. Bonet Elite structured the entire setup including the 0% tax qualification for international HQ. Their expertise in Rwanda's investment incentives was crucial to our decision.",
+      "Bonet Elite made our company registration seamless. From name reservation to getting our TIN and trade license, everything was handled professionally. We were operational within days.",
+      "The team at Bonet Elite went above and beyond for our business setup. They handled all the paperwork with RDB and RRA, allowing us to focus on launching our operations.",
+      "I highly recommend Bonet Elite for anyone looking to start a business in Rwanda. Their knowledge of local regulations and connections with government agencies saved us weeks of effort.",
+      "Professional, efficient, and reliable. Bonet Elite managed our entire relocation and business setup process. From visas to housing to company registration — one team handled it all."
     ]
   },
   "experience": {
@@ -199,9 +199,10 @@
     "welcomeText": "Welcome To Bonet Elite Services",
     "tagline": "Your Trusted Partner for Travel, Business & Investment in Rwanda",
     "visionTitle": "Vision Statement",
-    "visionText": "To be the leading Elite service provider in Rwanda, offering seamless and professional solutions in travel, investment, and business support to individuals and companies worldwide.",
+    "visionText": "To be the first call every foreign company and professional makes when entering Rwanda — the name synonymous with trust, speed, and local expertise in East Africa's fastest-growing economy. The only firm that handles registration, compliance, housing, transport, and daily operations through one team."
+  ,
     "missionTitle": "Mission Statement",
-    "missionText": "We provide high-quality Elite services tailored to the needs of travelers, investors, and businesses. Our expertise in hospitality, business consulting, and HR solutions ensures a smooth and hassle-free experience for our clients, helping them succeed in Rwanda."
+    "missionText": "To make Rwanda accessible to the world — by giving every foreign investor, executive, and company a trusted local partner who handles the complexity of business setup, compliance, and daily operations so they can focus on growth. One team, one contact, zero bureaucracy for our clients."
   },
   "founder": {
     "meet": "Meet Our",
@@ -1529,27 +1530,33 @@
     "services": {
       "service1": {
         "title": "Business Registration Assistance",
-        "description": "We provide guidance on company registration with RDB, ensuring legal compliance and a smooth setup, often completed within six hours."
+        "subtitle": "6-Hour Company Setup",
+        "description": "Complete company registration with RDB in just 6 hours. We handle name reservation, certificate issuance, TIN assignment, and RSSB registration — all in one streamlined process. 100% foreign ownership permitted with no local partner required."
       },
       "service2": {
         "title": "Investment Certificate",
-        "description": "We assist businesses in obtaining an Investment Certificate, granting access to tax incentives, exemptions, and government support, enhancing credibility and investment opportunities."
+        "subtitle": "RDB Certification & Tax Incentives",
+        "description": "Secure your Rwanda Development Board investment certificate to unlock tax incentives, investor protections, and fast-track permits. Essential for accessing 0% corporate tax holidays and priority sector benefits."
       },
       "service3": {
-        "title": "Taxpayer Identification Number (TIN) Registration",
-        "description": "We help businesses acquire a TIN from RRA, essential for tax compliance and legal operations, including transactions and property ownership."
+        "title": "TIN Registration",
+        "subtitle": "Tax Compliance Setup",
+        "description": "Obtain your Tax Identification Number from Rwanda Revenue Authority and ensure full compliance from day one. We handle VAT registration, withholding tax setup, and ongoing tax advisory for foreign-owned entities."
       },
       "service4": {
-        "title": "Trade License (Patente)",
-        "description": "A Trade License is mandatory for businesses in Rwanda. We assist in obtaining and renewing it to ensure compliance and avoid penalties."
+        "title": "Trade License",
+        "subtitle": "Commercial Operating Permits",
+        "description": "Secure all necessary trade licenses and commercial permits for legal business operations. From general trading licenses to sector-specific authorizations, we navigate the bureaucracy so you don't have to."
       },
       "service5": {
         "title": "Sector-Specific Licenses",
-        "description": "We facilitate licensing for various industries, including construction, tourism, finance, healthcare, import/export, and logistics, ensuring full regulatory compliance."
+        "subtitle": "Regulated Industry Permits",
+        "description": "Specialized licensing for regulated sectors including finance, telecommunications, mining, healthcare, and energy. We understand the unique requirements of each regulator and manage the entire approval process."
       },
       "service6": {
-        "title": "Work & Residency Permits in Rwanda",
-        "description": "We assist foreign investors and employees in obtaining work and residency permits through Rwanda’s streamlined process, ensuring smooth legal entry and stay."
+        "title": "Work & Residency Permits",
+        "subtitle": "Visa & Immigration Support",
+        "description": "Process work permits for foreign employees, investor visas for owners, and dependent residency permits for families. We handle the entire immigration workflow from application submission to biometric registration."
       }
     },
     "toastMessages": {
@@ -1863,7 +1870,9 @@
     "chatButton": "Chat with us on WhatsApp",
     "callWhatsApp": "Call / WhatsApp",
     "email": "Email",
-    "location": "Kigali, Rwanda"
+    "location": "Kimironko Bus Station Area, Kigali, Rwanda",
+    "hours": "Available 24/7 via WhatsApp",
+    "officeHours": "Office: Mon-Fri 8AM-6PM CAT"
   },
   "toast": {
     "success": "Message sent! We’ll get back to you shortly.",
@@ -1873,7 +1882,7 @@
   "ContactMessage": {
     "success": "Thanks, {{name}}! Your request has been received. A concierge will contact you on WhatsApp within 30 minutes (within business hours). If urgent, call +250 726 300 260."
   },
-  "Customizable and professional services": "Customizable and professional services",
+  "Customizable and professional services": "End-to-End Support for Foreign Investors and Businesses in Rwanda",
   "hotel_title": "Hotel Reservations",
   "hotel_desc": "Luxury stays with premium amenities",
   "apartments_title": "Apartment Booking",

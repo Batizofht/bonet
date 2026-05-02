@@ -1,8 +1,6 @@
 import { Metadata } from 'next'
 import BlogDetailClient from './BlogDetailClient'
 
-export const dynamic = 'force-dynamic';
-
 interface Blog {
   id: number;
   title: string;
@@ -22,6 +20,43 @@ const slugifyTitle = (title: string) => {
     .replace(/^-+|-+$/g, '')
     .trim();
 };
+
+// Pre-render all blog posts at build time for SEO
+export async function generateStaticParams() {
+  try {
+    const response = await fetch(
+      "https://api.bonet.rw:8443/bonetBackend/backend/public/blogs",
+      {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        cache: 'no-store',
+        signal: AbortSignal.timeout(15000),
+      }
+    );
+
+    if (!response.ok) {
+      return [];
+    }
+
+    const data = await response.json();
+    const blogsArray = data?.data || data?.blogs || data;
+    
+    if (!Array.isArray(blogsArray)) {
+      return [];
+    }
+
+    return blogsArray
+      .filter((blog: any) => blog.title)
+      .map((blog: any) => ({
+        slug: slugifyTitle(blog.title),
+      }));
+  } catch {
+    return [];
+  }
+}
 
 const normalizeSlug = (slug: string) => {
   try {

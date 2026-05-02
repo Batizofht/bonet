@@ -48,7 +48,79 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/business`,
+      url: `${baseUrl}/business-registration`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/hr-recruitment`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/relocation-services`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/executive-travel`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/faq`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog-business`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog-investment`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog-travel-tips`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/explore-rwanda`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/gallery`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/consulting`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/hrsupport`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/bookNow`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
@@ -56,51 +128,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]
 
   try {
-    // Try multiple API endpoints for reliability
-    const endpoints = [
-      'https://api.bonet.rw:8443/bonetBackend/backend/public/blogsitemap'
-    ]
-
-    let blogs: any[] = []
-    let apiWorked = false
-
-    for (const endpoint of endpoints) {
-      try {
-        const response = await fetch(endpoint, {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'User-Agent': 'BonetEliteSitemapBot/1.0; +https://bonet.rw',
-          },
-          cache: 'no-store',
-          signal: AbortSignal.timeout(15000), // Increased from 8000ms to 15000ms
-        })
-
-        if (response.ok) {
-          const data = await response.json()
-          console.log(`🔍 Raw response from ${endpoint}:`, JSON.stringify(data, null, 2))
-          const fetchedBlogs = data.data || data.blogs || data
-          
-          if (Array.isArray(fetchedBlogs) && fetchedBlogs.length > 0) {
-            blogs = fetchedBlogs
-            apiWorked = true
-            console.log(`✅ Sitemap: Found ${blogs.length} blogs from ${endpoint}`)
-            break
-          } else {
-            console.warn(`⚠️ Endpoint ${endpoint} returned non-array or empty data:`, typeof fetchedBlogs, fetchedBlogs)
-          }
-        } else {
-          console.warn(`⚠️ Endpoint ${endpoint} returned status:`, response.status, response.statusText)
-        }
-      } catch (endpointError: any) {
-        console.warn(`Endpoint ${endpoint} failed:`, endpointError?.message || 'Unknown error')
-        continue
+    // Fetch blogs at build time - use cache for static generation
+    const response = await fetch(
+      'https://api.bonet.rw:8443/bonetBackend/backend/public/blogsitemap',
+      {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        next: { revalidate: 3600 }, // Revalidate every hour
       }
+    )
+
+    if (!response.ok) {
+      return staticPages
     }
 
-    if (!apiWorked) {
-      console.warn('⚠️ All API endpoints failed, returning static pages only')
+    const data = await response.json()
+    const blogs = data.data || data.blogs || data
+    
+    if (!Array.isArray(blogs) || blogs.length === 0) {
       return staticPages
     }
 

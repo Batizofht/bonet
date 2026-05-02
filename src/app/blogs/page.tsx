@@ -67,7 +67,6 @@ export default function BlogsPage() {
                 "url": "https://bonet.rw/images/logo.png"
               }
             },
-            "blogPost": [],
             "inLanguage": "en-US"
           })
         }}

@@ -8,6 +8,7 @@ export const metadata = {
   keywords:
     "Rwanda travel tips, visit Rwanda guide, Rwanda tourism, Rwanda visa requirements, Kigali travel, Rwanda culture, Bonet Elite Services blog",
   authors: [{ name: "Bonet Elite Services" }],
+  alternates: { canonical: "https://bonet.rw/blog-travel-tips" },
   openGraph: {
     type: "article",
     url: "https://bonet.rw/blog/travel-tips",
@@ -35,7 +36,12 @@ export const metadata = {
 export default function BlogTravelTipsPage() {
   return (
     <div className="min-h-screen">
-      <FirstService />
+      <FirstService 
+        image="/image/3.jpg"
+        subtitle="Travel Guide"
+        title="Explore the Land of a Thousand Hills"
+        description="Essential tips for gorilla trekking, safaris, and unforgettable adventures."
+      />
       <TravelTips />
     </div>
   );

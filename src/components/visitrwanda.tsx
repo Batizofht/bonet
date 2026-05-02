@@ -126,7 +126,7 @@ const Gallery = () => {
       {/* Button */}
       <div className="flex justify-center">
         <motion.button
-          onClick={() => navigate.push("/visitrwanda")}
+          onClick={() => navigate.push("/explore-rwanda")}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="flex items-center gap-3 bg-[#188bff] text-white px-8 py-4 rounded-2xl hover:bg-blue-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl cursor-pointer group/btn"

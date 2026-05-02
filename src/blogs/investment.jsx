@@ -1,123 +1,87 @@
-"use client"
-import { useTranslation } from 'react-i18next';
-import { useRouter } from 'next/navigation';
-import { 
-  TrendingUp, 
-  Calendar,
-  Target,
-  BarChart3
-} from 'lucide-react';
+import React from "react";
+import { TrendingUp, Building2, Trees, Cpu, Hotel, Sprout } from "lucide-react";
+import Link from "next/link";
 
 const InvestmentOpportunities = () => {
-  const { t } = useTranslation();
-  const router = useRouter();
-
-  const blogs = t('investmentOpportunities.items', { returnObjects: true });
+  const sectors = [
+    {
+      icon: Building2,
+      title: "Real Estate & Construction",
+      desc: "High demand for residential, commercial, and hospitality properties in Kigali and emerging cities.",
+      highlight: "ROI: 15-25% annually"
+    },
+    {
+      icon: Trees,
+      title: "Tourism & Hospitality",
+      desc: "Gorilla trekking, eco-tourism, and luxury hospitality are booming sectors.",
+      highlight: "Growth: 15% yearly"
+    },
+    {
+      icon: Cpu,
+      title: "ICT & Technology",
+      desc: "Rwanda is Africa's emerging tech hub with 4G coverage and digital innovation incentives.",
+      highlight: "Tax holidays available"
+    },
+    {
+      icon: Sprout,
+      title: "Agriculture",
+      desc: "Coffee, tea, horticulture exports. Government provides land and infrastructure support.",
+      highlight: "Export incentives up to 7%"
+    },
+    {
+      icon: Hotel,
+      title: "Manufacturing",
+      desc: "Special Economic Zones offer tax exemptions, duty-free imports, and streamlined setup.",
+      highlight: "10-year tax holiday"
+    },
+    {
+      icon: TrendingUp,
+      title: "Energy",
+      desc: "Renewable energy investments in solar, hydro, and methane extraction from Lake Kivu.",
+      highlight: "Feed-in tariffs guaranteed"
+    }
+  ];
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-16">
-      {/* Header */}
-      <div className="mb-16">
+    <div className="max-w-6xl mx-auto px-4 py-16">
+      <div className="text-center mb-12">
         <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-          Investment
+          Investment Opportunities
         </span>
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2 mb-4">
-          {t('investmentOpportunities.title').split('in ')[0]} 
-          <span className="text-[#C9A84C]">
-            {` in ${t('investmentOpportunities.title').split('in ')[1]}`}
-          </span>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3">
+          High-Return Sectors in Rwanda
         </h2>
-        <p className="text-gray-500 text-lg max-w-2xl">
-          Discover promising sectors and strategic investment opportunities in Rwanda's growing economy
+        <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
+          Discover profitable investment opportunities with strong government support and growing markets
         </p>
       </div>
 
-      {/* Investment Articles */}
-      <div className="space-y-12">
-        {blogs.map((blog, index) => (
-          <div
-            key={index}
-            className={`flex flex-col lg:flex-row items-start bg-white rounded-xl border border-gray-200 overflow-hidden ${
-              index % 2 === 1 ? "lg:flex-row-reverse" : ""
-            }`}
-          >
-            {/* Image */}
-            <div className="lg:w-2/5 w-full">
-              <div className="relative overflow-hidden h-72 lg:h-full">
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {sectors.map((sector, index) => (
+          <div key={index} className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#C9A84C]/40 transition-all">
+            <div className="w-12 h-12 bg-[#C9A84C]/10 rounded-xl flex items-center justify-center mb-4">
+              <sector.icon className="w-6 h-6 text-[#C9A84C]" />
             </div>
-
-            {/* Content */}
-            <div className="lg:w-3/5 w-full p-8 lg:p-10">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {blog.title}
-              </h3>
-              <div className="flex items-center gap-4 mb-4">
-                <div className="flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-gray-400" />
-                  <span className="text-xs text-gray-500">Latest</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <BarChart3 className="w-3.5 h-3.5 text-gray-400" />
-                  <span className="text-xs text-gray-500">High Potential</span>
-                </div>
-              </div>
-
-              <p className="text-gray-600 leading-relaxed mb-6">
-                {blog.description}
-              </p>
-
-              {/* Key Points */}
-              <div className="mb-6">
-                <h4 className="font-semibold text-gray-800 flex items-center gap-2 mb-3">
-                  <Target className="w-4 h-4 text-[#C9A84C]" />
-                  Key Investment Highlights
-                </h4>
-                <ul className="space-y-2">
-                  {blog.keyPoints.map((point, i) => (
-                    <li
-                      key={i}
-                      className="flex items-center gap-3 text-gray-600 text-sm"
-                    >
-                      <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full flex-shrink-0"></div>
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Action */}
-              <button
-                onClick={() => router.push('/contact')}
-                className="bg-[#C9A84C] text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-[#B8973B] transition-colors duration-200 text-sm"
-              >
-                Investment Guide
-              </button>
-            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">{sector.title}</h3>
+            <p className="text-gray-600 leading-relaxed mb-4">{sector.desc}</p>
+            <div className="text-[#C9A84C] font-semibold text-sm">{sector.highlight}</div>
           </div>
         ))}
       </div>
 
-      {/* Call to Action */}
-      <div className="mt-16 border border-gray-200 rounded-xl p-8 text-center">
-        <h3 className="text-2xl font-bold text-gray-900 mb-3">
+      <div className="mt-16 bg-gray-50 rounded-2xl p-8 text-center">
+        <h3 className="text-2xl font-bold text-gray-900 mb-4">
           Ready to Invest in Rwanda?
         </h3>
-        <p className="text-gray-500 mb-6 max-w-lg mx-auto">
-          Get expert guidance on investment opportunities, legal requirements, and market insights.
+        <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+          Get personalized investment guidance, company registration support, and RDB certification assistance.
         </p>
-        <button
-          onClick={() => router.push('/consulting')}
-          className="bg-[#C9A84C] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#B8973B] transition-colors duration-200"
+        <Link
+          href="/consulting"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
         >
-          Free Consultation
-        </button>
+          Schedule Investment Consultation
+        </Link>
       </div>
     </div>
   );

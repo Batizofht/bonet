@@ -45,7 +45,7 @@ export default function ServicesMegaMenu({ t, onClose }: ServicesMegaMenuProps) 
     {
       title: t("menu.hrAndAdminSupport"),
       items: [
-        { href: "/hrsupport", label: t("menu.recruitment"), description: "Talent sourcing and onboarding" },
+        { href: "/hr-recruitment", label: t("menu.recruitment"), description: "Talent sourcing and onboarding" },
         { href: "/hrsupport", label: t("menu.hrPolicyDevelopment"), description: "HR policy and compliance framework" },
         { href: "/hrsupport", label: t("menu.employeeTraining"), description: "Workforce training and capability building" },
         { href: "/hrsupport", label: t("menu.administrativeSupport"), description: "Back-office and admin operations" },

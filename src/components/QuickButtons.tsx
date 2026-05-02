@@ -107,7 +107,7 @@ const QuickButtons = () => {
     {
       title: t("menu.hrAndAdminSupport"),
       items: [
-        { href: "/hrsupport", label: t("menu.recruitment") },
+        { href: "/hr-recruitment", label: t("menu.recruitment") },
         { href: "/hrsupport", label: t("menu.hrPolicyDevelopment") },
         { href: "/hrsupport", label: t("menu.employeeTraining") },
         { href: "/hrsupport", label: t("menu.administrativeSupport") },

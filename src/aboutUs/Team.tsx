@@ -1,5 +1,7 @@
 "use client";
 
+import { Linkedin } from "lucide-react";
+
 const teamMembers = [
   {
     name: "Prince Bonfils Bimenyimana, MBA, PMP (Candidate)",
@@ -9,6 +11,7 @@ const teamMembers = [
     bio: "A seasoned business strategist with over six years of executive leadership in finance, operations, and technology across Rwanda's private sector. Founded Bonet Elite Services to offer investors, entrepreneurs, and travelers a seamless premium experience from market entry to establishment.",
     tags: ["Strategy", "Finance", "ERP Systems"],
     colorClass: "bg-[#C9A84C]",
+    linkedin: "https://www.linkedin.com/in/prince-bonfils-bimenyimana",
   },
   {
     name: "Jean Luc Shema, CPA(R)",
@@ -18,6 +21,7 @@ const teamMembers = [
     bio: "Certified Public Accountant registered with ICPAR. Deep expertise in IFRS reporting, tax compliance, BNR regulatory frameworks, and financial management for regulated institutions.",
     tags: ["IFRS", "Tax Compliance", "BNR Regulations"],
     colorClass: "bg-green-500",
+    linkedin: "https://www.linkedin.com/in/jean-luc-shema",
   },
   {
     name: "Emmanuel Cubahiro",
@@ -27,6 +31,7 @@ const teamMembers = [
     bio: "Practicing lawyer registered with the Rwanda Bar Association and East Africa Law Society. Over a decade of experience in corporate law, contract drafting, and dispute resolution. Currently pursuing a Master's in International Law at Georg-August Universität Göttingen.",
     tags: ["Corporate Law", "Contracts", "Compliance"],
     colorClass: "bg-orange-500",
+    linkedin: "https://www.linkedin.com/in/emmanuel-cubahiro",
   },
   {
     name: "Diane Nyirabahire",
@@ -36,6 +41,7 @@ const teamMembers = [
     bio: "Over 7 years in financial reporting, tax compliance, and business process improvement. MBA in Project Management and Bachelor's in Accounting from the University of Rwanda. Currently completing CPA with ICPAR.",
     tags: ["Financial Reporting", "Project Management", "IFRS"],
     colorClass: "bg-purple-500",
+    linkedin: "https://www.linkedin.com/in/diane-nyirabahire",
   },
   {
     name: "Ronald Mutabazi",
@@ -45,6 +51,7 @@ const teamMembers = [
     bio: "Over 12 years in human capital management covering talent acquisition, organizational development, and labor law compliance. Managing Director of Emet Hand Supply and Services Ltd.",
     tags: ["HR Strategy", "Talent", "Labour Law"],
     colorClass: "bg-cyan-500",
+    linkedin: "https://www.linkedin.com/in/ronald-mutabazi",
   },
 ];
 
@@ -127,6 +134,17 @@ export default function Team() {
                     </span>
                   ))}
                 </div>
+
+                {/* LinkedIn */}
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center gap-2 text-gray-500 hover:text-[#C9A84C] transition-colors text-sm"
+                >
+                  <Linkedin className="w-4 h-4" />
+                  <span>View Profile</span>
+                </a>
               </div>
             </div>
           ))}

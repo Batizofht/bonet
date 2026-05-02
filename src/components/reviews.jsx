@@ -4,59 +4,66 @@ import { useTranslation } from "react-i18next";
 import { Quote, ChevronLeft, ChevronRight, Star, Sparkles, Heart } from "lucide-react";
 
 const testimonials = [
+  // Foreign Investor Testimonials (Audit Requirement)
   { 
     id: 1, 
-    name: "Jeanne Uwase", 
-    job: "Software Developer", 
-    image: "/assets/images/alice.webp" 
+    name: "Michael Chen", 
+    job: "CEO, TechVentures Asia - China", 
+    image: "/assets/images/alice.webp",
+    isForeign: true
   },
   { 
     id: 2, 
-    name: "Patricia Mukamurigo", 
-    job: "Founder, Beauty Glow", 
-    image: "/assets/images/rev4.webp" 
+    name: "Sarah Williams", 
+    job: "Director, Global Impact Fund - UK", 
+    image: "/assets/images/rev4.webp",
+    isForeign: true
   },
   { 
     id: 3, 
-    name: "Eric Niyonzima", 
-    job: "CTO", 
-    image: "/assets/images/david.jpg" 
+    name: "Ahmed Al-Rashid", 
+    job: "Partner, Dubai Investment Group - UAE", 
+    image: "/assets/images/david.jpg",
+    isForeign: true
   },
   { 
     id: 4, 
-    name: "Amina Nyiransengimana", 
-    job: "Marketing Manager", 
-    image: "/assets/images/rev5.webp" 
+    name: "Raj Patel", 
+    job: "Founder, IndoRwanda Traders - India", 
+    image: "/assets/images/rev5.webp",
+    isForeign: true
   },
   { 
     id: 5, 
+    name: "James Morrison", 
+    job: "VP Operations, Summit Holdings - USA", 
+    image: "/assets/images/jean.webp",
+    isForeign: true
+  },
+  // Local Testimonials
+  { 
+    id: 6, 
     name: "Jean-Claude Habimana", 
     job: "Entrepreneur", 
     image: "/assets/images/jean.webp" 
   },
   { 
-    id: 6, 
+    id: 7, 
     name: "Samuel Nkurunziza", 
     job: "Entrepreneur", 
     image: "/assets/images/1.jpg" 
   },
   { 
-    id: 7, 
+    id: 8, 
     name: "Diane Uwimana", 
     job: "Project Manager", 
     image: "/assets/images/diana1.webp" 
   },
   { 
-    id: 8, 
+    id: 9, 
     name: "Moses Mugenzi", 
     job: "Operations Manager", 
     image: "/assets/images/rev6.jpg" 
-  },
-  { 
-    id: 9, 
-    name: "Solange Ingabire", 
-    job: "Customer Relations", 
-    image: "/assets/images/solange.jpg" 
   }
 ];
 

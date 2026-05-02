@@ -1,4 +1,3 @@
-
 import FirstService from "../../services/firstservice";
 import InvestmentOpportunities from "../../blogs/investment";
 export const metadata = {
@@ -8,6 +7,7 @@ export const metadata = {
   keywords:
     "Investment in Rwanda, Rwanda investment guide, Rwanda real estate, Rwanda ICT sector, Rwanda agriculture, Rwanda tourism, Bonet Elite Services blog",
   authors: [{ name: "Bonet Elite Services" }],
+  alternates: { canonical: "https://bonet.rw/blog-investment" },
   openGraph: {
     type: "article",
     url: "https://bonet.rw/blog/investment",
@@ -35,7 +35,12 @@ export const metadata = {
 export default function BlogInvestmentPage() {
   return (
     <div className="min-h-screen">
-      <FirstService />
+      <FirstService 
+        image="/image/1.jpg"
+        subtitle="Investment Opportunities"
+        title="Invest in Rwanda's Future"
+        description="Discover high-return sectors: real estate, ICT, agriculture, tourism & more."
+      />
       <InvestmentOpportunities />
     </div>
   );

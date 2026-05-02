@@ -5,11 +5,11 @@ const TrustIndicators = () => {
     { name: "Visit Rwanda", category: "Official Partner", image: "https://cdn-bal.nba.com/manage/sites/3/2022/02/h5gzz91kuhif7pyjhqqx-1.png", hoverText: "group-hover:text-[#009A44]", hoverBorder: "group-hover:border-[#009A44]/40" },
     { name: "Rwanda Development Board", category: "Investment Authority", image: "https://pbs.twimg.com/profile_images/763711110461677569/Tp0r6Bir_400x400.jpg", hoverText: "group-hover:text-[#C9A84C]", hoverBorder: "group-hover:border-[#C9A84C]/40" },
     { name: "Rwanda Government", category: "Official", image: "https://www.gov.rw/fileadmin/gov/resources/public/images/Coat_of_Arms_Rwanda-01.png", hoverText: "group-hover:text-[#00A1DE]", hoverBorder: "group-hover:border-[#00A1DE]/40" },
-    { name: "Marriott International", category: "Hospitality", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=240&q=80", hoverText: "group-hover:text-[#A6192E]", hoverBorder: "group-hover:border-[#A6192E]/40" },
-    { name: "Serena Hotels", category: "Hospitality", image: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=240&q=80", hoverText: "group-hover:text-[#6B8E23]", hoverBorder: "group-hover:border-[#6B8E23]/40" },
+    { name: "Marriott International", category: "Hospitality", image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Marriott_hotels_logo14.svg", hoverText: "group-hover:text-[#A6192E]", hoverBorder: "group-hover:border-[#A6192E]/40" },
+    { name: "Kigali City", category: "Hospitality", image: "https://www.kigalicity.gov.rw/fileadmin/user_upload/Kigali_city/Icon_images/LOGO_COK.jpg", hoverText: "group-hover:text-[#6B8E23]", hoverBorder: "group-hover:border-[#6B8E23]/40" },
     { name: "RwandAir", category: "Aviation", image: "https://www.rwandair.com/wp-content/themes/rwandairajax/imgs/favi.png", hoverText: "group-hover:text-[#006B8F]", hoverBorder: "group-hover:border-[#006B8F]/40" },
     { name: "RURA Rwanda", category: "Regulatory", image: "https://www.rura.rw/fileadmin/user_upload/RURA/Icon_Images/logorura.png", hoverText: "group-hover:text-[#7A5A00]", hoverBorder: "group-hover:border-[#7A5A00]/40" },
-    { name: "Official Licensee", category: "Verified", image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=240&q=80", hoverText: "group-hover:text-[#C9A84C]", hoverBorder: "group-hover:border-[#C9A84C]/40" },  
+    { name: "Rwanda Finance LTD", category: "Finance", image: "https://www.kigalicity.gov.rw/fileadmin/user_upload/Kigali_city/Icon_images/Rwanda_Finance.png", hoverText: "group-hover:text-[#C9A84C]", hoverBorder: "group-hover:border-[#C9A84C]/40" },  
   ];
 
   const desktopCells = Array(24).fill(null);

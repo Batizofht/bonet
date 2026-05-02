@@ -189,6 +189,16 @@ const ContactInfo = ({ t }) => (
           <p className="font-semibold text-gray-900 text-sm">{t("contactInformation.location")}</p>
         </div>
       </div>
+
+      <div className="flex items-center gap-4">
+        <div className="w-10 h-10 bg-[#C9A84C]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+          <FaPhoneAlt className="text-[#C9A84C]" />
+        </div>
+        <div>
+          <p className="text-xs text-gray-500 mb-0.5">{t("contactInformation.hours")}</p>
+          <p className="font-semibold text-gray-900 text-sm">{t("contactInformation.officeHours")}</p>
+        </div>
+      </div>
     </div>
   </div>
 );

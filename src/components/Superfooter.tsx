@@ -34,7 +34,7 @@ const SuperFooter = () => {
       role="contentinfo"
     >
       {/* Main Footer Content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center md:text-left">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 text-center md:text-left">
         
         {/* First Column - Logo & Description */}
         <div className="flex flex-col items-center md:items-start">
@@ -68,26 +68,51 @@ const SuperFooter = () => {
           </div>
         </div>
 
-        {/* Second Column - Quick Links */}
+        {/* Second Column - Services */}
         <div className="flex flex-col items-center md:items-start">
           <h3 className="font-bold text-lg text-[#C9A84C] mb-6">
-            {t("footer.quickLinks")}
+            Services
           </h3>
           <ul className="space-y-3 text-center md:text-left">
-            {["about", "services", "bookNow","travel", "investment", "consulting", "hrsupport", "blogs" ].map((link) => (
+            {["business-registration", "investment", "consulting", "hr-recruitment", "relocation-services", "executive-travel"].map((link) => (
               <li key={link}>
                 <a
-                  href={link}
+                  href={`/${link}`}
                   className="text-gray-600 hover:text-[#C9A84C] transition-colors duration-300"
                 >
-                  {t(`footer.${link}`)}
+                  {link.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
                 </a>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Third Column - Contact Info */}
+        {/* Third Column - Company */}
+        <div className="flex flex-col items-center md:items-start">
+          <h3 className="font-bold text-lg text-[#C9A84C] mb-6">
+            Company
+          </h3>
+          <ul className="space-y-3 text-center md:text-left">
+            {[
+              { path: "/about", label: "About Us" },
+              { path: "/blogs", label: "Blog" },
+              { path: "/faq", label: "FAQ" },
+              { path: "/bookNow", label: "Book Now" },
+              { path: "/contact", label: "Contact" },
+            ].map((link) => (
+              <li key={link.path}>
+                <a
+                  href={link.path}
+                  className="text-gray-600 hover:text-[#C9A84C] transition-colors duration-300"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Fourth Column - Contact Info */}
         <div className="flex flex-col items-center md:items-start">
           <h3 className="font-bold text-lg text-[#C9A84C] mb-6">
             {t("footer.contactUs")}

@@ -127,7 +127,7 @@ export default function InvestmentBusinessSetup() {
                   </h3>
                 </div>
                 <p className="text-gray-500 font-medium text-sm uppercase tracking-wide mb-6">
-                  Professional business setup services
+                  {t(`investmentBusinessSetup.services.${service.key}.subtitle`)}
                 </p>
 
                 <p className="text-gray-600 leading-relaxed text-lg mb-6">
@@ -184,6 +184,7 @@ export default function InvestmentBusinessSetup() {
                   <Input
                     prefix={<Users className="w-4 h-4 text-gray-400" />}
                     placeholder={t("investmentBusinessSetup.modal.form.fullnames.placeholder")}
+                    className="rounded-lg border-gray-300 bg-white text-gray-800 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 hover:border-gray-400 transition-colors duration-200 h-11"
                   />
                 </Form.Item>
 
@@ -198,6 +199,7 @@ export default function InvestmentBusinessSetup() {
                   <Input
                     prefix={<MessageCircle className="w-4 h-4 text-gray-400" />}
                     placeholder={t("investmentBusinessSetup.modal.form.email.placeholder")}
+                    className="rounded-lg border-gray-300 bg-white text-gray-800 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 hover:border-gray-400 transition-colors duration-200 h-11"
                   />
                 </Form.Item>
 
@@ -209,6 +211,7 @@ export default function InvestmentBusinessSetup() {
                   <Input
                     prefix={<Phone className="w-4 h-4 text-gray-400" />}
                     placeholder={t("investmentBusinessSetup.modal.form.phone_number.placeholder")}
+                    className="rounded-lg border-gray-300 bg-white text-gray-800 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 hover:border-gray-400 transition-colors duration-200 h-11"
                   />
                 </Form.Item>
 
@@ -220,6 +223,7 @@ export default function InvestmentBusinessSetup() {
                   <Input.TextArea
                     placeholder={t("investmentBusinessSetup.modal.form.service_description.placeholder")}
                     rows={4}
+                    className="rounded-lg border-gray-300 bg-white text-gray-800 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 hover:border-gray-400 transition-colors duration-200 resize-none"
                   />
                 </Form.Item>
 

@@ -1,6 +1,9 @@
 
 import FirstService from "../../services/firstservice";
 import InvestmentBusinessSetup from "../../services/setup";
+import InvestmentIncentivesTable from "../../services/InvestmentIncentivesTable";
+import MarketAccessTable from "../../services/MarketAccessTable";
+import KeyFactsTable from "../../services/KeyFactsTable";
 export const metadata = {
   title: "Investment & Business Setup Rwanda | Bonet Elite",
   description:
@@ -38,8 +41,16 @@ export const metadata = {
 export default function InvestmentPage() {
   return (
     <div className="min-h-screen">
-      <FirstService />
+      <FirstService 
+        image="/image/6.webp"
+        subtitle="Investment & Setup"
+        title="Your Gateway to East African Markets"
+        description="Company registration in 6 hours. 100% foreign ownership. Tax incentives & full compliance support."
+      />
       <InvestmentBusinessSetup />
+      <KeyFactsTable />
+      <InvestmentIncentivesTable />
+      <MarketAccessTable />
     </div>
   );
 }

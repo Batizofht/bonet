@@ -1,6 +1,7 @@
 "use client";
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { FaHotel, FaHome, FaCar, FaUmbrellaBeach } from "react-icons/fa";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { usePathname } from "next/navigation";
 
@@ -13,7 +14,30 @@ const TourTypeSelector = lazy(() => import("../tour/tourcard"));
 const ContainerWithButtons = () => {
   const { t } = useTranslation();
   const [activeComponent, setActiveComponent] = useState("hotel");
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+  const scrollContainerRef = useRef(null);
   const location = usePathname();
+
+  const handleScroll = () => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      setShowLeftArrow(container.scrollLeft > 0);
+      setShowRightArrow(container.scrollLeft < container.scrollWidth - container.clientWidth - 10);
+    }
+  };
+
+  const scroll = (direction) => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      const scrollAmount = direction === 'left' ? -200 : 200;
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    handleScroll();
+  }, []);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -46,9 +70,9 @@ const ContainerWithButtons = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-6xl mx-auto px-4 py-20">
+      <div className="max-w-6xl mx-auto px-4 pt-2 md:py-10">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-5">
           <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
             Reservations
           </span>
@@ -63,8 +87,33 @@ const ContainerWithButtons = () => {
           
 
         {/* Tabs */}
-        <div className="mb-8 bg-white rounded-2xl p-2 border border-gray-200/30">
-          <div className="flex flex-wrap gap-2 justify-center">
+        <div className="mb-0 bg-white rounded-2xl p-2 border border-gray-200/30 relative">
+          {/* Left Arrow */}
+          {showLeftArrow && (
+            <button
+              onClick={() => scroll('left')}
+              className="absolute left-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white shadow-md rounded-full flex items-center justify-center text-[#C9A84C] hover:bg-gray-50 transition-all md:hidden"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+          )}
+          {/* Right Arrow */}
+          {showRightArrow && (
+            <button
+              onClick={() => scroll('right')}
+              className="absolute right-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white shadow-md rounded-full flex items-center justify-center text-[#C9A84C] hover:bg-gray-50 transition-all md:hidden"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          )}
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="flex gap-2 md:justify-center overflow-x-auto scrollbar-hide px-8 md:px-0"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {menuItems.map((item) => {
               const IconComponent = item.icon;
               const isActive = activeComponent === item.key;
@@ -73,13 +122,13 @@ const ContainerWithButtons = () => {
                 <button
                   key={item.key}
                   onClick={() => handleClick(item.key)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-colors duration-200
+                  className={`flex items-center gap-2 px-4 md:px-6 py-3 rounded-xl font-semibold text-sm transition-colors duration-200 whitespace-nowrap flex-shrink-0
                     ${isActive 
                       ? 'text-white bg-[#C9A84C]' 
                       : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                     }`}
                 >
-                  <IconComponent className="w-4 h-4" />
+                  <IconComponent className="w-4 h-4 flex-shrink-0" />
                   {item.label}
                 </button>
               );

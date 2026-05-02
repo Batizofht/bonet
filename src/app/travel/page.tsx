@@ -38,7 +38,12 @@ export const metadata = {
 export default function InvestmentPage() {
   return (
     <div className="min-h-screen">
-      <FirstService />
+      <FirstService 
+        image="/image/kivuserena.png"
+        subtitle="Travel & Hospitality"
+        title="Experience Rwanda in Style"
+        description="Luxury hotels, airport transfers, gorilla trekking & curated tours across the Land of a Thousand Hills."
+      />
       <HotelHospitality />
     </div>
   );

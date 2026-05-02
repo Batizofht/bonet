@@ -107,7 +107,7 @@ export default function HRAdminSupport() {
       </div>
 
       {/* Buttons */}
-      <div className="flex justify-center mb-16">
+      <div className="flex justify-center mb-8">
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <button
             onClick={openModal}
@@ -125,6 +125,19 @@ export default function HRAdminSupport() {
             {t("hrServices.ctaWhatsApp")}
           </button>
         </div>
+      </div>
+
+      {/* Link to Recruitment */}
+      <div className="flex justify-center mb-12">
+        <a
+          href="/hr-recruitment"
+          className="inline-flex items-center gap-2 text-[#C9A84C] font-semibold hover:underline"
+        >
+          Looking for recruitment services? View our talent solutions
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
       </div>
 
       {/* Service Cards */}

@@ -27,7 +27,7 @@ export default function HomePageClient() {
               "telephone": "+250726300260",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Dubai Port Road, Masaka",
+                "streetAddress": "Kimironko Bus Station Area",
                 "addressLocality": "Kigali",
                 "addressCountry": "RW"
               },
@@ -41,17 +41,27 @@ export default function HomePageClient() {
                 "name": "Rwanda"
               },
               "priceRange": "$$",
-              "openingHoursSpecification": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                "opens": "08:00",
-                "closes": "18:00"
-              },
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                  "opens": "08:00",
+                  "closes": "18:00",
+                  "description": "Office hours - available 24/7 via WhatsApp for urgent inquiries"
+                }
+              ],
               "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+250726300260",
                 "contactType": "customer service",
-                "availableLanguage": ["English", "French", "Chinese"]
+                "availableLanguage": ["English", "French", "Chinese"],
+                "areaServed": "Global",
+                "contactOption": "WhatsApp",
+                "hoursAvailable": {
+                  "@type": "OpeningHoursSpecification",
+                  "opens": "00:00",
+                  "closes": "23:59"
+                }
               },
               "sameAs": [
                 "https://www.facebook.com/boneteliteservices",
@@ -82,42 +92,82 @@ export default function HomePageClient() {
               "mainEntity": [
                 {
                   "@type": "Question",
-                  "name": "What services does Bonet Elite Services offer?",
+                  "name": "How long does business registration take in Rwanda?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Bonet Elite Services offers comprehensive travel planning, business registration, investment consulting, VIP concierge services, HR support, hotel reservations, transport services, and tourism guides in Rwanda."
+                    "text": "With Bonet Elite Services, company registration takes just 6 hours. We handle the entire process with RDB (Rwanda Development Board) including name reservation, certificate issuance, TIN assignment, and RSSB registration — all in one streamlined process."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "How can I start a business in Rwanda?",
+                  "name": "Can foreigners own 100% of a Rwandan company?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "We provide complete business registration support including company registration, tax compliance, licensing, and ongoing business advisory services to help you establish and grow your business in Rwanda."
+                    "text": "Yes, Rwanda allows 100% foreign ownership in nearly all business sectors. No local partner is required, making it one of Africa's most investor-friendly jurisdictions for international entrepreneurs."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "Do you offer investment opportunities in Rwanda?",
+                  "name": "What tax incentives are available for foreign investors?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes, we offer investment consulting services, market analysis, opportunity identification, and connection with local partners to help investors make informed decisions in Rwanda's growing economy."
+                    "text": "Rwanda offers significant tax incentives including: 0% corporate tax for qualifying international HQs, 15% preferential rate for strategic sectors (ICT, agriculture, tourism), 7-year tax holidays for large investments, capital gains exemptions, and VAT refunds for exporters. An RDB Investment Certificate is required to access these benefits."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "What travel services do you provide?",
+                  "name": "What is the minimum capital required to start a business?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "We provide luxury hotel reservations, airport transfers, private transport, experienced tour guides, customized itineraries, and VIP handling services for travelers visiting Rwanda."
+                    "text": "There is no minimum capital requirement for most business types in Rwanda. The standard registration fee is approximately RWF 7,000 (around $7 USD). This makes Rwanda one of the most accessible places to start a business in Africa."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "How do I contact Bonet Elite Services?",
+                  "name": "How can I access regional and international markets from Rwanda?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "You can contact us through our website at www.bonet.rw, call us at +250 726 300 260, or visit our office in Kigali. We offer support in English, French, and Chinese."
+                    "text": "Rwanda provides access to 1.6+ billion consumers through trade agreements: EAC (152M consumers, duty-free), COMESA (389M consumers), EU (450M consumers, duty-free via EPA), US/AGOA (330M consumers, 6,500+ product lines duty-free), and AfCFTA (1.3B consumers across 54 African nations)."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do you help with work permits and residency for foreign employees?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we handle the entire immigration workflow including work permits for foreign employees, investor visas for business owners, and dependent residency permits for families. We manage applications, documentation, and biometric registration with Rwandan immigration authorities."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What ongoing compliance support do you provide?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We provide comprehensive compliance support including: monthly tax filing with RRA, annual returns with RDB, payroll and RSSB contributions, license renewals, audit preparation, and regulatory updates. Our team ensures your business stays compliant with Rwandan law."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can you help with executive housing and relocation?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely. Our relocation services include: executive housing in prime Kigali neighborhoods (Kiyovu, Nyarutarama, Kimihurura), airport transfers, school enrollment for children, banking setup, vehicle leasing, and daily operational support. We make your transition to Rwanda seamless."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Which sectors offer the best investment opportunities in Rwanda?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "High-growth sectors include: ICT & Digital (4G nationwide, tech hubs), Tourism (gorilla trekking, eco-tourism, luxury hospitality), Manufacturing (special economic zones with tax incentives), Agriculture (coffee, tea, horticulture exports), Energy (renewable focus), and Finance (emerging fintech ecosystem)."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How do I get started with Bonet Elite Services?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Start with a free 30-minute consultation. We'll assess your needs, explain the process, and provide a clear roadmap. Contact us via WhatsApp at +250 726 300 260, email info@bonet.rw, or book through our website. We support English, French, and Chinese."
                   }
                 }
               ]

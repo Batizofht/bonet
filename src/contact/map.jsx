@@ -76,7 +76,7 @@ const GoogleMapEmbed = () => {
             </div>
             <div className="flex items-center gap-1">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span>Open 24/7</span>
+              <span>Mon-Fri 8AM-6PM</span>
             </div>
           </div>
         </div>
