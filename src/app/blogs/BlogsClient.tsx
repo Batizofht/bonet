@@ -109,8 +109,8 @@ export default function BlogsClient() {
     setError(null);
     
     try {
-      // Build URL - using /blogs endpoint which is confirmed working
-      const url = new URL('https://api.bonet.rw:8443/bonetBackend/backend/public/blogs');
+      // Build URL - using /full endpoint
+      const url = new URL('https://api.bonet.rw:8443/bonetBackend/backend/public/full');
       url.searchParams.set('page', pageNum.toString());
       url.searchParams.set('limit', BLOGS_PER_PAGE.toString());
       
@@ -138,8 +138,8 @@ export default function BlogsClient() {
       }
 
       return {
-        blogs: blogsArray,
-        hasMore: blogsArray.length === BLOGS_PER_PAGE
+        blogs: data.data || [],
+        hasMore: data.pagination?.has_more ?? (data.data?.length === BLOGS_PER_PAGE)
       };
       
     } catch (error: any) {

@@ -1,6 +1,6 @@
 'use client'
 import { useTranslation } from "react-i18next";
-import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Twitter, Linkedin, Phone, Mail, MapPin } from "lucide-react";
 
 const socialIcons = [
   {
@@ -123,20 +123,35 @@ const SuperFooter = () => {
           </p>
 
           <div className="space-y-3 w-full max-w-sm">
-            <div className="rounded-xl border border-gray-200 bg-gray-50/60 p-4 text-left">
-              <p className="text-xs uppercase tracking-wide text-[#C9A84C] font-semibold mb-1">{t("footer.whatsappCall")}</p>
-              <p className="font-semibold text-gray-900">0726 300 260</p>
-            </div>
+            <a href="tel:+250726300260" className="flex items-start gap-3 rounded-xl border border-gray-200 bg-gray-50/60 p-4 hover:border-[#C9A84C] transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0">
+                <Phone className="w-4 h-4 text-[#C9A84C]" />
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wide text-[#C9A84C] font-semibold mb-1">{t("footer.whatsappCall")}</p>
+                <p className="font-semibold text-gray-900">0726 300 260</p>
+              </div>
+            </a>
 
-            <div className="rounded-xl border border-gray-200 bg-gray-50/60 p-4 text-left">
-              <p className="text-xs uppercase tracking-wide text-[#C9A84C] font-semibold mb-1">{t("footer.email")}</p>
-              <p className="font-semibold text-gray-900">info@bonet.rw</p>
-            </div>
+            <a href="mailto:info@bonet.rw" className="flex items-start gap-3 rounded-xl border border-gray-200 bg-gray-50/60 p-4 hover:border-[#C9A84C] transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0">
+                <Mail className="w-4 h-4 text-[#C9A84C]" />
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wide text-[#C9A84C] font-semibold mb-1">{t("footer.email")}</p>
+                <p className="font-semibold text-gray-900">info@bonet.rw</p>
+              </div>
+            </a>
 
-            <div className="rounded-xl border border-gray-200 bg-gray-50/60 p-4 text-left">
-              <p className="text-xs uppercase tracking-wide text-[#C9A84C] font-semibold mb-1">{t("footer.location")}</p>
-              <p className="font-semibold text-gray-900 leading-relaxed">Kigali, Rwanda, Masaka</p>
-              <p className="text-sm text-gray-500 leading-relaxed">Dubai Port, Road</p>
+            <div className="flex items-start gap-3 rounded-xl border border-gray-200 bg-gray-50/60 p-4">
+              <div className="w-8 h-8 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0">
+                <MapPin className="w-4 h-4 text-[#C9A84C]" />
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wide text-[#C9A84C] font-semibold mb-1">{t("footer.location")}</p>
+                <p className="font-semibold text-gray-900 leading-relaxed">Kigali, Rwanda, Masaka</p>
+                <p className="text-sm text-gray-500 leading-relaxed">Dubai Port, Road</p>
+              </div>
             </div>
           </div>
         </div>
@@ -145,7 +160,7 @@ const SuperFooter = () => {
       {/* Bottom Section */}
       <div className="border-t border-gray-200">
         <div className="max-w-6xl mx-auto px-6 py-6">
-          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-4 md:gap-6 pt-6 md:pt-8 border-t border-gray-200/50">
+          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-4 md:gap-6 pt-6 md:pt-8">
             {/* Copyright */}
             <div className="flex items-center gap-3 text-gray-500">
            
