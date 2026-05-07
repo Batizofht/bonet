@@ -1,6 +1,7 @@
 
 import FirstContact from "../../contact/firstcontact";
 import ContactUs from "../../contact/contact";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Contact Us | Bonet Elite Services Rwanda",
@@ -39,7 +40,9 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen">
       <FirstContact />
-      <ContactUs />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ContactUs />
+      </Suspense>
   
     </div>
   );
