@@ -216,6 +216,10 @@ const ContactUs = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [prefilledService, setPrefilledService] = React.useState(false);
 
+  const address = t("contactInformation.location");
+  const mapSrc =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2364.922861232644!2d30.196885738722248!3d-1.9949343189114284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19db57f46f8adc51%3A0xcfb8cdabf9203358!2sBonet%20Elite%20Services!5e1!3m2!1sen!2srw!4v1778120909980!5m2!1sen!2srw";
+
   React.useEffect(() => {
     const service = searchParams?.get("service");
     const allowed = ["consultation", "department", "transport", "businessSetup", "hotel"];
@@ -253,6 +257,25 @@ const ContactUs = () => {
       <div className="max-w-5xl mx-auto px-4 py-12 flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
         <ContactForm form={form} onFinish={handleSubmit} t={t} isLoading={isLoading} />
         <ContactInfo t={t} />
+      </div>
+
+      <div className="max-w-5xl mx-auto px-4 pb-12">
+        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+          <div className="px-6 py-5 border-b border-gray-100">
+            <h3 className="text-lg font-bold text-gray-900">Find Us</h3>
+            <p className="text-sm text-gray-600 mt-1">{address}</p>
+          </div>
+          <div className="w-full aspect-[16/10] sm:aspect-[16/7]">
+            <iframe
+              title="Bonet Elite Services Location"
+              src={mapSrc}
+              className="w-full h-full"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
