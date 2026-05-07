@@ -11,7 +11,8 @@ import {
   ChevronLeft,
   ChevronRight,
   MessageCircle,
-  Newspaper
+  Newspaper,
+  AlignJustify
 } from "lucide-react";
 
 const QuickButtons = () => {
@@ -71,25 +72,17 @@ const QuickButtons = () => {
   const menuItems = [
     { path: "/", label: t("quickButtons.menu.home") },
     { path: "/about", label: t("quickButtons.menu.aboutUs") },
-    { path: "/explore-rwanda", label: "Explore Rwanda" },
-    { path: "/bookNow", label: t("quickButtons.menu.bookNow") },
+    { path: "/explore-rwanda", label: "Why Rwanda" },
+       { path: "/faq", label: "FAQ" },
+    { path: "/Reservations", label: t("quickButtons.menu.bookNow") },
     { path: "/blogs", label: t("blog.blogs") },
   ];
 
   const servicesGroups = [
     {
-      title: t("menu.travelAndHospitality"),
+      title: t("services.list.0.title"),
       items: [
-        { href: "/travel", label: t("menu.hotels") },
-        { href: "/travel", label: t("menu.apartments") },
-        { href: "/travel", label: t("menu.transport") },
-        { href: "/travel", label: t("menu.tourism") },
-      ],
-    },
-    {
-      title: t("menu.investmentAndBusinessSetup"),
-      items: [
-        { href: "/investment", label: t("menu.companyRegistration") },
+        { href: "/business-registration", label: t("menu.companyRegistration") },
         { href: "/investment", label: t("menu.investmentCertificate") },
         { href: "/investment", label: t("menu.businessPermits") },
         { href: "/investment", label: t("menu.marketResearch") },
@@ -111,6 +104,16 @@ const QuickButtons = () => {
         { href: "/hrsupport", label: t("menu.hrPolicyDevelopment") },
         { href: "/hrsupport", label: t("menu.employeeTraining") },
         { href: "/hrsupport", label: t("menu.administrativeSupport") },
+      ],
+    },
+    {
+      title: t("menu.travelAndHospitality"),
+      items: [
+        { href: "/relocation-services", label: "Relocation & Concierge" },
+        { href: "/executive-travel", label: "Executive travel" },
+        { href: "/travel", label: t("menu.hotels") },
+        { href: "/travel", label: t("menu.transport") },
+        { href: "/travel", label: t("menu.tourism") },
       ],
     },
   ];

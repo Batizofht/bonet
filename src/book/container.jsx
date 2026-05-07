@@ -40,10 +40,24 @@ const ContainerWithButtons = () => {
   }, []);
 
   useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab');
     const hash = window.location.hash;
+    const validTabs = ["tourism", "apartments", "transport", "hotel"];
     const validHashes = ["#tourism", "#apartments", "#transport", "#hotel"];
     
-    if (validHashes.includes(hash)) {
+    // Check for tab parameter first
+    if (tab && validTabs.includes(tab)) {
+      setActiveComponent(tab);
+      setTimeout(() => {
+        const elem = document.getElementById(tab);
+        if (elem) {
+          elem.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300);
+    }
+    // Fallback to hash if no tab
+    else if (validHashes.includes(hash)) {
       const componentId = hash.replace("#", "");
       setActiveComponent(componentId);
       setTimeout(() => {

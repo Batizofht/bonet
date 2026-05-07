@@ -1,5 +1,5 @@
 "use client"
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import FirstHome from "../components/firsthome";
 
 // Lazy load below-the-fold components
@@ -9,6 +9,16 @@ const FeaturedResources = lazy(() => import("../components/resources"));
 const FAQ = lazy(() => import("../components/footer"));
 
 export default function HomePageClient() {
+  const greetings = ["Muraho.", "Karibu.", "Bienvenue.", "Welcome."];
+  const [greetingIndex, setGreetingIndex] = useState(0);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setGreetingIndex((prev) => (prev + 1) % greetings.length);
+    }, 3000);
+    return () => window.clearInterval(id);
+  }, []);
+
   return (
     <div className="min-h-screen">
       {/* Homepage Structured Data for SEO */}
@@ -119,7 +129,7 @@ export default function HomePageClient() {
                   "name": "What is the minimum capital required to start a business?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "There is no minimum capital requirement for most business types in Rwanda. The standard registration fee is approximately RWF 7,000 (around $7 USD). This makes Rwanda one of the most accessible places to start a business in Africa."
+                    "text": "There is no minimum capital requirement for most business types in Rwanda. The standard registration fee is free. This makes Rwanda one of the most accessible places to start a business in Africa."
                   }
                 },
                 {
@@ -179,14 +189,28 @@ export default function HomePageClient() {
       {/* Above the fold - load immediately */}
       <FirstHome />
 
+      <div className="bg-white">
+        <div className="max-w-6xl mx-auto px-4 pt-8 pb-6 text-center">
+          <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+            <span className="text-[#C9A84C] font-semibold transition-opacity duration-300">
+              {greetings[greetingIndex]}
+            </span>{" "}
+            We are Bonet Elite Services. We help foreign investors and executives register their company, secure tax incentives, hire teams, relocate families, and travel through Rwanda — all under one roof.
+          </p>
+        </div>
+      </div>
+
       {/* Homepage sections */}
-      <Suspense fallback={<div className="h-40 bg-white" />}>
+     
+       <Suspense fallback={<div className="h-40 bg-white" />}>
         <WhyChooseBonet />
       </Suspense>
-
+     
       <Suspense fallback={<div className="h-40 bg-gray-50" />}>
         <TrustIndicators />
       </Suspense>
+
+    
 
       <Suspense fallback={<div className="h-40 bg-white" />}>
         <FeaturedResources />

@@ -222,8 +222,8 @@ async function getData() {
   - `MapComponent` - Interactive map
 - **SEO:** Contact, inquiries, support keywords
 
-#### 10. **Book Now** (`/bookNow`)
-- **File:** `src/app/bookNow/page.tsx`
+#### 10. **Reservations** (`/Reservations`)
+- **File:** `src/app/Reservations/page.tsx`
 - **Purpose:** Direct booking interface for hotels/services
 - **Components:**
   - `ContainerWithButtons` - Booking container
@@ -778,7 +778,7 @@ c:/bonetlive/
 │   │   ├── blogs/                # /blogs listing
 │   │   │   ├── BlogsClient.tsx
 │   │   │   └── page.tsx
-│   │   ├── bookNow/              # /bookNow
+│   │   ├── bookNow/              # /Reservations
 │   │   │   └── page.tsx
 │   │   ├── consulting/           # /consulting
 │   │   │   └── page.tsx
@@ -899,7 +899,7 @@ c:/bonetlive/
 | `/hrsupport` | `app/hrsupport/page.tsx` | 0.8 | weekly |
 | `/visitrwanda` | `app/visitrwanda/page.tsx` | 0.8 | weekly |
 | `/contact` | `app/contact/page.tsx` | 0.8 | monthly |
-| `/bookNow` | `app/bookNow/page.tsx` | 0.8 | weekly |
+| `/Reservations` | `app/Reservations/page.tsx` | 0.8 | weekly |
 | `/blogs` | `app/blogs/page.tsx` | 0.9 | daily |
 | `/blog/[slug]` | `app/blog/[slug]/page.tsx` | 0.7 | weekly |
 | `/blog-business` | `app/blog-business/page.tsx` | 0.6 | weekly |
@@ -1074,8 +1074,8 @@ This section provides precise file paths and line numbers for all critical confi
 - **Line 6-35** - Contact-specific SEO metadata
 - **Line 7** - Title: "Contact Us | Bonet Elite Services"
 
-#### Book Now Page (/bookNow)
-**File:** `c:/bonetlive/src/app/bookNow/page.tsx`
+#### Reservations Page (/Reservations)
+**File:** `c:/bonetlive/src/app/Reservations/page.tsx`
 - **Line 1-48** - Booking page
 - **Line 6-37** - Booking-focused metadata
 - **Line 7** - Title: "Book Hotels & Services in Rwanda | Bonet Elite Services"
@@ -1303,7 +1303,7 @@ This section provides precise file paths and line numbers for all critical confi
 | **HR Support (/hrsupport)** | `src/app/hrsupport/page.tsx` | 5-34 | Line 14 | Line 20-24 |
 | **Visit Rwanda (/visitrwanda)** | `src/app/visitrwanda/page.tsx` | 5-33 | Line 14 | Line 20-24 |
 | **Contact (/contact)** | `src/app/contact/page.tsx` | 6-35 | Line 15 | Line 21-25 |
-| **Book Now (/bookNow)** | `src/app/bookNow/page.tsx` | 6-37 | Line 36 | Line 21-26 |
+| **Reservations (/Reservations)** | `src/app/Reservations/page.tsx` | 6-37 | Line 36 | Line 21-26 |
 | **Blogs (/blogs)** | `src/app/blogs/page.tsx` | 4-47 | Line 9 | Line 17-22 |
 | **Blog Business (/blog-business)** | `src/app/blog-business/page.tsx` | 3-32 | Line 12 | Line 18-22 |
 | **Blog Investment (/blog-investment)** | `src/app/blog-investment/page.tsx` | 4-33 | Line 13 | Line 19-23 |

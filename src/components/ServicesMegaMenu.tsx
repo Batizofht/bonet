@@ -27,7 +27,7 @@ export default function ServicesMegaMenu({ t, onClose }: ServicesMegaMenuProps) 
     {
       title: t("services.list.0.title"),
       items: [
-        { href: "/investment", label: t("menu.companyRegistration"), description: "Company formation and legal setup" },
+        { href: "/business-registration", label: t("menu.companyRegistration"), description: "Company formation and legal setup" },
         { href: "/investment", label: t("menu.investmentCertificate"), description: "RDB investment certification support" },
         { href: "/investment", label: t("menu.businessPermits"), description: "Permits, compliance, and approvals" },
         { href: "/investment", label: t("menu.marketResearch"), description: "Market validation and opportunity mapping" },
@@ -54,8 +54,10 @@ export default function ServicesMegaMenu({ t, onClose }: ServicesMegaMenuProps) 
     {
         title: t("menu.travelAndHospitality"),
       items: [
+        { href: "/relocation-services", label: "Relocation & Concierge", description: "Relocation support, concierge, and settling-in services" },
+              { href: "/executive-travel",label: 'Executive travel', description: "Executive travel coordination" },
         { href: "/travel", label: t("menu.hotels"), description: "Hotel and premium stay coordination" },
-        { href: "/travel", label: t("menu.apartments"), description: "Executive apartment sourcing and setup" },
+
         { href: "/travel", label: t("menu.transport"), description: "Airport transfers and private transport" },
         { href: "/travel", label: t("menu.tourism"), description: "Curated tourism and local experiences" },
       ],

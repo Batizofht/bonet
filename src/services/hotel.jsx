@@ -74,7 +74,7 @@ export default function HotelHospitality() {
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <button
-            onClick={() => navigate.push("/bookNow")}
+            onClick={() => navigate.push("/Reservations")}
             className="flex items-center gap-3 bg-[#C9A84C] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#B8973B] transition-colors duration-300"
           >
             <Phone className="w-5 h-5" />
@@ -138,7 +138,7 @@ export default function HotelHospitality() {
                 {service.BookButton && (
                   <button
                     className="flex items-center gap-2 bg-[#C9A84C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#B8973B] transition-colors"
-                    onClick={() => navigate.push("/bookNow#tourism")}
+                    onClick={() => navigate.push("/Reservations#tourism")}
                   >
                     <MapPin className="w-4 h-4" />
                     {service.BookButton}

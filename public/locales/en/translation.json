@@ -150,7 +150,7 @@
     "quickLinks": "Explore",
     "about": "About Us",
     "services": "Services",
-    "bookNow": "Book Now",
+    "bookNow": "Reservations",
     "contactUs": "Contact Us",
     "contactDescription": "Get in touch to enjoy seamless booking and scheduling while you focus on what truly matters.",
     "whatsappCall": "WhatsApp/Call:",
@@ -189,7 +189,7 @@
     "employeeTraining": "Employee Training & Development",
     "payrollCompensation": "Payroll & Compensation",
     "administrativeSupport": "Administrative Support",
-    "bookNow": "Book Now"
+    "bookNow": "Reservations"
   },
   "home": {
     "welcomeText": "Welcome To Bonet Elite Services",
@@ -698,7 +698,7 @@
       "home": "Home",
       "aboutUs": "About Us",
       "services": "Services",
-      "bookNow": "Book Now",
+      "bookNow": "Reservations",
       "contactUs": "Contact us"
     },
     "flags": {
@@ -735,7 +735,7 @@
     "hotelCard": {
       "viewMore": "View More",
       "viewLess": "View Less",
-      "bookNow": "Book Now"
+      "bookNow": "Reservations"
     },
     "belief": {
       "title": "Why Settle for Ordinary?",
@@ -921,7 +921,7 @@
     "cta": {
       "heading": "Ready to experience premium comfort?",
       "button": "Book Apartment Accommodation",
-      "bookNow": "Book Now"
+      "bookNow": "Reservations"
     }
   },
   "apartmentForm": {
@@ -1895,7 +1895,7 @@
   "premium_quality": "Premium quality service",
   "support_24": "24/7 customer support",
   "best_price": "Best price guarantee",
-  "book_now": "Book Now",
+  "book_now": "Reservations",
    "read_more": "Read more",
   "read_less": "Read less",
    "explore_destinations": "Explore beautiful destinations in Rwanda",

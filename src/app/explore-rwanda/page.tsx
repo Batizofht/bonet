@@ -210,7 +210,7 @@ export default function ExploreRwandaPage() {
             Whether you&apos;re investing, relocating, or visiting — we make your Rwanda experience seamless.
           </p>
           <Link
-            href="/contact"
+            href="/contact?service=consultation"
             className="inline-flex items-center justify-center px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
           >
             Book Your Free Consultation

@@ -24,6 +24,10 @@ export default function MenuBars() {
     setServicesDropdownOpen(true);
   };
 
+  const toggleServicesMenu = () => {
+    setServicesDropdownOpen(!servicesDropdownOpen);
+  };
+
   const closeServicesMenuWithDelay = () => {
     if (closeTimerRef.current) {
       clearTimeout(closeTimerRef.current);
@@ -48,7 +52,8 @@ export default function MenuBars() {
   ];
 
   const secondaryMenuItems = [
-    { path: "/explore-rwanda", label: "Explore Rwanda" },
+    { path: "/explore-rwanda", label: "Why Rwanda" },
+    {path: "/faq", label: "FAQ"},
   ];
 
   return (
@@ -72,10 +77,9 @@ export default function MenuBars() {
         onMouseEnter={openServicesMenu}
         onMouseLeave={closeServicesMenuWithDelay}
       >
-        <Link
-          href="/services"
+        <button
           className={getActiveClass("/services")}
-          onClick={() => setServicesDropdownOpen(false)}
+          onClick={toggleServicesMenu}
         >
           <div className="flex items-center gap-1 py-2 hover:-translate-y-0.5 transition-transform duration-200">
             {t('menu.services')}
@@ -83,7 +87,7 @@ export default function MenuBars() {
               <ChevronDown className="w-3 h-3" />
             </div>
           </div>
-        </Link>
+        </button>
 
         {servicesDropdownOpen && (
           <div onMouseEnter={openServicesMenu} onMouseLeave={closeServicesMenuWithDelay}>
@@ -105,8 +109,8 @@ export default function MenuBars() {
         </Link>
       ))}
 
-      {/* Book Now */}
-      <Link href="/bookNow" className={getActiveClass("/bookNow")}>
+      {/* Reservations */}
+      <Link href="/Reservations" className={getActiveClass("/Reservations")}>
         <div className="py-2 hover:-translate-y-0.5 transition-transform duration-200">
           {t('menu.bookNow')}
         </div>

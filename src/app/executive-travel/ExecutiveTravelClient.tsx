@@ -48,21 +48,18 @@ const itineraries = [
   {
     title: "3-Day Business + Gorilla Trek",
     duration: "3 Days",
-    price: "From $2,500",
     description: "Perfect for executives combining business meetings with Rwanda's signature wildlife experience.",
     highlights: ["VIP airport transfer", "Business meeting facilities", "Gorilla trekking permit", "Luxury lodge accommodation"]
   },
   {
     title: "5-Day Rwanda Explorer",
     duration: "5 Days",
-    price: "From $4,200",
     description: "Comprehensive Rwanda experience covering Kigali, Lake Kivu, and Nyungwe Forest.",
     highlights: ["Kigali city orientation", "Lake Kivu lakeside retreat", "Nyungwe canopy walk", "Chimpanzee tracking"]
   },
   {
     title: "Weekend Conference + Safari",
     duration: "3 Days",
-    price: "From $1,800",
     description: "Combine your conference attendance with an unforgettable Akagera safari.",
     highlights: ["Conference logistics support", "Akagera National Park safari", "Big Five game drives", "Sunset boat cruise"]
   }
@@ -163,12 +160,14 @@ export default function ExecutiveTravelClient() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {itineraries.map((item, index) => (
               <div key={index} className="bg-gray-50 rounded-2xl p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <Calendar className="w-5 h-5 text-[#C9A84C]" />
-                  <span className="text-sm font-medium text-gray-600">{item.duration}</span>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-[#C9A84C]" />
+                    <span className="text-sm font-medium text-gray-600">{item.duration}</span>
+                  </div>
+                  <span className="text-xs text-gray-500">Contact for pricing</span>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-[#C9A84C] font-semibold mb-4">{item.price}</p>
                 <p className="text-gray-600 text-sm mb-4">{item.description}</p>
                 <ul className="space-y-2 mb-6">
                   {item.highlights.map((highlight, i) => (
@@ -179,7 +178,7 @@ export default function ExecutiveTravelClient() {
                   ))}
                 </ul>
                 <a
-                  href="/contact"
+                  href="/Reservations?tab=tourism"
                   className="block w-full text-center py-3 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
                 >
                   Customize This Trip

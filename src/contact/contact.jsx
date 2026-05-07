@@ -3,6 +3,7 @@ import React from "react";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+ import { useSearchParams } from "next/navigation";
 import { Form, Input, Select } from "antd";
 import { modernToast } from "@/components/ModernToast";
 import { User, Mail, Phone, MessageCircle, MessageSquare } from "lucide-react";
@@ -80,15 +81,20 @@ const ContactForm = ({ form, onFinish, t, isLoading }) => (
         label={<span className="text-gray-700 font-medium text-sm">{t("contactInform.form.inquiryType")}</span>}
         name="inquiry_type"
         rules={[{ required: true, message: t("contactInform.form.validation.inquiryRequired") }]}
+        className="[&_.ant-form-item-explain]:mt-3 [&_.ant-form-item-explain]:text-xs [&_.ant-form-item-explain]:leading-snug"
       >
         <Select 
           placeholder={t("contactInform.form.inquiryType")}
-          className="[&_.ant-select-selector]:h-11 [&_.ant-select-selector]:flex [&_.ant-select-selector]:items-center [&_.ant-select-selector]:rounded-lg [&_.ant-select-selector]:border-gray-300 [&_.ant-select-selector]:hover:border-gray-400"
+          className={`[&_.ant-select-selector]:h-11 [&_.ant-select-selector]:flex [&_.ant-select-selector]:items-center [&_.ant-select-selector]:rounded-lg [&_.ant-select-selector]:border-gray-300 [&_.ant-select-selector]:hover:border-gray-400 ${
+            form.getFieldValue("inquiry_type") ? "[&_.ant-select-selector]:border-[#C9A84C] [&_.ant-select-selector]:bg-[#C9A84C]/5 [&_.ant-select-selector]:shadow-[0_0_0_2px_rgba(201,168,76,0.18)]" : ""
+          }`}
         >
-          <Option value="hotel">{t("contactInform.form.inquiryOptions.hotel")}</Option>
+          <Option value="consultation">Consultation</Option>
           <Option value="department">{t("contactInform.form.inquiryOptions.department")}</Option>
           <Option value="transport">{t("contactInform.form.inquiryOptions.transport")}</Option>
           <Option value="businessSetup">{t("contactInform.form.inquiryOptions.businessSetup")}</Option>
+          <Option value="hotel">{t("contactInform.form.inquiryOptions.hotel")}</Option>
+            <Option value="Other">Other</Option>
         </Select>
       </Form.Item>
 
@@ -205,8 +211,21 @@ const ContactInfo = ({ t }) => (
 
 const ContactUs = () => {
   const { t } = useTranslation();
+  const searchParams = useSearchParams();
   const [form] = Form.useForm();
   const [isLoading, setIsLoading] = React.useState(false);
+  const [prefilledService, setPrefilledService] = React.useState(false);
+
+  React.useEffect(() => {
+    const service = searchParams?.get("service");
+    const allowed = ["consultation", "department", "transport", "businessSetup", "hotel"];
+    if (service && allowed.includes(service)) {
+      form.setFieldsValue({ inquiry_type: service });
+      setPrefilledService(true);
+    } else {
+      setPrefilledService(false);
+    }
+  }, [searchParams, form]);
 
   const handleSubmit = async (values) => {
     setIsLoading(true);

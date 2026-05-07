@@ -17,7 +17,7 @@ const MissionVisionComponent = () => {
               Vision & <span className="text-[#C9A84C]">Mission</span>
             </h2>
             <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-              Driving excellence through innovation and commitment
+           The team foreign investors call first when entering Rwanda. Five years, 100+ clients, 15+ countries — registration, investment advisory, HR, relocation, and executive travel under one roof.
             </p>
           </div>
 

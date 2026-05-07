@@ -35,21 +35,10 @@ const BusinessRegistration = () => {
   };
 
   const services = [
-    {
-      title: "Travel & Hospitality",
-      description: "Comprehensive travel solutions and hospitality services to enhance your business operations and customer experiences.",
-      features: [
-        "Business travel management",
-        "Hotel & accommodation services",
-        "Event planning & coordination",
-        "VIP hospitality services"
-      ],
-      link:"travel"
-    },
 
-    {
-      title: "Business Setup",
-      description: "End-to-end business establishment services to launch your venture smoothly in any jurisdiction.",
+      {
+      title: "Business Setup And Investment",
+      description: "Eleven-incentive tax map (0%, 3%, 15%, 7-year holiday), RDB Investment Certificate application, structuring for maximum eligibility, and access to 1.6 billion+ consumers across EAC, COMESA, EU, AGOA, and AfCFTA.",
       features: [
         "Company registration",
         "Legal documentation",
@@ -58,6 +47,9 @@ const BusinessRegistration = () => {
       ],
       link:"investment"
     },
+ 
+
+  
     {
       title: "Business Consulting",
       description: "Strategic consulting services to optimize your business processes and drive sustainable growth.",
@@ -71,7 +63,7 @@ const BusinessRegistration = () => {
     },
     {
       title: "HR & Admin Support",
-      description: "Complete human resources and administrative support to streamline your organizational operations.",
+      description: "Recruitment and screening, Rwanda-compliant employment contracts, monthly payroll with PAYE and RSSB, work permits for foreign staff, and HR policy frameworks aligned to Rwandan labor law.",
       features: [
         "Recruitment & staffing",
         "Payroll management",
@@ -79,6 +71,17 @@ const BusinessRegistration = () => {
         "Admin workflow optimization"
       ],
       link:"hrsupport"
+    },
+       {
+      title: "Travel & Hospitality",
+      description: "Named-property bookings (Radisson Blu, Marriott, Singita Kwitonda, One&Only), private gorilla trekking permits, chauffeured transport, and three pre-priced sample itineraries from $1,800.",
+      features: [
+        "Business travel management",
+        "Hotel & accommodation services",
+        "Event planning & coordination",
+        "VIP hospitality services"
+      ],
+      link:"travel"
     }
   ];
 
@@ -91,7 +94,7 @@ const BusinessRegistration = () => {
             Services
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-            Our <span className="text-[#C9A84C]">Major Services</span>
+            What<span className="text-[#C9A84C]"> We Do </span>
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
             Professional solutions tailored for your business success

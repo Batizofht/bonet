@@ -147,18 +147,18 @@ export default function SocialShare({
             </div>
 
             {/* Article Preview */}
-            <div className="bg-gray-50 rounded-lg p-4 mb-6 flex items-start gap-4">
+            <div className="bg-gray-50 rounded-lg p-4 mb-6 flex flex-col sm:flex-row items-start gap-4">
               {imageUrl && (
                 <img 
                   src={imageUrl} 
                   alt={title}
-                  className="w-20 h-20 rounded-lg object-cover flex-shrink-0"
+                  className="w-full sm:w-20 h-48 sm:h-20 rounded-lg object-cover flex-shrink-0"
                 />
               )}
-              <div className="flex-1">
-                <h4 className="font-semibold text-gray-900 mb-1 line-clamp-2">{title}</h4>
-                <p className="text-sm text-gray-600 line-clamp-2">{description}</p>
-                <p className="text-xs text-blue-600 mt-2 truncate">{url}</p>
+              <div className="flex-1 min-w-0">
+                <h4 className="font-semibold text-gray-900 mb-2 break-words">{title}</h4>
+                <p className="text-sm text-gray-600 mb-3 break-words leading-relaxed">{description}</p>
+                <p className="text-xs text-blue-600 break-all">{url}</p>
               </div>
             </div>
 

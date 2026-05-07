@@ -3,7 +3,7 @@ import BusinessRegistrationClient from "./BusinessRegistrationClient";
 export const metadata = {
   title: "Business Registration Rwanda | 6-Hour Company Setup | Bonet Elite",
   description:
-    "Register your company in Rwanda in just 6 hours. 100% foreign ownership, no minimum capital, RWF 7,000 fee. Complete RDB registration, TIN, RSSB, and licensing support.",
+    "Register your company in Rwanda in as little as 6 hours. No government registration fee. Complete RDB registration, TIN, RSSB, licensing, and bank account support for foreign investors.",
   keywords:
     "business registration Rwanda, company formation Rwanda, RDB registration, foreign company setup Rwanda, TIN registration Rwanda",
   authors: [{ name: "Bonet Elite Services" }],

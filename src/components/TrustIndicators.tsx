@@ -38,7 +38,7 @@ const TrustIndicators = () => {
             Trusted By Industry Leaders
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Official partnerships with Rwanda&apos;s government bodies and world-class hospitality brands
+            Proudly serving clients alongside Rwanda&apos;s government bodies and world-class hospitality brands
           </p>
         </div>
 

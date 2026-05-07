@@ -25,7 +25,7 @@ const FirstContact = () => {
         </h1>
 
         <p className="text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
-          {t("Subtitle.intro2")}
+        From company registration and investment advisory to HR, relocation, executive travel, and reservations — one team handles every part of your move into Rwanda. Tell us what you need and we will respond within 24 hours
         </p>
       </div>
     </div>

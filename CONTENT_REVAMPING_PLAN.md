@@ -13,7 +13,7 @@
 
 | Issue | Current State | Audit Requirement | Action |
 |-------|---------------|---------------------|--------|
-| **Book Now 404** | `/bookNow` exists but audit says it returns 404 | Working booking/consultation page | Verify route works or rebuild |
+| **Reservations 404** | `/Reservations` exists but audit says it returns 404 | Working booking/consultation page | Verify route works or rebuild |
 | **Blog Rendering** | 53 posts in sitemap, API fetches from `/full` endpoint | Posts must display on `/blogs` | Debug API response vs sitemap mismatch |
 | **Investment Page** | "Professional business setup services" repeated 6x | Unique descriptions per service | Rewrite all 6 service descriptions |
 | **Phone Consistency** | `+250 726 300 260` in schema & contact | Standardize everywhere | Audit all instances |
@@ -96,7 +96,7 @@ Line 130 in `setup.jsx`: "Professional business setup services" repeated for all
 ### Missing Tables to Add:
 1. **Rwanda Investment Incentives Table** — 0% Corporate Tax, 3% rate, 15% rate, 7-Year Holiday, Capital Gains Exemption, VAT Refund
 2. **Market Access Table** — EAC (152M), COMESA (389M), EU (450M), US/AGOA (330M), AfCFTA (1.3B)
-3. **Key Facts Table** — 100% ownership, 6-hour registration, no minimum capital, RWF 7,000 fee
+3. **Key Facts Table** — 100% ownership, 6-hour registration, no minimum capital, Free
 
 ### Add FAQ Schema
 Embed 3-4 investment-focused FAQs with structured data for Google rich snippets.
@@ -277,7 +277,7 @@ Before marking complete:
 - [ ] Hours are consistent: "Available 24/7 via WhatsApp, office hours Mon-Fri 8AM-6PM"
 - [ ] All 6 investment services have unique descriptions
 - [ ] Blog posts display (53 posts visible)
-- [ ] Book Now page loads without 404
+- [ ] Reservations page loads without 404
 - [ ] All CTAs use "Book Free Consultation" or "Chat on WhatsApp"
 - [ ] Investment page has 3 data tables (Incentives, Market Access, Key Facts)
 - [ ] About page has foreign client testimonials

@@ -26,8 +26,8 @@ const features = [
   },
   {
     icon: Coins,
-    title: "RWF 7,000 Fee",
-    description: "Only government fee required"
+    title: "Free",
+    description: "No government fee is required"
   },
   {
     icon: Building2,
@@ -68,7 +68,7 @@ export default function BusinessRegistrationClient() {
             Register Your Company in <span className="text-[#C9A84C]">6 Hours</span>
           </h1>
           <p className="text-lg md:text-xl text-white/85 max-w-2xl mb-8">
-            100% foreign ownership. No minimum capital. Just RWF 7,000 government fee.
+            Just one team that handles every step from application to operations.
           </p>
           <a
             href="/contact"
@@ -134,7 +134,7 @@ export default function BusinessRegistrationClient() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/contact"
+              href="/consulting"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
             >
               <FileCheck className="w-5 h-5" />

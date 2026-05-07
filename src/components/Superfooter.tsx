@@ -97,7 +97,7 @@ const SuperFooter = () => {
               { path: "/about", label: "About Us" },
               { path: "/blogs", label: "Blog" },
               { path: "/faq", label: "FAQ" },
-              { path: "/bookNow", label: "Book Now" },
+              { path: "/Reservations", label: "Reservations" },
               { path: "/contact", label: "Contact" },
             ].map((link) => (
               <li key={link.path}>

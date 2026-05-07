@@ -135,14 +135,7 @@ export default function InvestmentBusinessSetup() {
                 </p>
 
                 {/* Features */}
-                <div className="flex flex-wrap gap-4">
-                  {["Expert Service", "24/7 Support", "Trusted Partner"].map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full"></div>
-                      <span className="text-sm text-gray-600">{feature}</span>
-                    </div>
-                  ))}
-                </div>
+                <div className="hidden" />
               </div>
             </div>
           );

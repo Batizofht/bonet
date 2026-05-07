@@ -64,7 +64,7 @@ const TravelTips = () => {
 
       <div className="mt-16 text-center">
         <Link
-          href="/bookNow"
+          href="/Reservations"
           className="inline-flex items-center gap-2 px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
         >
           Book Your Rwanda Adventure

@@ -24,9 +24,9 @@ export default function AboutPageClient() {
         <Team />
       </Suspense>
 
-      <Suspense fallback={<div className="h-40 bg-white" />}>
+      {/* <Suspense fallback={<div className="h-40 bg-white" />}>
         <Testimonials />
-      </Suspense>
+      </Suspense> */}
     </div>
   );
 }

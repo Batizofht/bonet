@@ -178,16 +178,6 @@ export default function HRAdminSupport() {
                       {t(service.descriptionKey)}
                     </p>
                   </div>
-
-                  {/* Features */}
-                  <div className="flex flex-wrap gap-3">
-                    {["Expert Service", "24/7 Support", "Trusted Partner"].map((feature, i) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full"></div>
-                        <span className="text-xs text-gray-600">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
             </div>

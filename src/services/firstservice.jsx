@@ -20,11 +20,11 @@ const FirstService = ({ image = '/image/2.jpg', subtitle, title, description }) 
         </span>
 
         <h1 className="text-4xl md:text-6xl font-bold text-white mt-4 mb-6 max-w-4xl leading-[1.1] tracking-tight">
-          {title || t("Customizable and professional services")}
+        Services for Foreign Investors in Rwanda
         </h1>
 
         <p className="text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
-          {description || t("Subtitle.intro2")}
+         Five integrated services — Business Registration, Investment Advisory, HR & Recruitment, Relocation, and Executive Travel — delivered by one team. Built for international entrepreneurs and corporates entering East Africa.
         </p>
       </div>
     </div>

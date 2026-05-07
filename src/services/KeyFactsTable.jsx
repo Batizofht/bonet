@@ -25,8 +25,8 @@ const KeyFactsTable = () => {
     {
       icon: FileText,
       label: "Registration Fee",
-      value: "RWF 7,000",
-      description: "Approximate government fee for standard company registration"
+      value: "Free",
+      description: "Free always"
     },
     {
       icon: Building,

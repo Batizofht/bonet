@@ -63,7 +63,7 @@ export default function HRRecruitmentClient() {
             End-to-end recruitment, payroll, and HR compliance for foreign companies
           </p>
           <a
-            href="/contact"
+            href="/contact?service=department"
             className="inline-flex items-center gap-2 px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
           >
             Get Recruitment Support
@@ -131,8 +131,8 @@ export default function HRRecruitmentClient() {
       </div>
 
       {/* CTA */}
-      <div className="max-w-4xl mx-auto px-4 pb-16">
-        <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-8 md:p-12 text-center">
+      <div className="f-wull">
+        <div className="bg-gradient-to-r from-gray-900 to-gray-800  p-8 md:p-12 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
             Need Talent in Rwanda?
           </h2>
