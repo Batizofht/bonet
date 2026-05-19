@@ -32,13 +32,13 @@ const TrustIndicators = () => {
         {/* Header */}
         <div className="text-center mb-0">
           <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-            Our Network
+            Our Edge
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-            Trusted By Industry Leaders
+         Institutions and brands we've worked with
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Proudly serving clients alongside Rwanda&apos;s government bodies and world-class hospitality brands
+          Empowering clients to move faster — navigating government processes and premier hospitality requirements with integrity and deep local expertise.
           </p>
         </div>
 
