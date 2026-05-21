@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import { Building2, Users, MapPin, Plane, X, ArrowRight, ChevronRight } from "lucide-react";
+import { useState } from "react";
+import { Building2, Users, Plane, X, ChevronRight, Briefcase } from "lucide-react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
@@ -12,32 +12,32 @@ const BookingCards = () => {
   const services = [
     {
       id: "investment",
-      title: t("heroServices.investment_title"),
+      title: t("services.list.0.title"),
       description: t("heroServices.investment_desc"),
       icon: Building2,
       route: "/investment",
     },
     {
+      id: "consulting",
+      title: t("menu.businessConsulting"),
+      description: t("service.consulting.description"),
+      icon: Briefcase,
+      route: "/consulting",
+    },
+    {
       id: "hr",
-      title: t("heroServices.hr_title"),
+      title: t("menu.hrAndAdminSupport"),
       description: t("heroServices.hr_desc"),
       icon: Users,
       route: "/hrsupport",
     },
     {
-      id: "relocation",
-      title: t("heroServices.relocation_title"),
-      description: t("heroServices.relocation_desc"),
-      icon: MapPin,
-      route: "/contact",
-    },
-    {
       id: "travel",
-      title: t("heroServices.travel_title"),
+      title: t("menu.travelAndHospitality"),
       description: t("heroServices.travel_desc"),
       icon: Plane,
       route: "/travel",
-    }
+    },
   ];
 
   return (
