@@ -69,106 +69,100 @@ export default function ExecutiveTravelClient() {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
       <div 
-        className="relative w-full h-[60vh] bg-cover bg-center"
+        className="relative w-full h-[20vh] sm:h-[30vh] bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: "url('/image/kivumarina.png')" }}
       >
-        <div className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center px-4">
-          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest mb-4">
-            VIP Concierge
-          </span>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 max-w-4xl leading-tight">
-            Executive <span className="text-[#C9A84C]">Travel</span> Rwanda
+        <div className="absolute inset-0 bg-black/90" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <div className="w-2 h-2 bg-[#C9A84C] rotate-45 mb-4" />
+          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">VIP Concierge</p>
+          <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-wider">
+            Executive Travel Rwanda
           </h1>
-          <p className="text-lg md:text-xl text-white/85 max-w-2xl mb-8">
+          <p className="text-white/75 max-w-2xl mt-2 text-xs sm:text-sm leading-relaxed">
             Luxury travel experiences for discerning travelers and corporate retreats
           </p>
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
+            className="mt-3 inline-flex items-center gap-1.5 px-4 py-2 bg-[#C9A84C] text-white font-semibold rounded-lg hover:bg-[#B8973B] transition-colors text-xs"
           >
             Plan Your Journey
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-3 h-3" />
           </a>
         </div>
       </div>
 
       {/* Experiences */}
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Signature <span className="text-[#C9A84C]">Experiences</span>
-          </h2>
-          <p className="text-gray-600">Unforgettable journeys crafted for executives</p>
-        </div>
+      <div className="bg-white py-16 lg:py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Curated Experiences</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">Signature Experiences</h2>
+            <p className="text-gray-500 text-sm mt-2">Unforgettable journeys crafted for executives</p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-6 flex gap-4"
-            >
-              <div className="w-12 h-12 bg-[#C9A84C]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <exp.icon className="w-6 h-6 text-[#C9A84C]" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {experiences.map((exp, index) => (
+              <div
+                key={index}
+                className="bg-white border border-gray-200 rounded-xl p-6 flex gap-4"
+              >
+                <exp.icon className="w-6 h-6 text-[#C9A84C] flex-shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-1">{exp.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{exp.description}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-bold text-gray-900 mb-1">{exp.title}</h3>
-                <p className="text-gray-600 text-sm">{exp.description}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Hotels */}
-      <div className="max-w-4xl mx-auto px-4 pb-16">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Luxury <span className="text-[#C9A84C]">Accommodations</span>
-          </h2>
-        </div>
+      <div className="bg-gray-50 py-16 lg:py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Accommodations</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">Luxury Accommodations</h2>
+          </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {hotels.map((hotel, index) => (
-            <div key={index} className="bg-white rounded-xl p-4 text-center">
-              <Star className="w-6 h-6 text-[#C9A84C] mx-auto mb-2" />
-              <h3 className="font-bold text-gray-900 text-sm">{hotel.name}</h3>
-              <p className="text-gray-500 text-xs">{hotel.location}</p>
-              <p className="text-[#C9A84C] text-xs font-medium mt-1">{hotel.tier}</p>
-            </div>
-          ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {hotels.map((hotel, index) => (
+              <div key={index} className="bg-white border border-gray-200 rounded-xl p-4 text-center">
+                <Star className="w-5 h-5 text-[#C9A84C] mx-auto mb-2" />
+                <h3 className="font-bold text-gray-900 text-sm">{hotel.name}</h3>
+                <p className="text-gray-500 text-xs">{hotel.location}</p>
+                <p className="text-[#C9A84C] text-xs font-medium mt-1">{hotel.tier}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Sample Itineraries */}
-      <section className="bg-white py-20">
+      <section className="bg-white py-16 lg:py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-              Curated Journeys
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-4">
-              Sample <span className="text-[#C9A84C]">Itineraries</span>
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Pre-designed experiences you can customize to your schedule
-            </p>
+            <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Curated Journeys</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">Sample Itineraries</h2>
+            <p className="text-gray-500 text-sm mt-2">Pre-designed experiences you can customize to your schedule</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {itineraries.map((item, index) => (
-              <div key={index} className="bg-gray-50 rounded-2xl p-6">
+              <div key={index} className="bg-white border border-gray-200 rounded-xl p-6 lg:p-8">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-[#C9A84C]" />
+                    <Calendar className="w-4 h-4 text-[#C9A84C]" />
                     <span className="text-sm font-medium text-gray-600">{item.duration}</span>
                   </div>
-                  <span className="text-xs text-gray-500">Contact for pricing</span>
+                  <span className="text-xs text-gray-400">Contact for pricing</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm mb-4">{item.description}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">{item.description}</p>
                 <ul className="space-y-2 mb-6">
                   {item.highlights.map((highlight, i) => (
                     <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
@@ -179,7 +173,7 @@ export default function ExecutiveTravelClient() {
                 </ul>
                 <a
                   href="/Reservations?tab=tourism"
-                  className="block w-full text-center py-3 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
+                  className="block w-full text-center py-3 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors text-sm"
                 >
                   Customize This Trip
                 </a>
@@ -190,31 +184,38 @@ export default function ExecutiveTravelClient() {
       </section>
 
       {/* CTA */}
-      <div className="max-w-4xl mx-auto px-4 pb-16">
-        <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-8 md:p-12 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Ready to Experience Rwanda?
-          </h2>
-          <p className="text-white/80 mb-8 max-w-xl mx-auto">
-            From gorilla trekking to luxury retreats, we create extraordinary journeys.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
-            >
-              <Plane className="w-5 h-5" />
-              Book Free Consultation
-            </a>
-            <a
-              href="https://wa.me/250726300260"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 font-semibold rounded-xl hover:bg-gray-100 transition-colors"
-            >
-              <Phone className="w-5 h-5" />
-              WhatsApp Us
-            </a>
+      <div
+        className="relative w-full bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: "url('/image/kivumarina.png')" }}
+      >
+        <div className="absolute inset-0 bg-black/90" />
+        <div className="relative pt-16 pb-24 lg:pt-20 lg:pb-28">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Get Started</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+              Ready to Experience Rwanda?
+            </h2>
+            <p className="text-white/60 text-sm sm:text-base mb-8 max-w-xl mx-auto leading-relaxed">
+              From gorilla trekking to luxury retreats, we create extraordinary journeys.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#C9A84C] text-white font-semibold rounded-lg hover:bg-[#B8973B] transition-colors text-sm"
+              >
+                <Plane className="w-4 h-4" />
+                Book Free Consultation
+              </a>
+              <a
+                href="https://wa.me/250726300260"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors text-sm"
+              >
+                <Phone className="w-4 h-4" />
+                WhatsApp Us
+              </a>
+            </div>
           </div>
         </div>
       </div>

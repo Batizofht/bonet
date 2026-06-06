@@ -3,7 +3,7 @@ import FirstService from "../../services/firstservice";
 import BusinessConsulting from "../../services/consult";
 import HRAdminSupport from "@/services/hr";
 export const metadata = {
-  title: "HR & Admin Support Services Rwanda | Bonet Elite",
+  title: "HR & Admin Support Services Rwanda",
   description:
     "HR and administrative support in Rwanda. Recruitment, payroll, employee training and HR policy by Bonet Elite Services in Kigali.",
   keywords:
@@ -13,7 +13,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     url: "https://bonet.rw/hrsupport",
-    title: "HR & Admin Support Services Rwanda | Bonet Elite",
+    title: "HR & Admin Support Services Rwanda",
     description:
       "HR and administrative support in Rwanda. Recruitment, payroll, employee training and HR policy by Bonet Elite Services in Kigali.",
     images: [
@@ -29,7 +29,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@BonetElite",
-    title: "HR & Admin Support Services Rwanda | Bonet Elite",
+    title: "HR & Admin Support Services Rwanda",
     description:
       "HR and administrative support in Rwanda. Recruitment, payroll, employee training and HR policy by Bonet Elite Services.",
     images: ["https://bonet.rw/assets/images/logo.png"],

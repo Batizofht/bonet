@@ -2,7 +2,7 @@
 import FirstService from "../../services/firstservice";
 import BusinessConsulting from "../../services/consult";
 export const metadata = {
-  title: "Business Consulting Services Rwanda | Bonet Elite",
+  title: "Business Consulting Services Rwanda",
   description:
     "Expert business consulting in Rwanda. Business plans, project planning, financial audits and strategy by Bonet Elite Services in Kigali.",
   keywords:
@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     url: "https://bonet.rw/consulting",
-    title: "Business Consulting Services Rwanda | Bonet Elite",
+    title: "Business Consulting Services Rwanda",
     description:
       "Expert business consulting in Rwanda. Business plans, project planning, financial audits and strategy by Bonet Elite Services in Kigali.",
     images: [
@@ -28,7 +28,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@BonetElite",
-    title: "Business Consulting Services Rwanda | Bonet Elite",
+    title: "Business Consulting Services Rwanda",
     description:
       "Expert business consulting in Rwanda. Business plans, project planning, financial audits and strategy by Bonet Elite Services.",
     images: ["https://bonet.rw/assets/images/logo.png"],

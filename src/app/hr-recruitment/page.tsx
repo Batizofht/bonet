@@ -1,7 +1,7 @@
 import HRRecruitmentClient from "./HRRecruitmentClient";
 
 export const metadata = {
-  title: "HR & Recruitment Rwanda | Talent Solutions | Bonet Elite",
+  title: "HR & Recruitment Rwanda | Talent Solutions",
   description:
     "Professional HR and recruitment services in Rwanda. Talent sourcing, payroll management, compliance, and workforce solutions for foreign companies.",
   keywords:
@@ -27,7 +27,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@BonetElite",
-    title: "HR & Recruitment Rwanda | Bonet Elite",
+    title: "HR & Recruitment Rwanda",
     description: "Professional HR and recruitment services for companies in Rwanda.",
     images: ["https://bonet.rw/assets/images/logo.png"],
   },

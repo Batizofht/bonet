@@ -2,7 +2,7 @@
 import FirstService from "../../services/firstservice";
 import HotelHospitality from "../../services/hotel";
 export const metadata = {
-  title: "Travel & Hospitality Services Rwanda | Bonet Elite",
+  title: "Travel & Hospitality Services Rwanda",
   description:
     "Luxury travel and hospitality services in Rwanda. Hotel booking, airport transfers, tours and VIP handling in Kigali by Bonet Elite.",
   keywords:
@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     url: "https://bonet.rw/travel",
-    title: "Travel & Hospitality Services Rwanda | Bonet Elite",
+    title: "Travel & Hospitality Services Rwanda",
     description:
       "Luxury travel and hospitality services in Rwanda. Hotel booking, airport transfers, tours and VIP handling in Kigali by Bonet Elite.",
     images: [
@@ -28,7 +28,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@BonetElite",
-    title: "Travel & Hospitality Services Rwanda | Bonet Elite",
+    title: "Travel & Hospitality Services Rwanda",
     description:
       "Luxury travel and hospitality services in Rwanda. Hotel booking, airport transfers, tours and VIP handling in Kigali.",
     images: ["https://bonet.rw/assets/images/logo.png"],

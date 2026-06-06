@@ -1,5 +1,5 @@
 'use client'
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,7 +8,7 @@ import ServicesMegaMenu from "./ServicesMegaMenu";
 
 export default function MenuBars() {
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
   const location = usePathname();
 
   // Close dropdown on route change
@@ -16,32 +16,26 @@ export default function MenuBars() {
     setServicesDropdownOpen(false);
   }, [location]);
 
-  const openServicesMenu = () => {
-    if (closeTimerRef.current) {
-      clearTimeout(closeTimerRef.current);
-      closeTimerRef.current = null;
-    }
-    setServicesDropdownOpen(true);
-  };
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    if (!servicesDropdownOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
+        setServicesDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [servicesDropdownOpen]);
 
   const toggleServicesMenu = () => {
     setServicesDropdownOpen(!servicesDropdownOpen);
   };
 
-  const closeServicesMenuWithDelay = () => {
-    if (closeTimerRef.current) {
-      clearTimeout(closeTimerRef.current);
-    }
-    closeTimerRef.current = setTimeout(() => {
-      setServicesDropdownOpen(false);
-      closeTimerRef.current = null;
-    }, 180);
-  };
-
   function getActiveClass(path: string) {
     return location === path
-      ? "text-[#C9A84C] font-semibold relative"
-      : "font-semibold text-gray-700 hover:text-[#C9A84C] transition-colors duration-200";
+      ? "text-[#C9A84C] font-semibold relative py-2"
+      : "font-semibold text-gray-700 hover:text-[#C9A84C] transition-colors duration-200 py-2";
   }
 
   const { t } = useTranslation();
@@ -65,23 +59,17 @@ export default function MenuBars() {
           href={item.path}
           className={getActiveClass(item.path)}
         >
-          <div className="py-2 hover:-translate-y-0.5 transition-transform duration-200">
-            {item.label}
-          </div>
+          {item.label}
         </Link>
       ))}
 
       {/* Services Dropdown */}
-      <div
-        className="relative"
-        onMouseEnter={openServicesMenu}
-        onMouseLeave={closeServicesMenuWithDelay}
-      >
+      <div className="relative" ref={servicesRef}>
         <button
           className={getActiveClass("/services")}
           onClick={toggleServicesMenu}
         >
-          <div className="flex items-center gap-1 py-2 hover:-translate-y-0.5 transition-transform duration-200">
+          <div className="flex items-center gap-1 py-2">
             {t('menu.services')}
             <div className={`transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180' : ''}`}>
               <ChevronDown className="w-3 h-3" />
@@ -90,7 +78,7 @@ export default function MenuBars() {
         </button>
 
         {servicesDropdownOpen && (
-          <div onMouseEnter={openServicesMenu} onMouseLeave={closeServicesMenuWithDelay}>
+          <div>
             <ServicesMegaMenu t={t} onClose={() => setServicesDropdownOpen(false)} />
           </div>
         )}
@@ -103,17 +91,13 @@ export default function MenuBars() {
           href={item.path}
           className={getActiveClass(item.path)}
         >
-          <div className="py-2 hover:-translate-y-0.5 transition-transform duration-200">
-            {item.label}
-          </div>
+          {item.label}
         </Link>
       ))}
 
       {/* Reservations */}
       <Link href="/Reservations" className={getActiveClass("/Reservations")}>
-        <div className="py-2 hover:-translate-y-0.5 transition-transform duration-200">
-          {t('menu.bookNow')}
-        </div>
+        {t('menu.bookNow')}
       </Link>
 
     </div>

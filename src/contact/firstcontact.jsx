@@ -7,26 +7,22 @@ const FirstContact = () => {
 
   return (
     <div
-      className="relative w-full h-[50vh] bg-cover bg-center overflow-hidden"
+      className="relative w-full h-[20vh] sm:h-[30vh] bg-cover bg-center overflow-hidden"
       style={{ 
         backgroundImage: "url('/image/2.jpg')", 
         backgroundSize: 'cover', 
         backgroundPosition: 'center'
       }}
     >
-      <div className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center px-4">
-        
-        <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+      <div className="absolute inset-0 bg-black/90" />
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+        <div className="w-2 h-2 bg-[#C9A84C] rotate-45 mb-4" />
+        <span className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-[0.15em]">
           {t("footer.contactUs")}
         </span>
-
-        <h1 className="text-4xl md:text-6xl font-bold text-white mt-4 mb-6 max-w-4xl leading-[1.1] tracking-tight">
+        <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-wider">
           {t("Contact Bonet Elite Team ")}
         </h1>
-
-        <p className="text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
-        From company registration and investment advisory to HR, relocation, executive travel, and reservations — one team handles every part of your move into Rwanda. Tell us what you need and we will respond within 24 hours
-        </p>
       </div>
     </div>
   );

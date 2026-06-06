@@ -1,31 +1,32 @@
 'use client'
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 const FirstService = ({ image = '/image/2.jpg', subtitle, title, description }) => {
-  const { t } = useTranslation();
-
   return (
     <div
-      className="relative w-full h-[50vh] bg-cover bg-center overflow-hidden"
+      className="relative w-full h-[20vh] sm:h-[30vh] bg-cover bg-center overflow-hidden"
       style={{ 
         backgroundImage: `url('${image}')`, 
         backgroundSize: 'cover', 
         backgroundPosition: 'center'
       }}
     >
-      <div className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center px-4">
-        <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-          {subtitle || t("services.title")}
-        </span>
-
-        <h1 className="text-4xl md:text-6xl font-bold text-white mt-4 mb-6 max-w-4xl leading-[1.1] tracking-tight">
-        Services for Foreign Investors in Rwanda
+      <div className="absolute inset-0 bg-black/90" />
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+        <div className="w-2 h-2 bg-[#C9A84C] rotate-45 mb-4" />
+        {subtitle && (
+          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-[0.15em]">
+            {subtitle}
+          </p>
+        )}
+        <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-wider">
+          {title || 'Our Services'}
         </h1>
-
-        <p className="text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
-         Five integrated services — Business Registration, Investment Advisory, HR & Recruitment, Relocation, and Executive Travel — delivered by one team. Built for international entrepreneurs and corporates entering East Africa.
-        </p>
+        {description && (
+          <p className="text-white/75 max-w-2xl mt-2 text-xs sm:text-sm leading-relaxed">
+            {description}
+          </p>
+        )}
       </div>
     </div>
   );

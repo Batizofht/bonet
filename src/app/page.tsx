@@ -1,27 +1,27 @@
 import React from "react";
 import HomePageClient from "./pageClient";
 export const metadata = {
-  title: "Business Setup & Travel Services Rwanda | Bonet Elite",
+  title: "Invest in Rwanda With Confidence | Bonet Elite Services",
   description:
-    "Business setup, travel, HR and investment support in Rwanda. Hotel booking, company registration, consulting and VIP services in Kigali.",
+    "Zero minimum capital. 6-hour company registration. 0% corporate tax for qualifying investments. Full-service business, HR, relocation and executive travel support in Rwanda.",
   keywords:
-    "Bonet Elite Services Rwanda, travel Rwanda, business setup Rwanda, investment in Rwanda, VIP concierge Rwanda, luxury travel Kigali, HR services Rwanda, executive services Rwanda, tourism Rwanda",
+    "invest Rwanda, business setup Rwanda, company registration Rwanda, foreign investment Rwanda, Bonet Elite Services, Rwanda tax incentives",
   authors: [{ name: "Bonet Elite Services" }],
   alternates: { canonical: "https://bonet.rw/" },
   openGraph: {
     type: "website",
     url: "https://bonet.rw/",
-    title: "Business Setup & Travel Services Rwanda | Bonet Elite",
+    title: "Invest in Rwanda With Confidence | Bonet Elite Services",
     description:
-      "Business setup, travel, HR and investment support in Rwanda. Hotel booking, company registration, consulting and VIP services in Kigali.",
+      "Zero minimum capital. 6-hour company registration. 0% corporate tax. Full-service business, HR, relocation and executive travel support in Rwanda.",
     images: ["https://bonet.rw/assets/images/logo.png"],
     siteName: "Bonet Elite Services",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Business Setup & Travel Services Rwanda | Bonet Elite",
+    title: "Invest in Rwanda With Confidence | Bonet Elite Services",
     description:
-      "Business setup, travel, HR and investment support in Rwanda. Hotel booking, company registration, consulting and VIP services in Kigali.",
+      "Zero minimum capital. 6-hour company registration. 0% corporate tax. Full-service business, HR, relocation and executive travel support in Rwanda.",
     images: ["https://bonet.rw/assets/images/logo.png"],
   },
   

@@ -1,0 +1,216 @@
+## **BONET ELITE SERVICES LTD** 
+
+## **www.bonet.rw** 
+
+## **FINAL POST-IMPLEMENTATION AUDIT (v3)** 
+
+_Verifying delivery against the April 2026 Audit, Rebuild Guide v2, and Phase 2 Cleanup Plan_ 
+
+Prepared for Prince Bonfils — Founder | 3 June 2026 
+
+## **1. Executive Summary** 
+
+Verdict: **Strong delivery overall, but one structural item still blocks the rest of the work from being seen by visitors.** The April 2026 audit produced 54 findings; the Phase 2 plan (May 2026) flagged 5 buckets of remaining cleanup. Most of those have now been delivered. Specifically, the RWF 7,000 government-fee error is fully removed, the homepage now opens with an investor-focused hero plus the "Muraho" welcome message, the FAQ has been expanded well beyond plan, and the dedicated landing pages exist with on-brand investor copy. 
+
+**Two items remain unresolved and one is a known scope deferral.** (1) The main-navigation gap is still open — the Services dropdown does not expose the five dedicated landing pages, the homepage service cards still link to the legacy generic pages, and there is no dedicated gold "Book Free Consultation" CTA button in the header. (2) The /explore-rwanda and /gallery URLs continue to serve identical HTML, which is a duplicate-content SEO risk. (3) Reservations is intentionally deferred — Section 5 covers the recommended architecture for that build. 
+
+## **Scoreboard** 
+
+Of 12 Phase-2 line items verified on-site today: **8 DONE** · **2 PARTIAL** · **2 OPEN (nav, duplicate page)** 
+
+## **2. Phase 2 Cleanup — Item-by-Item Verification** 
+
+The Phase 2 plan dated 2026-05-05 listed five buckets of work. Each row below was verified directly against the live site on 3 June 2026 using raw HTML inspection. 
+
+|||||
+|---|---|---|---|
+|**Area**|**Finding**|**Status**|**Evidence / Note**|
+|||||
+|**Homepage hero**|Replace generic "Welcome To" with investor<br>headline + gold CTA|**DONE**|"Invest in<br>Rwanda With<br>Confidence" +<br>"Book Free<br>Consultation"<br>live|
+|**Homepage welcome**|Add Hello / "Muraho" welcome message|**DONE**|"Muraho. We are<br>Bonet Elite<br>Services…" copy<br>live|
+|**Homepage trust bar**|5+ Years | 100+ Clients | 15+ Countries|**DONE**|Trust bar live;<br>24/7 WhatsApp<br>added|
+
+
+
+Bonet Elite Services — Final Site Audit v3 — 3 June 2026 — Page 1 
+
+|||||
+|---|---|---|---|
+|**Area**|**Finding**|**Status**|**Evidence / Note**|
+|||||
+|**Homepage 8-card grid**|Replace 3 generic claims with 8 data-driven cards|**DONE**|6hrs / 0% tax /<br>Cert / Licensing /<br>400M+ / One<br>Team / 15+ /<br>Free Consult|
+|**Homepage service**<br>**cards**|Cards must point to new dedicated landing pages|**OPEN**|Cards still link to<br>/investment,<br>/consulting,<br>/hrsupport,<br>/travel|
+|**Main navigation**|Add Services dropdown w/ 5 landing pages + gold<br>CTA|**OPEN**|Services<br>dropdown<br>contains no<br>landing-page<br>items; no header<br>CTA button|
+|**RWF 7,000 fee**|Strip from /business-registration meta, hero, Key<br>Facts|**DONE**|"No government<br>registration fee"<br>+ "Free" tile live|
+|**RWF 7,000 fee**|Strip from /investment Key Facts row|**DONE**|Row reads<br>"Registration Fee<br>| Free | Free<br>always"|
+|**RWF 7,000 fee**|Fix the Homepage FAQ answer|**DONE**|"The standard<br>registration fee is<br>free"|
+|**/bookNow rename**|Rename to /reservations and re-link in nav|**PARTIAL**|Nav says<br>"Reservations"<br>→ /Reservations<br>(capital R);<br>lowercase<br>/reservations<br>404s|
+|**Duplicate page**|Resolve /explore-rwanda vs /gallery serving<br>identical content|**OPEN**|Both return byte-<br>identical 1,964-<br>char HTML|
+|**Legacy generic pages**|301-redirect /services, /travel, /consulting,<br>/hrsupport|**PARTIAL**|Hero rewritten<br>with investor<br>voice; pages still<br>resolve 200 (not<br>redirected)|
+
+
+
+## **3. Per-Page Status (vs. Rebuild Guide v2)** 
+
+## **3.1 Homepage (/)** 
+
+Bonet Elite Services — Final Site Audit v3 — 3 June 2026 — Page 2 
+
+**Status: Mostly done.** Hero, welcome, trust bar, 8-card grid, FAQ, and JSON-LD all match Rebuild Guide v2 Section 01. Title tag is still generic ("Business Setup & Travel Services Rwanda | Bonet Elite") — recommend tightening to "Invest in Rwanda With Confidence | Bonet Elite Services". Service cards still resolve to the legacy generic pages; this is the same root cause as the nav gap. 
+
+## **3.2 /business-registration** 
+
+**Status: Done.** Hero copy matches spec, the four-tile Key Facts row is correct, the 6-step process is present, and bottom CTAs (Book Free Consultation / WhatsApp Us) are in place. RWF 7,000 references fully removed. No further edits required. 
+
+## **3.3 /investment** 
+
+**Status: Mostly done.** Investment Incentives Table live with 0% / 3% / 15% / 7-year holiday detail, Market Access table (EAC / COMESA / EU / AGOA / AfCFTA) present, Key Facts grid in place, registration fee corrected. Two gaps from Rebuild Guide §03: (a) 6-step visual process diagram not on page, (b) no on-page FAQ. Both are niceto-have polish. 
+
+## **3.4 /hr-recruitment** 
+
+**Status: Done.** Hero ("Build Your Dream Team in Rwanda"), four-stat trust row (500+ Candidates, 50+ Clients, 98% Retention, 48h Placement), service grid, and CTAs are all in place and on-brand. 
+
+## **3.5 /relocation-services** 
+
+**Status: Done.** Hero, stats (500+ Families, 2-Week Setup, 98% Satisfaction, 24/7), four-service grid, 4-step Journey, neighborhood callouts (Kacyiru, etc.) all present. A prior verification flagged CTAs routing to /travel — re-check whether those have been pointed to /contact or the new consultation flow. 
+
+## **3.6 /executive-travel** 
+
+**Status: Done with one regression to confirm.** Signature experiences, named luxury accommodations (Radisson Blu, Kigali Marriott, One&Only Gorilla's Nest, Singita Kwitonda), and three sample itineraries are all live. **Regression:** the previously visible itinerary pricing ($2,500 / $4,200 / $1,800) has been replaced by "Contact for pricing". If deliberate, no action; otherwise restore the indicative prices — they help qualify leads. 
+
+## **3.7 /faq** 
+
+**Status: Exceeded spec.** FAQPage JSON-LD now contains 56 questions (Rebuild Guide v2 specified 10). Coverage spans visas, work permits, family/spouse, company registration, capital, incentives, banking. Strongest single SEO asset on the site. 
+
+## **3.8 /about** 
+
+**Status: Mostly done.** Mission/vision rewritten, five team members with LinkedIn, foreign-client testimonials (Michael Chen / TechVentures Asia / China, Sarah Williams, Ahmed Al-Rashid). Missing: closing gold CTA at bottom of page. "24/7 Support" stat shown without the WhatsApp nuance used on /contact. 
+
+## **3.9 /contact** 
+
+**Status: Heavy client-side rendering — verify in browser.** Static HTML payload ends at "Loading…" — address, phone, map, and form all rendered client-side. Phone +250 726 300 260 is consistent across the rest of the site. Recommend SSR-rendering address, phone, hours, and WhatsApp link so they appear in HTML for SEO/accessibility. 
+
+Bonet Elite Services — Final Site Audit v3 — 3 June 2026 — Page 3 
+
+## **3.10 /blogs** 
+
+**Status: Functional in real browsers; SSR-empty.** Sitemap.xml lists 53 blog posts under /blog/ (singular). Real browsers render the index correctly. But the /blogs index contains zero post links in static HTML — the listing is hydrated client-side, which hurts crawlability. Recommend static generation of (at least) the first page of post cards. 
+
+## **3.11 Legacy generic pages (/services, /travel, /consulting, /hrsupport)** 
+
+**Status: Partial — content rewritten, but not redirected.** Each page now opens with the integrated-voice hero ("Services for Foreign Investors in Rwanda — Five integrated services…"). But the rest of each page still shows legacy generic copy, and the URLs still resolve at HTTP 200 — competing with the new dedicated pages for the same keywords. **Recommendation:** either (a) finish replacing body copy to match the new landing pages, or (b) issue 301 redirects: /services → /investment, /travel → /executive-travel, /consulting → /investment, /hrsupport → /hr-recruitment. 
+
+## **4. Critical Open Items (do these next)** 
+
+## **4.1 Fix the navigation — this is the #1 ROI item** 
+
+The nav today reads: Home · About Us · Services · Why Rwanda · FAQ · Reservations · Blogs · English · Contact us. "Services" is a dropdown trigger, but its dropdown contents do not include the dedicated landing pages — a foreign-investor visitor who clicks Services either lands on the generic /services page or sees a dropdown that still only points to legacy URLs. The homepage service cards have the same problem. **Target nav:** Home · Why Rwanda · Services ▾ (Business Registration · Investment Advisory · HR & Recruitment · Relocation · Executive Travel) · About · Insights · FAQ · Reservations · Contact · [Book Free Consultation] (gold button). The "Book Free Consultation" CTA should be a visually distinct gold #C9A84C button, not a text link, and should point to /contact?service=consultation (or a future /book-consultation page). 
+
+## **4.2 Resolve /gallery vs /explore-rwanda duplication** 
+
+Both URLs return byte-identical HTML (1,964 chars, identical title, meta description, canonical). Pick one canonical — recommend /explore-rwanda — and 301-redirect the other. Until this is fixed, Google will likely split ranking signal between the two URLs, and may classify one as duplicate content. 
+
+## **4.3 Reservations URL case sensitivity** 
+
+The nav links to /Reservations (capital R). /reservations (lowercase) returns 404. URL routing should be caseinsensitive, or at minimum a 301 from lowercase → canonical. Most users typing the URL by hand will use lowercase. 
+
+## **4.4 SSR the /contact and /blogs pages** 
+
+Both pages currently render their content payload client-side. /contact ships only "Loading…" in static HTML; /blogs ships filter chips but no post cards. For SEO, page speed, and accessibility, these two pages benefit most from static generation. The blog index can be statically generated nightly from the existing sitemap source. 
+
+## **4.5 Polish items** 
+
+- Homepage <title> still reads "Business Setup & Travel Services Rwanda | Bonet Elite" — change to "Invest in Rwanda With Confidence | Bonet Elite Services". 
+
+- All page <title> tags end with "| Bonet Elite | Bonet Elite Services" (double brand). Drop the duplicate. 
+
+- /about: add a gold closing CTA at the bottom of the page. 
+
+Bonet Elite Services — Final Site Audit v3 — 3 June 2026 — Page 4 
+
+- /investment: add the 6-step visual process and an on-page FAQ (Rebuild Guide §03). 
+
+- /executive-travel: decide whether to restore indicative itinerary pricing or keep "Contact for pricing". 
+
+- /relocation-services: re-check that page CTAs route to /contact (not /travel). 
+
+Bonet Elite Services — Final Site Audit v3 — 3 June 2026 — Page 5 
+
+## **5. Reservations — Implementation Advisory (Deferred Build)** 
+
+Per your direction, Reservations is being redesigned to mirror the experience of standard booking platforms (Booking.com / Agoda for accommodation, Klook / GetYourGuide for tours, Uber-style for transport). The model you described is a **hybrid two-path flow:** (A) Browse-and-book — customers see your listed providers, filter, reserve directly; (B) Describe-your-need — customers explain what they want and Bonet's team handles the rest. The recommendations below assume that hybrid model. 
+
+## **5.1 Recommended architecture** 
+
+**Two entry points on /reservations:** two large cards on landing — "Browse & Book" (image of hotel/car/itinerary) and "Tell us what you need" (image of a concierge). Either path lands the user in a structured intake; both end with a confirmation email + WhatsApp ping to the Bonet ops desk. 
+
+## **Path A — Browse & Book (the platform-like path)** 
+
+- Category selector first: Hotels & Apartments · Transport · Tours & Experiences · Conference & Events. Keep categories small at launch — fewer than five — and expand as supply grows. 
+
+- For each category, show a provider card grid: cover image, name, location, price band (RWF / USD), star rating or Bonet-verified badge, "View & Book" button. 
+
+- Provider detail page: photo gallery, description (you write), amenities, price table, availability calendar, "Reserve Now" form. 
+
+- Reservation form should be progressive: select dates/quantity → guest info → confirm. Do NOT take card payment on day one — collect the request and contact via WhatsApp to confirm + invoice. 
+
+- Each provider needs a clean CMS record: name, category, photos[], location, base price, currency, included, excluded, cancellation policy, contact internal. 
+
+**Path B — Describe Your Need (the concierge path)** 
+
+- Simple form, five fields: What do you need? (free text) · When? (date or range) · How many people? · Approximate budget (optional) · Preferred contact (WhatsApp / Email / Phone). 
+
+- Suggested categories as quick-pick chips above the free-text box (Hotel · Transport · Tour · Event · Other) — captures common intent without forcing taxonomy. 
+
+- Auto-confirmation: "Muraho! We've received your request. A Bonet concierge will respond within 4 working hours." 
+
+- Internal: route to ops Slack/WhatsApp channel with the form payload + a single-click "Claim" button for the on-duty concierge. 
+
+## **5.2 Technical build sequence (suggested)** 
+
+- Phase 1 (1–2 weeks): launch Path B only. It is just a form + a routing webhook. Zero inventory work. Captures real demand and gives you data on what people actually ask for. 
+
+- Phase 2 (2–4 weeks): launch Path A for one or two categories where you already have supplier relationships (start with Hotels & Transport — highest request volume). 
+
+- Phase 3 (later): expand Path A categories, add availability calendars, and only then introduce card payments via Flutterwave or DPO. 
+
+## **5.3 Business considerations** 
+
+- Commission vs. markup: decide upfront whether you charge the customer a markup (transparent listed price = your selling price) or take a back-end commission from the provider. The former lets you control conversion and trust. 
+
+Bonet Elite Services — Final Site Audit v3 — 3 June 2026 — Page 6 
+
+- Cancellation policy: write one default cancellation window per category and surface it on every booking card. Foreign clients will not commit without that clarity. 
+
+- Provider vetting: build a checklist (insurance, licensing, references, on-site visit) and put a small "Bonet Verified" badge on listings that pass. This is a real differentiator vs. raw OTAs. 
+
+- Currency: list prices in both RWF and USD; let the user toggle. Almost no foreign-investor traffic will convert from RWF-only pricing. 
+
+- Reviews: don't launch with reviews; launch with editorial blurbs you write yourself. Add reviews after 50+ completed bookings — empty 0-review listings hurt conversion. 
+
+## **5.4 Visual & UX guidance** 
+
+- Mirror the dual-CTA hero pattern used by Klook and GetYourGuide: hero image + "Browse Services" + "Tell us what you need" buttons side by side. 
+
+- Keep the existing Bonet visual identity — navy + gold, generous whitespace. Avoid OTA-style red "book now" urgency banners; they undercut the premium positioning. 
+
+- Mobile-first: 60%+ of reservation requests will be from phones. Provider detail pages must be onethumb scrollable, with the "Reserve" button sticky at the bottom on mobile. 
+
+## **6. Strategic Notes Beyond the Audit** 
+
+**Site voice is now consistent on the new landing pages but fragmented on the legacy URLs.** A visitor's first impression depends on which URL Google sends them to. Fixing the nav and redirecting the legacy pages turns your weakest pages into a single coherent funnel. 
+
+**FAQ at 56 questions is a real SEO weapon — use it.** Each question is a long-tail keyword. Consider /faq/[slug] permalinks for the highest-volume questions so each gets its own indexable page (e.g. /faq/how-long-toregister-company-in-rwanda). 
+
+**Add a single "What we don't do" note on /services.** Premium positioning is partly defined by what you decline. A short paragraph ("We are not an OTA, an immigration lawyer, or a real-estate broker — we coordinate with vetted specialists in each") signals seriousness and pre-qualifies leads. 
+
+**Tie the blog to the funnel.** Every blog post should end with a tile linking to one of the five landing pages relevant to its topic. With 53 posts and growing, this is the biggest internal-link asset you have. 
+
+## **7. Verification Appendix — What was checked** 
+
+All findings in this report were verified on 3 June 2026 using direct HTTP requests to www.bonet.rw plus staticHTML inspection (curl + raw payload analysis). Pages checked: / · /about · /services · /investment · /businessregistration · /hr-recruitment · /relocation-services · /executive- 
+
+travel · /travel · /consulting · /hrsupport · /contact · /faq · /bookNow · /Reservations · /reservations · /explorerwanda · /gallery · /blogs. Status codes recorded, meta/canonical/JSON-LD parsed, and key copy strings grepverified against the Rebuild Guide v2 and Phase 2 Cleanup Plan. Items requiring real-browser confirmation (interactive dropdowns, client-rendered forms) are noted as such above. 
+
+Bonet Elite Services — Final Site Audit v3 — 3 June 2026 — Page 7 
+

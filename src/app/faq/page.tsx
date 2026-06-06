@@ -1,7 +1,7 @@
 import FAQClient from "./FAQClient";
 
 export const metadata = {
-  title: "FAQ | Rwanda Business Setup & Investment | Bonet Elite",
+  title: "FAQ | Rwanda Business Setup & Investment",
   description:
     "Frequently asked questions about business registration, investment, work permits, and living in Rwanda. Expert answers for foreign investors and companies.",
   keywords:

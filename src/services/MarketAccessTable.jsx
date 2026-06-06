@@ -51,8 +51,8 @@ const MarketAccessTable = () => {
           <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
             Market Reach
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-            Access to <span className="text-[#C9A84C]">Global Markets</span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+            Access to Global Markets
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
             Rwanda&apos;s strategic trade agreements give your business unprecedented access across continents
@@ -60,12 +60,10 @@ const MarketAccessTable = () => {
         </div>
 
         {/* Total Market Card */}
-        <div className="bg-gradient-to-r from-[#C9A84C]/10 to-[#C9A84C]/5 rounded-2xl p-8 mb-12 border border-[#C9A84C]/20">
+        <div className="border border-gray-200 rounded-xl p-8 mb-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-2xl bg-[#C9A84C] flex items-center justify-center">
-                <Globe className="w-8 h-8 text-white" />
-              </div>
+              <Globe className="w-8 h-8 text-[#C9A84C] flex-shrink-0" />
               <div>
                 <p className="text-sm text-gray-500 uppercase tracking-wider font-medium">Total Market Access</p>
                 <p className="text-4xl font-bold text-gray-900">{totalReach} Consumers</p>
@@ -80,7 +78,7 @@ const MarketAccessTable = () => {
         </div>
 
         {/* Table - Desktop */}
-        <div className="hidden md:block bg-white rounded-2xl shadow-sm overflow-hidden">
+        <div className="hidden md:block border border-gray-200 rounded-xl overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-gray-50">
@@ -104,9 +102,7 @@ const MarketAccessTable = () => {
                   <tr key={index} className="hover:bg-gray-50/50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0">
-                          <Users className="w-5 h-5 text-[#C9A84C]" />
-                        </div>
+                        <Users className="w-5 h-5 text-[#C9A84C] flex-shrink-0" />
                         <span className="font-semibold text-gray-900">{market.tradeBloc}</span>
                       </div>
                     </td>
@@ -125,11 +121,9 @@ const MarketAccessTable = () => {
         {/* Cards - Mobile */}
         <div className="md:hidden grid grid-cols-1 gap-4">
           {markets.map((market, index) => (
-            <div key={index} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
+            <div key={index} className="border border-gray-200 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center">
-                  <Users className="w-5 h-5 text-[#C9A84C]" />
-                </div>
+                <Users className="w-5 h-5 text-[#C9A84C] flex-shrink-0" />
                 <h3 className="font-semibold text-gray-900">{market.tradeBloc}</h3>
               </div>
               <div className="space-y-2 text-sm">

@@ -83,8 +83,8 @@ const InvestmentIncentivesTable = () => {
           <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
             Tax Benefits
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-            Rwanda Investment <span className="text-[#C9A84C]">Incentives</span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+            Rwanda Investment Incentives
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
             Industry-leading tax advantages designed to accelerate your return on investment
@@ -92,7 +92,7 @@ const InvestmentIncentivesTable = () => {
         </div>
 
         {/* Table - Desktop */}
-        <div className="hidden md:block bg-white rounded-2xl shadow-sm overflow-hidden">
+        <div className="hidden md:block border border-gray-200 rounded-xl overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-gray-50">
@@ -113,15 +113,13 @@ const InvestmentIncentivesTable = () => {
                   <tr key={index} className="hover:bg-gray-50/50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0">
-                          <item.icon className="w-5 h-5 text-[#C9A84C]" />
-                        </div>
+                        <item.icon className="w-5 h-5 text-[#C9A84C] flex-shrink-0" />
                         <span className="font-semibold text-gray-900">{item.incentive}</span>
                       </div>
                     </td>
                     <td className="px-6 py-4 text-gray-600">{item.details}</td>
                     <td className="px-6 py-4">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#C9A84C]/10 text-[#C9A84C]">
+                      <span className="inline-flex items-center px-3 py-1 rounded text-sm font-medium bg-[#C9A84C]/10 text-[#C9A84C]">
                         {item.eligibility}
                       </span>
                     </td>
@@ -135,15 +133,13 @@ const InvestmentIncentivesTable = () => {
         {/* Cards - Mobile */}
         <div className="md:hidden grid grid-cols-1 gap-4">
           {incentives.map((item, index) => (
-            <div key={index} className="bg-white rounded-2xl p-6 shadow-sm">
+            <div key={index} className="border border-gray-200 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center">
-                  <item.icon className="w-5 h-5 text-[#C9A84C]" />
-                </div>
+                <item.icon className="w-5 h-5 text-[#C9A84C] flex-shrink-0" />
                 <h3 className="font-semibold text-gray-900">{item.incentive}</h3>
               </div>
               <p className="text-gray-600 text-sm mb-3">{item.details}</p>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#C9A84C]/10 text-[#C9A84C]">
+              <span className="inline-flex items-center px-3 py-1 rounded text-sm font-medium bg-[#C9A84C]/10 text-[#C9A84C]">
                 {item.eligibility}
               </span>
             </div>

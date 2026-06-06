@@ -5,7 +5,7 @@ import InvestmentIncentivesTable from "../../services/InvestmentIncentivesTable"
 import MarketAccessTable from "../../services/MarketAccessTable";
 import KeyFactsTable from "../../services/KeyFactsTable";
 export const metadata = {
-  title: "Investment & Business Setup Rwanda | Bonet Elite",
+  title: "Investment & Business Setup Rwanda",
   description:
     "Company registration, licensing and investment support in Rwanda. Bonet Elite helps entrepreneurs start businesses in Kigali fast.",
   keywords:
@@ -15,7 +15,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     url: "https://bonet.rw/investment",
-    title: "Investment & Business Setup Rwanda | Bonet Elite",
+    title: "Investment & Business Setup Rwanda",
     description:
       "Company registration, licensing and investment support in Rwanda. Bonet Elite helps entrepreneurs start businesses in Kigali fast.",
     images: [
@@ -31,7 +31,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@BonetElite",
-    title: "Investment & Business Setup Rwanda | Bonet Elite",
+    title: "Investment & Business Setup Rwanda",
     description:
       "Company registration, licensing and investment support in Rwanda. Bonet Elite helps entrepreneurs start businesses in Kigali fast.",
     images: ["https://bonet.rw/assets/images/logo.png"],

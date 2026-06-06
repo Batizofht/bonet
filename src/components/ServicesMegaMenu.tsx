@@ -65,7 +65,7 @@ export default function ServicesMegaMenu({ t, onClose }: ServicesMegaMenuProps) 
   ];
 
   return (
-    <div className="fixed left-1/2 top-[72px] z-50 w-[min(96vw,1120px)] -translate-x-1/2 rounded-2xl border border-gray-200 bg-white shadow-[0_25px_60px_rgba(15,23,42,0.18)] max-h-[calc(100vh-96px)] overflow-y-auto">
+    <div className="fixed left-1/2 top-[72px] z-50 w-[min(96vw,1120px)] -translate-x-1/2 rounded-xl border border-gray-200 bg-white shadow-lg max-h-[calc(100vh-96px)] overflow-y-auto">
       <div className="flex flex-col gap-3 border-b border-gray-200 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-5">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-[#C9A84C]">Business Services</p>

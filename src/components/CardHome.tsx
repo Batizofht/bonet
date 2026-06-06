@@ -19,30 +19,29 @@ const BookingCards = () => {
     },
     {
       id: "consulting",
-      title: t("menu.businessConsulting"),
-      description: t("service.consulting.description"),
+      title: t("service.consulting.title"),
+      description: "Company registration, licensing, and RDB support for foreign investors",
       icon: Briefcase,
-      route: "/consulting",
+      route: "/business-registration",
     },
     {
       id: "hr",
       title: t("menu.hrAndAdminSupport"),
       description: t("heroServices.hr_desc"),
       icon: Users,
-      route: "/hrsupport",
+      route: "/hr-recruitment",
     },
     {
       id: "travel",
       title: t("menu.travelAndHospitality"),
-      description: t("heroServices.travel_desc"),
+      description: "Luxury executive travel, relocation, and VIP concierge services",
       icon: Plane,
-      route: "/travel",
+      route: "/executive-travel",
     },
   ];
 
   return (
     <>
-      {/* Quick Service Cards - Elevated Design */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 max-w-6xl mx-auto px-2 md:px-4">
         {services.map((service, index) => {
           const IconComponent = service.icon;
@@ -50,41 +49,30 @@ const BookingCards = () => {
             <Link
               key={service.id}
               href={service.route}
-              className="group relative bg-white rounded-xl md:rounded-2xl p-4 md:p-6 cursor-pointer transition-all duration-300 hover:shadow-2xl hover:shadow-gray-200/50 hover:-translate-y-1 border border-gray-100 hover:border-[#C9A84C]/20 overflow-hidden"
+              className="group relative bg-white rounded-xl p-4 md:p-6 border border-gray-200 hover:border-[#C9A84C] transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                setSelectedService(service.id);
+              }}
             >
-              {/* Subtle gradient overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#C9A84C]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              {/* Number indicator */}
-              <div className="absolute top-3 right-3 md:top-4 md:right-4 text-gray-200 font-bold text-lg md:text-xl group-hover:text-[#C9A84C]/30 transition-colors">
-                0{index + 1}
-              </div>
+              <IconComponent className="w-6 h-6 md:w-7 md:h-7 text-[#C9A84C] mb-3 md:mb-4" />
 
-              <div className="relative">
-                {/* Icon with enhanced styling */}
-                <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-gray-50 flex items-center justify-center mb-3 md:mb-4 group-hover:bg-[#C9A84C] transition-all duration-300 shadow-sm group-hover:shadow-md">
-                  <IconComponent className="w-5 h-5 md:w-6 md:h-6 text-[#C9A84C] group-hover:text-white transition-colors duration-300" />
-                </div>
+              <h3 className="text-gray-900 font-bold text-sm md:text-base mb-2 line-clamp-1">
+                {service.title}
+              </h3>
+              <p className="text-gray-500 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
+                {service.description}
+              </p>
 
-                <h3 className="text-gray-900 font-bold text-sm md:text-base mb-2 group-hover:text-[#C9A84C] transition-colors line-clamp-1">
-                  {service.title}
-                </h3>
-                <p className="text-gray-500 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
-                  {service.description}
-                </p>
-
-                {/* Refined link styling */}
-                <div className="flex items-center gap-1 text-[#C9A84C] text-xs md:text-sm font-semibold group/link">
-                  <span className="group-hover/link:mr-1 transition-all">{t("heroServices.learn_more")}</span>
-                  <ChevronRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                </div>
+              <div className="flex items-center gap-1 text-[#C9A84C] text-xs md:text-sm font-semibold">
+                <span>{t("heroServices.learn_more")}</span>
+                <ChevronRight className="w-4 h-4" />
               </div>
             </Link>
           );
         })}
       </div>
 
-      {/* Modal - Redesigned */}
       {selectedService && (() => {
         const service = services.find(s => s.id === selectedService);
         if (!service) return null;
@@ -96,19 +84,17 @@ const BookingCards = () => {
             onClick={() => setSelectedService(null)}
           >
             <div
-              className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl"
+              className="bg-white rounded-xl max-w-md w-full p-6 border border-gray-200"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-[#C9A84C] flex items-center justify-center">
-                    <IconComponent className="w-6 h-6 text-white" />
-                  </div>
+                  <IconComponent className="w-6 h-6 text-[#C9A84C]" />
                   <h3 className="text-xl font-bold text-gray-900">{service.title}</h3>
                 </div>
                 <button
                   onClick={() => setSelectedService(null)}
-                  className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200"
+                  className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -118,12 +104,12 @@ const BookingCards = () => {
 
               <div className="flex gap-3">
                 <Link href={service.route} className="flex-1">
-                  <button className="w-full bg-[#C9A84C] text-white py-3 rounded-xl font-semibold text-sm hover:bg-[#B8973B] transition-colors">
+                  <button className="w-full bg-[#C9A84C] text-white py-3 rounded-lg font-semibold text-sm hover:bg-[#B8973B] transition-colors cursor-pointer">
                     {t("heroServices.learn_more")}
                   </button>
                 </Link>
                 <Link href="/contact" className="flex-1">
-                  <button className="w-full border-2 border-[#C9A84C] text-[#C9A84C] py-3 rounded-xl font-semibold text-sm hover:bg-[#C9A84C]/10 transition-colors">
+                  <button className="w-full border border-[#C9A84C] text-[#C9A84C] py-3 rounded-lg font-semibold text-sm hover:bg-[#C9A84C]/5 transition-colors cursor-pointer">
                     {t("heroServices.book_consultation")}
                   </button>
                 </Link>

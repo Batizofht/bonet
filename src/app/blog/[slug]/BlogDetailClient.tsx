@@ -26,7 +26,7 @@ export default function BlogDetailClient() {
   useEffect(() => {
     if (slug) {
       const titleFromSlug = slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ');
-      document.title = `${titleFromSlug} | Bonet Elite Services Blog`;
+      document.title = `${titleFromSlug} | Bonet Elite Services`;
     }
   }, [slug]);
   
@@ -268,7 +268,7 @@ export default function BlogDetailClient() {
 
   if (loading || !blog) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading blog post...</p>
@@ -279,7 +279,7 @@ export default function BlogDetailClient() {
 
   if (error || !blog) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center max-w-2xl mx-auto px-4">
           <div className="text-red-500 text-6xl mb-4">⚠️</div>
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Blog Not Found</h1>
@@ -346,9 +346,9 @@ export default function BlogDetailClient() {
   const safeTitle = slug ? slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ') : 'Blog Post';
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white pb-16 md:pb-20">
       <div className="max-w-4xl mx-auto px-4 pb-8 pt-8">
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 text-center leading-tight">
+        <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-6 text-center leading-tight">
           {blog.title}
         </h1>
 
@@ -378,7 +378,7 @@ export default function BlogDetailClient() {
         </div>
 
         {blog.image && (
-          <div className="relative rounded-lg overflow-hidden mb-8 bg-white shadow-sm border border-gray-200">
+          <div className="relative rounded-lg overflow-hidden mb-8 bg-white border border-gray-200">
             <img
               src={`https://api.bonet.rw:8443/bonetBackend/public/${blog.image}`}
               alt={`${blog.title} - Bonet Elite Services, Kigali Rwanda`}
@@ -400,7 +400,7 @@ export default function BlogDetailClient() {
         )}
 
         <article className="max-w-none">
-          <div className="bg-white rounded-lg p-8 shadow-sm border border-gray-200 overflow-hidden">
+          <div className="bg-white rounded-lg p-8 border border-gray-200 overflow-hidden">
             {blog.description ? (
               <>
               <div
@@ -412,16 +412,16 @@ export default function BlogDetailClient() {
 <div className="mt-8 pt-6 border-t border-gray-200">
   <h2 className="text-lg font-bold text-gray-800 mb-3">Explore Bonet Elite Services</h2>
   <div className="flex flex-wrap gap-3">
-    <Link href="/about" className="inline-flex items-center gap-1 px-4 py-2 bg-blue-50 text-[#188bff] text-sm font-medium rounded-full hover:bg-blue-100 transition-colors">
+    <Link href="/about" className="inline-flex items-center gap-1 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors">
       About Our Team
     </Link>
-    <Link href="/services" className="inline-flex items-center gap-1 px-4 py-2 bg-blue-50 text-[#188bff] text-sm font-medium rounded-full hover:bg-blue-100 transition-colors">
+    <Link href="/services" className="inline-flex items-center gap-1 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors">
       Our Services
     </Link>
-    <Link href="/blogs" className="inline-flex items-center gap-1 px-4 py-2 bg-blue-50 text-[#188bff] text-sm font-medium rounded-full hover:bg-blue-100 transition-colors">
+    <Link href="/blogs" className="inline-flex items-center gap-1 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors">
       More Articles
     </Link>
-    <Link href="/contact" className="inline-flex items-center gap-1 px-4 py-2 bg-blue-50 text-[#188bff] text-sm font-medium rounded-full hover:bg-blue-100 transition-colors">
+    <Link href="/contact" className="inline-flex items-center gap-1 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors">
       Contact Us
     </Link>
   </div>
@@ -433,9 +433,9 @@ export default function BlogDetailClient() {
       <button
         onClick={handleClap}
         disabled={clapping}
-        className={`flex items-center justify-center p-3 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 ${
+        className={`flex items-center justify-center p-3 rounded-lg transition-all duration-300 ${
           userClapped 
-            ? 'bg-amber-100 text-amber-600 border-2 border-amber-300 shadow-md' 
+            ? 'bg-amber-100 text-amber-600 border-2 border-amber-300' 
             : 'bg-gray-100 text-gray-600 hover:bg-gray-200 border-2 border-gray-300'
         } ${clapping ? 'animate-pulse' : ''}`}
         title={userClapped ? "Unclap" : "Clap for this article"}

@@ -104,7 +104,7 @@ const HotelCard = ({ bookHotel }) => {
     <div className="min-h-screen  pb-8 ">
       <div className="mx-0 md:max-w-4xl md:mx-auto md:px-4 px-2">
         {/* Form Container */}
-        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+        <div className="bg-white rounded-xl p-8 border border-gray-200">
           <Form
             layout="vertical"
             form={form}

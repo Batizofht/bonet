@@ -205,14 +205,14 @@ const QuickButtons = () => {
         <>
           {/* Black overlay */}
           <div
-            className="fixed inset-0 z-40 h-[100vh] bg-black/45 backdrop-blur-[1px]"
+            className="fixed inset-0 z-40 h-[100vh] bg-black/45"
             onClick={() => setIsOpen(false)}
           />
           
           {/* Mobile side menu */}
           <div
             style={{zIndex:9999}}
-            className="fixed top-0 right-0 h-[100dvh] w-[80vw] max-w-[320px] bg-white shadow-2xl"
+            className="fixed top-0 right-0 h-[100dvh] w-[80vw] max-w-[320px] bg-white shadow-lg"
           >
             <div className="flex h-full flex-col">
               {/* Header */}

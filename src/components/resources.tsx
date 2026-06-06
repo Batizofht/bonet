@@ -89,29 +89,26 @@ export default function Blog() {
       className="py-16 px-4 max-w-6xl mx-auto"
     > 
       {/* BLOG HEADER */}
-      <div className="text-center mb-16">
-        <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-          Resources
-        </span>
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">
-          {t("blog.header.title1")} <span className="text-[#C9A84C]">{t("blog.header.title2")}</span>
+      <div className="text-center mb-10 lg:mb-14">
+        <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-[0.2em] mb-3">Resources</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+          Blog Resources
         </h2>
-
-        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+        <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
           {t("Discover valuable articles and updates from our experts")}
         </p>
       </div>
 
       {/* Loader/Error States */}
       {loading && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
-              <div className="w-full h-48 bg-gray-200 animate-pulse"></div>
-              <div className="p-6">
-                <div className="w-3/4 h-6 bg-gray-200 rounded animate-pulse mb-3"></div>
-                <div className="w-full h-4 bg-gray-200 rounded animate-pulse mb-2"></div>
-                <div className="w-2/3 h-4 bg-gray-200 rounded animate-pulse mb-4"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className="bg-white rounded-xl overflow-hidden border border-gray-200">
+              <div className="h-48 bg-gray-100 animate-pulse"></div>
+              <div className="p-5 space-y-3">
+                <div className="h-10 bg-gray-100 rounded animate-pulse"></div>
+                <div className="h-10 bg-gray-100 rounded animate-pulse"></div>
+                <div className="h-4 w-24 bg-gray-100 rounded animate-pulse"></div>
               </div>
             </div>
           ))}
@@ -127,35 +124,34 @@ export default function Blog() {
       )}
 
       {/* Blog Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
         {blogs.map((post, index) => (
           <article
             key={index}
-            className="group bg-white rounded-2xl overflow-hidden border border-gray-300/30 hover:border-[#C9A84C]/30 transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
+            className="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-colors"
           >
             {/* Blog Image */}
-            <div className="relative h-52 overflow-hidden">
+            <div className="relative h-48 overflow-hidden bg-gray-100">
               <img
                 src={`https://api.bonet.rw:8443/bonetBackend/public/${post.image}`}
                 alt={post.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
               />
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-              {/* Date Badge - Top Left */}
-              <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1.5 shadow-md">
+              {/* Date Badge */}
+              <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm rounded-md px-2.5 py-1">
                 <div className="flex items-center gap-1.5 text-xs text-gray-600">
-                  <Calendar className="w-3.5 h-3.5 text-[#C9A84C]" />
+                  <Calendar className="w-3 h-3 text-[#C9A84C]" />
                   <span className="font-medium">{post.created_at ? formatDate(post.created_at) : 'Recent'}</span>
                 </div>
               </div>
             </div>
 
             {/* Blog Content */}
-            <div className="p-5 md:p-6">
+            <div className="p-5">
               {/* Title */}
-              <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-[#C9A84C] transition-colors duration-300 line-clamp-2 leading-snug">
+              <h3 className="text-base font-bold text-gray-900 mb-2 line-clamp-2 leading-snug">
                 {post.title}
               </h3>
 
@@ -167,10 +163,10 @@ export default function Blog() {
               {/* Read More Link */}
               <Link
                 href={`/blog/${slugify(post.title)}`}
-                className="inline-flex items-center gap-2 text-[#C9A84C] font-semibold text-sm group/btn hover:gap-3 transition-all duration-300"
+                className="inline-flex items-center gap-1.5 text-[#C9A84C] font-semibold text-sm hover:gap-2 transition-all"
               >
                 Read Article
-                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </article>
@@ -181,9 +177,9 @@ export default function Blog() {
       {blogs.length > 0 && (
         <div className="text-center mt-12">
           <Link href="/blogs">
-            <button className="inline-flex items-center gap-2 px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors shadow-lg hover:shadow-xl">
+            <button className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors">
               View All Articles
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4" />
             </button>
           </Link>
         </div>

@@ -1,7 +1,7 @@
 import BusinessRegistrationClient from "./BusinessRegistrationClient";
 
 export const metadata = {
-  title: "Business Registration Rwanda | 6-Hour Company Setup | Bonet Elite",
+  title: "Business Registration Rwanda | 6-Hour Company Setup",
   description:
     "Register your company in Rwanda in as little as 6 hours. No government registration fee. Complete RDB registration, TIN, RSSB, licensing, and bank account support for foreign investors.",
   keywords:

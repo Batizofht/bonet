@@ -63,93 +63,100 @@ export default function InvestmentBusinessSetup() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16">
-      {/* Header */}
-      <div className="text-center mb-16">
-        <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-          Services
-        </span>
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-          Investment & <span className="text-[#C9A84C]">Business Setup</span>
-        </h1>
-        <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-          {t("investmentBusinessSetup.title")}
-        </p>
-      </div>
+    <div>
+      {/* Header Section */}
+      <section className="border-y border-gray-100 bg-gray-50/50">
+        <div className="max-w-6xl mx-auto px-4 py-20">
+          <div className="text-center">
+            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+              Services
+            </span>
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
+              Investment & Business Setup
+            </h1>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
+              {t("investmentBusinessSetup.title")}
+            </p>
 
-      {/* Buttons */}
-      <div className="flex justify-center mb-16">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-          <button
-            onClick={() => setIsPopupOpen(true)}
-            className="flex items-center gap-3 bg-[#C9A84C] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#B8973B] transition-colors duration-300"
-          >
-            <Phone className="w-5 h-5" />
-            {t("investmentBusinessSetup.button.openModal")}
-          </button>
+            {/* Buttons */}
+            <div className="flex justify-center mt-10">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                <button
+                  onClick={() => setIsPopupOpen(true)}
+                  className="inline-flex items-center gap-2 bg-[#C9A84C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B8973B] transition-colors"
+                >
+                  <Phone className="w-4 h-4" />
+                  {t("investmentBusinessSetup.button.openModal")}
+                </button>
 
-          <button
-            onClick={openWhatsApp}
-            className="flex items-center gap-3 border border-gray-300 text-gray-900 px-8 py-4 rounded-xl font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-colors duration-300"
-          >
-            <MessageCircle className="w-5 h-5" />
-            {t("travelHospitality.page.buttons.quickContact")}
-          </button>
-        </div>
-      </div>
-
-      {/* Service Cards */}
-      <div className="space-y-8">
-        {investmentServices.map((service, index) => {
-          const IconComponent = service.icon;
-          return (
-            <div
-              key={service.key}
-              className={`flex flex-col lg:flex-row items-center overflow-hidden ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"}`}
-            >
-              {/* Image */}
-              <div className="lg:w-2/5 w-full relative">
-                <div className="relative overflow-hidden h-80">
-                  <img
-                    src={service.image}
-                    alt={t(`investmentBusinessSetup.services.${service.key}.title`)}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="lg:w-3/5 w-full p-8 lg:p-12">
-                <div className="flex items-center gap-3 mb-2">
-                  <IconComponent className="w-7 h-7 text-[#C9A84C] flex-shrink-0" strokeWidth={1.5} />
-                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900">
-                    {t(`investmentBusinessSetup.services.${service.key}.title`)}
-                  </h3>
-                </div>
-                <p className="text-gray-500 font-medium text-sm uppercase tracking-wide mb-6">
-                  {t(`investmentBusinessSetup.services.${service.key}.subtitle`)}
-                </p>
-
-                <p className="text-gray-600 leading-relaxed text-lg mb-6">
-                  {t(`investmentBusinessSetup.services.${service.key}.description`)}
-                </p>
-
-                {/* Features */}
-                <div className="hidden" />
+                <button
+                  onClick={openWhatsApp}
+                  className="inline-flex items-center gap-2 border border-gray-300 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  {t("travelHospitality.page.buttons.quickContact")}
+                </button>
               </div>
             </div>
-          );
-        })}
-      </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Cards */}
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-20">
+          <div className="grid gap-10">
+            {investmentServices.map((service, index) => {
+              const IconComponent = service.icon;
+              return (
+                <div
+                  key={service.key}
+                  className={`flex flex-col lg:flex-row items-center ${
+                    index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                  }`}
+                >
+                  {/* Image */}
+                  <div className="lg:w-2/5 w-full">
+                    <div className="relative overflow-hidden rounded-xl border border-gray-200 bg-gray-50 h-80">
+                      <img
+                        src={service.image}
+                        alt={t(`investmentBusinessSetup.services.${service.key}.title`)}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="lg:w-3/5 w-full px-0 lg:px-12 py-8 lg:py-0">
+                    <div className="flex items-center gap-3 mb-2">
+                      <IconComponent className="w-6 h-6 text-[#C9A84C] flex-shrink-0" strokeWidth={1.5} />
+                      <h3 className="text-xl lg:text-2xl font-bold text-gray-900">
+                        {t(`investmentBusinessSetup.services.${service.key}.title`)}
+                      </h3>
+                    </div>
+                    <p className="text-gray-500 font-medium text-xs uppercase tracking-wide mt-3 mb-4">
+                      {t(`investmentBusinessSetup.services.${service.key}.subtitle`)}
+                    </p>
+                    <p className="text-gray-600 leading-relaxed">
+                      {t(`investmentBusinessSetup.services.${service.key}.description`)}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* Popup Form Modal */}
       {isPopupOpen && (
         <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 md:p-8 border border-gray-200 my-auto max-h-[90vh] overflow-y-auto">
+          <div className="relative bg-white rounded-xl w-full max-w-md p-6 md:p-8 border border-gray-200 my-auto max-h-[90vh] overflow-y-auto">
             {/* Close button */}
             <button
               onClick={() => setIsPopupOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
+              className="absolute top-4 right-4 w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors"
             >
               <X className="w-4 h-4 text-gray-600" />
             </button>
@@ -157,13 +164,10 @@ export default function InvestmentBusinessSetup() {
             <div>
               {/* Header */}
               <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-[#C9A84C] rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Target className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {t("investmentBusinessSetup.modal.title")}
                 </h3>
-                <p className="text-gray-500">
+                <p className="text-gray-500 text-sm">
                   {t("investmentBusinessSetup.modal.description")}
                 </p>
               </div>
@@ -224,13 +228,13 @@ export default function InvestmentBusinessSetup() {
                   <button
                     onClick={() => setIsPopupOpen(false)}
                     type="button"
-                    className="px-6 py-3 rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors font-semibold"
+                    className="px-6 py-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors font-semibold"
                   >
                     {t("investmentBusinessSetup.button.cancel")}
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-3 rounded-xl bg-[#C9A84C] text-white font-semibold hover:bg-[#B8973B] transition-colors"
+                    className="px-6 py-3 rounded-lg bg-[#C9A84C] text-white font-semibold hover:bg-[#B8973B] transition-colors"
                   >
                     {t("investmentBusinessSetup.button.submit")}
                   </button>

@@ -4,7 +4,7 @@ import ContactUs from "../../contact/contact";
 import { Suspense } from "react";
 
 export const metadata = {
-  title: "Contact Us | Bonet Elite Services Rwanda",
+  title: "Contact Us",
   description:
     "Contact Bonet Elite Services for bookings, business support and concierge services in Rwanda. Call +250 726 300 260 or visit us in Kigali.",
   keywords:
@@ -14,7 +14,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     url: "https://bonet.rw/contact",
-    title: "Contact Us | Bonet Elite Services Rwanda",
+    title: "Contact Us",
     description:
       "Contact Bonet Elite Services for bookings, business support and concierge services in Rwanda. Call +250 726 300 260 or visit us in Kigali.",
     images: [
@@ -29,7 +29,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Us | Bonet Elite Services Rwanda",
+    title: "Contact Us",
     description:
       "Contact Bonet Elite Services for bookings, business support and concierge services in Rwanda. Call +250 726 300 260.",
     images: ["https://bonet.rw/assets/images/logo.png"],

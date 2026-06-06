@@ -13,10 +13,10 @@ const { Option } = Select;
 const ContactForm = ({ form, onFinish, t, isLoading }) => (
   <div className="bg-white rounded-xl border border-gray-200 p-8 w-full max-w-xl">
     <div className="mb-8">
-      <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+      <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider">
         {t("contactInform.form.title")}
-      </span>
-      <h2 className="text-3xl font-bold text-gray-900 mt-2 mb-2">
+      </p>
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 mb-2">
         Get in Touch
       </h2>
       <p className="text-gray-500 text-sm">
@@ -136,10 +136,10 @@ const ContactForm = ({ form, onFinish, t, isLoading }) => (
 const ContactInfo = ({ t }) => (
   <div className="bg-white rounded-xl border border-gray-200 p-8 w-full max-w-xl">
     <div className="mb-8">
-      <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+      <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider">
         {t("contactInformation.title.part1")}
-      </span>
-      <h2 className="text-3xl font-bold text-gray-900 mt-2 mb-3">
+      </p>
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 mb-3">
         {t("contactInformation.title.part2")}
       </h2>
       <p className="text-gray-500 text-sm leading-relaxed">
@@ -163,9 +163,7 @@ const ContactInfo = ({ t }) => (
 
     <div className="space-y-5">
       <div className="flex items-center gap-4">
-        <div className="w-10 h-10 bg-[#C9A84C]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-          <FaPhoneAlt className="text-[#C9A84C]" />
-        </div>
+        <FaPhoneAlt className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
         <div>
           <p className="text-xs text-gray-500 mb-0.5">{t("contactInformation.callWhatsApp")}</p>
           <a href="tel:+250726300260" className="font-semibold text-gray-900 hover:text-[#C9A84C] transition-colors text-sm">
@@ -175,9 +173,7 @@ const ContactInfo = ({ t }) => (
       </div>
 
       <div className="flex items-center gap-4">
-        <div className="w-10 h-10 bg-[#C9A84C]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-          <FaEnvelope className="text-[#C9A84C]" />
-        </div>
+        <FaEnvelope className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
         <div>
           <p className="text-xs text-gray-500 mb-0.5">{t("contactInformation.email")}</p>
           <a href="mailto:info@bonet.rw" className="font-semibold text-gray-900 hover:text-[#C9A84C] transition-colors text-sm">
@@ -187,9 +183,7 @@ const ContactInfo = ({ t }) => (
       </div>
 
       <div className="flex items-center gap-4">
-        <div className="w-10 h-10 bg-[#C9A84C]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-          <FaMapMarkerAlt className="text-[#C9A84C]" />
-        </div>
+        <FaMapMarkerAlt className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
         <div>
           <p className="text-xs text-gray-500 mb-0.5">Location</p>
           <p className="font-semibold text-gray-900 text-sm">{t("contactInformation.location")}</p>
@@ -197,9 +191,7 @@ const ContactInfo = ({ t }) => (
       </div>
 
       <div className="flex items-center gap-4">
-        <div className="w-10 h-10 bg-[#C9A84C]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-          <FaPhoneAlt className="text-[#C9A84C]" />
-        </div>
+        <FaPhoneAlt className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
         <div>
           <p className="text-xs text-gray-500 mb-0.5">{t("contactInformation.hours")}</p>
           <p className="font-semibold text-gray-900 text-sm">{t("contactInformation.officeHours")}</p>
@@ -253,13 +245,13 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pb-16">
       <div className="max-w-5xl mx-auto px-4 py-12 flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
         <ContactForm form={form} onFinish={handleSubmit} t={t} isLoading={isLoading} />
         <ContactInfo t={t} />
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 pb-12">
+      <div className="max-w-5xl mx-auto px-4 pb-20">
         <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
           <div className="px-6 py-5 border-b border-gray-100">
             <h3 className="text-lg font-bold text-gray-900">Find Us</h3>

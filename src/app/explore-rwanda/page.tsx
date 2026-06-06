@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Explore Rwanda | Investment, Tourism & Living Guide | Bonet Elite",
+  title: "Explore Rwanda | Investment, Tourism & Living Guide",
   description: "Discover Rwanda: Africa's safest country for investment, tourism, and living. Key sectors, living costs, gallery, and business opportunities.",
   keywords: "Explore Rwanda, Rwanda investment, Rwanda tourism, Rwanda living, Kigali business, Rwanda economy",
   authors: [{ name: "Bonet Elite Services" }],
@@ -59,41 +59,31 @@ export default function ExploreRwandaPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <div
-        className="relative w-full h-[50vh] bg-cover bg-center overflow-hidden"
+      <div className="relative w-full h-[20vh] sm:h-[30vh] bg-gray-900 bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: "url('/image/2.jpg')" }}
       >
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
-          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-            Discover
-          </span>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mt-4 mb-6 max-w-4xl leading-[1.1] tracking-tight">
-            Explore <span className="text-[#C9A84C]">Rwanda</span>
-          </h1>
-          <p className="text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
-            Business, investment, and travel — your complete guide to the Land of a Thousand Hills
-          </p>
+        <div className="absolute inset-0 bg-black/90" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <div className="w-2 h-2 bg-[#C9A84C] rotate-45 mb-4" />
+          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Discover</p>
+          <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-wider">Explore Rwanda</h1>
         </div>
       </div>
 
-      {/* Rwanda at a Glance */}
-      <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-4 py-20">
-          <div className="text-center mb-16">
-            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-              The Opportunity
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-              Rwanda at a <span className="text-[#C9A84C]">Glance</span>
+      <section className="bg-white py-16 lg:py-24">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12 lg:mb-16">
+            <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">The Opportunity</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+              Rwanda at a Glance
             </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-              Key facts that make Rwanda one of Africa&apos;s most attractive destinations
+          </div>
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+              Key facts that make Rwanda one of Africa&apos;s most attractive destinations for business, investment, and living.
             </p>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="flex flex-wrap justify-center gap-x-14 gap-y-8">
             {[
               { value: "13M", label: "Population" },
               { value: "#2", label: "Safest in Africa" },
@@ -101,33 +91,30 @@ export default function ExploreRwandaPage() {
               { value: "6hrs", label: "Company Setup" },
             ].map((item, index) => (
               <div key={index} className="text-center">
-                <div className="text-6xl font-bold text-[#C9A84C] mb-3">{item.value}</div>
-                <p className="text-gray-900 font-semibold">{item.label}</p>
+                <div className="text-4xl lg:text-5xl font-bold text-[#C9A84C] mb-2">{item.value}</div>
+                <p className="text-gray-600 text-sm uppercase tracking-wider">{item.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Key Sectors */}
-      <section className="bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 py-20">
-          <div className="text-center mb-16">
-            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-              Investment
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-              Key <span className="text-[#C9A84C]">Sectors</span>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12 lg:mb-16">
+            <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Investment</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+              Key Sectors
             </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-500 text-sm sm:text-base mt-4 max-w-2xl mx-auto">
               Rwanda&apos;s most promising industries for growth and investment
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sectors.map((sector, index) => (
-              <div key={index} className="bg-white p-8 rounded-2xl border border-gray-200/30 hover:border-[#C9A84C]/40 transition-colors duration-300">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{sector.name}</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {sectors.map((sector, i) => (
+              <div key={i} className="bg-white rounded-xl border border-gray-200 p-6 lg:p-8">
+                <div className="text-4xl font-bold text-[#C9A84C]/20 mb-3 leading-none">{(i + 1).toString().padStart(2, "0")}</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">{sector.name}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{sector.desc}</p>
               </div>
             ))}
@@ -135,60 +122,55 @@ export default function ExploreRwandaPage() {
         </div>
       </section>
 
-      {/* Living in Rwanda */}
-      <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-4 py-20">
-          <div className="text-center mb-16">
-            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-              Lifestyle
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-              Living in <span className="text-[#C9A84C]">Rwanda</span>
+      <section className="bg-white py-16 lg:py-24">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12 lg:mb-16">
+            <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Lifestyle</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+              Living in Rwanda
             </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-500 text-sm sm:text-base mt-4 max-w-2xl mx-auto">
               Quality of life factors for expats and residents
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {living.map((item, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 border border-gray-200/30 hover:border-[#C9A84C]/40 hover:shadow-lg transition-all duration-300">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+          <div className="divide-y divide-gray-200 max-w-4xl mx-auto">
+            {living.map((item, i) => (
+              <div key={i} className="grid md:grid-cols-3 gap-4 md:gap-8 py-6 md:py-8 first:pt-0">
+                <div className="md:text-right">
+                  <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider">0{i + 1}</p>
+                  <h3 className="text-lg font-bold text-gray-900 mt-1">{item.title}</h3>
+                </div>
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed md:col-span-2">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Gallery */}
-      <section className="bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 py-20">
-          <div className="text-center mb-16">
-            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-              Gallery
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-              Visit <span className="text-[#C9A84C]">Rwanda</span>
+      <section className="bg-gray-50 py-16 lg:py-24">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12 lg:mb-16">
+            <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Gallery</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+              Visit Rwanda
             </h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-500 text-sm sm:text-base mt-4 max-w-2xl mx-auto">
               Destinations and experiences across the Land of a Thousand Hills
             </p>
           </div>
-
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {galleryImages.map((img, i) => (
-              <div key={i} className="group overflow-hidden rounded-2xl border border-gray-200/30 bg-white hover:border-[#C9A84C]/40 transition-colors duration-300">
+              <div key={i} className="rounded-lg border border-gray-200 bg-white overflow-hidden">
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
                     src={img.src}
                     alt={img.title}
                     loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                   />
                 </div>
-                <div className="p-4">
-                  <p className="text-sm font-semibold text-gray-900 leading-tight">{img.title}</p>
+                <div className="p-3">
+                  <p className="text-xs font-semibold text-gray-900 uppercase tracking-wider">{img.title}</p>
                 </div>
               </div>
             ))}
@@ -196,22 +178,21 @@ export default function ExploreRwandaPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <div
-        className="relative w-full h-[40vh] bg-cover bg-center"
-        style={{ backgroundImage: "url('/image/1.jpg')" }}
+      <div className="relative w-full bg-cover bg-center overflow-hidden"
+        style={{ backgroundImage: "url('/image/1.jpg')", minHeight: "30vh" }}
       >
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="relative flex flex-col justify-center items-center text-center px-4 h-full">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+        <div className="absolute inset-0 bg-black/90" />
+        <div className="relative flex flex-col items-center justify-center text-center px-4 py-16 lg:py-20">
+          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Get Started</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
             Ready to Explore Rwanda?
           </h2>
-          <p className="text-gray-300 mb-6 max-w-xl">
+          <p className="text-white/75 text-sm sm:text-base max-w-xl mb-8 leading-relaxed">
             Whether you&apos;re investing, relocating, or visiting — we make your Rwanda experience seamless.
           </p>
           <Link
             href="/contact?service=consultation"
-            className="inline-flex items-center justify-center px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 bg-[#C9A84C] text-white font-semibold rounded-lg hover:bg-[#B8973B] transition-colors text-sm"
           >
             Book Your Free Consultation
           </Link>

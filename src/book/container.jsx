@@ -83,30 +83,23 @@ const ContainerWithButtons = () => {
 
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-6xl mx-auto px-4 pt-2 md:py-10">
-        {/* Header */}
-        <div className="text-center mb-5">
-          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-            Reservations
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-            Book <span className="text-[#C9A84C]">Now</span>
-          </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Hotels, apartments, transport, and tours — reserve your Rwanda experience
-          </p>
+    <div className="min-h-screen bg-white pb-16 md:pb-20">
+      {/* Header */}
+      <div className="max-w-6xl mx-auto px-4 pt-8 md:pt-12 pb-4">
+        <div className="text-center">
+          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Reservations</p>
+          <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 tracking-wider">Book Now</h1>
         </div>
-          
-          
+      </div>
 
+      <div className="max-w-6xl mx-auto px-4 pb-8 md:pb-12">
         {/* Tabs */}
-        <div className="mb-0 bg-white rounded-2xl p-2 border border-gray-200/30 relative">
+        <div className="mb-8 bg-white rounded-xl border border-gray-200 p-2 relative">
           {/* Left Arrow */}
           {showLeftArrow && (
             <button
               onClick={() => scroll('left')}
-              className="absolute left-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white shadow-md rounded-full flex items-center justify-center text-[#C9A84C] hover:bg-gray-50 transition-all md:hidden"
+              className="absolute left-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white border border-gray-200 rounded flex items-center justify-center text-[#C9A84C] hover:bg-gray-50 transition-all md:hidden"
               aria-label="Scroll left"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -116,7 +109,7 @@ const ContainerWithButtons = () => {
           {showRightArrow && (
             <button
               onClick={() => scroll('right')}
-              className="absolute right-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white shadow-md rounded-full flex items-center justify-center text-[#C9A84C] hover:bg-gray-50 transition-all md:hidden"
+              className="absolute right-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white border border-gray-200 rounded flex items-center justify-center text-[#C9A84C] hover:bg-gray-50 transition-all md:hidden"
               aria-label="Scroll right"
             >
               <ChevronRight className="w-5 h-5" />
@@ -136,7 +129,7 @@ const ContainerWithButtons = () => {
                 <button
                   key={item.key}
                   onClick={() => handleClick(item.key)}
-                  className={`flex items-center gap-2 px-4 md:px-6 py-3 rounded-xl font-semibold text-sm transition-colors duration-200 whitespace-nowrap flex-shrink-0
+                  className={`flex items-center gap-2 px-4 md:px-6 py-3 rounded-lg font-semibold text-sm transition-colors duration-200 whitespace-nowrap flex-shrink-0
                     ${isActive 
                       ? 'text-white bg-[#C9A84C]' 
                       : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
@@ -151,15 +144,13 @@ const ContainerWithButtons = () => {
         </div>
 
         {/* Tab Content */}
-        <div className="rounded-2xl py-6">
-          <div className="space-y-6">
-            <Suspense fallback={<div className="text-center py-8">Loading...</div>}>
-              {activeComponent === "hotel" && <HotelCard bookHotel={() => {}} />}
-              {activeComponent === "apartments" && <ApartmentCard bookApartment={() => {}} />}
-              {activeComponent === "transport" && <TransportCard bookTransport={() => {}} />}
-              {activeComponent === "tourism" && <TourTypeSelector onTourSubmit={() => {}} />}
-            </Suspense>
-          </div>
+        <div>
+          <Suspense fallback={<div className="text-center py-8">Loading...</div>}>
+            {activeComponent === "hotel" && <HotelCard bookHotel={() => {}} />}
+            {activeComponent === "apartments" && <ApartmentCard bookApartment={() => {}} />}
+            {activeComponent === "transport" && <TransportCard bookTransport={() => {}} />}
+            {activeComponent === "tourism" && <TourTypeSelector onTourSubmit={() => {}} />}
+          </Suspense>
         </div>
       </div>
     </div>

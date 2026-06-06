@@ -92,7 +92,7 @@ const TransportForm = () => {
 
       <div className="">
         {/* Form Container */}
-        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+        <div className="bg-white rounded-xl p-8 border border-gray-200">
           <div className="text-center mb-8">
             <h1 className="text-2xl font-bold text-gray-800 mb-2">
               Tour Transport Request

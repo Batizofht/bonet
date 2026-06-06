@@ -235,11 +235,11 @@ export default function BlogsClient() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pb-16 md:pb-20">
       <section className="py-12 px-4 max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-10">
-          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-wider">
             {t('blog.header.title1', 'Latest')}
           </span>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2 mb-3">
@@ -280,12 +280,12 @@ export default function BlogsClient() {
 
         {/* Featured Categories */}
         <div className="mb-12 flex flex-wrap items-center gap-3">
-          <span className="text-xs font-semibold uppercase tracking-widest text-gray-400 mr-1">Featured</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-gray-400 mr-1">Featured</span>
           {featuredCategories.map((cat) => (
             <Link
               key={cat.href}
               href={cat.href}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-gray-700 hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors duration-200"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded border border-gray-200 text-sm font-medium text-gray-700 hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors duration-200"
             >
               <cat.icon className="w-3.5 h-3.5" />
               {cat.label}
@@ -331,7 +331,7 @@ export default function BlogsClient() {
                       </div>
                       <div className="md:w-2/5 flex flex-col justify-center">
                         <div className="flex items-center gap-3 mb-3">
-                          <span className="text-xs font-semibold uppercase tracking-widest text-[#C9A84C]">Featured</span>
+                          <span className="text-xs font-semibold uppercase tracking-wider text-[#C9A84C]">Featured</span>
                           <span className="text-gray-300">·</span>
                           <span className="text-xs text-gray-500">{blogItems[0].formattedDate}</span>
                         </div>

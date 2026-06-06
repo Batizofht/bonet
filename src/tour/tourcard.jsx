@@ -24,7 +24,7 @@ const TourTypeSelector = ({ onTourSubmit }) => {
     <div className="min-h-screen  pb-4">
       <div className="mx-0 md:max-w-4xl md:mx-auto md:px-4 px-2">
         {/* Compact Tabs */}
-        <div className="flex bg-white rounded-lg p-1 border border-gray-200 shadow-sm mb-6 max-w-md mx-auto">
+        <div className="flex bg-white rounded-lg p-1 border border-gray-200 mb-6 max-w-md mx-auto">
           <button
             onClick={() => setActiveForm("guide")}
             className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex-1 justify-center ${

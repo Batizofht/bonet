@@ -59,106 +59,115 @@ export default function HotelHospitality() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16">
+    <div>
       {/* HEADER */}
-      <div className="text-center mb-16">
-        <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-          Services
-        </span>
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-          Travel & <span className="text-[#C9A84C]">Hospitality</span>
-        </h1>
-        <p className="text-gray-500 text-lg mb-8 max-w-2xl mx-auto">
-          {t("travelHospitality.page.description")}
-        </p>
+      <section className="border-y border-gray-100 bg-gray-50/50">
+        <div className="max-w-6xl mx-auto px-4 py-20">
+          <div className="text-center">
+            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+              Services
+            </span>
+            <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 uppercase tracking-wider">
+              Travel & Hospitality
+            </h1>
+            <p className="text-gray-500 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+              {t("travelHospitality.page.description")}
+            </p>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-          <button
-            onClick={() => navigate.push("/Reservations")}
-            className="flex items-center gap-3 bg-[#C9A84C] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#B8973B] transition-colors duration-300"
-          >
-            <Phone className="w-5 h-5" />
-            Need seamless travel & Hospitality arrangements? Contact us now!
-          </button>
+            <div className="flex justify-center mt-10">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                <button
+                  onClick={() => navigate.push("/Reservations")}
+                  className="inline-flex items-center gap-2 bg-[#C9A84C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B8973B] transition-colors"
+                >
+                  <Phone className="w-4 h-4" />
+                  Need seamless travel & Hospitality arrangements? Contact us now!
+                </button>
 
-          <button 
-            onClick={openWhatsApp}
-            className="flex items-center gap-3 border border-gray-300 text-gray-900 px-8 py-4 rounded-xl font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-colors duration-300"
-          >
-            <MessageCircle className="w-5 h-5" />
-            {t("travelHospitality.page.buttons.quickContact")}
-          </button>
-        </div>
-      </div>
-
-      {/* SERVICES LIST */}
-      <div className="space-y-12">
-        {services.map((service, index) => {
-          const IconComponent = service.icon;
-          return (
-            <div
-              key={index}
-              className={`flex flex-col lg:flex-row items-center overflow-hidden ${
-                index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-              }`}
-            >
-              {/* Image */}
-              <div className="lg:w-1/2 w-full relative">
-                {service.image ? (
-                  <div className="relative overflow-hidden h-80 lg:h-96">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ) : (
-                  <div className="w-full h-80 lg:h-96 bg-gray-100 flex items-center justify-center">
-                    <IconComponent className="w-16 h-16 text-gray-400" />
-                  </div>
-                )}
-              </div>
-
-              {/* Content */}
-              <div className="lg:w-1/2 w-full p-8 lg:p-12">
-                <div className="flex items-center gap-3 mb-6">
-                  <IconComponent className="w-7 h-7 text-[#C9A84C] flex-shrink-0" strokeWidth={1.5} />
-                  <div>
-                    <h2 className="text-2xl lg:text-3xl font-bold text-gray-900">
-                      {service.title}
-                    </h2>
-                  </div>
-                </div>
-                <p className="text-gray-500 font-medium text-sm uppercase tracking-wide mb-4">{service.subtitle}</p>
-
-                <p className="text-gray-600 leading-relaxed text-lg mb-6">
-                  {service.description}
-                </p>
-
-                {service.BookButton && (
-                  <button
-                    className="flex items-center gap-2 bg-[#C9A84C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#B8973B] transition-colors"
-                    onClick={() => navigate.push("/Reservations#tourism")}
-                  >
-                    <MapPin className="w-4 h-4" />
-                    {service.BookButton}
-                  </button>
-                )}
-
-                {/* Features */}
-                <div className="flex flex-wrap gap-4 mt-6">
-                  {["Premium Service", "Booking Travel", "24/7 Support"].map((data, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full"></div>
-                      <span className="text-sm text-gray-600">{data}</span>
-                    </div>
-                  ))}
-                </div>
+                <button 
+                  onClick={openWhatsApp}
+                  className="inline-flex items-center gap-2 border border-gray-300 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  {t("travelHospitality.page.buttons.quickContact")}
+                </button>
               </div>
             </div>
-          );
-        })}
-      </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES LIST */}
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-20">
+          <div className="grid gap-10">
+            {services.map((service, index) => {
+              const IconComponent = service.icon;
+              return (
+                <div
+                  key={index}
+                  className={`flex flex-col lg:flex-row items-center ${
+                    index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                  }`}
+                >
+                  {/* Image */}
+                  <div className="lg:w-1/2 w-full">
+                    {service.image ? (
+                      <div className="relative overflow-hidden rounded-xl border border-gray-200 bg-gray-50 h-80 lg:h-96">
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-full h-80 lg:h-96 bg-gray-100 rounded-xl border border-gray-200 flex items-center justify-center">
+                        <IconComponent className="w-16 h-16 text-gray-300" />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Content */}
+                  <div className="lg:w-1/2 w-full px-0 lg:px-12 py-8 lg:py-0">
+                    <div className="flex items-center gap-3 mb-2">
+                      <IconComponent className="w-6 h-6 text-[#C9A84C] flex-shrink-0" strokeWidth={1.5} />
+                      <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+                        {service.title}
+                      </h2>
+                    </div>
+                    <p className="text-gray-500 font-medium text-xs uppercase tracking-wide mt-3 mb-4">{service.subtitle}</p>
+
+                    <p className="text-gray-600 leading-relaxed">
+                      {service.description}
+                    </p>
+
+                    {service.BookButton && (
+                      <button
+                        className="mt-6 inline-flex items-center gap-2 bg-[#C9A84C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B8973B] transition-colors text-sm"
+                        onClick={() => navigate.push("/Reservations#tourism")}
+                      >
+                        <MapPin className="w-4 h-4" />
+                        {service.BookButton}
+                      </button>
+                    )}
+
+                    {/* Features */}
+                    <div className="flex flex-wrap gap-4 mt-6">
+                      {["Premium Service", "Booking Travel", "24/7 Support"].map((data, i) => (
+                        <div key={i} className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded"></div>
+                          <span className="text-sm text-gray-600">{data}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

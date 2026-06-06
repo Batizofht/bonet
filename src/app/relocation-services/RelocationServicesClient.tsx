@@ -64,28 +64,28 @@ export default function RelocationServicesClient() {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
       <div 
-        className="relative w-full h-[60vh] bg-cover bg-center"
+        className="relative w-full h-[20vh] sm:h-[30vh] bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: "url('/image/5.jpg')" }}
       >
-        <div className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center px-4">
-          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest mb-4">
-            Executive Concierge
-          </span>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 max-w-4xl leading-tight">
-            Relocate to Rwanda <span className="text-[#C9A84C]">Stress-Free</span>
+        <div className="absolute inset-0 bg-black/90" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <div className="w-2 h-2 bg-[#C9A84C] rotate-45 mb-4" />
+          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Executive Concierge</p>
+          <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-wider">
+            Relocate to Rwanda Stress-Free
           </h1>
-          <p className="text-lg md:text-xl text-white/85 max-w-2xl mb-8">
+          <p className="text-white/75 max-w-2xl mt-2 text-xs sm:text-sm leading-relaxed">
             Premium relocation services for executives and families moving to Rwanda
           </p>
           <a
-            href="/travel"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
+            href="/contact"
+            className="mt-3 inline-flex items-center gap-1.5 px-4 py-2 bg-[#C9A84C] text-white font-semibold rounded-lg hover:bg-[#B8973B] transition-colors text-xs"
           >
             Start Your Relocation
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-3 h-3" />
           </a>
         </div>
       </div>
@@ -112,29 +112,27 @@ export default function RelocationServicesClient() {
       {/* Services */}
       <div className="max-w-6xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-wider">
             Services
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-4">
-            Our <span className="text-[#C9A84C]">Relocation Services</span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+            Our Relocation Services
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">Everything you need for a smooth transition</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-6 flex gap-4 hover:shadow-lg transition-shadow"
-            >
-              <div className="w-12 h-12 bg-[#C9A84C]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <service.icon className="w-6 h-6 text-[#C9A84C]" />
+              <div
+                key={index}
+                className="bg-white border border-gray-200 rounded-xl p-6 flex gap-4"
+              >
+                <service.icon className="w-6 h-6 text-[#C9A84C] flex-shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-1">{service.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-bold text-gray-900 mb-1">{service.title}</h3>
-                <p className="text-gray-600 text-sm">{service.description}</p>
-              </div>
-            </div>
           ))}
         </div>
       </div>
@@ -143,21 +141,19 @@ export default function RelocationServicesClient() {
       <section className="bg-white py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-wider">
               Process
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-4">
-              Your <span className="text-[#C9A84C]">Relocation Journey</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+              Your Relocation Journey
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">A seamless 4-step process designed for busy executives</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {relocationSteps.map((item, index) => (
-              <div key={index} className="bg-gray-50 rounded-2xl p-6 text-center">
-                <div className="w-12 h-12 bg-[#C9A84C] text-white rounded-xl flex items-center justify-center font-bold text-xl mx-auto mb-4">
-                  {item.step}
-                </div>
+              <div key={index} className="border border-gray-200 rounded-xl p-6 text-center bg-white">
+                <div className="text-xs text-[#C9A84C] font-bold mb-3">{item.step}</div>
                 <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
                 <p className="text-gray-600 text-sm">{item.desc}</p>
               </div>
@@ -170,23 +166,21 @@ export default function RelocationServicesClient() {
       <section className="bg-gray-50 py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-wider">
               Why Us
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-4">
-              Why Choose <span className="text-[#C9A84C]">Bonet Elite</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+              Why Choose Bonet Elite
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">What makes us the preferred relocation partner</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyChooseUs.map((item, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 text-center">
-                <div className="w-14 h-14 bg-[#C9A84C]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-7 h-7 text-[#C9A84C]" />
-                </div>
+              <div key={index} className="bg-white border border-gray-200 rounded-xl p-6 text-center">
+                <item.icon className="w-7 h-7 text-[#C9A84C] mx-auto mb-4" />
                 <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm">{item.desc}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -197,19 +191,19 @@ export default function RelocationServicesClient() {
       <section className="bg-white py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-wider">
               Locations
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-4">
-              Popular <span className="text-[#C9A84C]">Neighborhoods</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+              Popular Neighborhoods
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">Kigali's finest residential areas for expats</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {neighborhoods.map((area, index) => (
-              <div key={index} className="bg-gray-50 rounded-2xl p-6 text-center">
-                <MapPin className="w-8 h-8 text-[#C9A84C] mx-auto mb-3" />
+              <div key={index} className="border border-gray-200 rounded-xl p-6 text-center bg-white">
+                <MapPin className="w-5 h-5 text-[#C9A84C] mx-auto mb-3" />
                 <h3 className="font-bold text-gray-900 text-lg">{area.name}</h3>
                 <p className="text-gray-500 text-sm">{area.type}</p>
                 <p className="text-[#C9A84C] text-sm font-medium mt-2">{area.price}</p>
@@ -219,25 +213,28 @@ export default function RelocationServicesClient() {
         </div>
       </section>
 
-      {/* CTA - Same style as explore-rwanda */}
+      {/* CTA */}
       <div
-        className="relative w-full h-[40vh] bg-cover bg-center"
-        style={{ backgroundImage: "url('/image/1.jpg')" }}
+        className="relative w-full bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: "url('/image/5.jpg')" }}
       >
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="relative flex flex-col justify-center items-center text-center px-4 h-full">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Moving to Rwanda?
-          </h2>
-          <p className="text-gray-300 mb-6 max-w-xl">
-            Let us handle the logistics while you focus on your business.
-          </p>
-          <a
-            href="/travel"
-            className="inline-flex items-center justify-center px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
-          >
-            Book Free Consultation
-          </a>
+        <div className="absolute inset-0 bg-black/90" />
+        <div className="relative pt-16 pb-24 lg:pt-20 lg:pb-28">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Get Started</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+              Moving to Rwanda?
+            </h2>
+            <p className="text-white/60 text-sm sm:text-base mb-8 max-w-xl mx-auto leading-relaxed">
+              Let us handle the logistics while you focus on your business.
+            </p>
+            <a
+              href="/contact"
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#C9A84C] text-white font-semibold rounded-lg hover:bg-[#B8973B] transition-colors text-sm"
+            >
+              Book Free Consultation
+            </a>
+          </div>
         </div>
       </div>
     </div>

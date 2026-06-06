@@ -50,8 +50,8 @@ const KeyFactsTable = () => {
           <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
             Quick Facts
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-            Key Facts for <span className="text-[#C9A84C]">Foreign Investors</span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+            Key Facts for Foreign Investors
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
             Everything you need to know about starting a business in Rwanda
@@ -63,12 +63,10 @@ const KeyFactsTable = () => {
           {facts.map((fact, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300"
+              className="border border-gray-200 rounded-xl p-8"
             >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0">
-                  <fact.icon className="w-6 h-6 text-[#C9A84C]" />
-                </div>
+                <fact.icon className="w-6 h-6 text-[#C9A84C] flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-sm text-gray-500 mb-1">{fact.label}</p>
                   <p className="text-2xl font-bold text-gray-900 mb-2">{fact.value}</p>
@@ -80,12 +78,10 @@ const KeyFactsTable = () => {
         </div>
 
         {/* Bottom Note */}
-        <div className="mt-12 bg-white rounded-2xl p-8 shadow-sm">
+        <div className="mt-12 border border-gray-200 rounded-xl p-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
-                <CheckCircle className="w-6 h-6 text-green-600" />
-              </div>
+              <CheckCircle className="w-6 h-6 text-[#C9A84C] flex-shrink-0" />
               <div>
                 <p className="font-semibold text-gray-900">Ready to Start?</p>
                 <p className="text-gray-600 text-sm">Most of our clients are operational within 48 hours</p>
@@ -93,7 +89,7 @@ const KeyFactsTable = () => {
             </div>
             <a 
               href="/consulting"
-              className="inline-flex items-center justify-center px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#C9A84C] text-white font-semibold rounded-lg hover:bg-[#B8973B] transition-colors text-sm"
             >
               Book Free Consultation
             </a>

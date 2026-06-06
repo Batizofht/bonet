@@ -127,7 +127,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         .replace(/\b\w/g, char => char.toUpperCase())
         .trim();
       return {
-        title: `${readableTitle} | Bonet Elite Services Blog`,
+        title: readableTitle,
         description: "Discover expert insights on travel, business, and investment in Rwanda.",
         alternates: { canonical: `https://bonet.rw/blog/${safeSlug}` },
       };
@@ -136,7 +136,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     console.log('[SEO] Found blog:', foundBlog);
 
     const blogTitle = foundBlog.title || targetSlug.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase()).trim() || 'Blog Post';
-    const title = `${blogTitle} | Bonet Elite Services`;
+    const title = blogTitle;
     const rawDesc = foundBlog?.quote || foundBlog?.description?.replace(/<[^>]*>/g, '')?.substring(0, 120) || "";
     const description = rawDesc
       ? `${rawDesc.substring(0, 130).trim().replace(/\.?$/, '')}. Learn more from Bonet Elite Services.`

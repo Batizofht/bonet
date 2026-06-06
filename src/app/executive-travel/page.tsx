@@ -1,7 +1,7 @@
 import ExecutiveTravelClient from "./ExecutiveTravelClient";
 
 export const metadata = {
-  title: "Executive Travel Rwanda | VIP Concierge | Bonet Elite",
+  title: "Executive Travel Rwanda | VIP Concierge",
   description:
     "Luxury executive travel and VIP concierge services in Rwanda. Gorilla trekking, luxury hotels, private transport, and bespoke itineraries for discerning travelers.",
   keywords:
@@ -27,7 +27,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@BonetElite",
-    title: "Executive Travel Rwanda | Bonet Elite",
+    title: "Executive Travel Rwanda",
     description: "Luxury executive travel and VIP concierge services in Rwanda.",
     images: ["https://bonet.rw/assets/images/logo.png"],
   },

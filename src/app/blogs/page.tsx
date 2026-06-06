@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import BlogsClient from './BlogsClient'
 
 export const metadata: Metadata = {
-  title: "Rwanda Business & Travel Blog | Bonet Elite Services",
+  title: "Rwanda Business & Travel Blog",
   description: "Expert insights on Rwanda business setup, travel tips, investment guides and Kigali tourism. Latest articles from Bonet Elite Services.",
   keywords: "Rwanda travel blog, business investment Rwanda, Kigali tourism, Rwanda business guide, investment opportunities Rwanda, hospitality services Rwanda, Bonet blog",
   authors: [{ name: "Bonet Elite Services" }],
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://bonet.rw/blogs",
-    title: "Rwanda Business & Travel Blog | Bonet Elite Services",
+    title: "Rwanda Business & Travel Blog",
     description: "Expert insights on Rwanda business setup, travel tips, investment guides and Kigali tourism. Latest articles from Bonet Elite Services.",
     images: [
       {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@BonetElite",
     creator: "@BonetElite",
-    title: "Rwanda Business & Travel Blog | Bonet Elite Services",
+    title: "Rwanda Business & Travel Blog",
     description: "Expert insights on Rwanda business setup, travel tips, investment guides and Kigali tourism. Latest articles from Bonet Elite Services.",
     images: {
       url: "https://bonet.rw/assets/images/logo.png",

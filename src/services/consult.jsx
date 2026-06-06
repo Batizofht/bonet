@@ -89,102 +89,110 @@ export default function BusinessConsulting() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16">
-      {/* Header */}
-      <div className="text-center mb-16">
-        <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-          Services
-        </span>
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-          Business <span className="text-[#C9A84C]">Consulting</span>
-        </h1>
-        <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-          {t("businessConsulting.title")}
-        </p>
-      </div>
+    <div>
+      {/* Header Section with bg-gray-50 */}
+      <section className="border-y border-gray-100 bg-gray-50/50">
+        <div className="max-w-6xl mx-auto px-4 py-20">
+          <div className="text-center">
+            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
+              Services
+            </span>
+            <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 uppercase tracking-wider">
+              Business Consulting
+            </h1>
+            <p className="text-gray-500 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+              {t("businessConsulting.title")}
+            </p>
+          </div>
 
-      {/* Buttons */}
-      <div className="flex justify-center mb-16">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-          <button
-            onClick={() => setIsPopupOpen(true)}
-            className="flex items-center gap-3 bg-[#C9A84C] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#B8973B] transition-colors duration-300"
-          >
-            <Lightbulb className="w-5 h-5" />
-            {t("businessConsulting.cta")}
-          </button>
+          {/* Buttons */}
+          <div className="flex justify-center mt-10">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+              <button
+                onClick={() => setIsPopupOpen(true)}
+                  className="inline-flex items-center gap-2 bg-[#C9A84C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B8973B] transition-colors"
+                >
+                  <Lightbulb className="w-4 h-4" />
+                  {t("businessConsulting.cta")}
+                </button>
 
-          <button
-            onClick={openWhatsApp}
-            className="flex items-center gap-3 border border-gray-300 text-gray-900 px-8 py-4 rounded-xl font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-colors duration-300"
-          >
-            <MessageCircle className="w-5 h-5" />
-            {t("businessConsulting.quickContact")}
-          </button>
+                <button
+                  onClick={openWhatsApp}
+                  className="inline-flex items-center gap-2 border border-gray-300 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                {t("businessConsulting.quickContact")}
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Service Cards */}
-      <div className="space-y-12">
-        {services.map((service, index) => {
-          const IconComponent = service.icon;
-          return (
-            <div
-              key={index}
-              className={`flex flex-col lg:flex-row items-center overflow-hidden ${
-                service.align === "right" ? "lg:flex-row-reverse" : ""
-              }`}
-            >
-              {/* Image */}
-              <div className="lg:w-2/5 w-full relative">
-                <div className="relative overflow-hidden h-80 lg:h-96">
-                  <img
-                    src={service.image}
-                    alt={t(service.titleKey)}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="lg:w-3/5 w-full p-8 lg:p-12">
-                <div className="flex items-center gap-3 mb-2">
-                  <IconComponent className="w-7 h-7 text-[#C9A84C] flex-shrink-0" strokeWidth={1.5} />
-                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900">
-                    {t(service.titleKey)}
-                  </h3>
-                </div>
-                <p className="text-gray-500 font-medium text-sm uppercase tracking-wide mb-6">
-                  {t(service.subtitleKey)}
-                </p>
-
-                <p className="text-gray-600 leading-relaxed text-lg mb-6">
-                  {t(service.descriptionKey)}
-                </p>
-
-                {/* Features */}
-                <div className="flex flex-wrap gap-4">
-                  {["Strategic Planning", "Expert Guidance", "Proven Results"].map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full"></div>
-                      <span className="text-sm text-gray-600">{feature}</span>
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-20">
+          <div className="grid gap-10">
+            {services.map((service, index) => {
+              const IconComponent = service.icon;
+              return (
+                <div
+                  key={index}
+                  className={`flex flex-col lg:flex-row items-center ${
+                    service.align === "right" ? "lg:flex-row-reverse" : ""
+                  }`}
+                >
+                  {/* Image */}
+                  <div className="lg:w-2/5 w-full">
+                    <div className="relative overflow-hidden rounded-xl border border-gray-200 bg-gray-50 h-80 lg:h-96">
+                      <img
+                        src={service.image}
+                        alt={t(service.titleKey)}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                  ))}
+                  </div>
+
+                  {/* Content */}
+                  <div className="lg:w-3/5 w-full px-0 lg:px-12 py-8 lg:py-0">
+                    <div className="flex items-center gap-3 mb-2">
+                      <IconComponent className="w-6 h-6 text-[#C9A84C] flex-shrink-0" strokeWidth={1.5} />
+                      <h3 className="text-base lg:text-lg font-bold text-gray-900">
+                        {t(service.titleKey)}
+                      </h3>
+                    </div>
+                    <p className="text-gray-500 font-medium text-xs uppercase tracking-wide mt-3 mb-4">
+                      {t(service.subtitleKey)}
+                    </p>
+
+                    <p className="text-gray-600 leading-relaxed">
+                      {t(service.descriptionKey)}
+                    </p>
+
+                    {/* Features */}
+                    <div className="flex flex-wrap gap-4 mt-6">
+                      {["Strategic Planning", "Expert Guidance", "Proven Results"].map((feature, i) => (
+                        <div key={i} className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded"></div>
+                          <span className="text-sm text-gray-600">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* Popup Modal */}
       {isPopupOpen && (
         <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 md:p-8 border border-gray-200 my-auto max-h-[90vh] overflow-y-auto">
+          <div className="relative bg-white rounded-xl w-full max-w-md p-6 md:p-8 border border-gray-200 my-auto max-h-[90vh] overflow-y-auto">
             {/* Close button */}
             <button
               onClick={() => setIsPopupOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
+              className="absolute top-4 right-4 w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors"
             >
               <X className="w-4 h-4 text-gray-600" />
             </button>
@@ -192,13 +200,10 @@ export default function BusinessConsulting() {
             <div>
               {/* Header */}
               <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-[#C9A84C] rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {t("businessConsulting.title")}
                 </h3>
-                <p className="text-gray-500">
+                <p className="text-gray-500 text-sm">
                   {t("businessConsulting.form.instructions")}
                 </p>
               </div>
@@ -297,13 +302,13 @@ export default function BusinessConsulting() {
                   <button
                     onClick={() => setIsPopupOpen(false)}
                     type="button"
-                    className="px-6 py-3 rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors font-semibold"
+                    className="px-6 py-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors font-semibold"
                   >
                     {t("businessConsulting.form.buttons.cancel")}
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-3 rounded-xl bg-[#C9A84C] text-white font-semibold hover:bg-[#B8973B] transition-colors"
+                    className="px-6 py-3 rounded-lg bg-[#C9A84C] text-white font-semibold hover:bg-[#B8973B] transition-colors"
                   >
                     {t("businessConsulting.form.buttons.submit")}
                   </button>

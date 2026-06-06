@@ -1,7 +1,7 @@
 import RelocationServicesClient from "./RelocationServicesClient";
 
 export const metadata = {
-  title: "Relocation Services Rwanda | Executive Concierge | Bonet Elite",
+  title: "Relocation Services Rwanda | Executive Concierge",
   description:
     "Premium relocation services for executives and families moving to Rwanda. Housing, schooling, banking, transport, and full concierge support.",
   keywords:
@@ -27,7 +27,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@BonetElite",
-    title: "Relocation Services Rwanda | Bonet Elite",
+    title: "Relocation Services Rwanda",
     description: "Premium relocation services for executives moving to Rwanda.",
     images: ["https://bonet.rw/assets/images/logo.png"],
   },

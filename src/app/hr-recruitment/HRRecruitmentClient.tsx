@@ -46,28 +46,28 @@ export default function HRRecruitmentClient() {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
       <div 
-        className="relative w-full h-[60vh] bg-cover bg-center"
+        className="relative w-full h-[20vh] sm:h-[30vh] bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: "url('/image/4.jpg')" }}
       >
-        <div className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center px-4">
-          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest mb-4">
-            HR Solutions
-          </span>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 max-w-4xl leading-tight">
-            Build Your <span className="text-[#C9A84C]">Dream Team</span> in Rwanda
+        <div className="absolute inset-0 bg-black/90" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <div className="w-2 h-2 bg-[#C9A84C] rotate-45 mb-4" />
+          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">HR Solutions</p>
+          <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-wider">
+            Build Your Dream Team in Rwanda
           </h1>
-          <p className="text-lg md:text-xl text-white/85 max-w-2xl mb-8">
+          <p className="text-white/75 max-w-2xl mt-2 text-xs sm:text-sm leading-relaxed">
             End-to-end recruitment, payroll, and HR compliance for foreign companies
           </p>
           <a
             href="/contact?service=department"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
+            className="mt-3 inline-flex items-center gap-1.5 px-4 py-2 bg-[#C9A84C] text-white font-semibold rounded-lg hover:bg-[#B8973B] transition-colors text-xs"
           >
             Get Recruitment Support
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-3 h-3" />
           </a>
         </div>
       </div>
@@ -89,40 +89,38 @@ export default function HRRecruitmentClient() {
       {/* Services */}
       <div className="max-w-6xl mx-auto px-4 pb-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Our <span className="text-[#C9A84C]">HR Services</span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+            Our HR Services
           </h2>
           <p className="text-gray-600">Complete workforce solutions for your business</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-6 flex gap-4"
-            >
-              <div className="w-12 h-12 bg-[#C9A84C]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <service.icon className="w-6 h-6 text-[#C9A84C]" />
+              <div
+                key={index}
+                className="bg-white border border-gray-200 rounded-xl p-6 flex gap-4"
+              >
+                <service.icon className="w-6 h-6 text-[#C9A84C] flex-shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-1">{service.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-bold text-gray-900 mb-1">{service.title}</h3>
-                <p className="text-gray-600 text-sm">{service.description}</p>
-              </div>
-            </div>
           ))}
         </div>
       </div>
 
       {/* Link to Full HR Services */}
       <div className="max-w-4xl mx-auto px-4 pb-8">
-        <div className="bg-white rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border border-gray-200 rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
             <h3 className="font-bold text-gray-900 mb-1">Need Full HR Support?</h3>
             <p className="text-gray-600 text-sm">Explore our complete HR and administrative services</p>
           </div>
           <a
             href="/hrsupport"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-900 font-semibold rounded-xl hover:bg-[#C9A84C] hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-900 font-semibold rounded-lg hover:bg-[#C9A84C] hover:text-white transition-colors text-sm"
           >
             View All HR Services
             <ArrowRight className="w-4 h-4" />
@@ -131,31 +129,38 @@ export default function HRRecruitmentClient() {
       </div>
 
       {/* CTA */}
-      <div className="f-wull">
-        <div className="bg-gradient-to-r from-gray-900 to-gray-800  p-8 md:p-12 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Need Talent in Rwanda?
-          </h2>
-          <p className="text-white/80 mb-8 max-w-xl mx-auto">
-            From sourcing to onboarding, we handle every step of your hiring process.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/hrsupport"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors"
-            >
-              <Users className="w-5 h-5" />
-              Get Recruitment Support
-            </a>
-            <a
-              href="https://wa.me/250726300260"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 font-semibold rounded-xl hover:bg-gray-100 transition-colors"
-            >
-              <Phone className="w-5 h-5" />
-              WhatsApp Us
-            </a>
+      <div
+        className="relative w-full bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: "url('/image/4.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-black/90" />
+        <div className="relative pt-16 pb-24 lg:pt-20 lg:pb-28">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Get Started</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+              Need Talent in Rwanda?
+            </h2>
+            <p className="text-white/60 text-sm sm:text-base mb-8 max-w-xl mx-auto leading-relaxed">
+              From sourcing to onboarding, we handle every step of your hiring process.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/hrsupport"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#C9A84C] text-white font-semibold rounded-lg hover:bg-[#B8973B] transition-colors text-sm"
+              >
+                <Users className="w-4 h-4" />
+                Get Recruitment Support
+              </a>
+              <a
+                href="https://wa.me/250726300260"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors text-sm"
+              >
+                <Phone className="w-4 h-4" />
+                WhatsApp Us
+              </a>
+            </div>
           </div>
         </div>
       </div>

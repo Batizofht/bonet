@@ -35,7 +35,7 @@ const TransportForm = ({ onFinish }) => {
       <p className="text-[16px] text-gray-700 mb-10">
         Please fill out this form to search for the best recommended transport.
       </p>
-      <Form layout="vertical" className="p-4 bg-white border border-gray-300 rounded-xl shadow-md" onFinish={handleFinish}>
+      <Form layout="vertical" className="p-4 bg-white border border-gray-300 rounded-xl" onFinish={handleFinish}>
         <Row gutter={24} className="p-5">
           <Col span={12}>
             <Form.Item label="Full Name" name="name">

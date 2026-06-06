@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/booknow',
+        destination: '/Reservations',
+        permanent: true,
+      },
+    ]
+  },
   // Development performance optimizations
   ...(process.env.NODE_ENV === 'development' && {
     // Disable source maps in development for faster builds

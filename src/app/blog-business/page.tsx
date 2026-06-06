@@ -1,7 +1,7 @@
 import FirstService from "../../services/firstservice";
 import BusinessRegistration from "../../blogs/busreg";
 export const metadata = {
-  title: "Business & Investment in Rwanda | Bonet Elite Services Blog",
+  title: "Business & Investment in Rwanda",
   description:
     "Discover how to start and grow a business in Rwanda. Learn about company registration, tax regulations, and investment opportunities with Bonet Elite Services.",
   keywords:
@@ -11,7 +11,7 @@ export const metadata = {
   openGraph: {
     type: "article",
     url: "https://bonet.rw/blog/business",
-    title: "Business & Investment in Rwanda | Bonet Elite Services Blog",
+    title: "Business & Investment in Rwanda",
     description:
       "Step-by-step insights on business registration, investment opportunities, and growth strategies in Rwanda.",
     images: [
@@ -25,7 +25,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Business & Investment in Rwanda | Bonet Elite Services Blog",
+    title: "Business & Investment in Rwanda",
     description:
       "Expert guides on business setup, registration, and investment opportunities in Rwanda.",
     images: ["https://bonet.rw/images/blog-business-preview.jpg"],

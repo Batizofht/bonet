@@ -5,11 +5,11 @@ import LayoutWrapper from "./LayoutWrapper";
 export const metadata: Metadata = {
   metadataBase: new URL("https://bonet.rw"),
   title: {
-    default: "Business Setup & Travel Services Rwanda | Bonet Elite",
+    default: "Invest in Rwanda With Confidence | Bonet Elite Services",
     template: "%s | Bonet Elite Services",
   },
   description:
-    "Business setup, travel, HR and investment support in Rwanda. Hotel booking, company registration, consulting and VIP services in Kigali.",
+    "Helping foreign investors register companies, secure tax incentives, hire teams, relocate families, and travel through Rwanda. Business setup in 6 hours. Zero minimum capital.",
   keywords:
     "Bonet Elite Services Rwanda, travel Rwanda, business setup Rwanda, investment in Rwanda, VIP concierge Rwanda, luxury travel Kigali, HR services Rwanda, executive services Rwanda, tourism Rwanda",
   authors: [{ name: "Bonet Elite Services" }],
