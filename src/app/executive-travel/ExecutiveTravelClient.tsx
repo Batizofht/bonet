@@ -72,7 +72,7 @@ export default function ExecutiveTravelClient() {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <div 
-        className="relative w-full h-[20vh] sm:h-[30vh] bg-cover bg-center overflow-hidden"
+        className="relative w-full h-[25vh] sm:h-[30vh] bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: "url('/image/kivumarina.png')" }}
       >
         <div className="absolute inset-0 bg-black/90" />
