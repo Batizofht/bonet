@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 
 const GoogleMapEmbed = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en, fr, ch) => i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
 
   return (
     <motion.section
@@ -32,7 +33,7 @@ const GoogleMapEmbed = () => {
           </span>
         </h2>
         <p className="text-gray-500 text-lg">
-        { "Find us easily at our convenient location!"}
+        {L("Find us easily at our convenient location!","Trouvez-nous facilement à notre emplacement pratique !","轻松找到我们便利的位置！")}
         </p>
       </div>
 
@@ -61,22 +62,22 @@ const GoogleMapEmbed = () => {
         {/* Location Info */}
         <div className="p-6 border-t border-blue-100">
           <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-[#188bff] transition-colors">
-            Our Main Office
+            {L("Our Main Office","Notre bureau principal","我们的主办公室")}
           </h3>
-          
+
           <p className="text-gray-600 text-sm leading-relaxed mb-4">
-            Kimironko Bus Station Area, Kigali, Rwanda
+            {L("Kimironko Bus Station Area, Kigali, Rwanda","Zone de la gare routière de Kimironko, Kigali, Rwanda","卢旺达基加利金隆科巴士站附近")}
           </p>
 
           {/* Meta Info */}
           <div className="flex items-center justify-center gap-4 text-xs text-gray-500">
             <div className="flex items-center gap-1">
               <MapPin className="w-3 h-3" />
-              <span>Easy to find</span>
+              <span>{L("Easy to find","Facile à trouver","易于找到")}</span>
             </div>
             <div className="flex items-center gap-1">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span>Mon-Fri 8AM-6PM</span>
+              <span>{L("Mon-Fri 8AM-6PM","Lun-Ven 8h-18h","周一至周五 上午8点-下午6点")}</span>
             </div>
           </div>
         </div>

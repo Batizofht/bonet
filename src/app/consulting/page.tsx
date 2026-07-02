@@ -38,11 +38,11 @@ export const metadata = {
 export default function ConsultingPage() {
   return (
     <div className="min-h-screen">
-      <FirstService 
+      <FirstService
         image="/image/7.jpg"
-        subtitle="Expert Consulting"
-        title="Strategic Business Solutions"
-        description="Business planning, financial audits, project management & operational excellence."
+        subtitleKey="pageHero.consulting.subtitle"
+        titleKey="pageHero.consulting.title"
+        descriptionKey="pageHero.consulting.desc"
       />
       <BusinessConsulting />
     </div>

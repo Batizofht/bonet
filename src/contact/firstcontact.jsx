@@ -3,14 +3,16 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 const FirstContact = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en, fr, ch) =>
+    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
 
   return (
     <div
       className="relative w-full h-[20vh] sm:h-[30vh] bg-cover bg-center overflow-hidden"
-      style={{ 
-        backgroundImage: "url('/image/2.jpg')", 
-        backgroundSize: 'cover', 
+      style={{
+        backgroundImage: "url('/image/2.jpg')",
+        backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}
     >
@@ -21,7 +23,7 @@ const FirstContact = () => {
           {t("footer.contactUs")}
         </span>
         <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-wider">
-          {t("Contact Bonet Elite Team ")}
+          {L("Contact Bonet Elite Team","Contacter l'équipe Bonet Elite","联系Bonet Elite团队")}
         </h1>
       </div>
     </div>

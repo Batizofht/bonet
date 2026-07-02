@@ -39,11 +39,11 @@ export const metadata = {
 export default function ConsultingPage() {
   return (
     <div className="min-h-screen">
-      <FirstService 
+      <FirstService
         image="/image/9.jpg"
-        subtitle="HR & Admin Support"
-        title="Build Your Dream Team"
-        description="Recruitment, payroll, work permits & full HR compliance for foreign companies in Rwanda."
+        subtitleKey="pageHero.hrsupport.subtitle"
+        titleKey="pageHero.hrsupport.title"
+        descriptionKey="pageHero.hrsupport.desc"
       />
       <HRAdminSupport />
     </div>

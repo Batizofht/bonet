@@ -7,6 +7,7 @@ import { Calendar, User, ArrowLeft, HandMetal } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import SocialShare from "../../../components/SocialShare";
+import { useTranslation } from "react-i18next";
 
 interface Blog {
   id: number;
@@ -21,6 +22,9 @@ interface Blog {
 export default function BlogDetailClient() {
   const params = useParams();
   const slug = params.slug as string;
+  const { i18n } = useTranslation();
+  const L = (en: string, fr: string, ch: string) =>
+    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   
   // IMMEDIATE: Set browser title from URL before anything else
   useEffect(() => {
@@ -271,7 +275,7 @@ export default function BlogDetailClient() {
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading blog post...</p>
+          <p className="text-gray-600">{L("Loading blog post...","Chargement de l'article...","加载文章中...")}</p>
         </div>
       </div>
     );
@@ -282,11 +286,11 @@ export default function BlogDetailClient() {
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center max-w-2xl mx-auto px-4">
           <div className="text-red-500 text-6xl mb-4">⚠️</div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Blog Not Found</h1>
-          <p className="text-gray-600 mb-4">{error || "The blog post you're looking for doesn't exist."}</p>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">{L("Blog Not Found","Article introuvable","文章未找到")}</h1>
+          <p className="text-gray-600 mb-4">{error || L("The blog post you're looking for doesn't exist.","L'article que vous recherchez n'existe pas.","您查找的博客文章不存在。")}</p>
           <Link href="/" className="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors">
             <ArrowLeft className="w-4 h-4" />
-            Back to Home
+            {L("Back to Home","Retour à l'accueil","返回首页")}
           </Link>
         </div>
       </div>
@@ -410,19 +414,19 @@ export default function BlogDetailClient() {
 
 {/* Internal Links for SEO */}
 <div className="mt-8 pt-6 border-t border-gray-200">
-  <h2 className="text-lg font-bold text-gray-800 mb-3">Explore Bonet Elite Services</h2>
+  <h2 className="text-lg font-bold text-gray-800 mb-3">{L("Explore Bonet Elite Services","Explorer Bonet Elite Services","探索Bonet Elite服务")}</h2>
   <div className="flex flex-wrap gap-3">
     <Link href="/about" className="inline-flex items-center gap-1 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors">
-      About Our Team
+      {L("About Our Team","Notre équipe","关于我们的团队")}
     </Link>
     <Link href="/services" className="inline-flex items-center gap-1 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors">
-      Our Services
+      {L("Our Services","Nos services","我们的服务")}
     </Link>
     <Link href="/blogs" className="inline-flex items-center gap-1 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors">
-      More Articles
+      {L("More Articles","Plus d'articles","更多文章")}
     </Link>
     <Link href="/contact" className="inline-flex items-center gap-1 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors">
-      Contact Us
+      {L("Contact Us","Nous contacter","联系我们")}
     </Link>
   </div>
 </div>

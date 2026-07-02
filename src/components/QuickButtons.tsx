@@ -72,8 +72,8 @@ const QuickButtons = () => {
   const menuItems = [
     { path: "/", label: t("quickButtons.menu.home") },
     { path: "/about", label: t("quickButtons.menu.aboutUs") },
-    { path: "/explore-rwanda", label: "Why Rwanda" },
-       { path: "/faq", label: "FAQ" },
+    { path: "/explore-rwanda", label: t("menu.whyRwanda") },
+    { path: "/faq", label: t("menu.faq") },
     { path: "/Reservations", label: t("quickButtons.menu.bookNow") },
     { path: "/blogs", label: t("blog.blogs") },
   ];
@@ -109,8 +109,8 @@ const QuickButtons = () => {
     {
       title: t("menu.travelAndHospitality"),
       items: [
-        { href: "/relocation-services", label: "Relocation & Concierge" },
-        { href: "/executive-travel", label: "Executive travel" },
+        { href: "/relocation-services", label: t("menu.relocationConcierge") },
+        { href: "/executive-travel", label: t("menu.executiveTravel") },
         { href: "/travel", label: t("menu.hotels") },
         { href: "/travel", label: t("menu.transport") },
         { href: "/travel", label: t("menu.tourism") },
@@ -217,7 +217,7 @@ const QuickButtons = () => {
             <div className="flex h-full flex-col">
               {/* Header */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
-                <span className="text-sm font-semibold text-gray-900">Menu</span>
+                <span className="text-sm font-semibold text-gray-900">{t("menu.services")}</span>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="flex h-8 w-8 items-center justify-center text-gray-500 hover:text-gray-700"
@@ -275,7 +275,7 @@ const QuickButtons = () => {
                       className="flex items-center gap-2 px-5 py-3 text-sm font-medium text-gray-500 border-b border-gray-50"
                     >
                       <ChevronLeft className="h-4 w-4" />
-                      Back
+                      {t("common.back")}
                     </button>
                     <div className="py-2">
                       {servicesGroups.map((group) => (

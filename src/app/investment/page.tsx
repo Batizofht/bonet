@@ -41,11 +41,11 @@ export const metadata = {
 export default function InvestmentPage() {
   return (
     <div className="min-h-screen">
-      <FirstService 
+      <FirstService
         image="/image/6.webp"
-        subtitle="Investment & Setup"
-        title="Your Gateway to East African Markets"
-        description="Company registration in 6 hours. 100% foreign ownership. Tax incentives & full compliance support."
+        subtitleKey="pageHero.investment.subtitle"
+        titleKey="pageHero.investment.title"
+        descriptionKey="pageHero.investment.desc"
       />
       <InvestmentBusinessSetup />
       <KeyFactsTable />

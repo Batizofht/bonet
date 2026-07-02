@@ -12,11 +12,11 @@ const FirstHome = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const trustStats = useMemo(() => [
-    { icon: Award, value: "5+", label: "Years Experience" },
-    { icon: Users, value: "100+", label: "Foreign Clients" },
-    { icon: Globe, value: "15+", label: "Countries" },
-    { icon: Clock, value: "24/7", label: "WhatsApp Support" },
-  ], []);
+    { icon: Award, value: "5+", label: t("home.stat_years") },
+    { icon: Users, value: "100+", label: t("home.stat_clients") },
+    { icon: Globe, value: "15+", label: t("home.stat_countries") },
+    { icon: Clock, value: "24/7", label: t("home.stat_support") },
+  ], [t]);
 
   useEffect(() => {
     const img = new Image();
@@ -35,20 +35,20 @@ const FirstHome = () => {
         <div className="w-full max-w-4xl mx-auto">
 
           <p className="text-white/60 text-xs sm:text-sm font-semibold uppercase tracking-[0.15em] mb-4 sm:mb-5">
-            Rwanda Investment Experts
+            {t("home.hero_tagline")}
           </p>
 
           <h1 className="font-bold text-white text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl uppercase tracking-[0.05em] leading-[1.1] max-w-5xl mx-auto mb-6">
-            Invest in Rwanda
-            <span className="block text-[#C9A84C] mt-2">With Confidence</span>
+            {t("home.hero_title")}
+            <span className="block text-[#C9A84C] mt-2">{t("home.hero_title_accent")}</span>
           </h1>
 
           <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-4 leading-relaxed">
-            Zero minimum capital. 6-hour company registration. 0% corporate tax for qualifying investments.
+            {t("home.hero_desc1")}
           </p>
 
           <p className="text-white/60 text-sm sm:text-base max-w-xl mx-auto mb-10">
-            Full-service support from legal setup to daily operations.
+            {t("home.hero_desc2")}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
@@ -56,14 +56,14 @@ const FirstHome = () => {
               className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-gray-900 bg-white rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
               onClick={() => router.push("/contact")}
             >
-              Book Free Consultation
+              {t("get_started")}
               <ArrowRight className="w-4 h-4" />
             </button>
             <button
               className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white border border-white/30 rounded-lg hover:border-white/50 transition-colors cursor-pointer"
               onClick={() => router.push("/services")}
             >
-              Explore Services
+              {t("home.explore_services")}
             </button>
           </div>
 

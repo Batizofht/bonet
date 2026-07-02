@@ -27,7 +27,9 @@ const socialIcons = [
 ];
 
 const SuperFooter = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en: string, fr: string, ch: string) =>
+    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
 
   return (
     <footer
@@ -70,16 +72,23 @@ const SuperFooter = () => {
         {/* Second Column - Services */}
         <div className="flex flex-col items-center md:items-start">
           <h3 className="font-bold text-sm text-gray-900 uppercase tracking-wider mb-4">
-            Services
+            {t("footer.services")}
           </h3>
           <ul className="space-y-2 text-sm">
-            {["business-registration", "investment", "consulting", "hr-recruitment", "relocation-services", "executive-travel"].map((link) => (
-              <li key={link}>
+            {[
+              { href: "/business-registration", label: L("Business Registration","Enregistrement d'Entreprise","企业注册") },
+              { href: "/investment", label: L("Investment","Investissement","投资") },
+              { href: "/consulting", label: L("Consulting","Conseil","咨询") },
+              { href: "/hr-recruitment", label: L("HR Recruitment","Recrutement RH","人力资源招聘") },
+              { href: "/relocation-services", label: L("Relocation Services","Services de Relocalisation","搬迁服务") },
+              { href: "/executive-travel", label: L("Executive Travel","Voyage d'Affaires","高管出行") },
+            ].map((item) => (
+              <li key={item.href}>
                 <a
-                  href={`/${link}`}
+                  href={item.href}
                   className="text-gray-500 hover:text-[#C9A84C] transition-colors"
                 >
-                  {link.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                  {item.label}
                 </a>
               </li>
             ))}
@@ -89,15 +98,15 @@ const SuperFooter = () => {
         {/* Third Column - Company */}
         <div className="flex flex-col items-center md:items-start">
           <h3 className="font-bold text-sm text-gray-900 uppercase tracking-wider mb-4">
-            Company
+            {t("footer.company") || "Company"}
           </h3>
           <ul className="space-y-2 text-sm">
             {[
-              { path: "/about", label: "About Us" },
-              { path: "/blogs", label: "Blog" },
-              { path: "/faq", label: "FAQ" },
-              { path: "/Reservations", label: "Reservations" },
-              { path: "/contact", label: "Contact" },
+              { path: "/about", label: t("footer.about") },
+              { path: "/blogs", label: t("blog.blogs") },
+              { path: "/faq", label: t("menu.faq") },
+              { path: "/Reservations", label: t("footer.bookNow") },
+              { path: "/contact", label: t("footer.contactUs") },
             ].map((link) => (
               <li key={link.path}>
                 <a
@@ -158,9 +167,9 @@ const SuperFooter = () => {
               <p className="text-sm text-gray-600">&copy; {new Date().getFullYear()} Bonet Elite Services. {t("footer.copyright")}</p>
             </div>
             <div className="flex items-center gap-6 text-sm text-gray-500">
-              <Link href="/about">About</Link>
-              <Link href="/contact">Contact</Link>
-              <Link href="/faq">FAQ</Link>
+              <Link href="/about">{t("footer.about")}</Link>
+              <Link href="/contact">{t("footer.contactUs")}</Link>
+              <Link href="/faq">{t("menu.faq")}</Link>
             </div>
           </div>
         </div>

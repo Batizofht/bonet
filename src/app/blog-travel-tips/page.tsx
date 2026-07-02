@@ -36,11 +36,11 @@ export const metadata = {
 export default function BlogTravelTipsPage() {
   return (
     <div className="min-h-screen">
-      <FirstService 
+      <FirstService
         image="/image/3.jpg"
-        subtitle="Travel Guide"
-        title="Explore the Land of a Thousand Hills"
-        description="Essential tips for gorilla trekking, safaris, and unforgettable adventures."
+        subtitleKey="pageHero.blogTravel.subtitle"
+        titleKey="pageHero.blogTravel.title"
+        descriptionKey="pageHero.blogTravel.desc"
       />
       <TravelTips />
     </div>

@@ -1,5 +1,6 @@
 "use client";
 import { Linkedin } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const teamMembers = [
   {
@@ -50,16 +51,22 @@ const teamMembers = [
 ];
 
 export default function Team() {
+  const { i18n } = useTranslation();
+  const L = (en: string, fr: string, ch: string) =>
+    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
+
   return (
     <section className="bg-gray-50 py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-14">
-          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Leadership</p>
+          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">
+            {L("Leadership","Direction","领导团队")}
+          </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
-            Meet Our Team
+            {L("Meet Our Team","Notre Équipe","认识我们的团队")}
           </h2>
           <p className="text-gray-500 text-sm sm:text-base mt-4 max-w-2xl mx-auto">
-            The experts behind every seamless experience
+            {L("The experts behind every seamless experience","Les experts derrière chaque expérience sans faille","每次卓越体验背后的专家团队")}
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -100,7 +107,7 @@ export default function Team() {
                 className="mt-4 inline-flex items-center gap-1.5 text-gray-400 hover:text-[#C9A84C] transition-colors text-sm"
               >
                 <Linkedin className="w-4 h-4" />
-                <span>View Profile</span>
+                <span>{L("View Profile","Voir le profil","查看简介")}</span>
               </a>
             </div>
           ))}

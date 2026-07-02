@@ -12,7 +12,9 @@ const TransportCard = lazy(() => import("./transport/transportcard"));
 const TourTypeSelector = lazy(() => import("../tour/tourcard"));
 
 const ContainerWithButtons = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en, fr, ch) =>
+    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const [activeComponent, setActiveComponent] = useState("hotel");
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
@@ -87,8 +89,8 @@ const ContainerWithButtons = () => {
       {/* Header */}
       <div className="max-w-6xl mx-auto px-4 pt-8 md:pt-12 pb-4">
         <div className="text-center">
-          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Reservations</p>
-          <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 tracking-wider">Book Now</h1>
+          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">{L("Reservations","Réservations","预订")}</p>
+          <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 tracking-wider">{L("Book Now","Réserver maintenant","立即预订")}</h1>
         </div>
       </div>
 

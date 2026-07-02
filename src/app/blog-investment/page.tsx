@@ -35,11 +35,11 @@ export const metadata = {
 export default function BlogInvestmentPage() {
   return (
     <div className="min-h-screen">
-      <FirstService 
+      <FirstService
         image="/image/1.jpg"
-        subtitle="Investment Opportunities"
-        title="Invest in Rwanda's Future"
-        description="Discover high-return sectors: real estate, ICT, agriculture, tourism & more."
+        subtitleKey="pageHero.blogInvestment.subtitle"
+        titleKey="pageHero.blogInvestment.title"
+        descriptionKey="pageHero.blogInvestment.desc"
       />
       <InvestmentOpportunities />
     </div>

@@ -27,7 +27,9 @@ const investmentServices = [
 ];
 
 export default function InvestmentBusinessSetup() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en, fr, ch) =>
+    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [form] = Form.useForm();
 
@@ -69,10 +71,10 @@ export default function InvestmentBusinessSetup() {
         <div className="max-w-6xl mx-auto px-4 py-20">
           <div className="text-center">
             <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-              Services
+              {L("Services","Services","服务")}
             </span>
             <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">
-              Investment & Business Setup
+              {L("Investment & Business Setup","Investissement et Création d'Entreprise","投资与企业设立")}
             </h1>
             <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
               {t("investmentBusinessSetup.title")}

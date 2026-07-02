@@ -46,8 +46,8 @@ export default function MenuBars() {
   ];
 
   const secondaryMenuItems = [
-    { path: "/explore-rwanda", label: "Why Rwanda" },
-    {path: "/faq", label: "FAQ"},
+    { path: "/explore-rwanda", label: t("menu.whyRwanda") },
+    { path: "/faq", label: t("menu.faq") },
   ];
 
   return (

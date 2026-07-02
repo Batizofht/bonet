@@ -17,12 +17,14 @@ export default function FAQ() {
   const [loading, setLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t, i18n } = useTranslation();
+  const L = (en: string, fr: string, ch: string) =>
+    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
 
   const toggleFAQ = (index: any) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const { t } = useTranslation();
 
   // OPTIMIZED: Only fetch when component is visible
   useEffect(() => {
@@ -79,15 +81,13 @@ export default function FAQ() {
       <div className="max-w-6xl mx-auto px-4 py-16 lg:py-20">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-3">Support</p>
+          <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider mb-3">{t("faqPage.support_label")}</p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
-            Frequently Asked Questions
+            {t("faqPage.title")}
           </h2>
-
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-            Essential information for foreign investors considering Rwanda
+            {L("Essential information for foreign investors considering Rwanda","Informations essentielles pour les investisseurs étrangers envisageant le Rwanda","供考虑卢旺达的外国投资者参考的基本信息")}
           </p>
-          <p className="text-gray-500 text-lg">{t("Find answers to common questions")}</p>
         </div>
 
         {/* FAQ Items from API */}
@@ -157,18 +157,18 @@ export default function FAQ() {
         <div className="absolute inset-0 bg-black/90" />
         <div className="relative max-w-4xl mx-auto px-4 pt-16 pb-24 lg:pt-20 lg:pb-28">
           <div className="flex flex-col items-center text-center">
-            <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">Get in Touch</p>
+            <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">{L("Get in Touch","Nous Contacter","联系我们")}</p>
             <p className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Still have questions?
+              {L("Still have questions?","Vous avez encore des questions ?","还有疑问？")}
             </p>
             <p className="text-white/75 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
-              Book a free consultation and we will outline your exact process, timeline, and costs.
+              {L("Book a free consultation and we will outline your exact process, timeline, and costs.","Réservez une consultation gratuite et nous vous expliquerons votre processus exact, votre calendrier et vos coûts.","预约免费咨询，我们将为您说明具体流程、时间表和费用。")}
             </p>
             <button
               onClick={() => router.push("/contact")}
               className="inline-flex items-center justify-center px-6 py-3 bg-[#C9A84C] text-white font-semibold rounded-lg hover:bg-[#B8973B] transition-colors text-sm cursor-pointer"
             >
-              Contact Our Team
+              {L("Contact Our Team","Contacter Notre Équipe","联系我们的团队")}
             </button>
           </div>
         </div>

@@ -7,7 +7,9 @@ import { MapPin, ArrowRight, Camera, Sparkles } from "lucide-react";
 
 const Gallery = () => {
   const navigate = useRouter();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en: string, fr: string, ch: string) =>
+    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
 
   // OPTIMIZED: Memoize images array to prevent recreation on every render
   const images = useMemo(() => [
@@ -68,7 +70,7 @@ const Gallery = () => {
             )
           )}
         </h2>
-        <p className="text-gray-500 text-lg">{t("Explore beautiful destinations in Rwanda")}</p>
+        <p className="text-gray-500 text-lg">{L("Explore beautiful destinations in Rwanda","Explorez de magnifiques destinations au Rwanda","探索卢旺达美丽的目的地")}</p>
       </div>
 
       {/* OPTIMIZED: Use motion container with variants instead of individual initial props */}

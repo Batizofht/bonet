@@ -12,7 +12,9 @@ import {
 } from "lucide-react";
 
 export default function HotelHospitality() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en, fr, ch) =>
+    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const navigate = useRouter();
 
   const openWhatsApp = () => {
@@ -65,10 +67,10 @@ export default function HotelHospitality() {
         <div className="max-w-6xl mx-auto px-4 py-20">
           <div className="text-center">
             <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-              Services
+              {L("Services","Services","服务")}
             </span>
             <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 uppercase tracking-wider">
-              Travel & Hospitality
+              {L("Travel & Hospitality","Voyage et Hôtellerie","旅游与酒店")}
             </h1>
             <p className="text-gray-500 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
               {t("travelHospitality.page.description")}
@@ -81,7 +83,7 @@ export default function HotelHospitality() {
                   className="inline-flex items-center gap-2 bg-[#C9A84C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B8973B] transition-colors"
                 >
                   <Phone className="w-4 h-4" />
-                  Need seamless travel & Hospitality arrangements? Contact us now!
+                  {L("Need seamless travel & hospitality arrangements? Contact us now!","Besoin d'arrangements de voyage et d'hôtellerie ? Contactez-nous maintenant !","需要无缝旅行和酒店安排？立即联系我们！")}
                 </button>
 
                 <button 
@@ -154,7 +156,11 @@ export default function HotelHospitality() {
 
                     {/* Features */}
                     <div className="flex flex-wrap gap-4 mt-6">
-                      {["Premium Service", "Booking Travel", "24/7 Support"].map((data, i) => (
+                      {[
+                        L("Premium Service","Service Premium","高端服务"),
+                        L("Booking Travel","Réservation de Voyage","旅行预订"),
+                        L("24/7 Support","Support 24h/24 7j/7","全天候支持")
+                      ].map((data, i) => (
                         <div key={i} className="flex items-center gap-2">
                           <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded"></div>
                           <span className="text-sm text-gray-600">{data}</span>

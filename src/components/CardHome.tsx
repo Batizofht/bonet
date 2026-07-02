@@ -20,7 +20,7 @@ const BookingCards = () => {
     {
       id: "consulting",
       title: t("service.consulting.title"),
-      description: "Company registration, licensing, and RDB support for foreign investors",
+      description: t("home.consult_desc"),
       icon: Briefcase,
       route: "/business-registration",
     },
@@ -34,7 +34,7 @@ const BookingCards = () => {
     {
       id: "travel",
       title: t("menu.travelAndHospitality"),
-      description: "Luxury executive travel, relocation, and VIP concierge services",
+      description: t("home.travel_desc"),
       icon: Plane,
       route: "/executive-travel",
     },

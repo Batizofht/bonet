@@ -90,12 +90,12 @@ export default function Blog() {
     > 
       {/* BLOG HEADER */}
       <div className="text-center mb-10 lg:mb-14">
-        <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-[0.2em] mb-3">Resources</p>
+        <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-[0.2em] mb-3">{t("blog.resourcesLabel")}</p>
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
-          Blog Resources
+          {t("blog.resourcesTitle")}
         </h2>
         <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-          {t("Discover valuable articles and updates from our experts")}
+          {t("blog.resourcesDesc")}
         </p>
       </div>
 
@@ -165,7 +165,7 @@ export default function Blog() {
                 href={`/blog/${slugify(post.title)}`}
                 className="inline-flex items-center gap-1.5 text-[#C9A84C] font-semibold text-sm hover:gap-2 transition-all"
               >
-                Read Article
+                {t("blog.readArticle")}
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -178,7 +178,7 @@ export default function Blog() {
         <div className="text-center mt-12">
           <Link href="/blogs">
             <button className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#C9A84C] text-white font-semibold rounded-xl hover:bg-[#B8973B] transition-colors">
-              View All Articles
+              {t("blog.viewAllArticles")}
               <ArrowRight className="w-4 h-4" />
             </button>
           </Link>

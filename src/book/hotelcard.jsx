@@ -31,7 +31,8 @@ const { Option } = Select;
 const { RangePicker } = DatePicker;
 
 const HotelCard = ({ bookHotel }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en, fr, ch) => i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const [form] = Form.useForm();
   const [budgetType, setBudgetType] = useState(null);
   const [locationType, setLocationType] = useState(null);
@@ -114,29 +115,29 @@ const HotelCard = ({ bookHotel }) => {
             <div className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
                 <UserOutlined className="text-[#C9A84C]" />
-                Personal Information
+                {L("Personal Information","Informations personnelles","个人信息")}
               </h3>
               <Row gutter={[24, 16]}>
                 <Col xs={24} sm={12}>
                   <Form.Item
-                    label="Full Name"
+                    label={L("Full Name","Nom complet","全名")}
                     name="full_name"
-                    rules={[{ required: true, message: 'Please enter your full name' }]}
+                    rules={[{ required: true, message: L('Please enter your full name','Veuillez entrer votre nom complet','请输入您的全名') }]}
                   >
                     <Input
                       prefix={<UserOutlined className="text-gray-400" />}
-                      placeholder="Enter your full name"
+                      placeholder={L("Enter your full name","Entrez votre nom complet","输入您的全名")}
                       className="rounded-lg h-12"
                     />
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12}>
                   <Form.Item
-                    label="Email Address"
+                    label={L("Email Address","Adresse e-mail","电子邮件地址")}
                     name="email"
                     rules={[
-                      { required: true, message: 'Please enter your email' },
-                      { type: 'email', message: 'Please enter a valid email' }
+                      { required: true, message: L('Please enter your email','Veuillez entrer votre email','请输入您的邮箱') },
+                      { type: 'email', message: L('Please enter a valid email','Veuillez entrer un email valide','请输入有效的邮箱') }
                     ]}
                   >
                     <Input
@@ -148,9 +149,9 @@ const HotelCard = ({ bookHotel }) => {
                 </Col>
                 <Col xs={24} sm={12}>
                   <Form.Item
-                    label="Phone Number"
+                    label={L("Phone Number","Numéro de téléphone","电话号码")}
                     name="phone"
-                    rules={[{ required: true, message: 'Please enter your phone number' }]}
+                    rules={[{ required: true, message: L('Please enter your phone number','Veuillez entrer votre numéro de téléphone','请输入您的电话号码') }]}
                   >
                     <Input
                       prefix={<PhoneOutlined className="text-gray-400" />}
@@ -161,9 +162,9 @@ const HotelCard = ({ bookHotel }) => {
                 </Col>
                 <Col >
                   <Form.Item
-                    label="Number of Guests"
+                    label={L("Number of Guests","Nombre d'invités","宾客人数")}
                     name="guests"
-                    rules={[{ required: true, message: 'Please enter number of guests' }]}
+                    rules={[{ required: true, message: L('Please enter number of guests','Veuillez entrer le nombre d\'invités','请输入宾客人数') }]}
                   >
                     <InputNumber
                       min={1}
@@ -182,47 +183,47 @@ const HotelCard = ({ bookHotel }) => {
             <div className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
                 <CalendarOutlined className="text-green-600" />
-                Stay Details
+                {L("Stay Details","Détails du séjour","住宿详情")}
               </h3>
               <Row gutter={[24, 16]}>
                 <Col xs={24} sm={12}>
-                  <Form.Item label="Purpose of Stay" name="purpose_of_stay">
-                    <Select 
-                      placeholder="Select purpose of stay"
+                  <Form.Item label={L("Purpose of Stay","Motif du séjour","入住目的")} name="purpose_of_stay">
+                    <Select
+                      placeholder={L("Select purpose of stay","Sélectionnez le motif","选择入住目的")}
                       className="rounded-lg h-12"
                     >
-                      <Option value="business">Business Trip</Option>
-                      <Option value="honeymoon">Honeymoon</Option>
-                      <Option value="family">Family Vacation</Option>
-                      <Option value="diplomatic">Diplomatic Visit</Option>
-                      <Option value="vip_event">VIP Event</Option>
-                      <Option value="tourism">Tourism</Option>
+                      <Option value="business">{L("Business Trip","Voyage d'affaires","商务出行")}</Option>
+                      <Option value="honeymoon">{L("Honeymoon","Lune de miel","蜜月")}</Option>
+                      <Option value="family">{L("Family Vacation","Vacances en famille","家庭度假")}</Option>
+                      <Option value="diplomatic">{L("Diplomatic Visit","Visite diplomatique","外交访问")}</Option>
+                      <Option value="vip_event">{L("VIP Event","Événement VIP","VIP活动")}</Option>
+                      <Option value="tourism">{L("Tourism","Tourisme","旅游")}</Option>
                     </Select>
                   </Form.Item>
                 </Col>
                 <Col xs={24} sm={12}>
-                  <Form.Item label="Preferred Location" name="preferred_location">
+                  <Form.Item label={L("Preferred Location","Emplacement préféré","首选位置")} name="preferred_location">
                     <Select
-                      placeholder="Choose preferred location"
+                      placeholder={L("Choose preferred location","Choisissez l'emplacement","选择首选位置")}
                       onChange={handleLocationChange}
                       className="rounded-lg h-12"
                     >
-                      <Option value="kcc">Kigali Convention Center Area</Option>
-                      <Option value="embassy">Embassy & Diplomatic Area</Option>
+                      <Option value="kcc">{L("Kigali Convention Center Area","Zone du Centre de conférences de Kigali","基加利会议中心区域")}</Option>
+                      <Option value="embassy">{L("Embassy & Diplomatic Area","Zone des ambassades et diplomatique","大使馆和外交区")}</Option>
                       <Option value="vision_city">Vision City</Option>
                       <Option value="musanze">Musanze</Option>
-                      <Option value="lake_kivu">Lake Kivu</Option>
-                      <Option value="other">Other Location</Option>
+                      <Option value="lake_kivu">{L("Lake Kivu","Lac Kivu","基伍湖")}</Option>
+                      <Option value="other">{L("Other Location","Autre emplacement","其他位置")}</Option>
                     </Select>
                   </Form.Item>
                   {locationType === "other" && (
-                    <Form.Item 
+                    <Form.Item
                       name="custom_location"
-                      rules={[{ required: true, message: 'Please specify your location' }]}
+                      rules={[{ required: true, message: L('Please specify your location','Veuillez préciser votre emplacement','请指定您的位置') }]}
                     >
-                      <Input 
+                      <Input
                         prefix={<EnvironmentOutlined className="text-gray-400" />}
-                        placeholder="Enter specific location"
+                        placeholder={L("Enter specific location","Entrez l'emplacement spécifique","输入具体位置")}
                         className="rounded-lg h-12"
                       />
                     </Form.Item>
@@ -230,14 +231,14 @@ const HotelCard = ({ bookHotel }) => {
                 </Col>
                 <Col xs={24}>
                   <Form.Item 
-                    label="Check-in & Check-out Dates" 
+                    label={L("Check-in & Check-out Dates","Dates d'arrivée et de départ","入住与退房日期")}
                     name="date_range"
-                    rules={[{ required: true, message: 'Please select check-in and check-out dates' }]}
+                    rules={[{ required: true, message: L('Please select check-in and check-out dates','Veuillez sélectionner les dates','请选择入住和退房日期') }]}
                   >
                     <RangePicker
                       className="w-full rounded-lg h-12"
                       format="YYYY-MM-DD"
-                      placeholder={['Check-in date', 'Check-out date']}
+                      placeholder={[L('Check-in date','Date d\'arrivée','入住日期'), L('Check-out date','Date de départ','退房日期')]}
                     />
                   </Form.Item>
                 </Col>
@@ -248,71 +249,61 @@ const HotelCard = ({ bookHotel }) => {
             <div className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
                 <StarOutlined className="text-yellow-600" />
-                Hotel Preferences
+                {L("Hotel Preferences","Préférences d'hôtel","酒店偏好")}
               </h3>
               <Row gutter={[24, 16]}>
                 <Col xs={24} sm={12}>
-                  <Form.Item label="Hotel Category" name="hotel_level">
-                    <Select 
-                      placeholder="Select hotel category"
-                      className="rounded-lg h-12"
-                    >
-                      <Option value="premium">Premium Hotel</Option>
-                      <Option value="4-star">4 Star Hotel</Option>
-                      <Option value="5-star">5 Star Hotel</Option>
-                      <Option value="luxury1">Luxury Hotel</Option>
-                      <Option value="luxury2">Ultra Luxury</Option>
-                      <Option value="private_villa">Private Villa</Option>
-                      <Option value="boutique">Boutique Hotel</Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={12}>
-                  <Form.Item label="Transportation Service" name="transport">
-                    <Select 
-                      placeholder="Select transportation"
-                      className="rounded-lg h-12"
-                    >
-                      <Option value="Executive Sedans – First-Class (VIP)">
-                        Executive Sedans (VIP)
-                      </Option>
-                      <Option value="Luxury SUVs – First-Class (VIP)">
-                        Luxury SUVs (VIP)
-                      </Option>
-                      <Option value="Business-Class Sedans – Second-Class (Executive)">
-                        Business Sedans (Executive)
-                      </Option>
-                      <Option value="Reliable SUVs – Second-Class (Business & NGO Use)">
-                        Reliable SUVs (Business)
-                      </Option>
-                      <Option value="Luxury Vans – VIP Group Transport">
-                        Luxury Vans (Group VIP)
-                      </Option>
-                      <Option value="none">No Transportation Needed</Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={12}>
-                  <Form.Item label="Budget Range" name="budget_range">
+                  <Form.Item label={L("Hotel Category","Catégorie d'hôtel","酒店类别")} name="hotel_level">
                     <Select
-                      placeholder="Select your budget range"
+                      placeholder={L("Select hotel category","Sélectionnez la catégorie","选择酒店类别")}
+                      className="rounded-lg h-12"
+                    >
+                      <Option value="premium">{L("Premium Hotel","Hôtel Premium","高级酒店")}</Option>
+                      <Option value="4-star">{L("4 Star Hotel","Hôtel 4 Étoiles","四星级酒店")}</Option>
+                      <Option value="5-star">{L("5 Star Hotel","Hôtel 5 Étoiles","五星级酒店")}</Option>
+                      <Option value="luxury1">{L("Luxury Hotel","Hôtel de luxe","豪华酒店")}</Option>
+                      <Option value="luxury2">{L("Ultra Luxury","Ultra luxe","超豪华")}</Option>
+                      <Option value="private_villa">{L("Private Villa","Villa privée","私人别墅")}</Option>
+                      <Option value="boutique">{L("Boutique Hotel","Hôtel boutique","精品酒店")}</Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col xs={24} sm={12}>
+                  <Form.Item label={L("Transportation Service","Service de transport","交通服务")} name="transport">
+                    <Select
+                      placeholder={L("Select transportation","Sélectionnez le transport","选择交通方式")}
+                      className="rounded-lg h-12"
+                    >
+                      <Option value="Executive Sedans – First-Class (VIP)">{L("Executive Sedans (VIP)","Berlines exécutives (VIP)","行政轿车（VIP）")}</Option>
+                      <Option value="Luxury SUVs – First-Class (VIP)">{L("Luxury SUVs (VIP)","SUV de luxe (VIP)","豪华SUV（VIP）")}</Option>
+                      <Option value="Business-Class Sedans – Second-Class (Executive)">{L("Business Sedans (Executive)","Berlines d'affaires (Exécutif)","商务轿车（行政）")}</Option>
+                      <Option value="Reliable SUVs – Second-Class (Business & NGO Use)">{L("Reliable SUVs (Business)","SUV fiables (Affaires)","可靠SUV（商务）")}</Option>
+                      <Option value="Luxury Vans – VIP Group Transport">{L("Luxury Vans (Group VIP)","Vans de luxe (Groupe VIP)","豪华面包车（VIP团队）")}</Option>
+                      <Option value="none">{L("No Transportation Needed","Pas de transport nécessaire","无需交通服务")}</Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col xs={24} sm={12}>
+                  <Form.Item label={L("Budget Range","Fourchette de budget","预算范围")} name="budget_range">
+                    <Select
+                      placeholder={L("Select your budget range","Sélectionnez votre budget","选择预算范围")}
                       onChange={handleBudgetChange}
                       className="rounded-lg h-12"
                     >
-                      <Option value="150_200">$150 - $200 per night</Option>
-                      <Option value="200_400">$200 - $400 per night</Option>
-                      <Option value="400_plus">$400+ per night</Option>
-                      <Option value="custom">Custom Budget</Option>
+                      <Option value="150_200">{L("$150 - $200 per night","150 $ - 200 $ par nuit","每晚150-200美元")}</Option>
+                      <Option value="200_400">{L("$200 - $400 per night","200 $ - 400 $ par nuit","每晚200-400美元")}</Option>
+                      <Option value="400_plus">{L("$400+ per night","400 $+ par nuit","每晚400美元以上")}</Option>
+                      <Option value="custom">{L("Custom Budget","Budget personnalisé","自定义预算")}</Option>
                     </Select>
                   </Form.Item>
                   {budgetType === "custom" && (
                     <Form.Item
                       name="custom_budget"
-                      rules={[{ required: true, message: 'Please enter your budget amount' }]}
+                      rules={[{ required: true, message: L('Please enter your budget amount','Veuillez entrer votre budget','请输入您的预算金额') }]}
                     >
                       <Input
                         prefix={<DollarOutlined className="text-gray-400" />}
-                        placeholder="Enter your budget amount"
+                        placeholder={L("Enter your budget amount","Entrez votre budget","输入您的预算金额")}
                         type="number"
                         className="rounded-lg h-12"
                       />
@@ -326,14 +317,14 @@ const HotelCard = ({ bookHotel }) => {
             <div className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
                 <BulbOutlined className="text-purple-600" />
-                Additional Information
+                {L("Additional Information","Informations complémentaires","附加信息")}
               </h3>
               <Row gutter={[24, 16]}>
                 <Col xs={24}>
-                  <Form.Item label="Special Requests" name="special_needs">
+                  <Form.Item label={L("Special Requests","Demandes spéciales","特殊要求")} name="special_needs">
                     <Input.TextArea
                       rows={4}
-                      placeholder="Any special requirements, preferences, or additional information we should know about..."
+                      placeholder={L("Any special requirements, preferences, or additional information we should know about...","Exigences spéciales, préférences ou informations supplémentaires...","任何特殊要求、偏好或我们需要了解的附加信息...")}
                       className="rounded-lg"
                     />
                   </Form.Item>
@@ -348,7 +339,7 @@ const HotelCard = ({ bookHotel }) => {
                 onClick={handleSubmit}
                 className="w-full h-14 rounded-lg text-lg font-semibold bg-[#C9A84C] hover:bg-[#B8973B] text-white border-0 transition-colors duration-200"
               >
-                {isLoading ? 'Submitting Your Request...' : 'Submit Booking Request'}
+                {isLoading ? L('Submitting Your Request...','Envoi en cours...','提交中...') : L('Submit Booking Request','Soumettre la demande','提交预订请求')}
               </button>
             </div>
           </Form>

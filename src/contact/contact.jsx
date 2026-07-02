@@ -10,17 +10,17 @@ import { User, Mail, Phone, MessageCircle, MessageSquare } from "lucide-react";
 
 const { Option } = Select;
 
-const ContactForm = ({ form, onFinish, t, isLoading }) => (
+const ContactForm = ({ form, onFinish, t, isLoading, L }) => (
   <div className="bg-white rounded-xl border border-gray-200 p-8 w-full max-w-xl">
     <div className="mb-8">
       <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider">
         {t("contactInform.form.title")}
       </p>
       <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 mb-2">
-        Get in Touch
+        {t("contactInformation.title.part1")} {t("contactInformation.title.part2")}
       </h2>
       <p className="text-gray-500 text-sm">
-        We'll get back to you within 24 hours
+        {L("We'll get back to you within 24 hours","Nous vous répondrons dans les 24 heures","我们将在24小时内回复您")}
       </p>
     </div>
 
@@ -89,12 +89,12 @@ const ContactForm = ({ form, onFinish, t, isLoading }) => (
             form.getFieldValue("inquiry_type") ? "[&_.ant-select-selector]:border-[#C9A84C] [&_.ant-select-selector]:bg-[#C9A84C]/5 [&_.ant-select-selector]:shadow-[0_0_0_2px_rgba(201,168,76,0.18)]" : ""
           }`}
         >
-          <Option value="consultation">Consultation</Option>
+          <Option value="consultation">{L("Consultation","Consultation","咨询")}</Option>
           <Option value="department">{t("contactInform.form.inquiryOptions.department")}</Option>
           <Option value="transport">{t("contactInform.form.inquiryOptions.transport")}</Option>
           <Option value="businessSetup">{t("contactInform.form.inquiryOptions.businessSetup")}</Option>
           <Option value="hotel">{t("contactInform.form.inquiryOptions.hotel")}</Option>
-            <Option value="Other">Other</Option>
+            <Option value="Other">{L("Other","Autre","其他")}</Option>
         </Select>
       </Form.Item>
 
@@ -122,7 +122,7 @@ const ContactForm = ({ form, onFinish, t, isLoading }) => (
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
-              <span>Sending...</span>
+              <span>{L("Sending...","Envoi en cours...","发送中...")}</span>
             </>
           ) : (
             t("contactInform.form.submitButton")
@@ -133,7 +133,7 @@ const ContactForm = ({ form, onFinish, t, isLoading }) => (
   </div>
 );
 
-const ContactInfo = ({ t }) => (
+const ContactInfo = ({ t, L }) => (
   <div className="bg-white rounded-xl border border-gray-200 p-8 w-full max-w-xl">
     <div className="mb-8">
       <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider">
@@ -185,7 +185,7 @@ const ContactInfo = ({ t }) => (
       <div className="flex items-center gap-4">
         <FaMapMarkerAlt className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
         <div>
-          <p className="text-xs text-gray-500 mb-0.5">Location</p>
+          <p className="text-xs text-gray-500 mb-0.5">{L("Location","Adresse","地址")}</p>
           <p className="font-semibold text-gray-900 text-sm">{t("contactInformation.location")}</p>
         </div>
       </div>
@@ -202,7 +202,9 @@ const ContactInfo = ({ t }) => (
 );
 
 const ContactUs = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en, fr, ch) =>
+    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const searchParams = useSearchParams();
   const [form] = Form.useForm();
   const [isLoading, setIsLoading] = React.useState(false);
@@ -247,14 +249,14 @@ const ContactUs = () => {
   return (
     <div className="min-h-screen bg-white pb-16">
       <div className="max-w-5xl mx-auto px-4 py-12 flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
-        <ContactForm form={form} onFinish={handleSubmit} t={t} isLoading={isLoading} />
-        <ContactInfo t={t} />
+        <ContactForm form={form} onFinish={handleSubmit} t={t} isLoading={isLoading} L={L} />
+        <ContactInfo t={t} L={L} />
       </div>
 
       <div className="max-w-5xl mx-auto px-4 pb-20">
         <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
           <div className="px-6 py-5 border-b border-gray-100">
-            <h3 className="text-lg font-bold text-gray-900">Find Us</h3>
+            <h3 className="text-lg font-bold text-gray-900">{L("Find Us","Nous trouver","找到我们")}</h3>
             <p className="text-sm text-gray-600 mt-1">{address}</p>
           </div>
           <div className="w-full aspect-[16/10] sm:aspect-[16/7]">

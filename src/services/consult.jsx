@@ -55,7 +55,9 @@ const services = [
 ];
 
 export default function BusinessConsulting() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en, fr, ch) =>
+    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [form] = Form.useForm();
 
@@ -95,10 +97,10 @@ export default function BusinessConsulting() {
         <div className="max-w-6xl mx-auto px-4 py-20">
           <div className="text-center">
             <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-              Services
+              {L("Services","Services","服务")}
             </span>
             <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 uppercase tracking-wider">
-              Business Consulting
+              {L("Business Consulting","Conseil en Affaires","企业咨询")}
             </h1>
             <p className="text-gray-500 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
               {t("businessConsulting.title")}
@@ -170,7 +172,11 @@ export default function BusinessConsulting() {
 
                     {/* Features */}
                     <div className="flex flex-wrap gap-4 mt-6">
-                      {["Strategic Planning", "Expert Guidance", "Proven Results"].map((feature, i) => (
+                      {[
+                        L("Strategic Planning","Planification Stratégique","战略规划"),
+                        L("Expert Guidance","Orientation d'Expert","专家指导"),
+                        L("Proven Results","Résultats Prouvés","成效卓著")
+                      ].map((feature, i) => (
                         <div key={i} className="flex items-center gap-2">
                           <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded"></div>
                           <span className="text-sm text-gray-600">{feature}</span>

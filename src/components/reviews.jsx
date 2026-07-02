@@ -68,7 +68,8 @@ const testimonials = [
 ];
 
 function Testimonials() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en, fr, ch) => i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState(testimonials[0]);
 
@@ -90,7 +91,7 @@ function Testimonials() {
         {/* Header */}
         <div className="text-center mb-16">
           <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-            Testimonials
+            {L("Testimonials","Témoignages","客户评价")}
           </span>
 
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-4">

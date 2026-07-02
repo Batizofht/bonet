@@ -129,12 +129,29 @@
   "blog": {
     "header": {
       "title1": "最新",
-      "title2": "博客文章"
+      "title2": "博客",
+      "description": "专家文章和动态更新"
     },
     "loading": "正在加载博客...",
     "noPosts": "暂无博客文章。",
     "readMore": "阅读更多",
-    "blogs":"博客"
+    "blogs": "博客",
+    "resourcesLabel": "资源",
+    "resourcesTitle": "博客资源",
+    "readArticle": "阅读文章",
+    "viewAllArticles": "查看所有文章",
+    "featured": "精选",
+    "read": "阅读",
+    "loadMore": "加载更多文章",
+    "filter": {
+      "placeholder": "搜索文章...",
+      "of": "共",
+      "clear": "清除搜索"
+    },
+    "noFilterResults": "没有匹配您搜索的文章",
+    "noFilterResultsHint": "请尝试其他关键词",
+    "noPostsHint": "请稍后回来查看新内容",
+    "resourcesDesc": "探索我们专家撰写的精彩文章和最新动态"
   },
   "faq": {
     "header": "一些常见问题",
@@ -153,11 +170,12 @@
     "email": "邮箱：",
     "location": "地点：",
     "copyright": "保留所有权利。",
-     "travel": "旅行与接待",
+    "travel": "旅行与接待",
     "investment": "商业设立",
     "consulting": "企业咨询",
     "hrsupport": "人力资源与行政支持",
-    "blogs": "博客"
+    "blogs": "博客",
+    "company": "公司"
   },
   "menu": {
     "home": "首页",
@@ -185,11 +203,48 @@
     "employeeTraining": "员工培训与发展",
     "payrollCompensation": "薪资与薪酬",
     "administrativeSupport": "行政支持",
-    "bookNow": "立即预订"
+    "bookNow": "立即预订",
+    "whyRwanda": "为何选择卢旺达",
+    "faq": "常见问题",
+    "relocationConcierge": "搬迁与礼宾服务",
+    "executiveTravel": "高管旅行",
+    "megaHeader": "商业服务",
+    "megaSubtitle": "选择适合您公司成长的正确方向。",
+    "talkToExpert": "咨询专家",
+    "exploreAllServices": "探索所有服务",
+    "desc_companyReg": "公司成立和法律设置",
+    "desc_investCert": "RDB投资认证支持",
+    "desc_bizPermits": "许可证、合规和审批",
+    "desc_mktResearch": "市场验证和机会映射",
+    "desc_bizPlanning": "增长战略和执行规划",
+    "desc_finAdvisory": "金融结构化和咨询",
+    "desc_processOpt": "运营效率和流程设计",
+    "desc_projAudit": "项目审计和实施审查",
+    "desc_recruitment": "人才招聘和入职",
+    "desc_hrPolicy": "人力资源政策和合规框架",
+    "desc_empTraining": "员工培训和能力建设",
+    "desc_adminSupport": "后台办公室和行政运营",
+    "desc_relocation": "搬迁支持、礼宾服务和安家服务",
+    "desc_execTravel": "高管旅行协调",
+    "desc_hotels": "酒店和高端住宿协调",
+    "desc_transport": "机场接送和私人交通",
+    "desc_tourism": "精心策划的旅游和本地体验"
   },
   "home": {
     "welcomeText": "欢迎来到 Bonet Elite Services",
-    "tagline": "您在卢旺达旅行、商业与投资的可靠合作伙伴"
+    "tagline": "您在卢旺达旅行、商业与投资的可靠合作伙伴",
+    "hero_tagline": "卢旺达投资专家",
+    "hero_title": "投资卢旺达",
+    "hero_title_accent": "信心满满",
+    "hero_desc1": "无最低注册资本。6小时完成公司注册。符合条件的投资享受0%企业税。",
+    "hero_desc2": "从法律设立到日常运营的全方位支持。",
+    "explore_services": "探索服务",
+    "stat_years": "年经验",
+    "stat_clients": "外国客户",
+    "stat_countries": "国家",
+    "stat_support": "WhatsApp 支持",
+    "consult_desc": "面向外国投资者的公司注册、许可证和RDB支持。",
+    "travel_desc": "豪华高管旅行、搬迁服务和VIP礼宾服务。"
   },
   "vision": {
     "welcomeText": "欢迎来到 Bonet Elite Services",
@@ -237,6 +292,18 @@
     "transport": "交通",
     "tour": "旅游",
     "search": "搜索任何内容"
+  },
+  "heroServices": {
+    "investment_title": "投资与商业",
+    "investment_desc": "6小时内完成公司注册。100%外资所有权。税收优惠。",
+    "hr_title": "人力资源与招聘",
+    "hr_desc": "招聘、合同、工资单、RSSB注册、工作许可证。",
+    "relocation_title": "搬迁服务",
+    "relocation_desc": "住房、签证、学校入学、银行业务、日常支持。",
+    "travel_title": "高管差旅",
+    "travel_desc": "豪华酒店、大猩猩徒步旅行、VIP交通、精心策划的行程。",
+    "learn_more": "了解更多",
+    "book_consultation": "预约咨询"
   },
   "executiveApartments": {
     "title": "行政服务式公寓",
@@ -711,7 +778,7 @@
   },
   "liveChat": {
     "typeMessage": "输入您的消息",
-    "title": "Bonet Elite Service 在线聊天 sdjhsdjhjhsdjh5",
+    "title": "Bonet Elite Service 在线聊天",
     "helpText": "我们能为您提供什么帮助？",
     "subtitle": "与我们的客服聊天",
     "continue": "继续在线聊天",
@@ -721,7 +788,34 @@
     "footer": "Bonet Elite Service 在线聊天"
   },
   "common": {
-    "contactUs": "联系我们"
+    "expertService": "专业服务",
+    "support247": "24/7 全天候支持",
+    "trusted": "值得信赖",
+    "premiumService": "高端服务",
+    "bookingTravel": "旅行预订",
+    "continueToChat": "继续聊天",
+    "agreeTerms": "我同意条款",
+    "chatWithSupport": "与客服聊天",
+    "sponsored": "赞助",
+    "featured": "精选",
+    "viewAllArticles": "查看所有文章",
+    "whatClientsSay": "客户评价",
+    "realStories": "来自与我们合作过的优秀人士的真实故事",
+    "ourTechStack": "我们的技术栈",
+    "backend": "后端",
+    "frontend": "前端",
+    "databases": "数据库",
+    "howWePower": "我们如何为您的企业赋能",
+    "personalInformation": "个人信息",
+    "tourDetails": "旅游详情",
+    "fullName": "全名",
+    "emailAddress": "电子邮箱",
+    "phoneNumber": "电话号码",
+    "preferredLanguage": "首选语言",
+    "destinationsToVisit": "目的地",
+    "travelDates": "旅行日期",
+    "cancel": "取消",
+    "submit": "提交"
   },
   "brandName": "Bonet Elite Services",
   "infoCards": {
@@ -1888,89 +1982,314 @@
   "here_to_help": "我们随时为您解答任何问题",
   "made_with": "制作于",
   "Innovative solutions for modern businesses": "为现代企业提供创新解决方案",
-"Explore beautiful destinations in Rwanda": "探索卢旺达的美丽目的地",
-"Discover valuable articles and updates from our experts": "发现我们专家提供的有价值文章和更新",
-"Find answers to common questions": "查找常见问题的答案",
-"Still have questions?": "还有疑问？",
-"We're here to help you with any questions": "我们随时为您解答任何问题",
-"Professional solutions for your business": "为您的企业提供专业解决方案",
-"Our Services": "我们的服务",
-"View All Services": "查看所有服务",
-"Offline": "离线",
-"Online": "在线",
-"Live": "直播",
-"Secure & Private": "安全且私密",
-"Type your message...": "输入您的消息...",
-"common": {
-  "expertService": "专业服务",
-  "support247": "24/7 全天候支持",
-  "trusted": "值得信赖",
-  "premiumService": "高端服务",
-  "bookingTravel": "旅行预订",
-  "continueToChat": "继续聊天",
-  "agreeTerms": "我同意条款",
-  "chatWithSupport": "与客服聊天",
-  "sponsored": "赞助",
-  "featured": "精选",
-  "viewAllArticles": "查看所有文章",
-  "whatClientsSay": "客户评价",
-  "realStories": "来自与我们合作过的优秀人士的真实故事",
-  "ourTechStack": "我们的技术栈",
-  "backend": "后端",
-  "frontend": "前端",
-  "databases": "数据库",
-  "howWePower": "我们如何为您的企业赋能",
-  "personalInformation": "个人信息",
-  "tourDetails": "旅游详情",
-  "fullName": "全名",
-  "emailAddress": "电子邮箱",
-  "phoneNumber": "电话号码",
-  "preferredLanguage": "首选语言",
-  "destinationsToVisit": "目的地",
-  "travelDates": "旅行日期",
-  "cancel": "取消",
-  "submit": "提交"
-},
-"premiumFeatures": {
-  "title": "我们的高端",
-  "subtitle": "功能与优势",
-  "customerSupport": {
-    "title": "24/7 客户支持",
-    "description": "我们专业的支持团队协助处理客户咨询、解答常见问题、处理预订并指导用户完成企业注册。"
+  "Explore beautiful destinations in Rwanda": "探索卢旺达的美丽目的地",
+  "Discover valuable articles and updates from our experts": "发现我们专家提供的有价值文章和更新",
+  "Find answers to common questions": "查找常见问题的答案",
+  "Still have questions?": "还有疑问？",
+  "We're here to help you with any questions": "我们随时为您解答任何问题",
+  "Professional solutions for your business": "为您的企业提供专业解决方案",
+  "Our Services": "我们的服务",
+  "View All Services": "查看所有服务",
+  "Offline": "离线",
+  "Online": "在线",
+  "Live": "直播",
+  "Secure & Private": "安全且私密",
+  "Type your message...": "输入您的消息...",
+  "premiumFeatures": {
+    "title": "我们的高端",
+    "subtitle": "功能与优势",
+    "customerSupport": {
+      "title": "24/7 客户支持",
+      "description": "我们专业的支持团队协助处理客户咨询、解答常见问题、处理预订并指导用户完成企业注册。"
+    },
+    "bookingSystem": {
+      "title": "智能预订系统",
+      "description": "我们精简的预订系统处理酒店、交通和旅游预订，提供无缝调度和实时更新。"
+    },
+    "recommendations": {
+      "title": "个性化推荐",
+      "description": "我们分析您的偏好，为您提供个性化推荐，提升您的体验和满意度。"
+    },
+    "voiceSupport": {
+      "title": "语音支持",
+      "description": "启用语音支持系统，实现免提客户互动，解答问题并协助用户。"
+    }
   },
-  "bookingSystem": {
-    "title": "智能预订系统",
-    "description": "我们精简的预订系统处理酒店、交通和旅游预订，提供无缝调度和实时更新。"
+  "clientReviews": {
+    "title": "客户评价",
+    "subtitle": "来自与我们合作过的优秀人士的真实故事"
   },
-  "recommendations": {
-    "title": "个性化推荐",
-    "description": "我们分析您的偏好，为您提供个性化推荐，提升您的体验和满意度。"
+  "howDev": {
+    "step1": {
+      "title": "24/7 客户支持",
+      "description": "我们专业的支持团队全天候为客户提供帮助，解答问题，指导企业注册，轻松处理预订。"
+    },
+    "step2": {
+      "title": "智能预订系统",
+      "description": "简化酒店、交通和旅游预订流程，确保无缝调度和个性化体验。"
+    },
+    "step3": {
+      "title": "个性化推荐",
+      "description": "通过了解您的偏好，我们提供量身定制的建议，提升您的体验和满意度。"
+    },
+    "step4": {
+      "title": "即时通讯",
+      "description": "客户可以立即联系我们获取支持，使体验更加互动和便捷。"
+    }
   },
-  "voiceSupport": {
-    "title": "语音支持",
-    "description": "启用语音支持系统，实现免提客户互动，解答问题并协助用户。"
+  "pageHero": {
+    "blogBusiness": {
+      "subtitle": "商业指南",
+      "title": "在卢旺达开创并发展您的业务",
+      "desc": "公司注册、合规和扩张策略的逐步指导。"
+    },
+    "blogInvestment": {
+      "subtitle": "投资机会",
+      "title": "投资卢旺达的未来",
+      "desc": "探索高回报领域：房地产、ICT、农业、旅游及更多。"
+    },
+    "blogTravel": {
+      "subtitle": "旅游指南",
+      "title": "探索千丘之国",
+      "desc": "大猩猩徒步、野生动物园和难忘冒险的必备攻略。"
+    },
+    "consulting": {
+      "subtitle": "专业咨询",
+      "title": "战略商业解决方案",
+      "desc": "商业规划、财务审计、项目管理和卓越运营。"
+    },
+    "hrsupport": {
+      "subtitle": "人力资源与行政支持",
+      "title": "组建您的理想团队",
+      "desc": "为在卢旺达的外资企业提供招聘、工资、工作许可证和全面人力资源合规服务。"
+    },
+    "investment": {
+      "subtitle": "投资与设立",
+      "title": "您进入东非市场的门户",
+      "desc": "6小时完成公司注册。100%外资所有权。税收优惠和全面合规支持。"
+    },
+    "travel": {
+      "subtitle": "旅行与接待",
+      "title": "以风格体验卢旺达",
+      "desc": "豪华酒店、机场接送、大猩猩徒步和贯穿千丘之国的精选旅游。"
+    },
+    "explore": {
+      "subtitle": "发现",
+      "title": "探索卢旺达"
+    },
+    "gallery": {
+      "subtitle": "发现卢旺达",
+      "title": "目的地与体验",
+      "desc": "千丘之国的视觉之旅"
+    },
+    "faq": {
+      "subtitle": "帮助中心",
+      "title": "常见问题"
+    },
+    "businessReg": {
+      "subtitle": "企业注册",
+      "title": "在卢旺达注册您的企业",
+      "desc": "快速合规的企业注册，提供专业本地支持。"
+    },
+    "executiveTravel": {
+      "subtitle": "高管旅行",
+      "title": "VIP旅行与礼宾服务",
+      "desc": "专为高管量身定制的卢旺达优质旅行体验。"
+    },
+    "hrRecruitment": {
+      "subtitle": "人力资源与招聘",
+      "title": "寻找合适的人才",
+      "desc": "为在卢旺达的企业提供端到端招聘和人力资源支持。"
+    },
+    "relocation": {
+      "subtitle": "搬迁服务",
+      "title": "顺畅搬迁至卢旺达",
+      "desc": "住房、签证、学校、银行和日常支持。"
+    }
+  },
+  "exploreRwanda": {
+    "banner_discover": "发现",
+    "banner_title": "探索卢旺达",
+    "opportunity_label": "机遇",
+    "opportunity_title": "卢旺达概览",
+    "opportunity_desc": "使卢旺达成为非洲最具吸引力的商业、投资和生活目的地的关键事实。",
+    "stat_population": "人口",
+    "stat_safest": "非洲最安全",
+    "stat_bizease": "营商便利度",
+    "stat_setup": "公司设立",
+    "investment_label": "投资",
+    "investment_title": "主要行业",
+    "investment_desc": "卢旺达最具增长潜力和投资价值的行业",
+    "lifestyle_label": "生活方式",
+    "lifestyle_title": "在卢旺达生活",
+    "lifestyle_desc": "外籍人士和居民的生活质量因素",
+    "gallery_label": "画廊",
+    "gallery_title": "游览卢旺达",
+    "gallery_desc": "千丘之国的目的地和体验",
+    "cta_label": "开始",
+    "cta_title": "准备探索卢旺达了吗？",
+    "cta_desc": "无论您是投资、搬迁还是游览——我们让您的卢旺达体验无缝顺畅。",
+    "cta_button": "预约免费咨询",
+    "sectors": [
+      {
+        "name": "ICT与数字",
+        "desc": "Kigali拥有4G覆盖和数字中心的蓬勃发展的科技生态系统"
+      },
+      {
+        "name": "旅游业",
+        "desc": "山地大猩猩、生态旅游、豪华酒店和会议中心"
+      },
+      {
+        "name": "制造业",
+        "desc": "拥有税收优惠和出口加工的经济特区"
+      },
+      {
+        "name": "农业",
+        "desc": "向全球市场出口优质咖啡、茶叶和园艺产品"
+      },
+      {
+        "name": "能源",
+        "desc": "可再生能源目标和太阳能投资机会"
+      },
+      {
+        "name": "金融",
+        "desc": "新兴金融科技生态系统和不断扩张的银行业"
+      }
+    ],
+    "living": [
+      {
+        "title": "安全",
+        "desc": "非洲第二安全国家，犯罪率低，治理稳定"
+      },
+      {
+        "title": "生活成本",
+        "desc": "与地区同类国家相比价格合理，外籍人士待遇具有竞争力"
+      },
+      {
+        "title": "医疗",
+        "desc": "符合国际标准的现代医院和医疗设施"
+      },
+      {
+        "title": "教育",
+        "desc": "国际学校和具有全球认可项目的大学"
+      },
+      {
+        "title": "连通性",
+        "desc": "出色的互联网和数字基础设施，全国光纤覆盖"
+      },
+      {
+        "title": "气候",
+        "desc": "千丘之国全年气温宜人"
+      }
+    ],
+    "gallery_images": [
+      {
+        "title": "会议中心"
+      },
+      {
+        "title": "基加利市"
+      },
+      {
+        "title": "纪念馆"
+      },
+      {
+        "title": "基加利景观"
+      },
+      {
+        "title": "基伍湖"
+      },
+      {
+        "title": "火山"
+      },
+      {
+        "title": "文化"
+      },
+      {
+        "title": "茶园"
+      },
+      {
+        "title": "尼永韦森林"
+      },
+      {
+        "title": "吉塞尼"
+      },
+      {
+        "title": "胡伊"
+      },
+      {
+        "title": "穆哈济湖"
+      }
+    ]
+  },
+  "galleryPage": {
+    "subtitle": "发现卢旺达",
+    "title": "目的地与体验",
+    "tagline": "千丘之国的视觉之旅",
+    "stat_parks": "国家公园",
+    "stat_hills": "起伏丘陵",
+    "stat_temp": "平均气温",
+    "stat_airport": "基加利机场",
+    "cta_title": "规划您的卢旺达之旅",
+    "cta_desc": "从大猩猩徒步到豪华住宿——让我们为您打造完美行程。",
+    "cta_button": "开始规划"
+  },
+  "faqPage": {
+    "subtitle": "帮助中心",
+    "title": "常见问题",
+    "search_placeholder": "搜索问题...",
+    "browse_label": "按类别浏览",
+    "back_to_top": "返回顶部",
+    "no_results": "未找到与您搜索匹配的问题。",
+    "how_bonet_title": "Bonet如何提供帮助",
+    "official_links_title": "官方政府链接",
+    "official_links_desc": "关于费用、处理时间和最新要求，请始终直接向官方机构确认。",
+    "support_label": "支持",
+    "support_title": "还有问题吗？",
+    "support_desc": "我们的团队随时准备帮助您处理具体情况。",
+    "contact_us": "联系我们",
+    "whatsapp": "WhatsApp"
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "message": "您查找的页面可能已被移动、删除或从未存在。请检查网址或返回我们的主页。",
+    "goHome": "返回主页",
+    "contactUs": "联系我们",
+    "helpText": "需要帮助找到什么内容？",
+    "reachOut": "联系我们的团队"
+  },
+  "trust": {
+    "label": "我们的优势",
+    "title": "与我们合作的机构和品牌",
+    "licensed": "获卢旺达发展局认可 · 政府批准 · 5年以上经验"
+  },
+  "about": {
+    "cta_label": "开始",
+    "cta_title": "准备好与 Bonet Elite 合作了吗？",
+    "cta_desc": "无论您是注册公司、迁移团队还是规划高管访问——我们都在这里确保一切顺畅。",
+    "cta_book": "预约免费咨询",
+    "cta_explore": "探索服务"
+  },
+  "servicesPage": {
+    "banner_label": "服务",
+    "banner_title": "我们的服务",
+    "section_label": "商业服务",
+    "section_title": "我们提供什么",
+    "article_label": "商业设立",
+    "article_title": "卢旺达企业注册完整指南",
+    "article_author": "Bonet 商业团队",
+    "article_date": "2024年12月15日",
+    "article_read": "8分钟阅读",
+    "article_intro": "得益于政府持续简化注册流程的努力，在卢旺达创业从未如此简单。",
+    "article_h3": "为什么在卢旺达注册企业？",
+    "article_body": "得益于高效的注册系统、有利的税收政策和对企业家的大力支持，卢旺达是非洲最容易经商的国家之一。",
+    "help_h3": "需要企业注册帮助？",
+    "help_body": "让我们的专家为您处理整个注册流程。我们确保符合所有法规并节省您的时间。",
+    "help_primary": "立即开始注册",
+    "help_secondary": "免费咨询",
+    "cta_label": "开始",
+    "cta_title": "不确定您需要哪种服务？",
+    "cta_body": "预约免费30分钟咨询。我们将评估您的需求并推荐正确的方向。",
+    "cta_button": "预约免费咨询",
+    "talk_expert": "咨询专家"
   }
-},
-"clientReviews": {
-  "title": "客户评价",
-  "subtitle": "来自与我们合作过的优秀人士的真实故事"
-},
-"howDev": {
-  "step1": {
-    "title": "24/7 客户支持",
-    "description": "我们专业的支持团队全天候为客户提供帮助，解答问题，指导企业注册，轻松处理预订。"
-  },
-  "step2": {
-    "title": "智能预订系统",
-    "description": "简化酒店、交通和旅游预订流程，确保无缝调度和个性化体验。"
-  },
-  "step3": {
-    "title": "个性化推荐",
-    "description": "通过了解您的偏好，我们提供量身定制的建议，提升您的体验和满意度。"
-  },
-  "step4": {
-    "title": "即时通讯",
-    "description": "客户可以立即联系我们获取支持，使体验更加互动和便捷。"
-  }
-}
 }

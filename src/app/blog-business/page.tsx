@@ -35,11 +35,11 @@ export const metadata = {
 export default function BlogBusinessPage() {
   return (
     <div className="min-h-screen">
-      <FirstService 
+      <FirstService
         image="/image/city.jpg"
-        subtitle="Business Guide"
-        title="Start & Grow Your Business in Rwanda"
-        description="Step-by-step insights on company registration, compliance, and expansion strategies."
+        subtitleKey="pageHero.blogBusiness.subtitle"
+        titleKey="pageHero.blogBusiness.title"
+        descriptionKey="pageHero.blogBusiness.desc"
       />
       <BusinessRegistration />
     </div>

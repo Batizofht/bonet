@@ -129,12 +129,29 @@
   "blog": {
     "header": {
       "title1": "Latest",
-      "title2": "Blog Posts"
+      "title2": "Blogs",
+      "description": "Expert articles and updates"
     },
     "loading": "Loading blogs...",
     "noPosts": "No blog posts available.",
     "readMore": "Read More",
-    "blogs":"Blogs"
+    "blogs": "Blogs",
+    "resourcesLabel": "Resources",
+    "resourcesTitle": "Blog Resources",
+    "readArticle": "Read Article",
+    "viewAllArticles": "View All Articles",
+    "featured": "Featured",
+    "read": "Read",
+    "loadMore": "Load more articles",
+    "filter": {
+      "placeholder": "Search articles...",
+      "of": "of",
+      "clear": "Clear search"
+    },
+    "noFilterResults": "No articles match your search",
+    "noFilterResultsHint": "Try different keywords",
+    "noPostsHint": "Check back later for new content",
+    "resourcesDesc": "Discover valuable articles and updates from our experts"
   },
   "faq": {
     "header": "Some Frequently Asked Questions",
@@ -161,7 +178,8 @@
     "investment": "Investment & Business Setup",
     "consulting": "Business Consulting",
     "hrsupport": "HR & Administrative Support",
-    "blogs": "Blogs"
+    "blogs": "Blogs",
+    "company": "Company"
   },
   "menu": {
     "home": "Home",
@@ -189,18 +207,54 @@
     "employeeTraining": "Employee Training & Development",
     "payrollCompensation": "Payroll & Compensation",
     "administrativeSupport": "Administrative Support",
-    "bookNow": "Reservations"
+    "bookNow": "Reservations",
+    "whyRwanda": "Why Rwanda",
+    "faq": "FAQ",
+    "relocationConcierge": "Relocation & Concierge",
+    "executiveTravel": "Executive Travel",
+    "megaHeader": "Business Services",
+    "megaSubtitle": "Choose the right track for your company growth.",
+    "talkToExpert": "Talk to an Expert",
+    "exploreAllServices": "Explore All Services",
+    "desc_companyReg": "Company formation and legal setup",
+    "desc_investCert": "RDB investment certification support",
+    "desc_bizPermits": "Permits, compliance, and approvals",
+    "desc_mktResearch": "Market validation and opportunity mapping",
+    "desc_bizPlanning": "Growth strategy and execution planning",
+    "desc_finAdvisory": "Financial structuring and advisory",
+    "desc_processOpt": "Operational efficiency and process design",
+    "desc_projAudit": "Project audit and implementation review",
+    "desc_recruitment": "Talent sourcing and onboarding",
+    "desc_hrPolicy": "HR policy and compliance framework",
+    "desc_empTraining": "Workforce training and capability building",
+    "desc_adminSupport": "Back-office and admin operations",
+    "desc_relocation": "Relocation support, concierge, and settling-in services",
+    "desc_execTravel": "Executive travel coordination",
+    "desc_hotels": "Hotel and premium stay coordination",
+    "desc_transport": "Airport transfers and private transport",
+    "desc_tourism": "Curated tourism and local experiences"
   },
   "home": {
     "welcomeText": "Welcome To Bonet Elite Services",
-    "tagline": "Your Trusted Partner for Travel, Business & Investment in Rwanda"
+    "tagline": "Your Trusted Partner for Travel, Business & Investment in Rwanda",
+    "hero_tagline": "Rwanda Investment Experts",
+    "hero_title": "Invest in Rwanda",
+    "hero_title_accent": "With Confidence",
+    "hero_desc1": "Zero minimum capital. 6-hour company registration. 0% corporate tax for qualifying investments.",
+    "hero_desc2": "Full-service support from legal setup to daily operations.",
+    "explore_services": "Explore Services",
+    "stat_years": "Years Experience",
+    "stat_clients": "Foreign Clients",
+    "stat_countries": "Countries",
+    "stat_support": "WhatsApp Support",
+    "consult_desc": "Company registration, licensing, and RDB support for foreign investors.",
+    "travel_desc": "Luxury executive travel, relocation, and VIP concierge services."
   },
   "vision": {
     "welcomeText": "Welcome To Bonet Elite Services",
     "tagline": "Your Trusted Partner for Travel, Business & Investment in Rwanda",
     "visionTitle": "Vision Statement",
-    "visionText": "To be the first call every foreign company and professional makes when entering Rwanda — the name synonymous with trust, speed, and local expertise in East Africa's fastest-growing economy. The only firm that handles registration, compliance, housing, transport, and daily operations through one team."
-  ,
+    "visionText": "To be the first call every foreign company and professional makes when entering Rwanda — the name synonymous with trust, speed, and local expertise in East Africa's fastest-growing economy. The only firm that handles registration, compliance, housing, transport, and daily operations through one team.",
     "missionTitle": "Mission Statement",
     "missionText": "To make Rwanda accessible to the world — by giving every foreign investor, executive, and company a trusted local partner who handles the complexity of business setup, compliance, and daily operations so they can focus on growth. One team, one contact, zero bureaucracy for our clients."
   },
@@ -728,7 +782,8 @@
     "footer": "Bonet Elite Service Live Chat"
   },
   "common": {
-    "contactUs": "Contact us"
+    "contactUs": "Contact us",
+    "back": "Back"
   },
   "brandName": "Bonet Elite Services",
   "infoCards": {
@@ -1896,16 +1951,16 @@
   "support_24": "24/7 customer support",
   "best_price": "Best price guarantee",
   "book_now": "Reservations",
-   "read_more": "Read more",
+  "read_more": "Read more",
   "read_less": "Read less",
-   "explore_destinations": "Explore beautiful destinations in Rwanda",
+  "explore_destinations": "Explore beautiful destinations in Rwanda",
   "innovative_solutions": "Innovative solutions for modern businesses",
   "discover_articles": "Discover valuable articles and updates from our experts",
   "find_answers": "Find answers to common questions",
   "still_questions": "Still have questions?",
   "here_to_help": "We're here to help you with any questions",
   "made_with": "Made with",
-  "Innovative solutions for modern businesses":"Innovative solutions for modern businesses",
+  "Innovative solutions for modern businesses": "Innovative solutions for modern businesses",
   "howDev": {
     "step1": {
       "title": "24/7 Customer Support",
@@ -1923,5 +1978,260 @@
       "title": "Instant Communication",
       "description": "Customers can reach us instantly for support, making the experience more interactive and convenient."
     }
+  },
+  "pageHero": {
+    "blogBusiness": {
+      "subtitle": "Business Guide",
+      "title": "Start & Grow Your Business in Rwanda",
+      "desc": "Step-by-step insights on company registration, compliance, and expansion strategies."
+    },
+    "blogInvestment": {
+      "subtitle": "Investment Opportunities",
+      "title": "Invest in Rwanda's Future",
+      "desc": "Discover high-return sectors: real estate, ICT, agriculture, tourism & more."
+    },
+    "blogTravel": {
+      "subtitle": "Travel Guide",
+      "title": "Explore the Land of a Thousand Hills",
+      "desc": "Essential tips for gorilla trekking, safaris, and unforgettable adventures."
+    },
+    "consulting": {
+      "subtitle": "Expert Consulting",
+      "title": "Strategic Business Solutions",
+      "desc": "Business planning, financial audits, project management & operational excellence."
+    },
+    "hrsupport": {
+      "subtitle": "HR & Admin Support",
+      "title": "Build Your Dream Team",
+      "desc": "Recruitment, payroll, work permits & full HR compliance for foreign companies in Rwanda."
+    },
+    "investment": {
+      "subtitle": "Investment & Setup",
+      "title": "Your Gateway to East African Markets",
+      "desc": "Company registration in 6 hours. 100% foreign ownership. Tax incentives & full compliance support."
+    },
+    "travel": {
+      "subtitle": "Travel & Hospitality",
+      "title": "Experience Rwanda in Style",
+      "desc": "Luxury hotels, airport transfers, gorilla trekking & curated tours across the Land of a Thousand Hills."
+    },
+    "explore": {
+      "subtitle": "Discover",
+      "title": "Explore Rwanda"
+    },
+    "gallery": {
+      "subtitle": "Discover Rwanda",
+      "title": "Destinations & Experiences",
+      "desc": "A visual journey through the Land of a Thousand Hills"
+    },
+    "faq": {
+      "subtitle": "Help Center",
+      "title": "Frequently Asked Questions"
+    },
+    "businessReg": {
+      "subtitle": "Business Registration",
+      "title": "Register Your Business in Rwanda",
+      "desc": "Fast, compliant company registration with expert local support."
+    },
+    "executiveTravel": {
+      "subtitle": "Executive Travel",
+      "title": "VIP Travel & Concierge",
+      "desc": "Premium travel experiences across Rwanda, tailored for executives."
+    },
+    "hrRecruitment": {
+      "subtitle": "HR & Recruitment",
+      "title": "Find the Right Talent",
+      "desc": "End-to-end recruitment and HR support for companies in Rwanda."
+    },
+    "relocation": {
+      "subtitle": "Relocation Services",
+      "title": "Seamless Relocation to Rwanda",
+      "desc": "Housing, visas, schools, banking, and daily support for your move."
+    }
+  },
+  "exploreRwanda": {
+    "banner_discover": "Discover",
+    "banner_title": "Explore Rwanda",
+    "opportunity_label": "The Opportunity",
+    "opportunity_title": "Rwanda at a Glance",
+    "opportunity_desc": "Key facts that make Rwanda one of Africa's most attractive destinations for business, investment, and living.",
+    "stat_population": "Population",
+    "stat_safest": "Safest in Africa",
+    "stat_bizease": "Ease of Business",
+    "stat_setup": "Company Setup",
+    "investment_label": "Investment",
+    "investment_title": "Key Sectors",
+    "investment_desc": "Rwanda's most promising industries for growth and investment",
+    "lifestyle_label": "Lifestyle",
+    "lifestyle_title": "Living in Rwanda",
+    "lifestyle_desc": "Quality of life factors for expats and residents",
+    "gallery_label": "Gallery",
+    "gallery_title": "Visit Rwanda",
+    "gallery_desc": "Destinations and experiences across the Land of a Thousand Hills",
+    "cta_label": "Get Started",
+    "cta_title": "Ready to Explore Rwanda?",
+    "cta_desc": "Whether you're investing, relocating, or visiting — we make your Rwanda experience seamless.",
+    "cta_button": "Book Your Free Consultation",
+    "sectors": [
+      {
+        "name": "ICT & Digital",
+        "desc": "Growing tech ecosystem with 4G coverage and digital hubs across Kigali"
+      },
+      {
+        "name": "Tourism",
+        "desc": "Mountain gorillas, eco-tourism, luxury hospitality and convention centers"
+      },
+      {
+        "name": "Manufacturing",
+        "desc": "Special economic zones with tax incentives and export processing"
+      },
+      {
+        "name": "Agriculture",
+        "desc": "Premium coffee, tea, and horticulture exports to global markets"
+      },
+      {
+        "name": "Energy",
+        "desc": "Renewable energy targets and solar investment opportunities"
+      },
+      {
+        "name": "Finance",
+        "desc": "Emerging fintech ecosystem and expanding banking sector"
+      }
+    ],
+    "living": [
+      {
+        "title": "Safety",
+        "desc": "#2 safest country in Africa with low crime rates and stable governance"
+      },
+      {
+        "title": "Cost of Living",
+        "desc": "Affordable compared to regional peers with competitive expat packages"
+      },
+      {
+        "title": "Healthcare",
+        "desc": "Modern hospitals and medical facilities with international standards"
+      },
+      {
+        "title": "Education",
+        "desc": "International schools and universities with globally recognized programs"
+      },
+      {
+        "title": "Connectivity",
+        "desc": "Excellent internet and digital infrastructure with nationwide fiber"
+      },
+      {
+        "title": "Climate",
+        "desc": "Year-round pleasant temperatures in the Land of a Thousand Hills"
+      }
+    ],
+    "gallery_images": [
+      {
+        "title": "Convention Center"
+      },
+      {
+        "title": "Kigali City"
+      },
+      {
+        "title": "Memorial"
+      },
+      {
+        "title": "Kigali Views"
+      },
+      {
+        "title": "Lake Kivu"
+      },
+      {
+        "title": "Volcanoes"
+      },
+      {
+        "title": "Culture"
+      },
+      {
+        "title": "Tea Plantations"
+      },
+      {
+        "title": "Nyungwe Forest"
+      },
+      {
+        "title": "Gisenyi"
+      },
+      {
+        "title": "Huye"
+      },
+      {
+        "title": "Lake Muhazi"
+      }
+    ]
+  },
+  "galleryPage": {
+    "subtitle": "Discover Rwanda",
+    "title": "Destinations & Experiences",
+    "tagline": "A visual journey through the Land of a Thousand Hills",
+    "stat_parks": "National Parks",
+    "stat_hills": "Rolling Hills",
+    "stat_temp": "Avg Temperature",
+    "stat_airport": "Kigali Airport",
+    "cta_title": "Plan Your Rwanda Journey",
+    "cta_desc": "From gorilla trekking to luxury stays — let us craft your perfect itinerary.",
+    "cta_button": "Start Planning"
+  },
+  "faqPage": {
+    "subtitle": "Help Center",
+    "title": "Frequently Asked Questions",
+    "search_placeholder": "Search questions...",
+    "browse_label": "Browse by category",
+    "back_to_top": "Back to top",
+    "no_results": "No questions found matching your search.",
+    "how_bonet_title": "How Bonet Helps",
+    "official_links_title": "Official Government Links",
+    "official_links_desc": "For fees, processing times, and the latest requirements, always confirm directly with the official authorities.",
+    "support_label": "Support",
+    "support_title": "Still Have Questions?",
+    "support_desc": "Our team is ready to help with your specific situation.",
+    "contact_us": "Contact Us",
+    "whatsapp": "WhatsApp"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "message": "The page you are looking for may have been moved, deleted, or never existed. Please check the URL or return to our homepage.",
+    "goHome": "Go to Home",
+    "contactUs": "Contact Us",
+    "helpText": "Need help finding something?",
+    "reachOut": "Reach out to our team"
+  },
+  "trust": {
+    "label": "Our Edge",
+    "title": "Institutions and brands we've worked with",
+    "licensed": "Licensed by Rwanda Development Board · Government Approved · 5+ Years Experience"
+  },
+  "about": {
+    "cta_label": "Get Started",
+    "cta_title": "Ready to Work With Bonet Elite?",
+    "cta_desc": "Whether you are registering a company, relocating your team, or planning an executive visit — we are here to make it seamless.",
+    "cta_book": "Book Free Consultation",
+    "cta_explore": "Explore Services"
+  },
+  "servicesPage": {
+    "banner_label": "Services",
+    "banner_title": "Our Services",
+    "section_label": "Business Services",
+    "section_title": "What We Offer",
+    "article_label": "Business Setup",
+    "article_title": "Complete Guide to Business Registration in Rwanda",
+    "article_author": "Bonet Business Team",
+    "article_date": "December 15, 2024",
+    "article_read": "8 min read",
+    "article_intro": "Starting a business in Rwanda has never been easier with the government's continued efforts to streamline the registration process.",
+    "article_h3": "Why Register Your Business in Rwanda?",
+    "article_body": "Rwanda ranks among the easiest places to do business in Africa, thanks to its efficient registration system, favorable tax policies, and strong support for entrepreneurs.",
+    "help_h3": "Need Help With Business Registration?",
+    "help_body": "Let our experts handle the entire registration process for you. We ensure compliance with all regulations and save you time.",
+    "help_primary": "Start Registration Today",
+    "help_secondary": "Free Consultation",
+    "cta_label": "Get Started",
+    "cta_title": "Not Sure Which Service You Need?",
+    "cta_body": "Book a free 30-minute consultation. We will assess your needs and recommend the right path.",
+    "cta_button": "Book Free Consultation",
+    "talk_expert": "Talk to an Expert"
   }
 }

@@ -5,7 +5,8 @@ import TourGuideForm from "./tourguideform";
 import TourTransportForm from "./tourtransportfrom";
 
 const TourTypeSelector = ({ onTourSubmit }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en, fr, ch) => i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const [activeForm, setActiveForm] = useState("guide");
 
   const handleGuideSubmit = (values) => {
@@ -34,7 +35,7 @@ const TourTypeSelector = ({ onTourSubmit }) => {
             }`}
           >
             <CompassOutlined className="text-base" />
-            <span>Tour Guide</span>
+            <span>{L("Tour Guide","Guide touristique","导游服务")}</span>
           </button>
           
           <button
@@ -46,7 +47,7 @@ const TourTypeSelector = ({ onTourSubmit }) => {
             }`}
           >
             <CarOutlined className="text-base" />
-            <span>Transport</span>
+            <span>{L("Transport","Transport","交通服务")}</span>
           </button>
         </div>
 

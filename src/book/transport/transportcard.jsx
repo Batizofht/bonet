@@ -27,7 +27,8 @@ import { useTranslation } from "react-i18next";
 const { Option } = Select;
 
 const TransportCard = ({ bookTransport }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en, fr, ch) => i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const [form] = Form.useForm();
   const [rentTime, setRentTime] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -124,27 +125,27 @@ const TransportCard = ({ bookTransport }) => {
             <div className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
                 <UserOutlined className="text-[#C9A84C]" />
-                Personal Information
+                {L("Personal Information","Informations personnelles","个人信息")}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Form.Item
-                  label="Full Name"
+                  label={L("Full Name","Nom complet","全名")}
                   name="full_name"
-                  rules={[{ required: true, message: 'Please enter your full name' }]}
+                  rules={[{ required: true, message: L('Please enter your full name','Veuillez entrer votre nom complet','请输入您的全名') }]}
                 >
                   <Input
                     prefix={<UserOutlined className="text-gray-400" />}
-                    placeholder="Enter your full name"
+                    placeholder={L("Enter your full name","Entrez votre nom complet","输入您的全名")}
                     className="rounded-lg h-12"
                   />
                 </Form.Item>
 
                 <Form.Item
-                  label="Email Address"
+                  label={L("Email Address","Adresse e-mail","电子邮件地址")}
                   name="email"
                   rules={[
-                    { required: true, message: 'Please enter your email' },
-                    { type: 'email', message: 'Please enter a valid email' }
+                    { required: true, message: L('Please enter your email','Veuillez entrer votre email','请输入您的邮箱') },
+                    { type: 'email', message: L('Please enter a valid email','Email invalide','请输入有效邮箱') }
                   ]}
                 >
                   <Input
@@ -155,9 +156,9 @@ const TransportCard = ({ bookTransport }) => {
                 </Form.Item>
 
                 <Form.Item
-                  label="Phone Number"
+                  label={L("Phone Number","Numéro de téléphone","电话号码")}
                   name="phone"
-                  rules={[{ required: true, message: 'Please enter your phone number' }]}
+                  rules={[{ required: true, message: L('Please enter your phone number','Veuillez entrer votre numéro','请输入您的电话号码') }]}
                 >
                   <Input
                     prefix={<PhoneOutlined className="text-gray-400" />}
@@ -172,71 +173,71 @@ const TransportCard = ({ bookTransport }) => {
             <div className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
                 <CarOutlined className="text-green-600" />
-                Transport Service
+                {L("Transport Service","Service de transport","交通服务")}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Form.Item
-                  label="Service Type"
+                  label={L("Service Type","Type de service","服务类型")}
                   name="transport_service"
-                  rules={[{ required: true, message: 'Please select service type' }]}
+                  rules={[{ required: true, message: L('Please select service type','Veuillez sélectionner le type de service','请选择服务类型') }]}
                 >
                   <Select
                     onChange={handleTransportServiceChange}
-                    placeholder="Select transport service"
+                    placeholder={L("Select transport service","Sélectionnez le service de transport","选择交通服务")}
                     className="rounded-lg h-12"
                   >
-                    <Option value="airport_transfers">Airport Transfers</Option>
-                    <Option value="hotel_to_airport">Hotel to Airport</Option>
-                    <Option value="local_business">Local Business Transport</Option>
-                    <Option value="city_tours">City Tours</Option>
-                    <Option value="conference_event">Conference & Event Transport</Option>
-                    <Option value="intercity_travel">Intercity Travel</Option>
+                    <Option value="airport_transfers">{L("Airport Transfers","Transferts aéroport","机场接送")}</Option>
+                    <Option value="hotel_to_airport">{L("Hotel to Airport","Hôtel vers l'aéroport","酒店至机场")}</Option>
+                    <Option value="local_business">{L("Local Business Transport","Transport d'affaires local","本地商务交通")}</Option>
+                    <Option value="city_tours">{L("City Tours","Visites de ville","城市游览")}</Option>
+                    <Option value="conference_event">{L("Conference & Event Transport","Transport conférence et événement","会议活动交通")}</Option>
+                    <Option value="intercity_travel">{L("Intercity Travel","Voyage interurbain","城际旅行")}</Option>
                   </Select>
                 </Form.Item>
 
                 <Form.Item
-                  label="Transport Type"
+                  label={L("Transport Type","Type de transport","交通类型")}
                   name="transport_type"
-                  rules={[{ required: true, message: 'Please select transport type' }]}
+                  rules={[{ required: true, message: L('Please select transport type','Veuillez sélectionner le type de transport','请选择交通类型') }]}
                 >
                   <Select
-                    placeholder="Select transport type"
+                    placeholder={L("Select transport type","Sélectionnez le type de transport","选择交通类型")}
                     className="rounded-lg h-12"
                   >
-                    <Option value="business_vip">Business VIP Service</Option>
-                    <Option value="executive">Executive Service</Option>
-                    <Option value="standard">Standard Service</Option>
-                    <Option value="group_transport">Group Transport</Option>
+                    <Option value="business_vip">{L("Business VIP Service","Service VIP Affaires","商务VIP服务")}</Option>
+                    <Option value="executive">{L("Executive Service","Service exécutif","行政服务")}</Option>
+                    <Option value="standard">{L("Standard Service","Service standard","标准服务")}</Option>
+                    <Option value="group_transport">{L("Group Transport","Transport de groupe","团队交通")}</Option>
                   </Select>
                 </Form.Item>
 
                 <Form.Item
-                  label="Vehicle Type"
+                  label={L("Vehicle Type","Type de véhicule","车辆类型")}
                   name="car_type"
-                  rules={[{ required: true, message: 'Please select vehicle type' }]}
+                  rules={[{ required: true, message: L('Please select vehicle type','Veuillez sélectionner le type de véhicule','请选择车辆类型') }]}
                 >
                   <Select
-                    placeholder="Select vehicle type"
+                    placeholder={L("Select vehicle type","Sélectionnez le type de véhicule","选择车辆类型")}
                     className="rounded-lg h-12"
                   >
-                    <Option value="executive_sedan">Executive Sedan</Option>
-                    <Option value="luxury_suv">Luxury SUV</Option>
-                    <Option value="business_sedan">Business Sedan</Option>
-                    <Option value="reliable_suv">Reliable SUV</Option>
-                    <Option value="luxury_van">Luxury Van</Option>
-                    <Option value="minibus">Minibus</Option>
+                    <Option value="executive_sedan">{L("Executive Sedan","Berline exécutive","行政轿车")}</Option>
+                    <Option value="luxury_suv">{L("Luxury SUV","SUV de luxe","豪华SUV")}</Option>
+                    <Option value="business_sedan">{L("Business Sedan","Berline d'affaires","商务轿车")}</Option>
+                    <Option value="reliable_suv">{L("Reliable SUV","SUV fiable","可靠SUV")}</Option>
+                    <Option value="luxury_van">{L("Luxury Van","Van de luxe","豪华面包车")}</Option>
+                    <Option value="minibus">{L("Minibus","Minibus","小型巴士")}</Option>
                   </Select>
                 </Form.Item>
 
                 <Form.Item
-                  label="Number of Passengers"
+                  label={L("Number of Passengers","Nombre de passagers","乘客人数")}
                   name="seats"
-                  rules={[{ required: true, message: 'Please enter number of passengers' }]}
+                  rules={[{ required: true, message: L('Please enter number of passengers','Veuillez entrer le nombre de passagers','请输入乘客人数') }]}
                 >
                   <InputNumber
                     min={1}
                     max={50}
-                    placeholder="Number of passengers"
+                    placeholder={L("Number of passengers","Nombre de passagers","乘客人数")}
                     className="w-full rounded-lg h-12"
                     controls={false}
                   />
@@ -248,36 +249,36 @@ const TransportCard = ({ bookTransport }) => {
             <div className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
                 <ClockCircleOutlined className="text-yellow-600" />
-                Rental Details
+                {L("Rental Details","Détails de la location","租车详情")}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Form.Item
-                  label="Rental Duration"
+                  label={L("Rental Duration","Durée de location","租用时长")}
                   name="rent_time"
-                  rules={[{ required: true, message: 'Please select rental duration' }]}
+                  rules={[{ required: true, message: L('Please select rental duration','Veuillez sélectionner la durée de location','请选择租用时长') }]}
                 >
                   <Select
-                    placeholder="Select rental duration"
+                    placeholder={L("Select rental duration","Sélectionnez la durée de location","选择租用时长")}
                     onChange={(value) => setRentTime(value)}
                     className="rounded-lg h-12"
                   >
-                    <Option value="whole_day">Whole Day (8 hours)</Option>
-                    <Option value="half_day">Half Day (4 hours)</Option>
-                    <Option value="per_trip">Per Trip</Option>
-                    <Option value="multiple_days">Multiple Days</Option>
+                    <Option value="whole_day">{L("Whole Day (8 hours)","Journée entière (8 heures)","全天（8小时）")}</Option>
+                    <Option value="half_day">{L("Half Day (4 hours)","Demi-journée (4 heures)","半天（4小时）")}</Option>
+                    <Option value="per_trip">{L("Per Trip","Par trajet","按次")}</Option>
+                    <Option value="multiple_days">{L("Multiple Days","Plusieurs jours","多天")}</Option>
                   </Select>
                 </Form.Item>
 
                 {rentTime === "multiple_days" && (
                   <Form.Item
-                    label="Number of Days"
+                    label={L("Number of Days","Nombre de jours","天数")}
                     name="number_of_days"
-                    rules={[{ required: true, message: 'Please enter number of days' }]}
+                    rules={[{ required: true, message: L('Please enter number of days','Veuillez entrer le nombre de jours','请输入天数') }]}
                   >
                     <InputNumber
                       min={1}
                       max={30}
-                      placeholder="Number of days"
+                      placeholder={L("Number of days","Nombre de jours","天数")}
                       className="w-full rounded-lg h-12"
                       controls={false}
                     />
@@ -285,26 +286,26 @@ const TransportCard = ({ bookTransport }) => {
                 )}
 
                 <Form.Item
-                  label="Pickup Date"
+                  label={L("Pickup Date","Date de prise en charge","上车日期")}
                   name="pickup"
-                  rules={[{ required: true, message: 'Please select pickup date' }]}
+                  rules={[{ required: true, message: L('Please select pickup date','Veuillez sélectionner la date de prise en charge','请选择上车日期') }]}
                 >
                   <DatePicker
                     className="w-full rounded-lg h-12"
                     format="YYYY-MM-DD"
-                    placeholder="Select pickup date"
+                    placeholder={L("Select pickup date","Sélectionnez la date","选择上车日期")}
                   />
                 </Form.Item>
 
                 <Form.Item
-                  label="Pickup Time"
+                  label={L("Pickup Time","Heure de prise en charge","上车时间")}
                   name="dropoff_time"
-                  rules={[{ required: true, message: 'Please select pickup time' }]}
+                  rules={[{ required: true, message: L('Please select pickup time','Veuillez sélectionner l\'heure de prise en charge','请选择上车时间') }]}
                 >
                   <TimePicker
                     format="HH:mm"
                     className="w-full rounded-lg h-12"
-                    placeholder="Select pickup time"
+                    placeholder={L("Select pickup time","Sélectionnez l'heure","选择上车时间")}
                   />
                 </Form.Item>
               </div>
@@ -314,13 +315,13 @@ const TransportCard = ({ bookTransport }) => {
             <div className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
                 <EnvironmentOutlined className="text-purple-600" />
-                Locations
+                {L("Locations","Emplacements","地点")}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Form.Item
-                  label="Pickup Location"
+                  label={L("Pickup Location","Lieu de prise en charge","上车地点")}
                   name="pickup_location"
-                  rules={[{ required: true, message: 'Please enter pickup location' }]}
+                  rules={[{ required: true, message: L('Please enter pickup location','Veuillez entrer le lieu de prise en charge','请输入上车地点') }]}
                 >
                   {isLoaded ? (
                     <Autocomplete
@@ -343,9 +344,9 @@ const TransportCard = ({ bookTransport }) => {
                 </Form.Item>
 
                 <Form.Item
-                  label="Drop-off Location"
+                  label={L("Drop-off Location","Lieu de dépose","下车地点")}
                   name="dropoff_location"
-                  rules={[{ required: true, message: 'Please enter drop-off location' }]}
+                  rules={[{ required: true, message: L('Please enter drop-off location','Veuillez entrer le lieu de dépose','请输入下车地点') }]}
                 >
                   {form.getFieldValue("transport_service") === "hotel_to_airport" ? (
                     <Input
@@ -379,35 +380,35 @@ const TransportCard = ({ bookTransport }) => {
             <div className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
                 <BulbOutlined className="text-orange-600" />
-                Additional Services
+                {L("Additional Services","Services supplémentaires","附加服务")}
               </h3>
               <div className="grid grid-cols-1 gap-6">
                 <Form.Item
-                  label="Additional Services"
+                  label={L("Additional Services","Services supplémentaires","附加服务")}
                   name="addons"
                 >
                   <Select
                     mode="multiple"
-                    placeholder="Select additional services (optional)"
+                    placeholder={L("Select additional services (optional)","Services supplémentaires (optionnel)","选择附加服务（可选）")}
                     className="rounded-lg h-12"
                   >
-                    <Option value="professional_driver">Professional Driver</Option>
-                    <Option value="multilingual_driver">Multilingual Driver</Option>
-                    <Option value="water_wifi">Complimentary Water & WiFi</Option>
-                    <Option value="route_planning">Route Planning & Support</Option>
-                    <Option value="meet_greet">Meet & Greet Service</Option>
-                    <Option value="child_seats">Child Safety Seats</Option>
-                    <Option value="luggage_assistance">Luggage Assistance</Option>
+                    <Option value="professional_driver">{L("Professional Driver","Chauffeur professionnel","专业司机")}</Option>
+                    <Option value="multilingual_driver">{L("Multilingual Driver","Chauffeur multilingue","多语言司机")}</Option>
+                    <Option value="water_wifi">{L("Complimentary Water & WiFi","Eau et WiFi offerts","免费水和WiFi")}</Option>
+                    <Option value="route_planning">{L("Route Planning & Support","Planification d'itinéraire","路线规划与支持")}</Option>
+                    <Option value="meet_greet">{L("Meet & Greet Service","Service d'accueil","迎接服务")}</Option>
+                    <Option value="child_seats">{L("Child Safety Seats","Sièges enfant","儿童安全座椅")}</Option>
+                    <Option value="luggage_assistance">{L("Luggage Assistance","Assistance bagages","行李协助")}</Option>
                   </Select>
                 </Form.Item>
 
                 <Form.Item
-                  label="Special Requests"
+                  label={L("Special Requests","Demandes spéciales","特殊要求")}
                   name="special_requests"
                 >
                   <Input.TextArea
                     rows={4}
-                    placeholder="Any special requirements, specific routes, or additional information we should know about..."
+                    placeholder={L("Any special requirements, specific routes, or additional information...","Exigences spéciales, itinéraires ou informations supplémentaires...","任何特殊要求、特定路线或附加信息...")}
                     className="rounded-lg"
                   />
                 </Form.Item>
@@ -421,7 +422,7 @@ const TransportCard = ({ bookTransport }) => {
                 onClick={handleSubmit}
                 className="w-full h-14 rounded-lg text-lg font-semibold bg-[#C9A84C] hover:bg-[#B8973B] text-white border-0 transition-colors duration-200"
               >
-                {isLoading ? 'Submitting Your Request...' : 'Submit Transport Request'}
+                {isLoading ? L('Submitting Your Request...','Envoi en cours...','提交中...') : L('Submit Transport Request','Soumettre la demande de transport','提交交通请求')}
               </button>
             </div>
           </Form>

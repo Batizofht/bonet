@@ -280,7 +280,7 @@ export default function BlogsClient() {
 
         {/* Featured Categories */}
         <div className="mb-12 flex flex-wrap items-center gap-3">
-          <span className="text-xs font-semibold uppercase tracking-wider text-gray-400 mr-1">Featured</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-gray-400 mr-1">{t('blog.featured', 'Featured')}</span>
           {featuredCategories.map((cat) => (
             <Link
               key={cat.href}
@@ -331,7 +331,7 @@ export default function BlogsClient() {
                       </div>
                       <div className="md:w-2/5 flex flex-col justify-center">
                         <div className="flex items-center gap-3 mb-3">
-                          <span className="text-xs font-semibold uppercase tracking-wider text-[#C9A84C]">Featured</span>
+                          <span className="text-xs font-semibold uppercase tracking-wider text-[#C9A84C]">{t('blog.featured', 'Featured')}</span>
                           <span className="text-gray-300">·</span>
                           <span className="text-xs text-gray-500">{blogItems[0].formattedDate}</span>
                         </div>
@@ -342,7 +342,7 @@ export default function BlogsClient() {
                           {blogItems[0].quote}
                         </p>
                         <span className="inline-flex items-center gap-2 text-[#C9A84C] font-semibold text-sm">
-                          Read article
+                          {t('blog.readArticle', 'Read article')}
                           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </span>
                       </div>
@@ -387,7 +387,7 @@ export default function BlogsClient() {
                                 {post.quote}
                               </p>
                               <span className="inline-flex items-center gap-1.5 text-[#C9A84C] text-sm font-medium">
-                                Read
+                                {t('blog.read', 'Read')}
                                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                               </span>
                             </div>
@@ -410,7 +410,7 @@ export default function BlogsClient() {
                         <Loader2 className="w-4 h-4 animate-spin" />
                       ) : (
                         <>
-                          Load more articles
+                          {t('blog.loadMore', 'Load more articles')}
                           <ArrowRight className="w-4 h-4" />
                         </>
                       )}

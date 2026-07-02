@@ -54,7 +54,9 @@ const hrServices = [
 ];
 
 export default function HRAdminSupport() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en: string, fr: string, ch: string) =>
+    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
 
@@ -98,10 +100,10 @@ export default function HRAdminSupport() {
         <div className="max-w-6xl mx-auto px-4 py-20">
           <div className="text-center">
             <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-              Services
+              {L("Services","Services","服务")}
             </span>
             <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 uppercase tracking-wider">
-              HR & Admin Support
+              {L("HR & Admin Support","Soutien RH et Administratif","人力资源与行政支持")}
             </h1>
             <p className="text-gray-500 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
               {t("hrServices.title")}
@@ -134,7 +136,7 @@ export default function HRAdminSupport() {
                 href="/hr-recruitment"
                 className="inline-flex items-center gap-1.5 text-[#C9A84C] font-semibold text-sm hover:underline"
               >
-                Looking for recruitment services? View our talent solutions
+                {L("Looking for recruitment services? View our talent solutions","Vous cherchez des services de recrutement ? Découvrez nos solutions de talents","寻找招聘服务？查看我们的人才解决方案")}
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

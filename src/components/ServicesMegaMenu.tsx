@@ -27,39 +27,38 @@ export default function ServicesMegaMenu({ t, onClose }: ServicesMegaMenuProps) 
     {
       title: t("services.list.0.title"),
       items: [
-        { href: "/business-registration", label: t("menu.companyRegistration"), description: "Company formation and legal setup" },
-        { href: "/investment", label: t("menu.investmentCertificate"), description: "RDB investment certification support" },
-        { href: "/investment", label: t("menu.businessPermits"), description: "Permits, compliance, and approvals" },
-        { href: "/investment", label: t("menu.marketResearch"), description: "Market validation and opportunity mapping" },
+        { href: "/business-registration", label: t("menu.companyRegistration"), description: t("menu.desc_companyReg") },
+        { href: "/investment", label: t("menu.investmentCertificate"), description: t("menu.desc_investCert") },
+        { href: "/investment", label: t("menu.businessPermits"), description: t("menu.desc_bizPermits") },
+        { href: "/investment", label: t("menu.marketResearch"), description: t("menu.desc_mktResearch") },
       ],
     },
     {
       title: t("menu.businessConsulting"),
       items: [
-        { href: "/consulting", label: t("menu.businessPlanning"), description: "Growth strategy and execution planning" },
-        { href: "/consulting", label: t("menu.financialAdvisory"), description: "Financial structuring and advisory" },
-        { href: "/consulting", label: t("menu.processOptimization"), description: "Operational efficiency and process design" },
-        { href: "/consulting", label: t("menu.projectAuditing"), description: "Project audit and implementation review" },
+        { href: "/consulting", label: t("menu.businessPlanning"), description: t("menu.desc_bizPlanning") },
+        { href: "/consulting", label: t("menu.financialAdvisory"), description: t("menu.desc_finAdvisory") },
+        { href: "/consulting", label: t("menu.processOptimization"), description: t("menu.desc_processOpt") },
+        { href: "/consulting", label: t("menu.projectAuditing"), description: t("menu.desc_projAudit") },
       ],
     },
     {
       title: t("menu.hrAndAdminSupport"),
       items: [
-        { href: "/hr-recruitment", label: t("menu.recruitment"), description: "Talent sourcing and onboarding" },
-        { href: "/hrsupport", label: t("menu.hrPolicyDevelopment"), description: "HR policy and compliance framework" },
-        { href: "/hrsupport", label: t("menu.employeeTraining"), description: "Workforce training and capability building" },
-        { href: "/hrsupport", label: t("menu.administrativeSupport"), description: "Back-office and admin operations" },
+        { href: "/hr-recruitment", label: t("menu.recruitment"), description: t("menu.desc_recruitment") },
+        { href: "/hrsupport", label: t("menu.hrPolicyDevelopment"), description: t("menu.desc_hrPolicy") },
+        { href: "/hrsupport", label: t("menu.employeeTraining"), description: t("menu.desc_empTraining") },
+        { href: "/hrsupport", label: t("menu.administrativeSupport"), description: t("menu.desc_adminSupport") },
       ],
     },
     {
         title: t("menu.travelAndHospitality"),
       items: [
-        { href: "/relocation-services", label: "Relocation & Concierge", description: "Relocation support, concierge, and settling-in services" },
-              { href: "/executive-travel",label: 'Executive travel', description: "Executive travel coordination" },
-        { href: "/travel", label: t("menu.hotels"), description: "Hotel and premium stay coordination" },
-
-        { href: "/travel", label: t("menu.transport"), description: "Airport transfers and private transport" },
-        { href: "/travel", label: t("menu.tourism"), description: "Curated tourism and local experiences" },
+        { href: "/relocation-services", label: t("menu.relocationConcierge"), description: t("menu.desc_relocation") },
+        { href: "/executive-travel", label: t("menu.executiveTravel"), description: t("menu.desc_execTravel") },
+        { href: "/travel", label: t("menu.hotels"), description: t("menu.desc_hotels") },
+        { href: "/travel", label: t("menu.transport"), description: t("menu.desc_transport") },
+        { href: "/travel", label: t("menu.tourism"), description: t("menu.desc_tourism") },
       ],
     }
   ];
@@ -68,8 +67,8 @@ export default function ServicesMegaMenu({ t, onClose }: ServicesMegaMenuProps) 
     <div className="fixed left-1/2 top-[72px] z-50 w-[min(96vw,1120px)] -translate-x-1/2 rounded-xl border border-gray-200 bg-white shadow-lg max-h-[calc(100vh-96px)] overflow-y-auto">
       <div className="flex flex-col gap-3 border-b border-gray-200 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-5">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#C9A84C]">Business Services</p>
-          <p className="text-sm font-medium text-gray-600">Choose the right track for your company growth.</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#C9A84C]">{t("menu.megaHeader")}</p>
+          <p className="text-sm font-medium text-gray-600">{t("menu.megaSubtitle")}</p>
         </div>
         <div className="flex flex-wrap items-center gap-2 md:justify-end">
           <Link
@@ -77,14 +76,14 @@ export default function ServicesMegaMenu({ t, onClose }: ServicesMegaMenuProps) 
             onClick={onClose}
             className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:border-[#C9A84C]/40 hover:text-[#C9A84C] transition-colors"
           >
-            Talk to an Expert
+            {t("menu.talkToExpert")}
           </Link>
           <Link
             href="/services"
             onClick={onClose}
             className="inline-flex items-center gap-1 rounded-xl bg-[#C9A84C] px-4 py-2 text-sm font-semibold text-white hover:bg-[#B8973B] transition-colors"
           >
-            Explore All Services
+            {t("menu.exploreAllServices")}
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
