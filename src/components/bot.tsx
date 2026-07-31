@@ -245,21 +245,23 @@ const ChatBot = () => {
                 onScroll={handleScroll}
               >
                 <WelcomeMessageAI />
-
-                {messages.map((m, i) => (
-                  <div key={i} className={`flex ${m.from === "me" ? "justify-end" : "justify-start"}`}>
-                    <div className={`max-w-[82%] px-4 py-2.5 rounded-2xl text-sm ${
-                      m.from === "me"
-                        ? "bg-[#C9A84C] text-white rounded-br-md"
-                        : "bg-white text-gray-800 rounded-bl-md border border-gray-100 shadow-sm"
-                    }`}>
-                      {m.from === "agent"
-                        ? <div className="space-y-1">{renderMarkdown(m.text)}</div>
-                        : <span className="leading-relaxed">{m.text}</span>
-                      }
-                    </div>
-                  </div>
-                ))}
+{messages.map((m, i) => (
+  <div key={i} className={`flex ${m.from === "me" ? "justify-end" : "justify-start"}`}>
+    <div className={`max-w-[82%] px-4 py-2.5 rounded-2xl text-sm ${
+      m.from === "me"
+        ? "bg-[#C9A84C] text-white rounded-br-md"
+        : "bg-white text-gray-800 rounded-bl-md border border-gray-100 shadow-sm"
+    }`}>
+      {m.from === "agent" && m.text.includes("<div") ? (
+        <div dangerouslySetInnerHTML={{ __html: m.text }} />
+      ) : m.from === "agent" ? (
+        <div className="space-y-1">{renderMarkdown(m.text)}</div>
+      ) : (
+        <span className="leading-relaxed">{m.text}</span>
+      )}
+    </div>
+  </div>
+))}
 
                 {isTyping && (
                   <div className="flex justify-start">
