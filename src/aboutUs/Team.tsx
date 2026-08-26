@@ -4,22 +4,13 @@ import { useTranslation } from "react-i18next";
 
 const teamMembers = [
   {
-    name: "Prince Bonfils Bimenyimana, MBA, PMP (Candidate)",
+    name: "Prince Bonfils Bimenyimana, MBA, PMP",
     role: "Founder & Executive Chairman",
     initials: "PB",
     image: "/image/Team/bon.jpg",
     bio: "A seasoned business strategist with over six years of executive leadership in finance, operations, and technology across Rwanda's private sector. Founded Bonet Elite Services to offer investors, entrepreneurs, and travelers a seamless premium experience from market entry to establishment.",
     tags: ["Strategy", "Finance", "ERP Systems"],
     linkedin: "https://www.linkedin.com/in/prince-bonfils-bimenyimana",
-  },
-  {
-    name: "Jean Luc Shema, CPA(R)",
-    role: "Chief Financial Officer",
-    initials: "JL",
-    image: "/image/Team/SHEMAPIC.JPG",
-    bio: "Certified Public Accountant registered with ICPAR. Deep expertise in IFRS reporting, tax compliance, BNR regulatory frameworks, and financial management for regulated institutions.",
-    tags: ["IFRS", "Tax Compliance", "BNR Regulations"],
-    linkedin: "https://www.linkedin.com/in/jean-luc-shema",
   },
   {
     name: "Emmanuel Cubahiro",
