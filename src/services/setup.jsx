@@ -1,4 +1,5 @@
 "use client"
+import { openWhatsApp, BONET_WHATSAPP } from "@/lib/whatsapp";
 import { useState } from "react";
 import { Form, Input, Button, Typography } from "antd";
 import { useTranslation } from "react-i18next";
@@ -33,13 +34,7 @@ export default function InvestmentBusinessSetup() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [form] = Form.useForm();
 
-  const openWhatsApp = () => {
-    const phoneNumber = "250726300260";
-    const webUrl = `https://web.whatsapp.com/send?phone=${phoneNumber}`;
-    setTimeout(() => {
-      window.open(webUrl, "_blank");
-    }, 1500);
-  };
+  const handleOpenWhatsApp = () => openWhatsApp({ phone: BONET_WHATSAPP });
 
   const handleSubmit = async (values) => {
     try {
@@ -92,7 +87,7 @@ export default function InvestmentBusinessSetup() {
                 </button>
 
                 <button
-                  onClick={openWhatsApp}
+                  onClick={handleOpenWhatsApp}
                   className="inline-flex items-center gap-2 border border-gray-300 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-colors"
                 >
                   <MessageCircle className="w-4 h-4" />

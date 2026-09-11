@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { openWhatsApp, whatsappWebUrl, BONET_WHATSAPP } from "@/lib/whatsapp";
 import {
   Building2,
   FileCheck,
@@ -329,7 +330,11 @@ export default function BusinessRegistrationClient() {
                 {L("Book Free Consultation","Réserver une consultation gratuite","预约免费咨询")}
               </a>
               <a
-                href="https://wa.me/250726300260"
+                href={whatsappWebUrl({ phone: BONET_WHATSAPP })}
+                onClick={(e) => {
+                  e.preventDefault();
+                  openWhatsApp({ phone: BONET_WHATSAPP });
+                }}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors text-sm"

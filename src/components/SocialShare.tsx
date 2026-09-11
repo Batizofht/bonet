@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import { Facebook, Twitter, Linkedin, MessageCircle, Link2, Check, Share2 } from 'lucide-react'
+import { openWhatsApp, whatsappWebUrl } from '@/lib/whatsapp'
 
 interface SocialShareProps {
   url: string
@@ -34,7 +35,9 @@ export default function SocialShare({
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedTitle}&hashtag=%23RwandaTravel`,
     twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}&via=BonetElite&hashtags=${encodedHashtags}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}&title=${encodedTitle}&summary=${encodedDescription}&source=BonetEliteServices`,
-    whatsapp: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`,
+    // Opened through openWhatsApp (see handleShare) so desktop lands on
+    // WhatsApp Web instead of the wa.me "Continue to Chat" page.
+    whatsapp: whatsappWebUrl({ text: `${title} ${url}` }),
     telegram: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`,
     reddit: `https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
     email: `mailto:?subject=${encodedTitle}&body=${encodedDescription}%0A%0A${encodedUrl}`
@@ -92,6 +95,11 @@ export default function SocialShare({
       });
     }
     
+    if (platform === 'whatsapp') {
+      openWhatsApp({ text: `${title} ${url}` });
+      return;
+    }
+
     window.open(socialUrls[platform], '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
   }
 

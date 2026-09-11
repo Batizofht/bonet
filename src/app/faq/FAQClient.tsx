@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { openWhatsApp, whatsappWebUrl, BONET_WHATSAPP } from "@/lib/whatsapp";
 import { ChevronDown, Search, MessageCircle, ArrowRight } from "lucide-react";
 
 type FAQItem = { question: string; answer: string; };
@@ -773,7 +774,11 @@ export default function FAQClient() {
               {t("faqPage.contact_us")}
             </a>
             <a
-              href="https://wa.me/250726300260"
+              href={whatsappWebUrl({ phone: BONET_WHATSAPP })}
+              onClick={(e) => {
+                e.preventDefault();
+                openWhatsApp({ phone: BONET_WHATSAPP });
+              }}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors text-sm"

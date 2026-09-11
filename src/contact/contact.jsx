@@ -1,4 +1,5 @@
 "use client"
+import { openWhatsApp, BONET_WHATSAPP } from "@/lib/whatsapp";
 import React from "react";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
 import axios from "axios";
@@ -148,13 +149,7 @@ const ContactInfo = ({ t, L }) => (
     </div>
 
     <button
-      onClick={() => {
-        const phone = "250726300260";
-        const url = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
-          ? `https://wa.me/${phone}`
-          : `https://web.whatsapp.com/send?phone=${phone}`;
-        window.open(url, "_blank");
-      }}
+      onClick={() => openWhatsApp({ phone: BONET_WHATSAPP })}
       className="w-full inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1da851] text-white font-semibold rounded-lg px-6 py-3 transition-colors duration-200 border-0 mb-8"
     >
       <FaWhatsapp className="w-5 h-5" />

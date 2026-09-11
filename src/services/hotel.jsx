@@ -1,4 +1,5 @@
 "use client"
+import { openWhatsApp, BONET_WHATSAPP } from "@/lib/whatsapp";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
 import { 
@@ -17,16 +18,7 @@ export default function HotelHospitality() {
     i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const navigate = useRouter();
 
-  const openWhatsApp = () => {
-    const phoneNumber = "250726300260";
-    const appUrl = `whatsapp://send?phone=${phoneNumber}`;
-    const webUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}`;
-
-    window.location.href = appUrl;
-    setTimeout(() => {
-      window.open(webUrl, "_blank");
-    }, 1500);
-  };
+  const handleOpenWhatsApp = () => openWhatsApp({ phone: BONET_WHATSAPP });
 
   const services = [
     {
@@ -87,7 +79,7 @@ export default function HotelHospitality() {
                 </button>
 
                 <button 
-                  onClick={openWhatsApp}
+                  onClick={handleOpenWhatsApp}
                   className="inline-flex items-center gap-2 border border-gray-300 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-colors"
                 >
                   <MessageCircle className="w-4 h-4" />

@@ -1,4 +1,5 @@
 'use client'
+import { openWhatsApp } from "@/lib/whatsapp";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
@@ -168,7 +169,7 @@ const ChatBot = () => {
       : lang === "ch"
       ? `您好 Bonet Elite Services，\n\n我想预约咨询。\n\n姓名：${form.name}\n电话：${form.phone}\n服务：${svcLabel}${form.message ? `\n留言：${form.message}` : ""}`
       : `Hello Bonet Elite Services,\n\nI'd like to book a consultation.\n\nName: ${form.name}\nPhone: ${form.phone}\nService: ${svcLabel}${form.message ? `\nMessage: ${form.message}` : ""}`;
-    window.open(`https://wa.me/${BONET_WA}?text=${encodeURIComponent(body)}`, "_blank");
+    openWhatsApp({ phone: BONET_WA, text: body });
     setSubmitted(true);
   };
 
