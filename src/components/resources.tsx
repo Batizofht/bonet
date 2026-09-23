@@ -51,7 +51,7 @@ export default function Blog() {
         if (!isMounted) return;
         
         const response = await axios.get(
-          "https://api.bonet.rw:8443/bonetBackend/backend/public/blogshome"
+          "https://api.bonet.rw/bonetBackend/backend/public/blogshome"
         );
         const blogArray = Array.isArray(response.data.data)
           ? response.data.data
@@ -133,7 +133,7 @@ export default function Blog() {
             {/* Blog Image */}
             <div className="relative h-48 overflow-hidden bg-gray-100">
               <img
-                src={`https://api.bonet.rw:8443/bonetBackend/public/${post.image}`}
+                src={`https://api.bonet.rw/bonetBackend/public/${post.image}`}
                 alt={post.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"

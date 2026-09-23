@@ -58,7 +58,7 @@ export default function FAQ() {
         if (!isMounted) return;
 
         const response = await axios.get(
-          "https://api.bonet.rw:8443/bonetBackend/backend/public/faqs"
+          "https://api.bonet.rw/bonetBackend/backend/public/faqs"
         );
         setFaqs(response.data);
       } catch (error) {

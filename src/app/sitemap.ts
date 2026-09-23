@@ -130,7 +130,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     // Fetch blogs at build time - use cache for static generation
     const response = await fetch(
-      'https://api.bonet.rw:8443/bonetBackend/backend/public/blogsitemap',
+      'https://api.bonet.rw/bonetBackend/backend/public/blogsitemap',
       {
         method: 'GET',
         headers: {

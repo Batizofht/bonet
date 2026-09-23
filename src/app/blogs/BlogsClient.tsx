@@ -110,7 +110,7 @@ export default function BlogsClient() {
     
     try {
       // Build URL - using /full endpoint
-      const url = new URL('https://api.bonet.rw:8443/bonetBackend/backend/public/full');
+      const url = new URL('https://api.bonet.rw/bonetBackend/backend/public/full');
       url.searchParams.set('page', pageNum.toString());
       url.searchParams.set('limit', BLOGS_PER_PAGE.toString());
       
@@ -223,7 +223,7 @@ export default function BlogsClient() {
       ...post,
       slug: slugify(post.title),
       formattedDate: formatDate(post.created_at, language),
-      imageUrl: `https://api.bonet.rw:8443/bonetBackend/public/${post.image}`
+      imageUrl: `https://api.bonet.rw/bonetBackend/public/${post.image}`
     })),
     [blogs, language]
   );

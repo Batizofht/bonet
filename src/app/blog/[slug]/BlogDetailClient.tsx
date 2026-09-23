@@ -51,7 +51,7 @@ export default function BlogDetailClient() {
         setBlog(null); // Clear old blog immediately
         
         const response = await axios.get(
-          "https://api.bonet.rw:8443/bonetBackend/backend/public/blogs",
+          "https://api.bonet.rw/bonetBackend/backend/public/blogs",
           { timeout: 10000 }
         );
 
@@ -148,7 +148,7 @@ export default function BlogDetailClient() {
         
         // Fetch claps data from SERVER
         const clapsResponse = await axios.get(
-          `https://api.bonet.rw:8443/bonetBackend/backend/public/clappings?blog=${blog.id}`
+          `https://api.bonet.rw/bonetBackend/backend/public/clappings?blog=${blog.id}`
         );
 
         if (clapsResponse.data) {
@@ -162,7 +162,7 @@ export default function BlogDetailClient() {
 
         // Fetch views data from SERVER
         const viewsResponse = await axios.get(
-          `https://api.bonet.rw:8443/bonetBackend/backend/public/views?blog=${blog.id}`
+          `https://api.bonet.rw/bonetBackend/backend/public/views?blog=${blog.id}`
         );
 
         if (viewsResponse.data) {
@@ -193,7 +193,7 @@ export default function BlogDetailClient() {
       
       // Tell server to TOGGLE the clap state
       const response = await axios.post(
-        `https://api.bonet.rw:8443/bonetBackend/backend/public/clappings`,
+        `https://api.bonet.rw/bonetBackend/backend/public/clappings`,
         { 
           blog: blog.id,
           device: deviceId,
@@ -244,7 +244,7 @@ export default function BlogDetailClient() {
       if (lastViewDate !== today) {
         // Send view to SERVER
         await axios.post(
-          `https://api.bonet.rw:8443/bonetBackend/backend/public/views`,
+          `https://api.bonet.rw/bonetBackend/backend/public/views`,
           { blog: blog.id, device: deviceId },
           { 
             headers: { 
@@ -258,7 +258,7 @@ export default function BlogDetailClient() {
         
         // Refresh view count from server
         const viewsResponse = await axios.get(
-          `https://api.bonet.rw:8443/bonetBackend/backend/public/views?blog=${blog.id}`
+          `https://api.bonet.rw/bonetBackend/backend/public/views?blog=${blog.id}`
         );
         
         if (viewsResponse.data) {
@@ -376,7 +376,7 @@ export default function BlogDetailClient() {
             url={getCurrentUrl()}
             title={safeTitle}
             description={blog.quote || blog.description || ''}
-            imageUrl={blog.image ? `https://api.bonet.rw:8443/bonetBackend/public/${blog.image}` : undefined}
+            imageUrl={blog.image ? `https://api.bonet.rw/bonetBackend/public/${blog.image}` : undefined}
             hashtags={["Rwanda", "Travel", "Business", "Investment", "BonetElite"]}
           />
         </div>
@@ -384,7 +384,7 @@ export default function BlogDetailClient() {
         {blog.image && (
           <div className="relative rounded-lg overflow-hidden mb-8 bg-white border border-gray-200">
             <img
-              src={`https://api.bonet.rw:8443/bonetBackend/public/${blog.image}`}
+              src={`https://api.bonet.rw/bonetBackend/public/${blog.image}`}
               alt={`${blog.title} - Bonet Elite Services, Kigali Rwanda`}
               className="w-full h-[400px] object-cover"
               onError={(e) => {

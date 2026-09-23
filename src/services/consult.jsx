@@ -67,7 +67,7 @@ export default function BusinessConsulting() {
   const handleSubmit = async (values) => {
     try {
       const res = await axios.post(
-        "https://api.bonet.rw:8443/bonetBackend/backend/public/consulting",
+        "https://api.bonet.rw/bonetBackend/backend/public/consulting",
         values
       );
 

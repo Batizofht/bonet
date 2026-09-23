@@ -224,7 +224,7 @@ const ContactUs = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "https://api.bonet.rw:8443/bonetBackend/backend/public/comments",
+        "https://api.bonet.rw/bonetBackend/backend/public/comments",
         values
       );
       if (response.data.id) {

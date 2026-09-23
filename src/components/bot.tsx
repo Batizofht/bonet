@@ -128,7 +128,7 @@ const ChatBot = () => {
     setInput("");
     setIsTyping(true);
     try {
-      const res = await axios.post("https://api.bonet.rw:8443/bonetBackend/backend/public/ai-reply", {
+      const res = await axios.post("https://api.bonet.rw/bonetBackend/backend/public/ai-reply", {
         message: msg, clientId
       }, { timeout: 10000 });
       const reply = res.data.reply || L(

@@ -25,7 +25,7 @@ const slugifyTitle = (title: string) => {
 export async function generateStaticParams() {
   try {
     const response = await fetch(
-      "https://api.bonet.rw:8443/bonetBackend/backend/public/blogs",
+      "https://api.bonet.rw/bonetBackend/backend/public/blogs",
       {
         method: 'GET',
         headers: {
@@ -75,7 +75,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     
     // Use fetch like sitemap.ts does
     const response = await fetch(
-      "https://api.bonet.rw:8443/bonetBackend/backend/public/blogs",
+      "https://api.bonet.rw/bonetBackend/backend/public/blogs",
       {
         method: 'GET',
         headers: {
@@ -141,7 +141,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const description = rawDesc
       ? `${rawDesc.substring(0, 130).trim().replace(/\.?$/, '')}. Learn more from Bonet Elite Services.`
       : "Expert insights on travel, business, and investment in Rwanda. Get guidance from Bonet Elite Services.";
-    const imageUrl = foundBlog?.image ? `https://api.bonet.rw:8443/bonetBackend/public/${foundBlog.image}` : "https://bonet.rw/assets/images/logo.png";
+    const imageUrl = foundBlog?.image ? `https://api.bonet.rw/bonetBackend/public/${foundBlog.image}` : "https://bonet.rw/assets/images/logo.png";
     const url = `https://bonet.rw/blog/${targetSlug}`;
     const keywords = `${blogTitle}, Rwanda travel, business Rwanda, investment Rwanda, Bonet Services, Kigali, ${blogTitle.toLowerCase()}`;
 
@@ -206,7 +206,7 @@ async function getBlogData(slug: string): Promise<Blog | null> {
   try {
     const targetSlug = normalizeSlug(slug);
     const response = await fetch(
-      "https://api.bonet.rw:8443/bonetBackend/backend/public/blogs",
+      "https://api.bonet.rw/bonetBackend/backend/public/blogs",
       {
         method: 'GET',
         headers: {
@@ -244,7 +244,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
   const rawDesc = blog?.quote || blog?.description?.replace(/<[^>]*>/g, '')?.substring(0, 155) || "Expert article on travel, business, or investment in Rwanda";
   const description = rawDesc.substring(0, 150).trim().replace(/\.?$/, '.');
   const imageUrl = blog?.image 
-    ? `https://api.bonet.rw:8443/bonetBackend/public/${blog.image}` 
+    ? `https://api.bonet.rw/bonetBackend/public/${blog.image}` 
     : "https://bonet.rw/assets/images/logo.png";
   const datePublished = blog?.created_at || new Date().toISOString();
   const authorName = blog?.author || "Bonet Elite Services";
