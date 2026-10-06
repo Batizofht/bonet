@@ -75,7 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <LayoutWrapper>{children}</LayoutWrapper>
         {/* Meta Pixel noscript fallback */}
-        <noscript><img height="1" width="1" style="display:none"
+        <noscript><img height="1" width="1" style={{display: "none"}}
         src="https://www.facebook.com/tr?id=1918347932949769&ev=PageView&noscript=1"
         /></noscript>
         <script src="https://analytics.ahrefs.com/analytics.js" data-key="ZwyWK9S5Y9ynmnRi3oqhwQ" defer></script>
