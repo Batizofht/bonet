@@ -253,25 +253,35 @@ const WelcomeUs = () => {
     setIsLoading(true);
     try {
       const payload = {
-        ...values,
+        name: values.name,
+        email: values.email,
+        phone_number: values.phone_number,
         whatsapp_number:
           values.whatsapp_number && values.whatsapp_number.trim() !== ""
             ? values.whatsapp_number.trim()
             : "00000000",
+        inquiry_type: values.inquiry_type,
+        message: values.message,
       };
       const response = await axios.post(
-        "https://api.bonet.rw/bonetBackend/backend/public/comments",
-        payload
+        "https://api.inzira.co/api/v1/contact-messages",
+        payload,
+        { headers: { "Content-Type": "application/json" } }
       );
-      if (response.data.id) {
+      const data = response.data;
+      const ok = data?.status === 1 || data?.id || data?.data?.id || data?.data?.message?.id;
+      if (ok) {
         modernToast.success(t("ContactMessage.success", { name: values.name }));
         form.resetFields();
       } else {
-        modernToast.error(t("toast.error"));
+        modernToast.error(data?.message || t("toast.error"));
       }
     } catch (error) {
       console.error(error);
-      modernToast.error(t("toast.fail"));
+      const msg =
+        error?.response?.data?.message ||
+        t("toast.fail");
+      modernToast.error(msg);
     } finally {
       setIsLoading(false);
     }
