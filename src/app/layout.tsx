@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | Bonet Elite Services",
   },
   description:
-    "Helping foreign investors register companies, secure tax incentives, hire teams, relocate families, and travel through Rwanda. Business setup in 6 hours. Zero minimum capital.",
+    "Helping foreign investors register companies, secure tax incentives, hire teams, relocate families, and travel through Rwanda. Fast, fully online business setup. Zero minimum capital.",
   keywords:
     "Bonet Elite Services Rwanda, travel Rwanda, business setup Rwanda, investment in Rwanda, VIP concierge Rwanda, luxury travel Kigali, HR services Rwanda, executive services Rwanda, tourism Rwanda",
   authors: [{ name: "Bonet Elite Services" }],

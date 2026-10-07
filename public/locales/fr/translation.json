@@ -112,7 +112,7 @@
     "feature1": {
       "title": "Création d'entreprise au Rwanda",
       "description": "Découvrez le processus étape par étape pour créer une entreprise au Rwanda, de l'enregistrement auprès du RDB à la compréhension des réglementations fiscales et des incitations à l'investissement.",
-      "highlight": "Le Rwanda offre un processus d'enregistrement d'entreprise simplifié, permettant aux entrepreneurs de démarrer leurs activités en 24 heures."
+      "highlight": "Le Rwanda offre un processus d'enregistrement d'entreprise simplifié, permettant aux entrepreneurs de démarrer leurs activités en 48 heures."
     },
     "feature2": {
       "title": "Services de luxe à Kigali",
@@ -236,7 +236,7 @@
     "hero_tagline": "Experts en Investissement au Rwanda",
     "hero_title": "Investissez au Rwanda",
     "hero_title_accent": "En Toute Confiance",
-    "hero_desc1": "Aucun capital minimum. Enregistrement d'entreprise en 6 heures. 0% d'impôt sur les sociétés pour les investissements éligibles.",
+    "hero_desc1": "Aucun capital minimum. 0% d'impôt sur les sociétés pour les investissements éligibles.",
     "hero_desc2": "Accompagnement complet de la création juridique aux opérations quotidiennes.",
     "explore_services": "Explorer les Services",
     "stat_years": "Années d'Expérience",
@@ -295,7 +295,7 @@
   },
   "heroServices": {
     "investment_title": "Investissement & Entreprise",
-    "investment_desc": "Enregistrement d'entreprise en 6 heures. 100% de propriété étrangère et avantages fiscaux.",
+    "investment_desc": "Enregistrement d'entreprise avec le RDB. 100% de propriété étrangère et avantages fiscaux.",
     "hr_title": "RH & Recrutement",
     "hr_desc": "Recrutement, contrats, salaires, inscription RSSB, permis de travail.",
     "relocation_title": "Services de Relocalisation",
@@ -407,7 +407,7 @@
       {
         "title": "Assistance à l'Enregistrement d'Entreprise",
         "subtitle": "Mise en place rapide d'entreprise avec le RDB.",
-        "description": "Nous fournissons des conseils sur l'enregistrement des sociétés auprès du RDB, assurant la conformité légale et une mise en place rapide, souvent en moins de six heures.",
+        "description": "Nous fournissons des conseils sur l'enregistrement des sociétés auprès du RDB, assurant la conformité légale et une mise en place rapide et sans tracas.",
         "image": "/assets/images/rdb.jpg"
       },
       {
@@ -499,7 +499,7 @@
     "benefits": [
       {
         "title": "Installation d'entreprise facile et rapide",
-        "description": "Enregistrez une société en seulement 6 heures.",
+        "description": "Enregistrez une société entièrement en ligne.",
         "moreDescription": "Avec des services numériques rationalisés et une agence dédiée à la promotion des investissements, créer une entreprise au Rwanda est rapide et simple."
       },
       {
@@ -679,7 +679,7 @@
     "title": "Comment démarrer une entreprise au Rwanda en tant qu'étranger",
     "whyInvest": {
       "title": "Pourquoi investir au Rwanda ?",
-      "text": "Le Rwanda se classe 38e au niveau mondial et 2e en Afrique pour la facilité de faire des affaires. Avec un processus d'enregistrement en ligne qui prend seulement six heures, c'est une destination d'investissement attrayante."
+      "text": "Le Rwanda se classe 38e au niveau mondial et 2e en Afrique pour la facilité de faire des affaires. Avec un processus d'enregistrement en ligne simplifié, c'est une destination d'investissement attrayante."
     },
     "steps": {
       "prepare": {
@@ -720,7 +720,6 @@
         "title": "Informations clés",
         "items": [
           "Aucun frais d'enregistrement d'entreprise requis.",
-          "L'enregistrement de l'entreprise ne prend que 6 heures.",
           "Le processus entier est en ligne, éliminant le besoin de présence physique."
         ]
       }
@@ -1693,7 +1692,7 @@
     "services": {
       "service1": {
         "title": "Assistance à l’enregistrement des entreprises",
-        "description": "Nous vous guidons pour l’enregistrement auprès du RDB, assurant conformité légale et installation rapide, souvent en moins de six heures."
+        "description": "Nous vous guidons pour l’enregistrement auprès du RDB, assurant conformité légale et installation rapide."
       },
       "service2": {
         "title": "Certificat d’investissement",
@@ -2126,7 +2125,7 @@
     "investment": {
       "subtitle": "Investissement & Installation",
       "title": "Votre Porte d'Entrée vers les Marchés Est-Africains",
-      "desc": "Enregistrement d'entreprise en 6 heures. 100% de propriété étrangère. Avantages fiscaux et support complet."
+      "desc": "Enregistrement d'entreprise avec le RDB. 100% de propriété étrangère. Avantages fiscaux et support complet."
     },
     "travel": {
       "subtitle": "Voyage & Hôtellerie",

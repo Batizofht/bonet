@@ -95,7 +95,7 @@ export default function HomePageClient() {
                   "name": "How long does business registration take in Rwanda?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "With Bonet Elite Services, company registration takes just 6 hours. We handle the entire process with RDB (Rwanda Development Board) including name reservation, certificate issuance, TIN assignment, and RSSB registration — all in one streamlined process."
+                    "text": "With Bonet Elite Services, company registration is fast and fully managed. We handle the entire process with RDB (Rwanda Development Board) including name reservation, certificate issuance, TIN assignment, and RSSB registration — all in one streamlined process."
                   }
                 },
                 {

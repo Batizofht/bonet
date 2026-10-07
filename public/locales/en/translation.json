@@ -8,7 +8,7 @@
     "list": [
       {
         "title": "Investment & Business Setup",
-        "description": "Company registration in 6 hours, investment certificates, tax incentives, and full licensing. We handle RDB registration, RRA tax setup, and compliance.",
+        "description": "Company registration, investment certificates, tax incentives, and full licensing. We handle RDB registration, RRA tax setup, and compliance.",
         "details": "Rwanda is one of Africa's easiest places to do business. 100% foreign ownership permitted. 0% corporate tax for qualifying investments. Let us handle your complete business setup.",
         "buttonText": "Book Free Consultation",
         "route": "/investment"
@@ -112,7 +112,7 @@
     "feature1": {
       "title": "Business Setup in Rwanda",
       "description": "Discover the step-by-step process of setting up a business in Rwanda, from registration with RDB to understanding tax regulations and investment incentives.",
-      "highlight": "Rwanda offers a streamlined business registration process, allowing entrepreneurs to start operations within 24 hours."
+      "highlight": "Rwanda offers a streamlined business registration process, allowing entrepreneurs to start operations within 48 hours."
     },
     "feature2": {
       "title": "Luxury Services in Kigali.",
@@ -240,7 +240,7 @@
     "hero_tagline": "Rwanda Investment Experts",
     "hero_title": "Invest in Rwanda",
     "hero_title_accent": "With Confidence",
-    "hero_desc1": "Zero minimum capital. 6-hour company registration. 0% corporate tax for qualifying investments.",
+    "hero_desc1": "Zero minimum capital. 0% corporate tax for qualifying investments.",
     "hero_desc2": "Full-service support from legal setup to daily operations.",
     "explore_services": "Explore Services",
     "stat_years": "Years Experience",
@@ -299,7 +299,7 @@
   },
   "heroServices": {
     "investment_title": "Investment & Business",
-    "investment_desc": "Company registration in 6 hours. 100% foreign ownership and full tax incentive support.",
+    "investment_desc": "Company registration with RDB. 100% foreign ownership and full tax incentive support.",
     "hr_title": "HR & Recruitment",
     "hr_desc": "Recruitment, contracts, payroll, RSSB registration, work permits.",
     "relocation_title": "Relocation Services",
@@ -326,7 +326,7 @@
       {
         "title": "Business Registration Assistance",
         "subtitle": "Fast company setup with RDB.",
-        "description": "We provide guidance on company registration with RDB, ensuring legal compliance and a smooth setup, often completed within six hours.",
+        "description": "We provide guidance on company registration with RDB, ensuring legal compliance and a smooth, streamlined setup.",
         "image": "/assets/images/rdb.jpg"
       },
       {
@@ -418,7 +418,7 @@
     "benefits": [
       {
         "title": "Easy & Fast Business Setup",
-        "description": "Register a company in just 6 hours.",
+        "description": "Register a company fully online.",
         "moreDescription": "With streamlined digital services and a dedicated investment promotion agency, setting up a business in Rwanda is fast and straightforward."
       },
       {
@@ -598,7 +598,7 @@
     "title": "How to Start a Business in Rwanda as a Foreigner",
     "whyInvest": {
       "title": "Why Invest in Rwanda?",
-      "text": "Rwanda ranks 38th globally and 2nd in Africa for ease of doing business. With an online registration process that takes just six hours, it is an attractive investment destination."
+      "text": "Rwanda ranks 38th globally and 2nd in Africa for ease of doing business. With a streamlined online registration process, it is an attractive investment destination."
     },
     "steps": {
       "prepare": {
@@ -639,7 +639,6 @@
         "title": "Key Information",
         "items": [
           "No business registration fees required.",
-          "Company registration takes only 6 hours.",
           "The entire process is online, eliminating the need for physical presence."
         ]
       }
@@ -1585,8 +1584,8 @@
     "services": {
       "service1": {
         "title": "Business Registration Assistance",
-        "subtitle": "6-Hour Company Setup",
-        "description": "Complete company registration with RDB in just 6 hours. We handle name reservation, certificate issuance, TIN assignment, and RSSB registration — all in one streamlined process. 100% foreign ownership permitted with no local partner required."
+        "subtitle": "Fast Company Setup",
+        "description": "Complete company registration with RDB. We handle name reservation, certificate issuance, TIN assignment, and RSSB registration — all in one streamlined process. 100% foreign ownership permitted with no local partner required."
       },
       "service2": {
         "title": "Investment Certificate",
@@ -2008,7 +2007,7 @@
     "investment": {
       "subtitle": "Investment & Setup",
       "title": "Your Gateway to East African Markets",
-      "desc": "Company registration in 6 hours. 100% foreign ownership. Tax incentives & full compliance support."
+      "desc": "Company registration with RDB. 100% foreign ownership. Tax incentives & full compliance support."
     },
     "travel": {
       "subtitle": "Travel & Hospitality",

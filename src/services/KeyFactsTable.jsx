@@ -12,11 +12,11 @@ const KeyFactsTable = () => {
     {
       icon: Clock,
       label: L("Company Registration", "Enregistrement d'Entreprise", "公司注册"),
-      value: "6 Hours",
+      value: L("Fully Managed", "Géré de A à Z", "全程托管"),
       description: L(
-        "Complete RDB registration including TIN and RSSB in a single day",
-        "Enregistrement RDB complet incluant NIF et RSSB en une seule journée",
-        "完整的RDB注册，包括TIN和RSSB，当天完成"
+        "Complete RDB registration including TIN and RSSB, handled end to end",
+        "Enregistrement RDB complet incluant NIF et RSSB, géré de bout en bout",
+        "完整的RDB注册，包括TIN和RSSB，全程为您办理"
       )
     },
     {

@@ -27,8 +27,8 @@ export default function BusinessRegistrationClient() {
   const features = [
     {
       icon: Clock,
-      title: L("6-Hour Registration","Enregistrement en 6 heures","6小时注册"),
-      description: L("RDB processes applications same day — no waiting weeks for approval.","L'Office de développement du Rwanda traite les demandes le jour même — sans attendre des semaines.","RDB当天处理申请——无需等待数周审批。")
+      title: L("Fast Registration","Enregistrement rapide","快速注册"),
+      description: L("RDB processes applications online — no waiting weeks for approval.","Le RDB traite les demandes en ligne — sans attendre des semaines.","RDB在线处理申请——无需等待数周审批。")
     },
     {
       icon: Globe,
@@ -106,7 +106,7 @@ export default function BusinessRegistrationClient() {
   const faqs = [
     {
       q: L("How long does company registration take in Rwanda?","Combien de temps dure l'enregistrement d'une société au Rwanda ?","在卢旺达注册公司需要多长时间？"),
-      a: L("The Rwanda Development Board (RDB) typically processes company registrations within 6 hours for standard applications. Our end-to-end service, including document preparation and post-registration steps, is completed within 24-48 hours.","L'Office de développement du Rwanda traite généralement les enregistrements en 6 heures pour les demandes standard. Notre service de bout en bout, y compris la préparation des documents, est achevé en 24 à 48 heures.","卢旺达发展局通常在6小时内处理标准申请。我们的端到端服务（包括文件准备和注册后步骤）在24-48小时内完成。")
+      a: L("The Rwanda Development Board (RDB) processes standard company registration applications online. Our end-to-end service, including document preparation and post-registration steps, is completed within 24-48 hours.","L'Office de développement du Rwanda traite les demandes d'enregistrement standard en ligne. Notre service de bout en bout, y compris la préparation des documents, est achevé en 24 à 48 heures.","卢旺达发展局在线处理标准公司注册申请。我们的端到端服务（包括文件准备和注册后步骤）在24-48小时内完成。")
     },
     {
       q: L("Can a foreigner own 100% of a company in Rwanda?","Un étranger peut-il détenir 100 % d'une société au Rwanda ?","外国人可以在卢旺达拥有100%的公司吗？"),
@@ -146,7 +146,7 @@ export default function BusinessRegistrationClient() {
           <div className="w-2 h-2 bg-[#C9A84C] rotate-45 mb-4" />
           <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">{L("Rwanda Business Setup","Création d'entreprise au Rwanda","卢旺达企业注册")}</p>
           <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-wider">
-            {L("Register Your Company in 6 Hours","Enregistrez votre société en 6 heures","6小时完成公司注册")}
+            {L("Register Your Company in Rwanda","Enregistrez votre société au Rwanda","在卢旺达注册公司")}
           </h1>
           <p className="text-white/75 max-w-2xl mt-2 text-xs sm:text-sm leading-relaxed">
             {L("Just one team that handles every step from application to operations.","Une seule équipe pour gérer chaque étape, de la demande aux opérations.","一支团队处理从申请到运营的每个步骤。")}
