@@ -22,7 +22,7 @@ const BookingCards = () => {
       title: t("service.consulting.title"),
       description: t("home.consult_desc"),
       icon: Briefcase,
-      route: "/business-registration",
+      route: "/consulting",
     },
     {
       id: "hr",
@@ -49,22 +49,22 @@ const BookingCards = () => {
             <Link
               key={service.id}
               href={service.route}
-              className="group relative bg-white rounded-xl p-4 md:p-6 border border-gray-200 hover:border-[#C9A84C] transition-colors"
+              className="group relative flex flex-col bg-white rounded-xl p-4 md:p-6 border border-gray-200 hover:border-[#C9A84C] transition-colors"
               onClick={(e) => {
                 e.preventDefault();
                 setSelectedService(service.id);
               }}
             >
-              <IconComponent className="w-6 h-6 md:w-7 md:h-7 text-[#C9A84C] mb-3 md:mb-4" />
+              <IconComponent className="w-6 h-6 md:w-7 md:h-7 text-[#C9A84C] mb-3 md:mb-4 shrink-0" />
 
-              <h3 className="text-gray-900 font-bold text-sm md:text-base mb-2 line-clamp-1">
+              <h3 className="text-gray-900 font-bold text-sm md:text-base mb-2 line-clamp-2 min-h-[2.5rem] md:min-h-[3rem]">
                 {service.title}
               </h3>
-              <p className="text-gray-500 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-2">
+              <p className="text-gray-500 text-xs md:text-sm leading-relaxed mb-3 md:mb-4 line-clamp-3 min-h-[3.65rem] md:min-h-[4.3rem] flex-1">
                 {service.description}
               </p>
 
-              <div className="flex items-center gap-1 text-[#C9A84C] text-xs md:text-sm font-semibold">
+              <div className="flex items-center gap-1 text-[#C9A84C] text-xs md:text-sm font-semibold mt-auto">
                 <span>{t("heroServices.learn_more")}</span>
                 <ChevronRight className="w-4 h-4" />
               </div>
