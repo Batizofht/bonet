@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { slugify } from "../../slugify";
 import axios from "axios";
@@ -18,45 +18,21 @@ export default function Blog() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>("");
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
   const { t } = useTranslation();
 
+  // Fetch immediately on mount — no scroll-gating, no artificial delay
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1, rootMargin: '100px' }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!isVisible) return;
-    
     let isMounted = true;
-    
+
     const fetchBlogs = async () => {
       try {
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        if (!isMounted) return;
-        
         const response = await axios.get(
           "https://api.bonet.rw/bonetBackend/backend/public/blogshome"
         );
         const blogArray = Array.isArray(response.data.data)
           ? response.data.data
           : response.data.data || [];
-        setBlogs(blogArray);
+        if (isMounted) setBlogs(blogArray);
       } catch (err) {
         if (isMounted) {
           setError("Failed to load blogs.");
@@ -69,11 +45,11 @@ export default function Blog() {
     };
 
     fetchBlogs();
-    
+
     return () => {
       isMounted = false;
     };
-  }, [isVisible]);
+  }, []);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -85,7 +61,6 @@ export default function Blog() {
 
   return (
     <section
-      ref={sectionRef}
       className="py-16 px-4 max-w-6xl mx-auto"
     > 
       {/* BLOG HEADER */}

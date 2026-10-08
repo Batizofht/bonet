@@ -11,12 +11,12 @@ const WhyRwandaSection = () => {
 
   const highlights = [
     {
-      stat: "6hrs",
+      stat: "RDB",
       label: L("Company Registration", "Enregistrement d'Entreprise", "公司注册"),
       desc: L(
-        "Certificate, TIN, and RSSB — all in one day. 100% foreign ownership permitted.",
-        "Certificat, NIF et RSSB — tout en une journée. 100% de propriété étrangère autorisée.",
-        "证书、TIN和RSSB——均在一天内完成。允许100%外资所有权。"
+        "Certificate, TIN, and RSSB included. 100% foreign ownership permitted.",
+        "Certificat, NIF et RSSB inclus. 100% de propriété étrangère autorisée.",
+        "证书、TIN和RSSB一并办理。允许100%外资所有权。"
       )
     },
     {

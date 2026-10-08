@@ -44,7 +44,7 @@ export default function HRRecruitmentClient() {
     { value: "500+", label: L("Candidates Placed","Candidats Placés","已安置候选人") },
     { value: "50+", label: L("Corporate Clients","Clients Entreprises","企业客户") },
     { value: "98%", label: L("Retention Rate","Taux de Rétention","留存率") },
-    { value: "48h", label: L("Avg. Placement Time","Temps de Placement Moy.","平均安置时间") }
+    { value: L("Vetted","Vérifiés","严格筛选"), label: L("Candidate Pool","Vivier de Candidats","候选人才库") }
   ];
 
   return (

@@ -97,9 +97,9 @@ export default function FAQClient() {
           {
             question: L2("How long does it take to register a company in Rwanda?","Combien de temps faut-il pour enregistrer une entreprise au Rwanda ?","在卢旺达注册公司需要多长时间？"),
             answer: L2(
-              "Online registration via RDB can be fast once documents are ready (often within hours to a few working days). The real work is preparing correct articles, shareholder IDs, share capital declaration, and a valid address. Authority: https://rdb.rw.",
-              "L'enregistrement en ligne via le RDB peut être rapide une fois les documents prêts (souvent en quelques heures à quelques jours ouvrables). Le vrai travail consiste à préparer des statuts corrects, des pièces d'identité des actionnaires, une déclaration de capital social et une adresse valide. Autorité : https://rdb.rw.",
-              "一旦文件准备好，通过RDB在线注册可以很快（通常在数小时至几个工作日内）。真正的工作在于准备正确的公司章程、股东身份证明、股本声明和有效地址。主管机构：https://rdb.rw。"
+              "Online registration via RDB can be fast once documents are ready. The real work is preparing correct articles, shareholder IDs, share capital declaration, and a valid address. Authority: https://rdb.rw.",
+              "L'enregistrement en ligne via le RDB peut être rapide une fois les documents prêts. Le vrai travail consiste à préparer des statuts corrects, des pièces d'identité des actionnaires, une déclaration de capital social et une adresse valide. Autorité : https://rdb.rw.",
+              "一旦文件准备好，通过RDB在线注册可以很快。真正的工作在于准备正确的公司章程、股东身份证明、股本声明和有效地址。主管机构：https://rdb.rw。"
             )
           },
           {

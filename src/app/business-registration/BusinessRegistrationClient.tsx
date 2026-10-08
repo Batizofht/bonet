@@ -74,7 +74,7 @@ export default function BusinessRegistrationClient() {
     {
       number: "01",
       title: L("Company Name Reservation","Réservation du nom de la société","公司名称预留"),
-      description: L("We reserve your preferred company name with RDB and verify availability within hours.","Nous réservons votre nom de société préféré auprès de l'Office de développement du Rwanda et en vérifions la disponibilité en quelques heures.","我们在RDB为您预留首选公司名称，并在数小时内确认可用性。")
+      description: L("We reserve your preferred company name with RDB and verify availability for you.","Nous réservons votre nom de société préféré auprès de l'Office de développement du Rwanda et en vérifions la disponibilité pour vous.","我们在RDB为您预留首选公司名称，并为您核验可用性。")
     },
     {
       number: "02",
@@ -106,7 +106,7 @@ export default function BusinessRegistrationClient() {
   const faqs = [
     {
       q: L("How long does company registration take in Rwanda?","Combien de temps dure l'enregistrement d'une société au Rwanda ?","在卢旺达注册公司需要多长时间？"),
-      a: L("The Rwanda Development Board (RDB) processes standard company registration applications online. Our end-to-end service, including document preparation and post-registration steps, is completed within 24-48 hours.","L'Office de développement du Rwanda traite les demandes d'enregistrement standard en ligne. Notre service de bout en bout, y compris la préparation des documents, est achevé en 24 à 48 heures.","卢旺达发展局在线处理标准公司注册申请。我们的端到端服务（包括文件准备和注册后步骤）在24-48小时内完成。")
+      a: L("The Rwanda Development Board (RDB) processes standard company registration applications online. Our end-to-end service, including document preparation and post-registration steps, is fully handled for you.","L'Office de développement du Rwanda traite les demandes d'enregistrement standard en ligne. Notre service de bout en bout, y compris la préparation des documents, est entièrement pris en charge.","卢旺达发展局在线处理标准公司注册申请。我们的端到端服务（包括文件准备和注册后步骤）全程为您处理。")
     },
     {
       q: L("Can a foreigner own 100% of a company in Rwanda?","Un étranger peut-il détenir 100 % d'une société au Rwanda ?","外国人可以在卢旺达拥有100%的公司吗？"),

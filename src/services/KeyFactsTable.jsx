@@ -117,9 +117,9 @@ const KeyFactsTable = () => {
                 </p>
                 <p className="text-gray-600 text-sm">
                   {L(
-                    "Most of our clients are operational within 48 hours",
-                    "La plupart de nos clients sont opérationnels dans les 48 heures",
-                    "我们大多数客户在48小时内投入运营"
+                    "We handle everything from registration to launch",
+                    "Nous gérons tout, de l'enregistrement au lancement",
+                    "从注册到启动，我们全程负责"
                   )}
                 </p>
               </div>

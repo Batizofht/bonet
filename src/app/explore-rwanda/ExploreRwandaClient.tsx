@@ -29,7 +29,7 @@ export default function ExploreRwandaClient() {
     { value: "13M", label: t("exploreRwanda.stat_population") },
     { value: "#2", label: t("exploreRwanda.stat_safest") },
     { value: "Top 3", label: t("exploreRwanda.stat_bizease") },
-    { value: "6hrs", label: t("exploreRwanda.stat_setup") },
+    { value: "Online", label: t("exploreRwanda.stat_setup") },
   ];
 
   return (

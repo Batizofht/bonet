@@ -9,12 +9,8 @@ const GoogleMapEmbed = () => {
   const L = (en, fr, ch) => i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
 
   return (
-    <motion.section
+    <section
       className="py-16 px-4 max-w-6xl mx-auto"
-      initial={{ opacity: 0, y: -30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-      viewport={{ once: true }}
     >
       {/* EXACT SAME HEADER AS BLOG SECTION */}
       <div className="text-center mb-16">
@@ -41,10 +37,6 @@ const GoogleMapEmbed = () => {
       <motion.div 
         className="bg-white rounded-2xl overflow-hidden border border-blue-100 shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
         whileHover={{ y: -5, scale: 1.01 }}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
       >
         <div className="w-full h-[500px]">
           <iframe
@@ -82,7 +74,7 @@ const GoogleMapEmbed = () => {
           </div>
         </div>
       </motion.div>
-    </motion.section>
+    </section>
   );
 };
 

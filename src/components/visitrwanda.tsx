@@ -27,24 +27,6 @@ const Gallery = () => {
     { src: "../assets/images/muhazi.jpg", key: "muhazi" }
   ], []);
 
-  // OPTIMIZED: Memoize animation variants
-  const containerVariants = useMemo(() => ({
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
-  }), []);
-
-  const itemVariants = useMemo(() => ({
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const }
-    }
-  }), []);
-
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
       {/* Header */}
@@ -73,18 +55,13 @@ const Gallery = () => {
         <p className="text-gray-500 text-lg">{L("Explore beautiful destinations in Rwanda","Explorez de magnifiques destinations au Rwanda","探索卢旺达美丽的目的地")}</p>
       </div>
 
-      {/* OPTIMIZED: Use motion container with variants instead of individual initial props */}
-      <motion.div 
+      {/* Gallery grid — always visible, no scroll-reveal */}
+      <div
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
       >
         {images.map((image, index) => (
-          <motion.div
+          <div
             key={index}
-            variants={itemVariants}
             className="relative group cursor-pointer"
           >
             <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
@@ -101,10 +78,7 @@ const Gallery = () => {
               
               {/* Location Badge */}
               <div className="absolute bottom-3 left-3 right-3">
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ delay: index * 0.1 + 0.2 }}
+                <div
                   className="bg-white/95 backdrop-blur-sm rounded-xl p-3 transform group-hover:translate-y-0 transition-transform duration-300"
                 >
                   <div className="flex items-center gap-2">
@@ -113,7 +87,7 @@ const Gallery = () => {
                       {t(`gallery.places.${image.key}`)}
                     </span>
                   </div>
-                </motion.div>
+                </div>
               </div>
 
               {/* Hover Sparkle Effect */}
@@ -121,9 +95,9 @@ const Gallery = () => {
                 <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
 
       {/* Button */}
       <div className="flex justify-center">

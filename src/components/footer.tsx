@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
@@ -15,8 +15,6 @@ export default function FAQ() {
   const router = useRouter();
   const [faqs, setFaqs] = useState<FAQ[]>([]);
   const [loading, setLoading] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
   const { t, i18n } = useTranslation();
   const L = (en: string, fr: string, ch: string) =>
     i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
@@ -25,42 +23,17 @@ export default function FAQ() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-
-  // OPTIMIZED: Only fetch when component is visible
+  // Fetch FAQs immediately on mount — no scroll-gating, no artificial delay
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1, rootMargin: '100px' }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Fetch only when visible
-  useEffect(() => {
-    if (!isVisible) return;
-
     let isMounted = true;
 
     const fetchFAQs = async () => {
       setLoading(true);
       try {
-        await new Promise(resolve => setTimeout(resolve, 500));
-
-        if (!isMounted) return;
-
         const response = await axios.get(
           "https://api.bonet.rw/bonetBackend/backend/public/faqs"
         );
-        setFaqs(response.data);
+        if (isMounted) setFaqs(response.data);
       } catch (error) {
         // Silent fail
       } finally {
@@ -73,10 +46,10 @@ export default function FAQ() {
     return () => {
       isMounted = false;
     };
-  }, [isVisible]);
+  }, []);
 
   return (
-    <div ref={sectionRef}>
+    <div>
       <div className="bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 py-16 lg:py-20">
         {/* Header */}
