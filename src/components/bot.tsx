@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import { usePathname } from "next/navigation";
 import { MessageCircle, X, Send, Calendar, CheckCircle2, ChevronRight, MessageSquare } from "lucide-react";
 import WelcomeMessageAI from "./mesaai";
 
@@ -81,7 +80,6 @@ const ChatBot = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [autoScroll, setAutoScroll] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const pathname = usePathname();
 
   // Consultation form
   const [form, setForm] = useState({ name: "", phone: "", service: "", message: "" });
@@ -112,8 +110,6 @@ const ChatBot = () => {
     if (!id) { const n = uuidv4(); localStorage.setItem("livechat_client_id", n); id = n; }
     setClientId(id);
   }, []);
-
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
 
   useEffect(() => {
     if (autoScroll && messagesEndRef.current) {

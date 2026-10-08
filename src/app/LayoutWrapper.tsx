@@ -42,13 +42,14 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
     return () => document.removeEventListener('click', handleClick);
   }, [pathname]);
 
-  // Complete progress bar when pathname changes
+  // Only on real navigation — never on initial mount, so a slow page load
+  // can't yank the user back to the top while they're already scrolling
   useEffect(() => {
     if (prevPathname.current !== pathname) {
       NProgress.done();
       prevPathname.current = pathname;
+      window.scrollTo(0, 0);
     }
-    window.scrollTo(0, 0);
   }, [pathname]);
 
   return (
