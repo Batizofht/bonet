@@ -2,6 +2,7 @@
 import FirstContact from "../../contact/firstcontact";
 import ContactUs from "../../contact/contact";
 import { Suspense } from "react";
+import PageLoader from "../../components/PageLoader";
 
 export const metadata = {
   title: "Contact Us",
@@ -40,7 +41,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen">
       <FirstContact />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<PageLoader compact />}>
         <ContactUs />
       </Suspense>
   

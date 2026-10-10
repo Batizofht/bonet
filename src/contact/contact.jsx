@@ -1,138 +1,156 @@
 "use client"
 import { openWhatsApp, BONET_WHATSAPP } from "@/lib/whatsapp";
 import React from "react";
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
-import axios from "axios";
 import { useTranslation } from "react-i18next";
- import { useSearchParams } from "next/navigation";
-import { Form, Input, Select } from "antd";
-import { modernToast } from "@/components/ModernToast";
-import { User, Mail, Phone, MessageCircle, MessageSquare } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { apiPost } from "@/lib/api";
+import { modernToast } from "@/components/ui/toast";
+import { User, Mail, Phone, MessageCircle, MapPin } from "lucide-react";
+import {
+  Field,
+  TextInput,
+  TextArea,
+  Select,
+  SubmitButton,
+} from "@/components/ui/inputs";
 
-const { Option } = Select;
+const ALLOWED = ["consultation", "department", "transport", "businessSetup", "hotel"];
 
-const ContactForm = ({ form, onFinish, t, isLoading, L }) => (
-  <div className="bg-white rounded-xl border border-gray-200 p-8 w-full max-w-xl">
-    <div className="mb-8">
-      <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider">
-        {t("contactInform.form.title")}
-      </p>
-      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 mb-2">
-        {t("contactInformation.title.part1")} {t("contactInformation.title.part2")}
-      </h2>
-      <p className="text-gray-500 text-sm">
-        {L("We'll get back to you within 24 hours","Nous vous répondrons dans les 24 heures","我们将在24小时内回复您")}
-      </p>
-    </div>
+const emptyForm = {
+  name: "",
+  email: "",
+  phone_number: "",
+  whatsapp_number: "",
+  inquiry_type: "",
+  message: "",
+};
 
-    <Form form={form} layout="vertical" onFinish={onFinish} requiredMark={false} className="space-y-5">
-      <Form.Item
-        label={<span className="text-gray-700 font-medium text-sm">{t("contactInform.form.fullName")}</span>}
-        name="name"
-        rules={[{ required: true, message: t("contactInform.form.validation.nameRequired") }]}
-      >
-        <Input 
-          prefix={<User className="w-4 h-4 text-gray-400" />}
-          placeholder={t("contactInform.form.fullName")} 
-          className="rounded-lg border-gray-300 bg-white text-gray-800 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 hover:border-gray-400 transition-colors duration-200 h-11"
-        />
-      </Form.Item>
+const ContactForm = ({ t, L, isLoading, onFinish, initialInquiry }) => {
+  const [values, setValues] = React.useState(emptyForm);
+  const [errors, setErrors] = React.useState({});
 
-      <Form.Item
-        label={<span className="text-gray-700 font-medium text-sm">{t("contactInform.form.email")}</span>}
-        name="email"
-        rules={[
-          { required: true, message: t("contactInform.form.validation.emailRequired") },
-          { type: "email", message: t("contactInform.form.validation.emailInvalid") },
-        ]}
-      >
-        <Input 
-          prefix={<Mail className="w-4 h-4 text-gray-400" />}
-          placeholder={t("contactInform.form.email")} 
-          className="rounded-lg border-gray-300 bg-white text-gray-800 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 hover:border-gray-400 transition-colors duration-200 h-11"
-        />
-      </Form.Item>
+  React.useEffect(() => {
+    if (initialInquiry && ALLOWED.includes(initialInquiry)) {
+      setValues((p) => ({ ...p, inquiry_type: initialInquiry }));
+    }
+  }, [initialInquiry]);
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Form.Item
-          label={<span className="text-gray-700 font-medium text-sm">{t("contactInform.form.phone")}</span>}
-          name="phone_number"
-          rules={[{ required: true, message: t("contactInform.form.validation.phoneRequired") }]}
-        >
-          <Input 
-            prefix={<Phone className="w-4 h-4 text-gray-400" />}
-            placeholder={t("contactInform.form.phone")} 
-            className="rounded-lg border-gray-300 bg-white text-gray-800 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 hover:border-gray-400 transition-colors duration-200 h-11"
-          />
-        </Form.Item>
+  const set = (k, v) => {
+    setValues((p) => ({ ...p, [k]: v }));
+    setErrors((p) => ({ ...p, [k]: undefined }));
+  };
 
-        <Form.Item 
-          label={<span className="text-gray-700 font-medium text-sm">{t("contactInform.form.whatsapp")}</span>} 
-          name="whatsapp_number"
-        >
-          <Input 
-            prefix={<MessageCircle className="w-4 h-4 text-gray-400" />}
-            placeholder={t("contactInform.form.whatsapp")} 
-            className="rounded-lg border-gray-300 bg-white text-gray-800 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 hover:border-gray-400 transition-colors duration-200 h-11"
-          />
-        </Form.Item>
+  const validate = () => {
+    const e = {};
+    if (!values.name.trim()) e.name = t("contactInform.form.validation.nameRequired");
+    if (!values.email.trim()) e.email = t("contactInform.form.validation.emailRequired");
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim()))
+      e.email = t("contactInform.form.validation.emailInvalid");
+    if (!values.phone_number.trim()) e.phone_number = t("contactInform.form.validation.phoneRequired");
+    if (!values.inquiry_type) e.inquiry_type = t("contactInform.form.validation.inquiryRequired");
+    if (!values.message.trim()) e.message = t("contactInform.form.validation.messageRequired");
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
+
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    if (!validate()) return;
+    onFinish(values, () => setValues(emptyForm));
+  };
+
+  return (
+    <div className="bg-white rounded-xl border border-gray-200 p-8 w-full max-w-xl">
+      <div className="mb-8">
+        <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider">
+          {t("contactInform.form.title")}
+        </p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 mb-2">
+          {t("contactInformation.title.part1")} {t("contactInformation.title.part2")}
+        </h2>
+        <p className="text-gray-500 text-sm">
+          {L("We'll get back to you within 24 hours","Nous vous répondrons dans les 24 heures","我们将在24小时内回复您")}
+        </p>
       </div>
 
-      <Form.Item
-        label={<span className="text-gray-700 font-medium text-sm">{t("contactInform.form.inquiryType")}</span>}
-        name="inquiry_type"
-        rules={[{ required: true, message: t("contactInform.form.validation.inquiryRequired") }]}
-        className="[&_.ant-form-item-explain]:mt-3 [&_.ant-form-item-explain]:text-xs [&_.ant-form-item-explain]:leading-snug"
-      >
-        <Select 
-          placeholder={t("contactInform.form.inquiryType")}
-          className={`[&_.ant-select-selector]:h-11 [&_.ant-select-selector]:flex [&_.ant-select-selector]:items-center [&_.ant-select-selector]:rounded-lg [&_.ant-select-selector]:border-gray-300 [&_.ant-select-selector]:hover:border-gray-400 ${
-            form.getFieldValue("inquiry_type") ? "[&_.ant-select-selector]:border-[#C9A84C] [&_.ant-select-selector]:bg-[#C9A84C]/5 [&_.ant-select-selector]:shadow-[0_0_0_2px_rgba(201,168,76,0.18)]" : ""
-          }`}
-        >
-          <Option value="consultation">{L("Consultation","Consultation","咨询")}</Option>
-          <Option value="department">{t("contactInform.form.inquiryOptions.department")}</Option>
-          <Option value="transport">{t("contactInform.form.inquiryOptions.transport")}</Option>
-          <Option value="businessSetup">{t("contactInform.form.inquiryOptions.businessSetup")}</Option>
-          <Option value="hotel">{t("contactInform.form.inquiryOptions.hotel")}</Option>
-            <Option value="Other">{L("Other","Autre","其他")}</Option>
-        </Select>
-      </Form.Item>
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <Field label={t("contactInform.form.fullName")} error={errors.name} required>
+          <TextInput
+            icon={<User className="w-4 h-4 text-gray-400" />}
+            placeholder={t("contactInform.form.fullName")}
+            value={values.name}
+            onChange={(e) => set("name", e.target.value)}
+            error={errors.name}
+          />
+        </Field>
 
-      <Form.Item
-        label={<span className="text-gray-700 font-medium text-sm">{t("contactInform.form.message")}</span>}
-        name="message"
-        rules={[{ required: true, message: t("contactInform.form.validation.messageRequired") }]}
-      >
-        <Input.TextArea
-          placeholder={t("contactInform.form.message")}
-          rows={4}
-          className="rounded-lg border-gray-300 bg-white text-gray-800 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 hover:border-gray-400 transition-colors duration-200 resize-none"
-        />
-      </Form.Item>
+        <Field label={t("contactInform.form.email")} error={errors.email} required>
+          <TextInput
+            icon={<Mail className="w-4 h-4 text-gray-400" />}
+            placeholder={t("contactInform.form.email")}
+            value={values.email}
+            onChange={(e) => set("email", e.target.value)}
+            error={errors.email}
+          />
+        </Field>
 
-      <Form.Item className="mb-0">
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="w-full bg-[#C9A84C] hover:bg-[#B8973B] text-white font-semibold rounded-lg py-3 h-auto transition-colors duration-200 border-0 text-base disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-        >
-          {isLoading ? (
-            <>
-              <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              <span>{L("Sending...","Envoi en cours...","发送中...")}</span>
-            </>
-          ) : (
-            t("contactInform.form.submitButton")
-          )}
-        </button>
-      </Form.Item>
-    </Form>
-  </div>
-);
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Field label={t("contactInform.form.phone")} error={errors.phone_number} required>
+            <TextInput
+              icon={<Phone className="w-4 h-4 text-gray-400" />}
+              placeholder={t("contactInform.form.phone")}
+              value={values.phone_number}
+              onChange={(e) => set("phone_number", e.target.value)}
+              error={errors.phone_number}
+            />
+          </Field>
+
+          <Field label={t("contactInform.form.whatsapp")}>
+            <TextInput
+              icon={<MessageCircle className="w-4 h-4 text-gray-400" />}
+              placeholder={t("contactInform.form.whatsapp")}
+              value={values.whatsapp_number}
+              onChange={(e) => set("whatsapp_number", e.target.value)}
+            />
+          </Field>
+        </div>
+
+        <Field label={t("contactInform.form.inquiryType")} error={errors.inquiry_type} required>
+          <Select
+            placeholder={t("contactInform.form.inquiryType")}
+            value={values.inquiry_type || undefined}
+            onChange={(v) => set("inquiry_type", v)}
+            error={errors.inquiry_type}
+            options={[
+              { value: "consultation", label: L("Consultation","Consultation","咨询") },
+              { value: "department", label: t("contactInform.form.inquiryOptions.department") },
+              { value: "transport", label: t("contactInform.form.inquiryOptions.transport") },
+              { value: "businessSetup", label: t("contactInform.form.inquiryOptions.businessSetup") },
+              { value: "hotel", label: t("contactInform.form.inquiryOptions.hotel") },
+              { value: "Other", label: L("Other","Autre","其他") },
+            ]}
+          />
+        </Field>
+
+        <Field label={t("contactInform.form.message")} error={errors.message} required>
+          <TextArea
+            placeholder={t("contactInform.form.message")}
+            rows={4}
+            value={values.message}
+            onChange={(e) => set("message", e.target.value)}
+            error={errors.message}
+          />
+        </Field>
+
+        <div className="mb-0">
+          <SubmitButton loading={isLoading} className="rounded-lg text-base">
+            {isLoading ? L("Sending...","Envoi en cours...","发送中...") : t("contactInform.form.submitButton")}
+          </SubmitButton>
+        </div>
+      </form>
+    </div>
+  );
+};
 
 const ContactInfo = ({ t, L }) => (
   <div className="bg-white rounded-xl border border-gray-200 p-8 w-full max-w-xl">
@@ -152,13 +170,13 @@ const ContactInfo = ({ t, L }) => (
       onClick={() => openWhatsApp({ phone: BONET_WHATSAPP })}
       className="w-full inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1da851] text-white font-semibold rounded-lg px-6 py-3 transition-colors duration-200 border-0 mb-8"
     >
-      <FaWhatsapp className="w-5 h-5" />
+      <MessageCircle className="w-5 h-5" />
       {t("contactInformation.chatButton")}
     </button>
 
     <div className="space-y-5">
       <div className="flex items-center gap-4">
-        <FaPhoneAlt className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
+        <Phone className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
         <div>
           <p className="text-xs text-gray-500 mb-0.5">{t("contactInformation.callWhatsApp")}</p>
           <a href="tel:+250726300260" className="font-semibold text-gray-900 hover:text-[#C9A84C] transition-colors text-sm">
@@ -168,7 +186,7 @@ const ContactInfo = ({ t, L }) => (
       </div>
 
       <div className="flex items-center gap-4">
-        <FaEnvelope className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
+        <Mail className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
         <div>
           <p className="text-xs text-gray-500 mb-0.5">{t("contactInformation.email")}</p>
           <a href="mailto:info@bonet.rw" className="font-semibold text-gray-900 hover:text-[#C9A84C] transition-colors text-sm">
@@ -178,7 +196,7 @@ const ContactInfo = ({ t, L }) => (
       </div>
 
       <div className="flex items-center gap-4">
-        <FaMapMarkerAlt className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
+        <MapPin className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
         <div>
           <p className="text-xs text-gray-500 mb-0.5">{L("Location","Adresse","地址")}</p>
           <p className="font-semibold text-gray-900 text-sm">{t("contactInformation.location")}</p>
@@ -186,7 +204,7 @@ const ContactInfo = ({ t, L }) => (
       </div>
 
       <div className="flex items-center gap-4">
-        <FaPhoneAlt className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
+        <Phone className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
         <div>
           <p className="text-xs text-gray-500 mb-0.5">{t("contactInformation.hours")}</p>
           <p className="font-semibold text-gray-900 text-sm">{t("contactInformation.officeHours")}</p>
@@ -201,9 +219,8 @@ const ContactUs = () => {
   const L = (en, fr, ch) =>
     i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const searchParams = useSearchParams();
-  const [form] = Form.useForm();
   const [isLoading, setIsLoading] = React.useState(false);
-  const [prefilledService, setPrefilledService] = React.useState(false);
+  const [initialInquiry, setInitialInquiry] = React.useState("");
 
   const address = t("contactInformation.location");
   const mapSrc =
@@ -211,25 +228,23 @@ const ContactUs = () => {
 
   React.useEffect(() => {
     const service = searchParams?.get("service");
-    const allowed = ["consultation", "department", "transport", "businessSetup", "hotel"];
-    if (service && allowed.includes(service)) {
-      form.setFieldsValue({ inquiry_type: service });
-      setPrefilledService(true);
+    if (service && ALLOWED.includes(service)) {
+      setInitialInquiry(service);
     } else {
-      setPrefilledService(false);
+      setInitialInquiry("");
     }
-  }, [searchParams, form]);
+  }, [searchParams]);
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values, reset) => {
     setIsLoading(true);
     try {
-      const response = await axios.post(
+      const data = await apiPost(
         "https://api.bonet.rw/bonetBackend/backend/public/comments",
         values
       );
-      if (response.data.id) {
+      if (data && data.id) {
         modernToast.success(t("ContactMessage.success", { name: values.name }));
-        form.resetFields();
+        reset();
       } else {
         modernToast.error(t("toast.error"));
       }
@@ -244,7 +259,7 @@ const ContactUs = () => {
   return (
     <div className="min-h-screen bg-white pb-16">
       <div className="max-w-5xl mx-auto px-4 py-12 flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
-        <ContactForm form={form} onFinish={handleSubmit} t={t} isLoading={isLoading} L={L} />
+        <ContactForm t={t} L={L} isLoading={isLoading} onFinish={handleSubmit} initialInquiry={initialInquiry} />
         <ContactInfo t={t} L={L} />
       </div>
 

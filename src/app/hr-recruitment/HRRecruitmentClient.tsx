@@ -132,7 +132,7 @@ export default function HRRecruitmentClient() {
 
       {/* CTA */}
       <div
-        className="relative w-full bg-cover bg-center bg-fixed"
+        className="relative w-full bg-cover bg-center "
         style={{ backgroundImage: "url('/image/4.jpg')" }}
       >
         <div className="absolute inset-0 bg-black/90" />

@@ -2,7 +2,6 @@
 import { useRouter } from "next/navigation";
 import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
 import { MapPin, ArrowRight, Camera, Sparkles } from "lucide-react";
 
 const Gallery = () => {
@@ -101,16 +100,14 @@ const Gallery = () => {
 
       {/* Button */}
       <div className="flex justify-center">
-        <motion.button
+        <button
           onClick={() => navigate.push("/explore-rwanda")}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-3 bg-[#188bff] text-white px-8 py-4 rounded-2xl hover:bg-blue-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl cursor-pointer group/btn"
+          className="flex items-center gap-3 bg-[#188bff] text-white px-8 py-4 rounded-2xl hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl cursor-pointer group/btn"
         >
          
           {t("gallery.button")}
           <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-        </motion.button>
+        </button>
       </div>
     </div>
   );

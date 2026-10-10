@@ -203,7 +203,7 @@ export default function ExecutiveTravelClient() {
 
       {/* CTA */}
       <div
-        className="relative w-full bg-cover bg-center bg-fixed"
+        className="relative w-full bg-cover bg-center "
         style={{ backgroundImage: "url('/image/kivumarina.png')" }}
       >
         <div className="absolute inset-0 bg-black/90" />

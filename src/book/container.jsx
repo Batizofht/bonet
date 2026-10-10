@@ -1,9 +1,10 @@
 "use client";
 import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
-import { FaHotel, FaHome, FaCar, FaUmbrellaBeach } from "react-icons/fa";
+import { Hotel, House, Car, Palmtree } from "lucide-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { usePathname } from "next/navigation";
+import PageLoader from "@/components/PageLoader";
 
 // Lazy load components
 const HotelCard = lazy(() => import("./hotelcard"));
@@ -77,10 +78,10 @@ const ContainerWithButtons = () => {
   };
 
   const menuItems = [
-    { key: "hotel", label: t("travelHospitality.page.services.hotelReservations.title"), icon: FaHotel },
-    { key: "apartments", label: t("travelHospitality.selectService.options.apartment"), icon: FaHome },
-    { key: "transport", label: t("travelHospitality.selectService.options.transport"), icon: FaCar },
-    { key: "tourism", label: t("travelHospitality.page.services.tourismGuides.title"), icon: FaUmbrellaBeach },
+    { key: "hotel", label: t("travelHospitality.page.services.hotelReservations.title"), icon: Hotel },
+    { key: "apartments", label: t("travelHospitality.selectService.options.apartment"), icon: House },
+    { key: "transport", label: t("travelHospitality.selectService.options.transport"), icon: Car },
+    { key: "tourism", label: t("travelHospitality.page.services.tourismGuides.title"), icon: Palmtree },
   ];
 
 
@@ -147,7 +148,7 @@ const ContainerWithButtons = () => {
 
         {/* Tab Content */}
         <div>
-          <Suspense fallback={<div className="text-center py-8">Loading...</div>}>
+          <Suspense fallback={<PageLoader compact />}>
             {activeComponent === "hotel" && <HotelCard bookHotel={() => {}} />}
             {activeComponent === "apartments" && <ApartmentCard bookApartment={() => {}} />}
             {activeComponent === "transport" && <TransportCard bookTransport={() => {}} />}

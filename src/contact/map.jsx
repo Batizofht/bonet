@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 
 const GoogleMapEmbed = () => {
@@ -34,9 +33,8 @@ const GoogleMapEmbed = () => {
       </div>
 
       {/* Map Container */}
-      <motion.div 
-        className="bg-white rounded-2xl overflow-hidden border border-blue-100 shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
-        whileHover={{ y: -5, scale: 1.01 }}
+      <div 
+        className="bg-white rounded-2xl overflow-hidden border border-blue-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
       >
         <div className="w-full h-[500px]">
           <iframe
@@ -73,7 +71,7 @@ const GoogleMapEmbed = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

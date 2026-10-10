@@ -1,15 +1,14 @@
 "use client"
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import BookingCards from "./CardHome";
 import { Clock, Users, Globe, Award, ArrowRight } from "lucide-react";
 
 const FirstHome = () => {
   const { t } = useTranslation();
   const router = useRouter();
-
-  const [imageLoaded, setImageLoaded] = useState(false);
 
   const trustStats = useMemo(() => [
     { icon: Award, value: "5+", label: t("home.stat_years") },
@@ -18,17 +17,18 @@ const FirstHome = () => {
     { icon: Clock, value: "24/7", label: t("home.stat_support") },
   ], [t]);
 
-  useEffect(() => {
-    const img = new Image();
-    img.src = '/image/1.jpg';
-    img.onload = () => setImageLoaded(true);
-  }, []);
-
   return (
-    <div
-      className="relative w-full min-h-screen bg-gray-900 bg-cover bg-center overflow-hidden"
-      style={{ backgroundImage: imageLoaded ? "url('/image/1.jpg')" : "none" }}
-    >
+    <div className="relative w-full min-h-screen bg-gray-900 overflow-hidden">
+      <Image
+        src="/image/1.jpg"
+        alt="Rwanda landscape"
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        quality={70}
+        className="object-cover"
+      />
       <div className="absolute inset-0 bg-black/90 z-10" />
 
       <div className="relative z-20 min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 py-16 sm:py-20">

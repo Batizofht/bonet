@@ -3,12 +3,9 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Loader2, Search, X, Briefcase, TrendingUp, MapPin } from 'lucide-react';
+import PageLoader from '../../components/PageLoader';
+import { useTranslation } from 'react-i18next';
 import { slugify } from '../../slugify';
-
-// Translation imports
-import enTranslations from '../../../public/locales/en/translation.json';
-import frTranslations from '../../../public/locales/fr/translation.json';
-import chTranslations from '../../../public/locales/ch/translation.json';
 
 interface Blog {
   id: number;
@@ -36,29 +33,7 @@ interface BlogResponse {
 
 const BLOGS_PER_PAGE = 9;
 
-const translationsMap = {
-  en: enTranslations,
-  fr: frTranslations,
-  ch: chTranslations,
-} as const;
-
-type SupportedLanguage = keyof typeof translationsMap;
-const FALLBACK_LANGUAGE: SupportedLanguage = 'en';
-
-const getTranslation = (language: SupportedLanguage, key: string, fallback?: string): string => {
-  const segments = key.split('.');
-  let value: any = translationsMap[language] ?? translationsMap[FALLBACK_LANGUAGE];
-  
-  for (const segment of segments) {
-    if (value && typeof value === 'object' && segment in value) {
-      value = value[segment];
-    } else {
-      return fallback || key;
-    }
-  }
-  
-  return typeof value === 'string' ? value : fallback || key;
-};
+type SupportedLanguage = 'en' | 'fr' | 'ch';
 
 const formatDate = (dateString?: string, language: SupportedLanguage = 'en'): string => {
   if (!dateString) return 'Recent';
@@ -85,7 +60,9 @@ export default function BlogsClient() {
   const [searchQuery, setSearchQuery] = useState('');
   const [hasMore, setHasMore] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [language, setLanguage] = useState<SupportedLanguage>('en');
+  const { t: tRaw, i18n } = useTranslation();
+  const language: SupportedLanguage =
+    i18n.language === 'fr' || i18n.language === 'ch' ? i18n.language : 'en';
 
   // Filter blogs based on search query
   useEffect(() => {
@@ -212,9 +189,9 @@ export default function BlogsClient() {
   };
 
   // Translation helper
-  const t = useMemo(() => 
-    (key: string, fallback?: string) => getTranslation(language, key, fallback),
-    [language]
+  const t = useMemo(() =>
+    (key: string, fallback?: string) => tRaw(key, fallback ?? key),
+    [tRaw]
   );
 
   // Memoized blog items
@@ -308,9 +285,7 @@ export default function BlogsClient() {
 
         {/* Loading State */}
         {isInitialLoading ? (
-          <div className="flex items-center justify-center py-20">
-            <Loader2 className="w-8 h-8 text-[#C9A84C] animate-spin" />
-          </div>
+          <PageLoader compact />
         ) : (
           <>
             {blogItems.length > 0 ? (

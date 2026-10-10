@@ -1,12 +1,12 @@
 "use client"
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { apiGet, apiPost } from "@/lib/api";
 import { useParams } from "next/navigation";
 import { Calendar, User, ArrowLeft, HandMetal } from "lucide-react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import SocialShare from "../../../components/SocialShare";
+import PageLoader from "../../../components/PageLoader";
 import { useTranslation } from "react-i18next";
 
 interface Blog {
@@ -50,16 +50,15 @@ export default function BlogDetailClient() {
         setError(null);
         setBlog(null); // Clear old blog immediately
         
-        const response = await axios.get(
-          "https://api.bonet.rw/bonetBackend/backend/public/blogs",
-          { timeout: 10000 }
+        const data = await apiGet<any>(
+          "https://api.bonet.rw/bonetBackend/backend/public/blogs"
         );
 
-        if (!response.data) {
+        if (!data) {
           throw new Error('No data in response');
         }
 
-        const blogsArray = response.data.data || response.data.blogs || response.data;
+        const blogsArray = data.data || data.blogs || data;
         
         if (!Array.isArray(blogsArray)) {
           throw new Error('Blogs data is not an array');
@@ -147,26 +146,26 @@ export default function BlogDetailClient() {
         const deviceId = getDeviceId();
         
         // Fetch claps data from SERVER
-        const clapsResponse = await axios.get(
+        const clapsData = await apiGet<any>(
           `https://api.bonet.rw/bonetBackend/backend/public/clappings?blog=${blog.id}`
         );
 
-        if (clapsResponse.data) {
-          setClaps(clapsResponse.data.total_claps || 0);
+        if (clapsData) {
+          setClaps(clapsData.total_claps || 0);
         }
-        console.log(clapsResponse.data);
+        console.log(clapsData.data);
 
         // Check LOCAL storage if this device has clapped
         const hasClapped = localStorage.getItem(`blog_${blog.id}_clapped`) === 'true';
         setUserClapped(hasClapped);
 
         // Fetch views data from SERVER
-        const viewsResponse = await axios.get(
+        const viewsData = await apiGet<any>(
           `https://api.bonet.rw/bonetBackend/backend/public/views?blog=${blog.id}`
         );
 
-        if (viewsResponse.data) {
-          setViews(viewsResponse.data.views || 0);
+        if (viewsData) {
+          setViews(viewsData.views || 0);
         }
       } catch (err) {
         console.error('Error fetching claps/views:', err);
@@ -192,23 +191,18 @@ export default function BlogDetailClient() {
       const hasClappedLocally = localStorage.getItem(`blog_${blog.id}_clapped`) === 'true';
       
       // Tell server to TOGGLE the clap state
-      const response = await axios.post(
+      const data = await apiPost(
         `https://api.bonet.rw/bonetBackend/backend/public/clappings`,
-        { 
+        {
           blog: blog.id,
           device: deviceId,
           action: hasClappedLocally ? 'unclap' : 'clap' // Tell server what to do
-        },
-        { 
-          headers: { 
-            'Content-Type': 'application/json'
-          }
         }
       );
 
-      if (response.data) {
+      if (data) {
         // Update state from SERVER response
-        setClaps(response.data.total_claps || 0);
+        setClaps(data.total_claps || 0);
         
         // TOGGLE local clap state
         const newClapState = !hasClappedLocally;
@@ -243,26 +237,21 @@ export default function BlogDetailClient() {
       
       if (lastViewDate !== today) {
         // Send view to SERVER
-        await axios.post(
+        await apiPost(
           `https://api.bonet.rw/bonetBackend/backend/public/views`,
-          { blog: blog.id, device: deviceId },
-          { 
-            headers: { 
-              'Content-Type': 'application/json'
-            }
-          }
+          { blog: blog.id, device: deviceId }
         );
         
         // Mark as viewed today in localStorage
         localStorage.setItem(viewKey, today);
         
         // Refresh view count from server
-        const viewsResponse = await axios.get(
+        const viewsData = await apiGet<any>(
           `https://api.bonet.rw/bonetBackend/backend/public/views?blog=${blog.id}`
         );
-        
-        if (viewsResponse.data) {
-          setViews(viewsResponse.data.views || 0);
+
+        if (viewsData) {
+          setViews(viewsData.views || 0);
         }
       }
     } catch (err) {
@@ -271,14 +260,7 @@ export default function BlogDetailClient() {
   };
 
   if (loading || !blog) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
-          <p className="text-gray-600">{L("Loading blog post...","Chargement de l'article...","加载文章中...")}</p>
-        </div>
-      </div>
-    );
+    return <PageLoader />;
   }
 
   if (error || !blog) {

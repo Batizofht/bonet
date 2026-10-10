@@ -2,8 +2,7 @@
 import { openWhatsApp } from "@/lib/whatsapp";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
+import { apiPost } from "@/lib/api";
 import { MessageCircle, X, Send, Calendar, CheckCircle2, ChevronRight, MessageSquare } from "lucide-react";
 import WelcomeMessageAI from "./mesaai";
 
@@ -107,7 +106,7 @@ const ChatBot = () => {
 
   useEffect(() => {
     let id = localStorage.getItem("livechat_client_id");
-    if (!id) { const n = uuidv4(); localStorage.setItem("livechat_client_id", n); id = n; }
+    if (!id) { const n = crypto.randomUUID(); localStorage.setItem("livechat_client_id", n); id = n; }
     setClientId(id);
   }, []);
 
@@ -124,10 +123,10 @@ const ChatBot = () => {
     setInput("");
     setIsTyping(true);
     try {
-      const res = await axios.post("https://api.bonet.rw/bonetBackend/backend/public/ai-reply", {
+      const data: any = await apiPost("https://api.bonet.rw/bonetBackend/backend/public/ai-reply", {
         message: msg, clientId
-      }, { timeout: 10000 });
-      const reply = res.data.reply || L(
+      });
+      const reply = data.reply || L(
         "Thank you! How can I help you today?",
         "Merci ! Comment puis-je vous aider ?",
         "谢谢！今天我能为您做什么？"

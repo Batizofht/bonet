@@ -1,20 +1,17 @@
 'use client'
 import { openWhatsApp, BONET_WHATSAPP } from "@/lib/whatsapp";
 import { useState } from "react";
-import { modernToast } from "@/components/ModernToast";
-import axios from "axios";
-import {
-  Form,
-  Input,
-} from "antd";
+import { apiPost } from "@/lib/api";
+import { modernToast } from "@/components/ui/toast";
+import { Field, TextInput, TextArea, SubmitButton } from "@/components/ui/inputs";
 import { useTranslation } from "react-i18next";
-import { 
-  Phone, 
-  MessageCircle, 
-  X, 
-  Users, 
-  FileText, 
-  GraduationCap, 
+import {
+  Phone,
+  MessageCircle,
+  X,
+  Users,
+  FileText,
+  GraduationCap,
   CreditCard,
   UserPlus,
   Shield,
@@ -54,35 +51,69 @@ const hrServices = [
   },
 ];
 
+const initialValues = {
+  fullnames: "",
+  email: "",
+  phone_number: "",
+  service_description: "",
+};
+
+type Errors = Partial<Record<keyof typeof initialValues, string>>;
+
 export default function HRAdminSupport() {
   const { t, i18n } = useTranslation();
   const L = (en: string, fr: string, ch: string) =>
     i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [form] = Form.useForm();
+  const [values, setValues] = useState(initialValues);
+  const [errors, setErrors] = useState<Errors>({});
+  const [loading, setLoading] = useState(false);
 
   const openModal = () => setIsModalVisible(true);
   const closeModal = () => setIsModalVisible(false);
 
+  const set = (k: keyof typeof initialValues, v: string) => {
+    setValues((p) => ({ ...p, [k]: v }));
+    setErrors((p) => ({ ...p, [k]: undefined }));
+  };
+
   const handleOpenWhatsApp = () => openWhatsApp({ phone: BONET_WHATSAPP });
 
-  const onFinish = async (values:any) => {
+  const validate = (): boolean => {
+    const next: Errors = {};
+    if (!values.fullnames.trim())
+      next.fullnames = t("hrModal.form.fullnames.error");
+    if (!values.email.trim()) {
+      next.email = t("hrModal.form.email.required");
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) {
+      next.email = t("hrModal.form.email.invalid");
+    }
+    if (!values.phone_number.trim())
+      next.phone_number = t("hrModal.form.phone.error");
+    if (!values.service_description.trim())
+      next.service_description = t("hrModal.form.description.error");
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
+    setLoading(true);
     try {
-      const response = await axios.post(
+      await apiPost(
         "https://api.bonet.rw/bonetBackend/backend/public/hrsupport",
         values
       );
-
-      if (response.status === 200 || response.status === 201) {
-        modernToast.success(t("ContactMessage.success", { name: values.name }));
-        form.resetFields();
-        closeModal();
-      } else {
-        modernToast.error(t("hrModal.toast.error"));
-      }
+      modernToast.success(t("ContactMessage.success", { name: values.fullnames }));
+      setValues(initialValues);
+      setErrors({});
+      closeModal();
     } catch (error) {
       console.error("Submission error:", error);
       modernToast.error(t("hrModal.toast.error"));
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -209,92 +240,63 @@ export default function HRAdminSupport() {
                 </p>
               </div>
 
-              <Form
-                form={form}
-                layout="vertical"
-                onFinish={onFinish}
-                className="space-y-4"
-              >
-                <Form.Item
-                  label={
-                    <span className="text-gray-700 font-semibold">
-                      {t("hrModal.form.fullnames.label")}
-                    </span>
-                  }
-                  name="fullnames"
-                  rules={[
-                    {
-                      required: true,
-                      message: t("hrModal.form.fullnames.error"),
-                    },
-                  ]}
+              <form onSubmit={onSubmit} className="space-y-4">
+                <Field
+                  label={t("hrModal.form.fullnames.label")}
+                  error={errors.fullnames}
+                  required
                 >
-                  <Input
-                    prefix={<Users className="w-4 h-4 text-gray-400" />}
+                  <TextInput
+                    icon={<Users className="w-4 h-4" />}
                     placeholder={t("hrModal.form.fullnames.placeholder")}
+                    value={values.fullnames}
+                    onChange={(e) => set("fullnames", e.target.value)}
+                    error={errors.fullnames}
                   />
-                </Form.Item>
+                </Field>
 
-                <Form.Item
-                  label={
-                    <span className="text-gray-700 font-semibold">
-                      {t("hrModal.form.email.label")}
-                    </span>
-                  }
-                  name="email"
-                  rules={[
-                    {
-                      required: true,
-                      message: t("hrModal.form.email.required"),
-                    },
-                    { type: "email", message: t("hrModal.form.email.invalid") },
-                  ]}
+                <Field
+                  label={t("hrModal.form.email.label")}
+                  error={errors.email}
+                  required
                 >
-                  <Input
-                    prefix={<Mail className="w-4 h-4 text-gray-400" />}
+                  <TextInput
+                    icon={<Mail className="w-4 h-4" />}
                     placeholder={t("hrModal.form.email.placeholder")}
+                    type="email"
+                    value={values.email}
+                    onChange={(e) => set("email", e.target.value)}
+                    error={errors.email}
                   />
-                </Form.Item>
+                </Field>
 
-                <Form.Item
-                  label={
-                    <span className="text-gray-700 font-semibold">
-                      {t("hrModal.form.phone.label")}
-                    </span>
-                  }
-                  name="phone_number"
-                  rules={[
-                    {
-                      required: true,
-                      message: t("hrModal.form.phone.error"),
-                    },
-                  ]}
+                <Field
+                  label={t("hrModal.form.phone.label")}
+                  error={errors.phone_number}
+                  required
                 >
-                  <Input
-                    prefix={<Phone className="w-4 h-4 text-gray-400" />}
+                  <TextInput
+                    icon={<Phone className="w-4 h-4" />}
                     placeholder={t("hrModal.form.phone.placeholder")}
+                    value={values.phone_number}
+                    onChange={(e) => set("phone_number", e.target.value)}
+                    error={errors.phone_number}
                   />
-                </Form.Item>
+                </Field>
 
-                <Form.Item
-                  label={
-                    <span className="text-gray-700 font-semibold">
-                      {t("hrModal.form.description.label")}
-                    </span>
-                  }
-                  name="service_description"
-                  rules={[
-                    {
-                      required: true,
-                      message: t("hrModal.form.description.error"),
-                    },
-                  ]}
+                <Field
+                  label={t("hrModal.form.description.label")}
+                  error={errors.service_description}
+                  required
                 >
-                  <Input.TextArea
+                  <TextArea
                     placeholder={t("hrModal.form.description.placeholder")}
                     rows={4}
+                    value={values.service_description}
+                    onChange={(e) => set("service_description", e.target.value)}
+                    error={errors.service_description}
                   />
-                </Form.Item>
+                </Field>
 
                 <div className="flex justify-end gap-3 pt-4">
                   <button
@@ -304,14 +306,14 @@ export default function HRAdminSupport() {
                   >
                     {t("hrModal.form.buttons.cancel")}
                   </button>
-                  <button
-                    type="submit"
-                    className="px-6 py-3 rounded-lg bg-[#C9A84C] text-white font-semibold hover:bg-[#B8973B] transition-colors"
+                  <SubmitButton
+                    loading={loading}
+                    className="w-auto px-6 py-3 min-h-0 text-base rounded-lg"
                   >
                     {t("hrModal.form.buttons.submit")}
-                  </button>
+                  </SubmitButton>
                 </div>
-              </Form>
+              </form>
             </div>
           </div>
         </div>

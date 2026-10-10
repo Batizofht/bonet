@@ -1,6 +1,7 @@
 
 import WelcomeUs from "../../welcome/welcome";
 import { Suspense } from "react";
+import PageLoader from "../../components/PageLoader";
 
 export const metadata = {
   title: "Welcome",
@@ -38,7 +39,7 @@ export const metadata = {
 export default function WelcomePage() {
   return (
     <div className="min-h-screen">
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<PageLoader />}>
         <WelcomeUs />
       </Suspense>
     </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CompassOutlined, CarOutlined } from "@ant-design/icons";
+import { Compass, Car } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import TourGuideForm from "./tourguideform";
 import TourTransportForm from "./tourtransportfrom";
@@ -34,10 +34,10 @@ const TourTypeSelector = ({ onTourSubmit }) => {
                 : "text-gray-600 hover:text-gray-800 hover:bg-gray-50"
             }`}
           >
-            <CompassOutlined className="text-base" />
+            <Compass className="w-4 h-4" />
             <span>{L("Tour Guide","Guide touristique","导游服务")}</span>
           </button>
-          
+
           <button
             onClick={() => setActiveForm("transport")}
             className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex-1 justify-center ${
@@ -46,7 +46,7 @@ const TourTypeSelector = ({ onTourSubmit }) => {
                 : "text-gray-600 hover:text-gray-800 hover:bg-gray-50"
             }`}
           >
-            <CarOutlined className="text-base" />
+            <Car className="w-4 h-4" />
             <span>{L("Transport","Transport","交通服务")}</span>
           </button>
         </div>

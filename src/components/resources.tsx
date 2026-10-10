@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { slugify } from "../../slugify";
-import axios from "axios";
+import { apiGet } from "@/lib/api";
 import Link from "next/link";
 import { Calendar, ArrowRight } from "lucide-react";
 
@@ -26,12 +26,12 @@ export default function Blog() {
 
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(
+        const data: any = await apiGet(
           "https://api.bonet.rw/bonetBackend/backend/public/blogshome"
         );
-        const blogArray = Array.isArray(response.data.data)
-          ? response.data.data
-          : response.data.data || [];
+        const blogArray = Array.isArray(data.data)
+          ? data.data
+          : data.data || [];
         if (isMounted) setBlogs(blogArray);
       } catch (err) {
         if (isMounted) {

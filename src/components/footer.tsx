@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import axios from "axios";
+import { apiGet } from "@/lib/api";
 import { useRouter } from "next/navigation";
 
 interface FAQ {
@@ -30,10 +30,10 @@ export default function FAQ() {
     const fetchFAQs = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
+        const data = await apiGet<FAQ[]>(
           "https://api.bonet.rw/bonetBackend/backend/public/faqs"
         );
-        if (isMounted) setFaqs(response.data);
+        if (isMounted) setFaqs(data);
       } catch (error) {
         // Silent fail
       } finally {

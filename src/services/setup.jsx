@@ -1,9 +1,10 @@
 "use client"
 import { openWhatsApp, BONET_WHATSAPP } from "@/lib/whatsapp";
 import { useState } from "react";
-import { Form, Input, Button, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import { modernToast } from "@/components/ModernToast";
+import { apiPost } from "@/lib/api";
+import { modernToast } from "@/components/ui/toast";
+import { Field, TextInput, TextArea, SubmitButton } from "@/components/ui/inputs";
 import {
   Phone,
   MessageCircle,
@@ -27,35 +28,63 @@ const investmentServices = [
   { key: "service6", image: "../assets/images/kg6.jpg", icon: Rocket },
 ];
 
+const initialValues = {
+  fullnames: "",
+  email: "",
+  phone_number: "",
+  service_description: "",
+};
+
 export default function InvestmentBusinessSetup() {
   const { t, i18n } = useTranslation();
   const L = (en, fr, ch) =>
     i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [form] = Form.useForm();
+  const [values, setValues] = useState(initialValues);
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const set = (k, v) => {
+    setValues((p) => ({ ...p, [k]: v }));
+    setErrors((p) => ({ ...p, [k]: undefined }));
+  };
 
   const handleOpenWhatsApp = () => openWhatsApp({ phone: BONET_WHATSAPP });
 
-  const handleSubmit = async (values) => {
-    try {
-      const res = await fetch(
-        "https://api.bonet.rw/bonetBackend/backend/public/investments",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(values),
-        }
-      );
+  const validate = () => {
+    const next = {};
+    if (!values.fullnames.trim())
+      next.fullnames = t("investmentBusinessSetup.modal.form.fullnames.requiredMessage");
+    if (!values.email.trim()) {
+      next.email = t("investmentBusinessSetup.modal.form.email.requiredMessage");
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) {
+      next.email = t("investmentBusinessSetup.modal.form.email.invalidMessage");
+    }
+    if (!values.phone_number.trim())
+      next.phone_number = t("investmentBusinessSetup.modal.form.phone_number.requiredMessage");
+    if (!values.service_description.trim())
+      next.service_description = t("investmentBusinessSetup.modal.form.service_description.requiredMessage");
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
 
-      if (res.ok) {
-        modernToast.success(t("ContactMessage.success", { name: values.name }));
-        form.resetFields();
-        setIsPopupOpen(false);
-      } else {
-        modernToast.error(t("investmentBusinessSetup.toastMessages.errorSubmission"));
-      }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+    setLoading(true);
+    try {
+      await apiPost(
+        "https://api.bonet.rw/bonetBackend/backend/public/investments",
+        values
+      );
+      modernToast.success(t("ContactMessage.success", { name: values.fullnames }));
+      setValues(initialValues);
+      setErrors({});
+      setIsPopupOpen(false);
     } catch (err) {
       modernToast.error(t("investmentBusinessSetup.toastMessages.errorServer"));
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -169,57 +198,63 @@ export default function InvestmentBusinessSetup() {
                 </p>
               </div>
 
-              <Form layout="vertical" form={form} onFinish={handleSubmit} className="space-y-4">
-                <Form.Item
-                  label={<span className="text-gray-700 font-semibold">{t("investmentBusinessSetup.modal.form.fullnames.label")}</span>}
-                  name="fullnames"
-                  rules={[{ required: true, message: t("investmentBusinessSetup.modal.form.fullnames.requiredMessage") }]}
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <Field
+                  label={t("investmentBusinessSetup.modal.form.fullnames.label")}
+                  error={errors.fullnames}
+                  required
                 >
-                  <Input
-                    prefix={<Users className="w-4 h-4 text-gray-400" />}
+                  <TextInput
+                    icon={<Users className="w-4 h-4" />}
                     placeholder={t("investmentBusinessSetup.modal.form.fullnames.placeholder")}
-                    className="rounded-lg border-gray-300 bg-white text-gray-800 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 hover:border-gray-400 transition-colors duration-200 h-11"
+                    value={values.fullnames}
+                    onChange={(e) => set("fullnames", e.target.value)}
+                    error={errors.fullnames}
                   />
-                </Form.Item>
+                </Field>
 
-                <Form.Item
-                  label={<span className="text-gray-700 font-semibold">{t("investmentBusinessSetup.modal.form.email.label")}</span>}
-                  name="email"
-                  rules={[
-                    { required: true, message: t("investmentBusinessSetup.modal.form.email.requiredMessage") },
-                    { type: "email", message: t("investmentBusinessSetup.modal.form.email.invalidMessage") },
-                  ]}
+                <Field
+                  label={t("investmentBusinessSetup.modal.form.email.label")}
+                  error={errors.email}
+                  required
                 >
-                  <Input
-                    prefix={<MessageCircle className="w-4 h-4 text-gray-400" />}
+                  <TextInput
+                    icon={<MessageCircle className="w-4 h-4" />}
                     placeholder={t("investmentBusinessSetup.modal.form.email.placeholder")}
-                    className="rounded-lg border-gray-300 bg-white text-gray-800 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 hover:border-gray-400 transition-colors duration-200 h-11"
+                    type="email"
+                    value={values.email}
+                    onChange={(e) => set("email", e.target.value)}
+                    error={errors.email}
                   />
-                </Form.Item>
+                </Field>
 
-                <Form.Item
-                  label={<span className="text-gray-700 font-semibold">{t("investmentBusinessSetup.modal.form.phone_number.label")}</span>}
-                  name="phone_number"
-                  rules={[{ required: true, message: t("investmentBusinessSetup.modal.form.phone_number.requiredMessage") }]}
+                <Field
+                  label={t("investmentBusinessSetup.modal.form.phone_number.label")}
+                  error={errors.phone_number}
+                  required
                 >
-                  <Input
-                    prefix={<Phone className="w-4 h-4 text-gray-400" />}
+                  <TextInput
+                    icon={<Phone className="w-4 h-4" />}
                     placeholder={t("investmentBusinessSetup.modal.form.phone_number.placeholder")}
-                    className="rounded-lg border-gray-300 bg-white text-gray-800 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 hover:border-gray-400 transition-colors duration-200 h-11"
+                    value={values.phone_number}
+                    onChange={(e) => set("phone_number", e.target.value)}
+                    error={errors.phone_number}
                   />
-                </Form.Item>
+                </Field>
 
-                <Form.Item
-                  label={<span className="text-gray-700 font-semibold">{t("investmentBusinessSetup.modal.form.service_description.label")}</span>}
-                  name="service_description"
-                  rules={[{ required: true, message: t("investmentBusinessSetup.modal.form.service_description.requiredMessage") }]}
+                <Field
+                  label={t("investmentBusinessSetup.modal.form.service_description.label")}
+                  error={errors.service_description}
+                  required
                 >
-                  <Input.TextArea
+                  <TextArea
                     placeholder={t("investmentBusinessSetup.modal.form.service_description.placeholder")}
                     rows={4}
-                    className="rounded-lg border-gray-300 bg-white text-gray-800 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 hover:border-gray-400 transition-colors duration-200 resize-none"
+                    value={values.service_description}
+                    onChange={(e) => set("service_description", e.target.value)}
+                    error={errors.service_description}
                   />
-                </Form.Item>
+                </Field>
 
                 <div className="flex justify-end gap-3 pt-4">
                   <button
@@ -229,14 +264,14 @@ export default function InvestmentBusinessSetup() {
                   >
                     {t("investmentBusinessSetup.button.cancel")}
                   </button>
-                  <button
-                    type="submit"
-                    className="px-6 py-3 rounded-lg bg-[#C9A84C] text-white font-semibold hover:bg-[#B8973B] transition-colors"
+                  <SubmitButton
+                    loading={loading}
+                    className="w-auto px-6 py-3 min-h-0 text-base rounded-lg"
                   >
                     {t("investmentBusinessSetup.button.submit")}
-                  </button>
+                  </SubmitButton>
                 </div>
-              </Form>
+              </form>
             </div>
           </div>
         </div>

@@ -1,54 +1,91 @@
+"use client";
 import React, { useState } from "react";
 import {
-  Form,
-  Input,
+  User,
+  Mail,
+  Phone,
+  Calendar,
+  MapPin,
+  Car,
+  Lightbulb,
+} from "lucide-react";
+import {
+  Field,
+  TextInput,
+  TextArea,
+  NumberInput,
   Select,
   DatePicker,
-  Row,
-  Col,
-  Button,
-  InputNumber,
-} from "antd";
-import {
-  UserOutlined,
-  MailOutlined,
-  PhoneOutlined,
-  CalendarOutlined,
-  EnvironmentOutlined,
-  TeamOutlined,
-  CarOutlined,
-  BulbOutlined,
-} from "@ant-design/icons";
-import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+  TimePicker,
+  SectionTitle,
+  SubmitButton,
+} from "@/components/ui/inputs";
+import { apiPost } from "@/lib/api";
+import { modernToast } from "@/components/ui/toast";
 import { useTranslation } from "react-i18next";
-
-const { Option } = Select;
 
 const TransportForm = () => {
   const { t, i18n } = useTranslation();
   const L = (en, fr, ch) => i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
-  const [form] = Form.useForm();
   const [isLoading, setIsLoading] = useState(false);
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    datetime: "",
+    passengers: "",
+    pickup: "",
+    dropoff: "",
+    vehicle: "",
+    addons: [],
+    notes: "",
+  });
+  const [errors, setErrors] = useState({});
 
-  const handleSubmit = async () => {
+  const set = (name, val) => {
+    setValues((v) => ({ ...v, [name]: val }));
+    setErrors((e) => ({ ...e, [name]: undefined }));
+  };
+
+  const datePart = values.datetime && values.datetime.length >= 10 ? values.datetime.slice(0, 10) : "";
+  const timePart = values.datetime && values.datetime.length > 11 ? values.datetime.slice(11, 16) : "";
+  const setDatePart = (iso) => set("datetime", timePart ? `${iso}T${timePart}` : iso);
+  const setTimePart = (tm) => set("datetime", datePart ? `${datePart}T${tm}` : tm);
+
+  const validate = () => {
+    const e = {};
+    if (!values.name.trim()) e.name = L('Please enter your full name','Veuillez entrer votre nom complet','请输入您的全名');
+    if (!values.email.trim()) e.email = L('Please enter your email','Veuillez entrer votre email','请输入您的邮箱');
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) e.email = L('Please enter a valid email','Email invalide','请输入有效邮箱');
+    if (!values.phone.trim()) e.phone = L('Please enter your phone number','Veuillez entrer votre numéro','请输入您的电话号码');
+    if (!datePart || !timePart) e.datetime = L('Please select date and time','Veuillez sélectionner la date et l\'heure','请选择日期和时间');
+    if (!values.passengers) e.passengers = L('Please enter number of passengers','Veuillez entrer le nombre de passagers','请输入乘客人数');
+    if (!values.pickup.trim()) e.pickup = L('Please enter pickup location','Veuillez entrer le lieu de prise en charge','请输入上车地点');
+    if (!values.dropoff.trim()) e.dropoff = L('Please enter drop-off location','Veuillez entrer le lieu de dépose','请输入下车地点');
+    if (!values.vehicle) e.vehicle = L('Please select vehicle type','Veuillez sélectionner le type de véhicule','请选择车辆类型');
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
+
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    if (!validate()) {
+      modernToast.error("📝 Please fill in all required fields correctly.");
+      return;
+    }
+    if (!values.datetime) {
+      modernToast.error("❌ Please select date and time for your transport.");
+      return;
+    }
     try {
       setIsLoading(true);
-      const values = await form.validateFields();
-
-      if (!values.datetime) {
-        toast.error("❌ Please select date and time for your transport.");
-        return;
-      }
-
       const adds_on = Array.isArray(values.addons) ? values.addons.join(", ") : "";
 
       const payload = {
         name: values.name,
         email: values.email,
         phone: values.phone,
-        datetime: values.datetime.toISOString(),
+        datetime: new Date(values.datetime).toISOString(),
         pickup: values.pickup,
         dropoff: values.dropoff,
         passengers: values.passengers,
@@ -57,40 +94,54 @@ const TransportForm = () => {
         notes: values.notes || "",
       };
 
-      await axios.post(
+      await apiPost(
         "https://api.bonet.rw/bonetBackend/backend/public/tourTransports",
         payload
       );
 
-      toast.success("🎉 Transport request submitted successfully!");
-      form.resetFields();
+      modernToast.success("🎉 Transport request submitted successfully!");
+      setValues({
+        name: "",
+        email: "",
+        phone: "",
+        datetime: "",
+        passengers: "",
+        pickup: "",
+        dropoff: "",
+        vehicle: "",
+        addons: [],
+        notes: "",
+      });
+      setErrors({});
     } catch (error) {
       console.error(error);
-      if (error.errorFields) {
-        toast.error("📝 Please fill in all required fields correctly.");
-      } else {
-        toast.error("❌ Failed to submit transport request.");
-      }
+      modernToast.error("❌ Failed to submit transport request.");
     } finally {
       setIsLoading(false);
     }
   };
 
+  const vehicleOptions = [
+    { value: "suv", label: L("SUV (1-6 passengers)","SUV (1-6 passagers)","SUV（1-6人）") },
+    { value: "cruiser", label: L("4x4 Cruiser (1-6 passengers)","Cruiser 4x4 (1-6 passagers)","4x4越野车（1-6人）") },
+    { value: "minivan", label: L("Minivan (7-12 passengers)","Minibus (7-12 passagers)","面包车（7-12人）") },
+    { value: "bus", label: L("Tour Bus (13+ passengers)","Bus de visite (13+ passagers)","旅游巴士（13人以上）") },
+    { value: "luxury_suv", label: L("Luxury SUV","SUV de luxe","豪华SUV") },
+    { value: "executive_car", label: L("Executive Car","Voiture exécutive","行政轿车") },
+  ];
+  const addonOptions = [
+    { value: "professional_driver", label: L("Professional Driver","Chauffeur professionnel","专业司机") },
+    { value: "multilingual_driver", label: L("Multilingual Driver","Chauffeur multilingue","多语言司机") },
+    { value: "water_wifi", label: L("Complimentary Water & WiFi","Eau et WiFi offerts","免费水和WiFi") },
+    { value: "route_planning", label: L("Route Planning & Support","Planification d'itinéraire","路线规划与支持") },
+    { value: "meet_greet", label: L("Meet & Greet Service","Service d'accueil","迎接服务") },
+    { value: "luggage_assistance", label: L("Luggage Assistance","Assistance bagages","行李协助") },
+    { value: "child_seats", label: L("Child Safety Seats","Sièges enfant","儿童安全座椅") },
+    { value: "cooler_box", label: L("Cooler Box with Refreshments","Glacière avec rafraîchissements","带饮料的冷藏箱") },
+  ];
+
   return (
     <div className="">
-      <ToastContainer 
-        position="top-center" 
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-
       <div className="">
         {/* Form Container */}
         <div className="bg-white rounded-xl p-8 border border-gray-200">
@@ -98,213 +149,149 @@ const TransportForm = () => {
             <h1 className="text-2xl font-bold text-gray-800 mb-2">
               {L("Tour Transport Request","Demande de transport touristique","旅游交通请求")}
             </h1>
-         
           </div>
 
-          <Form
-            layout="vertical"
-            form={form}
-            size="large"
-          >
+          <form onSubmit={handleSubmit}>
             {/* Personal Information */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
-                <UserOutlined className="text-[#C9A84C]" />
+              <SectionTitle icon={<User className="w-5 h-5" />}>
                 {L("Personal Information","Informations personnelles","个人信息")}
-              </h3>
-              <Row gutter={[24, 16]}>
-                <Col xs={24} sm={12}>
-                  <Form.Item
-                    label={L("Full Name","Nom complet","全名")}
-                    name="name"
-                    rules={[{ required: true, message: L('Please enter your full name','Veuillez entrer votre nom complet','请输入您的全名') }]}
-                  >
-                    <Input
-                      prefix={<UserOutlined className="text-gray-400" />}
-                      placeholder={L("Enter your full name","Entrez votre nom complet","输入您的全名")}
-                      className="rounded-lg h-12"
-                    />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={12}>
-                  <Form.Item
-                    label={L("Email Address","Adresse e-mail","电子邮件地址")}
-                    name="email"
-                    rules={[
-                      { required: true, message: L('Please enter your email','Veuillez entrer votre email','请输入您的邮箱') },
-                      { type: 'email', message: L('Please enter a valid email','Email invalide','请输入有效邮箱') }
-                    ]}
-                  >
-                    <Input
-                      prefix={<MailOutlined className="text-gray-400" />}
-                      placeholder="your.email@example.com"
-                      className="rounded-lg h-12"
-                    />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={12}>
-                  <Form.Item
-                    label={L("Phone Number","Numéro de téléphone","电话号码")}
-                    name="phone"
-                    rules={[{ required: true, message: L('Please enter your phone number','Veuillez entrer votre numéro','请输入您的电话号码') }]}
-                  >
-                    <Input
-                      prefix={<PhoneOutlined className="text-gray-400" />}
-                      placeholder="+250 78X XXX XXX"
-                      className="rounded-lg h-12"
-                    />
-                  </Form.Item>
-                </Col>
-              </Row>
+              </SectionTitle>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <Field label={L("Full Name","Nom complet","全名")} required error={errors.name}>
+                  <TextInput
+                    icon={<User className="w-4 h-4" />}
+                    placeholder={L("Enter your full name","Entrez votre nom complet","输入您的全名")}
+                    value={values.name}
+                    onChange={(e) => set("name", e.target.value)}
+                    error={errors.name}
+                  />
+                </Field>
+                <Field label={L("Email Address","Adresse e-mail","电子邮件地址")} required error={errors.email}>
+                  <TextInput
+                    icon={<Mail className="w-4 h-4" />}
+                    placeholder="your.email@example.com"
+                    value={values.email}
+                    onChange={(e) => set("email", e.target.value)}
+                    error={errors.email}
+                  />
+                </Field>
+                <Field label={L("Phone Number","Numéro de téléphone","电话号码")} required error={errors.phone}>
+                  <TextInput
+                    icon={<Phone className="w-4 h-4" />}
+                    placeholder="+250 78X XXX XXX"
+                    value={values.phone}
+                    onChange={(e) => set("phone", e.target.value)}
+                    error={errors.phone}
+                  />
+                </Field>
+              </div>
             </div>
 
             {/* Transport Details */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
-                <CarOutlined className="text-green-600" />
+              <SectionTitle icon={<Car className="w-5 h-5" />}>
                 {L("Transport Details","Détails du transport","交通详情")}
-              </h3>
-              <Row gutter={[24, 16]}>
-                <Col xs={24} sm={12}>
-                  <Form.Item
-                    label={L("Date & Time","Date et heure","日期与时间")}
-                    name="datetime"
-                    rules={[{ required: true, message: L('Please select date and time','Veuillez sélectionner la date et l\'heure','请选择日期和时间') }]}
-                  >
+              </SectionTitle>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <Field label={L("Date & Time","Date et heure","日期与时间")} required error={errors.datetime}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <DatePicker
-                      showTime
-                      className="w-full rounded-lg h-12"
+                      value={datePart || undefined}
+                      onChange={setDatePart}
                       placeholder={L("Select date and time","Sélectionnez la date et l'heure","选择日期和时间")}
+                      error={errors.datetime}
                     />
-                  </Form.Item>
-                </Col>
-                <Col>
-                  <Form.Item
-                    label={L("Number of Passengers","Nombre de passagers","乘客人数")}
-                    name="passengers"
-                    rules={[{ required: true, message: L('Please enter number of passengers','Veuillez entrer le nombre de passagers','请输入乘客人数') }]}
-                  >
-                    <InputNumber
-                      min={1}
-                      max={50}
-                      placeholder={L("Number of passengers","Nombre de passagers","乘客人数")}
-                      className="w-full rounded-lg h-12"
-                      controls={false}
+                    <TimePicker
+                      value={timePart || undefined}
+                      onChange={setTimePart}
+                      placeholder={L("Select date and time","Sélectionnez la date et l'heure","选择日期和时间")}
+                      error={errors.datetime}
                     />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={12}>
-                  <Form.Item
-                    label={L("Pickup Location","Lieu de prise en charge","上车地点")}
-                    name="pickup"
-                    rules={[{ required: true, message: L('Please enter pickup location','Veuillez entrer le lieu de prise en charge','请输入上车地点') }]}
-                  >
-                    <Input
-                      prefix={<EnvironmentOutlined className="text-gray-400" />}
-                      placeholder={L("Enter pickup address or location","Entrez l'adresse de prise en charge","输入上车地址或位置")}
-                      className="rounded-lg h-12"
-                    />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={12}>
-                  <Form.Item
-                    label={L("Drop-off Location","Lieu de dépose","下车地点")}
-                    name="dropoff"
-                    rules={[{ required: true, message: L('Please enter drop-off location','Veuillez entrer le lieu de dépose','请输入下车地点') }]}
-                  >
-                    <Input
-                      prefix={<EnvironmentOutlined className="text-gray-400" />}
-                      placeholder={L("Enter drop-off address or location","Entrez l'adresse de dépose","输入下车地址或位置")}
-                      className="rounded-lg h-12"
-                    />
-                  </Form.Item>
-                </Col>
-              </Row>
+                  </div>
+                </Field>
+                <Field label={L("Number of Passengers","Nombre de passagers","乘客人数")} required error={errors.passengers}>
+                  <NumberInput
+                    min={1}
+                    max={50}
+                    placeholder={L("Number of passengers","Nombre de passagers","乘客人数")}
+                    value={values.passengers}
+                    onChange={(e) => set("passengers", e.target.value)}
+                    error={errors.passengers}
+                  />
+                </Field>
+                <Field label={L("Pickup Location","Lieu de prise en charge","上车地点")} required error={errors.pickup}>
+                  <TextInput
+                    icon={<MapPin className="w-4 h-4" />}
+                    placeholder={L("Enter pickup address or location","Entrez l'adresse de prise en charge","输入上车地址或位置")}
+                    value={values.pickup}
+                    onChange={(e) => set("pickup", e.target.value)}
+                    error={errors.pickup}
+                  />
+                </Field>
+                <Field label={L("Drop-off Location","Lieu de dépose","下车地点")} required error={errors.dropoff}>
+                  <TextInput
+                    icon={<MapPin className="w-4 h-4" />}
+                    placeholder={L("Enter drop-off address or location","Entrez l'adresse de dépose","输入下车地址或位置")}
+                    value={values.dropoff}
+                    onChange={(e) => set("dropoff", e.target.value)}
+                    error={errors.dropoff}
+                  />
+                </Field>
+              </div>
             </div>
 
             {/* Vehicle & Services */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
-                <BulbOutlined className="text-purple-600" />
+              <SectionTitle icon={<Lightbulb className="w-5 h-5" />}>
                 {L("Vehicle & Services","Véhicule et services","车辆与服务")}
-              </h3>
-              <Row gutter={[24, 16]}>
-                <Col xs={24} sm={12}>
-                  <Form.Item
-                    label={L("Vehicle Type","Type de véhicule","车辆类型")}
-                    name="vehicle"
-                    rules={[{ required: true, message: L('Please select vehicle type','Veuillez sélectionner le type de véhicule','请选择车辆类型') }]}
-                  >
-                    <Select
-                      placeholder={L("Select vehicle type","Sélectionnez le type de véhicule","选择车辆类型")}
-                      className="rounded-lg h-12"
-                    >
-                      <Option value="suv">{L("SUV (1-6 passengers)","SUV (1-6 passagers)","SUV（1-6人）")}</Option>
-                      <Option value="cruiser">{L("4x4 Cruiser (1-6 passengers)","Cruiser 4x4 (1-6 passagers)","4x4越野车（1-6人）")}</Option>
-                      <Option value="minivan">{L("Minivan (7-12 passengers)","Minibus (7-12 passagers)","面包车（7-12人）")}</Option>
-                      <Option value="bus">{L("Tour Bus (13+ passengers)","Bus de visite (13+ passagers)","旅游巴士（13人以上）")}</Option>
-                      <Option value="luxury_suv">{L("Luxury SUV","SUV de luxe","豪华SUV")}</Option>
-                      <Option value="executive_car">{L("Executive Car","Voiture exécutive","行政轿车")}</Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={12}>
-                  <Form.Item
-                    label={L("Additional Services","Services supplémentaires","附加服务")}
-                    name="addons"
-                  >
-                    <Select
-                      mode="multiple"
-                      placeholder={L("Select additional services (optional)","Services supplémentaires (optionnel)","选择附加服务（可选）")}
-                      className="rounded-lg h-12"
-                    >
-                      <Option value="professional_driver">{L("Professional Driver","Chauffeur professionnel","专业司机")}</Option>
-                      <Option value="multilingual_driver">{L("Multilingual Driver","Chauffeur multilingue","多语言司机")}</Option>
-                      <Option value="water_wifi">{L("Complimentary Water & WiFi","Eau et WiFi offerts","免费水和WiFi")}</Option>
-                      <Option value="route_planning">{L("Route Planning & Support","Planification d'itinéraire","路线规划与支持")}</Option>
-                      <Option value="meet_greet">{L("Meet & Greet Service","Service d'accueil","迎接服务")}</Option>
-                      <Option value="luggage_assistance">{L("Luggage Assistance","Assistance bagages","行李协助")}</Option>
-                      <Option value="child_seats">{L("Child Safety Seats","Sièges enfant","儿童安全座椅")}</Option>
-                      <Option value="cooler_box">{L("Cooler Box with Refreshments","Glacière avec rafraîchissements","带饮料的冷藏箱")}</Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
-              </Row>
+              </SectionTitle>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <Field label={L("Vehicle Type","Type de véhicule","车辆类型")} required error={errors.vehicle}>
+                  <Select
+                    value={values.vehicle || undefined}
+                    onChange={(v) => set("vehicle", v)}
+                    options={vehicleOptions}
+                    placeholder={L("Select vehicle type","Sélectionnez le type de véhicule","选择车辆类型")}
+                    error={errors.vehicle}
+                  />
+                </Field>
+                <Field label={L("Additional Services","Services supplémentaires","附加服务")}>
+                  <Select
+                    multiple
+                    value={values.addons}
+                    onChange={(v) => set("addons", v)}
+                    options={addonOptions}
+                    placeholder={L("Select additional services (optional)","Services supplémentaires (optionnel)","选择附加服务（可选）")}
+                  />
+                </Field>
+              </div>
             </div>
 
             {/* Additional Information */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
-                <EnvironmentOutlined className="text-orange-600" />
+              <SectionTitle icon={<MapPin className="w-5 h-5" />}>
                 {L("Additional Information","Informations complémentaires","附加信息")}
-              </h3>
-              <Row gutter={[24, 16]}>
-                <Col xs={24}>
-                  <Form.Item
-                    label={L("Special Instructions","Instructions spéciales","特殊说明")}
-                    name="notes"
-                  >
-                    <Input.TextArea
-                      rows={4}
-                      placeholder={L("Any special requirements, specific routes, waiting times, or additional information...","Exigences spéciales, itinéraires, temps d'attente ou informations supplémentaires...","任何特殊要求、特定路线、等待时间或附加信息...")}
-                      className="rounded-lg"
-                    />
-                  </Form.Item>
-                </Col>
-              </Row>
+              </SectionTitle>
+              <div className="grid grid-cols-1 gap-6">
+                <Field label={L("Special Instructions","Instructions spéciales","特殊说明")}>
+                  <TextArea
+                    rows={4}
+                    placeholder={L("Any special requirements, specific routes, waiting times, or additional information...","Exigences spéciales, itinéraires, temps d'attente ou informations supplémentaires...","任何特殊要求、特定路线、等待时间或附加信息...")}
+                    value={values.notes}
+                    onChange={(e) => set("notes", e.target.value)}
+                  />
+                </Field>
+              </div>
             </div>
 
             {/* Submit Button */}
             <div className="mt-8">
-              <button
-                disabled={isLoading}
-                onClick={handleSubmit}
-                className="w-full h-14 rounded-lg text-lg font-semibold bg-[#C9A84C] hover:bg-[#B8973B] text-white border-0 transition-colors duration-200"
-              >
+              <SubmitButton loading={isLoading}>
                 {isLoading ? L('Submitting Your Request...','Envoi en cours...','提交中...') : L('Submit Transport Request','Soumettre la demande de transport','提交交通请求')}
-              </button>
+              </SubmitButton>
             </div>
-          </Form>
+          </form>
         </div>
       </div>
     </div>

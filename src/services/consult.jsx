@@ -1,17 +1,17 @@
 "use client"
 import { openWhatsApp, BONET_WHATSAPP } from "@/lib/whatsapp";
 import { useState } from "react";
-import { Form, Input, Typography } from "antd";
-import { modernToast } from "@/components/ModernToast";
-import axios from "axios";
+import { apiPost } from "@/lib/api";
+import { modernToast } from "@/components/ui/toast";
+import { Field, TextInput, TextArea, SubmitButton } from "@/components/ui/inputs";
 import { useTranslation } from "react-i18next";
-import { 
-  Phone, 
-  MessageCircle, 
-  X, 
-  TrendingUp, 
-  BarChart3, 
-  DollarSign, 
+import {
+  Phone,
+  MessageCircle,
+  X,
+  TrendingUp,
+  BarChart3,
+  DollarSign,
   ClipboardCheck,
   Target,
   Users,
@@ -55,31 +55,63 @@ const services = [
   },
 ];
 
+const initialValues = {
+  fullnames: "",
+  email: "",
+  phone_number: "",
+  service_description: "",
+};
+
 export default function BusinessConsulting() {
   const { t, i18n } = useTranslation();
   const L = (en, fr, ch) =>
     i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [form] = Form.useForm();
+  const [values, setValues] = useState(initialValues);
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const set = (k, v) => {
+    setValues((p) => ({ ...p, [k]: v }));
+    setErrors((p) => ({ ...p, [k]: undefined }));
+  };
 
   const handleOpenWhatsApp = () => openWhatsApp({ phone: BONET_WHATSAPP });
 
-  const handleSubmit = async (values) => {
+  const validate = () => {
+    const next = {};
+    if (!values.fullnames.trim())
+      next.fullnames = t("businessConsulting.form.fullnames.error");
+    if (!values.email.trim()) {
+      next.email = t("businessConsulting.form.email.required");
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) {
+      next.email = t("businessConsulting.form.email.invalid");
+    }
+    if (!values.phone_number.trim())
+      next.phone_number = t("businessConsulting.form.phone.error");
+    if (!values.service_description.trim())
+      next.service_description = t("businessConsulting.form.description.error");
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+    setLoading(true);
     try {
-      const res = await axios.post(
+      await apiPost(
         "https://api.bonet.rw/bonetBackend/backend/public/consulting",
         values
       );
-
-      if (res.status === 200 || res.status === 201) {
-        modernToast.success(t("ContactMessage.success", { name: values.name }));
-        form.resetFields();
-        setIsPopupOpen(false);
-      } else {
-        modernToast.error(t("businessConsulting.toast.error"));
-      }
+      modernToast.success(t("ContactMessage.success", { name: values.fullnames }));
+      setValues(initialValues);
+      setErrors({});
+      setIsPopupOpen(false);
     } catch (err) {
       modernToast.error(t("businessConsulting.toast.serverError"));
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -207,95 +239,63 @@ export default function BusinessConsulting() {
                 </p>
               </div>
 
-              <Form
-                layout="vertical"
-                form={form}
-                onFinish={handleSubmit}
-                className="space-y-4"
-              >
-                <Form.Item
-                  label={
-                    <span className="text-gray-700 font-semibold">
-                      {t("businessConsulting.form.fullnames.label")}
-                    </span>
-                  }
-                  name="fullnames"
-                  rules={[
-                    {
-                      required: true,
-                      message: t("businessConsulting.form.fullnames.error"),
-                    },
-                  ]}
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <Field
+                  label={t("businessConsulting.form.fullnames.label")}
+                  error={errors.fullnames}
+                  required
                 >
-                  <Input
-                    prefix={<Users className="w-4 h-4 text-gray-400" />}
+                  <TextInput
+                    icon={<Users className="w-4 h-4" />}
                     placeholder={t("businessConsulting.form.fullnames.placeholder")}
+                    value={values.fullnames}
+                    onChange={(e) => set("fullnames", e.target.value)}
+                    error={errors.fullnames}
                   />
-                </Form.Item>
+                </Field>
 
-                <Form.Item
-                  label={
-                    <span className="text-gray-700 font-semibold">
-                      {t("businessConsulting.form.email.label")}
-                    </span>
-                  }
-                  name="email"
-                  rules={[
-                    {
-                      required: true,
-                      message: t("businessConsulting.form.email.required"),
-                    },
-                    {
-                      type: "email",
-                      message: t("businessConsulting.form.email.invalid"),
-                    },
-                  ]}
+                <Field
+                  label={t("businessConsulting.form.email.label")}
+                  error={errors.email}
+                  required
                 >
-                  <Input
-                    prefix={<Mail className="w-4 h-4 text-gray-400" />}
+                  <TextInput
+                    icon={<Mail className="w-4 h-4" />}
                     placeholder={t("businessConsulting.form.email.placeholder")}
+                    type="email"
+                    value={values.email}
+                    onChange={(e) => set("email", e.target.value)}
+                    error={errors.email}
                   />
-                </Form.Item>
+                </Field>
 
-                <Form.Item
-                  label={
-                    <span className="text-gray-700 font-semibold">
-                      {t("businessConsulting.form.phone.label")}
-                    </span>
-                  }
-                  name="phone_number"
-                  rules={[
-                    {
-                      required: true,
-                      message: t("businessConsulting.form.phone.error"),
-                    },
-                  ]}
+                <Field
+                  label={t("businessConsulting.form.phone.label")}
+                  error={errors.phone_number}
+                  required
                 >
-                  <Input
-                    prefix={<Phone className="w-4 h-4 text-gray-400" />}
+                  <TextInput
+                    icon={<Phone className="w-4 h-4" />}
                     placeholder={t("businessConsulting.form.phone.placeholder")}
+                    value={values.phone_number}
+                    onChange={(e) => set("phone_number", e.target.value)}
+                    error={errors.phone_number}
                   />
-                </Form.Item>
+                </Field>
 
-                <Form.Item
-                  label={
-                    <span className="text-gray-700 font-semibold">
-                      {t("businessConsulting.form.description.label")}
-                    </span>
-                  }
-                  name="service_description"
-                  rules={[
-                    {
-                      required: true,
-                      message: t("businessConsulting.form.description.error"),
-                    },
-                  ]}
+                <Field
+                  label={t("businessConsulting.form.description.label")}
+                  error={errors.service_description}
+                  required
                 >
-                  <Input.TextArea
+                  <TextArea
                     rows={4}
                     placeholder={t("businessConsulting.form.description.placeholder")}
+                    value={values.service_description}
+                    onChange={(e) => set("service_description", e.target.value)}
+                    error={errors.service_description}
                   />
-                </Form.Item>
+                </Field>
 
                 <div className="flex justify-end gap-3 pt-4">
                   <button
@@ -305,14 +305,14 @@ export default function BusinessConsulting() {
                   >
                     {t("businessConsulting.form.buttons.cancel")}
                   </button>
-                  <button
-                    type="submit"
-                    className="px-6 py-3 rounded-lg bg-[#C9A84C] text-white font-semibold hover:bg-[#B8973B] transition-colors"
+                  <SubmitButton
+                    loading={loading}
+                    className="w-auto px-6 py-3 min-h-0 text-base rounded-lg"
                   >
                     {t("businessConsulting.form.buttons.submit")}
-                  </button>
+                  </SubmitButton>
                 </div>
-              </Form>
+              </form>
             </div>
           </div>
         </div>

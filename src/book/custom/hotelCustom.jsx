@@ -1,296 +1,304 @@
+"use client";
 import React, { useState } from "react";
-import {
-  Row,
-  Col,
-  Form,
-  Input,
-  Select,
-  DatePicker,
-  Button,
-  Card,
-  Typography,
-} from "antd";
-import {
-  UserOutlined,
-  MailOutlined,
-  PhoneOutlined,
-  EnvironmentOutlined,
-  CalendarOutlined,
-} from "@ant-design/icons";
-import axios from "axios";
-import { modernToast } from "@/components/ModernToast";
-import dayjs from "dayjs";
+import { User, Mail, Phone, MapPin, Calendar } from "lucide-react";
+import { apiPost } from "@/lib/api";
+import { modernToast } from "@/components/ui/toast";
 import { useTranslation } from "react-i18next";
+import {
+  Field,
+  TextInput,
+  TextArea,
+  NumberInput,
+  Select,
+  DateRangePicker,
+  SubmitButton,
+} from "@/components/ui/inputs";
 
-const { Option } = Select;
-const { RangePicker } = DatePicker;
+const initialState = {
+  full_name: "",
+  email: "",
+  phone: "",
+  guests: "",
+  purpose_of_stay: "",
+  preferred_location: "",
+  custom_location: "",
+  location: "",
+  date_range: [undefined, undefined],
+  hotel_level: "",
+  transport: "",
+  budget_range: "",
+  custom_budget: "",
+  special_needs: "",
+};
 
 const AccommodationHotel = () => {
   const { t } = useTranslation();
-  const [form] = Form.useForm();
-  const [budgetType, setBudgetType] = useState(null);
-  const [locationType, setLocationType] = useState(null);
+  const [values, setValues] = useState(initialState);
+  const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleBudgetChange = (value) => {
-    setBudgetType(value);
-    if (value !== "custom") {
-      form.setFieldsValue({ custom_budget: undefined });
-    }
+  const set = (k, v) => {
+    setValues((p) => ({ ...p, [k]: v }));
+    setErrors((p) => ({ ...p, [k]: undefined }));
   };
 
-  const handleSubmit = async () => {
+  const handleBudgetChange = (value) => {
+    setValues((p) => ({
+      ...p,
+      budget_range: value,
+      custom_budget: value !== "custom" ? "" : p.custom_budget,
+    }));
+    setErrors((p) => ({ ...p, budget_range: undefined, custom_budget: undefined }));
+  };
+
+  const handleLocationChange = (value) => {
+    setValues((p) => ({
+      ...p,
+      preferred_location: value,
+      custom_location: value !== "other" ? "" : p.custom_location,
+    }));
+  };
+
+  const validate = () => {
+    const e = {};
+    if (!values.full_name.trim()) e.full_name = t("form.fullName.required");
+    if (!values.email.trim()) e.email = t("form.email.required");
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim()))
+      e.email = t("form.email.invalid");
+    if (!values.phone.trim()) e.phone = t("form.phone.required");
+    if (!String(values.guests).trim()) e.guests = t("form.guests.required");
+    if (!values.date_range?.[0] || !values.date_range?.[1])
+      e.date_range = t("form.errors.selectDates");
+    if (values.budget_range === "custom") {
+      if (!String(values.custom_budget).trim())
+        e.custom_budget = t("form.customBudget.required");
+      else if (!/^\d+$/.test(String(values.custom_budget).trim()))
+        e.custom_budget = t("form.customBudget.onlyNumbers");
+    }
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
+
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    if (!validate()) {
+      if (!values.date_range?.[0] || !values.date_range?.[1])
+        modernToast.error(t("form.errors.selectDates"));
+      return;
+    }
+    setIsLoading(true);
     try {
-      const values = await form.validateFields();
-
-      if (!values.date_range || values.date_range.length !== 2) {
-        return modernToast.error(t("form.errors.selectDates"));
-      }
-
       const [checkinDate, checkoutDate] = values.date_range;
-
       const payload = {
-        full_name: values.full_name,
-        email: values.email,
-        phone: values.phone,
+        full_name: values.full_name.trim(),
+        email: values.email.trim(),
+        phone: values.phone.trim(),
         guests: values.guests,
         purpose_of_stay: values.purpose_of_stay,
         custom_location: values.custom_location || values.location,
         location: values.location,
-        checkin_date: dayjs(checkinDate).format("YYYY-MM-DD"),
-        checkout_date: dayjs(checkoutDate).format("YYYY-MM-DD"),
+        checkin_date: checkinDate,
+        checkout_date: checkoutDate,
         hotel_level: values.hotel_level,
         transport: values.transport,
         budget_range: values.budget_range,
         custom_budget: values.custom_budget || null,
         special_needs: values.special_needs || "",
       };
-
-      await axios.post(
+      await apiPost(
         "https://api.bonet.rw/bonetBackend/backend/public/hotel-requests",
         payload
       );
-
       modernToast.success(t("form.success"));
-      form.resetFields();
-      setBudgetType(null);
-      setLocationType(null);
+      setValues(initialState);
+      setErrors({});
     } catch (err) {
       console.error(err);
       modernToast.error(t("form.fail"));
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div style={{}} className="">
-      
- 
-       
-        <Form layout="vertical" form={form}>
-          {/* Personal Info */}
-          <Row gutter={[16, 16]}>
-            <Col xs={24} sm={12}>
-              <Form.Item
-                label={t("form.fullName.label")}
-                name="full_name"
-                rules={[{ required: true, message: t("form.fullName.required") }]}
-              >
-                <Input
-                  prefix={<UserOutlined />}
-                  placeholder={t("form.fullName.placeholder")}
-                  className="rounded-xl focus:ring-2 focus:ring-[#C9A84C] transition"
-                />
-              </Form.Item>
-            </Col>
-            <Col xs={24} sm={12}>
-              <Form.Item
-                label={t("form.email.label")}
-                name="email"
-                rules={[
-                  { required: true, message: t("form.email.required") },
-                  { type: "email", message: t("form.email.invalid") },
+    <div className="">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Personal Info */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <Field label={t("form.fullName.label")} error={errors.full_name} required>
+            <TextInput
+              icon={<User className="w-4 h-4" />}
+              placeholder={t("form.fullName.placeholder")}
+              value={values.full_name}
+              onChange={(e) => set("full_name", e.target.value)}
+              error={errors.full_name}
+            />
+          </Field>
+          <Field label={t("form.email.label")} error={errors.email} required>
+            <TextInput
+              icon={<Mail className="w-4 h-4" />}
+              placeholder={t("form.email.placeholder")}
+              value={values.email}
+              onChange={(e) => set("email", e.target.value)}
+              error={errors.email}
+            />
+          </Field>
+          <Field label={t("form.phone.label")} error={errors.phone} required>
+            <TextInput
+              icon={<Phone className="w-4 h-4" />}
+              placeholder={t("form.phone.placeholder")}
+              value={values.phone}
+              onChange={(e) => set("phone", e.target.value)}
+              error={errors.phone}
+            />
+          </Field>
+          <Field label={t("form.guests.label")} error={errors.guests} required>
+            <NumberInput
+              min={1}
+              placeholder={t("form.guests.placeholder")}
+              value={values.guests}
+              onChange={(e) => set("guests", e.target.value)}
+              error={errors.guests}
+            />
+          </Field>
+        </div>
+
+        {/* Stay Details */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <Field label={t("form.purpose.label")}>
+              <Select
+                placeholder={t("form.purpose.placeholder")}
+                value={values.purpose_of_stay || undefined}
+                onChange={(v) => set("purpose_of_stay", v)}
+                options={[
+                  { value: "business", label: t("form.purpose.options.business") },
+                  { value: "honeymoon", label: t("form.purpose.options.honeymoon") },
+                  { value: "family", label: t("form.purpose.options.family") },
+                  { value: "diplomatic", label: t("form.purpose.options.diplomatic") },
+                  { value: "vip_event", label: t("form.purpose.options.vip_event") },
                 ]}
-              >
-                <Input
-                  prefix={<MailOutlined />}
-                  placeholder={t("form.email.placeholder")}
-                  className="rounded-xl focus:ring-2 focus:ring-[#C9A84C] transition"
+              />
+            </Field>
+          </div>
+          <div>
+            <Field label={t("form.preferredLocation.label")}>
+              <Select
+                placeholder={t("form.preferredLocation.placeholder")}
+                value={values.preferred_location || undefined}
+                onChange={handleLocationChange}
+                options={[
+                  { value: "kcc", label: t("form.preferredLocation.options.kcc") },
+                  { value: "embassy", label: t("form.preferredLocation.options.embassy") },
+                  { value: "vision_city", label: t("form.preferredLocation.options.vision_city") },
+                  { value: "musanze", label: t("form.preferredLocation.options.musanze") },
+                  { value: "lake_kivu", label: t("form.preferredLocation.options.lake_kivu") },
+                  { value: "other", label: t("form.preferredLocation.options.other") },
+                ]}
+              />
+            </Field>
+            {values.preferred_location === "other" && (
+              <div className="mt-4">
+                <TextInput
+                  placeholder={t("form.customLocation.placeholder")}
+                  value={values.custom_location}
+                  onChange={(e) => set("custom_location", e.target.value)}
                 />
-              </Form.Item>
-            </Col>
-            <Col xs={24} sm={12}>
-              <Form.Item
-                label={t("form.phone.label")}
-                name="phone"
-                rules={[{ required: true, message: t("form.phone.required") }]}
-              >
-                <Input
-                  prefix={<PhoneOutlined />}
-                  placeholder={t("form.phone.placeholder")}
-                  className="rounded-xl focus:ring-2 focus:ring-[#C9A84C] transition"
-                />
-              </Form.Item>
-            </Col>
-            <Col xs={24} sm={12}>
-              <Form.Item
-                label={t("form.guests.label")}
-                name="guests"
-                rules={[{ required: true, message: t("form.guests.required") }]}
-              >
-                <Input
-                  type="number"
-                  min={1}
-                  placeholder={t("form.guests.placeholder")}
-                  className="rounded-xl focus:ring-2 focus:ring-[#C9A84C] transition"
-                />
-              </Form.Item>
-            </Col>
-          </Row>
+              </div>
+            )}
+          </div>
+          <Field label={t("form.location.label")}>
+            <TextInput
+              icon={<MapPin className="w-4 h-4" />}
+              placeholder={t("form.location.placeholder")}
+              value={values.location}
+              onChange={(e) => set("location", e.target.value)}
+            />
+          </Field>
+          <Field label={t("form.dates.label")} error={errors.date_range} required>
+            <DateRangePicker
+              value={values.date_range}
+              onChange={(v) => set("date_range", v)}
+              error={errors.date_range}
+            />
+          </Field>
+        </div>
 
-          {/* Stay Details */}
-          <Row gutter={[16, 16]}>
-            <Col xs={24} sm={12}>
-              <Form.Item label={t("form.purpose.label")} name="purpose_of_stay">
-                <Select placeholder={t("form.purpose.placeholder")} className="rounded-xl">
-                  <Option value="business">{t("form.purpose.options.business")}</Option>
-                  <Option value="honeymoon">{t("form.purpose.options.honeymoon")}</Option>
-                  <Option value="family">{t("form.purpose.options.family")}</Option>
-                  <Option value="diplomatic">{t("form.purpose.options.diplomatic")}</Option>
-                  <Option value="vip_event">{t("form.purpose.options.vip_event")}</Option>
-                </Select>
-              </Form.Item>
-            </Col>
+        {/* Budget & Hotel Level */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <Field label={t("form.hotelLevel.label")}>
+            <Select
+              placeholder={t("form.hotelLevel.placeholder")}
+              value={values.hotel_level || undefined}
+              onChange={(v) => set("hotel_level", v)}
+              options={[
+                { value: "premium", label: t("form.hotelLevel.options.premium") },
+                { value: "4-star", label: t("form.hotelLevel.options.4star") },
+                { value: "5-star", label: t("form.hotelLevel.options.5star") },
+                { value: "luxury1", label: t("form.hotelLevel.options.luxury1") },
+                { value: "luxury2", label: t("form.hotelLevel.options.luxury2") },
+                { value: "private_villa", label: t("form.hotelLevel.options.private_villa") },
+              ]}
+            />
+          </Field>
+          <Field label={t("form.transport.label")}>
+            <Select
+              placeholder={t("form.transport.placeholder")}
+              value={values.transport || undefined}
+              onChange={(v) => set("transport", v)}
+              options={[
+                { value: "Executive Sedans – First-Class (VIP)", label: t("form.transport.options.sedan_vip") },
+                { value: "Luxury SUVs – First-Class (VIP)", label: t("form.transport.options.suv_vip") },
+                { value: "Business-Class Sedans – Second-Class (Executive)", label: t("form.transport.options.sedan_exec") },
+                { value: "Reliable SUVs – Second-Class (Business & NGO Use)", label: t("form.transport.options.suv_exec") },
+                { value: "Luxury Vans – VIP Group Transport", label: t("form.transport.options.van_vip") },
+              ]}
+            />
+          </Field>
+          <div>
+            <Field label={t("form.budget.label")}>
+              <Select
+                placeholder={t("form.budget.placeholder")}
+                value={values.budget_range || undefined}
+                onChange={handleBudgetChange}
+                options={[
+                  { value: "150_200", label: t("form.budget.options.150_200") },
+                  { value: "200_400", label: t("form.budget.options.200_400") },
+                  { value: "400_plus", label: t("form.budget.options.400_plus") },
+                  { value: "custom", label: t("form.budget.options.custom") },
+                ]}
+              />
+            </Field>
+            {values.budget_range === "custom" && (
+              <div className="mt-4">
+                <Field error={errors.custom_budget}>
+                  <NumberInput
+                    placeholder={t("form.customBudget.placeholder")}
+                    value={values.custom_budget}
+                    onChange={(e) => set("custom_budget", e.target.value)}
+                    error={errors.custom_budget}
+                  />
+                </Field>
+              </div>
+            )}
+          </div>
+        </div>
 
-            <Col xs={24} sm={12}>
-              <Form.Item label={t("form.preferredLocation.label")} name="preferred_location">
-                <Select
-                  placeholder={t("form.preferredLocation.placeholder")}
-                  onChange={(val) => {
-                    setLocationType(val);
-                    if (val !== "other") form.setFieldsValue({ custom_location: undefined });
-                  }}
-                  className="rounded-xl"
-                >
-                  <Option value="kcc">{t("form.preferredLocation.options.kcc")}</Option>
-                  <Option value="embassy">{t("form.preferredLocation.options.embassy")}</Option>
-                  <Option value="vision_city">{t("form.preferredLocation.options.vision_city")}</Option>
-                  <Option value="musanze">{t("form.preferredLocation.options.musanze")}</Option>
-                  <Option value="lake_kivu">{t("form.preferredLocation.options.lake_kivu")}</Option>
-                  <Option value="other">{t("form.preferredLocation.options.other")}</Option>
-                </Select>
-              </Form.Item>
+        {/* Special Needs */}
+        <Field label={t("form.specialNeeds.label")}>
+          <TextArea
+            rows={3}
+            placeholder={t("form.specialNeeds.placeholder")}
+            value={values.special_needs}
+            onChange={(e) => set("special_needs", e.target.value)}
+          />
+        </Field>
 
-              {locationType === "other" && (
-                <Form.Item name="custom_location">
-                  <Input placeholder={t("form.customLocation.placeholder")} className="rounded-xl" />
-                </Form.Item>
-              )}
-            </Col>
-
-            <Col xs={24} sm={12}>
-              <Form.Item label={t("form.location.label")} name="location">
-                <Input
-                  prefix={<EnvironmentOutlined />}
-                  placeholder={t("form.location.placeholder")}
-                  className="rounded-xl"
-                />
-              </Form.Item>
-            </Col>
-
-            <Col xs={24} sm={12}>
-              <Form.Item label={t("form.dates.label")} name="date_range">
-                <RangePicker
-                  className="w-full rounded-xl"
-                  suffixIcon={<CalendarOutlined />}
-                  format="YYYY-MM-DD"
-                />
-              </Form.Item>
-            </Col>
-          </Row>
-
-          {/* Budget & Hotel Level */}
-          <Row gutter={[16, 16]}>
-            <Col xs={24} sm={12}>
-              <Form.Item label={t("form.hotelLevel.label")} name="hotel_level">
-                <Select placeholder={t("form.hotelLevel.placeholder")} className="rounded-xl">
-                  <Option value="premium">{t("form.hotelLevel.options.premium")}</Option>
-                  <Option value="4-star">{t("form.hotelLevel.options.4star")}</Option>
-                  <Option value="5-star">{t("form.hotelLevel.options.5star")}</Option>
-                  <Option value="luxury1">{t("form.hotelLevel.options.luxury1")}</Option>
-                  <Option value="luxury2">{t("form.hotelLevel.options.luxury2")}</Option>
-                  <Option value="private_villa">{t("form.hotelLevel.options.private_villa")}</Option>
-                </Select>
-              </Form.Item>
-            </Col>
-
-            <Col xs={24} sm={12}>
-              <Form.Item label={t("form.transport.label")} name="transport">
-                <Select placeholder={t("form.transport.placeholder")} className="rounded-xl">
-                  <Option value="Executive Sedans – First-Class (VIP)">
-                    {t("form.transport.options.sedan_vip")}
-                  </Option>
-                  <Option value="Luxury SUVs – First-Class (VIP)">
-                    {t("form.transport.options.suv_vip")}
-                  </Option>
-                  <Option value="Business-Class Sedans – Second-Class (Executive)">
-                    {t("form.transport.options.sedan_exec")}
-                  </Option>
-                  <Option value="Reliable SUVs – Second-Class (Business & NGO Use)">
-                    {t("form.transport.options.suv_exec")}
-                  </Option>
-                  <Option value="Luxury Vans – VIP Group Transport">
-                    {t("form.transport.options.van_vip")}
-                  </Option>
-                </Select>
-              </Form.Item>
-            </Col>
-
-            <Col xs={24} sm={12}>
-              <Form.Item label={t("form.budget.label")} name="budget_range">
-                <Select placeholder={t("form.budget.placeholder")} onChange={handleBudgetChange} className="rounded-xl">
-                  <Option value="150_200">{t("form.budget.options.150_200")}</Option>
-                  <Option value="200_400">{t("form.budget.options.200_400")}</Option>
-                  <Option value="400_plus">{t("form.budget.options.400_plus")}</Option>
-                  <Option value="custom">{t("form.budget.options.custom")}</Option>
-                </Select>
-              </Form.Item>
-
-              {budgetType === "custom" && (
-                <Form.Item
-                  name="custom_budget"
-                  rules={[
-                    { required: true, message: t("form.customBudget.required") },
-                    { pattern: /^\d+$/, message: t("form.customBudget.onlyNumbers") },
-                  ]}
-                >
-                  <Input placeholder={t("form.customBudget.placeholder")} type="number" className="rounded-xl" />
-                </Form.Item>
-              )}
-            </Col>
-          </Row>
-
-          {/* Special Needs */}
-          <Row gutter={[16, 16]}>
-            <Col xs={24}>
-              <Form.Item label={t("form.specialNeeds.label")} name="special_needs">
-                <Input.TextArea rows={3} placeholder={t("form.specialNeeds.placeholder")} className="rounded-xl" />
-              </Form.Item>
-            </Col>
-          </Row>
-
-          {/* Submit Button */}
-          <Row>
-            <Col span={24} className="text-center mt-6">
-              <button
-                disabled={isLoading}
-                onClick={handleSubmit}
-                className="bg-[#C9A84C] hover:bg-[#B8973B] w-full text-white font-semibold rounded-xl py-3 h-auto transition-colors duration-200 border-0"
-              >
-                {t("form.submit")}
-              </button>
-            </Col>
-          </Row>
-        </Form>
-      
+        {/* Submit Button */}
+        <div className="text-center mt-6">
+          <SubmitButton loading={isLoading}>{t("form.submit")}</SubmitButton>
+        </div>
+      </form>
     </div>
   );
 };

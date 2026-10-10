@@ -1,7 +1,7 @@
 import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaCheckCircle, FaTimes } from 'react-icons/fa';
+import { CheckCircle2, X } from 'lucide-react';
 
 const BookingOverlay = () => {
   const { t, i18n } = useTranslation();
@@ -63,7 +63,7 @@ const BookingOverlay = () => {
           onClick={handleClose}
           className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
         >
-          <FaTimes size={20} />
+          <X className="w-5 h-5" />
         </button>
 
         <h2 className="text-2xl font-semibold text-center text-[#C9A84C] mb-4">
@@ -88,7 +88,7 @@ const BookingOverlay = () => {
         {isSuccess && (
           <div className="flex justify-center mb-4">
             <div className="bg-[#C9A84C] text-white p-2 rounded-full">
-              <FaCheckCircle size={24} />
+              <CheckCircle2 className="w-6 h-6" />
             </div>
           </div>
         )}
