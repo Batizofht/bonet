@@ -63,7 +63,7 @@ const Gallery = () => {
             key={index}
             className="relative group cursor-pointer"
           >
-            <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
               {/* OPTIMIZED: Add loading="lazy" for better performance */}
               <img
                 src={image.src}
@@ -102,7 +102,7 @@ const Gallery = () => {
       <div className="flex justify-center">
         <button
           onClick={() => navigate.push("/explore-rwanda")}
-          className="flex items-center gap-3 bg-[#188bff] text-white px-8 py-4 rounded-2xl hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl cursor-pointer group/btn"
+          className="flex items-center gap-3 bg-[#188bff] text-white px-8 py-4 rounded-2xl hover:bg-blue-600 hover:scale-105 active:scale-95 transition-[background-color,scale,box-shadow] duration-300 font-semibold shadow-lg hover:shadow-xl cursor-pointer group/btn"
         >
          
           {t("gallery.button")}

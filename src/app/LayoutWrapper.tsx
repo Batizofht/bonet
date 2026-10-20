@@ -59,11 +59,14 @@ function TopLoader() {
   if (!active && width === 0) return null;
   return (
     <div className="fixed top-0 left-0 right-0 z-[99999] h-[3px] bg-transparent pointer-events-none">
+      {/* scaleX instead of width: runs on the compositor, no layout per frame */}
       <div
-        className="h-full bg-[#C9A84C] shadow-[0_0_8px_rgba(201,168,76,0.8)]"
+        className="h-full w-full origin-left bg-[#C9A84C] shadow-[0_0_8px_rgba(201,168,76,0.8)]"
         style={{
-          width: `${width}%`,
-          transition: width === 100 ? 'width 0.25s ease' : 'width 0.5s cubic-bezier(0.1,0.5,0.2,1)',
+          transform: `scaleX(${width / 100})`,
+          transition: width === 100
+            ? 'transform 0.25s ease, opacity 0.2s ease 0.1s'
+            : 'transform 0.5s cubic-bezier(0.1,0.5,0.2,1)',
           opacity: active || width === 100 ? 1 : 0,
         }}
       />
@@ -75,6 +78,7 @@ function TopLoader() {
 // IntersectionObserver + CSS only — no animation library.
 function ScrollReveal() {
   const pathname = usePathname();
+  const firstRun = useRef(true);
 
   useIsomorphicLayoutEffect(() => {
     if (typeof IntersectionObserver === 'undefined') return;
@@ -92,12 +96,24 @@ function ScrollReveal() {
       { rootMargin: '0px 0px -6% 0px', threshold: 0.05 }
     );
 
+    // After a route change the window is about to jump to the top, so
+    // measure "on screen" against the top of the page, not the old scroll.
+    const navigated = !firstRun.current;
+    firstRun.current = false;
+
     const scan = () => {
+      const viewportBottom = window.innerHeight;
+      const offset = navigated ? window.scrollY : 0;
       document.querySelectorAll('section').forEach((el) => {
         if (processed.has(el)) return;
+        processed.add(el);
         // Never touch nav/header chrome, hidden menus, or opt-outs
         if (el.closest('nav, header, [data-no-reveal]')) return;
-        processed.add(el);
+        // Nested sections ride along with their parent — no double motion
+        if (el.parentElement?.closest('section.js-reveal')) return;
+        // Already on screen: show it now. Hiding it would flash the
+        // first paint and delay the largest contentful paint.
+        if (el.getBoundingClientRect().top + offset < viewportBottom) return;
         el.classList.add('js-reveal');
         io.observe(el);
       });
@@ -162,7 +178,9 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
   useEffect(() => {
     if (prevPathname.current !== pathname) {
       prevPathname.current = pathname;
-      window.scrollTo(0, 0);
+      // 'instant' overrides the CSS smooth scroll — a new page should
+      // start at the top, not glide up through the old one
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
     }
   }, [pathname]);
 

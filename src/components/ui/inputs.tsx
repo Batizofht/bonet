@@ -5,7 +5,7 @@ import { cn } from "./cn";
 
 /* ---------- shared ---------- */
 export const inputBase =
-  "w-full min-h-[52px] rounded-xl border border-gray-200 bg-white px-4 text-[15px] text-gray-900 placeholder:text-gray-400 outline-none transition-all duration-200 hover:border-[#C9A84C]/50 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 disabled:opacity-60 disabled:bg-gray-50";
+  "w-full min-h-[52px] rounded-xl border border-gray-200 bg-white px-4 text-[15px] text-gray-900 placeholder:text-gray-400 outline-none transition-[border-color,box-shadow] duration-200 hover:border-[#C9A84C]/50 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 disabled:opacity-60 disabled:bg-gray-50";
 
 export function Field({
   label,
@@ -493,7 +493,7 @@ export function Switch({ checked, onChange, label }: { checked: boolean; onChang
   return (
     <button type="button" role="switch" aria-checked={checked} onClick={() => onChange(!checked)} className="inline-flex items-center gap-3">
       <span className={cn("relative h-7 w-12 rounded-full transition-colors", checked ? "bg-[#C9A84C]" : "bg-gray-300")}>
-        <span className={cn("absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-all", checked ? "left-6" : "left-1")} />
+        <span className={cn("absolute top-1 left-1 h-5 w-5 rounded-full bg-white shadow transition-[translate] duration-200", checked ? "translate-x-5" : "translate-x-0")} />
       </span>
       {label && <span className="text-sm text-gray-700">{label}</span>}
     </button>

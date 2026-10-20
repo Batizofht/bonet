@@ -3,6 +3,7 @@ import { openWhatsApp } from "@/lib/whatsapp";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { apiPost } from "@/lib/api";
+import { useScrollLock } from "@/lib/useScrollLock";
 import { MessageCircle, X, Send, Calendar, CheckCircle2, ChevronRight, MessageSquare } from "lucide-react";
 import WelcomeMessageAI from "./mesaai";
 
@@ -78,6 +79,7 @@ const ChatBot = () => {
   const [clientId, setClientId] = useState<string | null>(null);
   const [isTyping, setIsTyping] = useState(false);
   const [autoScroll, setAutoScroll] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Consultation form
@@ -110,11 +112,23 @@ const ChatBot = () => {
     setClientId(id);
   }, []);
 
+  // Scroll only the message list — scrollIntoView would also nudge the page
   useEffect(() => {
-    if (autoScroll && messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    const list = messagesEndRef.current?.parentElement;
+    if (autoScroll && list) {
+      list.scrollTo({ top: list.scrollHeight, behavior: "smooth" });
     }
   }, [messages, isTyping, autoScroll]);
+
+  // On phones the chat is full-screen, so freeze the page behind it
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  useScrollLock(showChat && isMobile);
 
   const sendMessage = async (text?: string) => {
     const msg = (text ?? input).trim();
@@ -179,7 +193,7 @@ const ChatBot = () => {
       {!showChat && (
         <button
           onClick={() => setShowChat(true)}
-          className="fixed bottom-6 right-6 w-14 h-14 bg-[#C9A84C] hover:bg-[#B8973B] text-white rounded-full shadow-xl z-40 flex items-center justify-center transition-all duration-200 hover:scale-110 hover:shadow-2xl"
+          className="fixed bottom-6 right-6 w-14 h-14 bg-[#C9A84C] hover:bg-[#B8973B] text-white rounded-full shadow-xl z-40 flex items-center justify-center transition-[background-color,scale,box-shadow] duration-200 hover:scale-110 hover:shadow-2xl animate-pop-in"
           aria-label="Open chat"
         >
           <MessageCircle className="w-6 h-6" />
@@ -188,7 +202,7 @@ const ChatBot = () => {
 
       {/* Chat window */}
       {showChat && (
-        <div className="fixed inset-0 md:inset-auto md:bottom-6 md:right-6 md:w-[400px] md:h-[640px] bg-white md:rounded-2xl md:shadow-2xl md:border md:border-gray-100 flex flex-col z-[99999] overflow-hidden">
+        <div className="fixed inset-0 md:inset-auto md:bottom-6 md:right-6 md:w-[400px] md:h-[640px] bg-white md:rounded-2xl md:shadow-2xl md:border md:border-gray-100 flex flex-col z-[99999] overflow-hidden animate-pop-in md:origin-bottom-right">
 
           {/* Header */}
           <div className="bg-gradient-to-r from-[#1A1A2E] to-[#2d2d52] px-5 py-4 flex items-center justify-between shrink-0">
@@ -221,7 +235,7 @@ const ChatBot = () => {
               <button
                 key={t}
                 onClick={() => setTab(t)}
-                className={`flex-1 py-3 text-xs font-semibold transition-all flex items-center justify-center gap-1.5 ${
+                className={`flex-1 py-3 text-xs font-semibold transition-colors flex items-center justify-center gap-1.5 ${
                   tab === t
                     ? "text-[#C9A84C] border-b-2 border-[#C9A84C]"
                     : "text-gray-400 hover:text-gray-600"
@@ -237,7 +251,7 @@ const ChatBot = () => {
           {tab === "chat" && (
             <>
               <div
-                className="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-gray-50/60"
+                className="flex-1 overflow-y-auto overscroll-contain px-4 py-4 space-y-3 bg-gray-50/60"
                 onScroll={handleScroll}
               >
                 <WelcomeMessageAI />

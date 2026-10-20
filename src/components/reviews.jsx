@@ -155,7 +155,7 @@ function Testimonials() {
         <div className="relative">
           <button 
             onClick={handlePrev} 
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white border border-gray-200/40 rounded-full flex items-center justify-center text-[#C9A84C] hover:bg-[#C9A84C] hover:text-white transition-all duration-300 z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white border border-gray-200/40 rounded-full flex items-center justify-center text-[#C9A84C] hover:bg-[#C9A84C] hover:text-white transition-colors duration-300 z-10"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -206,7 +206,7 @@ function Testimonials() {
 
           <button 
             onClick={handleNext} 
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white border border-gray-200/40 rounded-full flex items-center justify-center text-[#C9A84C] hover:bg-[#C9A84C] hover:text-white transition-all duration-300 z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white border border-gray-200/40 rounded-full flex items-center justify-center text-[#C9A84C] hover:bg-[#C9A84C] hover:text-white transition-colors duration-300 z-10"
           >
             <ChevronRight className="w-6 h-6" />
           </button>

@@ -20,7 +20,7 @@ export const metadata = {
       "Contact Bonet Elite Services for bookings, business support and concierge services in Rwanda. Call +250 726 300 260 or visit us in Kigali.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 800,
         height: 600,
         alt: "Contact Bonet Elite Services Rwanda",
@@ -33,7 +33,7 @@ export const metadata = {
     title: "Contact Us",
     description:
       "Contact Bonet Elite Services for bookings, business support and concierge services in Rwanda. Call +250 726 300 260.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
 };
 

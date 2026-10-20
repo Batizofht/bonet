@@ -21,8 +21,8 @@ export default function HomePageClient() {
               "@type": "LocalBusiness",
               "name": "Bonet Elite Services",
               "url": "https://bonet.rw",
-              "logo": "https://bonet.rw/assets/images/logo.png",
-              "image": "https://bonet.rw/assets/images/logo.png",
+              "logo": "https://bonet.rw/assets/images/bonet-logo.png",
+              "image": "https://bonet.rw/assets/images/bonet-og.png",
               "description": "Business setup, travel, HR and investment support in Rwanda",
               "telephone": "+250726300260",
               "address": {

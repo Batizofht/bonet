@@ -16,7 +16,7 @@ export const metadata = {
       "Luxury executive travel and VIP concierge services in Rwanda. Bespoke itineraries for discerning travelers.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 800,
         height: 600,
         alt: "Executive Travel Rwanda",
@@ -29,7 +29,7 @@ export const metadata = {
     site: "@BonetElite",
     title: "Executive Travel Rwanda",
     description: "Luxury executive travel and VIP concierge services in Rwanda.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
 };
 

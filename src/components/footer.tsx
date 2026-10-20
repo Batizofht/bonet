@@ -104,18 +104,26 @@ export default function FAQ() {
                       {faq.question}
                     </p>
                   </div>
-                  <ChevronDown className={`w-4 h-4 text-gray-400 flex-shrink-0 transition-all duration-200 ${
+                  <ChevronDown className={`w-4 h-4 text-gray-400 flex-shrink-0 transition-[rotate,color] duration-300 ${
                     openIndex === index ? 'rotate-180 text-[#C9A84C]' : ''
                   }`} />
                   </div>
 
-                {openIndex === index && (
-                  <div className="mt-4 border-t border-gray-100 pt-4">
-                    <p className="text-gray-600 leading-relaxed">
-                      {faq.answer}
-                    </p>
+                {/* grid-rows 0fr→1fr: smooth height animation, answer stays in the DOM for SEO */}
+                <div
+                  className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                    openIndex === index ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                  }`}
+                  aria-hidden={openIndex !== index}
+                >
+                  <div className="overflow-hidden">
+                    <div className="mt-4 border-t border-gray-100 pt-4">
+                      <p className="text-gray-600 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             </div>
           ))}

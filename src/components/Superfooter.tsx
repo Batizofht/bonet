@@ -41,12 +41,18 @@ const SuperFooter = () => {
         
         {/* First Column - Logo & Description */}
         <div className="flex flex-col items-center md:items-start">
-          <div className="flex items-center gap-3 mb-4">
-            <img src="../assets/images/logo.png" alt="Bonet Elite Services Logo" className="h-16 w-16" loading="lazy" />
-            <div>
-              <h3 className="font-bold text-lg text-gray-900">Bonet Elite</h3>
-              <p className="text-[#C9A84C] text-sm font-semibold">Services</p>
-            </div>
+          <div className="mb-4">
+            <picture>
+              <source srcSet="/assets/images/bonet-logo.webp" type="image/webp" />
+              <img
+                src="/assets/images/bonet-logo.png"
+                alt="Bonet Elite Services Logo"
+                width={1000}
+                height={392}
+                className="h-14 sm:h-16 w-auto max-w-[200px] object-contain"
+                loading="lazy"
+              />
+            </picture>
           </div>
           <p className="text-gray-600 text-sm leading-relaxed mb-6 max-w-xs">
             {t("footer.description")}

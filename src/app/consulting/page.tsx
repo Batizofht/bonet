@@ -17,7 +17,7 @@ export const metadata = {
       "Expert business consulting in Rwanda. Business plans, project planning, financial audits and strategy by Bonet Elite Services in Kigali.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 800,
         height: 600,
         alt: "Business Consulting Services in Rwanda",
@@ -31,7 +31,7 @@ export const metadata = {
     title: "Business Consulting Services Rwanda",
     description:
       "Expert business consulting in Rwanda. Business plans, project planning, financial audits and strategy by Bonet Elite Services.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
 };
 

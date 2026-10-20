@@ -18,7 +18,7 @@ export const metadata = {
       "HR and administrative support in Rwanda. Recruitment, payroll, employee training and HR policy by Bonet Elite Services in Kigali.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 800,
         height: 600,
         alt: "HR and Administrative Support Services in Rwanda",
@@ -32,7 +32,7 @@ export const metadata = {
     title: "HR & Admin Support Services Rwanda",
     description:
       "HR and administrative support in Rwanda. Recruitment, payroll, employee training and HR policy by Bonet Elite Services.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
 };
 

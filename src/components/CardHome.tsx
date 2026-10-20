@@ -1,13 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Building2, Users, Plane, X, ChevronRight, Briefcase } from "lucide-react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { useScrollLock } from "@/lib/useScrollLock";
 
 const BookingCards = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
 
   const { t } = useTranslation();
+
+  useScrollLock(selectedService !== null);
+
+  useEffect(() => {
+    if (!selectedService) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setSelectedService(null);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [selectedService]);
 
   const services = [
     {
@@ -80,11 +90,13 @@ const BookingCards = () => {
 
         return (
           <div
-            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4 animate-fade-in"
             onClick={() => setSelectedService(null)}
           >
             <div
-              className="bg-white rounded-xl max-w-md w-full p-6 border border-gray-200"
+              className="bg-white rounded-xl max-w-md w-full p-6 border border-gray-200 animate-modalIn"
+              role="dialog"
+              aria-modal="true"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-4">

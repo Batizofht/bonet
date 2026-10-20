@@ -17,7 +17,7 @@ export const metadata = {
       "Luxury travel and hospitality services in Rwanda. Hotel booking, airport transfers, tours and VIP handling in Kigali by Bonet Elite.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 800,
         height: 600,
         alt: "Travel and Hospitality Services in Rwanda",
@@ -31,7 +31,7 @@ export const metadata = {
     title: "Travel & Hospitality Services Rwanda",
     description:
       "Luxury travel and hospitality services in Rwanda. Hotel booking, airport transfers, tours and VIP handling in Kigali.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
 };
 

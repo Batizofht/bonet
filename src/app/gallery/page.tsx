@@ -16,7 +16,7 @@ export const metadata = {
       "Explore Rwanda's top destinations: Volcanoes National Park, Lake Kivu, Akagera, Nyungwe Forest, and more.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 1200,
         height: 630,
         alt: "Rwanda Destinations Gallery",

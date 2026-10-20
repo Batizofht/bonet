@@ -1,5 +1,33 @@
 @import "tailwindcss";
 
+/* Tailwind v4 ignores tailwind.config.ts, so motion tokens live here.
+   Everything animates transform/opacity only — compositor-friendly. */
+@theme {
+  --animate-modalIn: modalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fadeIn 0.25s ease-out both;
+  --animate-pop-in: popIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(16px) scale(0.97); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+/* Smooth in-page anchor scrolling. data-scroll-behavior on <html> tells
+   Next.js to jump instantly on route changes instead of animating. */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Lightweight form polish (replaces 110 lines of antd !important overrides) */
 ::selection {
   background: rgba(201, 168, 76, 0.25);
@@ -31,6 +59,9 @@ input[type="number"] {
 
 /* Respect users who prefer less motion — instant smoothness win */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
@@ -41,14 +72,15 @@ input[type="number"] {
 
 /* ── Section entrance animations (AOS-style, zero JS libraries) ──
    Added/removed by ScrollReveal in LayoutWrapper. Without JS the
-   classes never appear, so content stays fully visible (no SEO risk). */
+   classes never appear, so content stays fully visible (no SEO risk).
+   No permanent will-change: a layer per section wastes GPU memory and
+   turns every section into the containing block of its fixed popups. */
 .js-reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translate3d(0, 24px, 0);
   transition:
     opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
 }
 .js-reveal.is-revealed {
   opacity: 1;

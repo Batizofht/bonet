@@ -11,14 +11,14 @@ export const metadata = {
     url: "https://bonet.rw/explore-rwanda",
     title: "Explore Rwanda | Investment & Tourism Guide",
     description: "Discover Rwanda: investment sectors, living guide, and tourism highlights.",
-    images: [{ url: "https://bonet.rw/assets/images/logo.png", width: 1200, height: 630 }],
+    images: [{ url: "https://bonet.rw/assets/images/bonet-og.png", width: 1200, height: 630 }],
     siteName: "Bonet Elite Services",
   },
   twitter: {
     card: "summary_large_image",
     title: "Explore Rwanda | Investment & Tourism Guide",
     description: "Discover Rwanda: investment sectors, living guide, and tourism highlights.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
 };
 

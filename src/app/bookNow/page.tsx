@@ -18,7 +18,7 @@ export const metadata = {
       "Book hotels, apartments, transport and concierge services in Rwanda. Fast and secure reservations by Bonet Elite Services in Kigali.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 800,
         height: 600,
         alt: "Book Hotels and Services in Rwanda",
@@ -32,7 +32,7 @@ export const metadata = {
     title: "Book Hotels & Services Rwanda",
     description:
       "Book hotels, apartments, transport and concierge services in Rwanda. Fast and secure reservations by Bonet Elite Services.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
   metadataBase: new URL("https://bonet.rw"),
 };

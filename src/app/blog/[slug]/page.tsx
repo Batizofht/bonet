@@ -141,7 +141,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const description = rawDesc
       ? `${rawDesc.substring(0, 130).trim().replace(/\.?$/, '')}. Learn more from Bonet Elite Services.`
       : "Expert insights on travel, business, and investment in Rwanda. Get guidance from Bonet Elite Services.";
-    const imageUrl = foundBlog?.image ? `https://api.bonet.rw/bonetBackend/public/${foundBlog.image}` : "https://bonet.rw/assets/images/logo.png";
+    const imageUrl = foundBlog?.image ? `https://api.bonet.rw/bonetBackend/public/${foundBlog.image}` : "https://bonet.rw/assets/images/bonet-og.png";
     const url = `https://bonet.rw/blog/${targetSlug}`;
     const keywords = `${blogTitle}, Rwanda travel, business Rwanda, investment Rwanda, Bonet Services, Kigali, ${blogTitle.toLowerCase()}`;
 
@@ -245,7 +245,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
   const description = rawDesc.substring(0, 150).trim().replace(/\.?$/, '.');
   const imageUrl = blog?.image 
     ? `https://api.bonet.rw/bonetBackend/public/${blog.image}` 
-    : "https://bonet.rw/assets/images/logo.png";
+    : "https://bonet.rw/assets/images/bonet-og.png";
   const datePublished = blog?.created_at || new Date().toISOString();
   const authorName = blog?.author || "Bonet Elite Services";
   
@@ -298,7 +298,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                 "url": "https://bonet.rw",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://bonet.rw/assets/images/logo.png"
+                  "url": "https://bonet.rw/assets/images/bonet-logo.png"
                 }
               },
               "mainEntityOfPage": {

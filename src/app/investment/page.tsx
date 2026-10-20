@@ -20,7 +20,7 @@ export const metadata = {
       "Company registration, licensing and investment support in Rwanda. Bonet Elite helps entrepreneurs start businesses in Kigali fast.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 800,
         height: 600,
         alt: "Investment and Business Setup Services in Rwanda",
@@ -34,7 +34,7 @@ export const metadata = {
     title: "Investment & Business Setup Rwanda",
     description:
       "Company registration, licensing and investment support in Rwanda. Bonet Elite helps entrepreneurs start businesses in Kigali fast.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
 };
 

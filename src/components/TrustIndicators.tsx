@@ -35,7 +35,7 @@ const TrustIndicators = () => {
               <img
                 src={partner.image}
                 alt={partner.name}
-                className={`max-w-full max-h-full object-contain transition-all duration-500 grayscale hover:grayscale-0 hover:scale-105${partner.invertOnWhite ? " invert" : ""}`}
+                className={`max-w-full max-h-full object-contain transition-[filter,scale] duration-500 grayscale hover:grayscale-0 hover:scale-105${partner.invertOnWhite ? " invert" : ""}`}
                 loading="lazy"
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = 'none';

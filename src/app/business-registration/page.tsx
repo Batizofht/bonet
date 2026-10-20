@@ -16,7 +16,7 @@ export const metadata = {
       "Register your company in Rwanda with 100% foreign ownership and no minimum capital required.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 800,
         height: 600,
         alt: "Business Registration in Rwanda",
@@ -29,7 +29,7 @@ export const metadata = {
     site: "@BonetElite",
     title: "Business Registration Rwanda | Company Setup",
     description: "Register your company in Rwanda with Bonet Elite Services.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
 };
 

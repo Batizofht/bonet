@@ -681,11 +681,18 @@ export default function FAQClient() {
                     <div className="text-xs font-semibold text-[#C9A84C] mb-1">{faq.categoryTitle}</div>
                     <div className="font-semibold text-gray-900 text-sm">{faq.question}</div>
                   </div>
-                  <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform ${openIndex === index ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""}`} />
                 </button>
-                {openIndex === index && (
-                  <div className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">{faq.answer}</div>
-                )}
+                <div
+                  className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                    openIndex === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                  aria-hidden={openIndex !== index}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">{faq.answer}</div>
+                  </div>
+                </div>
               </div>
             ))}
             {filteredItems.length === 0 && (
@@ -712,11 +719,19 @@ export default function FAQClient() {
                           className="w-full flex items-center justify-between p-5 text-left"
                         >
                           <span className="font-semibold text-gray-900 text-sm pr-4">{faq.question}</span>
-                          <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform ${openIndex === globalIndex ? "rotate-180" : ""}`} />
+                          <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 ${openIndex === globalIndex ? "rotate-180" : ""}`} />
                         </button>
-                        {openIndex === globalIndex && (
-                          <div className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">{faq.answer}</div>
-                        )}
+                        {/* grid-rows 0fr→1fr: smooth height animation, answer stays in the DOM for SEO */}
+                        <div
+                          className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                            openIndex === globalIndex ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                          }`}
+                          aria-hidden={openIndex !== globalIndex}
+                        >
+                          <div className="overflow-hidden">
+                            <div className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">{faq.answer}</div>
+                          </div>
+                        </div>
                       </div>
                     );
                   })}

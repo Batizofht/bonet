@@ -19,7 +19,7 @@ export const metadata = {
       "Welcome to Bonet Elite Services. Get in touch for bookings, business support and concierge services in Rwanda.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 800,
         height: 600,
         alt: "Welcome to Bonet Elite Services Rwanda",
@@ -32,7 +32,7 @@ export const metadata = {
     title: "Welcome",
     description:
       "Welcome to Bonet Elite Services. Get in touch for bookings, business support and concierge services in Rwanda.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
 };
 

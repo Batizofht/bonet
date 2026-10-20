@@ -16,7 +16,7 @@ export const metadata = {
       "Premium relocation services for executives and families moving to Rwanda. Complete concierge support.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 800,
         height: 600,
         alt: "Relocation Services Rwanda",
@@ -29,7 +29,7 @@ export const metadata = {
     site: "@BonetElite",
     title: "Relocation Services Rwanda",
     description: "Premium relocation services for executives moving to Rwanda.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
 };
 

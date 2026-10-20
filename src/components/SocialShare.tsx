@@ -110,7 +110,7 @@ export default function SocialShare({
   }) => (
     <button
       onClick={() => handleShare(platform)}
-      className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 ${
+      className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-[scale,background-color,color,box-shadow] duration-300 hover:scale-105 active:scale-95 ${
         platform === 'facebook' ? 'bg-blue-600 hover:bg-blue-700 text-white' :
         platform === 'twitter' ? 'bg-sky-500 hover:bg-sky-600 text-white' :
         platform === 'linkedin' ? 'bg-blue-700 hover:bg-blue-800 text-white' :

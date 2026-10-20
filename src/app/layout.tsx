@@ -14,13 +14,10 @@ export const metadata: Metadata = {
   keywords:
     "Bonet Elite Services Rwanda, travel Rwanda, business setup Rwanda, investment in Rwanda, VIP concierge Rwanda, luxury travel Kigali, HR services Rwanda, executive services Rwanda, tourism Rwanda",
   authors: [{ name: "Bonet Elite Services" }],
-  icons: {
-    icon: "/assets/images/logo.png",
-  },
   openGraph: {
     type: "website",
     siteName: "Bonet Elite Services",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
 };
 
@@ -30,7 +27,7 @@ export function generateViewport() {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <head>
         <meta name="google-site-verification" content="XmA718kfY8J4ixoy_mtJ-RWVR38ho1jxm4EycrG0pM0" />
         <link rel="preconnect" href="https://api.bonet.rw" />

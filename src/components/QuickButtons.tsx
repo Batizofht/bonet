@@ -3,7 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import i18n from "../../i18n";  
+import i18n from "../../i18n";
+import { useScrollLock } from "@/lib/useScrollLock";
 import { 
   Menu, 
   X, 
@@ -43,16 +44,44 @@ const QuickButtons = () => {
     };
   }, [i18n]);
 
+  // Reset to the main list once the drawer has finished sliding out,
+  // so the content doesn't swap mid-animation
   useEffect(() => {
-    if (!isOpen) {
-      setMobileView("main");
-    }
+    if (isOpen) return;
+    const t = setTimeout(() => setMobileView("main"), 300);
+    return () => clearTimeout(t);
   }, [isOpen]);
 
   useEffect(() => {
     setIsOpen(false);
     setDesktopDropdownOpen(false);
   }, [location]);
+
+  useScrollLock(isOpen);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setIsOpen(false);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [isOpen]);
+
+  // Close the language dropdown on outside click / Escape
+  useEffect(() => {
+    if (!desktopDropdownOpen) return;
+    const onDown = (e: MouseEvent) => {
+      const target = e.target as Node;
+      if (desktopDropdownRef.current?.contains(target) || desktopButtonRef.current?.contains(target)) return;
+      setDesktopDropdownOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setDesktopDropdownOpen(false);
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [desktopDropdownOpen]);
 
   const flagImages: Record<SupportedLanguages, string> = {
     en: "/assets/images/usa.png",
@@ -151,10 +180,14 @@ const QuickButtons = () => {
             <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform ${desktopDropdownOpen ? 'rotate-180' : ''}`} />
           </button>
 
-          {desktopDropdownOpen && (
+          {/* Always mounted so it can animate out as well as in */}
             <div
               ref={desktopDropdownRef}
-              className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-lg z-50 overflow-hidden"
+              className={`absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-lg z-50 overflow-hidden origin-top transition-[opacity,translate,scale,visibility] duration-200 ease-out ${
+                desktopDropdownOpen
+                  ? "visible opacity-100 translate-y-0 scale-100"
+                  : "invisible opacity-0 -translate-y-1 scale-[0.98] pointer-events-none"
+              }`}
             >
               {Object.entries(flagImages).map(([lng, flag]) => (
                 <button
@@ -176,7 +209,6 @@ const QuickButtons = () => {
                 </button>
               ))}
             </div>
-          )}
         </div>
 
         {/* Contact Button */}
@@ -200,19 +232,26 @@ const QuickButtons = () => {
         <Menu className="w-6 h-6 text-gray-700" />
       </button>
 
-      {/* Mobile Overlay */}
-      {isOpen && (
-        <>
+      {/* Mobile Overlay — always mounted (md:hidden) so it slides both ways */}
+        <div className="md:hidden">
           {/* Black overlay */}
           <div
-            className="fixed inset-0 z-40 h-[100vh] bg-black/45"
+            className={`fixed inset-0 z-40 bg-black/45 transition-opacity duration-300 ease-out ${
+              isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
             onClick={() => setIsOpen(false)}
+            aria-hidden="true"
           />
-          
+
           {/* Mobile side menu */}
           <div
             style={{zIndex:9999}}
-            className="fixed top-0 right-0 h-[100dvh] w-[80vw] max-w-[320px] bg-white shadow-lg"
+            className={`fixed top-0 right-0 h-[100dvh] w-[80vw] max-w-[320px] bg-white shadow-lg overscroll-contain transition-[translate,visibility] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              isOpen ? "visible translate-x-0" : "invisible translate-x-full"
+            }`}
+            role="dialog"
+            aria-modal="true"
+            aria-hidden={!isOpen}
           >
             <div className="flex h-full flex-col">
               {/* Header */}
@@ -331,8 +370,7 @@ const QuickButtons = () => {
               </div>
             </div>
           </div>
-        </>
-      )}
+        </div>
     </>
   );
 };

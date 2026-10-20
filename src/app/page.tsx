@@ -14,7 +14,7 @@ export const metadata = {
     title: "Invest in Rwanda With Confidence | Bonet Elite Services",
     description:
       "Zero minimum capital. Fast, fully online company registration. 0% corporate tax. Full-service business, HR, relocation and executive travel support in Rwanda.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
     siteName: "Bonet Elite Services",
   },
   twitter: {
@@ -22,7 +22,7 @@ export const metadata = {
     title: "Invest in Rwanda With Confidence | Bonet Elite Services",
     description:
       "Zero minimum capital. Fast, fully online company registration. 0% corporate tax. Full-service business, HR, relocation and executive travel support in Rwanda.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
   
 };

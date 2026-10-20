@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description: "Expert insights on Rwanda business setup, travel tips, investment guides and Kigali tourism. Latest articles from Bonet Elite Services.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 1200,
         height: 630,
         alt: "Bonet Elite Services Blog - Expert Articles on Rwanda Travel, Business & Investment",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Rwanda Business & Travel Blog",
     description: "Expert insights on Rwanda business setup, travel tips, investment guides and Kigali tourism. Latest articles from Bonet Elite Services.",
     images: {
-      url: "https://bonet.rw/assets/images/logo.png",
+      url: "https://bonet.rw/assets/images/bonet-og.png",
       width: 1200,
       height: 630,
       alt: "Bonet Elite Services Blog - Expert Articles on Rwanda Travel, Business & Investment",
@@ -64,7 +64,7 @@ export default function BlogsPage() {
               "name": "Bonet Elite Services",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://bonet.rw/images/logo.png"
+                "url": "https://bonet.rw/assets/images/bonet-logo.png"
               }
             },
             "inLanguage": "en-US"

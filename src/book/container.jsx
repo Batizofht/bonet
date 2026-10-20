@@ -102,7 +102,7 @@ const ContainerWithButtons = () => {
           {showLeftArrow && (
             <button
               onClick={() => scroll('left')}
-              className="absolute left-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white border border-gray-200 rounded flex items-center justify-center text-[#C9A84C] hover:bg-gray-50 transition-all md:hidden"
+              className="absolute left-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white border border-gray-200 rounded flex items-center justify-center text-[#C9A84C] hover:bg-gray-50 transition-colors md:hidden"
               aria-label="Scroll left"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -112,7 +112,7 @@ const ContainerWithButtons = () => {
           {showRightArrow && (
             <button
               onClick={() => scroll('right')}
-              className="absolute right-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white border border-gray-200 rounded flex items-center justify-center text-[#C9A84C] hover:bg-gray-50 transition-all md:hidden"
+              className="absolute right-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white border border-gray-200 rounded flex items-center justify-center text-[#C9A84C] hover:bg-gray-50 transition-colors md:hidden"
               aria-label="Scroll right"
             >
               <ChevronRight className="w-5 h-5" />

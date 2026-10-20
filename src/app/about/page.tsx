@@ -16,7 +16,7 @@ export const metadata = {
     url: "https://bonet.rw/about",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
       },
     ],
     type: "website",
@@ -27,7 +27,7 @@ export const metadata = {
     title: "About Bonet Elite Services | Rwanda Business Experts",
     description:
       "Rwanda's trusted partner for travel, business setup and investment since 2019. Expert consulting, HR and VIP services in Kigali.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
 };
 

@@ -16,7 +16,7 @@ export const metadata = {
       "Professional HR and recruitment services for companies in Rwanda. Talent sourcing, payroll, and compliance.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 800,
         height: 600,
         alt: "HR and Recruitment Services Rwanda",
@@ -29,7 +29,7 @@ export const metadata = {
     site: "@BonetElite",
     title: "HR & Recruitment Rwanda",
     description: "Professional HR and recruitment services for companies in Rwanda.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
 };
 

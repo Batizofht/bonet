@@ -16,7 +16,7 @@ export const metadata = {
       "Expert answers to frequently asked questions about business registration, investment, and living in Rwanda.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 800,
         height: 600,
         alt: "FAQ Rwanda Business Setup",
@@ -29,7 +29,7 @@ export const metadata = {
     site: "@BonetElite",
     title: "FAQ | Rwanda Business & Investment",
     description: "Expert answers about business setup and investment in Rwanda.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
 };
 

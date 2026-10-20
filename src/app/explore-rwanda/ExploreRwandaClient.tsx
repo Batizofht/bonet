@@ -141,7 +141,7 @@ export default function ExploreRwandaClient() {
                     src={img.src}
                     alt={Array.isArray(galleryTitles) ? galleryTitles[i]?.title : ""}
                     loading="lazy"
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-[filter] duration-500"
                   />
                 </div>
                 <div className="p-3">

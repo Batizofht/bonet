@@ -34,7 +34,7 @@ const GoogleMapEmbed = () => {
 
       {/* Map Container */}
       <div 
-        className="bg-white rounded-2xl overflow-hidden border border-blue-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
+        className="bg-white rounded-2xl overflow-hidden border border-blue-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-[box-shadow,translate] duration-300 group cursor-pointer"
       >
         <div className="w-full h-[500px]">
           <iframe

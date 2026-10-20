@@ -12,7 +12,7 @@ export const metadata = {
     description: "Five integrated services for foreign investors in Rwanda: Business Registration, Investment Advisory, HR & Recruitment, Executive Relocation, and Executive Travel. One team, end-to-end delivery.",
     images: [
       {
-        url: "https://bonet.rw/assets/images/logo.png",
+        url: "https://bonet.rw/assets/images/bonet-og.png",
         width: 1200,
         height: 630,
         alt: "Bonet Elite Services - Integrated Services for Foreign Investors in Rwanda",
@@ -25,7 +25,7 @@ export const metadata = {
     site: "@BonetElite",
     title: "All Services for Foreign Investors | Bonet Elite",
     description: "Five integrated services for foreign investors in Rwanda: Business Registration, Investment Advisory, HR & Recruitment, Executive Relocation, and Executive Travel. One team, end-to-end delivery.",
-    images: ["https://bonet.rw/assets/images/logo.png"],
+    images: ["https://bonet.rw/assets/images/bonet-og.png"],
   },
   metadataBase: new URL("https://bonet.rw"),
   robots: "index, follow",

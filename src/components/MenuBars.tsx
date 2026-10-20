@@ -24,8 +24,15 @@ export default function MenuBars() {
         setServicesDropdownOpen(false);
       }
     };
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setServicesDropdownOpen(false);
+    };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
   }, [servicesDropdownOpen]);
 
   const toggleServicesMenu = () => {
@@ -77,11 +84,7 @@ export default function MenuBars() {
           </div>
         </button>
 
-        {servicesDropdownOpen && (
-          <div>
-            <ServicesMegaMenu t={t} onClose={() => setServicesDropdownOpen(false)} />
-          </div>
-        )}
+        <ServicesMegaMenu t={t} open={servicesDropdownOpen} onClose={() => setServicesDropdownOpen(false)} />
       </div>
 
       {/* Secondary Menu Items */}

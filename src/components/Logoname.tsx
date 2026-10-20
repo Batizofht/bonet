@@ -2,13 +2,18 @@ import Link from "next/link";
 
 const LogoName = () => {
   return (
-    <Link href="/" className="flex items-center space-x-2">
-      <img src="/image/logoshot.png" alt="Bonet Elite Services Logo" className="w-20 h-15" loading="lazy" />
-       <div>
-         <h1 className="text-xl font-bold text-[#C9A84C] whitespace-nowrap">
-        Bonet</h1>
-        <p className="text-[12px] text-[#C9A84C] font-semibold" style={{marginTop:-6}}>Elite Services</p>
-       </div>
+    <Link href="/" className="flex items-center shrink-0" aria-label="Bonet Elite Services - Home">
+      <picture>
+        <source srcSet="/assets/images/bonet-logo.webp" type="image/webp" />
+        <img
+          src="/assets/images/bonet-logo.png"
+          alt="Bonet Elite Services Logo"
+          width={1000}
+          height={392}
+          className="h-9 sm:h-10 md:h-11 w-auto max-w-[150px] sm:max-w-[170px] md:max-w-[190px] object-contain"
+          fetchPriority="high"
+        />
+      </picture>
     </Link>
   );
 };
