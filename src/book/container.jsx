@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { Hotel, House, Car, Palmtree } from "lucide-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import PageLoader from "@/components/PageLoader";
 
@@ -86,18 +87,23 @@ const ContainerWithButtons = () => {
 
 
   return (
-    <div className="min-h-screen bg-white pb-16 md:pb-20">
+    <div className="min-h-screen bg-ivory pb-16 md:pb-24">
       {/* Header */}
-      <div className="max-w-6xl mx-auto px-4 pt-8 md:pt-12 pb-4">
-        <div className="text-center">
-          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">{L("Reservations","Réservations","预订")}</p>
-          <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 tracking-wider">{L("Book Now","Réserver maintenant","立即预订")}</h1>
+      <section className="relative isolate overflow-hidden bg-ink-950 text-white">
+        <Image src="/assets/photos/kigali-skyline.jpg" alt="" fill priority sizes="100vw" className="-z-20 object-cover" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink-950/95 via-ink-950/80 to-ink-950/40" />
+        <div className="container-x pb-28 pt-14 md:pb-32 md:pt-20">
+          <p className="eyebrow eyebrow-light">{L("Reservations","Réservations","预订")}</p>
+          <h1 className="h-display mt-3 !text-white text-[2.1rem] sm:text-[2.6rem] md:text-[3.1rem]">{L("Book Now","Réserver maintenant","立即预订")}</h1>
+          <p className="mt-5 max-w-xl text-lg text-white/70">
+            {L("Hotels, apartments, transport and tours across Rwanda, confirmed by our Kigali team.","Hôtels, appartements, transport et circuits au Rwanda, confirmés par notre équipe à Kigali.","卢旺达各地的酒店、公寓、交通和旅游，由我们的基加利团队确认。")}
+          </p>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-6xl mx-auto px-4 pb-8 md:pb-12">
+      <div className="container-x relative z-10 -mt-16 pb-8 md:pb-12">
         {/* Tabs */}
-        <div className="mb-8 bg-white rounded-xl border border-gray-200 p-2 relative">
+        <div className="relative mb-8 rounded-[10px] bg-white p-2 shadow-[0_12px_30px_rgba(7,16,29,0.12)] ring-1 ring-line">
           {/* Left Arrow */}
           {showLeftArrow && (
             <button
@@ -132,10 +138,10 @@ const ContainerWithButtons = () => {
                 <button
                   key={item.key}
                   onClick={() => handleClick(item.key)}
-                  className={`flex items-center gap-2 px-4 md:px-6 py-3 rounded-lg font-semibold text-sm transition-colors duration-200 whitespace-nowrap flex-shrink-0
-                    ${isActive 
-                      ? 'text-white bg-[#C9A84C]' 
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  className={`flex items-center gap-2 px-4 md:px-6 py-3 rounded-md font-display font-semibold text-sm transition-colors duration-200 whitespace-nowrap flex-shrink-0
+                    ${isActive
+                      ? 'text-white bg-ink-900'
+                      : 'text-ink-600 hover:text-ink-900 hover:bg-ivory'
                     }`}
                 >
                   <IconComponent className="w-4 h-4 flex-shrink-0" />

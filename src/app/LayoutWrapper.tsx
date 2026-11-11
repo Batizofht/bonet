@@ -13,7 +13,9 @@ const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const ChatBot = dynamic(() => import("@/components/bot"), { ssr: false });
-const SuperFooterLazy = dynamic(() => import("@/components/Superfooter"), { ssr: false });
+// Server-rendered so crawlers see the footer's internal links
+import SuperFooterLazy from "@/components/Superfooter";
+import CookieBanner from "@/components/CookieBanner";
 
 function i18nReady() {
   if (!i18n.isInitialized) return false;
@@ -74,26 +76,62 @@ function TopLoader() {
   );
 }
 
-// AOS-style section entrance animations (reference-site smoothness),
-// IntersectionObserver + CSS only — no animation library.
+// AOS-style entrance animations, IntersectionObserver + CSS only.
+// Works on content *blocks* (cards, headings, rows), not whole sections:
+// a page whose one big section starts on screen still animates everything
+// below the fold, so every page behaves the same.
+const REVEAL_MS = 700;
+const STAGGER_MS = 80;
+const MAX_STAGGER = 4;
+const NO_REVEAL = 'nav, header, footer, script, style, [data-no-reveal], [role="dialog"]';
+// Treated as one block even when tall — never split these up
+const ATOMIC = 'table, form, p, h1, h2, h3, h4, h5, h6, img, picture, video, iframe, svg, a, button, article';
+
 function ScrollReveal() {
   const pathname = usePathname();
   const firstRun = useRef(true);
 
   useIsomorphicLayoutEffect(() => {
     if (typeof IntersectionObserver === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const processed = new Set<Element>();
+    const decided = new Set<HTMLElement>(); // every block already handled
+    // Hidden blocks, each held at opacity 0 by a Web Animation. No class or
+    // style attribute is touched, so React hydration never sees a mismatch.
+    const waiting = new Map<HTMLElement, Animation>();
+
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
-            io.unobserve(entry.target);
-          }
+        // threshold 0: reveal as soon as any pixel shows — tall blocks can
+        // never get stuck. Blocks already scrolled past show immediately.
+        const entering = entries
+          .filter((e) => e.isIntersecting || e.boundingClientRect.bottom < 0)
+          .sort((a, b) =>
+            a.boundingClientRect.top - b.boundingClientRect.top ||
+            a.boundingClientRect.left - b.boundingClientRect.left
+          );
+        entering.forEach((entry, i) => {
+          const el = entry.target as HTMLElement;
+          io.unobserve(el);
+          waiting.get(el)?.cancel();
+          waiting.delete(el);
+          if (!entry.isIntersecting) return;
+          // Cards that enter together cascade in reading order
+          el.animate(
+            [
+              { opacity: 0 },
+              { opacity: 1 },
+            ],
+            {
+              duration: REVEAL_MS,
+              delay: Math.min(i, MAX_STAGGER) * STAGGER_MS,
+              easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+              fill: 'backwards',
+            }
+          );
         });
       },
-      { rootMargin: '0px 0px -6% 0px', threshold: 0.05 }
+      { rootMargin: '0px 0px -8% 0px', threshold: 0 }
     );
 
     // After a route change the window is about to jump to the top, so
@@ -101,41 +139,68 @@ function ScrollReveal() {
     const navigated = !firstRun.current;
     firstRun.current = false;
 
+    const inFlow = (el: HTMLElement) => {
+      const pos = getComputedStyle(el).position;
+      return pos !== 'absolute' && pos !== 'fixed';
+    };
+
+    // Split tall containers into their children until blocks are no
+    // taller than ~a screen, then animate each block on its own.
+    let splitAt = 0;
+    const collect = (el: HTMLElement, out: HTMLElement[], depth: number) => {
+      if (decided.has(el) || el.matches(NO_REVEAL)) return;
+      const h = el.offsetHeight;
+      if (h === 0) return;
+      // Only tall containers get split — and only they pay for style reads
+      if (h <= splitAt || depth >= 8 || el.matches(ATOMIC) || el.childElementCount > 30) {
+        out.push(el);
+        return;
+      }
+      const kids = Array.from(el.children).filter(
+        (k): k is HTMLElement => k instanceof HTMLElement && !k.matches(NO_REVEAL) && k.offsetHeight > 0 && inFlow(k)
+      );
+      if (kids.length) kids.forEach((k) => collect(k, out, depth + 1));
+      else out.push(el);
+    };
+
     const scan = () => {
-      const viewportBottom = window.innerHeight;
+      const vh = window.innerHeight;
+      // Phones: animate bigger groups. Every animated block costs a GPU
+      // layer + repaint, and a short screen would otherwise split a page
+      // into dozens of them (measured: that is what made phone scroll stutter).
+      splitAt = vh * (window.innerWidth < 768 ? 1.8 : 0.9);
       const offset = navigated ? window.scrollY : 0;
-      document.querySelectorAll('section').forEach((el) => {
-        if (processed.has(el)) return;
-        processed.add(el);
-        // Never touch nav/header chrome, hidden menus, or opt-outs
-        if (el.closest('nav, header, [data-no-reveal]')) return;
-        // Nested sections ride along with their parent — no double motion
-        if (el.parentElement?.closest('section.js-reveal')) return;
-        // Already on screen: show it now. Hiding it would flash the
+      const blocks: HTMLElement[] = [];
+      Array.from(document.body.children).forEach((root) => {
+        if (root instanceof HTMLElement && inFlow(root)) collect(root, blocks, 0);
+      });
+      blocks.forEach((el) => {
+        decided.add(el);
+        // Already on screen: leave it alone. Hiding it would flash the
         // first paint and delay the largest contentful paint.
-        if (el.getBoundingClientRect().top + offset < viewportBottom) return;
-        el.classList.add('js-reveal');
+        if (el.getBoundingClientRect().top + offset < vh) return;
+        if (typeof el.animate !== 'function') return;
+        waiting.set(el, el.animate([{ opacity: 0 }, { opacity: 0 }], { duration: 1, fill: 'forwards' }));
         io.observe(el);
       });
     };
 
     scan();
-    // Catch sections that mount later (lazy tabs, suspense, chat…)
-    let raf = 0;
-    const mo = new MutationObserver(() => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(scan);
+    // Catch content that mounts later (lazy sections, API data). Debounced
+    // so React updates never trigger a layout read on every frame.
+    let timer = 0;
+    const mo = new MutationObserver((records) => {
+      if (records.every((r) => (r.target as Element).closest?.('[data-no-reveal], nav'))) return;
+      clearTimeout(timer);
+      timer = window.setTimeout(scan, 120);
     });
     mo.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      cancelAnimationFrame(raf);
+      clearTimeout(timer);
       io.disconnect();
       mo.disconnect();
-      processed.forEach((el) => {
-        el.classList.remove('js-reveal');
-        el.classList.remove('is-revealed');
-      });
+      waiting.forEach((hold) => hold.cancel());
     };
   }, [pathname]);
 
@@ -193,10 +258,17 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
         <PageLoader />
       ) : (
         <>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100000] focus:rounded-lg focus:bg-gold-500 focus:px-4 focus:py-2 focus:text-ink-950"
+          >
+            Skip to content
+          </a>
           <Navbar />
           <ChatBot />
-          {children}
+          <main id="main">{children}</main>
           <SuperFooterLazy />
+          <CookieBanner />
         </>
       )}
     </ToastProvider>

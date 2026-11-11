@@ -35,7 +35,7 @@ export const metadata = {
 export default function BlogBusinessPage() {
   return (
     <div className="min-h-screen">
-      <FirstService
+      <FirstService section="blog"
         image="/image/city.jpg"
         subtitleKey="pageHero.blogBusiness.subtitle"
         titleKey="pageHero.blogBusiness.title"

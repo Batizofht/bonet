@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 import BlogsClient from './BlogsClient'
+import MarketGuides from '@/components/insights/MarketGuides'
+import { PageHero } from '@/components/ui/kit'
 
 export const metadata: Metadata = {
   title: "Rwanda Business & Travel Blog",
@@ -26,8 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@BonetElite",
-    creator: "@BonetElite",
+    site: "@BonetPJ",
+    creator: "@BonetPJ",
     title: "Rwanda Business & Travel Blog",
     description: "Expert insights on Rwanda business setup, travel tips, investment guides and Kigali tourism. Latest articles from Bonet Elite Services.",
     images: {
@@ -71,7 +73,16 @@ export default function BlogsPage() {
           })
         }}
       />
+      <PageHero
+        image="/assets/images/kiga1.jpeg"
+        imageAlt="Kigali skyline at dusk"
+        eyebrow="Insights"
+        title="Rwanda business, investment & travel insights"
+        lead="Expert articles from our Kigali team, plus in-depth guides for investors in the United States, the UK, France, Europe, Germany and Belgium."
+        crumbs={[{ name: "Home", href: "/" }, { name: "Blog" }]}
+      />
       <BlogsClient />
+      <MarketGuides />
     </>
   );
 }

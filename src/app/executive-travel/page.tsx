@@ -1,4 +1,5 @@
 import ExecutiveTravelClient from "./ExecutiveTravelClient";
+import RelatedGuides from "@/components/insights/RelatedGuides";
 
 export const metadata = {
   title: "Executive Travel Rwanda | VIP Concierge",
@@ -26,7 +27,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@BonetElite",
+    site: "@BonetPJ",
     title: "Executive Travel Rwanda",
     description: "Luxury executive travel and VIP concierge services in Rwanda.",
     images: ["https://bonet.rw/assets/images/bonet-og.png"],
@@ -34,5 +35,10 @@ export const metadata = {
 };
 
 export default function ExecutiveTravelPage() {
-  return <ExecutiveTravelClient />;
+  return (
+    <>
+      <ExecutiveTravelClient />
+      <RelatedGuides service="/executive-travel" />
+    </>
+  );
 }

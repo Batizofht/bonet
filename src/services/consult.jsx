@@ -1,322 +1,104 @@
-"use client"
-import { openWhatsApp, BONET_WHATSAPP } from "@/lib/whatsapp";
+"use client";
 import { useState } from "react";
-import { apiPost } from "@/lib/api";
-import { modernToast } from "@/components/ui/toast";
-import { Field, TextInput, TextArea, SubmitButton } from "@/components/ui/inputs";
 import { useTranslation } from "react-i18next";
-import {
-  Phone,
-  MessageCircle,
-  X,
-  TrendingUp,
-  BarChart3,
-  DollarSign,
-  ClipboardCheck,
-  Target,
-  Users,
-  Mail,
-  FileText,
-  Lightbulb
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import InquiryModal from "@/components/InquiryModal";
+import { MediaRow, WhatsAppButton, SectionHeader, CtaBand } from "@/components/ui/kit";
 
 const services = [
-  {
-    titleKey: "businessConsulting.services.businessPlan.title",
-    subtitleKey: "businessConsulting.services.businessPlan.subtitle",
-    descriptionKey: "businessConsulting.services.businessPlan.description",
-    image: "../assets/images/dev.webp",
-    align: "left",
-    icon: Target,
-  },
-  {
-    titleKey: "businessConsulting.services.projectPlanning.title",
-    subtitleKey: "businessConsulting.services.projectPlanning.subtitle",
-    descriptionKey: "businessConsulting.services.projectPlanning.description",
-    image: "../assets/images/ff.jpg",
-    align: "right",
-    icon: BarChart3,
-  },
-  {
-    titleKey: "businessConsulting.services.financialAdvisory.title",
-    subtitleKey: "businessConsulting.services.financialAdvisory.subtitle",
-    descriptionKey: "businessConsulting.services.financialAdvisory.description",
-    image: "../assets/images/rr.webp",
-    align: "left",
-    icon: DollarSign,
-  },
-  {
-    titleKey: "businessConsulting.services.auditing.title",
-    subtitleKey: "businessConsulting.services.auditing.subtitle",
-    descriptionKey: "businessConsulting.services.auditing.description",
-    image: "../assets/images/audit.jpg",
-    align: "right",
-    icon: ClipboardCheck,
-  },
+  { base: "businessConsulting.services.businessPlan", image: "/assets/images/s1.jpeg" },
+  { base: "businessConsulting.services.projectPlanning", image: "/assets/photos/conference-2.jpg" },
+  { base: "businessConsulting.services.financialAdvisory", image: "/assets/images/s2.jpeg" },
+  { base: "businessConsulting.services.auditing", image: "/assets/photos/kigali-cbd.jpg" },
 ];
-
-const initialValues = {
-  fullnames: "",
-  email: "",
-  phone_number: "",
-  service_description: "",
-};
 
 export default function BusinessConsulting() {
   const { t, i18n } = useTranslation();
-  const L = (en, fr, ch) =>
-    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [values, setValues] = useState(initialValues);
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
+  const L = (en, fr, ch) => (i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en);
+  const [open, setOpen] = useState(false);
+  const f = "businessConsulting.form";
 
-  const set = (k, v) => {
-    setValues((p) => ({ ...p, [k]: v }));
-    setErrors((p) => ({ ...p, [k]: undefined }));
-  };
-
-  const handleOpenWhatsApp = () => openWhatsApp({ phone: BONET_WHATSAPP });
-
-  const validate = () => {
-    const next = {};
-    if (!values.fullnames.trim())
-      next.fullnames = t("businessConsulting.form.fullnames.error");
-    if (!values.email.trim()) {
-      next.email = t("businessConsulting.form.email.required");
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) {
-      next.email = t("businessConsulting.form.email.invalid");
-    }
-    if (!values.phone_number.trim())
-      next.phone_number = t("businessConsulting.form.phone.error");
-    if (!values.service_description.trim())
-      next.service_description = t("businessConsulting.form.description.error");
-    setErrors(next);
-    return Object.keys(next).length === 0;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validate()) return;
-    setLoading(true);
-    try {
-      await apiPost(
-        "https://api.bonet.rw/bonetBackend/backend/public/consulting",
-        values
-      );
-      modernToast.success(t("ContactMessage.success", { name: values.fullnames }));
-      setValues(initialValues);
-      setErrors({});
-      setIsPopupOpen(false);
-    } catch (err) {
-      modernToast.error(t("businessConsulting.toast.serverError"));
-    } finally {
-      setLoading(false);
-    }
-  };
+  const tags = [
+    L("Strategic Planning", "Planification Stratégique", "战略规划"),
+    L("Expert Guidance", "Orientation d'Expert", "专家指导"),
+    L("Proven Results", "Résultats Prouvés", "成效卓著"),
+  ];
 
   return (
-    <div>
-      {/* Header Section with bg-gray-50 */}
-      <section className="border-y border-gray-100 bg-gray-50/50">
-        <div className="max-w-6xl mx-auto px-4 py-20">
-          <div className="text-center">
-            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-              {L("Services","Services","服务")}
-            </span>
-            <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 uppercase tracking-wider">
-              {L("Business Consulting","Conseil en Affaires","企业咨询")}
-            </h1>
-            <p className="text-gray-500 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-              {t("businessConsulting.title")}
-            </p>
-          </div>
-
-          {/* Buttons */}
-          <div className="flex justify-center mt-10">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-              <button
-                onClick={() => setIsPopupOpen(true)}
-                  className="inline-flex items-center gap-2 bg-[#C9A84C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B8973B] transition-colors"
-                >
-                  <Lightbulb className="w-4 h-4" />
-                  {t("businessConsulting.cta")}
+    <>
+      <section className="bg-white py-20 md:py-28">
+        <div className="container-x">
+          <SectionHeader
+            eyebrow={L("Services", "Services", "服务")}
+            title={L("Business Consulting", "Conseil en Affaires", "企业咨询")}
+            lead={L("Practical advisory for companies entering or growing in Rwanda, delivered by our finance and strategy team in Kigali.", "Un accompagnement concret pour les entreprises qui s'implantent ou se développent au Rwanda, par notre équipe finance et stratégie à Kigali.", "为进入或拓展卢旺达市场的企业提供务实咨询，由我们在基加利的财务与战略团队提供。")}
+            action={
+              <div className="flex flex-wrap gap-3">
+                <button type="button" onClick={() => setOpen(true)} className="btn btn-ink">
+                  {L("Request a consultation", "Demander une consultation", "申请咨询")}
+                  <ArrowRight className="h-4 w-4" />
                 </button>
-
-                <button
-                  onClick={handleOpenWhatsApp}
-                  className="inline-flex items-center gap-2 border border-gray-300 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-colors"
-              >
-                <MessageCircle className="w-4 h-4" />
-                {t("businessConsulting.quickContact")}
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Cards */}
-      <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-4 py-20">
-          <div className="grid gap-10">
-            {services.map((service, index) => {
-              const IconComponent = service.icon;
-              return (
-                <div
-                  key={index}
-                  className={`flex flex-col lg:flex-row items-center ${
-                    service.align === "right" ? "lg:flex-row-reverse" : ""
-                  }`}
-                >
-                  {/* Image */}
-                  <div className="lg:w-2/5 w-full">
-                    <div className="relative overflow-hidden rounded-xl border border-gray-200 bg-gray-50 h-80 lg:h-96">
-                      <img
-                        src={service.image}
-                        alt={t(service.titleKey)}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="lg:w-3/5 w-full px-0 lg:px-12 py-8 lg:py-0">
-                    <div className="flex items-center gap-3 mb-2">
-                      <IconComponent className="w-6 h-6 text-[#C9A84C] flex-shrink-0" strokeWidth={1.5} />
-                      <h3 className="text-base lg:text-lg font-bold text-gray-900">
-                        {t(service.titleKey)}
-                      </h3>
-                    </div>
-                    <p className="text-gray-500 font-medium text-xs uppercase tracking-wide mt-3 mb-4">
-                      {t(service.subtitleKey)}
-                    </p>
-
-                    <p className="text-gray-600 leading-relaxed">
-                      {t(service.descriptionKey)}
-                    </p>
-
-                    {/* Features */}
-                    <div className="flex flex-wrap gap-4 mt-6">
-                      {[
-                        L("Strategic Planning","Planification Stratégique","战略规划"),
-                        L("Expert Guidance","Orientation d'Expert","专家指导"),
-                        L("Proven Results","Résultats Prouvés","成效卓著")
-                      ].map((feature, i) => (
-                        <div key={i} className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded"></div>
-                          <span className="text-sm text-gray-600">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Popup Modal */}
-      {isPopupOpen && (
-        <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="relative bg-white rounded-xl w-full max-w-md p-6 md:p-8 border border-gray-200 my-auto max-h-[90vh] overflow-y-auto">
-            {/* Close button */}
-            <button
-              onClick={() => setIsPopupOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors"
-            >
-              <X className="w-4 h-4 text-gray-600" />
-            </button>
-
-            <div>
-              {/* Header */}
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {t("businessConsulting.title")}
-                </h3>
-                <p className="text-gray-500 text-sm">
-                  {t("businessConsulting.form.instructions")}
-                </p>
+                <WhatsAppButton>{t("businessConsulting.quickContact")}</WhatsAppButton>
               </div>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <Field
-                  label={t("businessConsulting.form.fullnames.label")}
-                  error={errors.fullnames}
-                  required
-                >
-                  <TextInput
-                    icon={<Users className="w-4 h-4" />}
-                    placeholder={t("businessConsulting.form.fullnames.placeholder")}
-                    value={values.fullnames}
-                    onChange={(e) => set("fullnames", e.target.value)}
-                    error={errors.fullnames}
-                  />
-                </Field>
-
-                <Field
-                  label={t("businessConsulting.form.email.label")}
-                  error={errors.email}
-                  required
-                >
-                  <TextInput
-                    icon={<Mail className="w-4 h-4" />}
-                    placeholder={t("businessConsulting.form.email.placeholder")}
-                    type="email"
-                    value={values.email}
-                    onChange={(e) => set("email", e.target.value)}
-                    error={errors.email}
-                  />
-                </Field>
-
-                <Field
-                  label={t("businessConsulting.form.phone.label")}
-                  error={errors.phone_number}
-                  required
-                >
-                  <TextInput
-                    icon={<Phone className="w-4 h-4" />}
-                    placeholder={t("businessConsulting.form.phone.placeholder")}
-                    value={values.phone_number}
-                    onChange={(e) => set("phone_number", e.target.value)}
-                    error={errors.phone_number}
-                  />
-                </Field>
-
-                <Field
-                  label={t("businessConsulting.form.description.label")}
-                  error={errors.service_description}
-                  required
-                >
-                  <TextArea
-                    rows={4}
-                    placeholder={t("businessConsulting.form.description.placeholder")}
-                    value={values.service_description}
-                    onChange={(e) => set("service_description", e.target.value)}
-                    error={errors.service_description}
-                  />
-                </Field>
-
-                <div className="flex justify-end gap-3 pt-4">
-                  <button
-                    onClick={() => setIsPopupOpen(false)}
-                    type="button"
-                    className="px-6 py-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors font-semibold"
-                  >
-                    {t("businessConsulting.form.buttons.cancel")}
-                  </button>
-                  <SubmitButton
-                    loading={loading}
-                    className="w-auto px-6 py-3 min-h-0 text-base rounded-lg"
-                  >
-                    {t("businessConsulting.form.buttons.submit")}
-                  </SubmitButton>
-                </div>
-              </form>
-            </div>
+            }
+          />
+          <div className="space-y-20 md:space-y-28">
+            {services.map((s, i) => (
+              <MediaRow
+                key={s.base}
+                index={i}
+                reverse={i % 2 === 1}
+                image={s.image}
+                imageAlt={t(`${s.base}.title`)}
+                eyebrow={t(`${s.base}.subtitle`)}
+                title={t(`${s.base}.title`)}
+                footer={
+                  <ul className="flex flex-wrap gap-2">
+                    {tags.map((tag) => (
+                      <li key={tag} className="rounded-full border border-line bg-ivory px-3.5 py-1.5 text-[13px] font-medium text-ink-700">{tag}</li>
+                    ))}
+                  </ul>
+                }
+              >
+                <p>{t(`${s.base}.description`)}</p>
+              </MediaRow>
+            ))}
           </div>
         </div>
-      )}
-    </div>
+      </section>
+
+      <CtaBand
+        image="/assets/images/inv.jpg"
+        eyebrow={L("Expert Consulting", "Conseil d'experts", "专家咨询")}
+        title={t("businessConsulting.cta")}
+        actions={
+          <>
+            <button type="button" onClick={() => setOpen(true)} className="btn btn-gold btn-lg">
+              {L("Request a consultation", "Demander une consultation", "申请咨询")}
+              <ArrowRight className="h-4 w-4" />
+            </button>
+            <WhatsAppButton variant="ghost-light" className="btn-lg">WhatsApp</WhatsAppButton>
+          </>
+        }
+      />
+
+      <InquiryModal
+        open={open}
+        onClose={() => setOpen(false)}
+        endpoint="https://api.bonet.rw/bonetBackend/backend/public/consulting"
+        labels={{
+          title: t("businessConsulting.title"),
+          description: t(`${f}.instructions`),
+          name: { label: t(`${f}.fullnames.label`), placeholder: t(`${f}.fullnames.placeholder`), error: t(`${f}.fullnames.error`) },
+          email: { label: t(`${f}.email.label`), placeholder: t(`${f}.email.placeholder`), required: t(`${f}.email.required`), invalid: t(`${f}.email.invalid`) },
+          phone: { label: t(`${f}.phone.label`), placeholder: t(`${f}.phone.placeholder`), error: t(`${f}.phone.error`) },
+          message: { label: t(`${f}.description.label`), placeholder: t(`${f}.description.placeholder`), error: t(`${f}.description.error`) },
+          cancel: t(`${f}.buttons.cancel`),
+          submit: t(`${f}.buttons.submit`),
+          success: (name) => t("ContactMessage.success", { name }),
+          serverError: t("businessConsulting.toast.serverError"),
+        }}
+      />
+    </>
   );
 }

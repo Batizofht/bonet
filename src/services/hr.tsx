@@ -1,323 +1,104 @@
-'use client'
-import { openWhatsApp, BONET_WHATSAPP } from "@/lib/whatsapp";
+"use client";
 import { useState } from "react";
-import { apiPost } from "@/lib/api";
-import { modernToast } from "@/components/ui/toast";
-import { Field, TextInput, TextArea, SubmitButton } from "@/components/ui/inputs";
+import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import {
-  Phone,
-  MessageCircle,
-  X,
-  Users,
-  FileText,
-  GraduationCap,
-  CreditCard,
-  UserPlus,
-  Shield,
-  Target,
-  Mail,
-  FileEdit
-} from "lucide-react";
+import { ArrowRight, UserPlus, Shield, GraduationCap, CreditCard } from "lucide-react";
+import Image from "next/image";
+import InquiryModal from "@/components/InquiryModal";
+import { WhatsAppButton, SectionHeader, CtaBand } from "@/components/ui/kit";
 
 const hrServices = [
-  {
-    image: "../assets/images/talent.jpg",
-    titleKey: "hrServices.recruitment.title",
-    subtitleKey: "hrServices.recruitment.subtitle",
-    descriptionKey: "hrServices.recruitment.description",
-    icon: UserPlus,
-  },
-  {
-    image: "https://site-media.citationcanada.com/app/uploads/2024/09/07203528/Blog-15-Essential-HR-Policies-Every-Employee-Handbook-Needs-Feature.png",
-    titleKey: "hrServices.compliance.title",
-    subtitleKey: "hrServices.compliance.subtitle",
-    descriptionKey: "hrServices.compliance.description",
-    icon: Shield,
-  },
-  {
-    image: "../assets/images/tra.jpeg",
-    titleKey: "hrServices.training.title",
-    subtitleKey: "hrServices.training.subtitle",
-    descriptionKey: "hrServices.training.description",
-    icon: GraduationCap,
-  },
-  {
-    image: "../assets/images/pay.png",
-    titleKey: "hrServices.payroll.title",
-    subtitleKey: "hrServices.payroll.subtitle",
-    descriptionKey: "hrServices.payroll.description",
-    icon: CreditCard,
-  },
+  { base: "hrServices.recruitment", image: "/assets/images/talent.jpg", icon: UserPlus },
+  { base: "hrServices.compliance", image: "/assets/images/rra1.jpg", icon: Shield },
+  { base: "hrServices.training", image: "/assets/images/s3.jpeg", icon: GraduationCap },
+  { base: "hrServices.payroll", image: "/assets/photos/kigali-cbd-3.jpg", icon: CreditCard },
 ];
-
-const initialValues = {
-  fullnames: "",
-  email: "",
-  phone_number: "",
-  service_description: "",
-};
-
-type Errors = Partial<Record<keyof typeof initialValues, string>>;
 
 export default function HRAdminSupport() {
   const { t, i18n } = useTranslation();
-  const L = (en: string, fr: string, ch: string) =>
-    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [values, setValues] = useState(initialValues);
-  const [errors, setErrors] = useState<Errors>({});
-  const [loading, setLoading] = useState(false);
-
-  const openModal = () => setIsModalVisible(true);
-  const closeModal = () => setIsModalVisible(false);
-
-  const set = (k: keyof typeof initialValues, v: string) => {
-    setValues((p) => ({ ...p, [k]: v }));
-    setErrors((p) => ({ ...p, [k]: undefined }));
-  };
-
-  const handleOpenWhatsApp = () => openWhatsApp({ phone: BONET_WHATSAPP });
-
-  const validate = (): boolean => {
-    const next: Errors = {};
-    if (!values.fullnames.trim())
-      next.fullnames = t("hrModal.form.fullnames.error");
-    if (!values.email.trim()) {
-      next.email = t("hrModal.form.email.required");
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) {
-      next.email = t("hrModal.form.email.invalid");
-    }
-    if (!values.phone_number.trim())
-      next.phone_number = t("hrModal.form.phone.error");
-    if (!values.service_description.trim())
-      next.service_description = t("hrModal.form.description.error");
-    setErrors(next);
-    return Object.keys(next).length === 0;
-  };
-
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validate()) return;
-    setLoading(true);
-    try {
-      await apiPost(
-        "https://api.bonet.rw/bonetBackend/backend/public/hrsupport",
-        values
-      );
-      modernToast.success(t("ContactMessage.success", { name: values.fullnames }));
-      setValues(initialValues);
-      setErrors({});
-      closeModal();
-    } catch (error) {
-      console.error("Submission error:", error);
-      modernToast.error(t("hrModal.toast.error"));
-    } finally {
-      setLoading(false);
-    }
-  };
+  const L = (en: string, fr: string, ch: string) => (i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en);
+  const [open, setOpen] = useState(false);
+  const f = "hrModal.form";
 
   return (
-    <div>
-      {/* Header */}
-      <section className="border-y border-gray-100 bg-gray-50/50">
-        <div className="max-w-6xl mx-auto px-4 py-20">
-          <div className="text-center">
-            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-              {L("Services","Services","服务")}
-            </span>
-            <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 uppercase tracking-wider">
-              {L("HR & Admin Support","Soutien RH et Administratif","人力资源与行政支持")}
-            </h1>
-            <p className="text-gray-500 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-              {t("hrServices.title")}
-            </p>
-
-            {/* Buttons */}
-            <div className="flex justify-center mt-10">
-              <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-                <button
-                  onClick={openModal}
-                  className="inline-flex items-center gap-2 bg-[#C9A84C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B8973B] transition-colors"
-                >
-                  <Users className="w-4 h-4" />
+    <>
+      <section className="bg-white py-20 md:py-28">
+        <div className="container-x">
+          <SectionHeader
+            eyebrow={L("Services", "Services", "服务")}
+            title={L("HR & Admin Support", "Soutien RH et Administratif", "人力资源与行政支持")}
+            lead={L("Contracts, payroll, policies, training and permits, kept compliant with Rwandan labour law.", "Contrats, paie, politiques, formation et permis, conformes au droit du travail rwandais.", "合同、薪资、制度、培训和许可证，均符合卢旺达劳动法。")}
+            action={
+              <div className="flex flex-wrap gap-3">
+                <button type="button" onClick={() => setOpen(true)} className="btn btn-ink">
                   {t("hrServices.ctaContact")}
+                  <ArrowRight className="h-4 w-4" />
                 </button>
-
-                <button
-                  onClick={handleOpenWhatsApp}
-                  className="inline-flex items-center gap-2 border border-gray-300 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  {t("hrServices.ctaWhatsApp")}
-                </button>
+                <WhatsAppButton>{t("hrServices.ctaWhatsApp")}</WhatsAppButton>
               </div>
-            </div>
+            }
+          />
 
-            {/* Link to Recruitment */}
-            <div className="mt-6">
-              <a
-                href="/hr-recruitment"
-                className="inline-flex items-center gap-1.5 text-[#C9A84C] font-semibold text-sm hover:underline"
-              >
-                {L("Looking for recruitment services? View our talent solutions","Vous cherchez des services de recrutement ? Découvrez nos solutions de talents","寻找招聘服务？查看我们的人才解决方案")}
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Cards */}
-      <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-4 py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {hrServices.map((service, index) => {
-              const IconComponent = service.icon;
+          <div className="grid gap-6 md:grid-cols-2">
+            {hrServices.map((s) => {
+              const Icon = s.icon;
               return (
-                <div
-                  key={index}
-                  className="flex flex-col md:flex-row rounded-xl border border-gray-200 bg-white overflow-hidden"
-                >
-                  {/* Image */}
-                  <div className="md:w-2/5 w-full">
-                    <div className="relative h-48 md:h-full overflow-hidden bg-gray-100">
-                      <img
-                        src={service.image}
-                        alt={t(service.titleKey)}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
+                <article key={s.base} className="card card-hover group overflow-hidden">
+                  <div className="relative aspect-[16/9] overflow-hidden bg-sand">
+                    <Image src={s.image} alt={t(`${s.base}.title`)} fill sizes="(min-width: 768px) 600px, 100vw" className="object-cover" />
                   </div>
-
-                  {/* Content */}
-                  <div className="md:w-3/5 w-full p-6 flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <IconComponent className="w-5 h-5 text-[#C9A84C] flex-shrink-0" strokeWidth={1.5} />
-                        <h4 className="text-base font-bold text-gray-900">
-                          {t(service.titleKey)}
-                        </h4>
-                      </div>
-                      <p className="text-gray-500 font-medium text-xs uppercase tracking-wide mb-3">
-                        {t(service.subtitleKey)}
-                      </p>
-                      <p className="text-gray-600 leading-relaxed text-sm">
-                        {t(service.descriptionKey)}
-                      </p>
-                    </div>
+                  <div className="p-7">
+                    <p className="flex items-center gap-2 text-[11.5px] font-semibold uppercase tracking-[0.12em] text-gold-700"><Icon className="h-4 w-4" />{t(`${s.base}.subtitle`)}</p>
+                    <h3 className="mt-2 text-[1.2rem] font-semibold leading-snug text-ink-900">{t(`${s.base}.title`)}</h3>
+                    <p className="mt-3 text-[15px] leading-relaxed text-ink-500">{t(`${s.base}.description`)}</p>
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>
+
+          <div className="mt-10 flex flex-col items-start gap-4 rounded-[10px] border border-line p-7 md:flex-row md:items-center md:justify-between">
+            <p className="text-[15px] font-medium text-ink-800">
+              {L("Looking for recruitment services? View our talent solutions", "Vous cherchez des services de recrutement ? Découvrez nos solutions de talents", "寻找招聘服务？查看我们的人才解决方案")}
+            </p>
+            <Link href="/hr-recruitment" className="link-arrow">{L("Recruitment", "Recrutement", "招聘")}<ArrowRight className="h-4 w-4" /></Link>
+          </div>
         </div>
       </section>
 
-      {/* Popup Modal */}
-      {isModalVisible && (
-        <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="relative bg-white rounded-xl w-full max-w-md p-6 md:p-8 border border-gray-200 my-auto max-h-[90vh] overflow-y-auto">
-            {/* Close button */}
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors"
-            >
-              <X className="w-4 h-4 text-gray-600" />
+      <CtaBand
+        image="/assets/images/s3.jpeg"
+        eyebrow={L("HR & Admin Support", "Soutien RH et Administratif", "人力资源与行政支持")}
+        title={L("Build a compliant team in Rwanda", "Constituez une équipe conforme au Rwanda", "在卢旺达组建合规团队")}
+        lead={t("pageHero.hrsupport.desc")}
+        actions={
+          <>
+            <button type="button" onClick={() => setOpen(true)} className="btn btn-gold btn-lg">
+              {t("hrServices.ctaContact")}
+              <ArrowRight className="h-4 w-4" />
             </button>
+            <WhatsAppButton variant="ghost-light" className="btn-lg">WhatsApp</WhatsAppButton>
+          </>
+        }
+      />
 
-            <div>
-              {/* Header */}
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {t("hrModal.title")}
-                </h3>
-                <p className="text-gray-500 text-sm">
-                  {t("hrModal.instructions")}
-                </p>
-              </div>
-
-              <form onSubmit={onSubmit} className="space-y-4">
-                <Field
-                  label={t("hrModal.form.fullnames.label")}
-                  error={errors.fullnames}
-                  required
-                >
-                  <TextInput
-                    icon={<Users className="w-4 h-4" />}
-                    placeholder={t("hrModal.form.fullnames.placeholder")}
-                    value={values.fullnames}
-                    onChange={(e) => set("fullnames", e.target.value)}
-                    error={errors.fullnames}
-                  />
-                </Field>
-
-                <Field
-                  label={t("hrModal.form.email.label")}
-                  error={errors.email}
-                  required
-                >
-                  <TextInput
-                    icon={<Mail className="w-4 h-4" />}
-                    placeholder={t("hrModal.form.email.placeholder")}
-                    type="email"
-                    value={values.email}
-                    onChange={(e) => set("email", e.target.value)}
-                    error={errors.email}
-                  />
-                </Field>
-
-                <Field
-                  label={t("hrModal.form.phone.label")}
-                  error={errors.phone_number}
-                  required
-                >
-                  <TextInput
-                    icon={<Phone className="w-4 h-4" />}
-                    placeholder={t("hrModal.form.phone.placeholder")}
-                    value={values.phone_number}
-                    onChange={(e) => set("phone_number", e.target.value)}
-                    error={errors.phone_number}
-                  />
-                </Field>
-
-                <Field
-                  label={t("hrModal.form.description.label")}
-                  error={errors.service_description}
-                  required
-                >
-                  <TextArea
-                    placeholder={t("hrModal.form.description.placeholder")}
-                    rows={4}
-                    value={values.service_description}
-                    onChange={(e) => set("service_description", e.target.value)}
-                    error={errors.service_description}
-                  />
-                </Field>
-
-                <div className="flex justify-end gap-3 pt-4">
-                  <button
-                    onClick={closeModal}
-                    type="button"
-                    className="px-6 py-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors font-semibold"
-                  >
-                    {t("hrModal.form.buttons.cancel")}
-                  </button>
-                  <SubmitButton
-                    loading={loading}
-                    className="w-auto px-6 py-3 min-h-0 text-base rounded-lg"
-                  >
-                    {t("hrModal.form.buttons.submit")}
-                  </SubmitButton>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+      <InquiryModal
+        open={open}
+        onClose={() => setOpen(false)}
+        endpoint="https://api.bonet.rw/bonetBackend/backend/public/hrsupport"
+        labels={{
+          title: t("hrModal.title"),
+          description: t("hrModal.instructions"),
+          name: { label: t(`${f}.fullnames.label`), placeholder: t(`${f}.fullnames.placeholder`), error: t(`${f}.fullnames.error`) },
+          email: { label: t(`${f}.email.label`), placeholder: t(`${f}.email.placeholder`), required: t(`${f}.email.required`), invalid: t(`${f}.email.invalid`) },
+          phone: { label: t(`${f}.phone.label`), placeholder: t(`${f}.phone.placeholder`), error: t(`${f}.phone.error`) },
+          message: { label: t(`${f}.description.label`), placeholder: t(`${f}.description.placeholder`), error: t(`${f}.description.error`) },
+          cancel: t(`${f}.buttons.cancel`),
+          submit: t(`${f}.buttons.submit`),
+          success: (name: string) => t("ContactMessage.success", { name }),
+          serverError: t("hrModal.toast.error"),
+        }}
+      />
+    </>
   );
 }

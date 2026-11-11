@@ -3,7 +3,7 @@ import InvestmentOpportunities from "../../blogs/investment";
 export const metadata = {
   title: "Investment in Rwanda",
   description:
-    "Explore Rwanda's top investment opportunities with Bonet Elite Services. Learn about real estate, agriculture, ICT, tourism, and government incentives for investors.",
+    "Rwanda's top investment opportunities: real estate, agriculture, ICT and tourism, plus the government incentives available to investors.",
   keywords:
     "Investment in Rwanda, Rwanda investment guide, Rwanda real estate, Rwanda ICT sector, Rwanda agriculture, Rwanda tourism, Bonet Elite Services blog",
   authors: [{ name: "Bonet Elite Services" }],
@@ -35,7 +35,7 @@ export const metadata = {
 export default function BlogInvestmentPage() {
   return (
     <div className="min-h-screen">
-      <FirstService
+      <FirstService section="blog"
         image="/image/1.jpg"
         subtitleKey="pageHero.blogInvestment.subtitle"
         titleKey="pageHero.blogInvestment.title"

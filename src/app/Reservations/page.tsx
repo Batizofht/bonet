@@ -27,7 +27,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@BonetElite",
+    site: "@BonetPJ",
     title: "Book Hotels & Services Rwanda",
     description:
       "Book hotels, apartments, transport and concierge services in Rwanda. Fast and secure reservations by Bonet Elite Services.",

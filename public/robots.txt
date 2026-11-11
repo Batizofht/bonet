@@ -1,18 +1,9 @@
 User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: https://bonet.rw/sitemap.xml
-
-# Block common non-content paths
+# Do not block /_next/: Google needs the CSS, JS and /_next/image files
+# to render pages and index images.
 Disallow: /api/
-Disallow: /_next/
 Disallow: /admin/
-Disallow: /_vercel/
 
-# Allow search query params for pagination
-Allow: /*?page=
-Allow: /*?search=
-
-# Crawl rate
-Crawl-delay: 1
+Sitemap: https://bonet.rw/sitemap.xml

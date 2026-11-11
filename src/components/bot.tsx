@@ -193,28 +193,27 @@ const ChatBot = () => {
       {!showChat && (
         <button
           onClick={() => setShowChat(true)}
-          className="fixed bottom-6 right-6 w-14 h-14 bg-[#C9A84C] hover:bg-[#B8973B] text-white rounded-full shadow-xl z-40 flex items-center justify-center transition-[background-color,scale,box-shadow] duration-200 hover:scale-110 hover:shadow-2xl animate-pop-in"
+          className="fixed bottom-5 right-5 z-40 flex h-12 items-center gap-2.5 rounded-full bg-ink-900 pl-4 pr-5 font-display text-[13.5px] font-semibold text-white shadow-[0_10px_30px_rgba(7,16,29,0.35)] ring-1 ring-white/10 transition-colors hover:bg-ink-700"
           aria-label="Open chat"
         >
-          <MessageCircle className="w-6 h-6" />
+          <MessageCircle className="h-5 w-5 text-gold-500" />
+          {L("Chat with us", "Discuter", "在线咨询")}
         </button>
       )}
 
       {/* Chat window */}
       {showChat && (
-        <div className="fixed inset-0 md:inset-auto md:bottom-6 md:right-6 md:w-[400px] md:h-[640px] bg-white md:rounded-2xl md:shadow-2xl md:border md:border-gray-100 flex flex-col z-[99999] overflow-hidden animate-pop-in md:origin-bottom-right">
+        <div className="fixed inset-0 z-[99999] flex flex-col overflow-hidden bg-white md:inset-auto md:bottom-5 md:right-5 md:h-[600px] md:w-[380px] md:rounded-[10px] md:border md:border-line md:shadow-[0_24px_60px_rgba(7,16,29,0.28)]" data-no-reveal>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-[#1A1A2E] to-[#2d2d52] px-5 py-4 flex items-center justify-between shrink-0">
+          <div className="flex shrink-0 items-center justify-between bg-ink-900 px-5 py-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#C9A84C]/20 border border-[#C9A84C]/40 flex items-center justify-center">
-                <MessageSquare className="w-5 h-5 text-[#C9A84C]" />
-              </div>
-              <div>
-                <h3 className="font-bold text-white text-sm tracking-wide">Bonet Elite Services</h3>
-                <div className="flex items-center gap-1.5 mt-0.5">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400" />
-                  <span className="text-[11px] text-white/70">
+              <img src="/assets/brand/bonet-logo.png" alt="" width={327} height={128} className="h-8 w-auto" />
+              <div className="border-l border-white/15 pl-3">
+                <p className="font-display text-[13.5px] font-semibold text-white">{L("Client support", "Service client", "客户支持")}</p>
+                <div className="mt-0.5 flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  <span className="text-[11.5px] text-white/65">
                     {L("Online · Replies instantly", "En ligne · Réponse immédiate", "在线 · 立即回复")}
                   </span>
                 </div>
@@ -222,23 +221,23 @@ const ChatBot = () => {
             </div>
             <button
               onClick={() => setShowChat(false)}
-              className="w-8 h-8 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-colors"
+              className="flex h-8 w-8 items-center justify-center rounded-md text-white/70 transition-colors hover:bg-white/10 hover:text-white"
               aria-label="Close"
             >
-              <X className="w-4 h-4" />
+              <X className="h-4 w-4" />
             </button>
           </div>
 
           {/* Tabs */}
-          <div className="flex border-b border-gray-100 bg-white shrink-0">
+          <div className="flex shrink-0 border-b border-line bg-white">
             {(["chat", "book"] as Tab[]).map(t => (
               <button
                 key={t}
                 onClick={() => setTab(t)}
-                className={`flex-1 py-3 text-xs font-semibold transition-colors flex items-center justify-center gap-1.5 ${
+                className={`flex flex-1 items-center justify-center gap-1.5 border-b-2 py-3 font-display text-[12.5px] font-semibold transition-colors ${
                   tab === t
-                    ? "text-[#C9A84C] border-b-2 border-[#C9A84C]"
-                    : "text-gray-400 hover:text-gray-600"
+                    ? "border-gold-500 text-ink-900"
+                    : "border-transparent text-ink-400 hover:text-ink-700"
                 }`}
               >
                 {t === "chat" ? <MessageCircle className="w-3.5 h-3.5" /> : <Calendar className="w-3.5 h-3.5" />}
@@ -251,16 +250,16 @@ const ChatBot = () => {
           {tab === "chat" && (
             <>
               <div
-                className="flex-1 overflow-y-auto overscroll-contain px-4 py-4 space-y-3 bg-gray-50/60"
+                className="flex-1 space-y-3 overflow-y-auto overscroll-contain bg-white px-4 py-4"
                 onScroll={handleScroll}
               >
                 <WelcomeMessageAI />
 {messages.map((m, i) => (
   <div key={i} className={`flex ${m.from === "me" ? "justify-end" : "justify-start"}`}>
-    <div className={`max-w-[82%] px-4 py-2.5 rounded-2xl text-sm ${
+    <div className={`max-w-[82%] rounded-lg px-3.5 py-2.5 text-[14px] ${
       m.from === "me"
-        ? "bg-[#C9A84C] text-white rounded-br-md"
-        : "bg-white text-gray-800 rounded-bl-md border border-gray-100 shadow-sm"
+        ? "bg-ink-900 text-white"
+        : "bg-sand text-ink-800"
     }`}>
       {m.from === "agent" && m.text.includes("<div") ? (
         <div dangerouslySetInnerHTML={{ __html: m.text }} />
@@ -275,11 +274,11 @@ const ChatBot = () => {
 
                 {isTyping && (
                   <div className="flex justify-start">
-                    <div className="bg-white border border-gray-100 rounded-2xl rounded-bl-md px-4 py-3 shadow-sm">
+                    <div className="rounded-lg bg-sand px-3.5 py-3">
                       <div className="flex gap-1">
-                        <span className="w-2 h-2 bg-[#C9A84C] rounded-full animate-bounce [animation-delay:-0.3s]" />
-                        <span className="w-2 h-2 bg-[#C9A84C] rounded-full animate-bounce [animation-delay:-0.15s]" />
-                        <span className="w-2 h-2 bg-[#C9A84C] rounded-full animate-bounce" />
+                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-ink-400" />
+                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-ink-400 [animation-delay:0.2s]" />
+                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-ink-400 [animation-delay:0.4s]" />
                       </div>
                     </div>
                   </div>
@@ -291,7 +290,7 @@ const ChatBot = () => {
                       <button
                         key={s}
                         onClick={() => sendMessage(s)}
-                        className="text-[11px] font-medium text-[#C9A84C] bg-white border border-[#C9A84C]/30 rounded-full px-3 py-1.5 hover:bg-[#C9A84C]/5 transition-colors"
+                        className="rounded-md border border-line bg-white px-3 py-2 text-left text-[12.5px] font-medium text-ink-700 transition-colors hover:border-ink-900"
                       >
                         {s}
                       </button>
@@ -302,11 +301,12 @@ const ChatBot = () => {
                 <div ref={messagesEndRef} />
               </div>
 
-              <div className="px-4 py-3 bg-white border-t border-gray-100 shrink-0">
-                <div className="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-1.5 border border-gray-200 focus-within:border-[#C9A84C] focus-within:ring-1 focus-within:ring-[#C9A84C]/20 transition-colors">
+              <div className="shrink-0 border-t border-line bg-white px-4 py-3">
+                <div className="flex items-center gap-2 rounded-md border border-line bg-white py-1.5 pl-3.5 pr-1.5 transition-colors focus-within:border-ink-900">
                   <input
                     type="text"
-                    className="flex-1 bg-transparent text-sm text-gray-800 placeholder-gray-400 focus:outline-none py-1.5"
+                    aria-label={L("Write a message...", "Écrire un message...", "输入消息...")}
+                    className="flex-1 bg-transparent py-1.5 text-[14px] text-ink-900 placeholder-ink-400 focus:outline-none"
                     placeholder={L("Write a message...", "Écrire un message...", "输入消息...")}
                     value={input}
                     onChange={e => setInput(e.target.value)}
@@ -314,29 +314,28 @@ const ChatBot = () => {
                   />
                   <button
                     onClick={() => sendMessage()}
-                    className="w-8 h-8 bg-[#C9A84C] hover:bg-[#B8973B] text-white rounded-full -mr-3 flex items-center justify-center transition-colors shrink-0"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-gold-500 text-ink-950 transition-colors hover:bg-gold-400"
                     aria-label="Send"
                   >
-                    <Send className="w-3.5 h-3.5" />
+                    <Send className="h-4 w-4" />
                   </button>
                 </div>
-                <p className="text-center text-[10px] text-gray-300 mt-2">Bonet Elite Services</p>
               </div>
             </>
           )}
 
           {/* ── BOOK CONSULTATION TAB ── */}
           {tab === "book" && !submitted && (
-            <div className="flex-1 overflow-y-auto p-5 bg-gray-50/60">
+            <div className="flex-1 overflow-y-auto bg-white p-5">
               {/* Header card */}
-              <div className="bg-gradient-to-br from-[#1A1A2E] to-[#2d2d52] rounded-xl p-4 mb-5 text-white">
-                <div className="flex items-center gap-2 mb-1">
-                  <Calendar className="w-4 h-4 text-[#C9A84C]" />
-                  <span className="text-sm font-bold">
+              <div className="mb-5 border-b border-line pb-4">
+                <div className="mb-1 flex items-center gap-2">
+                  <Calendar className="h-4 w-4 text-gold-600" />
+                  <span className="font-display text-[14px] font-semibold text-ink-900">
                     {L("Book a Consultation", "Réserver une consultation", "预约咨询")}
                   </span>
                 </div>
-                <p className="text-[11px] text-white/60 leading-relaxed">
+                <p className="text-[12.5px] leading-relaxed text-ink-500">
                   {L(
                     "Fill in your details and we'll connect via WhatsApp within 30 minutes.",
                     "Remplissez le formulaire et nous vous contacterons via WhatsApp dans les 30 minutes.",
@@ -356,7 +355,7 @@ const ChatBot = () => {
                     value={form.name}
                     onChange={e => { setForm(f => ({ ...f, name: e.target.value })); setErrors(er => ({ ...er, name: "" })); }}
                     placeholder={L("Enter your full name", "Entrez votre nom complet", "请输入您的全名")}
-                    className={`w-full rounded-xl border text-sm px-3.5 py-2.5 outline-none transition-colors bg-white ${
+                    className={`w-full rounded-md border text-sm px-3.5 py-2.5 outline-none transition-colors bg-white text-ink-900 ${
                       errors.name ? "border-red-300 focus:border-red-400" : "border-gray-200 focus:border-[#C9A84C]"
                     }`}
                   />
@@ -373,7 +372,7 @@ const ChatBot = () => {
                     value={form.phone}
                     onChange={e => { setForm(f => ({ ...f, phone: e.target.value })); setErrors(er => ({ ...er, phone: "" })); }}
                     placeholder="+250 726 300 260"
-                    className={`w-full rounded-xl border text-sm px-3.5 py-2.5 outline-none transition-colors bg-white ${
+                    className={`w-full rounded-md border text-sm px-3.5 py-2.5 outline-none transition-colors bg-white text-ink-900 ${
                       errors.phone ? "border-red-300 focus:border-red-400" : "border-gray-200 focus:border-[#C9A84C]"
                     }`}
                   />
@@ -388,7 +387,7 @@ const ChatBot = () => {
                   <select
                     value={form.service}
                     onChange={e => { setForm(f => ({ ...f, service: e.target.value })); setErrors(er => ({ ...er, service: "" })); }}
-                    className={`w-full rounded-xl border text-sm px-3.5 py-2.5 outline-none transition-colors bg-white ${
+                    className={`w-full rounded-md border text-sm px-3.5 py-2.5 outline-none transition-colors bg-white text-ink-900 ${
                       errors.service ? "border-red-300 focus:border-red-400" : "border-gray-200 focus:border-[#C9A84C]"
                     }`}
                   >
@@ -408,14 +407,14 @@ const ChatBot = () => {
                     onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                     placeholder={L("Tell us more about what you need...", "Décrivez vos besoins...", "请描述您的需求...")}
                     rows={3}
-                    className="w-full rounded-xl border border-gray-200 text-sm px-3.5 py-2.5 outline-none focus:border-[#C9A84C] transition-colors bg-white resize-none"
+                    className="w-full resize-none rounded-md border border-line bg-white px-3.5 py-2.5 text-sm text-ink-900 outline-none transition-colors focus:border-ink-900"
                   />
                 </div>
 
                 {/* Submit */}
                 <button
                   onClick={submitConsult}
-                  className="w-full bg-[#C9A84C] hover:bg-[#B8973B] text-white font-semibold text-sm rounded-xl py-3 flex items-center justify-center gap-2 transition-colors mt-1"
+                  className="btn btn-gold mt-1 w-full"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>

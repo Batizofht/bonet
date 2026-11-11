@@ -27,7 +27,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@BonetElite",
+    site: "@BonetPJ",
     title: "Travel & Hospitality Services Rwanda",
     description:
       "Luxury travel and hospitality services in Rwanda. Hotel booking, airport transfers, tours and VIP handling in Kigali.",
@@ -39,7 +39,7 @@ export default function InvestmentPage() {
   return (
     <div className="min-h-screen">
       <FirstService
-        image="/image/kivuserena.png"
+        image="/assets/photos/kivu.jpg"
         subtitleKey="pageHero.travel.subtitle"
         titleKey="pageHero.travel.title"
         descriptionKey="pageHero.travel.desc"

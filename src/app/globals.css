@@ -1,14 +1,49 @@
 @import "tailwindcss";
 
-/* Tailwind v4 ignores tailwind.config.ts, so motion tokens live here.
-   Everything animates transform/opacity only — compositor-friendly. */
+/* ==========================================================
+   Bonet Elite — design system
+   Navy (#0C1829, the logo background) + gold. Montserrat for
+   headings and navigation, Roboto for text. Flat colour, quiet
+   hover states (colour only, nothing grows or lifts).
+   Tailwind v4 reads tokens from @theme (tailwind.config.ts is ignored).
+   ========================================================== */
 @theme {
-  --animate-modalIn: modalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
-  --animate-fade-in: fadeIn 0.25s ease-out both;
-  --animate-pop-in: popIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --font-sans: var(--font-body), Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-heading), Montserrat, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+  /* Navy scale. ink-900 is the exact logo background. */
+  --color-ink-950: #07101d;
+  --color-ink-900: #0c1829;
+  --color-ink-800: #132339;
+  --color-ink-700: #1d3150;
+  --color-ink-600: #3b4b63;
+  --color-ink-500: #5a687c;
+  --color-ink-400: #8590a0;
+  --color-ink-300: #b3bbc7;
+  --color-ink-200: #d5dae2;
+  --color-ink-100: #eceff3;
+
+  --color-gold-800: #6b5420;
+  --color-gold-700: #8a6c28;
+  --color-gold-600: #a3843a;
+  --color-gold-500: #c9a84c;
+  --color-gold-400: #d6b964;
+  --color-gold-300: #e3cf94;
+  --color-gold-200: #eee2bf;
+  --color-gold-100: #f5eedb;
+  --color-gold-50: #faf7ee;
+
+  /* Surfaces are white; sections are separated by hairlines, not tints */
+  --color-ivory: #ffffff;
+  --color-sand: #f2f4f7;
+  --color-line: #e3e7ec;
+
+  --animate-modalIn: modalIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fadeIn 0.2s ease-out both;
+  --animate-pop-in: popIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 
   @keyframes modalIn {
-    from { opacity: 0; transform: translateY(16px) scale(0.97); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: none; }
   }
   @keyframes fadeIn {
@@ -16,80 +51,187 @@
     to { opacity: 1; }
   }
   @keyframes popIn {
-    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: none; }
   }
 }
 
-/* Smooth in-page anchor scrolling. data-scroll-behavior on <html> tells
-   Next.js to jump instantly on route changes instead of animating. */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Lightweight form polish (replaces 110 lines of antd !important overrides) */
-::selection {
-  background: rgba(201, 168, 76, 0.25);
+body {
+  background: #ffffff;
+  color: var(--color-ink-700);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Hide native number spinners — our NumberInput is clean */
+/* In the base layer so text-* utilities (e.g. text-white) still win */
+@layer base {
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--color-ink-900); }
+}
+
+::selection { background: rgba(201, 168, 76, 0.3); color: var(--color-ink-950); }
+
+:focus-visible { outline: 2px solid var(--color-gold-500); outline-offset: 3px; }
+
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: 1220px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) { .container-x { padding-inline: 2rem; } }
+
+  .font-display { font-family: var(--font-display); }
+
+  /* Kicker above a heading */
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-gold-700);
+  }
+  .eyebrow-light { color: var(--color-gold-400); }
+
+  /* All headings share one voice: Montserrat 600, tight tracking */
+  .h-display {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.16;
+    letter-spacing: -0.022em;
+    color: var(--color-ink-900);
+  }
+
+  .lead { font-size: 1.0625rem; line-height: 1.75; color: var(--color-ink-500); }
+
+  /* Buttons: flat, colour change on hover only */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 2.875rem;
+    padding: 0 1.4rem;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+    cursor: pointer;
+  }
+  .btn-gold { background: var(--color-gold-500); color: var(--color-ink-950); }
+  .btn-gold:hover { background: var(--color-gold-400); }
+  .btn-ink { background: var(--color-ink-900); color: #fff; }
+  .btn-ink:hover { background: var(--color-ink-700); }
+  .btn-outline { border-color: var(--color-ink-200); color: var(--color-ink-900); background: #fff; }
+  .btn-outline:hover { border-color: var(--color-ink-900); }
+  .btn-ghost-light { border-color: rgba(255, 255, 255, 0.3); color: #fff; background: transparent; }
+  .btn-ghost-light:hover { border-color: #fff; background: rgba(255, 255, 255, 0.06); }
+  .btn-sm { min-height: 2.5rem; padding: 0 1.05rem; font-size: 0.8125rem; }
+  .btn-lg { min-height: 3.125rem; padding: 0 1.6rem; font-size: 0.9rem; }
+
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-ink-900);
+    transition: color 0.18s ease;
+  }
+  .link-arrow svg { color: var(--color-gold-600); }
+  .link-arrow:hover { color: var(--color-gold-700); }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    transition: border-color 0.2s ease;
+  }
+  .card-hover:hover { border-color: var(--color-ink-300); }
+
+  .icon-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gold-600);
+    flex-shrink: 0;
+  }
+
+  .hairline-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--color-line);
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .hairline-grid > * { background: #fff; }
+
+  .bg-ink-pattern { background-color: var(--color-ink-900); }
+}
+
+/* ---------- Long-form article typography ---------- */
+.prose-bonet { color: var(--color-ink-600); font-size: 1.0625rem; line-height: 1.85; }
+.prose-bonet > * + * { margin-top: 1.3em; }
+.prose-bonet h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--color-ink-900);
+  margin-top: 2.2em;
+  scroll-margin-top: 110px;
+}
+.prose-bonet h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; color: var(--color-ink-900); margin-top: 1.8em; }
+.prose-bonet strong { color: var(--color-ink-900); font-weight: 600; }
+.prose-bonet a { color: var(--color-ink-900); font-weight: 500; text-decoration: underline; text-decoration-color: var(--color-gold-500); text-underline-offset: 3px; }
+.prose-bonet a:hover { color: var(--color-gold-700); }
+.prose-bonet ul, .prose-bonet ol { padding-left: 0; list-style: none; }
+.prose-bonet li { position: relative; padding-left: 1.5em; }
+.prose-bonet li + li { margin-top: 0.5em; }
+.prose-bonet ul > li::before { content: ""; position: absolute; left: 0.15em; top: 0.72em; width: 6px; height: 6px; border-radius: 50%; background: var(--color-gold-500); }
+.prose-bonet ol { counter-reset: step; }
+.prose-bonet ol > li { counter-increment: step; }
+.prose-bonet ol > li::before { content: counter(step) "."; position: absolute; left: 0; font-family: var(--font-display); font-weight: 600; color: var(--color-gold-700); }
+.prose-bonet blockquote { border-left: 3px solid var(--color-gold-500); padding: 0.2em 0 0.2em 1.2em; font-size: 1.15rem; line-height: 1.6; color: var(--color-ink-900); font-weight: 500; }
+.prose-bonet table { width: 100%; border-collapse: collapse; font-size: 0.95rem; line-height: 1.55; }
+.prose-bonet th { text-align: left; font-family: var(--font-display); font-weight: 600; font-size: 0.85rem; color: var(--color-ink-900); background: var(--color-ivory); padding: 0.8em 1em; }
+.prose-bonet td { padding: 0.8em 1em; border-top: 1px solid var(--color-line); vertical-align: top; }
+.prose-bonet .table-wrap { overflow-x: auto; border: 1px solid var(--color-line); border-radius: 8px; }
+
 input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type="number"] {
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
 
-/* Thin elegant scrollbars for dropdowns / calendars */
-*::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-*::-webkit-scrollbar-thumb {
-  background: #e5e7eb;
-  border-radius: 8px;
-}
-*::-webkit-scrollbar-thumb:hover {
-  background: #c9a84c;
-}
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
 
-/* Respect users who prefer less motion — instant smoothness win */
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: #cfd5dd; border-radius: 8px; }
+*::-webkit-scrollbar-thumb:hover { background: var(--color-ink-400); }
+
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-/* ── Section entrance animations (AOS-style, zero JS libraries) ──
-   Added/removed by ScrollReveal in LayoutWrapper. Without JS the
-   classes never appear, so content stays fully visible (no SEO risk).
-   No permanent will-change: a layer per section wastes GPU memory and
-   turns every section into the containing block of its fixed popups. */
-.js-reveal {
-  opacity: 0;
-  transform: translate3d(0, 24px, 0);
-  transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.js-reveal.is-revealed {
-  opacity: 1;
-  transform: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .js-reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-}
+/* Scroll entrance (fade only) — see ScrollReveal in LayoutWrapper */
+.js-reveal { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .js-reveal { opacity: 1 !important; } }

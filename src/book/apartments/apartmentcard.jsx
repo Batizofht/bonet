@@ -205,7 +205,7 @@ const ApartmentCard = ({ bookApartment }) => {
 
             {/* Stay Details */}
             <div className="mb-8">
-              <SectionTitle icon={<Home className="text-green-600" size={22} />}>
+              <SectionTitle icon={<Home size={20} />}>
                 {L("Stay Details","Détails du séjour","住宿详情")}
               </SectionTitle>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -283,7 +283,7 @@ const ApartmentCard = ({ bookApartment }) => {
 
             {/* Apartment Preferences */}
             <div className="mb-8">
-              <SectionTitle icon={<Star className="text-yellow-600" size={22} />}>
+              <SectionTitle icon={<Star size={20} />}>
                 {L("Apartment Preferences","Préférences d'appartement","公寓偏好")}
               </SectionTitle>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -355,7 +355,7 @@ const ApartmentCard = ({ bookApartment }) => {
 
             {/* Additional Information */}
             <div className="mb-8">
-              <SectionTitle icon={<Lightbulb className="text-purple-600" size={22} />}>
+              <SectionTitle icon={<Lightbulb size={20} />}>
                 {L("Additional Information","Informations complémentaires","附加信息")}
               </SectionTitle>
               <div className="grid grid-cols-1 gap-6">

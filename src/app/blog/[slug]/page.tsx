@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import BlogDetailClient from './BlogDetailClient'
+import { cleanText } from '@/lib/text'
 
 interface Blog {
   id: number;
@@ -137,7 +138,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     const blogTitle = foundBlog.title || targetSlug.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase()).trim() || 'Blog Post';
     const title = blogTitle;
-    const rawDesc = foundBlog?.quote || foundBlog?.description?.replace(/<[^>]*>/g, '')?.substring(0, 120) || "";
+    const rawDesc = cleanText(foundBlog?.quote) || cleanText(foundBlog?.description).replace(/<[^>]*>/g, '').substring(0, 120) || "";
     const description = rawDesc
       ? `${rawDesc.substring(0, 130).trim().replace(/\.?$/, '')}. Learn more from Bonet Elite Services.`
       : "Expert insights on travel, business, and investment in Rwanda. Get guidance from Bonet Elite Services.";
@@ -179,8 +180,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       // Advanced Twitter Card optimization
       twitter: {
         card: "summary_large_image",
-        site: "@BonetElite",
-        creator: "@BonetElite",
+        site: "@BonetPJ",
+        creator: "@BonetPJ",
         title,
         description,
         images: [imageUrl],
@@ -241,7 +242,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
   const blog = await getBlogData(slug);
   
   const headline = blog?.title || slug.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
-  const rawDesc = blog?.quote || blog?.description?.replace(/<[^>]*>/g, '')?.substring(0, 155) || "Expert article on travel, business, or investment in Rwanda";
+  const rawDesc = cleanText(blog?.quote) || cleanText(blog?.description).replace(/<[^>]*>/g, '').substring(0, 155) || "Expert article on travel, business, or investment in Rwanda";
   const description = rawDesc.substring(0, 150).trim().replace(/\.?$/, '.');
   const imageUrl = blog?.image 
     ? `https://api.bonet.rw/bonetBackend/public/${blog.image}` 
@@ -311,7 +312,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
           ])
         }}
       />
-      <BlogDetailClient key={slug} />
+      <BlogDetailClient key={slug} initialBlog={blog} />
     </>
   );
 }

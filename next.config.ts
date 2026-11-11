@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
 
   images: {
     formats: ['image/webp', 'image/avif'],
+    qualities: [70, 72, 75],
     remotePatterns: [
       {
         protocol: 'https',
@@ -26,6 +27,11 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      // Partner logos (TrustIndicators) — resized instead of decoding 1000px+ originals
+      { protocol: 'https', hostname: 'pbs.twimg.com', pathname: '/profile_images/**' },
+      { protocol: 'https', hostname: 'www.gov.rw', pathname: '/fileadmin/**' },
+      { protocol: 'https', hostname: 'cdn-bal.nba.com', pathname: '/manage/**' },
+      { protocol: 'https', hostname: 'www.rura.rw', pathname: '/fileadmin/**' },
     ],
   },
 

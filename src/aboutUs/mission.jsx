@@ -1,11 +1,12 @@
-"use client"
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+"use client";
+import Image from "next/image";
+import { useTranslation } from "react-i18next";
+import { Compass, Target } from "lucide-react";
+import { StatStrip } from "@/components/ui/kit";
 
 const MissionVisionComponent = () => {
   const { t, i18n } = useTranslation();
-  const L = (en, fr, ch) =>
-    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
+  const L = (en, fr, ch) => (i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en);
 
   const stats = [
     { value: "5+", label: L("Years Experience", "Années d'Expérience", "年经验") },
@@ -16,17 +17,18 @@ const MissionVisionComponent = () => {
 
   return (
     <>
-      <section className="bg-white py-20 lg:py-28">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-            <div className="text-gray-600 text-sm sm:text-base leading-relaxed space-y-5">
-              <p className="text-lg sm:text-xl text-gray-800 font-medium leading-relaxed">
-                {L(
-                  "The team foreign investors call first when entering Rwanda.",
-                  "L'équipe que les investisseurs étrangers appellent en premier lorsqu'ils entrent au Rwanda.",
-                  "外国投资者进入卢旺达时首先联系的团队。"
-                )}
-              </p>
+      <section className="bg-white py-20 md:py-28">
+        <div className="container-x grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
+          <div>
+            <p className="eyebrow">{L("Our Story", "Notre Histoire", "我们的故事")}</p>
+            <h2 className="h-display mt-3 text-[1.75rem] sm:text-[2rem] md:text-[2.35rem]">
+              {L(
+                "The team foreign investors call first when entering Rwanda.",
+                "L'équipe que les investisseurs étrangers appellent en premier lorsqu'ils entrent au Rwanda.",
+                "外国投资者进入卢旺达时首先联系的团队。"
+              )}
+            </h2>
+            <div className="mt-8 space-y-5 text-[1.05rem] leading-relaxed text-ink-600">
               <p>
                 {L(
                   "Five years, 100+ clients across 15+ countries — registration, investment advisory, HR, relocation, and executive travel under one roof. We help foreign investors and executives build businesses and lives in Rwanda from company registration and tax incentives to relocation and executive travel.",
@@ -42,72 +44,33 @@ const MissionVisionComponent = () => {
                 )}
               </p>
             </div>
-            <div className="lg:text-right lg:border-l border-gray-200 lg:pl-12">
-              <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-[0.15em]">
-                {L("About","À Propos","关于我们")}
-              </p>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider mb-8">
-                {L("Our Story","Notre Histoire","我们的故事")}
-              </h2>
-              <div className="flex flex-wrap lg:justify-end gap-x-10 gap-y-5 pt-8 border-t border-gray-200">
-                {stats.map(({ value, label }) => (
-                  <div key={label} className="text-center lg:text-right">
-                    <div className="text-3xl font-bold text-[#C9A84C]">{value}</div>
-                    <div className="text-gray-500 text-xs uppercase tracking-wider mt-1">{label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[10px] lg:aspect-auto">
+            <Image src="/assets/images/cert.jpg" alt="Kigali Convention Centre, Rwanda" fill sizes="(min-width: 1024px) 560px, 100vw" className="object-cover" />
+          </div>
+        </div>
+        <div className="container-x mt-20">
+          <StatStrip stats={stats} />
         </div>
       </section>
 
-      <section className="bg-gray-50 py-20 lg:py-28">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-16 lg:mb-20">
-            <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">
-              {L("Direction","Direction","方向")}
-            </p>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
-              {L("Vision & Mission","Vision et Mission","愿景与使命")}
-            </h2>
+      <section className="bg-ink-pattern py-20 text-white md:py-28">
+        <div className="container-x">
+          <div className="mb-12 max-w-3xl md:mb-16">
+            <p className="eyebrow eyebrow-light">{L("Direction", "Direction", "方向")}</p>
+            <h2 className="h-display mt-3 !text-white text-[1.75rem] sm:text-[2rem] md:text-[2.35rem]">{L("Vision & Mission", "Vision et Mission", "愿景与使命")}</h2>
           </div>
-
-          <div className="relative hidden lg:block">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-200 -translate-x-1/2" />
-
-            <div className="relative pb-20">
-              <div className="absolute left-1/2 top-12 w-px h-16 bg-gray-200 -translate-x-1/2" />
-              <div className="absolute left-1/2 top-28 -translate-x-1/2 w-3 h-3 rounded-full bg-[#C9A84C] border-2 border-white" />
-              <div className="absolute left-1/2 top-28 w-[calc(50%-40px)] h-px bg-gray-200 -translate-x-full mr-8" />
-              <div className="absolute left-1/2 top-28 w-[calc(50%-40px)] h-px bg-gray-200 ml-8" />
-            </div>
-
-            <div className="relative flex items-start">
-              <div className="w-1/2 pr-16">
-                <div className="bg-white rounded-xl p-8 border border-gray-200 text-right">
-                  <h3 className="text-base font-bold text-gray-900 uppercase tracking-wider mb-4">{t('vision.visionTitle')}</h3>
-                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{t('vision.visionText')}</p>
-                </div>
+          <div className="grid gap-5 md:grid-cols-2">
+            {[
+              { icon: Compass, title: t("vision.visionTitle"), text: t("vision.visionText") },
+              { icon: Target, title: t("vision.missionTitle"), text: t("vision.missionText") },
+            ].map((b) => (
+              <div key={b.title} className="rounded-[10px] border border-white/10 p-8 md:p-9">
+                <b.icon className="h-6 w-6 text-gold-500" />
+                <h3 className="mt-5 text-[1.3rem] font-semibold text-white">{b.title}</h3>
+                <p className="mt-3 text-[1rem] leading-relaxed text-white/70">{b.text}</p>
               </div>
-              <div className="w-1/2 pl-16">
-                <div className="bg-white rounded-xl p-8 border border-gray-200">
-                  <h3 className="text-base font-bold text-gray-900 uppercase tracking-wider mb-4">{t('vision.missionTitle')}</h3>
-                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{t('vision.missionText')}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:hidden space-y-6">
-            <div className="bg-white rounded-xl p-8 border border-gray-200">
-              <h3 className="text-base font-bold text-gray-900 uppercase tracking-wider mb-4">{t('vision.visionTitle')}</h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{t('vision.visionText')}</p>
-            </div>
-            <div className="bg-white rounded-xl p-8 border border-gray-200">
-              <h3 className="text-base font-bold text-gray-900 uppercase tracking-wider mb-4">{t('vision.missionTitle')}</h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{t('vision.missionText')}</p>
-            </div>
+            ))}
           </div>
         </div>
       </section>

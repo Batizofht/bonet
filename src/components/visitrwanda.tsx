@@ -1,115 +1,57 @@
-'use client'
-import { useRouter } from "next/navigation";
-import React, { useMemo } from "react";
+"use client";
+import Image from "next/image";
+import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import { MapPin, ArrowRight, Camera, Sparkles } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
 
+const images = [
+  { src: "/assets/photos/kcc-aerial.jpg", key: "conv" },
+  { src: "/assets/images/k2.webp", key: "k2" },
+  { src: "/assets/images/memo.jpg", key: "memo" },
+  { src: "/assets/photos/akagera.jpg", key: "k3" },
+  { src: "/assets/photos/kivu-hill.jpg", key: "kiv" },
+  { src: "/assets/photos/gorilla.jpg", key: "vov" },
+  { src: "/assets/images/part1.jpg", key: "part1" },
+  { src: "/assets/photos/tea-sorwathe.jpg", key: "tea" },
+  { src: "/assets/photos/nyungwe.jpg", key: "nyu5" },
+  { src: "/assets/images/gis3.jpg", key: "gis3" },
+  { src: "/assets/images/huye.JPG", key: "huye" },
+  { src: "/assets/images/muhazi.jpg", key: "muhazi" },
+];
+
+/** Destination gallery (used on /gallery) */
 const Gallery = () => {
-  const navigate = useRouter();
   const { t, i18n } = useTranslation();
-  const L = (en: string, fr: string, ch: string) =>
-    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
-
-  // OPTIMIZED: Memoize images array to prevent recreation on every render
-  const images = useMemo(() => [
-    { src: "../assets/images/conv.jpg", key: "conv" },
-    { src: "../assets/images/k2.webp", key: "k2" },
-    { src: "../assets/images/memo.jpg", key: "memo" },
-    { src: "../assets/images/k3.jpg", key: "k3" },
-    { src: "../assets/images/kiv.jpg", key: "kiv" },
-    { src: "../assets/images/vov.jpg", key: "vov" },
-    { src: "../assets/images/part1.jpg", key: "part1" },
-    { src: "../assets/images/tea.webp", key: "tea" },
-    { src: "../assets/images/nyu5.jpg", key: "nyu5" },
-    { src: "../assets/images/gis3.jpg", key: "gis3" },
-    { src: "../assets/images/huye.JPG", key: "huye" },
-    { src: "../assets/images/muhazi.jpg", key: "muhazi" }
-  ], []);
+  const L = (en: string, fr: string, ch: string) => (i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16">
-      {/* Header */}
-      <div className="text-center mb-16">
-        <div className="flex justify-center items-center gap-3 mb-4">
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse" />
-          <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent" />
-          <Camera className="w-6 h-6 text-[#188bff] animate-pulse" />
-          <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#188bff] to-transparent" />
-          <div className="w-3 h-3 bg-[#188bff] rounded-full animate-pulse" />
-        </div>
-        
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">
-          {t("gallery.title", "Our Gallery").split(" ").map((word, i) => 
-            i === 0 ? (
-              <span key={i} className="bg-[#188bff] bg-clip-text text-transparent relative inline-block">
-                {word}
-                <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#188bff] to-cyan-400 transform scale-x-0 hover:scale-x-100 transition-transform duration-300" />
-                {" "}
-              </span>
-            ) : (
-              <span key={i} className="text-gray-600">{" " + word + " "}</span>
-            )
-          )}
-        </h2>
-        <p className="text-gray-500 text-lg">{L("Explore beautiful destinations in Rwanda","Explorez de magnifiques destinations au Rwanda","探索卢旺达美丽的目的地")}</p>
-      </div>
-
-      {/* Gallery grid — always visible, no scroll-reveal */}
-      <div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12"
-      >
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className="relative group cursor-pointer"
-          >
-            <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              {/* OPTIMIZED: Add loading="lazy" for better performance */}
-              <img
-                src={image.src}
-                alt={t(`gallery.places.${image.key}`)}
-                loading="lazy"
-                className="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500"
-              />
-              
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              {/* Location Badge */}
-              <div className="absolute bottom-3 left-3 right-3">
-                <div
-                  className="bg-white/95 backdrop-blur-sm rounded-xl p-3 transform group-hover:translate-y-0 transition-transform duration-300"
-                >
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-[#188bff] flex-shrink-0" />
-                    <span className="text-gray-800 font-semibold text-sm truncate">
-                      {t(`gallery.places.${image.key}`)}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Hover Sparkle Effect */}
-              <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
-              </div>
-            </div>
+    <section className="border-t border-line bg-white py-16 md:py-24">
+      <div className="container-x">
+        <div className="mb-10 flex flex-col gap-6 md:mb-12 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <p className="eyebrow">{L("Destinations", "Destinations", "目的地")}</p>
+            <h2 className="h-display mt-3 text-[1.75rem] sm:text-[2rem] md:text-[2.35rem]">{t("gallery.title")}</h2>
+            <p className="lead mt-4">{L("Explore beautiful destinations in Rwanda", "Explorez de magnifiques destinations au Rwanda", "探索卢旺达美丽的目的地")}</p>
           </div>
-        ))}
-      </div>
+          <Link href="/explore-rwanda" className="link-arrow shrink-0">
+            {t("gallery.button")}
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
 
-      {/* Button */}
-      <div className="flex justify-center">
-        <button
-          onClick={() => navigate.push("/explore-rwanda")}
-          className="flex items-center gap-3 bg-[#188bff] text-white px-8 py-4 rounded-2xl hover:bg-blue-600 hover:scale-105 active:scale-95 transition-[background-color,scale,box-shadow] duration-300 font-semibold shadow-lg hover:shadow-xl cursor-pointer group/btn"
-        >
-         
-          {t("gallery.button")}
-          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-        </button>
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          {images.map((img) => (
+            <figure key={img.key} className="relative aspect-[4/3] overflow-hidden rounded-[8px] bg-sand">
+              <Image src={img.src} alt={t(`gallery.places.${img.key}`)} fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover" />
+              <figcaption className="absolute inset-x-0 bottom-0 flex items-center gap-2 bg-gradient-to-t from-ink-950/85 to-transparent p-4 pt-12 text-[14px] font-medium text-white">
+                <MapPin className="h-4 w-4 shrink-0 text-gold-400" />
+                <span className="truncate">{t(`gallery.places.${img.key}`)}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

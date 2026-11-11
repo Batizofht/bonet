@@ -5,7 +5,7 @@ import { cn } from "./cn";
 
 /* ---------- shared ---------- */
 export const inputBase =
-  "w-full min-h-[52px] rounded-xl border border-gray-200 bg-white px-4 text-[15px] text-gray-900 placeholder:text-gray-400 outline-none transition-[border-color,box-shadow] duration-200 hover:border-[#C9A84C]/50 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 disabled:opacity-60 disabled:bg-gray-50";
+  "w-full min-h-[52px] rounded-xl border border-line bg-white px-4 text-[15px] text-ink-900 placeholder:text-ink-400 outline-none transition-[border-color,box-shadow] duration-200 hover:border-gold-300 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/15 disabled:opacity-60 disabled:bg-ivory";
 
 export function Field({
   label,
@@ -23,7 +23,7 @@ export function Field({
   return (
     <div className={cn("flex flex-col gap-1.5", className)}>
       {label && (
-        <label className="text-sm font-semibold text-gray-700">
+        <label className="text-[13.5px] font-semibold text-ink-800">
           {label} {required && <span className="text-[#C9A84C]">*</span>}
         </label>
       )}
@@ -35,8 +35,8 @@ export function Field({
 
 export function SectionTitle({ icon, children }: { icon?: React.ReactNode; children: React.ReactNode }) {
   return (
-    <h3 className="text-xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
-      <span className="text-[#C9A84C] inline-flex">{icon}</span>
+    <h3 className="mb-6 flex items-center gap-3 border-b border-line pb-3 text-[1.05rem] font-semibold text-ink-900">
+      <span className="inline-flex text-gold-600">{icon}</span>
       {children}
     </h3>
   );
@@ -506,7 +506,7 @@ export function SubmitButton({ loading, children, className }: { loading?: boole
       type="submit"
       disabled={loading}
       className={cn(
-        "w-full min-h-[56px] rounded-xl text-lg font-semibold bg-[#C9A84C] hover:bg-[#B8973B] text-white transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2 px-6",
+        "w-full min-h-[50px] rounded-md font-display text-[14px] font-semibold bg-gold-500 hover:bg-gold-400 text-ink-950 transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2 px-6",
         className
       )}
     >

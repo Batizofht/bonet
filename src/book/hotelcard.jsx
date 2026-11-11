@@ -198,7 +198,7 @@ const HotelCard = ({ bookHotel }) => {
 
             {/* Stay Details */}
             <div className="mb-8">
-              <SectionTitle icon={<Calendar className="text-green-600" size={22} />}>
+              <SectionTitle icon={<Calendar size={20} />}>
                 {L("Stay Details","Détails du séjour","住宿详情")}
               </SectionTitle>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -267,7 +267,7 @@ const HotelCard = ({ bookHotel }) => {
 
             {/* Hotel Preferences */}
             <div className="mb-8">
-              <SectionTitle icon={<Star className="text-yellow-600" size={22} />}>
+              <SectionTitle icon={<Star size={20} />}>
                 {L("Hotel Preferences","Préférences d'hôtel","酒店偏好")}
               </SectionTitle>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -336,7 +336,7 @@ const HotelCard = ({ bookHotel }) => {
 
             {/* Additional Information */}
             <div className="mb-8">
-              <SectionTitle icon={<Lightbulb className="text-purple-600" size={22} />}>
+              <SectionTitle icon={<Lightbulb size={20} />}>
                 {L("Additional Information","Informations complémentaires","附加信息")}
               </SectionTitle>
               <div className="grid grid-cols-1 gap-6">

@@ -3,7 +3,9 @@
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { openWhatsApp, whatsappWebUrl, BONET_WHATSAPP } from "@/lib/whatsapp";
+import Image from "next/image";
 import { ChevronDown, Search, MessageCircle, ArrowRight } from "lucide-react";
+import { Breadcrumbs, CtaBand } from "@/components/ui/kit";
 
 type FAQItem = { question: string; answer: string; };
 type FAQCategory = { id: string; title: string; items: FAQItem[]; };
@@ -611,7 +613,7 @@ export default function FAQClient() {
   };
 
   return (
-    <div id="top" className="min-h-screen bg-gray-50">
+    <div id="top" className="bg-ivory">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -627,61 +629,60 @@ export default function FAQClient() {
         }}
       />
 
-      <div className="relative w-full h-[20vh] sm:h-[30vh] bg-gray-900 bg-cover bg-center overflow-hidden"
-        style={{ backgroundImage: "url('/image/3.jpg')" }}
-      >
-        <div className="absolute inset-0 bg-black/90" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <div className="w-2 h-2 bg-[#C9A84C] rotate-45 mb-4" />
-          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">{t("faqPage.subtitle")}</p>
-          <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-wider">{t("faqPage.title")}</h1>
+      <section className="relative isolate overflow-hidden bg-ink-950 text-white">
+        <Image src="/image/3.jpg" alt="" fill priority sizes="100vw" className="-z-20 object-cover" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink-950/95 via-ink-950/80 to-ink-950/45" />
+        <div className="container-x pb-28 pt-16 md:pb-32 md:pt-24">
+          <Breadcrumbs light items={[{ name: L("Home", "Accueil", "首页"), href: "/" }, { name: "FAQ" }]} />
+          <p className="eyebrow eyebrow-light mt-7">{t("faqPage.subtitle")}</p>
+          <h1 className="h-display mt-3 max-w-3xl !text-white text-[2.1rem] sm:text-[2.6rem] md:text-[3.1rem]">{t("faqPage.title")}</h1>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-2xl mx-auto px-4 -mt-6 relative z-10">
-        <div className="bg-white rounded-lg p-4 flex items-center gap-3 border border-gray-300">
-          <Search className="w-5 h-5 text-gray-400" />
+      <div className="container-x relative z-10 -mt-10">
+        <div className="mx-auto flex max-w-3xl items-center gap-3 rounded-md bg-white px-5 py-4 shadow-[0_12px_30px_rgba(7,16,29,0.12)] ring-1 ring-line">
+          <Search className="h-5 w-5 text-gold-600" />
           <input
-            type="text"
+            type="search"
+            aria-label={t("faqPage.search_placeholder")}
             placeholder={t("faqPage.search_placeholder")}
-            className="flex-1 outline-none text-gray-800 bg-transparent text-sm"
+            className="flex-1 bg-transparent text-[15px] text-ink-900 outline-none placeholder:text-ink-400"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-4 pt-10">
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <p className="text-sm font-semibold text-gray-900 mb-3">{t("faqPage.browse_label")}</p>
-          <div className="flex flex-wrap gap-2">
+      <div className="container-x grid gap-12 py-14 md:py-20 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-16">
+        <aside className="lg:sticky lg:top-28 lg:self-start">
+          <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-gold-700">{t("faqPage.browse_label")}</p>
+          <nav className="mt-4 flex flex-wrap gap-2 lg:flex-col lg:gap-0">
             {categories.map((cat) => (
               <a
                 key={cat.id}
                 href={`#${cat.id}`}
-                className="px-3 py-1.5 border border-gray-200 text-sm text-gray-700 hover:border-gray-300 transition-colors rounded"
+                className="rounded-md border border-line bg-white px-3.5 py-1.5 text-[14px] text-ink-700 transition-colors hover:border-ink-900 lg:rounded-none lg:border-0 lg:border-l-2 lg:border-line lg:bg-transparent lg:px-4 lg:py-2.5 lg:hover:border-gold-500 lg:hover:text-ink-900"
               >
                 {cat.title}
               </a>
             ))}
-          </div>
-        </div>
-      </div>
+          </nav>
+        </aside>
 
-      <div className="max-w-3xl mx-auto px-4 py-12">
+        <div>
         {searchTerm.trim() ? (
           <div className="space-y-4">
             {filteredItems.map((faq, index) => (
-              <div key={`${faq.categoryId}-${index}`} className="bg-white rounded-lg border border-gray-200">
+              <div key={`${faq.categoryId}-${index}`} className="card">
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex items-center justify-between p-5 text-left"
+                  className="flex w-full items-center justify-between p-6 text-left"
                 >
                   <div className="pr-4">
-                    <div className="text-xs font-semibold text-[#C9A84C] mb-1">{faq.categoryTitle}</div>
-                    <div className="font-semibold text-gray-900 text-sm">{faq.question}</div>
+                    <div className="mb-1 text-[11.5px] font-semibold uppercase tracking-[0.12em] text-gold-700">{faq.categoryTitle}</div>
+                    <div className="text-[1.02rem] font-semibold text-ink-900">{faq.question}</div>
                   </div>
-                  <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`h-5 w-5 shrink-0 text-gold-600 transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""}`} />
                 </button>
                 <div
                   className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
@@ -690,36 +691,37 @@ export default function FAQClient() {
                   aria-hidden={openIndex !== index}
                 >
                   <div className="overflow-hidden">
-                    <div className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">{faq.answer}</div>
+                    <div className="px-6 pb-6 text-[15px] leading-relaxed text-ink-600">{faq.answer}</div>
                   </div>
                 </div>
               </div>
             ))}
             {filteredItems.length === 0 && (
-              <div className="text-center py-12 text-gray-500 text-sm">{t("faqPage.no_results")}</div>
+              <div className="py-12 text-center text-[15px] text-ink-500">{t("faqPage.no_results")}</div>
             )}
           </div>
         ) : (
-          <div className="space-y-12">
+          <div className="space-y-16">
             {categories.map((cat) => (
-              <section key={cat.id} id={cat.id} className="scroll-mt-24">
-                <div className="flex items-end justify-between gap-4 mb-4">
-                  <h2 className="text-xl md:text-2xl font-bold text-gray-900">{cat.title}</h2>
-                  <a href="#top" className="text-sm text-gray-500 hover:text-gray-900">{t("faqPage.back_to_top")}</a>
+              <section key={cat.id} id={cat.id} className="scroll-mt-28">
+                <div className="mb-5 flex items-end justify-between gap-4 border-b border-line pb-4">
+                  <h2 className="text-[1.35rem] font-semibold leading-snug text-ink-900">{cat.title}</h2>
+                  <a href="#top" className="shrink-0 text-[13px] text-ink-500 hover:text-ink-900">{t("faqPage.back_to_top")}</a>
                 </div>
-                <div className="space-y-3">
+                <div className="divide-y divide-line">
                   {cat.items.map((faq, index) => {
                     const globalIndex = allItems.findIndex(
                       (x) => x.categoryId === cat.id && x.question === faq.question
                     );
                     return (
-                      <div key={index} className="bg-white rounded-lg border border-gray-200">
+                      <div key={index}>
                         <button
                           onClick={() => toggleFAQ(globalIndex)}
-                          className="w-full flex items-center justify-between p-5 text-left"
+                          aria-expanded={openIndex === globalIndex}
+                          className="flex w-full items-center justify-between py-5 text-left"
                         >
-                          <span className="font-semibold text-gray-900 text-sm pr-4">{faq.question}</span>
-                          <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 ${openIndex === globalIndex ? "rotate-180" : ""}`} />
+                          <span className="pr-4 text-[1.03rem] font-semibold text-ink-900">{faq.question}</span>
+                          <ChevronDown className={`h-5 w-5 shrink-0 text-gold-600 transition-transform duration-300 ${openIndex === globalIndex ? "rotate-180" : ""}`} />
                         </button>
                         {/* grid-rows 0fr→1fr: smooth height animation, answer stays in the DOM for SEO */}
                         <div
@@ -729,7 +731,7 @@ export default function FAQClient() {
                           aria-hidden={openIndex !== globalIndex}
                         >
                           <div className="overflow-hidden">
-                            <div className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">{faq.answer}</div>
+                            <div className="pb-6 pr-10 text-[15px] leading-relaxed text-ink-600">{faq.answer}</div>
                           </div>
                         </div>
                       </div>
@@ -740,52 +742,46 @@ export default function FAQClient() {
             ))}
           </div>
         )}
-      </div>
 
-      <div className="max-w-3xl mx-auto px-4 pb-12">
-        <div className="bg-white rounded-xl border border-gray-200 p-6 md:p-8">
-          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">{t("faqPage.how_bonet_title")}</h2>
-          <p className="text-gray-600 text-sm leading-relaxed mb-5">{bonetHelp.description}</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {bonetHelp.services.map((service, i) => (
-              <div key={i} className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-0.5 text-[#C9A84C] flex-shrink-0" />
-                <span className="text-sm text-gray-700">{service}</span>
-              </div>
-            ))}
+        <div className="mt-16 grid gap-5 md:grid-cols-2">
+          <div className="card p-7 md:p-8">
+            <h2 className="text-[1.2rem] font-semibold leading-snug text-ink-900">{t("faqPage.how_bonet_title")}</h2>
+            <p className="mt-3 text-[15px] leading-relaxed text-ink-600">{bonetHelp.description}</p>
+            <ul className="mt-5 space-y-2.5">
+              {bonetHelp.services.map((service, i) => (
+                <li key={i} className="flex items-start gap-2.5 text-[14.5px] text-ink-700">
+                  <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
+                  {service}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="card p-7 md:p-8">
+            <h2 className="text-[1.2rem] font-semibold leading-snug text-ink-900">{t("faqPage.official_links_title")}</h2>
+            <p className="mt-3 text-[15px] leading-relaxed text-ink-600">{t("faqPage.official_links_desc")}</p>
+            <ul className="mt-5 grid gap-2.5 sm:grid-cols-2">
+              {officialLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-[14px] font-medium text-ink-800 underline decoration-gold-400 underline-offset-4 hover:text-gold-700">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-
-        <div className="mt-6 bg-white rounded-xl border border-gray-200 p-6 md:p-8">
-          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">{t("faqPage.official_links_title")}</h2>
-          <p className="text-gray-600 text-sm leading-relaxed mb-5">{t("faqPage.official_links_desc")}</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {officialLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-semibold text-gray-800 hover:text-[#C9A84C] transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
 
-      <div className="w-full bg-gray-900 py-16 lg:py-20">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">{t("faqPage.support_label")}</p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">{t("faqPage.support_title")}</h2>
-          <p className="text-white/75 text-sm sm:text-base mb-8 max-w-xl mx-auto leading-relaxed">{t("faqPage.support_desc")}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#C9A84C] text-white font-semibold rounded-lg hover:bg-[#B8973B] transition-colors text-sm"
-            >
-              <MessageCircle className="w-4 h-4" />
+      <CtaBand
+        image="/image/3.jpg"
+        eyebrow={t("faqPage.support_label")}
+        title={t("faqPage.support_title")}
+        lead={t("faqPage.support_desc")}
+        actions={
+          <>
+            <a href="/contact" className="btn btn-gold btn-lg">
+              <MessageCircle className="h-4 w-4" />
               {t("faqPage.contact_us")}
             </a>
             <a
@@ -796,13 +792,13 @@ export default function FAQClient() {
               }}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors text-sm"
+              className="btn btn-ghost-light btn-lg"
             >
               {t("faqPage.whatsapp")}
             </a>
-          </div>
-        </div>
-      </div>
+          </>
+        }
+      />
     </div>
   );
 }

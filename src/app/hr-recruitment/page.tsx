@@ -1,4 +1,5 @@
 import HRRecruitmentClient from "./HRRecruitmentClient";
+import RelatedGuides from "@/components/insights/RelatedGuides";
 
 export const metadata = {
   title: "HR & Recruitment Rwanda | Talent Solutions",
@@ -26,7 +27,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@BonetElite",
+    site: "@BonetPJ",
     title: "HR & Recruitment Rwanda",
     description: "Professional HR and recruitment services for companies in Rwanda.",
     images: ["https://bonet.rw/assets/images/bonet-og.png"],
@@ -34,5 +35,10 @@ export const metadata = {
 };
 
 export default function HRRecruitmentPage() {
-  return <HRRecruitmentClient />;
+  return (
+    <>
+      <HRRecruitmentClient />
+      <RelatedGuides service="/hr-recruitment" />
+    </>
+  );
 }

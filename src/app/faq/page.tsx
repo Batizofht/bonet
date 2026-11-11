@@ -26,7 +26,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@BonetElite",
+    site: "@BonetPJ",
     title: "FAQ | Rwanda Business & Investment",
     description: "Expert answers about business setup and investment in Rwanda.",
     images: ["https://bonet.rw/assets/images/bonet-og.png"],

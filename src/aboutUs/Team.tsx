@@ -47,23 +47,21 @@ export default function Team() {
     i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
 
   return (
-    <section className="bg-gray-50 py-20 lg:py-28">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-14">
-          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">
-            {L("Leadership","Direction","领导团队")}
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+    <section className="border-t border-line bg-white py-16 md:py-24">
+      <div className="container-x">
+        <div className="mb-12 max-w-3xl md:mb-16">
+          <p className="eyebrow">{L("Leadership","Direction","领导团队")}</p>
+          <h2 className="h-display mt-3 text-[1.75rem] sm:text-[2rem] md:text-[2.35rem]">
             {L("Meet Our Team","Notre Équipe","认识我们的团队")}
           </h2>
-          <p className="text-gray-500 text-sm sm:text-base mt-4 max-w-2xl mx-auto">
+          <p className="lead mt-5">
             {L("The experts behind every seamless experience","Les experts derrière chaque expérience sans faille","每次卓越体验背后的专家团队")}
           </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {teamMembers.map((member, index) => (
-            <div key={index} className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col">
-              <div className="w-full aspect-[4/3] rounded-lg bg-gray-100 overflow-hidden mb-4">
+            <div key={index} className="card card-hover flex flex-col overflow-hidden">
+              <div className="relative w-full aspect-[4/5] bg-sand overflow-hidden">
                 <img
                   src={member.image}
                   alt={member.name}
@@ -81,12 +79,13 @@ export default function Team() {
                   {member.initials}
                 </span>
               </div>
-              <h3 className="text-base font-bold text-gray-900 leading-tight">{member.name}</h3>
-              <p className="text-[#C9A84C] text-sm font-medium mt-1">{member.role}</p>
-              <p className="text-gray-600 text-sm leading-relaxed mt-4 flex-1">{member.bio}</p>
-              <div className="flex flex-wrap gap-2 mt-4">
+              <div className="flex flex-1 flex-col p-6">
+              <h3 className="text-[1.05rem] font-semibold leading-snug text-ink-900">{member.name}</h3>
+              <p className="mt-1.5 text-[13px] font-semibold uppercase tracking-[0.08em] text-gold-700">{member.role}</p>
+              <p className="mt-4 flex-1 text-[14.5px] leading-relaxed text-ink-600">{member.bio}</p>
+              <div className="mt-5 flex flex-wrap gap-1.5">
                 {member.tags.map((tag, i) => (
-                  <span key={i} className="px-2.5 py-1 bg-gray-100 text-gray-600 text-[10px] font-semibold uppercase tracking-wider rounded">
+                  <span key={i} className="rounded-full border border-line bg-ivory px-2.5 py-1 text-[11.5px] font-medium text-ink-600">
                     {tag}
                   </span>
                 ))}
@@ -95,11 +94,12 @@ export default function Team() {
                 href={member.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-1.5 text-gray-400 hover:text-[#C9A84C] transition-colors text-sm"
+                className="mt-5 inline-flex items-center gap-1.5 border-t border-line pt-4 text-[13.5px] font-medium text-ink-500 transition-colors hover:text-gold-700"
               >
-                <Linkedin className="w-4 h-4" />
+                <Linkedin className="h-4 w-4" />
                 <span>{L("View Profile","Voir le profil","查看简介")}</span>
               </a>
+              </div>
             </div>
           ))}
         </div>

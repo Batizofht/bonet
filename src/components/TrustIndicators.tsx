@@ -1,56 +1,34 @@
 "use client";
 import { useTranslation } from "react-i18next";
 
-type Partner = { name: string; image: string; invertOnWhite?: boolean };
-
-const partners: Partner[] = [
-  { name: "Rwanda Development Board", image: "https://pbs.twimg.com/profile_images/763711110461677569/Tp0r6Bir_400x400.jpg" },
-  { name: "Rwanda Government", image: "https://www.gov.rw/fileadmin/gov/resources/public/images/Coat_of_Arms_Rwanda-01.png" },
-  { name: "Visit Rwanda", image: "https://cdn-bal.nba.com/manage/sites/3/2022/02/h5gzz91kuhif7pyjhqqx-1.png" },
-  { name: "RURA Rwanda", image: "https://www.rura.rw/fileadmin/user_upload/RURA/Icon_Images/logorura.png" },
+/** The government bodies Bonet files with on clients' behalf */
+const authorities = [
+  { short: "RDB", name: "Rwanda Development Board", role: "Company registration, investment certificates" },
+  { short: "RRA", name: "Rwanda Revenue Authority", role: "TIN, VAT and tax filings" },
+  { short: "RSSB", name: "Rwanda Social Security Board", role: "Employer registration, payroll contributions" },
+  { short: "DGIE", name: "Directorate General of Immigration", role: "Residence and work permits" },
 ];
 
 const TrustIndicators = () => {
   const { t } = useTranslation();
   return (
-    <section className="bg-gray-50 py-16 lg:py-20 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 text-center">
-        <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-[0.2em] mb-3">{t("trust.label")}</p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider mb-10 lg:mb-12">
-          {t("trust.title")}
-        </h2>
-
-        <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-gray-200"
-          style={{
-            maskImage: "radial-gradient(ellipse 80% 70% at center, black 30%, transparent 100%)",
-            WebkitMaskImage: "radial-gradient(ellipse 80% 70% at center, black 30%, transparent 100%)",
-          }}
-        >
-          {partners.map((partner) => (
-            <div
-              key={partner.name}
-              className="group bg-white aspect-[3/2] flex items-center justify-center p-4 md:p-6"
-            >
-              <img
-                src={partner.image}
-                alt={partner.name}
-                className={`max-w-full max-h-full object-contain transition-[filter,scale] duration-500 grayscale hover:grayscale-0 hover:scale-105${partner.invertOnWhite ? " invert" : ""}`}
-                loading="lazy"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = 'none';
-                  (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
-                }}
-              />
-              <span className="hidden text-xs font-bold text-gray-600 uppercase tracking-wider">{partner.name}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-10 text-center">
-          <p className="text-gray-500 text-sm">
-            {t("trust.licensed")}
-          </p>
+    <section className="border-t border-line bg-white py-14 md:py-20">
+      <div className="container-x">
+        <div className="grid gap-8 lg:grid-cols-[1fr_2fr] lg:gap-16">
+          <div>
+            <p className="eyebrow">{t("trust.label")}</p>
+            <h2 className="h-display mt-3 text-[1.6rem] md:text-[1.9rem]">{t("trust.title")}</h2>
+            <p className="mt-3 text-[15px] leading-relaxed text-ink-500">{t("trust.licensed")}</p>
+          </div>
+          <ul className="grid grid-cols-1 border-t border-line sm:grid-cols-2">
+            {authorities.map((a, i) => (
+              <li key={a.short} className={`border-b border-line py-5 ${i % 2 === 1 ? "sm:border-l sm:pl-8" : "sm:pr-8"}`}>
+                <p className="font-display text-[1.15rem] font-semibold text-ink-900">{a.short}</p>
+                <p className="mt-0.5 text-[14.5px] text-ink-700">{a.name}</p>
+                <p className="mt-1 text-[13.5px] text-ink-400">{a.role}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

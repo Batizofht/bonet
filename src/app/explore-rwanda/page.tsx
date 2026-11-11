@@ -1,7 +1,7 @@
 import ExploreRwandaClient from "./ExploreRwandaClient";
 
 export const metadata = {
-  title: "Explore Rwanda | Investment, Tourism & Living Guide",
+  title: "Explore Rwanda: Investment, Tourism & Living",
   description: "Discover Rwanda: Africa's safest country for investment, tourism, and living. Key sectors, living costs, gallery, and business opportunities.",
   keywords: "Explore Rwanda, Rwanda investment, Rwanda tourism, Rwanda living, Kigali business, Rwanda economy",
   authors: [{ name: "Bonet Elite Services" }],

@@ -1,171 +1,90 @@
-"use client"
-import { openWhatsApp, BONET_WHATSAPP } from "@/lib/whatsapp";
+"use client";
+import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import { useRouter } from "next/navigation";
-import { 
-  Phone, 
-  MessageCircle, 
-  MapPin, 
-  Star,
-  Hotel,
-  Plane,
-  Crown
-} from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
+import { MediaRow, WhatsAppButton, SectionHeader, CtaBand } from "@/components/ui/kit";
 
 export default function HotelHospitality() {
   const { t, i18n } = useTranslation();
-  const L = (en, fr, ch) =>
-    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
-  const navigate = useRouter();
-
-  const handleOpenWhatsApp = () => openWhatsApp({ phone: BONET_WHATSAPP });
+  const L = (en, fr, ch) => (i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en);
+  const p = "travelHospitality.page.services";
 
   const services = [
-    {
-      title: t("travelHospitality.page.services.hotelReservations.title"),
-      subtitle: t("travelHospitality.page.services.hotelReservations.subtitle"),
-      description: t("travelHospitality.page.services.hotelReservations.description"),
-      image: "../assets/images/hot.jpg",
-      icon: Hotel,
-    },
-    {
-      title: t("travelHospitality.page.services.airportTransfers.title"),
-      subtitle: t("travelHospitality.page.services.airportTransfers.subtitle"),
-      description: t("travelHospitality.page.services.airportTransfers.description"),
-      image: "../assets/images/rentals.jpg",
-      icon: Plane,
-    },
-    {
-      title: t("travelHospitality.page.services.tourismGuides.title"),
-      subtitle: t("travelHospitality.page.services.tourismGuides.subtitle"),
-      description: t("travelHospitality.page.services.tourismGuides.description"),
-      image: "../assets/images/tour.jpg",
-      BookButton: t("travelHospitality.page.services.tourismGuides.bookButton"),
-      icon: MapPin,
-    },
-    {
-      title: t("travelHospitality.page.services.vipServices.title"),
-      subtitle: t("travelHospitality.page.services.vipServices.subtitle"),
-      description: t("travelHospitality.page.services.vipServices.description"),
-      image: "../assets/images/vip.png",
-      icon: Crown,
-    },
+    { base: `${p}.hotelReservations`, image: "/assets/images/hot.jpg" },
+    { base: `${p}.airportTransfers`, image: "/assets/photos/kigali-street.jpg" },
+    { base: `${p}.tourismGuides`, image: "/assets/photos/gorilla.jpg", book: t(`${p}.tourismGuides.bookButton`) },
+    { base: `${p}.vipServices`, image: "/assets/photos/conference-2.jpg" },
+  ];
+
+  const tags = [
+    L("Premium Service", "Service Premium", "高端服务"),
+    L("Booking Travel", "Réservation de Voyage", "旅行预订"),
+    L("24/7 Support", "Support 24h/24 7j/7", "全天候支持"),
   ];
 
   return (
-    <div>
-      {/* HEADER */}
-      <section className="border-y border-gray-100 bg-gray-50/50">
-        <div className="max-w-6xl mx-auto px-4 py-20">
-          <div className="text-center">
-            <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-              {L("Services","Services","服务")}
-            </span>
-            <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 uppercase tracking-wider">
-              {L("Travel & Hospitality","Voyage et Hôtellerie","旅游与酒店")}
-            </h1>
-            <p className="text-gray-500 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-              {t("travelHospitality.page.description")}
-            </p>
-
-            <div className="flex justify-center mt-10">
-              <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-                <button
-                  onClick={() => navigate.push("/Reservations")}
-                  className="inline-flex items-center gap-2 bg-[#C9A84C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B8973B] transition-colors"
-                >
-                  <Phone className="w-4 h-4" />
-                  {L("Need seamless travel & hospitality arrangements? Contact us now!","Besoin d'arrangements de voyage et d'hôtellerie ? Contactez-nous maintenant !","需要无缝旅行和酒店安排？立即联系我们！")}
-                </button>
-
-                <button 
-                  onClick={handleOpenWhatsApp}
-                  className="inline-flex items-center gap-2 border border-gray-300 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  {t("travelHospitality.page.buttons.quickContact")}
-                </button>
+    <>
+      <section className="bg-white py-20 md:py-28">
+        <div className="container-x">
+          <SectionHeader
+            eyebrow={L("Services", "Services", "服务")}
+            title={L("Travel & Hospitality", "Voyage et Hôtellerie", "旅游与酒店")}
+            lead={t("travelHospitality.page.description")}
+            action={
+              <div className="flex flex-wrap gap-3">
+                <Link href="/Reservations" className="btn btn-ink">
+                  {L("Book now", "Réserver", "立即预订")}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <WhatsAppButton>{t("travelHospitality.page.buttons.quickContact")}</WhatsAppButton>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES LIST */}
-      <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-4 py-20">
-          <div className="grid gap-10">
-            {services.map((service, index) => {
-              const IconComponent = service.icon;
-              return (
-                <div
-                  key={index}
-                  className={`flex flex-col lg:flex-row items-center ${
-                    index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                  }`}
-                >
-                  {/* Image */}
-                  <div className="lg:w-1/2 w-full">
-                    {service.image ? (
-                      <div className="relative overflow-hidden rounded-xl border border-gray-200 bg-gray-50 h-80 lg:h-96">
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-full h-80 lg:h-96 bg-gray-100 rounded-xl border border-gray-200 flex items-center justify-center">
-                        <IconComponent className="w-16 h-16 text-gray-300" />
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className="lg:w-1/2 w-full px-0 lg:px-12 py-8 lg:py-0">
-                    <div className="flex items-center gap-3 mb-2">
-                      <IconComponent className="w-6 h-6 text-[#C9A84C] flex-shrink-0" strokeWidth={1.5} />
-                      <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
-                        {service.title}
-                      </h2>
-                    </div>
-                    <p className="text-gray-500 font-medium text-xs uppercase tracking-wide mt-3 mb-4">{service.subtitle}</p>
-
-                    <p className="text-gray-600 leading-relaxed">
-                      {service.description}
-                    </p>
-
-                    {service.BookButton && (
-                      <button
-                        className="mt-6 inline-flex items-center gap-2 bg-[#C9A84C] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B8973B] transition-colors text-sm"
-                        onClick={() => navigate.push("/Reservations#tourism")}
-                      >
-                        <MapPin className="w-4 h-4" />
-                        {service.BookButton}
-                      </button>
-                    )}
-
-                    {/* Features */}
-                    <div className="flex flex-wrap gap-4 mt-6">
-                      {[
-                        L("Premium Service","Service Premium","高端服务"),
-                        L("Booking Travel","Réservation de Voyage","旅行预订"),
-                        L("24/7 Support","Support 24h/24 7j/7","全天候支持")
-                      ].map((data, i) => (
-                        <div key={i} className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded"></div>
-                          <span className="text-sm text-gray-600">{data}</span>
-                        </div>
+            }
+          />
+          <div className="space-y-20 md:space-y-28">
+            {services.map((s, i) => (
+              <MediaRow
+                key={s.base}
+                index={i}
+                reverse={i % 2 === 1}
+                image={s.image}
+                imageAlt={t(`${s.base}.title`)}
+                eyebrow={t(`${s.base}.subtitle`)}
+                title={t(`${s.base}.title`)}
+                footer={
+                  <div className="flex flex-col items-start gap-6">
+                    <ul className="flex flex-wrap gap-2">
+                      {tags.map((tag) => (
+                        <li key={tag} className="rounded-full border border-line bg-ivory px-3.5 py-1.5 text-[13px] font-medium text-ink-700">{tag}</li>
                       ))}
-                    </div>
+                    </ul>
+                    {s.book && (
+                      <Link href="/Reservations#tourism" className="btn btn-gold">
+                        <MapPin className="h-4 w-4" />
+                        {s.book}
+                      </Link>
+                    )}
                   </div>
-                </div>
-              );
-            })}
+                }
+              >
+                <p>{t(`${s.base}.description`)}</p>
+              </MediaRow>
+            ))}
           </div>
         </div>
       </section>
-    </div>
+
+      <CtaBand
+        image="/assets/images/kivuserena.jpg"
+        eyebrow={L("Travel & Hospitality", "Voyage et Hôtellerie", "旅游与酒店")}
+        title={L("Need seamless travel & hospitality arrangements?", "Besoin d'arrangements de voyage et d'hôtellerie ?", "需要无缝旅行和酒店安排？")}
+        lead={L("Hotels, transfers, tours and VIP handling, arranged by one team in Kigali.", "Hôtels, transferts, circuits et accueil VIP, organisés par une seule équipe à Kigali.", "酒店、接送、旅游和VIP服务，由基加利的一个团队统一安排。")}
+        actions={
+          <>
+            <Link href="/Reservations" className="btn btn-gold btn-lg">{L("Book now", "Réserver", "立即预订")}<ArrowRight className="h-4 w-4" /></Link>
+            <WhatsAppButton variant="ghost-light" className="btn-lg">WhatsApp</WhatsAppButton>
+          </>
+        }
+      />
+    </>
   );
 }

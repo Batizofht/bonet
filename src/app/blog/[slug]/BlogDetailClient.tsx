@@ -5,9 +5,11 @@ import { apiGet, apiPost } from "@/lib/api";
 import { useParams } from "next/navigation";
 import { Calendar, User, ArrowLeft, HandMetal } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import SocialShare from "../../../components/SocialShare";
 import PageLoader from "../../../components/PageLoader";
 import { useTranslation } from "react-i18next";
+import { cleanText } from "@/lib/text";
 
 interface Blog {
   id: number;
@@ -19,23 +21,18 @@ interface Blog {
   author?: string;
 }
 
-export default function BlogDetailClient() {
+export default function BlogDetailClient({ initialBlog = null }: { initialBlog?: Blog | null }) {
   const params = useParams();
   const slug = params.slug as string;
   const { i18n } = useTranslation();
   const L = (en: string, fr: string, ch: string) =>
     i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
-  
-  // IMMEDIATE: Set browser title from URL before anything else
-  useEffect(() => {
-    if (slug) {
-      const titleFromSlug = slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ');
-      document.title = `${titleFromSlug} | Bonet Elite Services`;
-    }
-  }, [slug]);
-  
-  const [blog, setBlog] = useState<Blog | null>(null);
-  const [loading, setLoading] = useState(true);
+
+  // The server page already fetched the post, so it is rendered into the
+  // HTML (crawlable) and the browser only refetches when it is missing.
+  // The <title> comes from generateMetadata; it is not overwritten here.
+  const [blog, setBlog] = useState<Blog | null>(initialBlog);
+  const [loading, setLoading] = useState(!initialBlog);
   const [error, setError] = useState<string | null>(null);
   const [claps, setClaps] = useState(0);
   const [userClapped, setUserClapped] = useState(false);
@@ -108,10 +105,10 @@ export default function BlogDetailClient() {
       }
     };
 
-    if (slug) {
+    if (slug && !initialBlog) {
       fetchBlog();
     }
-  }, [slug]);
+  }, [slug, initialBlog]);
 
   // Generate unique device ID
   const getDeviceId = () => {
@@ -320,35 +317,41 @@ export default function BlogDetailClient() {
 
   const htmlDescription = processHTMLContent(blog.description || '');
 
-  const getCurrentUrl = () => {
-    if (typeof window !== 'undefined') {
-      const currentUrl = window.location.href;
-      return currentUrl;
-    }
-    return `https://bonet.rw/blog/${slug}`;
-  };
+  // Same value on server and client (avoids a hydration mismatch) and
+  // always shares the canonical URL rather than localhost or a tracking URL
+  const getCurrentUrl = () => `https://bonet.rw/blog/${slug}`;
 
   // SIMPLE: Title always from URL slug. Never from blog state.
   const safeTitle = slug ? slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ') : 'Blog Post';
 
   return (
-    <div className="min-h-screen bg-white pb-16 md:pb-20">
-      <div className="max-w-4xl mx-auto px-4 pb-8 pt-8">
-        <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-6 text-center leading-tight">
-          {blog.title}
-        </h1>
+    <div className="bg-white pb-16 md:pb-24">
+      <div className="bg-ivory">
+        <div className="container-x max-w-4xl pb-10 pt-12 md:pt-16">
+          <nav aria-label="Breadcrumb" className="text-[13px] text-ink-500">
+            <Link href="/" className="hover:text-ink-900">{L("Home","Accueil","首页")}</Link>
+            <span className="mx-2">/</span>
+            <Link href="/blogs" className="hover:text-ink-900">Blog</Link>
+          </nav>
+          <p className="eyebrow mt-8">{L("Insights","Guides","洞察")}</p>
+          <h1 className="h-display mt-3 text-[1.9rem] sm:text-[2.3rem] md:text-[2.7rem]">
+            {blog.title}
+          </h1>
+        </div>
+      </div>
+      <div className="container-x max-w-4xl pb-8 pt-8">
 
-        <div className="flex flex-wrap items-center justify-center gap-6 mb-8">
+        <div className="mb-8 flex flex-wrap items-center gap-6 border-b border-line pb-6">
           <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-gray-500" />
-            <span className="text-sm font-medium text-gray-600">
+            <Calendar className="h-4 w-4 text-gold-600" />
+            <span className="text-sm font-medium text-ink-600">
               {formatDate(blog.created_at || '')}
             </span>
           </div>
-          
+
           <div className="flex items-center gap-2">
-            <User className="w-4 h-4 text-gray-500" />
-            <span className="text-sm font-medium text-gray-600">
+            <User className="h-4 w-4 text-gold-600" />
+            <span className="text-sm font-medium text-ink-600">
               {blog.author || 'Bonet Team'}
             </span>
           </div>
@@ -357,18 +360,21 @@ export default function BlogDetailClient() {
           <SocialShare
             url={getCurrentUrl()}
             title={safeTitle}
-            description={blog.quote || blog.description || ''}
+            description={cleanText(blog.quote) || cleanText(blog.description)}
             imageUrl={blog.image ? `https://api.bonet.rw/bonetBackend/public/${blog.image}` : undefined}
             hashtags={["Rwanda", "Travel", "Business", "Investment", "BonetElite"]}
           />
         </div>
 
         {blog.image && (
-          <div className="relative rounded-lg overflow-hidden mb-8 bg-white border border-gray-200">
-            <img
+          <div className="relative mb-10 aspect-[16/9] overflow-hidden rounded-[10px] bg-sand">
+            <Image
               src={`https://api.bonet.rw/bonetBackend/public/${blog.image}`}
               alt={`${blog.title} - Bonet Elite Services, Kigali Rwanda`}
-              className="w-full h-[400px] object-cover"
+              fill
+              priority
+              sizes="(min-width: 1024px) 900px, 100vw"
+              className="object-cover"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
@@ -377,37 +383,37 @@ export default function BlogDetailClient() {
           </div>
         )}
 
-        {blog.quote && (
-          <blockquote className="bg-gray-50 border-l-4 border-gray-300 rounded-lg p-6 mb-8">
-            <p className="text-xl font-medium text-gray-700 leading-relaxed italic">
-              "{blog.quote}"
+        {cleanText(blog.quote) && (
+          <blockquote className="mb-10 border-l-2 border-gold-500 py-1 pl-6">
+            <p className="text-[1.15rem] font-medium leading-relaxed text-ink-900">
+              "{cleanText(blog.quote)}"
             </p>
           </blockquote>
         )}
 
         <article className="max-w-none">
-          <div className="bg-white rounded-lg p-8 border border-gray-200 overflow-hidden">
-            {blog.description ? (
+          <div className="overflow-hidden">
+            {cleanText(blog.description) ? (
               <>
               <div
-                className="prose prose-lg max-w-none text-gray-700 leading-relaxed break-words overflow-wrap-break-word"
+                className="prose-bonet break-words [&_h1]:font-display [&_h1]:text-[2rem] [&_h1]:font-semibold [&_h1]:text-ink-900 [&_img]:rounded-2xl"
                 dangerouslySetInnerHTML={{ __html: htmlDescription }}
               />
 
 {/* Internal Links for SEO */}
-<div className="mt-8 pt-6 border-t border-gray-200">
-  <h2 className="text-lg font-bold text-gray-800 mb-3">{L("Explore Bonet Elite Services","Explorer Bonet Elite Services","探索Bonet Elite服务")}</h2>
+<div className="mt-12 rounded-[10px] border border-line p-7">
+  <h2 className="mb-4 text-[1.15rem] font-semibold text-ink-900">{L("Explore Bonet Elite Services","Explorer Bonet Elite Services","探索Bonet Elite服务")}</h2>
   <div className="flex flex-wrap gap-3">
-    <Link href="/about" className="inline-flex items-center gap-1 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors">
+    <Link href="/about" className="inline-flex items-center gap-1 rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-900">
       {L("About Our Team","Notre équipe","关于我们的团队")}
     </Link>
-    <Link href="/services" className="inline-flex items-center gap-1 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors">
+    <Link href="/services" className="inline-flex items-center gap-1 rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-900">
       {L("Our Services","Nos services","我们的服务")}
     </Link>
-    <Link href="/blogs" className="inline-flex items-center gap-1 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors">
+    <Link href="/blogs" className="inline-flex items-center gap-1 rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-900">
       {L("More Articles","Plus d'articles","更多文章")}
     </Link>
-    <Link href="/contact" className="inline-flex items-center gap-1 px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors">
+    <Link href="/contact" className="inline-flex items-center gap-1 rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-ink-800 transition-colors hover:border-ink-900">
       {L("Contact Us","Nous contacter","联系我们")}
     </Link>
   </div>

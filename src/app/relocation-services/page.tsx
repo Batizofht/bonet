@@ -1,7 +1,8 @@
 import RelocationServicesClient from "./RelocationServicesClient";
+import RelatedGuides from "@/components/insights/RelatedGuides";
 
 export const metadata = {
-  title: "Relocation Services Rwanda | Executive Concierge",
+  title: "Executive Relocation Services in Rwanda",
   description:
     "Premium relocation services for executives and families moving to Rwanda. Housing, schooling, banking, transport, and full concierge support.",
   keywords:
@@ -26,7 +27,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@BonetElite",
+    site: "@BonetPJ",
     title: "Relocation Services Rwanda",
     description: "Premium relocation services for executives moving to Rwanda.",
     images: ["https://bonet.rw/assets/images/bonet-og.png"],
@@ -34,5 +35,10 @@ export const metadata = {
 };
 
 export default function RelocationServicesPage() {
-  return <RelocationServicesClient />;
+  return (
+    <>
+      <RelocationServicesClient />
+      <RelatedGuides service="/relocation-services" />
+    </>
+  );
 }

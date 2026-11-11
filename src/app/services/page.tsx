@@ -1,8 +1,8 @@
 import ServicesClient from "./ServicesClient";
 
 export const metadata = {
-  title: "All Services for Foreign Investors | Bonet Elite",
-  description: "Five integrated services for foreign investors in Rwanda: Business Registration, Investment Advisory, HR & Recruitment, Executive Relocation, and Executive Travel. One team, end-to-end delivery.",
+  title: "Services for Foreign Investors in Rwanda",
+  description: "Business registration, investment advisory, HR and recruitment, executive relocation and travel for foreign investors in Rwanda. One team, end to end.",
   keywords: "Bonet Elite Services, premium services Rwanda, business registration Rwanda, investment advisory Rwanda, HR recruitment Rwanda, relocation Rwanda, executive travel Rwanda",
   authors: [{ name: "Bonet Elite Services" }],
   openGraph: {
@@ -22,7 +22,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@BonetElite",
+    site: "@BonetPJ",
     title: "All Services for Foreign Investors | Bonet Elite",
     description: "Five integrated services for foreign investors in Rwanda: Business Registration, Investment Advisory, HR & Recruitment, Executive Relocation, and Executive Travel. One team, end-to-end delivery.",
     images: ["https://bonet.rw/assets/images/bonet-og.png"],

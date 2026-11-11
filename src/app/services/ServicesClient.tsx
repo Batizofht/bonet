@@ -1,15 +1,19 @@
-'use client'
-import React from "react";
+"use client";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Calendar, Clock, User } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Calendar, Clock, User } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { PageHero, Section, SectionHeader, CtaBand, ButtonLink, WhatsAppButton } from "@/components/ui/kit";
 
 export default function ServicesClient() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const L = (en: string, fr: string, ch: string) => (i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en);
 
-  const serviceGroups = [
+  const groups = [
     {
       title: t("services.list.0.title"),
+      image: "/assets/images/rdb2.jpg",
+      href: "/investment",
       items: [
         { href: "/business-registration", label: t("menu.companyRegistration"), description: t("menu.desc_companyReg") },
         { href: "/investment", label: t("menu.investmentCertificate"), description: t("menu.desc_investCert") },
@@ -19,6 +23,8 @@ export default function ServicesClient() {
     },
     {
       title: t("menu.businessConsulting"),
+      image: "/assets/images/s1.jpeg",
+      href: "/consulting",
       items: [
         { href: "/consulting", label: t("menu.businessPlanning"), description: t("menu.desc_bizPlanning") },
         { href: "/consulting", label: t("menu.financialAdvisory"), description: t("menu.desc_finAdvisory") },
@@ -28,6 +34,8 @@ export default function ServicesClient() {
     },
     {
       title: t("menu.hrAndAdminSupport"),
+      image: "/assets/images/s3.jpeg",
+      href: "/hrsupport",
       items: [
         { href: "/hr-recruitment", label: t("menu.recruitment"), description: t("menu.desc_recruitment") },
         { href: "/hrsupport", label: t("menu.hrPolicyDevelopment"), description: t("menu.desc_hrPolicy") },
@@ -37,6 +45,8 @@ export default function ServicesClient() {
     },
     {
       title: t("menu.travelAndHospitality"),
+      image: "/assets/images/hot.jpg",
+      href: "/travel",
       items: [
         { href: "/relocation-services", label: t("menu.relocationConcierge"), description: t("menu.desc_relocation") },
         { href: "/executive-travel", label: t("menu.executiveTravel"), description: t("menu.desc_execTravel") },
@@ -48,143 +58,80 @@ export default function ServicesClient() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      <div
-        className="relative w-full h-[20vh] sm:h-[30vh] bg-gray-900 bg-cover bg-center overflow-hidden"
-        style={{ backgroundImage: "url('/image/8.jpg')" }}
-      >
-        <div className="absolute inset-0 bg-black/90" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <div className="w-2 h-2 bg-[#C9A84C] rotate-45 mb-4" />
-          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">{t("servicesPage.banner_label")}</p>
-          <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-wider">{t("servicesPage.banner_title")}</h1>
-        </div>
-      </div>
+    <>
+      <PageHero
+        image="/assets/photos/kigali-skyline.jpg"
+        imageAlt="Kigali at dusk"
+        eyebrow={t("servicesPage.banner_label")}
+        title={t("servicesPage.banner_title")}
+        lead={t("servicesPage.article_intro")}
+        crumbs={[{ name: L("Home", "Accueil", "首页"), href: "/" }, { name: L("Services", "Services", "服务") }]}
+        actions={
+          <>
+            <ButtonLink href="/contact" size="lg">{t("servicesPage.talk_expert")}</ButtonLink>
+            <WhatsAppButton variant="ghost-light" className="btn-lg">WhatsApp</WhatsAppButton>
+          </>
+        }
+      />
 
-      <div className="max-w-6xl mx-auto px-4 py-16 lg:py-24">
-        <div className="mb-12 lg:mb-16">
-          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">{t("servicesPage.section_label")}</p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
-            {t("servicesPage.section_title")}
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {serviceGroups.map((group) => (
-            <div key={group.title} className="rounded-xl border border-gray-200 p-6 lg:p-8">
-              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-5 pb-4 border-b border-gray-200">
-                {group.title}
-              </h3>
-              <div className="space-y-1">
-                {group.items.map((item, ii) => (
-                  <Link
-                    key={ii}
-                    href={item.href}
-                    className="group flex items-center justify-between rounded-lg px-3 py-2.5 hover:bg-gray-50 transition-colors"
-                  >
-                    <div>
-                      <p className="text-sm font-semibold text-gray-800">{item.label}</p>
-                      <p className="text-xs text-gray-500 mt-0.5">{item.description}</p>
-                    </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-gray-300 group-hover:text-[#C9A84C] transition-colors flex-shrink-0 ml-4" />
-                  </Link>
-                ))}
+      <Section>
+        <SectionHeader eyebrow={t("servicesPage.section_label")} title={t("servicesPage.section_title")} />
+        <div>
+          {groups.map((g, i) => (
+            <div key={g.title} className={`grid items-center gap-8 border-line py-12 lg:grid-cols-2 lg:gap-14 ${i > 0 ? "border-t" : "pt-0"}`}>
+              <div className={`relative aspect-[16/10] overflow-hidden rounded-[10px] bg-sand ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+                <Image src={g.image} alt={g.title} fill sizes="(min-width: 1024px) 560px, 100vw" className="object-cover" />
+              </div>
+              <div>
+                <h3 className="h-display text-[1.5rem] md:text-[1.8rem]">{g.title}</h3>
+                <ul className="mt-5 border-t border-line">
+                  {g.items.map((it) => (
+                    <li key={it.label}>
+                      <Link href={it.href} className="group grid grid-cols-[1fr_auto] items-center gap-x-5 border-b border-line py-4 transition-colors">
+                        <span className="font-display text-[15px] font-semibold text-ink-900 group-hover:text-gold-700">{it.label}</span>
+                        <ArrowRight className="row-span-2 h-4 w-4 text-gold-600" />
+                        <span className="text-[14px] leading-relaxed text-ink-500">{it.description}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}
         </div>
+      </Section>
 
-        <div className="mt-10 text-center">
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#C9A84C] text-white font-semibold rounded-lg hover:bg-[#B8973B] transition-colors text-sm"
-          >
-            {t("servicesPage.talk_expert")}
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </div>
-
-      <section className="bg-gray-50 py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="rounded-xl border border-gray-200 bg-white overflow-hidden">
-            <div className="p-8 md:p-12 border-b border-gray-100">
-              <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">{t("servicesPage.article_label")}</p>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider mb-4">
-                {t("servicesPage.article_title")}
-              </h2>
-              <div className="flex flex-wrap items-center gap-4 text-gray-500">
-                <div className="flex items-center gap-1.5">
-                  <User className="w-3.5 h-3.5" />
-                  <span className="text-sm">{t("servicesPage.article_author")}</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5" />
-                  <span className="text-sm">{t("servicesPage.article_date")}</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span className="text-sm">{t("servicesPage.article_read")}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-8 md:p-12">
-              <div className="max-w-3xl mx-auto space-y-6">
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                  {t("servicesPage.article_intro")}
-                </p>
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">
-                    {t("servicesPage.article_h3")}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                    {t("servicesPage.article_body")}
-                  </p>
-                </div>
-                <div className="pt-6 border-t border-gray-200 text-center">
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">
-                    {t("servicesPage.help_h3")}
-                  </h3>
-                  <p className="text-gray-500 text-sm mb-5">
-                    {t("servicesPage.help_body")}
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                    <Link href="/business-registration" className="inline-flex items-center justify-center px-6 py-3 bg-[#C9A84C] text-white font-semibold rounded-lg hover:bg-[#B8973B] transition-colors text-sm">
-                      {t("servicesPage.help_primary")}
-                    </Link>
-                    <Link href="/contact" className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:border-gray-400 transition-colors text-sm">
-                      {t("servicesPage.help_secondary")}
-                    </Link>
-                  </div>
-                </div>
-              </div>
+      <Section tone="ivory">
+        <article className="mx-auto max-w-3xl">
+          <p className="eyebrow">{t("servicesPage.article_label")}</p>
+          <h2 className="h-display mt-3 text-[1.75rem] sm:text-[2rem] md:text-[2.35rem]">{t("servicesPage.article_title")}</h2>
+          <div className="mt-6 flex flex-wrap gap-5 text-[13.5px] text-ink-500">
+            <span className="flex items-center gap-1.5"><User className="h-3.5 w-3.5" />{t("servicesPage.article_author")}</span>
+            <span className="flex items-center gap-1.5"><Calendar className="h-3.5 w-3.5" />{t("servicesPage.article_date")}</span>
+            <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" />{t("servicesPage.article_read")}</span>
+          </div>
+          <div className="prose-bonet mt-10">
+            <p>{t("servicesPage.article_intro")}</p>
+            <h3>{t("servicesPage.article_h3")}</h3>
+            <p>{t("servicesPage.article_body")}</p>
+          </div>
+          <div className="mt-12 rounded-[10px] border border-line bg-white p-8">
+            <h3 className="text-[1.2rem] font-semibold text-ink-900">{t("servicesPage.help_h3")}</h3>
+            <p className="mt-2 text-[15px] text-ink-600">{t("servicesPage.help_body")}</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/business-registration" className="btn btn-ink">{t("servicesPage.help_primary")}<ArrowRight className="h-4 w-4" /></Link>
+              <Link href="/contact" className="btn btn-outline">{t("servicesPage.help_secondary")}</Link>
             </div>
           </div>
-        </div>
-      </section>
+        </article>
+      </Section>
 
-      <div
-        className="relative w-full bg-cover bg-center overflow-hidden"
-        style={{ backgroundImage: "url('/image/1.jpg')", minHeight: "30vh" }}
-      >
-        <div className="absolute inset-0 bg-black/90" />
-        <div className="relative flex flex-col items-center justify-center text-center px-4 py-16 lg:py-20">
-          <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-wider">{t("servicesPage.cta_label")}</p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-            {t("servicesPage.cta_title")}
-          </h2>
-          <p className="text-white/75 text-sm sm:text-base max-w-xl mb-8 leading-relaxed">
-            {t("servicesPage.cta_body")}
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-6 py-3 bg-[#C9A84C] text-white font-semibold rounded-lg hover:bg-[#B8973B] transition-colors text-sm"
-          >
-            {t("servicesPage.cta_button")}
-          </Link>
-        </div>
-      </div>
-    </div>
+      <CtaBand
+        eyebrow={t("servicesPage.cta_label")}
+        title={t("servicesPage.cta_title")}
+        lead={t("servicesPage.cta_body")}
+        actions={<ButtonLink href="/contact" size="lg">{t("servicesPage.cta_button")}</ButtonLink>}
+      />
+    </>
   );
 }

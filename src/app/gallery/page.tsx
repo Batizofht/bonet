@@ -3,7 +3,7 @@ import GalleryClient from "./GalleryClient";
 export const metadata = {
   title: "Visit Rwanda | Destinations & Attractions",
   description:
-    "Explore Rwanda's top destinations: Volcanoes National Park, Lake Kivu, Akagera, Nyungwe Forest, Kigali Genocide Memorial, and more. Plan your trip with Bonet Elite.",
+    "Rwanda's top destinations: Volcanoes National Park, Lake Kivu, Akagera, Nyungwe Forest and the Kigali Genocide Memorial. Plan your trip with us.",
   keywords:
     "Rwanda destinations, Volcanoes National Park, Lake Kivu, gorilla trekking Rwanda, Akagera safari, Nyungwe Forest, Kigali attractions, Rwanda tourism",
   authors: [{ name: "Bonet Elite Services" }],

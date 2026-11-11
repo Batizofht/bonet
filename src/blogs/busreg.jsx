@@ -176,9 +176,9 @@ const BusinessRegistration = () => {
           <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
             {blogArticle.category}
           </span>
-          <h1 className="text-2xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">
+          <h2 className="h-display mt-2 mb-4 text-[1.6rem] md:text-[2.1rem]">
             {blogArticle.title}
-          </h1>
+          </h2>
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-gray-500">
             <div className="flex items-center gap-1.5">

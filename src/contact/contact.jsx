@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useSearchParams } from "next/navigation";
 import { apiPost } from "@/lib/api";
 import { modernToast } from "@/components/ui/toast";
-import { User, Mail, Phone, MessageCircle, MapPin } from "lucide-react";
+import { User, Mail, Phone, MessageCircle, MapPin, Clock } from "lucide-react";
 import {
   Field,
   TextInput,
@@ -60,15 +60,13 @@ const ContactForm = ({ t, L, isLoading, onFinish, initialInquiry }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-8 w-full max-w-xl">
+    <div className="card w-full p-7 shadow-[0_12px_30px_rgba(7,16,29,0.1)] md:p-10">
       <div className="mb-8">
-        <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider">
-          {t("contactInform.form.title")}
-        </p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 mb-2">
+        <p className="eyebrow">{t("contactInform.form.title")}</p>
+        <h2 className="h-display mt-3 text-[1.6rem] md:text-[1.9rem]">
           {t("contactInformation.title.part1")} {t("contactInformation.title.part2")}
         </h2>
-        <p className="text-gray-500 text-sm">
+        <p className="mt-2 text-[15px] text-ink-500">
           {L("We'll get back to you within 24 hours","Nous vous répondrons dans les 24 heures","我们将在24小时内回复您")}
         </p>
       </div>
@@ -76,7 +74,7 @@ const ContactForm = ({ t, L, isLoading, onFinish, initialInquiry }) => {
       <form onSubmit={handleSubmit} className="space-y-5">
         <Field label={t("contactInform.form.fullName")} error={errors.name} required>
           <TextInput
-            icon={<User className="w-4 h-4 text-gray-400" />}
+            icon={<User className="w-4 h-4" />}
             placeholder={t("contactInform.form.fullName")}
             value={values.name}
             onChange={(e) => set("name", e.target.value)}
@@ -86,7 +84,7 @@ const ContactForm = ({ t, L, isLoading, onFinish, initialInquiry }) => {
 
         <Field label={t("contactInform.form.email")} error={errors.email} required>
           <TextInput
-            icon={<Mail className="w-4 h-4 text-gray-400" />}
+            icon={<Mail className="w-4 h-4" />}
             placeholder={t("contactInform.form.email")}
             value={values.email}
             onChange={(e) => set("email", e.target.value)}
@@ -97,7 +95,7 @@ const ContactForm = ({ t, L, isLoading, onFinish, initialInquiry }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Field label={t("contactInform.form.phone")} error={errors.phone_number} required>
             <TextInput
-              icon={<Phone className="w-4 h-4 text-gray-400" />}
+              icon={<Phone className="w-4 h-4" />}
               placeholder={t("contactInform.form.phone")}
               value={values.phone_number}
               onChange={(e) => set("phone_number", e.target.value)}
@@ -107,7 +105,7 @@ const ContactForm = ({ t, L, isLoading, onFinish, initialInquiry }) => {
 
           <Field label={t("contactInform.form.whatsapp")}>
             <TextInput
-              icon={<MessageCircle className="w-4 h-4 text-gray-400" />}
+              icon={<MessageCircle className="w-4 h-4" />}
               placeholder={t("contactInform.form.whatsapp")}
               value={values.whatsapp_number}
               onChange={(e) => set("whatsapp_number", e.target.value)}
@@ -143,7 +141,7 @@ const ContactForm = ({ t, L, isLoading, onFinish, initialInquiry }) => {
         </Field>
 
         <div className="mb-0">
-          <SubmitButton loading={isLoading} className="rounded-lg text-base">
+          <SubmitButton loading={isLoading}>
             {isLoading ? L("Sending...","Envoi en cours...","发送中...") : t("contactInform.form.submitButton")}
           </SubmitButton>
         </div>
@@ -153,64 +151,42 @@ const ContactForm = ({ t, L, isLoading, onFinish, initialInquiry }) => {
 };
 
 const ContactInfo = ({ t, L }) => (
-  <div className="bg-white rounded-xl border border-gray-200 p-8 w-full max-w-xl">
-    <div className="mb-8">
-      <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider">
-        {t("contactInformation.title.part1")}
-      </p>
-      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 mb-3">
-        {t("contactInformation.title.part2")}
-      </h2>
-      <p className="text-gray-500 text-sm leading-relaxed">
-        {t("contactInformation.description")}
-      </p>
-    </div>
+  <div className="w-full rounded-[10px] bg-ink-900 p-7 text-white md:p-9">
+    <p className="eyebrow eyebrow-light">{t("contactInformation.title.part1")} {t("contactInformation.title.part2")}</p>
+    <p className="mt-3 font-display text-[1.3rem] font-semibold leading-snug">
+      {L("Speak directly with our Kigali team", "Parlez directement à notre équipe de Kigali", "直接与我们的基加利团队沟通")}
+    </p>
+    <p className="mt-3 text-[15px] leading-relaxed text-white/65">{t("contactInformation.description")}</p>
 
     <button
+      type="button"
       onClick={() => openWhatsApp({ phone: BONET_WHATSAPP })}
-      className="w-full inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1da851] text-white font-semibold rounded-lg px-6 py-3 transition-colors duration-200 border-0 mb-8"
+      className="btn mt-8 w-full bg-[#25D366] text-white hover:bg-[#1fb658]"
     >
-      <MessageCircle className="w-5 h-5" />
+      <MessageCircle className="h-5 w-5" />
       {t("contactInformation.chatButton")}
     </button>
 
-    <div className="space-y-5">
-      <div className="flex items-center gap-4">
-        <Phone className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
-        <div>
-          <p className="text-xs text-gray-500 mb-0.5">{t("contactInformation.callWhatsApp")}</p>
-          <a href="tel:+250726300260" className="font-semibold text-gray-900 hover:text-[#C9A84C] transition-colors text-sm">
-            +250 726 300 260
-          </a>
-        </div>
-      </div>
-
-      <div className="flex items-center gap-4">
-        <Mail className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
-        <div>
-          <p className="text-xs text-gray-500 mb-0.5">{t("contactInformation.email")}</p>
-          <a href="mailto:info@bonet.rw" className="font-semibold text-gray-900 hover:text-[#C9A84C] transition-colors text-sm">
-            info@bonet.rw
-          </a>
-        </div>
-      </div>
-
-      <div className="flex items-center gap-4">
-        <MapPin className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
-        <div>
-          <p className="text-xs text-gray-500 mb-0.5">{L("Location","Adresse","地址")}</p>
-          <p className="font-semibold text-gray-900 text-sm">{t("contactInformation.location")}</p>
-        </div>
-      </div>
-
-      <div className="flex items-center gap-4">
-        <Phone className="w-4 h-4 text-[#C9A84C] flex-shrink-0" />
-        <div>
-          <p className="text-xs text-gray-500 mb-0.5">{t("contactInformation.hours")}</p>
-          <p className="font-semibold text-gray-900 text-sm">{t("contactInformation.officeHours")}</p>
-        </div>
-      </div>
-    </div>
+    <ul className="mt-8 divide-y divide-white/10 border-y border-white/10">
+      {[
+        { icon: Phone, label: t("contactInformation.callWhatsApp"), value: "+250 726 300 260", href: "tel:+250726300260" },
+        { icon: Mail, label: t("contactInformation.email"), value: "info@bonet.rw", href: "mailto:info@bonet.rw" },
+        { icon: MapPin, label: L("Location","Adresse","地址"), value: t("contactInformation.location") },
+        { icon: Clock, label: t("contactInformation.hours"), value: t("contactInformation.officeHours") },
+      ].map(({ icon: Icon, label, value, href }) => (
+        <li key={label} className="flex items-start gap-4 py-4">
+          <Icon className="mt-0.5 h-4 w-4 shrink-0 text-gold-400" />
+          <div>
+            <p className="text-[12px] uppercase tracking-[0.12em] text-white/45">{label}</p>
+            {href ? (
+              <a href={href} className="text-[15px] font-semibold text-white hover:text-gold-300">{value}</a>
+            ) : (
+              <p className="text-[15px] font-semibold text-white">{value}</p>
+            )}
+          </div>
+        </li>
+      ))}
+    </ul>
   </div>
 );
 
@@ -257,17 +233,17 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white pb-16">
-      <div className="max-w-5xl mx-auto px-4 py-12 flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+    <div className="bg-white pb-16 md:pb-24">
+      <div className="container-x relative z-10 -mt-16 grid items-start gap-6 md:-mt-24 lg:grid-cols-[1.25fr_0.75fr]">
         <ContactForm t={t} L={L} isLoading={isLoading} onFinish={handleSubmit} initialInquiry={initialInquiry} />
         <ContactInfo t={t} L={L} />
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 pb-20">
-        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-          <div className="px-6 py-5 border-b border-gray-100">
-            <h3 className="text-lg font-bold text-gray-900">{L("Find Us","Nous trouver","找到我们")}</h3>
-            <p className="text-sm text-gray-600 mt-1">{address}</p>
+      <div className="container-x mt-12">
+        <div className="card overflow-hidden">
+          <div className="flex flex-col gap-1 border-b border-line px-7 py-6 md:flex-row md:items-center md:justify-between">
+            <h3 className="text-[1.15rem] font-semibold text-ink-900">{L("Find Us","Nous trouver","找到我们")}</h3>
+            <p className="text-[15px] text-ink-500">{address}</p>
           </div>
           <div className="w-full aspect-[16/10] sm:aspect-[16/7]">
             <iframe

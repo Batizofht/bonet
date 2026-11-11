@@ -1,27 +1,26 @@
-"use client"
-import React from "react";
+"use client";
 import { useTranslation } from "react-i18next";
+import { PageHero, ButtonLink } from "@/components/ui/kit";
 
+/** About page hero */
 const SecondService = () => {
   const { i18n } = useTranslation();
-  const L = (en, fr, ch) =>
-    i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en;
+  const L = (en, fr, ch) => (i18n.language === "fr" ? fr : i18n.language === "ch" ? ch : en);
 
   return (
-    <div className="relative w-full h-[20vh] sm:h-[30vh] bg-gray-900 bg-cover bg-center overflow-hidden"
-      style={{ backgroundImage: "url('/image/7.jpg')" }}
-    >
-      <div className="absolute inset-0 bg-black/90" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-        <div className="w-2 h-2 bg-[#C9A84C] rotate-45 mb-4" />
-        <p className="text-[#C9A84C] text-xs font-bold uppercase mb-3 tracking-[0.15em]">
-          {L("About Us","À Propos","关于我们")}
-        </p>
-        <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-wider">
-          {L("About Bonet","À Propos de Bonet","关于Bonet")}
-        </h1>
-      </div>
-    </div>
+    <PageHero
+      image="/assets/photos/kigali-skyline.jpg"
+      imageAlt="Kigali at dusk"
+      eyebrow={L("About Us", "À Propos", "关于我们")}
+      title={L("About Bonet", "À Propos de Bonet", "关于Bonet")}
+      lead={L(
+        "The team foreign investors call first when entering Rwanda.",
+        "L'équipe que les investisseurs étrangers appellent en premier lorsqu'ils entrent au Rwanda.",
+        "外国投资者进入卢旺达时首先联系的团队。"
+      )}
+      crumbs={[{ name: L("Home", "Accueil", "首页"), href: "/" }, { name: L("About Us", "À Propos", "关于我们") }]}
+      actions={<ButtonLink href="/contact" size="lg">{L("Book a free consultation", "Consultation gratuite", "预约免费咨询")}</ButtonLink>}
+    />
   );
 };
 export default SecondService;

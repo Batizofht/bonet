@@ -154,17 +154,14 @@ const InvestmentIncentivesTable = () => {
   ];
 
   return (
-    <section className="bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4 py-20">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-widest">
-            {L("Tax Benefits", "Avantages Fiscaux", "税收优惠")}
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 uppercase tracking-wider">
+    <section className="border-t border-line bg-white">
+      <div className="container-x py-16 md:py-24">
+        <div className="mb-10 max-w-3xl md:mb-12">
+          <p className="eyebrow">{L("Tax Benefits", "Avantages Fiscaux", "税收优惠")}</p>
+          <h2 className="h-display mt-3 text-[1.75rem] sm:text-[2rem] md:text-[2.35rem]">
             {L("Rwanda Investment Incentives", "Incitations à l'Investissement au Rwanda", "卢旺达投资激励措施")}
           </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+          <p className="lead mt-5">
             {L(
               "Industry-leading tax advantages designed to accelerate your return on investment",
               "Des avantages fiscaux de premier plan conçus pour accélérer votre retour sur investissement",
@@ -173,71 +170,32 @@ const InvestmentIncentivesTable = () => {
           </p>
         </div>
 
-        {/* Table - Desktop */}
-        <div className="hidden md:block border border-gray-200 rounded-xl overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900 uppercase tracking-wider">
-                    {L("Incentive", "Incitation", "激励措施")}
-                  </th>
-                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900 uppercase tracking-wider">
-                    {L("Details", "Détails", "详情")}
-                  </th>
-                  <th className="text-left px-6 py-4 text-sm font-semibold text-gray-900 uppercase tracking-wider">
-                    {L("Eligibility", "Éligibilité", "资格条件")}
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100">
-                {incentives.map((item, index) => (
-                  <tr key={index} className="hover:bg-gray-50/50 transition-colors">
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-3">
-                        <item.icon className="w-5 h-5 text-[#C9A84C] flex-shrink-0" />
-                        <span className="font-semibold text-gray-900">{item.incentive}</span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 text-gray-600">{item.details}</td>
-                    <td className="px-6 py-4">
-                      <span className="inline-flex items-center px-3 py-1 rounded text-sm font-medium bg-[#C9A84C]/10 text-[#C9A84C]">
-                        {item.eligibility}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* Cards - Mobile */}
-        <div className="md:hidden grid grid-cols-1 gap-4">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {incentives.map((item, index) => (
-            <div key={index} className="border border-gray-200 rounded-xl p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <item.icon className="w-5 h-5 text-[#C9A84C] flex-shrink-0" />
-                <h3 className="font-semibold text-gray-900">{item.incentive}</h3>
+            <div key={index} className="card flex flex-col p-7">
+              <div className="flex items-center gap-3">
+                <item.icon className="h-5 w-5 shrink-0 text-gold-600" />
+                <h3 className="text-[1.1rem] font-semibold leading-snug text-ink-900">{item.incentive}</h3>
               </div>
-              <p className="text-gray-600 text-sm mb-3">{item.details}</p>
-              <span className="inline-flex items-center px-3 py-1 rounded text-sm font-medium bg-[#C9A84C]/10 text-[#C9A84C]">
+              <p className="mt-4 flex-1 text-[15px] leading-relaxed text-ink-600">{item.details}</p>
+              <p className="mt-5 border-t border-line pt-4 text-[13px] leading-snug text-ink-500">
+                <span className="mr-1.5 font-semibold uppercase tracking-[0.1em] text-gold-700">{L("Eligibility", "Éligibilité", "资格条件")}</span>
                 {item.eligibility}
-              </span>
+              </p>
             </div>
           ))}
         </div>
 
         {/* Note */}
-        <div className="mt-8 text-center space-y-2">
-          <p className="text-gray-500 text-sm">
+        <div className="mt-10 space-y-2">
+          <p className="text-[15px] font-medium text-ink-700">
             {L(
               "All incentives require RDB Investment Certificate. We handle the entire application process.",
               "Toutes les incitations nécessitent un certificat d'investissement RDB. Nous gérons l'ensemble du processus de demande.",
               "所有激励措施均需要RDB投资证书。我们处理整个申请流程。"
             )}
           </p>
-          <p className="text-gray-400 text-xs">
+          <p className="text-[13px] text-ink-400">
             {L(
               "Incentives are subject to eligibility criteria and government approval. Contact us for a personalized assessment. Last updated: January 2026.",
               "Les incitations sont soumises à des critères d'éligibilité et à l'approbation du gouvernement. Contactez-nous pour une évaluation personnalisée. Dernière mise à jour : janvier 2026.",

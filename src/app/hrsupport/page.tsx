@@ -28,7 +28,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@BonetElite",
+    site: "@BonetPJ",
     title: "HR & Admin Support Services Rwanda",
     description:
       "HR and administrative support in Rwanda. Recruitment, payroll, employee training and HR policy by Bonet Elite Services.",
@@ -40,7 +40,7 @@ export default function ConsultingPage() {
   return (
     <div className="min-h-screen">
       <FirstService
-        image="/image/9.jpg"
+        image="/assets/photos/kigali-tower.jpg"
         subtitleKey="pageHero.hrsupport.subtitle"
         titleKey="pageHero.hrsupport.title"
         descriptionKey="pageHero.hrsupport.desc"

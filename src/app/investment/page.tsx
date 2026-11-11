@@ -4,6 +4,7 @@ import InvestmentBusinessSetup from "../../services/setup";
 import InvestmentIncentivesTable from "../../services/InvestmentIncentivesTable";
 import MarketAccessTable from "../../services/MarketAccessTable";
 import KeyFactsTable from "../../services/KeyFactsTable";
+import RelatedGuides from "@/components/insights/RelatedGuides";
 export const metadata = {
   title: "Investment & Business Setup Rwanda",
   description:
@@ -30,7 +31,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@BonetElite",
+    site: "@BonetPJ",
     title: "Investment & Business Setup Rwanda",
     description:
       "Company registration, licensing and investment support in Rwanda. Bonet Elite helps entrepreneurs start businesses in Kigali fast.",
@@ -42,7 +43,7 @@ export default function InvestmentPage() {
   return (
     <div className="min-h-screen">
       <FirstService
-        image="/image/6.webp"
+        image="/assets/images/kiga1.jpeg"
         subtitleKey="pageHero.investment.subtitle"
         titleKey="pageHero.investment.title"
         descriptionKey="pageHero.investment.desc"
@@ -51,6 +52,7 @@ export default function InvestmentPage() {
       <KeyFactsTable />
       <InvestmentIncentivesTable />
       <MarketAccessTable />
+      <RelatedGuides service="/investment" />
     </div>
   );
 }

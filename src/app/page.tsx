@@ -1,9 +1,9 @@
 import React from "react";
 import HomePageClient from "./pageClient";
 export const metadata = {
-  title: "Invest in Rwanda With Confidence | Bonet Elite Services",
+  title: { absolute: "Invest in Rwanda With Confidence | Bonet Elite Services" },
   description:
-    "Zero minimum capital. Fast, fully online company registration. 0% corporate tax for qualifying investments. Full-service business, HR, relocation and executive travel support in Rwanda.",
+    "Register your company in Rwanda online with zero minimum capital. Tax incentives, HR, relocation and executive travel support from one Kigali team.",
   keywords:
     "invest Rwanda, business setup Rwanda, company registration Rwanda, foreign investment Rwanda, Bonet Elite Services, Rwanda tax incentives",
   authors: [{ name: "Bonet Elite Services" }],

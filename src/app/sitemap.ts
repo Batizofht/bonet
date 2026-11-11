@@ -1,4 +1,6 @@
 import { MetadataRoute } from 'next'
+import { MARKETS } from '@/content/insights/markets'
+import { ALL_ARTICLES, articleUrl } from '@/content/insights'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://bonet.rw'
@@ -124,6 +126,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
+    },
+    // Market hubs and the 30 market guides (static, server-rendered)
+    ...MARKETS.map((m) => ({
+      url: `${baseUrl}/${m.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    })),
+    ...ALL_ARTICLES.map((a) => ({
+      url: `${baseUrl}${articleUrl(a)}`,
+      lastModified: new Date(a.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+      // Image sitemap entry so the guide photos can be indexed
+      images: [`${baseUrl}${a.image}`],
+    })),
+    {
+      url: `${baseUrl}/photo-credits`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.2,
     },
   ]
 

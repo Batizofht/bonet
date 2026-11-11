@@ -1,6 +1,7 @@
 
 import FirstService from "../../services/firstservice";
 import BusinessConsulting from "../../services/consult";
+import RelatedGuides from "@/components/insights/RelatedGuides";
 export const metadata = {
   title: "Business Consulting Services Rwanda",
   description:
@@ -27,7 +28,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@BonetElite",
+    site: "@BonetPJ",
     title: "Business Consulting Services Rwanda",
     description:
       "Expert business consulting in Rwanda. Business plans, project planning, financial audits and strategy by Bonet Elite Services.",
@@ -39,12 +40,13 @@ export default function ConsultingPage() {
   return (
     <div className="min-h-screen">
       <FirstService
-        image="/image/7.jpg"
+        image="/assets/photos/kigali-cbd.jpg"
         subtitleKey="pageHero.consulting.subtitle"
         titleKey="pageHero.consulting.title"
         descriptionKey="pageHero.consulting.desc"
       />
       <BusinessConsulting />
+      <RelatedGuides service="/consulting" />
     </div>
   );
 }

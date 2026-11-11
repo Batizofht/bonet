@@ -2,10 +2,12 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Loader2, Search, X, Briefcase, TrendingUp, MapPin } from 'lucide-react';
 import PageLoader from '../../components/PageLoader';
 import { useTranslation } from 'react-i18next';
 import { slugify } from '../../slugify';
+import { cleanText } from '@/lib/text';
 
 interface Blog {
   id: number;
@@ -74,7 +76,7 @@ export default function BlogsClient() {
     const query = searchQuery.toLowerCase().trim();
     const filtered = allBlogs.filter(blog => 
       blog.title.toLowerCase().includes(query) ||
-      blog.quote.toLowerCase().includes(query)
+      cleanText(blog.quote).toLowerCase().includes(query)
     );
     
     setBlogs(filtered);
@@ -155,7 +157,7 @@ export default function BlogsClient() {
           const query = searchQuery.toLowerCase().trim();
           const filtered = newBlogs.filter(blog => 
             blog.title.toLowerCase().includes(query) ||
-            blog.quote.toLowerCase().includes(query)
+            cleanText(blog.quote).toLowerCase().includes(query)
           );
           setBlogs(filtered);
         }
@@ -212,31 +214,28 @@ export default function BlogsClient() {
   ];
 
   return (
-    <div className="min-h-screen bg-white pb-16 md:pb-20">
-      <section className="py-12 px-4 max-w-5xl mx-auto">
+    <div className="bg-white pb-16 md:pb-24">
+      <section className="container-x py-14 md:py-20">
         {/* Header */}
-        <div className="mb-10">
-          <span className="text-[#C9A84C] font-semibold text-sm uppercase tracking-wider">
-            {t('blog.header.title1', 'Latest')}
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2 mb-3">
-            {t('blog.header.title2', 'Blogs')}
-          </h1>
-          <p className="text-gray-500 text-lg max-w-xl">
-            {t('blog.header.description', 'Expert articles and updates')}
-          </p>
+        <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="eyebrow">{t('blog.header.title1', 'Latest')}</p>
+            <h2 className="h-display mt-3 text-[1.75rem] sm:text-[2rem] md:text-[2.35rem]">{t('blog.header.title2', 'Blogs')}</h2>
+            <p className="lead mt-3 max-w-xl">{t('blog.header.description', 'Expert articles and updates')}</p>
+          </div>
         </div>
 
         {/* Search */}
         <div className="mb-6">
           <div className="relative max-w-md">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gold-600" />
             <input
-              type="text"
+              type="search"
+              aria-label={t('blog.filter.placeholder', 'Search articles...')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t('blog.filter.placeholder', 'Search articles...')}
-              className="w-full pl-10 pr-9 py-3 text-sm border-b-2 border-gray-200 bg-transparent focus:outline-none focus:border-[#C9A84C] transition-colors"
+              className="w-full rounded-md border border-line bg-white py-3 pl-11 pr-10 text-[15px] text-ink-900 outline-none transition-colors placeholder:text-ink-400 focus:border-ink-900"
             />
             {searchQuery && (
               <button
@@ -262,7 +261,7 @@ export default function BlogsClient() {
             <Link
               key={cat.href}
               href={cat.href}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded border border-gray-200 text-sm font-medium text-gray-700 hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors duration-200"
+              className="inline-flex items-center gap-2 rounded-md border border-line px-4 py-2 text-sm font-medium text-ink-700 transition-colors duration-200 hover:border-ink-900 hover:text-ink-900"
             >
               <cat.icon className="w-3.5 h-3.5" />
               {cat.label}
@@ -295,28 +294,32 @@ export default function BlogsClient() {
                   <Link href={`/blog/${blogItems[0].slug}`} className="group block mb-12">
                     <article className="md:flex md:gap-8">
                       <div className="md:w-3/5 mb-4 md:mb-0">
-                        <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
-                          <img
+                        <div className="relative aspect-[16/9] overflow-hidden rounded-[10px] bg-sand">
+                          <Image
                             src={blogItems[0].imageUrl}
                             alt={blogItems[0].title}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            loading="eager"
+                            fill
+                            priority
+                            sizes="(min-width: 1024px) 600px, (min-width: 768px) 60vw, 100vw"
+                            className="object-cover"
                           />
                         </div>
                       </div>
                       <div className="md:w-2/5 flex flex-col justify-center">
                         <div className="flex items-center gap-3 mb-3">
-                          <span className="text-xs font-semibold uppercase tracking-wider text-[#C9A84C]">{t('blog.featured', 'Featured')}</span>
+                          <span className="text-xs font-semibold uppercase tracking-wider text-gold-700">{t('blog.featured', 'Featured')}</span>
                           <span className="text-gray-300">·</span>
                           <span className="text-xs text-gray-500">{blogItems[0].formattedDate}</span>
                         </div>
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 group-hover:text-[#C9A84C] transition-colors duration-200 line-clamp-3">
+                        <h2 className="mb-3 text-[1.45rem] font-semibold leading-snug text-ink-900 transition-colors duration-200 group-hover:text-gold-700 md:text-[1.7rem] line-clamp-3">
                           {blogItems[0].title}
                         </h2>
-                        <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">
-                          {blogItems[0].quote}
-                        </p>
-                        <span className="inline-flex items-center gap-2 text-[#C9A84C] font-semibold text-sm">
+                        {cleanText(blogItems[0].quote) && (
+                          <p className="text-gray-600 leading-relaxed mb-4 line-clamp-3">
+                            {cleanText(blogItems[0].quote)}
+                          </p>
+                        )}
+                        <span className="inline-flex items-center gap-2 font-display text-sm font-semibold text-ink-900">
                           {t('blog.readArticle', 'Read article')}
                           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </span>
@@ -341,12 +344,13 @@ export default function BlogsClient() {
                           <div className="flex flex-col sm:flex-row sm:gap-6">
                             {/* Image */}
                             <div className="sm:w-48 md:w-56 flex-shrink-0 mb-4 sm:mb-0">
-                              <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                                <img
+                              <div className="relative aspect-[4/3] overflow-hidden rounded-[8px] bg-sand">
+                                <Image
                                   src={post.imageUrl}
                                   alt={post.title}
-                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                  loading="lazy"
+                                  fill
+                                  sizes="(min-width: 768px) 224px, (min-width: 640px) 192px, 100vw"
+                                  className="object-cover"
                                 />
                               </div>
                             </div>
@@ -355,13 +359,15 @@ export default function BlogsClient() {
                               <div className="flex items-center gap-3 mb-2">
                                 <span className="text-xs text-gray-500">{post.formattedDate}</span>
                               </div>
-                              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-[#C9A84C] transition-colors duration-200 line-clamp-2">
+                              <h3 className="mb-2 text-[1.12rem] font-semibold leading-snug text-ink-900 transition-colors duration-200 group-hover:text-gold-700 line-clamp-2">
                                 {post.title}
                               </h3>
-                              <p className="text-gray-600 text-sm leading-relaxed line-clamp-2 mb-3">
-                                {post.quote}
-                              </p>
-                              <span className="inline-flex items-center gap-1.5 text-[#C9A84C] text-sm font-medium">
+                              {cleanText(post.quote) && (
+                                <p className="text-gray-600 text-sm leading-relaxed line-clamp-2 mb-3">
+                                  {cleanText(post.quote)}
+                                </p>
+                              )}
+                              <span className="inline-flex items-center gap-1.5 font-display text-sm font-semibold text-ink-900">
                                 {t('blog.read', 'Read')}
                                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                               </span>
@@ -379,7 +385,7 @@ export default function BlogsClient() {
                     <button
                       onClick={handleLoadMore}
                       disabled={isLoadingMore}
-                      className="inline-flex items-center gap-2 px-8 py-3 bg-[#C9A84C] hover:bg-[#B8973B] text-white rounded-lg font-semibold text-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                      className="btn btn-ink disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       {isLoadingMore ? (
                         <Loader2 className="w-4 h-4 animate-spin" />

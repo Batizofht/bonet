@@ -70,9 +70,9 @@ const WelcomeForm = ({ onFinish, t, isLoading, L, initialInquiry }) => {
         <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-wider">
           {t("contactInform.form.title")}
         </p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 mb-2">
+        <h1 className="h-display mt-2 mb-2 text-[1.75rem] sm:text-[2.1rem]">
           {L("Welcome to Bonet Elite","Bienvenue chez Bonet Elite","欢迎来到 Bonet Elite")}
-        </h2>
+        </h1>
         <p className="text-gray-500 text-sm">
           {L("We'll get back to you within 24 hours","Nous vous répondrons dans les 24 heures","我们将在24小时内回复您")}
         </p>
