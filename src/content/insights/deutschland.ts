@@ -304,7 +304,7 @@ Der zweite Weg ist eine Übergangslösung über einen lokalen Partner, der rekru
 
 Grundlage ist das Arbeitsgesetz von 2018 mit seinen Durchführungsbestimmungen. Arbeitsverträge sollten schriftlich geschlossen werden und Tätigkeit, Vergütung, Arbeitszeit und Arbeitsort regeln. Probezeiten sind zulässig, müssen aber im Vertrag stehen. Es gelten gesetzliche Ansprüche auf Urlaub, Mutterschutz und Feiertage. Die Beendigung eines Arbeitsverhältnisses erfordert ein faires Verfahren mit Kündigungsfrist und gegebenenfalls einer Abfindung.
 
-Für deutsche Führungskräfte ist die wichtigste Umstellung, dass informelle Absprachen ein Risiko darstellen. Ein sauber formulierter Vertrag und eine Betriebsordnung verhindern die meisten Konflikte, und Arbeitsinspektionen finden tatsächlich statt. Unser [HR-Team](/hrsupport) erstellt beides nach ruandischem Recht.
+Für deutsche Führungskräfte ist die wichtigste Umstellung, dass informelle Absprachen ein Risiko darstellen. Ein sauber formulierter Vertrag und eine Betriebsordnung verhindern die meisten Konflikte, und Arbeitsinspektionen finden tatsächlich statt. Unser [HR-Team](/hr-recruitment#hr-admin-support) erstellt beides nach ruandischem Recht.
 
 ## Lohnabrechnung und Sozialversicherung
 

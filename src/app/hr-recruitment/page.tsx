@@ -2,11 +2,11 @@ import HRRecruitmentClient from "./HRRecruitmentClient";
 import RelatedGuides from "@/components/insights/RelatedGuides";
 
 export const metadata = {
-  title: "HR & Recruitment Rwanda | Talent Solutions",
+  title: "HR, Recruitment & Admin Support in Rwanda",
   description:
-    "Professional HR and recruitment services in Rwanda. Talent sourcing, payroll management, compliance, and workforce solutions for foreign companies.",
+    "Recruitment, payroll, HR policies, staff training, work permits and administrative support for foreign companies hiring in Rwanda.",
   keywords:
-    "HR services Rwanda, recruitment Rwanda, payroll management Rwanda, talent sourcing Rwanda, HR compliance Rwanda",
+    "HR services Rwanda, recruitment Rwanda, payroll management Rwanda, HR administrative support Rwanda, employee training Rwanda, HR compliance Rwanda, work permits Rwanda",
   authors: [{ name: "Bonet Elite Services" }],
   alternates: { canonical: "https://bonet.rw/hr-recruitment" },
   openGraph: {

@@ -95,7 +95,7 @@ export const MARKETS: Market[] = [
         "Guides pratiques pour les investisseurs et entreprises françaises : créer une société au Rwanda, fiscalité, incitations, expatriation à Kigali.",
       eyebrow: "Guides pour la France",
       intro:
-        "Le français est une langue officielle du Rwanda, la relation franco-rwandaise s’est normalisée depuis 2021 et Kigali s’impose comme une porte d’entrée vers l’Afrique de l’Est. Nos guides répondent aux questions des entrepreneurs français.",
+        "Le français est une langue officielle du Rwanda, l’administration y est rapide et transparente, et Kigali s’impose comme une porte d’entrée vers l’Afrique de l’Est. Nos guides répondent aux questions des entrepreneurs français.",
       keywords: ["investir au Rwanda", "créer une entreprise au Rwanda", "Rwanda entreprise française", "s'installer à Kigali"],
       readLabel: "Lire le guide",
       allLabel: "Tous les guides France",

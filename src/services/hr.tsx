@@ -1,11 +1,10 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { ArrowRight, UserPlus, Shield, GraduationCap, CreditCard } from "lucide-react";
 import Image from "next/image";
 import InquiryModal from "@/components/InquiryModal";
-import { WhatsAppButton, SectionHeader, CtaBand } from "@/components/ui/kit";
+import { WhatsAppButton, SectionHeader } from "@/components/ui/kit";
 
 const hrServices = [
   { base: "hrServices.recruitment", image: "/assets/images/talent.jpg", icon: UserPlus },
@@ -22,7 +21,8 @@ export default function HRAdminSupport() {
 
   return (
     <>
-      <section className="bg-white py-20 md:py-28">
+      {/* Merged in from the former /hrsupport page (it now redirects to /hr-recruitment) */}
+      <section id="hr-admin-support" className="border-t border-line bg-white py-16 md:py-24">
         <div className="container-x">
           <SectionHeader
             eyebrow={L("Services", "Services", "服务")}
@@ -56,31 +56,8 @@ export default function HRAdminSupport() {
               );
             })}
           </div>
-
-          <div className="mt-10 flex flex-col items-start gap-4 rounded-[10px] border border-line p-7 md:flex-row md:items-center md:justify-between">
-            <p className="text-[15px] font-medium text-ink-800">
-              {L("Looking for recruitment services? View our talent solutions", "Vous cherchez des services de recrutement ? Découvrez nos solutions de talents", "寻找招聘服务？查看我们的人才解决方案")}
-            </p>
-            <Link href="/hr-recruitment" className="link-arrow">{L("Recruitment", "Recrutement", "招聘")}<ArrowRight className="h-4 w-4" /></Link>
-          </div>
         </div>
       </section>
-
-      <CtaBand
-        image="/assets/images/s3.jpeg"
-        eyebrow={L("HR & Admin Support", "Soutien RH et Administratif", "人力资源与行政支持")}
-        title={L("Build a compliant team in Rwanda", "Constituez une équipe conforme au Rwanda", "在卢旺达组建合规团队")}
-        lead={t("pageHero.hrsupport.desc")}
-        actions={
-          <>
-            <button type="button" onClick={() => setOpen(true)} className="btn btn-gold btn-lg">
-              {t("hrServices.ctaContact")}
-              <ArrowRight className="h-4 w-4" />
-            </button>
-            <WhatsAppButton variant="ghost-light" className="btn-lg">WhatsApp</WhatsAppButton>
-          </>
-        }
-      />
 
       <InquiryModal
         open={open}

@@ -236,7 +236,7 @@
     "hero_tagline": "Experts en Investissement au Rwanda",
     "hero_title": "Investissez au Rwanda",
     "hero_title_accent": "En Toute Confiance",
-    "hero_desc1": "Aucun capital minimum. 0% d'impôt sur les sociétés pour les investissements éligibles.",
+    "hero_desc1": "Aucun capital minimum. Impôt sur les sociétés préférentiel de 15 % pour les secteurs prioritaires.",
     "hero_desc2": "Accompagnement complet de la création juridique aux opérations quotidiennes.",
     "explore_services": "Explorer les Services",
     "stat_years": "Années d'Expérience",
@@ -361,7 +361,7 @@
       "business": "Affaires",
       "honeymoon": "Lune de miel",
       "family": "Vacances en famille",
-      "diplomatic": "Séjour diplomatique",
+      "diplomatic": "Séjour institutionnel",
       "vipEvent": "Événement VIP"
     },
     "hotelLevels": {
@@ -972,7 +972,7 @@
         "business": "Voyage d'affaires",
         "honeymoon": "Lune de miel / Romantique",
         "family": "Vacances en famille",
-        "diplomatic": "Visite diplomatique",
+        "diplomatic": "Visite institutionnelle",
         "vip_event": "Événement VIP"
       }
     },
@@ -982,7 +982,7 @@
       "required": "Veuillez sélectionner l'emplacement préféré",
       "options": {
         "kcc": "Centre-ville de Kigali",
-        "embassy": "Zone des ambassades",
+        "embassy": "Nyarutarama / Kimihurura",
         "vision_city": "Vision City",
         "musanze": "Musanze",
         "lake_kivu": "Lac Kivu",
@@ -1131,12 +1131,12 @@
         "business": "Voyage d'affaires",
         "honeymoon": "Lune de miel / Romantique",
         "family": "Vacances en famille",
-        "diplomatic": "Visite diplomatique",
+        "diplomatic": "Visite institutionnelle",
         "vip": "Événement VIP"
       },
       "location": {
         "kcc": "Centre-ville de Kigali",
-        "embassy": "Quartier des ambassades",
+        "embassy": "Nyarutarama / Kimihurura",
         "visionCity": "Vision City",
         "musanze": "Musanze",
         "lakeKivu": "Lac Kivu",
@@ -1479,7 +1479,7 @@
       "business": "Affaires",
       "honeymoon": "Lune de miel",
       "family": "Famille",
-      "diplomatic": "Diplomatique",
+      "diplomatic": "Institutionnel",
       "vipEvent": "Événement VIP"
     },
     "hotelLevels": {
@@ -1800,7 +1800,7 @@
         "business": "Affaires",
         "honeymoon": "Lune de miel",
         "family": "Famille",
-        "diplomatic": "Diplomatique",
+        "diplomatic": "Institutionnel",
         "vip_event": "Événement VIP"
       }
     },
@@ -2007,7 +2007,9 @@
     "chatButton": "Discutez avec nous sur WhatsApp",
     "callWhatsApp": "Appel / WhatsApp",
     "email": "E-mail",
-    "location": "Kigali, Rwanda"
+    "location": "Masaka, Dubai Port Road, Kigali, Rwanda",
+    "hours": "Disponible 24h/24 et 7j/7 sur WhatsApp",
+    "officeHours": "Bureau : lun–ven 09:00–17:00, sam 10:00–15:00 (CAT)"
   },
   "toast": {
     "success": "Message envoyé ! Nous vous répondrons rapidement.",

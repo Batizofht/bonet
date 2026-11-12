@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { ArrowRight, MapPin } from "lucide-react";
-import { MediaRow, WhatsAppButton, SectionHeader, CtaBand } from "@/components/ui/kit";
+import { MediaRow, WhatsAppButton, SectionHeader } from "@/components/ui/kit";
 
 export default function HotelHospitality() {
   const { t, i18n } = useTranslation();
@@ -24,7 +24,8 @@ export default function HotelHospitality() {
 
   return (
     <>
-      <section className="bg-white py-20 md:py-28">
+      {/* Merged in from the former /travel page (it now redirects to /executive-travel) */}
+      <section id="travel-hospitality" className="border-t border-line bg-white py-16 md:py-24">
         <div className="container-x">
           <SectionHeader
             eyebrow={L("Services", "Services", "服务")}
@@ -72,19 +73,6 @@ export default function HotelHospitality() {
           </div>
         </div>
       </section>
-
-      <CtaBand
-        image="/assets/images/kivuserena.jpg"
-        eyebrow={L("Travel & Hospitality", "Voyage et Hôtellerie", "旅游与酒店")}
-        title={L("Need seamless travel & hospitality arrangements?", "Besoin d'arrangements de voyage et d'hôtellerie ?", "需要无缝旅行和酒店安排？")}
-        lead={L("Hotels, transfers, tours and VIP handling, arranged by one team in Kigali.", "Hôtels, transferts, circuits et accueil VIP, organisés par une seule équipe à Kigali.", "酒店、接送、旅游和VIP服务，由基加利的一个团队统一安排。")}
-        actions={
-          <>
-            <Link href="/Reservations" className="btn btn-gold btn-lg">{L("Book now", "Réserver", "立即预订")}<ArrowRight className="h-4 w-4" /></Link>
-            <WhatsAppButton variant="ghost-light" className="btn-lg">WhatsApp</WhatsAppButton>
-          </>
-        }
-      />
     </>
   );
 }

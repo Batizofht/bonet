@@ -25,7 +25,7 @@ This guide sets out why UK investors are paying attention, how a set-up from Lon
 
 ## Why Rwanda appeals to UK businesses
 
-The first thing most UK boards notice is familiarity. Rwanda joined the Commonwealth in 2009 and hosted the Commonwealth Heads of Government Meeting in Kigali in 2022. Contracts, banking documents and government portals are available in English. Meetings run on time, emails get answered, and the business culture, while more relationship-driven than London's, will not feel foreign to anyone who has worked internationally.
+The first thing most UK boards notice is familiarity. Rwanda has been a member of the Commonwealth since 2009, and English is part of everyday business life. Contracts, banking documents and government portals are available in English. Meetings run on time, emails get answered, and the business culture, while more relationship-driven than London's, will not feel foreign to anyone who has worked internationally.
 
 The second is the quality of administration. Rwanda ranked second in Africa in the World Bank's final Doing Business report and is consistently rated among the least corrupt countries on the continent. Company registration, tax filing and many permits are handled online with published fees. For a UK company bound by the Bribery Act, that transparency is not a nice-to-have; it is what makes a market investable.
 
@@ -247,7 +247,7 @@ One practical note: plastic bags are banned in Rwanda, and that includes bags in
 
 ## Where to stay
 
-Most business travellers stay near the Kigali Convention Centre or in the city centre. The Radisson Blu Hotel and Convention Centre sits right next to the conference venue, which makes it the obvious choice during major events. The Kigali Marriott is central, has good meeting rooms and attracts a strong business crowd. The Kigali Serena is one of the city's longest-established addresses and remains popular with diplomats and visiting executives. If your stay is longer than a week, serviced apartments in Kimihurura or Kiyovu are often better value and more comfortable.
+Most business travellers stay near the Kigali Convention Centre or in the city centre. The Radisson Blu Hotel and Convention Centre sits right next to the conference venue, which makes it the obvious choice during major events. The Kigali Marriott is central, has good meeting rooms and attracts a strong business crowd. The Kigali Serena is one of the city's longest-established addresses and remains popular with visiting executives. If your stay is longer than a week, serviced apartments in Kimihurura or Kiyovu are often better value and more comfortable.
 
 Kigali hosts a steady stream of international conferences, and during the larger ones the best rooms disappear months in advance. Book early if your dates coincide with a major event.
 
@@ -313,7 +313,7 @@ If you have not yet set up a Rwandan entity, read [subsidiary or branch?](/uk/uk
 
 Employment in Rwanda is governed by the labour law of 2018 and its implementing regulations. Employment contracts should be in writing and should set out the role, pay, working hours and place of work. Probation periods are allowed but must be stated in the contract. Employees are entitled to annual leave, maternity leave and public holidays as set out in law. Ending an employment relationship requires a fair process, with notice and, in some circumstances, severance pay.
 
-For UK managers, the most important adjustment is that informal arrangements carry risk. A well-drafted contract and a clear staff handbook prevent most disputes, and labour inspections do take place. Our [HR support team](/hrsupport) prepares both in line with Rwandan law.
+For UK managers, the most important adjustment is that informal arrangements carry risk. A well-drafted contract and a clear staff handbook prevent most disputes, and labour inspections do take place. Our [HR support team](/hr-recruitment#hr-admin-support) prepares both in line with Rwandan law.
 
 ## Payroll and social security
 

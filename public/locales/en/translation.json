@@ -240,7 +240,7 @@
     "hero_tagline": "Rwanda Investment Experts",
     "hero_title": "Invest in Rwanda",
     "hero_title_accent": "With Confidence",
-    "hero_desc1": "Zero minimum capital. 0% corporate tax for qualifying investments.",
+    "hero_desc1": "Zero minimum capital. 15% preferential corporate tax for priority sectors.",
     "hero_desc2": "Full-service support from legal setup to daily operations.",
     "explore_services": "Explore Services",
     "stat_years": "Years Experience",
@@ -855,7 +855,7 @@
         "business": "Business Travel",
         "honeymoon": "Honeymoon / Romantic Getaway",
         "family": "Family Vacation",
-        "diplomatic": "Diplomatic or Government Visit",
+        "diplomatic": "Government or Institutional Visit",
         "long-vip": "Long-Term VIP Stay (30+ days)",
         "vip_event": " VIP Event / Conference Attendance"
       }
@@ -867,7 +867,7 @@
       "options": {
         "kcc": "Kigali City Center – Executive Zone",
         "convention": "Near Kigali Convention Centre (KCC)",
-        "embassy": "Nyarutarama / Kimihurura (Embassy Area)",
+        "embassy": "Nyarutarama / Kimihurura",
         "vision_city": "Gacuriro / Vision City",
         "musanze": " Musanze (Luxury Lodges – Volcanoes Park)",
         "lake_kivu": "Lake Kivu (Luxury Resort Area)",
@@ -1021,13 +1021,13 @@
         "business": "Business Travel",
         "honeymoon": "Honeymoon / Romantic Getaway",
         "family": "Family Vacation",
-        "diplomatic": "Diplomatic or Government Visit",
+        "diplomatic": "Government or Institutional Visit",
         "vip_longterm": "Long-Term VIP Stay (30+ days)",
         "vip_event": "VIP Event / Conference Attendance"
       },
       "location": {
         "kcc": "Near Kigali Convention Centre (KCC)",
-        "embassy": "Nyarutarama / Kimihurura (Embassy Area)",
+        "embassy": "Nyarutarama / Kimihurura",
         "vision_city": "Gacuriro / Vision City",
         "lake_kivu": "Lake Kivu (Luxury Resort Area)",
         "musanze": "Musanze (Luxury Lodges – Volcanoes Park)",
@@ -1371,7 +1371,7 @@
       "business": "Business",
       "honeymoon": "Honeymoon",
       "family": "Family",
-      "diplomatic": "Diplomatic",
+      "diplomatic": "Institutional",
       "vipEvent": "VIP Event"
     },
     "hotelLevels": {
@@ -1698,7 +1698,7 @@
         "business": "Business",
         "honeymoon": "Honeymoon",
         "family": "Family",
-        "diplomatic": "Diplomatic",
+        "diplomatic": "Institutional",
         "vip_event": "VIP Event"
       }
     },
@@ -1926,7 +1926,7 @@
     "email": "Email",
     "location": "Masaka, Dubai Port Road, Kigali, Rwanda",
     "hours": "Available 24/7 via WhatsApp",
-    "officeHours": "Office: Mon-Fri 8AM-6PM CAT"
+    "officeHours": "Office: Mon–Fri 09:00–17:00, Sat 10:00–15:00 (CAT)"
   },
   "toast": {
     "success": "Message sent! We’ll get back to you shortly.",

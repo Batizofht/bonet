@@ -211,7 +211,7 @@ const HotelCard = ({ bookHotel }) => {
                       { value: "business", label: L("Business Trip","Voyage d'affaires","商务出行") },
                       { value: "honeymoon", label: L("Honeymoon","Lune de miel","蜜月") },
                       { value: "family", label: L("Family Vacation","Vacances en famille","家庭度假") },
-                      { value: "diplomatic", label: L("Diplomatic Visit","Visite diplomatique","外交访问") },
+                      { value: "diplomatic", label: L("Institutional Visit","Visite institutionnelle","机构访问") },
                       { value: "vip_event", label: L("VIP Event","Événement VIP","VIP活动") },
                       { value: "tourism", label: L("Tourism","Tourisme","旅游") },
                     ]}
@@ -225,7 +225,7 @@ const HotelCard = ({ bookHotel }) => {
                       onChange={handleLocationChange}
                       options={[
                         { value: "kcc", label: L("Kigali Convention Center Area","Zone du Centre de conférences de Kigali","基加利会议中心区域") },
-                        { value: "embassy", label: L("Embassy & Diplomatic Area","Zone des ambassades et diplomatique","大使馆和外交区") },
+                        { value: "embassy", label: L("Kacyiru / Nyarutarama (Government District)","Kacyiru / Nyarutarama (quartier administratif)","卡西鲁/尼亚鲁塔拉马（行政区）") },
                         { value: "vision_city", label: "Vision City" },
                         { value: "musanze", label: "Musanze" },
                         { value: "lake_kivu", label: L("Lake Kivu","Lac Kivu","基伍湖") },

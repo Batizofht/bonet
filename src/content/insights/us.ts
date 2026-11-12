@@ -279,7 +279,7 @@ The opportunity for an American investor usually sits in the middle of the value
 
 ## Tourism, hospitality and conferences
 
-Rwanda built its tourism around high value rather than high volume. Gorilla trekking in Volcanoes National Park, chimpanzees and canopy walks in Nyungwe, the Big Five in Akagera and the beaches of Lake Kivu attract visitors willing to pay for quality. Kigali has also become one of Africa's leading conference cities. It hosted the Commonwealth Heads of Government Meeting in 2022 and, in 2025, the UCI Road World Championships, the first time cycling's world championships were held in Africa.
+Rwanda built its tourism around high value rather than high volume. Gorilla trekking in Volcanoes National Park, chimpanzees and canopy walks in Nyungwe, the Big Five in Akagera and the beaches of Lake Kivu attract visitors willing to pay for quality. Kigali has also become one of Africa's leading conference cities. It hosts major international conferences every year and, in 2025, staged the UCI Road World Championships, the first time cycling's world championships were held in Africa.
 
 The luxury end of the market is already well served by international brands. The more interesting gaps are in the middle: business hotels and serviced apartments for long-stay professionals, tour operations that serve conference delegates, and event services. Investors should be aware that tourism businesses need operating licences and that service quality standards are taken seriously.
 
@@ -345,7 +345,7 @@ The typical file includes your passport, a police clearance certificate from the
 
 ## Choosing a neighborhood
 
-Most international families settle in a handful of neighborhoods, each with its own character. Nyarutarama is spacious and green, built around the golf course, and popular with senior executives and families who want a house with a garden. Kiyovu sits close to the city center on leafy streets with older residences and some of Kigali's longest-established embassies. Kimihurura is livelier, with restaurants and bars and easy access to the Kigali Convention Centre. Kacyiru is the government and diplomatic district, quiet and very secure. Gacuriro, home to the Vision City development, offers newer apartments and townhouses in a planned setting.
+Most international families settle in a handful of neighborhoods, each with its own character. Nyarutarama is spacious and green, built around the golf course, and popular with senior executives and families who want a house with a garden. Kiyovu sits close to the city center on leafy streets with older residences. Kimihurura is livelier, with restaurants and bars and easy access to the Kigali Convention Centre. Kacyiru is the government district, quiet and very secure. Gacuriro, home to the Vision City development, offers newer apartments and townhouses in a planned setting.
 
 Rents vary widely. A good furnished apartment might start around RWF 800,000 a month, while a large furnished house in Nyarutarama can cost several million francs, and high-end leases are often quoted in US dollars. When you view a property, check the things that matter day to day: water pressure and storage, a backup generator, internet options, security arrangements and how long the commute will be in rush-hour traffic. Leases are usually for a year, with several months paid in advance, so read the terms on deposits and early termination carefully.
 

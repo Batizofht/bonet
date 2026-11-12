@@ -8,6 +8,18 @@ const nextConfig: NextConfig = {
         destination: '/Reservations',
         permanent: true,
       },
+      // Duplicate service pages merged into one page each (explicit 301,
+      // not Next's default 308 for permanent redirects)
+      { source: '/hrsupport', destination: '/hr-recruitment', statusCode: 301 },
+      { source: '/travel', destination: '/executive-travel', statusCode: 301 },
+      // Retired blog category pages
+      {
+        source: '/blog-business',
+        destination: '/blog/how-to-register-a-company-in-rwanda-2026-guide-for-foreign-investors',
+        statusCode: 301,
+      },
+      { source: '/blog-investment', destination: '/blogs', statusCode: 301 },
+      { source: '/blog-travel-tips', destination: '/blogs', statusCode: 301 },
     ]
   },
 

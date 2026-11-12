@@ -523,14 +523,6 @@ export default function FAQClient() {
             )
           },
           {
-            question: L2("Where do I register with my embassy?","Où dois-je m'inscrire auprès de mon ambassade ?","我应该在哪里向我的大使馆登记？"),
-            answer: L2(
-              "Use your embassy's online consular registration (if offered) to register your presence. Kigali has many resident missions; check your embassy website for the correct registration process and emergency contacts.",
-              "Utilisez l'enregistrement consulaire en ligne de votre ambassade (si disponible) pour enregistrer votre présence. Kigali abrite de nombreuses missions résidentes ; consultez le site de votre ambassade pour connaître le processus d'enregistrement correct et les contacts d'urgence.",
-              "请使用您大使馆的在线领事登记（如有）登记您的存在。基加利设有许多常驻使团；请查阅您大使馆网站以了解正确的登记程序和紧急联系方式。"
-            )
-          },
-          {
             question: L2("What if I have a legal dispute?","Que faire en cas de litige juridique ?","如果我有法律纠纷怎么办？"),
             answer: L2(
               "Commercial disputes can go through Rwanda's courts or arbitration. If you have a dispute, document everything and get professional legal advice early. Arbitration information: https://kiac.org.rw.",

@@ -49,15 +49,13 @@ Practical considerations often tip the balance. Kigali runs on Central Africa Ti
 
 ## The limits, stated plainly
 
-Every investment committee should weigh four things.
+Every investment committee should weigh three things.
 
 The first is market size. With roughly fourteen million people, Rwanda's domestic market is small, and most successful strategies treat it as a regional base rather than a destination in itself.
 
 The second is logistics. Rwanda is landlocked, so sea freight moves by road to Mombasa or Dar es Salaam, which adds time and cost to every container.
 
-The third is regional context. Investors should follow developments in the Great Lakes region, including tensions in eastern Congo, and their possible effects on trade routes, diplomatic relationships and perception. Most European companies operating in Rwanda manage this through good local advice and diversified regional strategies, but it belongs in the risk register.
-
-The fourth is depth of skills. Rwanda's talent pool is strong and growing quickly, but very senior specialist roles may still need to be filled by expatriates in the early years.
+The third is depth of skills. Rwanda's talent pool is strong and growing quickly, but very senior specialist roles may still need to be filled by expatriates in the early years.
 
 ## How European companies usually begin
 
@@ -107,7 +105,7 @@ On the paperwork side, Rwandan exporters register in the EU's Registered Exporte
 
 ## What Rwanda sells to Europe
 
-Rwanda is best known in Europe for its specialty coffee: fully washed arabica grown by smallholders on high hills and processed at washing stations, prized by roasters in Germany, Belgium, the Netherlands and Scandinavia. High-grown black tea from estates in the north and west is another established export. Horticulture is growing quickly, with cut flowers, French beans, chillies and avocados among the products reaching European markets, and processed foods and beverages are expanding. Rwanda also exports minerals such as tin, tantalum and tungsten, where the EU's rules on responsible sourcing of conflict minerals apply and supply-chain due diligence is essential.
+Rwanda is best known in Europe for its specialty coffee: fully washed arabica grown by smallholders on high hills and processed at washing stations, prized by roasters in Germany, Belgium, the Netherlands and Scandinavia. High-grown black tea from estates in the north and west is another established export. Horticulture is growing quickly, with cut flowers, French beans, chillies and avocados among the products reaching European markets, and processed foods and beverages are expanding. Rwanda also exports minerals such as tin, tantalum and tungsten, where the EU's responsible mineral sourcing rules apply and supply-chain due diligence is essential.
 
 ## How European companies are using EBA
 
@@ -314,7 +312,7 @@ Several obligations arise from being part of a European group. Transactions betw
 
 ## Keeping it simple
 
-The companies that manage compliance best in Rwanda do three things. They set up the filing calendar on day one, they outsource what they cannot yet staff, and they review their position once a year with their auditors. Our [consulting team](/consulting) provides accounting, compliance and audit support, and our [HR team](/hrsupport) runs payroll and employment contracts. Book a [free consultation](/contact) to review your set-up, or read [Kigali as a regional headquarters](/europe/kigali-regional-headquarters-for-european-companies) for the wider structure.
+The companies that manage compliance best in Rwanda do three things. They set up the filing calendar on day one, they outsource what they cannot yet staff, and they review their position once a year with their auditors. Our [consulting team](/consulting) provides accounting, compliance and audit support, and our [HR team](/hr-recruitment#hr-admin-support) runs payroll and employment contracts. Book a [free consultation](/contact) to review your set-up, or read [Kigali as a regional headquarters](/europe/kigali-regional-headquarters-for-european-companies) for the wider structure.
 `,
     faqs: [
       { q: "Does Rwanda have a data protection law?", a: "Yes. Rwanda adopted a law on the protection of personal data and privacy in 2021, supervised by the National Cyber Security Authority, with registration and cross-border transfer requirements." },

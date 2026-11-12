@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Calendar, Clock, User } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { PageHero, Section, SectionHeader, CtaBand, ButtonLink, WhatsAppButton } from "@/components/ui/kit";
 
@@ -35,24 +35,24 @@ export default function ServicesClient() {
     {
       title: t("menu.hrAndAdminSupport"),
       image: "/assets/images/s3.jpeg",
-      href: "/hrsupport",
+      href: "/hr-recruitment",
       items: [
         { href: "/hr-recruitment", label: t("menu.recruitment"), description: t("menu.desc_recruitment") },
-        { href: "/hrsupport", label: t("menu.hrPolicyDevelopment"), description: t("menu.desc_hrPolicy") },
-        { href: "/hrsupport", label: t("menu.employeeTraining"), description: t("menu.desc_empTraining") },
-        { href: "/hrsupport", label: t("menu.administrativeSupport"), description: t("menu.desc_adminSupport") },
+        { href: "/hr-recruitment#hr-admin-support", label: t("menu.hrPolicyDevelopment"), description: t("menu.desc_hrPolicy") },
+        { href: "/hr-recruitment#hr-admin-support", label: t("menu.employeeTraining"), description: t("menu.desc_empTraining") },
+        { href: "/hr-recruitment#hr-admin-support", label: t("menu.administrativeSupport"), description: t("menu.desc_adminSupport") },
       ],
     },
     {
       title: t("menu.travelAndHospitality"),
       image: "/assets/images/hot.jpg",
-      href: "/travel",
+      href: "/executive-travel",
       items: [
         { href: "/relocation-services", label: t("menu.relocationConcierge"), description: t("menu.desc_relocation") },
         { href: "/executive-travel", label: t("menu.executiveTravel"), description: t("menu.desc_execTravel") },
-        { href: "/travel", label: t("menu.hotels"), description: t("menu.desc_hotels") },
-        { href: "/travel", label: t("menu.transport"), description: t("menu.desc_transport") },
-        { href: "/travel", label: t("menu.tourism"), description: t("menu.desc_tourism") },
+        { href: "/executive-travel#travel-hospitality", label: t("menu.hotels"), description: t("menu.desc_hotels") },
+        { href: "/executive-travel#travel-hospitality", label: t("menu.transport"), description: t("menu.desc_transport") },
+        { href: "/executive-travel#travel-hospitality", label: t("menu.tourism"), description: t("menu.desc_tourism") },
       ],
     },
   ];
@@ -64,7 +64,7 @@ export default function ServicesClient() {
         imageAlt="Kigali at dusk"
         eyebrow={t("servicesPage.banner_label")}
         title={t("servicesPage.banner_title")}
-        lead={t("servicesPage.article_intro")}
+        lead={L("Company registration, investment advisory, HR, relocation and executive travel for foreign investors in Rwanda, delivered by one team in Kigali.", "Immatriculation, conseil en investissement, RH, relocalisation et voyages d'affaires pour les investisseurs étrangers au Rwanda, par une seule équipe à Kigali.", "为在卢旺达的外国投资者提供公司注册、投资咨询、人力资源、搬迁和高管出行服务，由基加利的一个团队全程负责。")}
         crumbs={[{ name: L("Home", "Accueil", "首页"), href: "/" }, { name: L("Services", "Services", "服务") }]}
         actions={
           <>
@@ -99,31 +99,6 @@ export default function ServicesClient() {
             </div>
           ))}
         </div>
-      </Section>
-
-      <Section tone="ivory">
-        <article className="mx-auto max-w-3xl">
-          <p className="eyebrow">{t("servicesPage.article_label")}</p>
-          <h2 className="h-display mt-3 text-[1.75rem] sm:text-[2rem] md:text-[2.35rem]">{t("servicesPage.article_title")}</h2>
-          <div className="mt-6 flex flex-wrap gap-5 text-[13.5px] text-ink-500">
-            <span className="flex items-center gap-1.5"><User className="h-3.5 w-3.5" />{t("servicesPage.article_author")}</span>
-            <span className="flex items-center gap-1.5"><Calendar className="h-3.5 w-3.5" />{t("servicesPage.article_date")}</span>
-            <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" />{t("servicesPage.article_read")}</span>
-          </div>
-          <div className="prose-bonet mt-10">
-            <p>{t("servicesPage.article_intro")}</p>
-            <h3>{t("servicesPage.article_h3")}</h3>
-            <p>{t("servicesPage.article_body")}</p>
-          </div>
-          <div className="mt-12 rounded-[10px] border border-line bg-white p-8">
-            <h3 className="text-[1.2rem] font-semibold text-ink-900">{t("servicesPage.help_h3")}</h3>
-            <p className="mt-2 text-[15px] text-ink-600">{t("servicesPage.help_body")}</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/business-registration" className="btn btn-ink">{t("servicesPage.help_primary")}<ArrowRight className="h-4 w-4" /></Link>
-              <Link href="/contact" className="btn btn-outline">{t("servicesPage.help_secondary")}</Link>
-            </div>
-          </div>
-        </article>
       </Section>
 
       <CtaBand

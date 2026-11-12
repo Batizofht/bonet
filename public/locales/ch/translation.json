@@ -236,7 +236,7 @@
     "hero_tagline": "卢旺达投资专家",
     "hero_title": "投资卢旺达",
     "hero_title_accent": "信心满满",
-    "hero_desc1": "无最低注册资本。符合条件的投资享受0%企业税。",
+    "hero_desc1": "无最低注册资本。优先行业享受15%优惠企业所得税。",
     "hero_desc2": "从法律设立到日常运营的全方位支持。",
     "explore_services": "探索服务",
     "stat_years": "年经验",
@@ -887,7 +887,7 @@
         "business": "商务旅行",
         "honeymoon": "蜜月/浪漫之旅",
         "family": "家庭度假",
-        "diplomatic": "外交或政府访问",
+        "diplomatic": "政府或机构访问",
         "long-vip": "长期贵宾住宿（30天以上）",
         "vip_event": "贵宾活动/会议出席"
       }
@@ -899,7 +899,7 @@
       "options": {
         "kcc": "基加利市中心 – 行政区域",
         "convention": "基加利会议中心附近",
-        "embassy": "尼亚鲁塔拉马/基米胡鲁拉（使馆区）",
+        "embassy": "尼亚鲁塔拉马/基米胡鲁拉",
         "vision_city": "加库里罗/愿景城",
         "musanze": "穆桑泽（豪华旅馆 – 火山公园）",
         "lake_kivu": "基伍湖（豪华度假区）",
@@ -1053,13 +1053,13 @@
         "business": "商务旅行",
         "honeymoon": "蜜月/浪漫之旅",
         "family": "家庭度假",
-        "diplomatic": "外交或政府访问",
+        "diplomatic": "政府或机构访问",
         "vip_longterm": "长期贵宾住宿（30天以上）",
         "vip_event": "贵宾活动/会议出席"
       },
       "location": {
         "kcc": "基加利会议中心附近",
-        "embassy": "尼亚鲁塔拉马/基米胡鲁拉（使馆区）",
+        "embassy": "尼亚鲁塔拉马/基米胡鲁拉",
         "vision_city": "加库里罗/愿景城",
         "lake_kivu": "基伍湖（豪华度假区）",
         "musanze": "穆桑泽（豪华旅馆 – 火山公园）",
@@ -1403,7 +1403,7 @@
       "business": "商务",
       "honeymoon": "蜜月",
       "family": "家庭",
-      "diplomatic": "外交",
+      "diplomatic": "机构",
       "vipEvent": "贵宾活动"
     },
     "hotelLevels": {
@@ -1724,7 +1724,7 @@
         "business": "商务",
         "honeymoon": "蜜月",
         "family": "家庭",
-        "diplomatic": "外交",
+        "diplomatic": "机构",
         "vip_event": "贵宾活动"
       }
     },
@@ -1950,7 +1950,9 @@
     "chatButton": "在WhatsApp上与我们聊天",
     "callWhatsApp": "电话 / WhatsApp",
     "email": "邮箱",
-    "location": "卢旺达基加利"
+    "location": "卢旺达基加利 Masaka, Dubai Port Road",
+    "hours": "WhatsApp 全天候在线",
+    "officeHours": "办公时间：周一至周五 09:00–17:00，周六 10:00–15:00（中非时间）"
   },
   "toast": {
     "success": "消息已发送！我们会尽快回复您。",

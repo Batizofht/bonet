@@ -207,11 +207,6 @@ export default function BlogsClient() {
     [blogs, language]
   );
 
-  const featuredCategories = [
-    // { href: '/blog-business', label: 'Business', icon: Briefcase, desc: 'Company setup & growth' },
-    { href: '/blog-investment', label: 'Investment', icon: TrendingUp, desc: 'Opportunities & returns' },
-    { href: '/blog-travel-tips', label: 'Travel Tips', icon: MapPin, desc: 'Visa, culture & safety' },
-  ];
 
   return (
     <div className="bg-white pb-16 md:pb-24">
@@ -254,20 +249,7 @@ export default function BlogsClient() {
           )}
         </div>
 
-        {/* Featured Categories */}
-        <div className="mb-12 flex flex-wrap items-center gap-3">
-          <span className="text-xs font-semibold uppercase tracking-wider text-gray-400 mr-1">{t('blog.featured', 'Featured')}</span>
-          {featuredCategories.map((cat) => (
-            <Link
-              key={cat.href}
-              href={cat.href}
-              className="inline-flex items-center gap-2 rounded-md border border-line px-4 py-2 text-sm font-medium text-ink-700 transition-colors duration-200 hover:border-ink-900 hover:text-ink-900"
-            >
-              <cat.icon className="w-3.5 h-3.5" />
-              {cat.label}
-            </Link>
-          ))}
-        </div>
+        <div className="mb-10" />
 
         {/* Error State */}
         {error && (

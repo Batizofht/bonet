@@ -20,12 +20,12 @@ const WhyRwandaSection = () => {
       ),
     },
     {
-      stat: "0%",
+      stat: "15%",
       label: L("Tax Incentives", "Incitations Fiscales", "税收优惠"),
       desc: L(
-        "Corporate tax holidays for qualifying investments. 15% preferential rates for strategic sectors.",
-        "Exonérations fiscales pour les investissements qualifiés. Taux préférentiels de 15% pour les secteurs stratégiques.",
-        "符合条件的投资可享受企业所得税假期。战略性行业享有15%优惠税率。"
+        "15% preferential corporate tax for priority sectors. Tax holidays for very large investments.",
+        "Impôt sur les sociétés préférentiel de 15 % pour les secteurs prioritaires. Exonérations pour les très grands investissements.",
+        "优先行业享受15%优惠企业所得税。超大型投资可享受免税期。"
       ),
     },
     {
@@ -50,9 +50,9 @@ const WhyRwandaSection = () => {
       stat: "1.6B+",
       label: L("Market Access", "Accès au Marché", "市场准入"),
       desc: L(
-        "EAC, COMESA, EU, US/AGOA, AfCFTA — reach 1.6+ billion consumers.",
-        "EAC, COMESA, UE, US/AGOA, AfCFTA — accès à plus de 1,6 milliard de consommateurs.",
-        "东非共同体、康迈萨、欧盟、美国/AGOA、非洲自贸区——覆盖16亿+消费者。"
+        "EAC, COMESA, EU, AfCFTA — reach 1.6+ billion consumers.",
+        "EAC, COMESA, UE, ZLECAf — accès à plus de 1,6 milliard de consommateurs.",
+        "东非共同体、康迈萨、欧盟、非洲自贸区——覆盖16亿+消费者。"
       ),
     },
     {

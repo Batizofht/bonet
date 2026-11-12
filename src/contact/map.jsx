@@ -67,7 +67,7 @@ const GoogleMapEmbed = () => {
             </div>
             <div className="flex items-center gap-1">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span>{L("Mon-Fri 8AM-6PM","Lun-Ven 8h-18h","周一至周五 上午8点-下午6点")}</span>
+              <span>{L("Mon–Fri 09:00–17:00, Sat 10:00–15:00","Lun–Ven 09:00–17:00, Sam 10:00–15:00","周一至周五 09:00–17:00，周六 10:00–15:00")}</span>
             </div>
           </div>
         </div>

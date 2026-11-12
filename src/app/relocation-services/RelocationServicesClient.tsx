@@ -18,7 +18,7 @@ export default function RelocationServicesClient() {
   ];
 
   const neighborhoods = [
-    { name: "Kacyiru", type: L("Diplomatic Zone", "Zone diplomatique", "外交区"), price: "RWF 1.5M–3M/mo", image: "/assets/photos/kacyiru.jpg" },
+    { name: "Kacyiru", type: L("Government District", "Quartier administratif", "行政区"), price: "RWF 1.5M–3M/mo", image: "/assets/photos/kacyiru.jpg" },
     { name: "Kimihurura", type: L("Expat Hub", "Quartier des expatriés", "外籍人士聚居地"), price: "RWF 800K–1.5M/mo", image: "/image/amazing.jpg" },
     { name: "Nyarutarama", type: L("Residential", "Résidentiel", "住宅区"), price: "RWF 3M–8M/mo", image: "/assets/photos/kigali-golf.jpg" },
     { name: "Kimironko", type: L("Family-Friendly", "Adapté aux familles", "适合家庭"), price: "RWF 600K–1.2M/mo", image: "/assets/photos/kigali-street.jpg" },

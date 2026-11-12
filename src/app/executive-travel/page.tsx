@@ -2,11 +2,11 @@ import ExecutiveTravelClient from "./ExecutiveTravelClient";
 import RelatedGuides from "@/components/insights/RelatedGuides";
 
 export const metadata = {
-  title: "Executive Travel Rwanda | VIP Concierge",
+  title: "Executive Travel & Hospitality in Rwanda",
   description:
-    "Luxury executive travel and VIP concierge services in Rwanda. Gorilla trekking, luxury hotels, private transport, and bespoke itineraries for discerning travelers.",
+    "Hotel bookings, airport transfers, tour guides, VIP concierge and gorilla trekking in Rwanda, arranged by one team in Kigali for business travellers.",
   keywords:
-    "executive travel Rwanda, VIP concierge Rwanda, luxury travel Rwanda, gorilla trekking Rwanda, private tours Rwanda",
+    "executive travel Rwanda, VIP concierge Rwanda, hotel booking Kigali, airport transfers Rwanda, tour guides Rwanda, gorilla trekking Rwanda, private tours Rwanda",
   authors: [{ name: "Bonet Elite Services" }],
   alternates: { canonical: "https://bonet.rw/executive-travel" },
   openGraph: {

@@ -10,7 +10,7 @@ export const BE_ARTICLES: Article[] = [
     title: "Investir au Rwanda depuis la Belgique : opportunités, démarches et précautions",
     metaTitle: "Investir au Rwanda depuis la Belgique : le guide",
     description:
-      "Ce qu’un investisseur belge doit savoir sur le Rwanda en 2026 : atouts du marché, création de société, incitations fiscales et contexte diplomatique actuel.",
+      "Ce qu’un investisseur belge doit savoir sur le Rwanda en 2026 : atouts du marché, création de société et incitations fiscales.",
     keywords: ["investir au Rwanda Belgique", "entreprise belge Rwanda", "Rwanda opportunités", "Bruxelles Kigali affaires", "investissement Afrique de l'Est"],
     category: "Entrée sur le marché",
     date: D,
@@ -19,19 +19,13 @@ export const BE_ARTICLES: Article[] = [
     imageAlt: "Kigali au crépuscule, avec le Kigali Convention Centre",
     service: { href: "/investment", label: "Investissement et création d’entreprise au Rwanda" },
     body: `
-Peu de pays européens connaissent le Rwanda aussi bien que la Belgique. Les liens historiques, une diaspora rwandaise très présente à Bruxelles et en Wallonie, la langue française partagée et des décennies de relations économiques font du Rwanda un terrain familier pour beaucoup d’entrepreneurs belges. Le contexte politique a toutefois profondément changé ces derniers temps, et tout projet sérieux doit en tenir compte.
+Peu de pays européens connaissent le Rwanda aussi bien que la Belgique. Une diaspora rwandaise très présente à Bruxelles et en Wallonie, la langue française partagée et des décennies de relations économiques font du Rwanda un terrain familier pour beaucoup d’entrepreneurs belges.
 
-Ce guide s’adresse aux entrepreneurs et investisseurs belges qui envisagent le Rwanda. Il présente honnêtement le contexte, les atouts du pays, les démarches et les points de vigilance.
+Ce guide s’adresse aux entrepreneurs et investisseurs belges qui envisagent le Rwanda. Il présente les atouts du pays, les démarches et les points de vigilance.
 
-## Le contexte diplomatique, sans détour
+## Pourquoi le Rwanda attire les entrepreneurs belges
 
-En mars 2025, le Rwanda et la Belgique ont rompu leurs relations diplomatiques, sur fond de désaccord à propos de la situation dans l’est de la République démocratique du Congo. Pour un entrepreneur, les conséquences concrètes sont les suivantes. Il n’y a plus d’ambassade de Belgique à Kigali pour l’assistance consulaire, et il faut se renseigner auprès du SPF Affaires étrangères sur les modalités en vigueur et suivre ses conseils aux voyageurs. La coopération entre les deux gouvernements est à l’arrêt. En revanche, le droit rwandais des sociétés ne prévoit pas de conditions liées à la nationalité : à la date de rédaction, un ressortissant belge peut immatriculer une société au Rwanda dans les mêmes conditions que les autres investisseurs étrangers.
-
-La situation peut évoluer, dans un sens comme dans l’autre. Nous vérifions systématiquement les règles applicables avant chaque dossier, et nous conseillons à nos clients belges d’intégrer ce contexte à leur analyse de risque plutôt que de l’ignorer.
-
-## Pourquoi le Rwanda reste attractif
-
-Les fondamentaux qui attirent les investisseurs étrangers n’ont pas changé. L’administration est rapide et transparente : une société se crée en ligne, sans frais gouvernementaux ni capital minimum. Les étrangers peuvent détenir 100 % du capital dans la plupart des secteurs. Le Rwanda s’est classé deuxième en Afrique dans le dernier rapport Doing Business de la Banque mondiale et figure régulièrement parmi les pays les moins corrompus du continent. Il appartient à la Communauté d’Afrique de l’Est, qui compte désormais huit pays et plus de 300 millions d’habitants, et à la Zone de libre-échange continentale africaine. Enfin, le français reste l’une des langues officielles, même si l’anglais domine aujourd’hui les affaires.
+Le droit rwandais des sociétés ne prévoit pas de conditions liées à la nationalité : un entrepreneur belge immatricule sa société dans les mêmes conditions que tout autre investisseur étranger. L’administration est rapide et transparente : une société se crée en ligne, sans frais gouvernementaux ni capital minimum. Les étrangers peuvent détenir 100 % du capital dans la plupart des secteurs. Le Rwanda s’est classé deuxième en Afrique dans le dernier rapport Doing Business de la Banque mondiale et figure régulièrement parmi les pays les moins corrompus du continent. Il appartient à la Communauté d’Afrique de l’Est, qui compte désormais huit pays et plus de 300 millions d’habitants, et à la Zone de libre-échange continentale africaine. Enfin, le français reste l’une des langues officielles, même si l’anglais domine aujourd’hui les affaires.
 
 ## Les démarches, de la structure aux premières embauches
 
@@ -49,15 +43,14 @@ L’agro-industrie, du café et du thé à l’horticulture et à la transformat
 
 ## Les points de vigilance
 
-Au-delà du contexte diplomatique, il faut garder en tête la petite taille du marché intérieur, environ quatorze millions d’habitants, ce qui pousse à viser la région. Le pays est enclavé et la logistique passe par Mombasa ou Dar es Salaam. La terre est détenue sous forme de baux de longue durée et non en pleine propriété. Et les relations personnelles comptent beaucoup dans les décisions privées.
+Il faut garder en tête la petite taille du marché intérieur, environ quatorze millions d’habitants, ce qui pousse à viser la région. Le pays est enclavé et la logistique passe par Mombasa ou Dar es Salaam. La terre est détenue sous forme de baux de longue durée et non en pleine propriété. Et les relations personnelles comptent beaucoup dans les décisions privées.
 
 ## Notre accompagnement
 
 Bonet Elite Services est une équipe basée à Kigali, francophone, qui gère l’ensemble du parcours : société, incitations, recrutement, titres de séjour, logement et déplacements. Pour les membres de la diaspora, lisez aussi [investir au pays depuis la Belgique](/belgique/diaspora-rwandaise-de-belgique-investir-au-pays). Réservez une [consultation gratuite](/contact) pour faire le point sur votre projet.
 `,
     faqs: [
-      { q: "Un Belge peut-il créer une société au Rwanda en 2026 ?", a: "À la date de rédaction, le droit rwandais des sociétés ne prévoit pas de restriction liée à la nationalité belge : un ressortissant belge peut immatriculer une société au RDB comme tout investisseur étranger. Le contexte diplomatique peut évoluer, il faut donc vérifier les règles au moment du projet." },
-      { q: "Y a-t-il une ambassade de Belgique à Kigali ?", a: "Depuis la rupture des relations diplomatiques en mars 2025, il n’y a pas d’ambassade de Belgique à Kigali. Consultez le SPF Affaires étrangères pour l’assistance consulaire et les conseils aux voyageurs." },
+      { q: "Un Belge peut-il créer une société au Rwanda en 2026 ?", a: "À la date de rédaction, le droit rwandais des sociétés ne prévoit pas de restriction liée à la nationalité belge : un ressortissant belge peut immatriculer une société au RDB comme tout investisseur étranger." },
       { q: "Quel est le taux de l’impôt sur les sociétés au Rwanda ?", a: "Le taux normal est de 28 %. Des taux préférentiels existent pour les investisseurs titulaires d’un certificat d’investissement dans les secteurs prioritaires." },
     ],
   },
@@ -105,11 +98,7 @@ L’ouverture du compte bancaire est l’étape la plus longue. Les banques cont
 
 ## Gérer sa société depuis la Belgique
 
-Beaucoup d’entrepreneurs belges pilotent leur filiale à distance avec un responsable local. Utilisez la signature électronique, confiez une procuration limitée à un représentant de confiance pour les formalités courantes et tenez un calendrier fiscal rwandais à côté du calendrier belge. Le fuseau horaire est favorable : même heure qu’à Bruxelles en été, une heure de plus en hiver. N’oubliez pas les obligations belges liées à la détention d’une participation et de comptes à l’étranger.
-
-## Un mot sur le contexte
-
-Les relations diplomatiques entre le Rwanda et la Belgique sont rompues depuis mars 2025. À la date de rédaction, cela n’empêche pas un ressortissant belge d’immatriculer une société au Rwanda, mais cela impose de suivre les conseils aux voyageurs du SPF Affaires étrangères. Voir notre guide [investir au Rwanda depuis la Belgique](/belgique/investir-au-rwanda-depuis-la-belgique).
+Beaucoup d’entrepreneurs belges pilotent leur filiale à distance avec un responsable local. Utilisez la signature électronique, confiez une procuration limitée à un représentant de confiance pour les formalités courantes et tenez un calendrier fiscal rwandais à côté du calendrier belge. Le fuseau horaire est favorable : même heure qu’à Bruxelles en été, une heure de plus en hiver. N’oubliez pas les obligations belges liées à la détention d’une participation et de comptes à l’étranger. Pour une vue d’ensemble, lisez notre guide [investir au Rwanda depuis la Belgique](/belgique/investir-au-rwanda-depuis-la-belgique).
 
 ## On s’en occupe
 
@@ -165,10 +154,6 @@ Passez par des canaux bancaires ou des opérateurs agréés et conservez toutes 
 
 Pour un bien locatif, confiez la gestion à un professionnel qui encaisse les loyers, gère l’entretien et vous rend compte. Tenez une comptabilité, même pour une petite activité. Utilisez le paiement mobile et les portails en ligne, Irembo pour les démarches administratives et la Rwanda Revenue Authority pour les impôts, afin de suivre vos obligations depuis la Belgique. Et prévoyez au moins une visite par an.
 
-## Un mot sur le contexte
-
-Depuis la rupture des relations diplomatiques entre le Rwanda et la Belgique en mars 2025, les membres de la diaspora de nationalité belge doivent suivre les conseils aux voyageurs du SPF Affaires étrangères et vérifier les modalités consulaires. Les démarches au Rwanda, qu’il s’agisse du foncier ou des sociétés, relèvent quant à elles du droit rwandais.
-
 ## Comment nous accompagnons la diaspora
 
 Nous vérifions les titres fonciers, suivons les chantiers, créons les sociétés, trouvons des locataires et tenons la comptabilité, avec des rapports réguliers en français. Notre [équipe conseil](/consulting) peut vous accompagner du premier repérage jusqu’à la gestion courante. Réservez une [consultation gratuite](/contact).
@@ -199,15 +184,9 @@ Rwanda is geen grote markt, en het land doet ook niet alsof. Met ongeveer veerti
 
 Deze gids legt uit waarom Rwanda interessant is, hoe een vestiging in de praktijk verloopt, welke fiscale voordelen er zijn en waar u op moet letten.
 
-## Eerst de context: de diplomatieke breuk
+## Waarom Rwanda aantrekkelijk is
 
-In maart 2025 verbraken Rwanda en België hun diplomatieke betrekkingen, na onenigheid over de situatie in het oosten van Congo. Voor ondernemers heeft dat concrete gevolgen. Er is geen Belgische ambassade meer in Kigali voor consulaire bijstand, en het is raadzaam het reisadvies en de richtlijnen van de FOD Buitenlandse Zaken te volgen. De samenwerking tussen beide overheden ligt stil. Het Rwandese vennootschapsrecht stelt op het moment van schrijven echter geen voorwaarden op basis van nationaliteit: een Belg kan een vennootschap registreren zoals elke andere buitenlandse investeerder.
-
-De situatie kan veranderen. Wij controleren de geldende regels voor elk dossier, en we raden Belgische klanten aan deze context mee te nemen in hun risicoanalyse in plaats van ze te negeren.
-
-## Waarom Rwanda aantrekkelijk blijft
-
-De fundamenten die buitenlandse investeerders aantrekken, zijn ongewijzigd. Een vennootschap wordt online opgericht, zonder overheidskosten en zonder minimumkapitaal. Buitenlanders mogen in de meeste sectoren honderd procent van het kapitaal bezitten. Rwanda eindigde als tweede in Afrika in het laatste Doing Business-rapport van de Wereldbank en scoort consequent goed op corruptie-indexen. Het land is lid van de Oost-Afrikaanse Gemeenschap, die inmiddels acht landen en meer dan 300 miljoen inwoners telt, en van de Afrikaanse continentale vrijhandelszone. Engels is de belangrijkste zakentaal; Frans is eveneens een officiële taal.
+Het Rwandese vennootschapsrecht stelt geen voorwaarden op basis van nationaliteit: een Belgische ondernemer registreert een vennootschap zoals elke andere buitenlandse investeerder. Een vennootschap wordt online opgericht, zonder overheidskosten en zonder minimumkapitaal. Buitenlanders mogen in de meeste sectoren honderd procent van het kapitaal bezitten. Rwanda eindigde als tweede in Afrika in het laatste Doing Business-rapport van de Wereldbank en scoort consequent goed op corruptie-indexen. Het land is lid van de Oost-Afrikaanse Gemeenschap, die inmiddels acht landen en meer dan 300 miljoen inwoners telt, en van de Afrikaanse continentale vrijhandelszone. Engels is de belangrijkste zakentaal; Frans is eveneens een officiële taal.
 
 Nederlandse en Vlaamse bedrijven zijn er al actief. Heineken is via Bralirwa al decennia aanwezig, en KLM verbindt Amsterdam met Kigali, wat voor Vlaamse reizigers een handige route is.
 
@@ -234,7 +213,7 @@ De binnenlandse markt is klein, dus de sterkste projecten mikken op de regio. Rw
 Bonet Elite Services is een team in Kigali dat het volledige traject begeleidt: oprichting, investeringscertificaat, rekrutering, verblijfsvergunningen, huisvesting en zakenreizen. Wij werken in het Engels en het Frans en stemmen af met uw adviseurs in België. Boek een [gratis gesprek](/contact) voor een eerlijke inschatting van uw project.
 `,
     faqs: [
-      { q: "Kan een Belg in 2026 een bedrijf oprichten in Rwanda?", a: "Op het moment van schrijven stelt het Rwandese vennootschapsrecht geen voorwaarden op basis van de Belgische nationaliteit. Omdat de diplomatieke context kan veranderen, moeten de regels bij elk project opnieuw worden gecontroleerd." },
+      { q: "Kan een Belg in 2026 een bedrijf oprichten in Rwanda?", a: "Op het moment van schrijven stelt het Rwandese vennootschapsrecht geen voorwaarden op basis van de Belgische nationaliteit." },
       { q: "Wat is de vennootschapsbelasting in Rwanda?", a: "Het standaardtarief bedraagt 28 %. Investeerders met een investeringscertificaat in prioritaire sectoren kunnen een voorkeurtarief van 15 % krijgen." },
       { q: "Welke taal spreekt men in het zakenleven in Rwanda?", a: "Engels is de belangrijkste zakentaal. Officiële talen zijn Kinyarwanda, Engels, Frans en Swahili." },
     ],
@@ -283,11 +262,7 @@ De bankrekening neemt doorgaans de meeste tijd in beslag. Banken in Kigali contr
 
 ## Uw dochter beheren vanuit België
 
-Veel Belgische ondernemers sturen hun Rwandese vennootschap aan vanuit België, met een lokale verantwoordelijke ter plaatse. Gebruik elektronische handtekeningen, geef een vertrouwenspersoon een beperkte volmacht voor routinezaken en houd een Rwandese fiscale kalender bij naast de Belgische. De tijdzone helpt: in de zomer is het in Kigali even laat als in Brussel, in de winter een uur later. Vergeet ook de Belgische meldingsplichten voor buitenlandse participaties en rekeningen niet.
-
-## De diplomatieke context
-
-Sinds maart 2025 zijn de diplomatieke betrekkingen tussen Rwanda en België verbroken. Op het moment van schrijven belet dat een Belg niet om een vennootschap te registreren, maar volg het reisadvies van de FOD Buitenlandse Zaken. Lees ook [investeren in Rwanda: gids voor Vlaamse ondernemers](/belgique/investeren-in-rwanda-gids-voor-vlaamse-ondernemers).
+Veel Belgische ondernemers sturen hun Rwandese vennootschap aan vanuit België, met een lokale verantwoordelijke ter plaatse. Gebruik elektronische handtekeningen, geef een vertrouwenspersoon een beperkte volmacht voor routinezaken en houd een Rwandese fiscale kalender bij naast de Belgische. De tijdzone helpt: in de zomer is het in Kigali even laat als in Brussel, in de winter een uur later. Vergeet ook de Belgische meldingsplichten voor buitenlandse participaties en rekeningen niet. Voor het bredere overzicht leest u [investeren in Rwanda: gids voor Vlaamse ondernemers](/belgique/investeren-in-rwanda-gids-voor-vlaamse-ondernemers).
 
 ## Wij regelen het voor u
 

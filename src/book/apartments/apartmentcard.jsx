@@ -219,7 +219,7 @@ const ApartmentCard = ({ bookApartment }) => {
                       { value: "business", label: L("Business Travel","Voyage d'affaires","商务出行") },
                       { value: "honeymoon", label: L("Honeymoon / Romantic","Lune de miel / Romantique","蜜月/浪漫") },
                       { value: "family", label: L("Family Vacation","Vacances en famille","家庭度假") },
-                      { value: "diplomatic", label: L("Diplomatic Visit","Visite diplomatique","外交访问") },
+                      { value: "diplomatic", label: L("Institutional Visit","Visite institutionnelle","机构访问") },
                       { value: "vip_event", label: L("VIP Event","Événement VIP","VIP活动") },
                       { value: "extended_stay", label: L("Extended Stay","Séjour prolongé","长期住宿") },
                     ]}
@@ -234,7 +234,7 @@ const ApartmentCard = ({ bookApartment }) => {
                       error={errors.preferred_location}
                       options={[
                         { value: "kcc", label: L("Kigali City Center","Centre-ville de Kigali","基加利市中心") },
-                        { value: "embassy", label: L("Embassy & Diplomatic Area","Zone des ambassades et diplomatique","大使馆和外交区") },
+                        { value: "embassy", label: L("Kacyiru / Nyarutarama (Government District)","Kacyiru / Nyarutarama (quartier administratif)","卡西鲁/尼亚鲁塔拉马（行政区）") },
                         { value: "vision_city", label: "Vision City" },
                         { value: "musanze", label: "Musanze" },
                         { value: "lake_kivu", label: L("Lake Kivu","Lac Kivu","基伍湖") },

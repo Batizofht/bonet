@@ -29,12 +29,6 @@ const MarketAccessTable = () => {
       keyBenefit: L("Duty-free, quota-free market access", "Accès au marché en franchise de droits et de contingents", "免关税、免配额市场准入"),
     },
     {
-      tradeBloc: L("United States (AGOA)", "États-Unis (AGOA)", "美国（非洲增长与机遇法）"),
-      countries: "USA",
-      population: "330M+ " + L("consumers", "consommateurs", "消费者"),
-      keyBenefit: L("Preferential access for eligible products (subject to programme status)", "Accès préférentiel pour les produits éligibles (selon le statut du programme)", "符合条件产品享优惠准入（视项目状态而定）"),
-    },
-    {
       tradeBloc: "AfCFTA",
       countries: L("54 African nations", "54 nations africaines", "54个非洲国家"),
       population: "1.3B+ " + L("consumers", "consommateurs", "消费者"),
@@ -63,9 +57,9 @@ const MarketAccessTable = () => {
               <p className="mt-2 font-display text-[2.2rem] font-semibold leading-none">1.6B+</p>
               <p className="mt-3 text-[15px] leading-relaxed text-white/60">
                 {L(
-                  "From Rwanda, reach over 1.6 billion consumers across Africa, Europe, and the United States with preferential trade terms",
-                  "Depuis le Rwanda, atteignez plus de 1,6 milliard de consommateurs en Afrique, en Europe et aux États-Unis avec des conditions commerciales préférentielles",
-                  "从卢旺达出发，以优惠贸易条件覆盖非洲、欧洲和美国超过16亿消费者"
+                  "From Rwanda, reach over 1.6 billion consumers across Africa and Europe with preferential trade terms",
+                  "Depuis le Rwanda, atteignez plus de 1,6 milliard de consommateurs en Afrique et en Europe avec des conditions commerciales préférentielles",
+                  "从卢旺达出发，以优惠贸易条件覆盖非洲和欧洲超过16亿消费者"
                 )}
               </p>
             </div>

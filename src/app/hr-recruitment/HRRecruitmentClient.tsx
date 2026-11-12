@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import { UserPlus, Shield, CreditCard, FileText, ArrowRight } from "lucide-react";
-import { PageHero, Section, SectionHeader, StatStrip, FeatureCard, CtaBand, ButtonLink, WhatsAppButton, MediaRow } from "@/components/ui/kit";
+import { UserPlus, Shield, CreditCard, FileText } from "lucide-react";
+import { PageHero, Section, SectionHeader, StatStrip, FeatureCard, CtaBand, ButtonLink, WhatsAppButton } from "@/components/ui/kit";
+import HRAdminSupport from "@/services/hr";
 
 export default function HRRecruitmentClient() {
   const { i18n } = useTranslation();
@@ -80,22 +80,8 @@ export default function HRRecruitmentClient() {
         </div>
       </Section>
 
-      <Section tone="sand">
-        <MediaRow
-          image="/assets/images/talent.jpg"
-          imageAlt="Talent acquisition"
-          eyebrow={L("Need Full HR Support?", "Besoin d'un soutien RH complet ?", "需要全面的人力资源支持？")}
-          title={L("Recruitment is the start. We run HR after you hire, too.", "Le recrutement n'est que le début. Nous gérons aussi vos RH ensuite.", "招聘只是开始，入职后的人力资源我们也为您打理。")}
-          footer={
-            <Link href="/hrsupport" className="btn btn-ink">
-              {L("View All HR Services", "Voir tous les services RH", "查看所有人力资源服务")}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          }
-        >
-          <p>{L("Explore our complete HR and administrative services", "Découvrez nos services RH et administratifs complets", "探索我们完整的人力资源和行政服务")}</p>
-        </MediaRow>
-      </Section>
+      {/* Full HR & admin support (formerly the separate /hrsupport page) */}
+      <HRAdminSupport />
 
       <CtaBand
         image="/image/4.jpg"

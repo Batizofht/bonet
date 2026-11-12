@@ -116,26 +116,26 @@ export default function Navbar() {
     },
     {
       title: t("menu.hrAndAdminSupport"),
-      href: "/hrsupport",
+      href: "/hr-recruitment",
       items: [
         { href: "/hr-recruitment", label: t("menu.recruitment"), description: t("menu.desc_recruitment") },
-        { href: "/hrsupport", label: t("menu.hrPolicyDevelopment"), description: t("menu.desc_hrPolicy") },
-        { href: "/hrsupport", label: t("menu.administrativeSupport"), description: t("menu.desc_adminSupport") },
+        { href: "/hr-recruitment#hr-admin-support", label: t("menu.hrPolicyDevelopment"), description: t("menu.desc_hrPolicy") },
+        { href: "/hr-recruitment#hr-admin-support", label: t("menu.administrativeSupport"), description: t("menu.desc_adminSupport") },
       ],
     },
     {
       title: t("menu.travelAndHospitality"),
-      href: "/travel",
+      href: "/executive-travel",
       items: [
         { href: "/relocation-services", label: t("menu.relocationConcierge"), description: t("menu.desc_relocation") },
         { href: "/executive-travel", label: t("menu.executiveTravel"), description: t("menu.desc_execTravel") },
-        { href: "/travel", label: t("menu.hotels"), description: t("menu.desc_hotels") },
+        { href: "/executive-travel#travel-hospitality", label: t("menu.hotels"), description: t("menu.desc_hotels") },
       ],
     },
   ];
 
   const isActive = (p: string) => (p === "/" ? pathname === "/" : pathname?.startsWith(p));
-  const servicesActive = ["/services", "/investment", "/business-registration", "/consulting", "/hrsupport", "/hr-recruitment", "/relocation-services", "/executive-travel", "/travel"].some((p) => pathname?.startsWith(p));
+  const servicesActive = ["/services", "/investment", "/business-registration", "/consulting", "/hr-recruitment", "/relocation-services", "/executive-travel"].some((p) => pathname?.startsWith(p));
   const insightsActive = pathname?.startsWith("/blog") || MARKETS.some((m) => pathname?.startsWith(`/${m.slug}`));
 
   const linkCls = (active?: boolean) =>
@@ -150,7 +150,7 @@ export default function Navbar() {
         <div className="container-x flex h-10 items-center justify-between">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-2"><MapPin className="h-3.5 w-3.5 text-gold-500" />Kigali, Rwanda</span>
-            <span className="flex items-center gap-2"><Clock className="h-3.5 w-3.5 text-gold-500" />{L("Mon–Fri 08:00–18:00 · WhatsApp 24/7", "Lun–Ven 08:00–18:00 · WhatsApp 24/7", "周一至周五 08:00–18:00 · WhatsApp 全天候")}</span>
+            <span className="flex items-center gap-2"><Clock className="h-3.5 w-3.5 text-gold-500" />{L("Mon–Fri 09:00–17:00 · Sat 10:00–15:00 · WhatsApp 24/7", "Lun–Ven 09:00–17:00 · Sam 10:00–15:00 · WhatsApp 24/7", "周一至周五 09:00–17:00 · 周六 10:00–15:00 · WhatsApp 全天候")}</span>
           </div>
           <div className="flex items-center gap-6">
             <a href="tel:+250726300260" className="flex items-center gap-2 hover:text-white"><Phone className="h-3.5 w-3.5 text-gold-500" />+250 726 300 260</a>

@@ -19,7 +19,7 @@ export const FRANCE_ARTICLES: Article[] = [
     imageAlt: "Lettres « KIGALI » dans la zone piétonne du centre de Kigali",
     service: { href: "/investment", label: "Investissement et création d’entreprise au Rwanda" },
     body: `
-Le Rwanda n’est pas le plus grand marché d’Afrique, et il ne prétend pas l’être. Mais pour un investisseur étranger, c’est l’un des plus simples du continent : on y crée une société en ligne, sans capital minimum, avec la totalité du capital entre des mains étrangères, dans un pays connu pour la propreté de son administration. Pour un investisseur français, le contexte s’est en outre nettement amélioré depuis la normalisation des relations entre Paris et Kigali en 2021.
+Le Rwanda n’est pas le plus grand marché d’Afrique, et il ne prétend pas l’être. Mais pour un investisseur étranger, c’est l’un des plus simples du continent : on y crée une société en ligne, sans capital minimum, avec la totalité du capital entre des mains étrangères, dans un pays connu pour la propreté de son administration.
 
 Ce guide s’adresse aux dirigeants de PME, aux investisseurs et aux entrepreneurs français qui envisagent sérieusement le Rwanda. Il explique pourquoi le pays intéresse, comment se déroule concrètement une implantation et ce qu’il faut anticiper pour éviter les mauvaises surprises.
 
@@ -27,9 +27,9 @@ Ce guide s’adresse aux dirigeants de PME, aux investisseurs et aux entrepreneu
 
 La première raison tient à la qualité de l’environnement des affaires. Dans le dernier classement Doing Business publié par la Banque mondiale, en 2020, le Rwanda se classait deuxième en Afrique, derrière l’île Maurice. Le pays figure régulièrement parmi les moins corrompus du continent, et la plupart des démarches administratives se font sur des portails en ligne, avec des frais publiés. Pour une entreprise française soumise à la loi Sapin II, cette transparence n’est pas un détail : elle conditionne la possibilité même d’investir.
 
-La deuxième raison est linguistique et culturelle. Le français reste l’une des langues officielles du pays, aux côtés du kinyarwanda, de l’anglais et du swahili, et de nombreux interlocuteurs de plus de trente ans le parlent couramment. Le Rwanda est membre de l’Organisation internationale de la Francophonie, dont la secrétaire générale, Louise Mushikiwabo, est rwandaise. Il faut toutefois être lucide : depuis 2008, l’enseignement se fait principalement en anglais, et l’anglais est aujourd’hui la langue dominante des affaires.
+La deuxième raison est linguistique et culturelle. Le français reste l’une des langues officielles du pays, aux côtés du kinyarwanda, de l’anglais et du swahili, et de nombreux interlocuteurs de plus de trente ans le parlent couramment. Le Rwanda est d’ailleurs membre de l’Organisation internationale de la Francophonie. Il faut toutefois être lucide : depuis 2008, l’enseignement se fait principalement en anglais, et l’anglais est aujourd’hui la langue dominante des affaires.
 
-La troisième raison est politique. La visite d’Emmanuel Macron à Kigali en mai 2021 a ouvert une nouvelle période dans la relation bilatérale. L’Agence française de développement est revenue au Rwanda, les échanges économiques se sont intensifiés, et les entreprises françaises y sont accueillies sans réserve. Le grand public français connaît d’ailleurs le pays grâce au football : le partenariat « Visit Rwanda » avec le Paris Saint-Germain, lancé en 2019, a beaucoup fait pour son image.
+La troisième raison tient à la notoriété du pays auprès du public français. Le partenariat « Visit Rwanda » avec le Paris Saint-Germain, lancé en 2019, a beaucoup fait pour son image, et le Rwanda est aujourd’hui perçu comme une destination d’affaires et de tourisme haut de gamme.
 
 Enfin, le Rwanda est une porte d’entrée régionale. Il appartient à la Communauté d’Afrique de l’Est, qui compte désormais huit pays et plus de 300 millions d’habitants, et à la Zone de libre-échange continentale africaine.
 
@@ -238,7 +238,7 @@ Le dossier comprend habituellement le passeport, un extrait de casier judiciaire
 
 ## Choisir son quartier
 
-La plupart des familles expatriées s’installent dans quelques quartiers, chacun avec son caractère. Nyarutarama, verdoyant et spacieux, s’organise autour du golf et attire les dirigeants et les familles qui cherchent une maison avec jardin. Kiyovu, proche du centre, offre des rues arborées et des résidences plus anciennes, à côté de plusieurs ambassades historiques. Kimihurura est plus animé, avec ses restaurants et un accès facile au Kigali Convention Centre. Kacyiru, quartier administratif et diplomatique, est calme et très sûr. Gacuriro, où se trouve le programme Vision City, propose des appartements et maisons de ville récents dans un cadre planifié.
+La plupart des familles expatriées s’installent dans quelques quartiers, chacun avec son caractère. Nyarutarama, verdoyant et spacieux, s’organise autour du golf et attire les dirigeants et les familles qui cherchent une maison avec jardin. Kiyovu, proche du centre, offre des rues arborées et des résidences plus anciennes. Kimihurura est plus animé, avec ses restaurants et un accès facile au Kigali Convention Centre. Kacyiru, quartier administratif, est calme et très sûr. Gacuriro, où se trouve le programme Vision City, propose des appartements et maisons de ville récents dans un cadre planifié.
 
 Les loyers varient fortement. Un bel appartement meublé commence autour de 800 000 RWF par mois, tandis qu’une grande maison meublée à Nyarutarama peut coûter plusieurs millions de francs, et les biens haut de gamme sont souvent loués en dollars. Lors des visites, vérifiez ce qui compte au quotidien : la pression et le stockage de l’eau, le groupe électrogène, les options internet, la sécurité et le temps de trajet aux heures de pointe. Les baux sont en général d’un an, avec plusieurs mois payés d’avance : lisez attentivement les clauses de dépôt et de résiliation.
 

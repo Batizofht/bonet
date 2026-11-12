@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { Binoculars, Palmtree, Crown, MapPin, Calendar, ArrowRight } from "lucide-react";
 import { PageHero, Section, SectionHeader, CtaBand, ButtonLink, WhatsAppButton } from "@/components/ui/kit";
+import HotelHospitality from "@/services/hotel";
 
 export default function ExecutiveTravelClient() {
   const { i18n } = useTranslation();
@@ -87,6 +88,9 @@ export default function ExecutiveTravelClient() {
           ))}
         </div>
       </Section>
+
+      {/* Hotels, transfers, guides and VIP services (formerly the separate /travel page) */}
+      <HotelHospitality />
 
       <Section tone="ivory">
         <SectionHeader

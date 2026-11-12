@@ -35,7 +35,7 @@ export default function BusinessRegistrationClient() {
 
   const whyRwanda = [
     L("Second easiest place to do business in Africa (World Bank)", "2e endroit le plus facile pour faire des affaires en Afrique (Banque mondiale)", "非洲营商便利度第二（世界银行）"),
-    L("Stable political environment with strong governance", "Environnement politique stable avec une gouvernance solide", "稳定的政治环境与强有力的治理"),
+    L("Stable, predictable business environment with strong governance", "Environnement des affaires stable et prévisible, avec une gouvernance solide", "稳定、可预期的营商环境与良好治理"),
     L("English, French, and Kinyarwanda speaking business community", "Communauté d'affaires anglophone, francophone et kinyarwandaise", "英语、法语和基尼亚卢旺达语商业社区"),
     L("Strategic location — access to COMESA, EAC, and AfCFTA markets", "Emplacement stratégique — accès aux marchés COMESA, CAE et ZLECAf", "战略位置——进入COMESA、EAC和非洲大陆自贸区市场"),
     L("Modern digital infrastructure for online business operations", "Infrastructure numérique moderne pour les opérations commerciales en ligne", "现代数字基础设施支持在线商业运营"),

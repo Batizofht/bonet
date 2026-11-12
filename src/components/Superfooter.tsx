@@ -27,11 +27,9 @@ export default function SuperFooter() {
     { href: "/business-registration", label: L("Business Registration", "Enregistrement d'Entreprise", "企业注册") },
     { href: "/investment", label: L("Investment", "Investissement", "投资") },
     { href: "/consulting", label: L("Consulting", "Conseil", "咨询") },
-    { href: "/hr-recruitment", label: L("HR Recruitment", "Recrutement RH", "人力资源招聘") },
-    { href: "/hrsupport", label: L("HR & Admin Support", "Soutien RH et Administratif", "人力资源与行政支持") },
+    { href: "/hr-recruitment", label: L("HR, Recruitment & Admin", "RH, recrutement et administration", "人力资源、招聘与行政") },
     { href: "/relocation-services", label: L("Relocation Services", "Services de Relocalisation", "搬迁服务") },
-    { href: "/executive-travel", label: L("Executive Travel", "Voyage d'Affaires", "高管出行") },
-    { href: "/travel", label: L("Travel & Hospitality", "Voyage et Hôtellerie", "旅游与酒店") },
+    { href: "/executive-travel", label: L("Executive Travel & Hospitality", "Voyages d'affaires et hôtellerie", "高管出行与酒店") },
   ];
 
   const company = [
@@ -103,7 +101,11 @@ export default function SuperFooter() {
             </li>
             <li className="grid grid-cols-[20px_1fr] gap-2.5">
               <Clock className="mt-1 h-4 w-4 text-gold-500" />
-              <span>{L("Mon–Fri 08:00–18:00", "Lun–Ven 08:00–18:00", "周一至周五 08:00–18:00")}<span className="block text-[12.5px] text-white/40">{L("WhatsApp 24/7", "WhatsApp 24h/24", "WhatsApp 全天候")}</span></span>
+              <span>
+                {L("Mon–Fri 09:00–17:00", "Lun–Ven 09:00–17:00", "周一至周五 09:00–17:00")}
+                <span className="block">{L("Sat 10:00–15:00", "Sam 10:00–15:00", "周六 10:00–15:00")}</span>
+                <span className="block text-[12.5px] text-white/40">{L("WhatsApp 24/7", "WhatsApp 24h/24", "WhatsApp 全天候")}</span>
+              </span>
             </li>
           </ul>
         </div>
